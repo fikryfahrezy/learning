@@ -1,0 +1,27 @@
+{
+  "name": "signalrwebpack",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "release": "vite build && dotnet publish -c Release"
+  },
+  "dependencies": {
+    "@microsoft/signalr": "^10.0.0",
+    "lightweight-charts": "^4.2.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.3.5",
+    "vue-tsc": "^2.2.10"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
