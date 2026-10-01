@@ -1,0 +1,18 @@
+# Postgres Database Required Fixes and Updates
+
+Due to a recent Postgres update, we need to make a change to our environment variables.
+
+Add the following to your docker-compose.yml file in the **postgres** service:
+
+```sh
+  postgres:
+    image: "postgres:latest"
+    environment:
+      - POSTGRES_PASSWORD=postgres_password
+```
+
+```sh
+docker-compose down && docker-compose up --build
+```
+
+Please note, all of these changes are reflected in the downloadable checkpoint zip files.

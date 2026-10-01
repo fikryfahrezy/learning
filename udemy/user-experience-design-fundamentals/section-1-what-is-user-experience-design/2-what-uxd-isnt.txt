@@ -1,0 +1,673 @@
+WEBVTT
+
+00:00.080 --> 00:06.050
+One of the easiest ways to understand what user experience design is is by first talking about what
+
+00:06.050 --> 00:06.860
+it isn't.
+
+00:07.040 --> 00:11.720
+One of the things that's interesting about the fact that we now have a name for this discipline is the
+
+00:11.720 --> 00:20.540
+fact that when I was in school back in the Stone Ages, we we just called this design essentially.
+
+00:20.640 --> 00:21.140
+Okay.
+
+00:21.140 --> 00:24.770
+And at that point it was just print design because there was no Internet there.
+
+00:24.790 --> 00:30.830
+There wasn't even, uh, really computers until I was in my my junior year.
+
+00:30.830 --> 00:38.990
+So much of what we learned was essentially not only about what you do visually and what sort of interaction
+
+00:38.990 --> 00:40.420
+decisions you make.
+
+00:40.430 --> 00:47.720
+It was also all about people, what they will react to, how they interpret things, what they want,
+
+00:47.750 --> 00:53.160
+what they need, what they're willing to use, what their what's appropriate for them.
+
+00:53.180 --> 00:54.470
+All those things.
+
+00:54.500 --> 00:54.790
+Okay.
+
+00:54.800 --> 01:02.070
+That that bled into things like branding, marketing, advertising and of course, visual graphic design.
+
+01:02.580 --> 01:08.580
+But the point I'm getting at is that all these things that form the foundation of good user experience
+
+01:08.580 --> 01:17.400
+design and what we call customer experience, user experience are also at the heart of good design in
+
+01:17.400 --> 01:18.210
+general.
+
+01:18.880 --> 01:27.430
+So the place I'm going to start is with an independent designer by the name of Whitney Hess, who wrote
+
+01:27.430 --> 01:33.370
+an excellent article about common myths and misconceptions around user experience design.
+
+01:33.370 --> 01:35.080
+So that's the place we're going to start.
+
+01:35.170 --> 01:40.540
+First and foremost, user experience design is not user interface design.
+
+01:40.570 --> 01:42.300
+The two are not the same thing.
+
+01:42.310 --> 01:49.210
+Interface design is most certainly a part of user experience design, but it's only one facet.
+
+01:49.240 --> 01:54.100
+User interface applies specifically to what people see on the screen.
+
+01:54.100 --> 02:00.070
+The end result buttons, content, images, the arrangement of all those things, right?
+
+02:00.070 --> 02:03.100
+The sort of bridge between the user and the system.
+
+02:03.100 --> 02:04.470
+Okay, but it's more than that.
+
+02:04.480 --> 02:11.110
+Peter Merholz, who is a founding partner of a firm called Adaptive Path, whose founder Jesse James
+
+02:11.110 --> 02:17.140
+Garrett, actually coined the phrase user experience, says that interface is a component of user experience.
+
+02:17.140 --> 02:19.220
+But there is much, much more.
+
+02:19.220 --> 02:23.630
+And that much, much more includes things that have to do with cognitive science.
+
+02:23.630 --> 02:23.940
+Okay?
+
+02:23.960 --> 02:29.840
+It has to do with with people what they want, what they need, what they're willing to use, why they
+
+02:29.840 --> 02:32.430
+react to things the way that they do.
+
+02:32.450 --> 02:35.750
+It includes research into competition.
+
+02:35.750 --> 02:42.830
+It includes research into business needs, business goals, the products reason for being in the first
+
+02:42.830 --> 02:43.280
+place.
+
+02:43.280 --> 02:50.570
+So user experience is certainly more than its individual parts, one of which is user interface design.
+
+02:50.570 --> 02:52.700
+As Kristin Crumlish of Yahoo!
+
+02:52.700 --> 02:57.020
+Says, it's not about cosmetics, it's not about pixel pushing, it's not about button placement.
+
+02:57.020 --> 02:57.740
+It's more than that.
+
+02:57.740 --> 02:58.490
+It's holistic.
+
+02:58.520 --> 03:02.090
+It's everyone's concern, not just the realm of artistic types.
+
+03:02.090 --> 03:02.510
+Okay.
+
+03:02.510 --> 03:10.010
+I am very fond of saying that user experience design isn't just practiced by designers, it's also practiced
+
+03:10.010 --> 03:18.860
+by project managers, developers, database designers, software architects, everyone who's involved.
+
+03:18.860 --> 03:23.690
+No matter how tangentially in the process of creating a digital product.
+
+03:24.230 --> 03:31.820
+Has some impact and responsibility for user experience design because all their actions, the sum total
+
+03:31.820 --> 03:36.050
+of all that stuff together is what creates user experience.
+
+03:36.050 --> 03:39.290
+Design is what makes user experience positive or negative.
+
+03:39.320 --> 03:43.120
+User experience design isn't a step in a process.
+
+03:43.130 --> 03:45.140
+In fact, it is the process.
+
+03:45.620 --> 03:46.030
+Okay?
+
+03:46.160 --> 03:53.360
+All the things that we do from sort of the inception phase of a of a project, when we first start discussing
+
+03:53.360 --> 03:58.730
+what it is that we think we want to do and why we're doing it and who we're doing it for all the way
+
+03:58.730 --> 04:08.030
+through to the point when we actually have a programmed visual website or an app or a system or something
+
+04:08.030 --> 04:09.650
+that we can hold in our hand.
+
+04:09.650 --> 04:13.310
+That's all part of user experience design.
+
+04:13.310 --> 04:15.140
+It's all part of the process.
+
+04:15.260 --> 04:21.470
+Liz Danzico, who's the chair of the School of Visual Arts, says user experience design isn't a checkbox,
+
+04:21.500 --> 04:21.860
+okay?
+
+04:21.860 --> 04:23.940
+You don't do it and then move on.
+
+04:23.940 --> 04:26.490
+It needs to be integrated into everything that you do.
+
+04:26.490 --> 04:34.710
+So as I said previously, it's everybody's job, it's everybody's responsibility and it comes from everything
+
+04:34.710 --> 04:35.850
+that everybody does.
+
+04:35.850 --> 04:39.060
+Here's maybe another way of putting that, okay?
+
+04:39.090 --> 04:45.330
+When we think of design, we traditionally think of this idea that form follows function, which is
+
+04:45.330 --> 04:46.320
+partially true.
+
+04:46.320 --> 04:46.590
+Okay.
+
+04:46.590 --> 04:51.510
+There are certainly many examples where form does indeed follow function.
+
+04:51.510 --> 04:55.320
+The function of something determines what it looks like, how it's built.
+
+04:55.320 --> 05:03.600
+But for the most part, what really happens in just about any design process is that every force evolves
+
+05:03.600 --> 05:05.640
+the form of the product.
+
+05:05.670 --> 05:06.900
+Okay, what do I mean by that?
+
+05:06.900 --> 05:13.200
+Well, during a project from start to finish, there are any number of factors that influence the way
+
+05:13.230 --> 05:14.280
+things turn out.
+
+05:14.280 --> 05:17.040
+You have client needs and demands.
+
+05:17.040 --> 05:24.750
+You have budgetary expectations, you have time limitations, you have personnel limitations.
+
+05:24.750 --> 05:30.870
+You have audience preconceptions, political battles inside organizations.
+
+05:30.870 --> 05:37.500
+Okay, There are any number of issues that come up during product development, and all those things
+
+05:37.530 --> 05:45.270
+bear considerable weight on what the final form factor and what the final sort of quality of the user
+
+05:45.270 --> 05:46.230
+experience is.
+
+05:46.230 --> 05:52.590
+So it's not as clear cut as form follows function and it's not as clear cut in that user experience
+
+05:52.590 --> 05:55.530
+design is, okay, we do it and then we're done.
+
+05:55.920 --> 06:02.610
+Dan Brown, who's the co founder of H Shapes, an excellent design firm, says most people expect user
+
+06:02.610 --> 06:05.520
+experience design to be a discrete activity, but it's not.
+
+06:05.550 --> 06:11.370
+He says it must be an ongoing effort, continually learning about users responding to behaviors and
+
+06:11.370 --> 06:13.050
+evolving the product or service.
+
+06:13.050 --> 06:18.050
+I think that's a great, great description because again, evolution, right?
+
+06:18.060 --> 06:19.590
+Every force evolves form.
+
+06:19.590 --> 06:20.730
+That's what happens.
+
+06:20.730 --> 06:27.810
+As things progress, they become more real based on all the factors that influence design and development
+
+06:27.810 --> 06:30.300
+at any point during that process.
+
+06:30.720 --> 06:37.560
+Another pervading myth is that user experience design is solely about technology, solely about digital
+
+06:37.560 --> 06:38.220
+products.
+
+06:38.220 --> 06:42.450
+You know, something that lives on a computer or a screen of some kind.
+
+06:42.450 --> 06:44.370
+And that's really not true.
+
+06:44.370 --> 06:47.580
+And that's why I'm showing you a picture of a kitchen faucet.
+
+06:47.580 --> 06:48.240
+Okay.
+
+06:49.380 --> 06:53.880
+All product design considers user experience in its design.
+
+06:53.880 --> 06:54.180
+Okay?
+
+06:54.210 --> 06:59.700
+The handle is built in a certain ergonomic fashion so that when you grip it, it moves a certain way.
+
+06:59.700 --> 07:01.980
+And it's sort of enjoyable to do that.
+
+07:01.980 --> 07:02.820
+It moves easy.
+
+07:02.820 --> 07:04.530
+You don't have to put a lot of pressure on it.
+
+07:04.530 --> 07:09.540
+There are some other faucets that you simply tap them and they turn on and tap them when they turn off.
+
+07:09.540 --> 07:09.750
+Okay.
+
+07:09.780 --> 07:12.330
+Those are form considerations.
+
+07:12.330 --> 07:19.620
+They're functional considerations that determine whether the product is enjoyable to use, right?
+
+07:19.620 --> 07:21.150
+Well, that's user experience.
+
+07:21.550 --> 07:27.730
+Bill de Roche echoes this sentiment when he says that uxd is not limited to the confines of the computer.
+
+07:27.730 --> 07:29.610
+It doesn't even need a screen.
+
+07:29.620 --> 07:32.200
+So as I'm saying, he's saying as well.
+
+07:32.410 --> 07:40.390
+Uxd is any interaction with any product, any artifact, any system, everything, unless it grew there
+
+07:40.390 --> 07:44.230
+basically, and maybe even then is designed.
+
+07:44.230 --> 07:44.610
+Right.
+
+07:44.620 --> 07:45.600
+Everything is designed.
+
+07:45.610 --> 07:52.630
+Everything that we come in contact with on a daily basis has some component of design and some aspect
+
+07:52.630 --> 07:55.510
+of user experience design built into it.
+
+07:56.250 --> 07:59.760
+Mario Burke of the trapeze group puts it this way.
+
+07:59.820 --> 08:01.530
+It's about how we live.
+
+08:01.560 --> 08:03.300
+It's about everything we do.
+
+08:03.330 --> 08:04.800
+It surrounds us.
+
+08:04.830 --> 08:09.450
+There's sort of no getting away from it, you know, from the microphone I'm speaking into right now
+
+08:09.450 --> 08:16.350
+to the audio software that's recording my voice, to the editing that I'm going to have to do later.
+
+08:16.350 --> 08:19.170
+That's all a product of user experience.
+
+08:19.170 --> 08:24.450
+And those experiences that I have are either positive or they're negative.
+
+08:24.540 --> 08:29.220
+It's not only about what we do with the things that we have with the products that we use, with the
+
+08:29.220 --> 08:31.080
+services that we take advantage of.
+
+08:31.110 --> 08:35.750
+It's also about the context in which we do so, right?
+
+08:35.760 --> 08:40.150
+It's the way we use something in conjunction with the way we use everything else.
+
+08:40.170 --> 08:45.390
+So user experience goes far beyond just the realm of of technology.
+
+08:45.390 --> 08:51.600
+It's sort of the sum total of how you feel about what's happened and whether it was of value to you.
+
+08:51.960 --> 08:55.350
+UX is about more than just usability.
+
+08:55.350 --> 09:02.530
+The science of usability largely concerns itself with efficiency effectiveness, and it's rooted in
+
+09:02.530 --> 09:07.450
+a very scientific, functional viewpoint of how things work.
+
+09:07.480 --> 09:13.720
+The problem is that when you focus only on efficiency, right, and only on effectiveness and only on
+
+09:13.720 --> 09:18.760
+sort of the functional aspects and considerations, you wind up with products like the Flowbee.
+
+09:19.360 --> 09:20.170
+Okay.
+
+09:20.290 --> 09:24.220
+I don't know if you remember the Flowbee, but but here's what this essentially is.
+
+09:24.220 --> 09:27.370
+It's a Shop-Vac with a cutting edge on it.
+
+09:27.370 --> 09:33.460
+You put this thing on your hair and you set the length that you want, the blade, and you sort of suck
+
+09:33.460 --> 09:36.280
+up your hair and cut it at the same time.
+
+09:37.090 --> 09:37.750
+Okay.
+
+09:37.960 --> 09:43.960
+If a picture says a thousand words, then this one speaks encyclopedias.
+
+09:44.710 --> 09:54.070
+This product sort of quickly became the the laughing stock of of the infomercial world and sort of greater
+
+09:54.070 --> 09:57.610
+society at large simply because it was ridiculous.
+
+09:57.640 --> 09:58.060
+Okay.
+
+09:58.060 --> 10:06.100
+And the reason it was ridiculous is because it focused purely on function and not whether anyone would
+
+10:06.100 --> 10:08.410
+ever want to use it in the first place.
+
+10:08.410 --> 10:08.800
+Right.
+
+10:08.830 --> 10:14.320
+Nobody thought about the fact that you feel like a complete moron using this thing.
+
+10:15.310 --> 10:15.790
+Okay?
+
+10:15.790 --> 10:20.110
+It's embarrassing, you know, in a way to use something like this.
+
+10:20.110 --> 10:21.300
+And it's uncomfortable, too.
+
+10:21.310 --> 10:24.400
+It's pulling at your hair while you're cutting it.
+
+10:24.400 --> 10:30.640
+So suffice to say, the product, you know, sort of came and went very quickly, like most fads and
+
+10:30.640 --> 10:31.480
+trends do.
+
+10:31.600 --> 10:37.870
+And that's because its creators believed in something that is expressed by Chris Fahy, who's a founding
+
+10:37.870 --> 10:39.490
+partner and principal at Behavior.
+
+10:39.520 --> 10:45.430
+He says people often think that user experience design is a way to make products that suck into products
+
+10:45.430 --> 10:49.590
+that don't suck by dedicating resources to the products design.
+
+10:49.600 --> 10:54.190
+Just because you throw a bunch of designers at it, or just because you throw a bunch of bodies at it
+
+10:54.190 --> 11:01.270
+and you say, this is the perfect match of form and function and efficiency and usability and etcetera,
+
+11:01.270 --> 11:01.630
+etcetera.
+
+11:01.630 --> 11:04.690
+You know, that doesn't mean that anyone's going to want it.
+
+11:04.690 --> 11:07.090
+It doesn't mean that anyone's going to use it.
+
+11:07.090 --> 11:10.090
+So you have to think beyond just pure usability.
+
+11:10.510 --> 11:16.030
+David Maloof, who's a professor of interaction design at Savannah College, says that usability is
+
+11:16.030 --> 11:22.450
+focused on efficiency and effectiveness blurs other important factors in UX, and those factors include
+
+11:22.450 --> 11:29.230
+Learnability Okay, visceral and behavioral emotional responses to the products and services we use.
+
+11:29.680 --> 11:35.980
+Everything that we use provokes some sort of emotional response.
+
+11:36.010 --> 11:41.470
+Any time you use anything, you either love it or you hate it, or maybe you feel ambivalent about it.
+
+11:41.470 --> 11:43.360
+Okay, but there's some response.
+
+11:43.600 --> 11:49.450
+And by only focusing on on sort of the mechanical aspects of it, you sort of ignore all that other
+
+11:49.450 --> 11:56.020
+stuff you're not taking the time to ask, Well, okay, people are using that, but how do they feel
+
+11:56.020 --> 11:57.030
+about using it?
+
+11:57.040 --> 11:58.150
+Is it comfortable?
+
+11:58.150 --> 11:59.590
+Is it enjoyable?
+
+11:59.590 --> 12:01.090
+Is it frustrating?
+
+12:01.090 --> 12:02.500
+Is it aggravating?
+
+12:02.530 --> 12:04.930
+Is it confusing?
+
+12:04.930 --> 12:11.710
+Those are the emotional responses, emotional aspects, behavioral aspects that are critically important
+
+12:11.860 --> 12:15.730
+in determining whether something actually gets used or not.
+
+12:15.790 --> 12:22.950
+The important takeaway here is that usability alone does not make for a successful product.
+
+12:22.960 --> 12:24.910
+It takes more than that.
+
+12:25.670 --> 12:33.470
+Quite possibly the biggest misconception about user experience design is that it's only about users.
+
+12:33.500 --> 12:36.680
+User experience design is not just about users.
+
+12:36.680 --> 12:40.270
+It's also about businesses.
+
+12:40.280 --> 12:43.850
+It's not just about the user of the product.
+
+12:43.850 --> 12:51.530
+It's also about the creator of the product, the organization whose security, stability, financial
+
+12:51.530 --> 12:56.130
+growth, whatever it is, is dependent on what happens with that product.
+
+12:56.150 --> 12:56.600
+Okay.
+
+12:56.630 --> 13:03.280
+The way I usually explain it is that user experience design is really about creating a value loop.
+
+13:03.290 --> 13:03.830
+Okay?
+
+13:03.830 --> 13:08.990
+That means value goes out to customers or to users.
+
+13:09.110 --> 13:16.250
+And then if they like it, if they have a good experience, if they actually use the product and receive
+
+13:16.250 --> 13:20.390
+value from it, then value comes back to the organization.
+
+13:20.390 --> 13:28.650
+In terms of money made, money saved, increased use, whatever the case may be, there's some sort
+
+13:28.650 --> 13:33.660
+of success metric that gets realized as a result of people using the product.
+
+13:33.660 --> 13:34.620
+So it's a loop.
+
+13:34.620 --> 13:38.270
+It's about users on one side, but it's also about the business.
+
+13:38.280 --> 13:43.680
+You cannot effectively design something by only looking at user needs.
+
+13:43.680 --> 13:48.270
+You also have to look at and consider business goals.
+
+13:48.300 --> 13:53.490
+Russ Unger, an experienced design strategist, says there are a set of business objectives that are
+
+13:53.490 --> 13:56.330
+needing to be met, and we're designing to that as well.
+
+13:56.340 --> 14:00.510
+We can't always just do what's best for users, right?
+
+14:00.510 --> 14:07.290
+So we can't ignore the needs of the company on the on the originating end.
+
+14:07.320 --> 14:07.560
+Okay.
+
+14:07.620 --> 14:08.370
+Because guess what?
+
+14:08.370 --> 14:11.430
+If the product doesn't sell, then they get hurt in some way.
+
+14:11.490 --> 14:16.770
+And you know, their reason for being sort of comes to a grinding halt.
+
+14:16.770 --> 14:18.960
+So it's looking at both sides.
+
+14:18.960 --> 14:20.760
+It's not just about users.
+
+14:21.060 --> 14:27.510
+And finally, Whitney herself weighs in to say, as user experience designers, we have to find the
+
+14:27.510 --> 14:33.450
+sweet spot between the user's needs and the business goals and ensure that the design is on brand.
+
+14:33.450 --> 14:33.730
+Okay.
+
+14:33.750 --> 14:41.370
+And what she means by on brand is that the product has to be sort of an accurate representation of the
+
+14:41.370 --> 14:48.300
+organization behind it because if the product sucks, then people think you suck as well and that's
+
+14:48.300 --> 14:50.130
+never a good place to be.
+
+14:50.760 --> 14:59.820
+You know, if the brand is new, innovative, forward thinking, easy to use and simple, and people
+
+14:59.820 --> 15:05.550
+have to spend 20 minutes just figuring out how to turn something on, okay, you're off brand.
+
+15:05.550 --> 15:14.610
+You're not accurately representing the sort of image and character and personality that the organization
+
+15:14.610 --> 15:17.190
+is trying to put across, and that's extremely important.

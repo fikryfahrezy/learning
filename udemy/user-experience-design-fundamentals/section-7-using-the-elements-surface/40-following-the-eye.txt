@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00.930 --> 00:05.610
+The next important component of good visual design is knowing how to follow the eye.
+
+00:05.880 --> 00:08.910
+And that essentially means where does the eye go first?
+
+00:08.940 --> 00:13.260
+What element of the design is drawing the user's attention first?
+
+00:13.260 --> 00:17.610
+And is that first object of attention a distraction of their goals?
+
+00:17.640 --> 00:23.760
+Is it representing the most important thing to them, or is it distracting when they really need to
+
+00:23.760 --> 00:29.730
+be going elsewhere and also is what they're drawn to strategically important to you?
+
+00:29.760 --> 00:34.020
+We said before that there are business goals behind the design of everything as well.
+
+00:34.020 --> 00:40.260
+So in addition to what the user wants first, you also have to consider is this what I want them to
+
+00:40.260 --> 00:41.250
+see first?
+
+00:41.370 --> 00:47.970
+There are essentially two patterns that come into play in almost any type of visual cognition.
+
+00:47.970 --> 00:50.070
+Okay, reading, looking, scanning.
+
+00:50.070 --> 00:56.520
+And the first is called an F pattern where you can sort of see that the order in which the eyes move
+
+00:56.520 --> 00:59.280
+through a layout forms an F shape.
+
+00:59.410 --> 01:05.020
+The second pattern that's very common is a Z pattern where we start at one corner, go to the other
+
+01:05.020 --> 01:09.250
+corner, then sort of go diagonally down to the bottom and then across again.
+
+01:09.280 --> 01:13.330
+These two patterns are very common for a couple of reasons.
+
+01:13.360 --> 01:19.000
+Number one, they're both used very often, both in print and on the screen.
+
+01:19.000 --> 01:26.170
+It's just a common layout practice, a convention that's been borne out of standard practice.
+
+01:26.200 --> 01:29.200
+The second reason has a lot to do with the way that we read things, right?
+
+01:29.200 --> 01:31.840
+We read from top to bottom, left to right.
+
+01:31.840 --> 01:36.670
+So we're almost always moving unconsciously in both of those directions.
+
+01:36.670 --> 01:42.850
+And I'm going to give you some examples of how each pattern works so you can understand how they replied
+
+01:42.850 --> 01:44.650
+in terms of visual design.
+
+01:45.300 --> 01:50.190
+A good example of the pattern is this layout for the Los Angeles Times website.
+
+01:50.190 --> 01:55.880
+When we hit this screen, our eye typically starts at the left side of the navigation.
+
+01:55.890 --> 02:01.590
+We move across very quickly and we read and scan the navigation and we wind up at the right end of the
+
+02:01.590 --> 02:02.160
+screen.
+
+02:02.160 --> 02:02.970
+From there.
+
+02:02.970 --> 02:07.800
+The next thing that our eye is drawn to is this large photograph in the middle of the page.
+
+02:07.800 --> 02:13.020
+So we go there, we look at the photo, and then we almost always are going to move straight across
+
+02:13.020 --> 02:17.310
+to go to the next big block, which is this ad, okay.
+
+02:17.340 --> 02:22.800
+So it's no accident that this next focal point just happens to be an advertisement that's done on purpose
+
+02:22.800 --> 02:28.290
+because the designer knows that this is the pattern in which our eye is going to move.
+
+02:28.290 --> 02:34.200
+So they want us to at least glance at see that ad, and if it happens to be relevant, maybe we click
+
+02:34.200 --> 02:34.620
+on it.
+
+02:34.620 --> 02:36.060
+But that's why it's there.
+
+02:36.060 --> 02:41.550
+So the next thing that happens is we'll typically go down and as we do that, we notice yet another
+
+02:41.550 --> 02:46.270
+element to our right that calls our attention, that being the entertainment headline and the large
+
+02:46.270 --> 02:47.020
+photo below it.
+
+02:47.020 --> 02:49.390
+So once again, we're drawn from left to right.
+
+02:49.420 --> 02:55.750
+The point here is that the visual elements on this screen are arranged in such a way as to accommodate
+
+02:55.750 --> 02:58.300
+this type of reading pattern we go across.
+
+02:58.300 --> 03:00.730
+Then we go down, we go across again.
+
+03:00.850 --> 03:03.850
+So now let's look at an example of the Z pattern.
+
+03:03.850 --> 03:09.340
+This is the website for Kickstarter and you see this type of layout a lot where you have a large image
+
+03:09.340 --> 03:11.500
+in the middle and then content below it.
+
+03:11.500 --> 03:14.920
+Once again, we start at the top left area.
+
+03:14.920 --> 03:15.490
+Why?
+
+03:15.520 --> 03:17.350
+Because it's ingrained habit, okay.
+
+03:17.350 --> 03:24.070
+We're sort of taught to recognize that the top left is the starting place of any type of layout.
+
+03:24.070 --> 03:26.230
+Again, we read left to right, top to bottom.
+
+03:26.230 --> 03:27.730
+It's our natural starting place.
+
+03:27.730 --> 03:34.030
+The difference here is that while we still start out in the same way and that we go across and to the
+
+03:34.030 --> 03:39.910
+right, we look at the photo, we read the headline because of that sort of large area in the center.
+
+03:39.910 --> 03:42.610
+It's a little different in the way that we scan through.
+
+03:42.640 --> 03:48.910
+What we actually do is we go diagonally back down to the next corner and we start again at this area
+
+03:48.910 --> 03:54.040
+where it says staff picks music and we've got a large image, and then we read again from left to right.
+
+03:54.040 --> 03:57.880
+So the essential pattern that the eye is following is in a Z shape.
+
+03:57.880 --> 04:03.040
+It's not so much that we go across and then we go down, we sort of scan back, track back to the left
+
+04:03.040 --> 04:04.990
+hand side and then continue.
+
+04:04.990 --> 04:09.340
+Both of these common patterns are things that you'll see a lot, you know, the next time you get on
+
+04:09.340 --> 04:14.800
+the web to look at anything, pay attention and see if you can identify F patterns and Z patterns.
+
+04:14.800 --> 04:18.220
+I think you'll find that they occur a lot more often than you may think.
+
+04:18.340 --> 04:20.830
+So why do these eye flow patterns matter to us?
+
+04:20.830 --> 04:23.380
+Well, mainly because they don't happen by accident.
+
+04:23.410 --> 04:24.400
+They're purposeful.
+
+04:24.400 --> 04:28.690
+Eye movement across the screen is an ingrained, instinctive response.
+
+04:28.690 --> 04:34.360
+It's built into our core physiological and psychological response to things that we see.
+
+04:34.360 --> 04:40.090
+And when design works, when it's successful, these patterns have two very important qualities.
+
+04:40.120 --> 04:43.420
+Number one, the eye moves in a very smooth flow.
+
+04:43.420 --> 04:43.660
+Okay?
+
+04:43.690 --> 04:48.310
+When someone tells you a design is busy, what they're really saying is that the design doesn't lead
+
+04:48.310 --> 04:49.480
+them around the screen.
+
+04:49.480 --> 04:55.120
+When people say something feels cluttered, what they're really reacting to is that there's no automatic,
+
+04:55.120 --> 04:58.870
+instinctive, reflexive path where they're drawn through the information.
+
+04:58.870 --> 05:02.800
+They're sort of stuck, okay, and they can't get started and they can't get through.
+
+05:03.070 --> 05:05.560
+That's really what they're reacting to.
+
+05:05.590 --> 05:10.960
+The second important quality of an eye flow pattern is that it gives a guided tour of what's available
+
+05:10.960 --> 05:13.480
+without overwhelming the user with details.
+
+05:13.480 --> 05:18.970
+The available choices should all support the goals and tasks that person is trying to accomplish.
+
+05:18.970 --> 05:24.760
+So for the pattern to be appropriate, it has to support what the person is trying to do in the first
+
+05:24.760 --> 05:25.090
+place.
+
+05:25.090 --> 05:31.870
+It has to expose information in a way where it's all valuable, useful, applicable to what the person
+
+05:31.870 --> 05:34.090
+cares about and what they're trying to achieve.
+
+05:34.630 --> 05:37.870
+In recent years, you've probably all seen these eye tracking studies.
+
+05:37.870 --> 05:38.110
+Okay.
+
+05:38.110 --> 05:41.560
+In this case, what you're looking at is a heat map and they're very cool.
+
+05:41.560 --> 05:46.180
+It's a really interesting representation that sort of shows us, you know, what people are looking
+
+05:46.180 --> 05:46.630
+at.
+
+05:46.660 --> 05:50.050
+The thing about them is they're not totally accurate.
+
+05:50.080 --> 05:56.290
+While it's really innovative technology and it certainly goes a long way in understanding how people
+
+05:56.290 --> 05:57.670
+move through content.
+
+05:57.700 --> 06:02.800
+The reason it's not totally accurate is because eye tracking records and displays what are called foveal
+
+06:02.800 --> 06:03.820
+fixations.
+
+06:03.820 --> 06:08.860
+That's the smallest part of our visual field that produces the sharpest vision.
+
+06:08.860 --> 06:09.130
+Okay.
+
+06:09.310 --> 06:12.100
+Again, think of it like autofocus on a camera.
+
+06:12.130 --> 06:16.720
+That's the part that we see sort of the easiest, the quickest.
+
+06:16.720 --> 06:22.930
+But you have to understand that those fixations make up a very small percentage of our total vision.
+
+06:22.930 --> 06:23.290
+Okay.
+
+06:23.320 --> 06:29.860
+Eye tracking doesn't record peripheral vision, which makes up 98% of our visual field.
+
+06:29.860 --> 06:35.030
+In other words, 98% of what we see is seen through our peripheral vision.
+
+06:35.030 --> 06:41.870
+Even though our focus may be on a specific element, our peripheral vision is working overtime all the
+
+06:41.870 --> 06:47.960
+time, and it's absorbing everything else that's within our visual field so we can see things without
+
+06:47.960 --> 06:48.800
+fixating on them.
+
+06:48.800 --> 06:53.400
+And as such, these studies don't represent everything that participants see.
+
+06:53.420 --> 06:56.600
+So again, while it's cool, it's interesting.
+
+06:56.600 --> 06:59.690
+It's not something you should place a heavy bet on.
+
+06:59.690 --> 07:02.120
+It certainly informs behavior.
+
+07:02.120 --> 07:07.850
+It certainly gives you an idea of what's drawing the eye in terms of a focal point.
+
+07:07.850 --> 07:15.770
+But it absolutely does not tell you how people move through that information and how much of it they
+
+07:15.770 --> 07:20.720
+cognitively absorb and understand and act upon.
+
+07:20.720 --> 07:22.430
+It's one piece of the puzzle.
+
+07:22.430 --> 07:24.980
+It is not the complete solution.

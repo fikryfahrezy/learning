@@ -1,0 +1,535 @@
+WEBVTT
+
+00:00.540 --> 00:02.220
+-: In this section, there's one last quick thing
+
+00:02.220 --> 00:05.220
+that I want to mention about the docker build process.
+
+00:05.220 --> 00:06.780
+This is an important thing to understand
+
+00:06.780 --> 00:09.510
+because it's what gives Docker so much performance
+
+00:09.510 --> 00:12.510
+whenever creating a new image.
+
+00:12.510 --> 00:14.850
+All right, so I'm looking at my Dockerfile right here,
+
+00:14.850 --> 00:16.410
+we have our three instructions,
+
+00:16.410 --> 00:18.360
+and, as you very well know by this point,
+
+00:18.360 --> 00:20.040
+out of each one of these instructions
+
+00:20.040 --> 00:22.260
+we essentially get a new image.
+
+00:22.260 --> 00:25.350
+So from Alpine, we get the Alpine image.
+
+00:25.350 --> 00:26.880
+From the RUN instruction,
+
+00:26.880 --> 00:28.620
+we get a temporary image that gets fed
+
+00:28.620 --> 00:30.060
+into the CMD instruction
+
+00:30.060 --> 00:32.430
+which gives us another temporary image.
+
+00:32.430 --> 00:35.100
+So at every instruction along the way,
+
+00:35.100 --> 00:37.320
+we have a file system snapshot
+
+00:37.320 --> 00:39.840
+and a startup command for that image.
+
+00:39.840 --> 00:42.503
+Now, I wanna show you something a little bit interesting.
+
+00:43.380 --> 00:45.870
+I'm going to go back over to my Dockerfile,
+
+00:45.870 --> 00:48.840
+and on the RUN instruction, I'm gonna add a new one.
+
+00:48.840 --> 00:53.587
+Right underneath it, I'm gonna say RUN apk add --update gcc.
+
+00:55.350 --> 00:57.600
+So we're just installing a very random
+
+00:57.600 --> 00:59.370
+second dependency here.
+
+00:59.370 --> 01:01.650
+There's nothing important that you need to know about GCC.
+
+01:01.650 --> 01:04.380
+We're just installing a second dependency.
+
+01:04.380 --> 01:06.150
+So I want you to think about what effect
+
+01:06.150 --> 01:08.490
+this is gonna have on our overall flow.
+
+01:08.490 --> 01:09.540
+Essentially, what it's gonna do
+
+01:09.540 --> 01:12.030
+is add in a new instruction right here
+
+01:12.030 --> 01:14.490
+that's gonna look a little something like this.
+
+01:14.490 --> 01:16.173
+We're gonna see a new one.
+
+01:17.070 --> 01:19.770
+Let's see how quickly I can do this edit.
+
+01:19.770 --> 01:22.833
+We're gonna get our new instruction right there.
+
+01:23.700 --> 01:25.140
+It's gonna be very similar
+
+01:25.140 --> 01:26.940
+to the image from the previous step,
+
+01:28.290 --> 01:31.230
+and it's gonna have a new little program or folder,
+
+01:31.230 --> 01:34.350
+or something inside of it, of GCC.
+
+01:34.350 --> 01:37.050
+So essentially, it is identical to the previous image
+
+01:37.050 --> 01:40.410
+but it has this extra little program that has been added in.
+
+01:40.410 --> 01:41.910
+Let's now flip over to our terminal.
+
+01:41.910 --> 01:43.740
+I want to rebuild our image
+
+01:43.740 --> 01:46.530
+and you're gonna notice something kind of interesting.
+
+01:46.530 --> 01:48.180
+So back over at my terminal,
+
+01:48.180 --> 01:50.640
+I'm still inside of my Redis image directory
+
+01:50.640 --> 01:53.400
+and I'm going to build my image a second time
+
+01:53.400 --> 01:55.257
+by running docker build..
+
+01:57.990 --> 01:59.490
+All right, so we're gonna very quickly see
+
+01:59.490 --> 02:01.110
+some installation steps right here
+
+02:01.110 --> 02:03.270
+as it adds in that additional package,
+
+02:03.270 --> 02:05.760
+but I want to scroll up to the second instruction
+
+02:05.760 --> 02:09.090
+and I wanna point out something interesting up there.
+
+02:09.090 --> 02:11.340
+So we still see step one of four right here
+
+02:11.340 --> 02:12.930
+where we do from Alpine.
+
+02:12.930 --> 02:15.150
+You'll notice that we do not see any of that,
+
+02:15.150 --> 02:17.970
+like, fetching image stuff that we saw the first time
+
+02:17.970 --> 02:20.460
+because we have already fetched the Alpine image,
+
+02:20.460 --> 02:22.410
+we've already downloaded it from the Docker Hub,
+
+02:22.410 --> 02:25.620
+and so we don't have to go and download it a second time.
+
+02:25.620 --> 02:27.360
+Now, the interesting thing that I wanna show you,
+
+02:27.360 --> 02:29.820
+and this is where Docker gets so much of its speed
+
+02:29.820 --> 02:31.920
+and performance from when building an image,
+
+02:31.920 --> 02:34.050
+you'll notice that during step number two right here,
+
+02:34.050 --> 02:36.630
+we do not see any of that stuff around,
+
+02:36.630 --> 02:38.460
+running in blah blah, blah,
+
+02:38.460 --> 02:39.540
+we don't see any fetch,
+
+02:39.540 --> 02:42.270
+we don't see any installation of dependencies.
+
+02:42.270 --> 02:46.380
+Instead, we see a single message that says, "Using cache."
+
+02:46.380 --> 02:49.380
+So what this means is that Docker has realized
+
+02:49.380 --> 02:52.770
+that from the previous step to step number two,
+
+02:52.770 --> 02:55.710
+nothing has changed from the last time
+
+02:55.710 --> 02:57.930
+that we ran docker build.
+
+02:57.930 --> 03:00.300
+In other words, it knows, without a doubt,
+
+03:00.300 --> 03:03.120
+that it's gonna get the same image from the previous step
+
+03:03.120 --> 03:06.243
+because it's the exact same instruction that it was before.
+
+03:07.230 --> 03:09.240
+And then for step number two,
+
+03:09.240 --> 03:12.420
+Docker knows that it has already executed the command
+
+03:12.420 --> 03:14.220
+APK add update Redis,
+
+03:14.220 --> 03:17.160
+It's already generated an image out of that step,
+
+03:17.160 --> 03:18.510
+this image right here.
+
+03:18.510 --> 03:20.400
+And this image has been cached
+
+03:20.400 --> 03:22.800
+and stored on your local machine.
+
+03:22.800 --> 03:24.630
+So rather than going through the process
+
+03:24.630 --> 03:27.630
+of creating another container out of the Alpine image
+
+03:27.630 --> 03:30.000
+and running APK add update Redis
+
+03:30.000 --> 03:32.100
+inside that container a second time,
+
+03:32.100 --> 03:34.620
+it says, "You know what, I've already done this work.
+
+03:34.620 --> 03:36.780
+I'm just gonna use the image that I generated
+
+03:36.780 --> 03:38.487
+during the previous step again."
+
+03:39.420 --> 03:41.670
+But then after that, Docker correctly sees
+
+03:41.670 --> 03:43.630
+that there is a new command in play
+
+03:44.550 --> 03:47.730
+and this is not add update Redis, it's add update GCC,
+
+03:47.730 --> 03:49.500
+it sees that there's a new command right here
+
+03:49.500 --> 03:50.700
+or a new instruction in play,
+
+03:50.700 --> 03:53.047
+and so from this point on, it decides,
+
+03:53.047 --> 03:53.880
+"Well, you know what?
+
+03:53.880 --> 03:55.800
+Something has changed during the build process.
+
+03:55.800 --> 03:57.750
+We probably can't use our cache anymore,
+
+03:57.750 --> 04:00.180
+and, from here on out, we have to go through that process
+
+04:00.180 --> 04:01.830
+of generating a container
+
+04:01.830 --> 04:04.650
+and running a command inside the container
+
+04:04.650 --> 04:06.090
+and taking the snapshot
+
+04:06.090 --> 04:08.730
+and going through all that stuff again."
+
+04:08.730 --> 04:10.410
+Now, the interesting thing about this
+
+04:10.410 --> 04:14.760
+is that it has now executed run APK add GCC,
+
+04:14.760 --> 04:16.530
+and it has generated an image
+
+04:16.530 --> 04:18.420
+out of that instruction right there.
+
+04:18.420 --> 04:22.560
+So if we now run docker build. a third time
+
+04:22.560 --> 04:24.960
+without making any changes to our Dockerfile,
+
+04:24.960 --> 04:26.550
+Docker is gonna correctly see
+
+04:26.550 --> 04:29.070
+we have made no changes to the Dockerfile,
+
+04:29.070 --> 04:31.050
+none of these steps have changed whatsoever,
+
+04:31.050 --> 04:33.810
+and so it's going to use the cached or saved versions
+
+04:33.810 --> 04:35.220
+of each of these images
+
+04:35.220 --> 04:37.110
+in building this new one.
+
+04:37.110 --> 04:39.570
+Let's do that right now, and you're gonna see it in action.
+
+04:39.570 --> 04:42.423
+So we're gonna do docker build. a third time,
+
+04:43.590 --> 04:46.770
+and you'll notice that build process went extremely quickly.
+
+04:46.770 --> 04:48.150
+So Docker correctly realized
+
+04:48.150 --> 04:49.860
+that it's already downloaded Alpine,
+
+04:49.860 --> 04:52.470
+it's realized that it already ran the run command
+
+04:52.470 --> 04:53.610
+on top of Alpine,
+
+04:53.610 --> 04:55.830
+so it's using the cache version of that image.
+
+04:55.830 --> 04:57.450
+It knows it's already done the GCC
+
+04:57.450 --> 04:58.950
+so it's using the cache version of that,
+
+04:58.950 --> 05:01.770
+and it knows that it's already executed command Redis server
+
+05:01.770 --> 05:03.930
+on top of the output of the GCC step,
+
+05:03.930 --> 05:06.270
+and so it's using the cache there again.
+
+05:06.270 --> 05:07.770
+So the lesson to learn here
+
+05:07.770 --> 05:11.010
+is that any time that we make a change to our Dockerfile,
+
+05:11.010 --> 05:14.280
+we're going to have to only rerun the series of steps
+
+05:14.280 --> 05:16.950
+from the changed line on down.
+
+05:16.950 --> 05:18.210
+As a quick example of that,
+
+05:18.210 --> 05:21.150
+let's try taking this GCC line right here
+
+05:21.150 --> 05:25.170
+and I'm gonna cut it and put it right above Redis.
+
+05:25.170 --> 05:27.930
+So even though we're still taking the Alpine image
+
+05:27.930 --> 05:30.780
+and adding GCC to it, and adding Redis to it,
+
+05:30.780 --> 05:33.420
+the series of steps have changed.
+
+05:33.420 --> 05:34.507
+And so Docker's gonna say,
+
+05:34.507 --> 05:37.560
+"Okay, well, this time we're taking Alpine
+
+05:37.560 --> 05:40.380
+and first adding in GCC."
+
+05:40.380 --> 05:42.660
+So it will use the cache version of Alpine
+
+05:42.660 --> 05:45.000
+but it's not going to have a cached version
+
+05:45.000 --> 05:46.770
+of the GCC add to use,
+
+05:46.770 --> 05:48.510
+because the last time that it ran that,
+
+05:48.510 --> 05:52.590
+it added GCC only after installing Redis.
+
+05:52.590 --> 05:55.080
+So essentially, the order of operations is different
+
+05:55.080 --> 05:57.300
+so the cache cannot be used.
+
+05:57.300 --> 06:00.870
+So I'm gonna save this file after moving GCC around
+
+06:00.870 --> 06:04.470
+and we'll try rebuilding our image for a fourth time.
+
+06:04.470 --> 06:07.890
+So I'll do docker build., I'll run that,
+
+06:07.890 --> 06:09.330
+and now you're gonna see, yep,
+
+06:09.330 --> 06:11.160
+it has to go through that installation process
+
+06:11.160 --> 06:12.210
+all over again
+
+06:12.210 --> 06:14.640
+because the order of operations have changed.
+
+06:14.640 --> 06:16.800
+However, it only needs to rerun the steps
+
+06:16.800 --> 06:19.410
+from the change line on down.
+
+06:19.410 --> 06:22.890
+And so we have to rerun the entire add GCC,
+
+06:22.890 --> 06:24.630
+we rerun the entire add Redis,
+
+06:24.630 --> 06:27.930
+and we have to rerun the command Redis server.
+
+06:27.930 --> 06:29.400
+All right, so, again,
+
+06:29.400 --> 06:32.010
+if you are not changing your Dockerfile, that's great,
+
+06:32.010 --> 06:33.900
+because it means that we can use cache versions
+
+06:33.900 --> 06:35.010
+for building the image.
+
+06:35.010 --> 06:36.420
+But the real lesson to learn here
+
+06:36.420 --> 06:38.190
+is that if you ever expect to have
+
+06:38.190 --> 06:39.810
+to change your Dockerfile,
+
+06:39.810 --> 06:41.970
+you always want to put those changes, like,
+
+06:41.970 --> 06:43.740
+as far down as possible.
+
+06:43.740 --> 06:45.780
+Now, right now, that might sound really confusing
+
+06:45.780 --> 06:48.570
+but we're gonna very quickly go through another example
+
+06:48.570 --> 06:49.920
+in a couple of videos
+
+06:49.920 --> 06:52.380
+where you'll see that by changing the order of operations
+
+06:52.380 --> 06:53.760
+inside of our Dockerfile
+
+06:53.760 --> 06:56.310
+can dramatically change how long it takes
+
+06:56.310 --> 06:58.350
+to rebuild our image.
+
+06:58.350 --> 06:59.820
+All right, so quick pause right here
+
+06:59.820 --> 07:01.770
+and I'll catch you in the next section.

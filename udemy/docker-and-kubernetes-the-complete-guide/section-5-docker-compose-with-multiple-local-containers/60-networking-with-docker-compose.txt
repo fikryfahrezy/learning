@@ -1,0 +1,358 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+-: In the last section,
+
+00:01.643 --> 00:03.930
+we put together our first Docker Compose file.
+
+00:03.930 --> 00:05.400
+It has two separate services,
+
+00:05.400 --> 00:08.240
+or essentially types of containers available in it.
+
+00:08.240 --> 00:10.620
+The first is called Redis Server
+
+00:10.620 --> 00:12.420
+and it uses the image redis.
+
+00:12.420 --> 00:15.270
+The second is called Node App, and it uses the Docker file
+
+00:15.270 --> 00:17.580
+that we put into our current directory.
+
+00:17.580 --> 00:18.540
+So we're now gonna figure out
+
+00:18.540 --> 00:21.300
+how we can take this Docker Compose file
+
+00:21.300 --> 00:22.726
+and create the two separate containers.
+
+00:22.726 --> 00:25.830
+But before we do, one quick thing I wanna mention here.
+
+00:25.830 --> 00:27.535
+Remember the entire reason that we started talking
+
+00:27.535 --> 00:30.330
+about Docker Compose in the first place?
+
+00:30.330 --> 00:31.560
+We had said, oh yeah,
+
+00:31.560 --> 00:34.500
+we want to use Docker Compose because it makes networking,
+
+00:34.500 --> 00:36.204
+or connecting these containers together,
+
+00:36.204 --> 00:38.010
+very straightforward.
+
+00:38.010 --> 00:39.780
+But you'll notice that we have put absolutely
+
+00:39.780 --> 00:42.030
+no configuration into this file right here
+
+00:42.030 --> 00:44.939
+to kind of specify any layer of networking.
+
+00:44.939 --> 00:48.570
+So believe it or not, by just defining these two services
+
+00:48.570 --> 00:50.283
+inside this file, Docker Compose is going
+
+00:50.283 --> 00:53.910
+to automatically create both these containers
+
+00:53.910 --> 00:55.860
+on essentially the same network,
+
+00:55.860 --> 00:58.020
+and they're gonna have free access to communicate
+
+00:58.020 --> 01:00.393
+to each other in any way that they please.
+
+01:01.410 --> 01:04.830
+So by just using Docker Compose to create container one
+
+01:04.830 --> 01:07.664
+and Docker container number two, the two have free access
+
+01:07.664 --> 01:11.004
+to each other and can exchange as much information
+
+01:11.004 --> 01:12.714
+as they want without having to exchange
+
+01:12.714 --> 01:16.050
+or open up any ports between the two.
+
+01:16.050 --> 01:19.720
+So when the two containers are created using Docker Compose,
+
+01:19.720 --> 01:21.030
+we don't have to go through
+
+01:21.030 --> 01:23.346
+any like port declaration like this.
+
+01:23.346 --> 01:26.520
+This port declaration right here is solely to open
+
+01:26.520 --> 01:30.671
+up access to our container on our local machine.
+
+01:30.671 --> 01:33.780
+We don't have to do any additional steps like this
+
+01:33.780 --> 01:37.410
+to connect together the two separate containers.
+
+01:37.410 --> 01:39.509
+Now, that might be great for me to say, but in reality,
+
+01:39.509 --> 01:42.840
+hey, how do we actually kind of access the Redis server
+
+01:42.840 --> 01:44.730
+from our Node.js code?
+
+01:44.730 --> 01:46.980
+Well, let's open up our index.js file
+
+01:46.980 --> 01:49.180
+and I'll show you how it's done very easily.
+
+01:50.100 --> 01:52.149
+Now, back inside of our index.js file.
+
+01:52.149 --> 01:54.060
+Remember, we've got that Redis.createClient
+
+01:54.060 --> 01:56.640
+call right here, and I had said that we were going
+
+01:56.640 --> 01:58.830
+to eventually come back to this and add in a little
+
+01:58.830 --> 02:00.573
+bit of information about the location
+
+02:00.573 --> 02:02.673
+of the Redis server that we are running.
+
+02:03.571 --> 02:06.780
+So to specify where this Redis server is running,
+
+02:06.780 --> 02:10.380
+I'm gonna put in a set of curly braces, like so,
+
+02:10.380 --> 02:13.620
+and then we're going to specify a host option.
+
+02:13.620 --> 02:16.320
+Now, usually if we were not using Docker,
+
+02:16.320 --> 02:19.200
+if this was just a traditional node application
+
+02:19.200 --> 02:22.770
+without any Docker stuff whatsoever, we would usually put
+
+02:22.770 --> 02:24.973
+in some type of address right here, like
+
+02:24.973 --> 02:29.223
+https myredisserver.com or something like that.
+
+02:32.220 --> 02:33.630
+So usually we would put in some type
+
+02:33.630 --> 02:36.120
+of connection URL right here.
+
+02:36.120 --> 02:39.243
+But since we are making use of Docker Compose,
+
+02:40.410 --> 02:42.930
+back over here, so here's our Docker Compose file,
+
+02:42.930 --> 02:45.510
+we can connect to this other container running
+
+02:45.510 --> 02:47.580
+the Redis server simply by referring
+
+02:47.580 --> 02:51.810
+to it by its name of Redis-server.
+
+02:51.810 --> 02:54.540
+So rather than putting in some long form connection URL,
+
+02:54.540 --> 02:56.250
+like this right here, we're gonna delete
+
+02:56.250 --> 03:00.270
+that and we will replace it with Redis-server.
+
+03:00.270 --> 03:03.420
+Now, one thing to be aware of here is that node.js,
+
+03:03.420 --> 03:06.210
+ExpressJS, which is the kind of the framework
+
+03:06.210 --> 03:08.610
+we're using to actually render and respond to requests,
+
+03:08.610 --> 03:13.610
+and Redis itself have no idea what reddest-server means.
+
+03:13.620 --> 03:15.180
+Redis is gonna just take that string
+
+03:15.180 --> 03:17.040
+and it's gonna kind of use it on good faith and say,
+
+03:17.040 --> 03:18.510
+you know what, I'm just going to assume
+
+03:18.510 --> 03:20.850
+that this is a meaningful URL.
+
+03:20.850 --> 03:22.110
+I'm gonna assume that this is something
+
+03:22.110 --> 03:27.110
+like HTTPS://myredisserver or something like that.
+
+03:27.330 --> 03:29.580
+And so Redis is just gonna make a good faith,
+
+03:29.580 --> 03:31.170
+or this Redis client right here is gonna make
+
+03:31.170 --> 03:33.240
+a good faith effort to connect
+
+03:33.240 --> 03:35.403
+to this server at this host name.
+
+03:36.480 --> 03:38.400
+When the connection request goes out
+
+03:38.400 --> 03:41.070
+from this node application, Docker's gonna see it,
+
+03:41.070 --> 03:42.990
+it's gonna see that it's trying to access a host
+
+03:42.990 --> 03:44.279
+called reddish-server, and it's gonna say,
+
+03:44.279 --> 03:46.980
+oh, I know what you're looking for.
+
+03:46.980 --> 03:50.040
+You are looking for this other container over here.
+
+03:50.040 --> 03:53.670
+The container with the name Redis-server.
+
+03:53.670 --> 03:56.550
+And so when our Redis client right here,
+
+03:56.550 --> 03:57.960
+tries to connect to the Redis server,
+
+03:57.960 --> 04:00.384
+it's going to get automatically redirected over
+
+04:00.384 --> 04:04.053
+to this other container running our copy of Redis.
+
+04:05.580 --> 04:07.202
+Now, just to be really complete here,
+
+04:07.202 --> 04:09.229
+technically when we create the client,
+
+04:09.229 --> 04:12.810
+we can also specify a port that the Redis
+
+04:12.810 --> 04:14.160
+server is running on.
+
+04:14.160 --> 04:15.510
+By default, the port that's always
+
+04:15.510 --> 04:18.900
+used with Redis is 6379.
+
+04:18.900 --> 04:21.000
+So I'm just gonna add that in there for completion's sake.
+
+04:21.000 --> 04:22.983
+But again, it is a default port number.
+
+04:24.120 --> 04:26.250
+So now when our express application starts up,
+
+04:26.250 --> 04:27.690
+or the node application starts up,
+
+04:27.690 --> 04:31.230
+it's gonna try to create a connection to a Redis server.
+
+04:31.230 --> 04:32.790
+It's going to reach out looking
+
+04:32.790 --> 04:35.580
+for a host name of Redis-server.
+
+04:35.580 --> 04:37.710
+Docker is going to see that it's looking
+
+04:37.710 --> 04:38.730
+for Redis-server server
+
+04:38.730 --> 04:40.380
+and it's gonna redirect that connection
+
+04:40.380 --> 04:43.500
+over to this other running container.
+
+04:43.500 --> 04:45.120
+So that's what's going to automatically
+
+04:45.120 --> 04:47.220
+connect together these two containers
+
+04:47.220 --> 04:49.870
+and get them to communicate together in some fashion.
+
+04:50.760 --> 04:51.900
+Okay, so that's it.
+
+04:51.900 --> 04:53.340
+Let's take another quick pause right here.
+
+04:53.340 --> 04:54.450
+We're gonna come back to the next section
+
+04:54.450 --> 04:55.770
+and we're gonna figure out how we're going
+
+04:55.770 --> 04:58.320
+to actually start all of our different containers
+
+04:58.320 --> 05:00.093
+with this Docker Compose file.

@@ -1,0 +1,304 @@
+WEBVTT
+
+00:00.910 --> 00:07.630
+User testing and feedback is quickly becoming an important part of any design process or particularly
+
+00:07.630 --> 00:12.160
+a redesign process where there's time and money and effort being invested into something.
+
+00:12.430 --> 00:18.010
+Finding out what people will use and won't use and what they prefer and what they don't prefer.
+
+00:18.010 --> 00:23.680
+And also being able to tell the difference between what they say they do and what they actually do is
+
+00:23.680 --> 00:29.980
+becoming a more important requirement for successful design projects, you know, things that actually
+
+00:29.980 --> 00:31.360
+get used, get adopted.
+
+00:31.360 --> 00:36.850
+So fortunately for all of us, this wonderful invention called the Internet makes it pretty easy to
+
+00:36.850 --> 00:43.480
+find lots of tools that allow us to get direct feedback from real users with a very quick, very cheap,
+
+00:43.480 --> 00:47.470
+very sort of guerrilla style usability testing approach.
+
+00:47.470 --> 00:53.650
+Some of these new web applications allow you to really effectively do remote user research.
+
+00:54.190 --> 00:57.010
+If you have a phone and a computer, you can do this.
+
+00:57.010 --> 00:59.530
+You don't have to be in the room with people anymore.
+
+00:59.770 --> 01:04.810
+And the results can be just as useful and just as effective.
+
+01:04.840 --> 01:11.680
+It only takes a few steps and it's pretty easy to do remote testing with minimal cost and minimal preparation
+
+01:11.680 --> 01:12.190
+time.
+
+01:12.190 --> 01:19.420
+So whether you're testing live Web sites, designs, wireframes, prototypes or whatever, the approach
+
+01:19.420 --> 01:21.100
+you take can vary.
+
+01:21.130 --> 01:26.920
+You want to talk to people face to face, You want to use an online tool and let the computers gather
+
+01:26.920 --> 01:28.600
+the information automatically.
+
+01:28.600 --> 01:30.340
+That's what we're going to talk about.
+
+01:30.340 --> 01:35.620
+There are multiple ways to go, and you can check out the following and see what works best for you.
+
+01:36.740 --> 01:39.950
+Silverback is an extremely easy to use.
+
+01:39.950 --> 01:46.670
+User testing software and its basic functions allow you to record your screen and all your screen activities
+
+01:46.670 --> 01:52.520
+such as mouse clicks, and it allows you to record video as well to capture facial expressions and the
+
+01:52.520 --> 01:55.480
+voice of the person working at the computer.
+
+01:55.490 --> 02:00.740
+At that point, you add chapter markers so you can label what the person was doing at the time.
+
+02:00.750 --> 02:04.310
+You can also export videos to QuickTime and share them.
+
+02:04.460 --> 02:10.940
+Silverback makes it really easy, very quick and very cheap for just about anyone to perform gorilla
+
+02:10.940 --> 02:14.210
+usability tests with no setup, no expense.
+
+02:14.210 --> 02:18.560
+It's essentially using the hardware that's already in the Mac, which.
+
+02:18.560 --> 02:21.530
+Yeah, it's, it's a mac only product.
+
+02:21.530 --> 02:26.060
+So if you have a PC, I know I'm bumming you out right now, but we'll get to you guys.
+
+02:26.060 --> 02:30.590
+What I like about silverback in particular is that it has virtually no learning curve.
+
+02:30.590 --> 02:36.810
+It's extremely easy to just get in and get going and it's squarely aimed at empowering people that develop
+
+02:36.810 --> 02:37.800
+applications.
+
+02:37.800 --> 02:43.500
+It's developed with designers and developers, builders, creators in mind.
+
+02:44.360 --> 02:48.590
+Loop 11 is an online remote usability testing tool.
+
+02:48.710 --> 02:54.500
+Loop 11 allows you to create an online survey that includes tasks for people to complete on a website.
+
+02:54.650 --> 02:59.150
+You can mix questions with tasks in just about any order you can think of.
+
+02:59.150 --> 03:01.880
+And for every single task that you designate.
+
+03:01.910 --> 03:05.120
+You can set a very specific goal for the user to achieve.
+
+03:05.150 --> 03:12.710
+You can measure whether they do what you intended them to do, or you can measure how hard it was for
+
+03:12.710 --> 03:15.500
+them to take a specific action.
+
+03:15.530 --> 03:21.880
+The thing about Loop 11 tests is that they're unmoderated, so there's no sort of active role for you.
+
+03:21.890 --> 03:26.030
+You just design it, publish it live and spread the word by sending a link to people.
+
+03:26.030 --> 03:32.060
+And those folks can then complete the tasks in their own home at their own pace, which is a big benefit
+
+03:32.060 --> 03:37.070
+because you'll find that the more people you want to involve in usability testing, the more difficult
+
+03:37.070 --> 03:41.150
+it becomes to sort of wrangle everybody's schedule to make sure that they can be there.
+
+03:41.150 --> 03:47.010
+So if you throw something out there that everyone can sort of complete during their own free time or
+
+03:47.010 --> 03:51.170
+when they have time to do so, sometimes that works a lot better.
+
+03:51.180 --> 03:58.020
+Its main advantage over face to face usability tests is that it allows you to test an unlimited number
+
+03:58.020 --> 04:03.270
+of users, and testing can certainly be a situation where it's definitely, you know, the more the
+
+04:03.270 --> 04:03.690
+merrier.
+
+04:03.690 --> 04:09.570
+So the more people you can involve in the process, the more accurate your results will tend to be.
+
+04:09.570 --> 04:16.920
+So for that reason, Loop 11 is definitely a standout and is definitely worth checking out.
+
+04:17.790 --> 04:20.730
+Tree Jack is a tool for testing information architectures.
+
+04:20.730 --> 04:26.040
+Your participants are tasked with finding something in a clickable tree structure, which essentially
+
+04:26.040 --> 04:28.770
+tells you whether or not the organization makes sense to them.
+
+04:29.130 --> 04:29.790
+Can they find it?
+
+04:29.790 --> 04:30.930
+Can they not find it?
+
+04:30.960 --> 04:36.810
+Each branch of the tree structure expands when you click it and shows the subcategories within that
+
+04:36.810 --> 04:42.570
+branch to choose the final category in which participants would expect to find something, they click
+
+04:42.600 --> 04:44.670
+a button that says, I'd find it here.
+
+04:44.670 --> 04:46.140
+So they're given a task.
+
+04:46.140 --> 04:51.930
+Like in this example, your task is to find acne treatment cream, and then you go through the tree
+
+04:51.930 --> 04:57.000
+and you say, okay, where do I think I would find that by clicking the little arrows and expanding
+
+04:57.000 --> 04:57.990
+the categories.
+
+04:57.990 --> 05:04.560
+So where they look and where they sort of go first, second, third is recorded and it tells you how
+
+05:04.560 --> 05:09.690
+easy or hard it was for them to find it, depending on the number of steps they had to take before they
+
+05:09.690 --> 05:10.530
+made a decision.
+
+05:10.560 --> 05:15.150
+The test results show you which categories people chose during each task.
+
+05:15.180 --> 05:17.620
+It shows you the percentage of correct choices.
+
+05:17.620 --> 05:24.550
+It shows you the paths taken and lots of other related data that again, enables you to figure out whether
+
+05:24.550 --> 05:30.820
+you're burying stuff too deep in the structure, whether you're labeling makes sense, whether the priority
+
+05:30.820 --> 05:33.490
+of your tree structure makes sense.
+
+05:33.490 --> 05:40.390
+Okay, so it's a really, really insightful exercise and I have yet to find any kind of product or project
+
+05:40.390 --> 05:43.120
+that didn't benefit immensely from this.
+
+05:43.120 --> 05:44.110
+It's very simple.
+
+05:44.110 --> 05:51.010
+It's very easy to pull off and to me, the results and the insights, more to the point, are immeasurable.
+
+05:51.770 --> 05:58.730
+User Testing.com is much simpler than some of its competitors, but it gives you a very simple, very
+
+05:58.730 --> 06:03.810
+intuitive analysis of a website at a fraction of the cost of its competitors.
+
+06:03.880 --> 06:08.000
+Okay, so on price alone, these guys are pretty impressive.
+
+06:08.030 --> 06:11.810
+It enables you to see real time interaction with the website.
+
+06:11.840 --> 06:17.180
+You can hear what people are thinking while they use the site, and you can also read a written summary
+
+06:17.180 --> 06:18.230
+of their thoughts.
+
+06:18.260 --> 06:23.630
+It has a database of paid remote users of your specific demographic.
+
+06:23.660 --> 06:30.440
+You tell it up front what your audience is and and you narrow it down to a series of categories and
+
+06:30.440 --> 06:36.110
+they recruit people from all walks of life in very high volume to give you feedback.
+
+06:36.110 --> 06:43.010
+So one of the impressive things about this is that it does a lot of the legwork for you of finding participants.
+
+06:43.010 --> 06:50.120
+So what you wind up with is very qualitative data as opposed to statistical information on your website,
+
+06:50.120 --> 06:56.910
+but that more generalized feedback on use can tell you a hell of a lot about how people use things,
+
+06:56.910 --> 06:58.440
+what their reactions are.
+
+06:58.440 --> 07:04.200
+And again, because you have such a high number of participants, you're going to see certain commonalities
+
+07:04.200 --> 07:07.230
+occur over and over and over and over and over again.
+
+07:07.230 --> 07:13.800
+So if you have 30 people who essentially said and experienced the same thing, that's a pretty good
+
+07:13.800 --> 07:15.870
+indication that it's a common theme.
+
+07:15.870 --> 07:20.430
+It's a common issue, it's a common problem or it's a common thing that's working extremely well in
+
+07:20.430 --> 07:21.120
+either case.
+
+07:21.120 --> 07:23.190
+So again, it's very cheap.
+
+07:23.190 --> 07:28.770
+It does a lot of the legwork of finding folks for you, and it's very, very simple and very easy to
+
+07:28.770 --> 07:29.370
+use.

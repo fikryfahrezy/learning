@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00.750 --> 00:01.583
+-: In the last section,
+
+00:01.583 --> 00:05.760
+we spoke about how we make a Dockerrun.aws.json file
+
+00:05.760 --> 00:07.230
+to tell Elastic Beanstalk
+
+00:07.230 --> 00:10.200
+how to work with our multiple containers.
+
+00:10.200 --> 00:11.640
+Now, before we start working on this file,
+
+00:11.640 --> 00:14.400
+I wanna show you a little piece of documentation
+
+00:14.400 --> 00:15.840
+that's going to be very valuable
+
+00:15.840 --> 00:17.940
+when you start making use of Elastic Beanstalk
+
+00:17.940 --> 00:19.620
+on your own projects.
+
+00:19.620 --> 00:22.500
+First, a little bit of behind the scenes action.
+
+00:22.500 --> 00:26.160
+So Elastic Beanstalk doesn't actually know
+
+00:26.160 --> 00:27.960
+how to work with containers,
+
+00:27.960 --> 00:30.660
+especially a multi-container environment.
+
+00:30.660 --> 00:31.530
+Behind the scenes,
+
+00:31.530 --> 00:35.670
+when you tell Elastic Beanstalk to host a set of containers,
+
+00:35.670 --> 00:37.920
+it's actually delegating that hosting
+
+00:37.920 --> 00:41.100
+off to another service that is provided in Amazon,
+
+00:41.100 --> 00:43.683
+called the Elastic Container Service,
+
+00:44.610 --> 00:47.673
+which is abbreviated very frequently as ECS.
+
+00:49.440 --> 00:51.930
+You work with Amazon ECS by creating files
+
+00:51.930 --> 00:54.120
+that are called task definitions,
+
+00:54.120 --> 00:56.580
+and a task definition is essentially a file
+
+00:56.580 --> 01:00.810
+that tells ECS how to run one single container.
+
+01:00.810 --> 01:03.960
+Each of these task definition files are very similar,
+
+01:03.960 --> 01:07.020
+almost identical to the container definitions
+
+01:07.020 --> 01:08.310
+that you and I are going to write
+
+01:08.310 --> 01:11.850
+inside of our Dockerrun.aws.json file.
+
+01:11.850 --> 01:14.070
+And so, the piece of documentation that I wanna show you
+
+01:14.070 --> 01:17.700
+is the documentation around these task definitions.
+
+01:17.700 --> 01:19.860
+Essentially, it's a really confusing thing
+
+01:19.860 --> 01:20.693
+to understand here,
+
+01:20.693 --> 01:22.530
+or to figure out I should say.
+
+01:22.530 --> 01:24.390
+But, if you look at the documentation
+
+01:24.390 --> 01:25.800
+for the docker run file,
+
+01:25.800 --> 01:27.300
+it's not gonna tell you a lot
+
+01:27.300 --> 01:29.520
+about the different options that you can pass
+
+01:29.520 --> 01:31.200
+to these container definitions,
+
+01:31.200 --> 01:33.510
+because it actually kind of wants you to go
+
+01:33.510 --> 01:34.860
+and look at the documentation
+
+01:34.860 --> 01:39.360
+for a task definition as defined by Amazon ECS.
+
+01:39.360 --> 01:41.340
+So, that's why I'm showing this documentation,
+
+01:41.340 --> 01:42.870
+'cause it's not immediately clear,
+
+01:42.870 --> 01:44.220
+when you start reading the stuff,
+
+01:44.220 --> 01:46.170
+that you need to go and read about this
+
+01:46.170 --> 01:49.350
+completely different service that AWS is running,
+
+01:49.350 --> 01:50.220
+if you want to figure out
+
+01:50.220 --> 01:52.563
+how to customize your docker run file.
+
+01:53.520 --> 01:56.430
+So, long story short, let's pop open a new tab.
+
+01:56.430 --> 01:58.260
+We're going to pull up the documentation
+
+01:58.260 --> 01:59.760
+for a task definition,
+
+01:59.760 --> 02:01.890
+which is essentially what you and I are writing
+
+02:01.890 --> 02:04.260
+inside of that docker run file.
+
+02:04.260 --> 02:09.260
+So, I'm going to do a search for Amazon ECS task definition,
+
+02:11.340 --> 02:13.680
+and then one of the first results you'll see here
+
+02:13.680 --> 02:16.443
+is @docs.aws.amazon.com.
+
+02:17.370 --> 02:20.523
+You're looking for Amazon ECS task definitions.
+
+02:22.350 --> 02:23.460
+So, hopefully you'll see a page
+
+02:23.460 --> 02:25.620
+that looks something like this right here.
+
+02:25.620 --> 02:27.360
+If you scroll down just a little bit,
+
+02:27.360 --> 02:31.680
+you'll see a topic of task definition parameters.
+
+02:31.680 --> 02:33.000
+You'll come to this page,
+
+02:33.000 --> 02:34.140
+and then on the right hand side,
+
+02:34.140 --> 02:37.170
+you're gonna look for container definitions.
+
+02:37.170 --> 02:39.210
+And so what you and I are going to write inside
+
+02:39.210 --> 02:42.330
+of our Dockerrun.aws.json file
+
+02:42.330 --> 02:44.220
+is essentially gonna follow the format
+
+02:44.220 --> 02:45.600
+that you see right here.
+
+02:45.600 --> 02:48.870
+So, this is the documentation that you can refer to
+
+02:48.870 --> 02:50.430
+if you want to get a better understanding
+
+02:50.430 --> 02:53.280
+of what we are writing inside that file.
+
+02:53.280 --> 02:56.820
+So we're gonna add in properties like name, image, memory,
+
+02:56.820 --> 02:59.103
+all this other stuff, to that file.
+
+03:00.660 --> 03:03.000
+Okay, so now that you know where to look,
+
+03:03.000 --> 03:05.100
+if you want to get some documentation around this stuff,
+
+03:05.100 --> 03:06.390
+let's take a quick pause right here,
+
+03:06.390 --> 03:09.390
+and then we'll get started on that file in the next section.

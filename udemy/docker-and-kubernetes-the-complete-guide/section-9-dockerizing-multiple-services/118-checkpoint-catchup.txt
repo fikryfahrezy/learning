@@ -1,0 +1,208 @@
+WEBVTT
+
+00:00.780 --> 00:01.950
+-: In the last couple of sections
+
+00:01.950 --> 00:03.600
+we wrote out all the raw source code
+
+00:03.600 --> 00:06.222
+for our fibonacci calculator application.
+
+00:06.222 --> 00:08.640
+We put together everything for the React server,
+
+00:08.640 --> 00:11.820
+the Express API, and the worker process as well.
+
+00:11.820 --> 00:13.440
+In this section we're gonna do a little bit
+
+00:13.440 --> 00:17.520
+of reconciliation, so if you decided to skip the last dozen
+
+00:17.520 --> 00:20.400
+or so videos where we wrote out all the raw source code
+
+00:20.400 --> 00:22.290
+then stay around 'cause I'm gonna show you how
+
+00:22.290 --> 00:24.660
+to take the checkpoint.zip file
+
+00:24.660 --> 00:26.310
+that you downloaded at the last section
+
+00:26.310 --> 00:29.400
+and apply it to your project to set everything up.
+
+00:29.400 --> 00:31.500
+If you did not skip those videos,
+
+00:31.500 --> 00:33.450
+so if you wrote all the code with me,
+
+00:33.450 --> 00:34.800
+then you have two choices.
+
+00:34.800 --> 00:36.480
+You can either continue on right now
+
+00:36.480 --> 00:38.550
+and use all the source code you just wrote,
+
+00:38.550 --> 00:41.130
+or alternatively, and I highly recommend you do this
+
+00:41.130 --> 00:43.470
+to be honest, I recommend you go back
+
+00:43.470 --> 00:45.450
+and download that checkpoint.zip file,
+
+00:45.450 --> 00:47.820
+and follow through these directions anyways,
+
+00:47.820 --> 00:51.270
+just to avoid the possibility of you having made any typo
+
+00:51.270 --> 00:53.220
+as we went through all that typing
+
+00:53.220 --> 00:54.960
+in the last couple of videos.
+
+00:54.960 --> 00:57.810
+So either way, either continue on if you're really confident
+
+00:57.810 --> 00:59.970
+with the code you wrote, otherwise, make sure you've got
+
+00:59.970 --> 01:02.940
+that checkpoint.zip file from the last lecture.
+
+01:02.940 --> 01:03.990
+So let's get to it.
+
+01:03.990 --> 01:06.483
+We're gonna make use of the checkpoint.zip file.
+
+01:07.530 --> 01:10.020
+The first thing I'm gonna do is go to my terminal.
+
+01:10.020 --> 01:11.964
+I'm in a workspace directory of sorts.
+
+01:11.964 --> 01:14.250
+Inside of here you'll see the front end project
+
+01:14.250 --> 01:17.141
+we worked on, the redis image, and Simple Web.
+
+01:17.141 --> 01:18.990
+I'm gonna make sure that inside of here
+
+01:18.990 --> 01:21.870
+I have a folder called Complex.
+
+01:21.870 --> 01:23.580
+That's gonna be the name of this application.
+
+01:23.580 --> 01:25.980
+It is a complex application.
+
+01:25.980 --> 01:29.670
+I'm gonna change into that folder and then I'm gonna open
+
+01:29.670 --> 01:33.240
+up a file and folder explorer based on that folder.
+
+01:33.240 --> 01:35.283
+So here's the complex folder right here.
+
+01:36.390 --> 01:38.610
+I'll then get the checkpoint.zip file
+
+01:38.610 --> 01:40.380
+that I just downloaded as well.
+
+01:40.380 --> 01:41.876
+So here's checkpoint.zip.
+
+01:41.876 --> 01:44.339
+I'm gonna extract everything inside there.
+
+01:44.339 --> 01:46.980
+So here's everything that was inside of that zip file.
+
+01:46.980 --> 01:50.190
+Inside that zip file you'll see the client server
+
+01:50.190 --> 01:51.960
+and worker directories.
+
+01:51.960 --> 01:54.090
+So I'm gonna take these three folders and I'm just
+
+01:54.090 --> 01:57.030
+gonna copy them all over to the complex directory,
+
+01:57.030 --> 01:59.853
+overriding anything that is already in there.
+
+02:01.500 --> 02:03.162
+So now if I go back over to my terminal
+
+02:03.162 --> 02:05.190
+inside the complex directory
+
+02:05.190 --> 02:07.230
+and I list out all my files and folders,
+
+02:07.230 --> 02:09.300
+I should see the client, the server,
+
+02:09.300 --> 02:11.220
+and the worker inside of here.
+
+02:11.220 --> 02:12.750
+Cool, so that's pretty much it.
+
+02:12.750 --> 02:14.700
+Again, you had to go through those steps
+
+02:14.700 --> 02:16.710
+if you did not write that code with me.
+
+02:16.710 --> 02:18.060
+If you did write the code with me,
+
+02:18.060 --> 02:20.130
+I still recommend you make use of everything
+
+02:20.130 --> 02:23.310
+inside the checkpoint.zip file just to avoid the possibility
+
+02:23.310 --> 02:25.200
+of there being any little typos in there
+
+02:25.200 --> 02:26.880
+or anything like that.
+
+02:26.880 --> 02:29.550
+So now that we are all caught up and we're all back together
+
+02:29.550 --> 02:32.010
+with all the source code we need, let's take a quick break.
+
+02:32.010 --> 02:32.843
+In the next section,
+
+02:32.843 --> 02:35.220
+we're gonna start putting together some docker containers
+
+02:35.220 --> 02:37.770
+for each of those different parts of our application.
+
+02:37.770 --> 02:39.420
+So I'll see you in just a minute.

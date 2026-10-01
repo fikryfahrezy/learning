@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00.870 --> 00:02.730
+Instructor: In the last section, we made a little change
+
+00:02.730 --> 00:05.850
+to our docker file and then tried rebuilding the image.
+
+00:05.850 --> 00:08.460
+The good news is that npm is now clearly being
+
+00:08.460 --> 00:10.320
+included inside of our container,
+
+00:10.320 --> 00:12.260
+and so it's attempting to install dependencies.
+
+00:12.260 --> 00:14.760
+However, npm itself very quickly
+
+00:14.760 --> 00:16.620
+throughout a error message right here,
+
+00:16.620 --> 00:18.870
+complaining that there is no file
+
+00:18.870 --> 00:21.550
+called package.json available.
+
+00:21.550 --> 00:23.790
+Now, just in case you weren't around,
+
+00:23.790 --> 00:25.410
+or you kind of skipped over the section
+
+00:25.410 --> 00:28.077
+where we put together the package.json file together,
+
+00:28.077 --> 00:31.230
+that is a file inside of our project directory right here.
+
+00:31.230 --> 00:33.960
+Its purpose is to list out all the different dependencies
+
+00:33.960 --> 00:36.990
+that are required to successfully run our project.
+
+00:36.990 --> 00:38.679
+So when we run npm install,
+
+00:38.679 --> 00:41.190
+npm is going to try to find this file,
+
+00:41.190 --> 00:43.860
+it's gonna find all the dependencies that are listed,
+
+00:43.860 --> 00:46.503
+and then it's going to try to install each of those.
+
+00:47.400 --> 00:48.690
+So clearly the issue here is
+
+00:48.690 --> 00:51.390
+that npm is not finding that file.
+
+00:51.390 --> 00:53.580
+So let's talk about why it is.
+
+00:53.580 --> 00:54.993
+All right, so quick diagram.
+
+00:55.889 --> 00:57.825
+We've looked at this one before.
+
+00:57.825 --> 00:59.607
+We've got our container on the right-hand side.
+
+00:59.607 --> 01:02.130
+We've got the steps out of our docker file,
+
+01:02.130 --> 01:04.770
+and then down here is a little representation
+
+01:04.770 --> 01:07.800
+of the node alpine image that we're making use of.
+
+01:07.800 --> 01:09.420
+So let's imagine what is going on
+
+01:09.420 --> 01:12.546
+inside of our image-building process right now.
+
+01:12.546 --> 01:15.630
+First off, we specify node alpine.
+
+01:15.630 --> 01:16.463
+That downloads the alpine image,
+
+01:16.463 --> 01:19.170
+or excuse me, the node image to be precise.
+
+01:19.170 --> 01:21.487
+And then the next step starts up and it says,
+
+01:21.487 --> 01:23.610
+"Okay, I'm gonna go back to the previous step
+
+01:23.610 --> 01:24.660
+and get the image from there,
+
+01:24.660 --> 01:27.240
+and then create a temporary container out of it."
+
+01:27.240 --> 01:30.030
+So as soon as run npm install starts to boot up,
+
+01:30.030 --> 01:32.100
+we can imagine that we take this file system
+
+01:32.100 --> 01:34.080
+snapshot right here.
+
+01:34.080 --> 01:37.863
+And we kind of put it into this very temporary container.
+
+01:38.861 --> 01:41.403
+And then we execute npm install.
+
+01:41.403 --> 01:43.590
+Now, I got a quick question for you.
+
+01:43.590 --> 01:46.650
+Do you see anywhere inside of this file system right here?
+
+01:46.650 --> 01:48.659
+Do you see a package.json file?
+
+01:48.659 --> 01:50.240
+Well, the answer is no.
+
+01:50.240 --> 01:53.700
+There is no package.json file available
+
+01:53.700 --> 01:55.650
+inside of the container.
+
+01:55.650 --> 01:58.110
+The only files and folders that are available
+
+01:58.110 --> 02:01.890
+inside the container is exactly whatever came out
+
+02:01.890 --> 02:05.313
+of the file system snapshot from the node image.
+
+02:06.150 --> 02:07.560
+Remember, we are only working
+
+02:07.560 --> 02:11.537
+with a segment of our hard drive inside this container.
+
+02:11.537 --> 02:15.030
+There's this entire other rest of the hard drive
+
+02:15.030 --> 02:18.390
+kind of like not connected inside this container.
+
+02:18.390 --> 02:20.490
+And somewhere inside the rest of the hard drive,
+
+02:20.490 --> 02:22.920
+is where our package.json file is.
+
+02:22.920 --> 02:25.680
+And that is not at all being communicated
+
+02:25.680 --> 02:27.240
+into the container.
+
+02:27.240 --> 02:29.820
+And so we do successfully run npm install,
+
+02:29.820 --> 02:34.230
+but they're just plain is no package.json file available.
+
+02:34.230 --> 02:36.900
+So the takeaway here is that when you are building an image,
+
+02:36.900 --> 02:39.390
+none of the files inside of your project directory
+
+02:39.390 --> 02:42.480
+right here are available inside the container by default.
+
+02:42.480 --> 02:45.150
+They are all a hundred percent sectioned off,
+
+02:45.150 --> 02:46.539
+completely segmented out, they are not at all available,
+
+02:46.539 --> 02:51.000
+and you cannot assume that any of these files are available
+
+02:51.000 --> 02:55.053
+unless you specifically allow it inside of your docker file.
+
+02:56.070 --> 02:59.220
+So as my guess, that's exactly what we're going to do.
+
+02:59.220 --> 03:01.620
+We're going to add in one line of configuration
+
+03:01.620 --> 03:05.460
+to our docker file to make sure that both our index.js file
+
+03:05.460 --> 03:09.510
+and package.json file are available inside the container
+
+03:09.510 --> 03:12.412
+when we try to run the npm install command.
+
+03:12.412 --> 03:14.040
+Let's take a quick pause right here
+
+03:14.040 --> 03:16.320
+and then we're going to add in that additional instruction
+
+03:16.320 --> 03:17.343
+in the next section.

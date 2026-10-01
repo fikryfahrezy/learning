@@ -1,0 +1,625 @@
+WEBVTT
+
+00:00.580 --> 00:04.000
+So let's talk about what user experience design is.
+
+00:04.030 --> 00:06.160
+It's actually a fairly broad term.
+
+00:06.160 --> 00:09.880
+It incorporates all aspects of a person's experience with something.
+
+00:09.880 --> 00:14.740
+It could be an interactive system, an application, a website.
+
+00:14.740 --> 00:16.780
+It could be a product that you hold in your hand.
+
+00:16.780 --> 00:17.200
+Okay?
+
+00:17.200 --> 00:21.480
+It could be the experience that you have with your car driving to work.
+
+00:21.490 --> 00:27.830
+It's the interfaces that you touch, that you act upon, its graphics, its industrial design, Right.
+
+00:27.850 --> 00:32.890
+Physical characteristics of a product, its actual physical interaction.
+
+00:32.890 --> 00:39.100
+It's the things that give you cues as to what you're supposed to do and when and how.
+
+00:39.130 --> 00:46.450
+It also refers to a practice, a way to generate predictive, desirable designs, considering human
+
+00:46.450 --> 00:53.650
+beings, how we're wired, how we interpret things, how we know how to use certain things, and what
+
+00:53.650 --> 00:56.200
+we consider to be good, bad or otherwise.
+
+00:56.200 --> 01:03.920
+So user experience design is essentially taking all that into consideration and sort of molding it into
+
+01:03.920 --> 01:08.690
+an experience that produces a positive outcome that delivers value.
+
+01:09.120 --> 01:15.810
+The formal definition of user experience comes from Jesse James Garrett, who wrote a book called The
+
+01:15.810 --> 01:22.830
+Elements of User Experience, which is widely considered to be the authoritative source on the discipline.
+
+01:22.830 --> 01:26.190
+And here's his explanation of what user experience is.
+
+01:26.310 --> 01:31.740
+User experience simply refers to the way a product behaves and is used in the real world.
+
+01:31.920 --> 01:38.160
+A positive user experience is one in which the goals of both the user and the organization that created
+
+01:38.160 --> 01:40.080
+the product are met.
+
+01:40.410 --> 01:42.090
+So it's a two sided equation.
+
+01:42.120 --> 01:47.660
+User needs are met and organizational goals are met as well.
+
+01:48.030 --> 01:49.200
+So it's not one or the other.
+
+01:49.200 --> 01:50.130
+It's both.
+
+01:50.490 --> 01:53.370
+He goes on to talk about usability.
+
+01:53.760 --> 01:58.290
+In this sense in particular is important because it illustrates some of the confusion that surrounds
+
+01:58.290 --> 02:03.460
+user experience in that it often gets mixed up with the idea of usability.
+
+02:03.480 --> 02:09.250
+So what he says is usability is one attribute of a successful user experience.
+
+02:09.250 --> 02:15.790
+S But usability alone does not make an experience positive for the user.
+
+02:16.030 --> 02:23.050
+That's important because in a nutshell, what he's saying there is that usability in and of itself isn't
+
+02:23.050 --> 02:23.380
+enough.
+
+02:23.380 --> 02:24.790
+It takes more than that.
+
+02:24.970 --> 02:31.630
+So these sentiments are essentially the foundation of what we now know as user experience design.
+
+02:32.310 --> 02:37.600
+Now, I tend to think of user experience design as the sum of a very simple equation.
+
+02:37.620 --> 02:41.730
+Starting with business goals, adding customer goals.
+
+02:41.880 --> 02:44.130
+Then you add the user interface.
+
+02:44.130 --> 02:44.370
+Okay.
+
+02:44.400 --> 02:46.230
+The part that person interacts with.
+
+02:46.260 --> 02:53.640
+Then you add the back end processes that essentially enable the interface to work to do its job.
+
+02:53.640 --> 02:56.970
+And the sum total of all that is user experience.
+
+02:57.000 --> 02:57.960
+Pretty simple.
+
+02:57.990 --> 03:04.830
+That essentially is the makeup of any system, be it a digital system that lives on a computer screen
+
+03:04.830 --> 03:08.770
+or a physical system that drives an automobile.
+
+03:08.830 --> 03:09.030
+Okay.
+
+03:09.030 --> 03:10.870
+It's really no different.
+
+03:10.890 --> 03:12.900
+If you break down the parts.
+
+03:13.830 --> 03:19.530
+It's also the combined result of multiple intentional attributes.
+
+03:19.620 --> 03:19.790
+Okay.
+
+03:19.860 --> 03:24.960
+Things that are designed into the process and the product.
+
+03:24.990 --> 03:32.730
+So in order for something to have a positive user experience, it has to first be useful, it has to
+
+03:32.730 --> 03:40.650
+be desirable, it has to be accessible, it has to be credible, it has to be findable and it has to
+
+03:40.650 --> 03:41.700
+be usable.
+
+03:41.700 --> 03:45.480
+And all those things together make it valuable.
+
+03:45.630 --> 03:50.070
+What you're looking at is something known as the UX honeycomb.
+
+03:50.270 --> 03:55.820
+Gentleman, by the name of Peter Morville came up with this idea, and it's very, very true.
+
+03:55.830 --> 03:56.490
+Okay.
+
+03:56.580 --> 04:04.410
+Essentially, anything that is worth using, anything that we bother to spend our time interacting with
+
+04:04.440 --> 04:06.050
+has all these attributes.
+
+04:06.060 --> 04:06.490
+Okay.
+
+04:06.510 --> 04:08.760
+It holds some value for us.
+
+04:08.790 --> 04:13.720
+There's a good reason why we use it, why we include it in our daily activities.
+
+04:13.720 --> 04:17.410
+It's important in some very tangible way.
+
+04:18.250 --> 04:25.630
+From a more tactical standpoint, user experience design is the combined result of multiple activities.
+
+04:26.020 --> 04:28.960
+Sometimes these are conducted by the same person.
+
+04:28.960 --> 04:35.530
+Sometimes it's a team of people, each of whom have very different disciplines, but even in small teams
+
+04:35.800 --> 04:42.460
+or even in the case where one person is doing all this work, there's some aspect of all these things
+
+04:42.460 --> 04:45.010
+that play into user experience design.
+
+04:45.010 --> 04:53.260
+So things that take place are user research, finding out who we're creating this for and what they
+
+04:53.260 --> 04:58.150
+want from it, what they expect from it, and what's going to be valuable to them.
+
+04:58.910 --> 05:05.540
+Interaction design, which essentially determines how do they interact with it and how can we make sure
+
+05:05.540 --> 05:08.420
+that they understand how to interact with it.
+
+05:08.420 --> 05:14.940
+That's made real by visual design, which is essentially what they see in front of them, you know,
+
+05:14.990 --> 05:20.720
+on the screen or on the table or on the dashboard, whatever it may be.
+
+05:20.900 --> 05:28.850
+Information architecture, which is essentially the content that they need to perform a certain task
+
+05:28.850 --> 05:35.270
+or need to interact with or need to understand and how it's organized, how it's prioritized and how
+
+05:35.270 --> 05:36.920
+much of it there is.
+
+05:37.430 --> 05:45.470
+There's front end development which surfaces all this complex logic and complex data that that drives
+
+05:45.470 --> 05:46.950
+interactive applications.
+
+05:46.970 --> 05:51.620
+There's writing language is a crucial, crucial component of design.
+
+05:51.620 --> 05:54.080
+Words and images sort of go hand in hand.
+
+05:54.080 --> 06:01.830
+And the proper visual treatment of words is part of what makes an experience useful, engaging and compelling.
+
+06:02.280 --> 06:04.770
+And finally, there's user testing.
+
+06:04.770 --> 06:05.040
+Okay?
+
+06:05.040 --> 06:11.430
+Once we make all these decisions about how something is going to behave, how much content it contains
+
+06:11.730 --> 06:15.210
+and what it's going to look like, we want to validate that.
+
+06:15.210 --> 06:16.860
+We want to validate those assumptions.
+
+06:16.860 --> 06:23.700
+We want to validate those decisions by showing it to people, allowing them to use it, and then observing
+
+06:23.700 --> 06:29.640
+whether they have an easy time or a hard time interacting with what we provide.
+
+06:30.840 --> 06:35.980
+When it comes right down to it, uxd really means problem solving.
+
+06:36.000 --> 06:42.330
+When I was in college, my professors, you know, probably all of them, I think, because this is
+
+06:42.330 --> 06:44.040
+sort of drilled into my brain.
+
+06:44.040 --> 06:50.550
+But but the thing that was hammered over and over and over again is that if you don't come up with a
+
+06:50.550 --> 06:55.080
+good solution to something, you probably don't have a very good problem.
+
+06:55.080 --> 07:02.100
+And essentially that's sort of a roundabout way of saying that design is all about identifying the right
+
+07:02.100 --> 07:10.020
+problems to solve what matters most, what things, what issues have the most impact, have the most
+
+07:10.020 --> 07:11.760
+measurable value.
+
+07:12.000 --> 07:17.650
+User experience design essentially explores feasible solutions to design problems.
+
+07:17.680 --> 07:24.660
+Okay, what can we do to address this and how realistic is it that we can address this in the first
+
+07:24.660 --> 07:24.990
+place?
+
+07:24.990 --> 07:25.290
+Right.
+
+07:25.290 --> 07:34.810
+How realistic is it that we can provide a solution to this very particular, precise, complex problem?
+
+07:34.940 --> 07:35.140
+Right.
+
+07:35.140 --> 07:38.800
+Because anything involving human beings is inherently messy.
+
+07:40.270 --> 07:47.170
+Unfortunately, you know, we're we're we're interesting creatures and we can be very difficult to please.
+
+07:47.170 --> 07:51.520
+So those are typically difficult problems to solve.
+
+07:51.850 --> 07:52.150
+All right.
+
+07:52.150 --> 07:58.090
+So what we essentially do is we uncover user needs and business goals.
+
+07:58.120 --> 07:58.380
+Okay?
+
+07:58.420 --> 08:05.050
+And the areas in which the two overlap, the sweet spots between what people need and what the business
+
+08:05.050 --> 08:10.810
+needs to accomplish is where the opportunities for competitive advantage exist.
+
+08:10.810 --> 08:11.080
+All right.
+
+08:11.080 --> 08:17.230
+Those are the places where you can do something that's unique, that's different, and that really elevates
+
+08:17.230 --> 08:19.420
+you above the competition.
+
+08:19.420 --> 08:25.390
+Those intersections are the places you need to seek out User experience.
+
+08:25.390 --> 08:29.920
+Design ensures that products meet or exceed user expectations, okay?
+
+08:29.920 --> 08:33.520
+And that typically results in increased adoption, increased use.
+
+08:33.520 --> 08:38.800
+And it typically means that people are more loyal to something if they have a positive experience with
+
+08:38.800 --> 08:39.100
+it.
+
+08:39.100 --> 08:44.980
+And one fringe benefit of that is that it also reduces any kind of support that has to happen.
+
+08:44.980 --> 08:51.310
+You know, if the company has a call center and the product is so intuitive that people just automatically
+
+08:51.310 --> 08:54.520
+know how to use it, you know, those calls go way down.
+
+08:54.640 --> 09:02.110
+So that usually means that there is efficiency being realized, there's cost savings being realized.
+
+09:02.320 --> 09:09.280
+And that problem solving also determines the feasibility of creating something that's really high quality.
+
+09:09.310 --> 09:10.390
+Can we create it?
+
+09:10.390 --> 09:11.770
+Can we implement it?
+
+09:11.860 --> 09:12.310
+Right?
+
+09:12.310 --> 09:13.210
+What's realistic?
+
+09:13.210 --> 09:14.830
+What can we actually do?
+
+09:14.860 --> 09:19.540
+You know, how great can we be within the confines of reality?
+
+09:19.540 --> 09:20.620
+That's sort of the game.
+
+09:20.620 --> 09:24.550
+So that problem solving part is really where everything begins.
+
+09:25.270 --> 09:30.700
+Maybe most importantly, user experience design or good user experience design at least ensures that
+
+09:30.700 --> 09:38.410
+people use things and we use things when we can easily figure out how to accomplish a particular task.
+
+09:38.440 --> 09:44.560
+We use things when the steps involved in accomplishing that task, no matter how complex they may be,
+
+09:44.590 --> 09:48.790
+seem simple to us, even if it's a tough thing to do.
+
+09:48.820 --> 09:56.440
+If at a glance, at a first scan at a three second gut check, it feels like, Yeah, I can do that,
+
+09:56.440 --> 10:01.160
+then it's likely because something is is designed well.
+
+10:01.180 --> 10:06.370
+We use things when our sense of effort and our cognitive load are minimized.
+
+10:06.370 --> 10:14.110
+What I mean by cognitive load is essentially how much information do we have to absorb and process in
+
+10:14.110 --> 10:15.340
+order to do something.
+
+10:15.340 --> 10:22.270
+Just about anything requires some degree of mental effort, and the less effort that we need to expend,
+
+10:22.420 --> 10:25.760
+the more likely we are to take on a certain task.
+
+10:25.760 --> 10:30.260
+And also conversely, the more likely we are to succeed at that task.
+
+10:30.350 --> 10:37.880
+We use things when we have immediate, clear feedback that's provided for every action we take.
+
+10:37.880 --> 10:42.500
+Every time we do something, we get some feedback that says, Yep, that worked.
+
+10:42.530 --> 10:42.890
+Okay.
+
+10:42.890 --> 10:49.100
+That's incredibly important because when we don't have that feedback, we get very, very anxious and
+
+10:49.100 --> 10:52.550
+when we get anxious, we typically get frustrated.
+
+10:52.550 --> 10:57.890
+And that frustration is usually enough to sort of make us stop right then and there.
+
+10:57.890 --> 11:00.500
+So that constant feedback is incredibly important.
+
+11:00.650 --> 11:04.760
+We use things when our potential for errors is minimized.
+
+11:04.760 --> 11:10.460
+And in addition, when we do make a mistake, we're able to recover quickly and easily.
+
+11:10.460 --> 11:15.920
+So if the system or the software does something that sort of helps us get back on track really quickly,
+
+11:15.920 --> 11:17.600
+we really appreciate that.
+
+11:17.600 --> 11:21.440
+And we're also more likely to continue on our path.
+
+11:22.130 --> 11:27.050
+And finally, user experience design is very much a balancing act.
+
+11:27.050 --> 11:31.250
+And at the core of that balancing act is usually innovation.
+
+11:31.520 --> 11:34.830
+And that innovation comes out of sort of 1 or 2 things.
+
+11:34.860 --> 11:35.410
+Okay.
+
+11:35.450 --> 11:43.220
+On one hand, it's either an idea that's that's sort of like a revelation, right?
+
+11:43.220 --> 11:47.030
+It's something that hasn't been created prior.
+
+11:47.030 --> 11:49.760
+It's a it's a brand new way of doing something.
+
+11:49.760 --> 11:52.340
+It's a brand new way of approaching a task.
+
+11:52.340 --> 11:58.170
+It's a brand new way of thinking about, you know, the world around us, whatever it is.
+
+11:58.190 --> 12:05.750
+The other sort of side of that is the re-imagining of something that already exists.
+
+12:05.800 --> 12:06.070
+Okay.
+
+12:06.080 --> 12:07.370
+It's a way to make it better.
+
+12:07.370 --> 12:08.630
+It's a way to improve it.
+
+12:08.630 --> 12:16.880
+It's a way to make something that already exists, do things that no one thought it could ever do.
+
+12:17.150 --> 12:17.450
+All right.
+
+12:17.450 --> 12:19.190
+So that's innovation.
+
+12:19.190 --> 12:21.110
+And it's a tall task.
+
+12:21.400 --> 12:26.750
+Innovation, often by its very nature, hangs you out on the edge of the cliff, right?
+
+12:26.750 --> 12:28.460
+You're hanging by your feet.
+
+12:28.460 --> 12:33.620
+You're going to live or die by whether this works or not because it's a bold idea.
+
+12:33.620 --> 12:37.010
+So innovation is at the core of the balancing act.
+
+12:37.100 --> 12:43.510
+Now that you've got this great idea, you have to figure out, okay, does anybody want it?
+
+12:43.520 --> 12:44.990
+That's desirability.
+
+12:45.020 --> 12:46.360
+Does it matter to people?
+
+12:46.370 --> 12:47.770
+Is it going to matter to people?
+
+12:47.780 --> 12:54.770
+Is there going to be an emotional or intellectual connection that gets made when this gets rolled out?
+
+12:54.770 --> 12:56.150
+Are people going to connect with it?
+
+12:56.150 --> 12:57.440
+Are they going to want it?
+
+12:58.020 --> 13:05.880
+Next you have feasibility, which means, okay, now that I've got the idea, I know that people want
+
+13:05.880 --> 13:06.330
+it.
+
+13:06.910 --> 13:08.840
+Can I actually build it?
+
+13:08.870 --> 13:09.300
+Okay.
+
+13:09.310 --> 13:10.240
+Can I design it?
+
+13:10.240 --> 13:17.020
+Do I have the resources to actually create this thing, design this thing, build this thing, make
+
+13:17.020 --> 13:17.710
+it real?
+
+13:17.710 --> 13:18.690
+Is it feasible?
+
+13:18.700 --> 13:20.130
+Can I do it?
+
+13:20.140 --> 13:28.360
+And finally, on top of all that, how likely is it this thing actually has legs, right?
+
+13:28.360 --> 13:32.560
+That it's not going to sort of come out and be ignored?
+
+13:33.910 --> 13:38.440
+You want it to come out and be adopted and grow.
+
+13:38.440 --> 13:38.860
+Okay.
+
+13:38.860 --> 13:40.090
+Grow in use.
+
+13:40.090 --> 13:44.860
+You want it to have, you know, sort of a decent shelf life, right?
+
+13:44.860 --> 13:47.320
+You want it to be around for a certain period of time.
+
+13:47.320 --> 13:51.550
+You want to maybe be able to release two, three, four versions of it.
+
+13:51.910 --> 13:53.440
+That's viability.
+
+13:53.440 --> 13:57.460
+That's is it going to grow once we plant the seed?
+
+13:57.580 --> 14:01.090
+So anything that's innovative.
+
+14:01.120 --> 14:06.830
+Right, and anything that we want to be successful has to balance all these competing needs.
+
+14:06.830 --> 14:11.870
+And as I'm sure you can understand at this point, that's not an easy feat.
+
+14:11.870 --> 14:20.000
+But that's also the reason why the discipline of user experience design and applying it consistently
+
+14:20.000 --> 14:22.760
+and correctly is so important.

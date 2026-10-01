@@ -1,0 +1,214 @@
+WEBVTT
+
+00:00.570 --> 00:01.860
+Instructor: In the last section, we finished up
+
+00:01.860 --> 00:03.780
+our Ingress NGINX configuration,
+
+00:03.780 --> 00:06.270
+and then we applied it using kubectl.
+
+00:06.270 --> 00:08.670
+We can now test out our application inside the browser
+
+00:08.670 --> 00:10.830
+because we should have just created everything
+
+00:10.830 --> 00:13.740
+that's going to essentially get traffic into our application
+
+00:13.740 --> 00:16.470
+and then route it off to the appropriate service.
+
+00:16.470 --> 00:18.510
+To test this stuff out, we're gonna flip over
+
+00:18.510 --> 00:20.880
+to our terminal and we're going to get the IP
+
+00:20.880 --> 00:23.400
+of our Minikube virtual machine.
+
+00:23.400 --> 00:25.890
+So I'm gonna run Minikube IP
+
+00:25.890 --> 00:28.590
+and then I'll copy this IP address
+
+00:28.590 --> 00:30.900
+and I'll visit it inside of my browser.
+
+00:30.900 --> 00:33.870
+Now this time around, we do not have to specify a port
+
+00:33.870 --> 00:36.900
+on this IP because the service that we have created is
+
+00:36.900 --> 00:40.740
+automatically listening on both ports 80 and 443 for us.
+
+00:40.740 --> 00:43.080
+And by default, your browser is going to default
+
+00:43.080 --> 00:46.590
+to either port 80 or 443, depending upon whether or not,
+
+00:46.590 --> 00:49.113
+you are using a HTTPS connection.
+
+00:49.950 --> 00:51.180
+Alright, so when I go there,
+
+00:51.180 --> 00:54.780
+you're gonna very quickly see a big security message appear
+
+00:54.780 --> 00:55.710
+on the screen.
+
+00:55.710 --> 00:57.990
+Now, I've already bypassed that warning message,
+
+00:57.990 --> 01:00.390
+but when you first navigate to this IP address,
+
+01:00.390 --> 01:03.000
+it's gonna tell you, "Hey, danger,
+
+01:03.000 --> 01:05.370
+there's a security issue here."
+
+01:05.370 --> 01:07.290
+At the bottom left hand side of that config
+
+01:07.290 --> 01:08.460
+or that error message,
+
+01:08.460 --> 01:10.890
+you'll see a little like get more info button.
+
+01:10.890 --> 01:12.210
+Go ahead and click on that button,
+
+01:12.210 --> 01:15.000
+and then you can click on proceed anyway.
+
+01:15.000 --> 01:17.640
+So at present, our NGINX configuration
+
+01:17.640 --> 01:20.670
+is attempting to force anyone who comes to our page
+
+01:20.670 --> 01:24.513
+to use a HTTPS connection as opposed to HTTP.
+
+01:25.620 --> 01:28.800
+By default, the NGINX Ingress is going to use
+
+01:28.800 --> 01:31.890
+a kind of dummy certificate.
+
+01:31.890 --> 01:34.080
+So if you click on not secure up here,
+
+01:34.080 --> 01:35.550
+and then click on certificate,
+
+01:35.550 --> 01:37.080
+you'll see that it has a name
+
+01:37.080 --> 01:40.200
+of Kubernetes ingress controller fake certificate.
+
+01:40.200 --> 01:42.030
+And as you might guess, a fake certificate
+
+01:42.030 --> 01:46.020
+is not going to be accepted by Chrome at large.
+
+01:46.020 --> 01:47.520
+So the error message that you're seeing
+
+01:47.520 --> 01:48.353
+is gonna be something
+
+01:48.353 --> 01:51.480
+that we're only going to have locally in development.
+
+01:51.480 --> 01:53.730
+When we eventually push this off to production,
+
+01:53.730 --> 01:55.320
+we're gonna fix this error message,
+
+01:55.320 --> 01:56.760
+but for right now in development,
+
+01:56.760 --> 01:59.550
+we're just gonna let this sit as is.
+
+01:59.550 --> 02:00.660
+You only have to click past
+
+02:00.660 --> 02:02.490
+that error message screen one time.
+
+02:02.490 --> 02:04.290
+After you click there at least one time,
+
+02:04.290 --> 02:05.880
+you should be able to refresh the page
+
+02:05.880 --> 02:07.680
+and you're not gonna see the error again.
+
+02:07.680 --> 02:09.840
+You're just gonna see the HTTPS error,
+
+02:09.840 --> 02:11.608
+which is something that we can essentially
+
+02:11.608 --> 02:15.060
+(indistinct) right now for development purposes.
+
+02:15.060 --> 02:16.290
+Okay, so that's pretty much it.
+
+02:16.290 --> 02:18.740
+We should now be able to test out our application
+
+02:19.590 --> 02:21.633
+by entering in some index.
+
+02:23.820 --> 02:26.280
+I'll submit that, I'll refresh the page
+
+02:26.280 --> 02:28.650
+and then I should see all my numbers appear.
+
+02:28.650 --> 02:31.200
+So if you see all this stuff appear correctly, that means
+
+02:31.200 --> 02:34.530
+that your entire Kubernetes cluster is completely set up
+
+02:34.530 --> 02:37.290
+and ready to go for development purposes.
+
+02:37.290 --> 02:39.840
+So I think that we've got a great project here so far.
+
+02:39.840 --> 02:41.160
+Let's take a pause right now.
+
+02:41.160 --> 02:42.390
+When we come back to the next section,
+
+02:42.390 --> 02:45.000
+we're gonna start thinking how we can migrate this project
+
+02:45.000 --> 02:46.980
+to a production environment.
+
+02:46.980 --> 02:49.430
+So quick break and I'll see you in just a minute.

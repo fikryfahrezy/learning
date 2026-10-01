@@ -1,0 +1,238 @@
+WEBVTT
+
+00:00.900 --> 00:02.280
+-: In the last section, we wrote out all
+
+00:02.280 --> 00:05.310
+of our application code for the node JS server.
+
+00:05.310 --> 00:08.040
+Now that we've got all that stuff put together,
+
+00:08.040 --> 00:10.200
+we're going to put together a little docker file
+
+00:10.200 --> 00:12.210
+that's gonna be basically identical
+
+00:12.210 --> 00:14.700
+to the one that we had put together previously.
+
+00:14.700 --> 00:17.160
+This docker file's sole purpose is going to be
+
+00:17.160 --> 00:19.830
+to put together this node application.
+
+00:19.830 --> 00:21.900
+And so essentially, it's representing this side
+
+00:21.900 --> 00:23.220
+of the equation.
+
+00:23.220 --> 00:26.310
+This docker file is gonna have nothing to do whatsoever
+
+00:26.310 --> 00:27.450
+with our Redis server,
+
+00:27.450 --> 00:30.720
+so it's solely concerned with the node app for now.
+
+00:30.720 --> 00:32.430
+So let's get started on this.
+
+00:32.430 --> 00:34.110
+Inside of my code editor,
+
+00:34.110 --> 00:35.730
+I'll find my visits folder.
+
+00:35.730 --> 00:38.433
+Inside there I'll make a docker file.
+
+00:39.630 --> 00:40.463
+Then inside of here,
+
+00:40.463 --> 00:42.960
+we're gonna again see some code that's very identical
+
+00:42.960 --> 00:46.080
+to what we put together on our last application.
+
+00:46.080 --> 00:50.973
+We'll first specify our base image as node alpine.
+
+00:52.410 --> 00:54.483
+We'll then set up a working directory.
+
+00:55.800 --> 00:58.560
+We'll again, use app as a working directory.
+
+00:58.560 --> 01:00.900
+And then remember, we're gonna use a little strategy
+
+01:00.900 --> 01:04.620
+to make sure that we only try to rebuild the image anytime
+
+01:04.620 --> 01:07.140
+that we change the package dot JSON file,
+
+01:07.140 --> 01:08.850
+and we won't reveal the image
+
+01:08.850 --> 01:10.740
+if we make any changes to the source code,
+
+01:10.740 --> 01:13.230
+like in the index dot JS file.
+
+01:13.230 --> 01:14.580
+To make sure that's the case,
+
+01:14.580 --> 01:16.230
+we're going to first copy over
+
+01:16.230 --> 01:19.021
+only the package dot JSON file.
+
+01:19.021 --> 01:21.930
+We'll then run and PM install to get all
+
+01:21.930 --> 01:23.880
+of our different dependencies,
+
+01:23.880 --> 01:26.820
+and then we'll copy over all of the rest of our source code
+
+01:26.820 --> 01:29.103
+with copy dot dot.
+
+01:30.030 --> 01:31.950
+And then finally, we'll start up our server
+
+01:31.950 --> 01:36.723
+with CMD NPM start, like so.
+
+01:38.880 --> 01:40.680
+Okay, so again, basically the same thing
+
+01:40.680 --> 01:42.660
+as what we wrote previously.
+
+01:42.660 --> 01:44.190
+Let's now flip over to our terminal
+
+01:44.190 --> 01:48.090
+and try building a image out of this docker file.
+
+01:48.090 --> 01:49.950
+So I'll go back over to my terminal.
+
+01:49.950 --> 01:52.380
+I'm gonna make sure I'm inside of my visits directory,
+
+01:52.380 --> 01:55.143
+and I'll run docker build dot.
+
+01:56.580 --> 01:59.310
+We're then gonna see the familiar steps.
+
+01:59.310 --> 02:00.870
+You might see that red text again,
+
+02:00.870 --> 02:03.450
+something that says notice right there.
+
+02:03.450 --> 02:04.800
+And you might see the three warnings.
+
+02:04.800 --> 02:05.790
+Those are totally fine.
+
+02:05.790 --> 02:08.280
+You can completely ignore those.
+
+02:08.280 --> 02:09.540
+So then down here at the bottom,
+
+02:09.540 --> 02:13.080
+we see the ID of the image that was created.
+
+02:13.080 --> 02:15.990
+Now chances are we might not be making a tremendous number
+
+02:15.990 --> 02:17.790
+of changes to this image.
+
+02:17.790 --> 02:18.900
+So I think we should go ahead
+
+02:18.900 --> 02:21.240
+and just tag this image with a name right now,
+
+02:21.240 --> 02:22.770
+or give it some name,
+
+02:22.770 --> 02:24.600
+so that we don't have to keep carrying around
+
+02:24.600 --> 02:26.460
+this ID all the time.
+
+02:26.460 --> 02:29.280
+So let's rerun that docker build command,
+
+02:29.280 --> 02:31.080
+but rather than putting a dot right at the end,
+
+02:31.080 --> 02:32.670
+we'll say docker build,
+
+02:32.670 --> 02:35.013
+and then we will dash T to tag it.
+
+02:36.210 --> 02:37.983
+And I'll put in my name,
+
+02:38.940 --> 02:41.910
+or my docker username that is,
+
+02:41.910 --> 02:46.080
+slash the name of our project, which is visits,
+
+02:46.080 --> 02:47.490
+and then I'll put a tag on it
+
+02:47.490 --> 02:51.420
+by indicating the little colon with latest.
+
+02:51.420 --> 02:53.640
+And then after that, I'll put the period to indicate
+
+02:53.640 --> 02:56.140
+that we want to build outta the current directory.
+
+02:57.720 --> 02:58.800
+All right, so there we go.
+
+02:58.800 --> 02:59.633
+That's it.
+
+02:59.633 --> 03:03.060
+We've now got our tagged docker image.
+
+03:03.060 --> 03:04.440
+So let's take a quick break right here.
+
+03:04.440 --> 03:05.700
+And we'll come back the next section,
+
+03:05.700 --> 03:06.960
+and we'll start getting a better sense
+
+03:06.960 --> 03:09.390
+of how to get this thing to work along together
+
+03:09.390 --> 03:11.740
+with a separate container that's running Redis.

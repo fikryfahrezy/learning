@@ -1,0 +1,295 @@
+WEBVTT
+
+00:00.990 --> 00:01.823
+Lecturer: In the last section,
+
+00:01.823 --> 00:03.900
+we spoke about how we need to set up
+
+00:03.900 --> 00:06.690
+a little bit different Dockerfile for the client project
+
+00:06.690 --> 00:09.120
+this time around just because we need to customize
+
+00:09.120 --> 00:11.760
+the way in which Nginx behaves
+
+00:11.760 --> 00:13.320
+and specifically we want to make sure
+
+00:13.320 --> 00:15.900
+that it listens on port 3000.
+
+00:15.900 --> 00:19.530
+So to get this working, we're gonna find our client project
+
+00:19.530 --> 00:22.350
+and we're gonna first write out a little configuration file
+
+00:22.350 --> 00:25.320
+specifically for that Nginx server.
+
+00:25.320 --> 00:27.870
+So for the Nginx server, I'm gonna make a new file
+
+00:27.870 --> 00:32.280
+inside of the client project and I'm gonna call it Nginx.
+
+00:32.280 --> 00:34.860
+And then inside there we'll make a new file
+
+00:34.860 --> 00:37.560
+called default.com.
+
+00:37.560 --> 00:40.350
+We don't specifically have to make the nested folder here,
+
+00:40.350 --> 00:42.457
+I just thought that it would be really clear that,
+
+00:42.457 --> 00:45.360
+"Oh, inside the Nginx folder are files that are related
+
+00:45.360 --> 00:49.320
+to the Nginx server that host the client project."
+
+00:49.320 --> 00:50.820
+So now inside of here, we're gonna put down
+
+00:50.820 --> 00:53.100
+a little bit of configuration that looks very similar
+
+00:53.100 --> 00:55.350
+to some of the configuration we put together
+
+00:55.350 --> 00:57.423
+on the Nginx project previously.
+
+00:58.860 --> 01:02.820
+So I'll say server is going to listen on port 3000,
+
+01:02.820 --> 01:03.810
+so as you might imagine
+
+01:03.810 --> 01:05.820
+that's kinda the magic sauce right there,
+
+01:05.820 --> 01:09.120
+that's gonna make sure that Nginx listens on port 3000
+
+01:09.120 --> 01:11.220
+and serves up the React production files from there
+
+01:11.220 --> 01:13.383
+instead of the default of port 80.
+
+01:14.430 --> 01:17.400
+And then on here we're also gonna set up a routing rule,
+
+01:17.400 --> 01:20.820
+so we're gonna say anytime someone comes to the route,
+
+01:20.820 --> 01:25.820
+we're going to set a route of user share, Nginx html,
+
+01:27.150 --> 01:28.980
+and as you'll recall, that's where we're going to put
+
+01:28.980 --> 01:31.770
+all of our production assets.
+
+01:31.770 --> 01:35.310
+We'll also set up an index directive,
+
+01:35.310 --> 01:38.070
+we'll say that it's going to be our index html
+
+01:38.070 --> 01:42.333
+or index.htm files, like so.
+
+01:45.030 --> 01:46.080
+Okay, so that's all we have to do
+
+01:46.080 --> 01:48.840
+for the default Nginx configuration.
+
+01:48.840 --> 01:51.030
+So we can now close this file
+
+01:51.030 --> 01:54.300
+and then inside the client directory we'll make a new file
+
+01:54.300 --> 01:55.920
+that's going to be the production version
+
+01:55.920 --> 01:57.063
+of our Dockerfile.
+
+02:00.960 --> 02:03.450
+So for the React application, our Dockerfile
+
+02:03.450 --> 02:05.850
+will look very similar to what we had previously,
+
+02:05.850 --> 02:08.610
+we're still gonna do the multi-step build process
+
+02:08.610 --> 02:11.130
+but this time around, right before we set up
+
+02:11.130 --> 02:13.920
+this kind of custom copy from the builder step,
+
+02:13.920 --> 02:15.630
+we're also gonna make sure that we copy over
+
+02:15.630 --> 02:19.110
+that default.com file that we just put together as well
+
+02:19.110 --> 02:20.220
+and that's going to be responsible
+
+02:20.220 --> 02:23.253
+for changing the configuration of the Nginx server.
+
+02:25.604 --> 02:29.250
+So inside this Dockerfile, we're going to set up
+
+02:29.250 --> 02:31.920
+the first step of our multi-step build process,
+
+02:31.920 --> 02:35.010
+we'll say from node Alpine,
+
+02:35.010 --> 02:36.693
+and we'll call this step Builder.
+
+02:37.800 --> 02:40.473
+We'll set up a work directory of /app,
+
+02:41.700 --> 02:46.200
+we'll copy over the package .js on file
+
+02:46.200 --> 02:47.703
+to that working directory.
+
+02:48.870 --> 02:53.070
+We will run npm install and then we'll copy over
+
+02:53.070 --> 02:54.930
+everything else.
+
+02:54.930 --> 02:58.200
+And then finally, we'll set up the actual build process,
+
+02:58.200 --> 03:00.240
+the step that actually builds the production version
+
+03:00.240 --> 03:03.660
+of our front-end assets by running the command,
+
+03:03.660 --> 03:05.433
+npm run built.
+
+03:08.160 --> 03:10.830
+So the output from that will be a folder
+
+03:10.830 --> 03:14.040
+inside of that app directory called Built,
+
+03:14.040 --> 03:16.770
+that's where all the production assets get placed.
+
+03:16.770 --> 03:18.690
+So we then want to copy that folder
+
+03:18.690 --> 03:22.710
+over to the Nginx phase of our built.
+
+03:22.710 --> 03:27.090
+So I'll make a second phase here, I'll say from Nginx
+
+03:27.090 --> 03:30.543
+we're going to expose port 3000, this time around,
+
+03:31.410 --> 03:35.640
+I will copy over the Nginx default.com file.
+
+03:35.640 --> 03:38.640
+So copy Nginx default.com,
+
+03:38.640 --> 03:41.463
+oh, let's make sure we say current working directory.
+
+03:42.720 --> 03:47.720
+And I wanna copy that into Etsy Nginx conf.d
+
+03:48.090 --> 03:51.663
+and we're going to overwrite the existing default.com file.
+
+03:52.770 --> 03:54.270
+And then finally, we're going to make sure
+
+03:54.270 --> 03:57.420
+that we also copy over all the production build assets
+
+03:57.420 --> 03:59.490
+from the builder phase.
+
+03:59.490 --> 04:02.943
+We'll say copy dash dash from builder,
+
+04:03.780 --> 04:07.290
+give me app/build, again, that's the default location,
+
+04:07.290 --> 04:08.460
+the Build folder
+
+04:08.460 --> 04:10.953
+for all the production version of those assets.
+
+04:11.970 --> 04:12.840
+And we're gonna copy those
+
+04:12.840 --> 04:17.313
+into the user share Nginx html directory.
+
+04:21.870 --> 04:23.763
+Okay, that's pretty much it,
+
+04:25.020 --> 04:26.310
+so again, the entire reason
+
+04:26.310 --> 04:27.690
+that we changed things around this time
+
+04:27.690 --> 04:29.790
+was that this time our Nginx server
+
+04:29.790 --> 04:31.380
+has to listen on port 3000,
+
+04:31.380 --> 04:33.990
+that's what we added on that default.com file,
+
+04:33.990 --> 04:37.950
+just to change the default port that Nginx listens on.
+
+04:37.950 --> 04:40.230
+We also set up a special rule on there to make sure
+
+04:40.230 --> 04:43.180
+that our production assets get shared out of there as well.
+
+04:44.250 --> 04:46.800
+Okay, so I think that we're just about ready to go here,
+
+04:46.800 --> 04:48.750
+so I'm gonna make sure I save this file
+
+04:48.750 --> 04:50.520
+and we'll continue in the next section,
+
+04:50.520 --> 04:52.970
+so quick break and I'll see you in just a minute.

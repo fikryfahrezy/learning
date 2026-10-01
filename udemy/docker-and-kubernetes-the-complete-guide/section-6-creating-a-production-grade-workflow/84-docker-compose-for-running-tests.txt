@@ -1,0 +1,463 @@
+WEBVTT
+
+00:01.110 --> 00:01.943
+-: In the last section,
+
+00:01.943 --> 00:04.410
+we got our Docker container to be aware of changes
+
+00:04.410 --> 00:06.000
+that are made to our test files
+
+00:06.000 --> 00:09.300
+by starting up our primary container with Docker Compose.
+
+00:09.300 --> 00:11.400
+And then kind of piggybacking on that thing
+
+00:11.400 --> 00:13.620
+using the Docker exec command.
+
+00:13.620 --> 00:16.380
+So we ran Docker exec with the container ID
+
+00:16.380 --> 00:19.050
+and we executed an PM run test inside there.
+
+00:19.050 --> 00:21.330
+Again, I don't think this is a perfect solution
+
+00:21.330 --> 00:23.310
+because it requires you to first get a handle
+
+00:23.310 --> 00:24.720
+on the container ID.
+
+00:24.720 --> 00:25.553
+So in the section,
+
+00:25.553 --> 00:27.960
+I'm gonna show you a slightly different approach.
+
+00:27.960 --> 00:29.100
+Now you might be thinking, "Steven
+
+00:29.100 --> 00:30.649
+why are you showing us more than one approach?
+
+00:30.649 --> 00:33.090
+Why didn't you just show us the second approach
+
+00:33.090 --> 00:34.470
+to start with if it's so good?"
+
+00:34.470 --> 00:37.470
+Well, the answer is that it's not the perfect solution.
+
+00:37.470 --> 00:39.540
+So I'm gonna show you the second way of solving this
+
+00:39.540 --> 00:42.450
+but again it's not quite a perfect solution,
+
+00:42.450 --> 00:44.040
+just in my opinion.
+
+00:44.040 --> 00:45.600
+So let's try putting this together
+
+00:45.600 --> 00:47.610
+and you'll see exactly why.
+
+00:47.610 --> 00:49.140
+Now I'm gonna find the terminal
+
+00:49.140 --> 00:50.880
+that's running my Docker compose,
+
+00:50.880 --> 00:53.030
+and I'm gonna stop it by hitting control C.
+
+00:53.940 --> 00:56.370
+And then I'll flip back over to my code editor
+
+00:56.370 --> 01:00.390
+and I'm going to open up my Docker compose dot YAML file.
+
+01:00.390 --> 01:02.040
+So in the last solution we looked at,
+
+01:02.040 --> 01:03.240
+we kind of piggybacked
+
+01:03.240 --> 01:05.580
+on this existing service to run our tests.
+
+01:05.580 --> 01:07.260
+So with this new solution
+
+01:07.260 --> 01:10.860
+we're going to create a completely second service
+
+01:10.860 --> 01:12.420
+inside the Docker compose file.
+
+01:12.420 --> 01:15.693
+And its sole purpose is going to be to run our tests.
+
+01:16.860 --> 01:18.550
+So to create a second service
+
+01:19.860 --> 01:21.720
+I'm gonna add a new line inside of here
+
+01:21.720 --> 01:24.690
+and I'm going to add in one level of indentation
+
+01:24.690 --> 01:26.310
+and then I'll create the second service
+
+01:26.310 --> 01:29.400
+with the name of "Tes", like so.
+
+01:29.400 --> 01:31.050
+Now remember, in a YAML file
+
+01:31.050 --> 01:32.610
+it's extremely important to make sure
+
+01:32.610 --> 01:35.880
+that you get all of your tabbing and indentation correct.
+
+01:35.880 --> 01:38.280
+So make sure you've got one indentation right here
+
+01:38.280 --> 01:39.540
+right before "Tes".
+
+01:39.540 --> 01:41.010
+And then for the second little option we're
+
+01:41.010 --> 01:42.270
+about to push put in here,
+
+01:42.270 --> 01:44.253
+you should have two indentations.
+
+01:45.480 --> 01:47.520
+So to build this kind of test service
+
+01:47.520 --> 01:48.870
+we're again going to kind of copy
+
+01:48.870 --> 01:50.700
+some of the configuration you see right here
+
+01:50.700 --> 01:52.170
+because we want to again,
+
+01:52.170 --> 01:54.720
+build our container using the context
+
+01:54.720 --> 01:57.390
+in the current directory using that docker file.
+
+01:57.390 --> 01:58.950
+And we're also going to want to setup
+
+01:58.950 --> 02:01.110
+the same volumes that we had before.
+
+02:01.110 --> 02:01.943
+However,
+
+02:01.943 --> 02:04.620
+we do not need to specify any ports this time around
+
+02:04.620 --> 02:06.450
+because our test suite doesn't make use
+
+02:06.450 --> 02:07.860
+of any ports whatsoever
+
+02:07.860 --> 02:10.650
+'cause there's really no running server inside there.
+
+02:10.650 --> 02:13.890
+So for "Tes", I'll specify my build
+
+02:13.890 --> 02:16.200
+with a context of the current directory
+
+02:16.200 --> 02:19.503
+and the docker file of docker file dot dev.
+
+02:20.880 --> 02:22.443
+I'll then set up my volumes.
+
+02:24.090 --> 02:26.850
+Remember we get a little dash in front of our volumes
+
+02:26.850 --> 02:29.253
+because this essentially represents an array.
+
+02:30.450 --> 02:33.240
+I'll set up a volume on node modules again
+
+02:33.240 --> 02:34.680
+to kind of set up a placeholder there
+
+02:34.680 --> 02:36.060
+and make sure we don't accidentally
+
+02:36.060 --> 02:38.160
+override that directory or anything like that.
+
+02:38.160 --> 02:41.320
+And then we'll also map up the current working directory
+
+02:42.420 --> 02:44.223
+colon slash app.
+
+02:45.270 --> 02:47.130
+And then finally, the last thing we need to do
+
+02:47.130 --> 02:51.000
+is we're going to override the starting command used
+
+02:51.000 --> 02:53.820
+when this "Tes" service is created
+
+02:53.820 --> 02:55.770
+or the test container is created.
+
+02:55.770 --> 02:57.387
+So we're gonna override that starting command
+
+02:57.387 --> 03:00.510
+and we're gonna make sure that it starts with NPM run test
+
+03:00.510 --> 03:03.420
+rather than the default NPM run start.
+
+03:03.420 --> 03:05.130
+So to override a command
+
+03:05.130 --> 03:08.520
+inside of a docker file we'll specify command
+
+03:08.520 --> 03:10.200
+and then we can write out all the different parts
+
+03:10.200 --> 03:13.590
+of that command in a set of quotes in a little array.
+
+03:13.590 --> 03:16.920
+So we'll say NPM run test.
+
+03:16.920 --> 03:18.210
+Now when I say little array
+
+03:18.210 --> 03:19.110
+this technically right here
+
+03:19.110 --> 03:22.020
+is not the same type of array that a YAML file array is
+
+03:22.020 --> 03:22.853
+like that right there.
+
+03:22.853 --> 03:25.260
+It's just a slightly different notation.
+
+03:25.260 --> 03:26.310
+Okay, so that's it.
+
+03:26.310 --> 03:27.450
+I'm gonna save this file.
+
+03:27.450 --> 03:30.090
+So now whenever we run Docker compose up,
+
+03:30.090 --> 03:31.830
+we're gonna startup one container
+
+03:31.830 --> 03:33.060
+that's gonna be responsible
+
+03:33.060 --> 03:35.160
+for hosting our development server
+
+03:35.160 --> 03:37.740
+and the second container that is gonna be solely responsible
+
+03:37.740 --> 03:39.330
+for running our tests
+
+03:39.330 --> 03:40.920
+and rerunning any time
+
+03:40.920 --> 03:43.293
+that any file inside of our volumes change.
+
+03:44.340 --> 03:46.350
+So let's try starting these up now.
+
+03:46.350 --> 03:47.970
+I'll go back over to my command line
+
+03:47.970 --> 03:50.220
+and I'm gonna do Docker compose up
+
+03:50.220 --> 03:53.580
+and I'm gonna add on a dash dash build to this as well.
+
+03:53.580 --> 03:55.320
+Now technically we've not made any changes
+
+03:55.320 --> 03:56.520
+to any of our files,
+
+03:56.520 --> 03:58.830
+but sometimes when you add on a new service
+
+03:58.830 --> 04:00.390
+it can be a little bit finicky.
+
+04:00.390 --> 04:02.740
+So I'm just gonna throw on the dash dash build.
+
+04:03.840 --> 04:05.283
+All right, so there we go.
+
+04:07.170 --> 04:09.750
+So we have our test suite running.
+
+04:09.750 --> 04:11.800
+You can kind of see the test right there.
+
+04:12.900 --> 04:14.550
+And then we also see the message saying
+
+04:14.550 --> 04:17.150
+that we can view our application inside the browser.
+
+04:18.510 --> 04:20.970
+So we can now flip back over to our code editor
+
+04:20.970 --> 04:23.310
+and attempt to make a change to our test file.
+
+04:23.310 --> 04:25.140
+Remember, that's the SRC directory.
+
+04:25.140 --> 04:28.230
+We're looking for app dot test dot JS.
+
+04:28.230 --> 04:30.060
+So I'm going to change the thing
+
+04:30.060 --> 04:33.240
+by again just copy pasting down the it statement,
+
+04:33.240 --> 04:34.200
+I'll save it.
+
+04:34.200 --> 04:36.270
+And then if you flip back over to your terminal
+
+04:36.270 --> 04:38.520
+you'll see that our test suite has reran
+
+04:38.520 --> 04:41.220
+and it now has the two separate tests.
+
+04:41.220 --> 04:43.050
+All right, so again, this definitely works
+
+04:43.050 --> 04:46.410
+but there is a little problem with this approach as well.
+
+04:46.410 --> 04:47.280
+With the last approach
+
+04:47.280 --> 04:49.320
+for solving the tests that we looked at
+
+04:49.320 --> 04:52.140
+we had to remember the kind of ID of the container.
+
+04:52.140 --> 04:53.460
+We had to remember the command
+
+04:53.460 --> 04:56.484
+to execute our test suite inside there.
+
+04:56.484 --> 04:58.980
+That was the downside to that approach.
+
+04:58.980 --> 05:00.390
+The downside to this approach
+
+05:00.390 --> 05:03.360
+is that we are getting all the output from our test suite
+
+05:03.360 --> 05:07.080
+inside of the kind of login interface of Docker compose
+
+05:07.080 --> 05:09.090
+and we don't have the ability to enter
+
+05:09.090 --> 05:11.700
+any standard in output to that container.
+
+05:11.700 --> 05:14.850
+So I can't hit enter to get the test suite to rerun.
+
+05:14.850 --> 05:17.400
+I can't hit W to get any of the options
+
+05:17.400 --> 05:19.917
+inside the test suite to appear or anything like that.
+
+05:19.917 --> 05:20.917
+Now you might be thinking,
+
+05:20.917 --> 05:22.380
+"Okay, like Steven, that's fine.
+
+05:22.380 --> 05:25.950
+We could always try attaching directly to the container."
+
+05:25.950 --> 05:27.180
+Well, that's definitely an option.
+
+05:27.180 --> 05:28.560
+Let's take a quick pause right here
+
+05:28.560 --> 05:29.610
+and we're in the next section.
+
+05:29.610 --> 05:30.900
+We're gonna see if we can reuse
+
+05:30.900 --> 05:33.060
+that Docker attached command,
+
+05:33.060 --> 05:34.800
+that we looked at way long ago,
+
+05:34.800 --> 05:37.380
+to attach directly to this container
+
+05:37.380 --> 05:39.030
+and add in some custom input
+
+05:39.030 --> 05:41.760
+by hitting enter or W or whatever it might be
+
+05:41.760 --> 05:43.140
+to manipulate the test suite.
+
+05:43.140 --> 05:45.590
+So quick break and I'll see you in just a minute.

@@ -1,0 +1,148 @@
+WEBVTT
+
+00:00.930 --> 00:04.110
+Now let's take a look at some a, B, testing software.
+
+00:04.320 --> 00:09.830
+A, B testing is essentially testing two versions of the same page, same screen.
+
+00:09.840 --> 00:16.140
+It means that what you do is you create a version, A, which is your original control page, it's your
+
+00:16.140 --> 00:17.010
+baseline.
+
+00:17.010 --> 00:21.360
+And that's also commonly referred to as the champion version, right?
+
+00:21.360 --> 00:25.650
+Like like in boxing, he's the reigning heavyweight champion is this guy.
+
+00:25.680 --> 00:31.860
+Then you create another version of the same layout, which is the alternative, also known as the Challenger.
+
+00:31.860 --> 00:37.800
+And the deal is you put them both out there and by measuring certain aspects of those pages, user behavior,
+
+00:37.800 --> 00:40.530
+what people do, what they look at, what they click on.
+
+00:40.530 --> 00:44.490
+In each case, you figure out which one performs better.
+
+00:44.520 --> 00:44.880
+All right.
+
+00:44.880 --> 00:49.080
+If the challenger proves to be better than the champion, then the challenger wins.
+
+00:49.080 --> 00:54.930
+He replaces the champion, becomes the new guy to beat in any subsequent tests.
+
+00:54.930 --> 00:55.470
+Okay.
+
+00:55.470 --> 01:01.960
+The idea is to constantly improve whatever you're putting out there and a B testing is one of the best
+
+01:01.960 --> 01:07.990
+ways to do that because it uncovers a lot of insight between what you have now and what you might be
+
+01:07.990 --> 01:09.790
+able to do to make it better.
+
+01:10.530 --> 01:11.910
+One of the better.
+
+01:11.940 --> 01:16.410
+A B testing software packages I've seen is called Optimizely.
+
+01:16.440 --> 01:20.490
+Optimizely tracks, engagement clicks, conversions, signups.
+
+01:20.490 --> 01:22.500
+Anything else that matters to the business.
+
+01:22.530 --> 01:27.900
+It has built in custom goal tracking that provides very measurable actions.
+
+01:28.050 --> 01:32.190
+You can define all right, you tell it what to measure and it does the rest.
+
+01:32.220 --> 01:39.390
+When you find a winning variation, you can automatically allocate 100% of site visitors to those variations.
+
+01:39.390 --> 01:43.190
+So once it's up there, you can automatically say, direct everybody to this page.
+
+01:43.200 --> 01:45.100
+And Optimizely, does that work for you?
+
+01:45.120 --> 01:48.810
+So that buys you time to deploy those changes to the live site.
+
+01:48.810 --> 01:56.130
+And unlike other services, in particular Google's website, Optimizer, Optimizely only has one simple
+
+01:56.130 --> 02:01.110
+line of code that gets added to every page you want to test, so you don't have to add code for every
+
+02:01.110 --> 02:02.510
+single experiment.
+
+02:02.520 --> 02:04.980
+You do it once and that's it.
+
+02:04.980 --> 02:09.770
+And when you're dealing with large sites, this becomes a very, very big issue.
+
+02:09.780 --> 02:14.590
+So in that respect, Optimizely goes a long way in making life easier.
+
+02:15.420 --> 02:19.170
+Visual website Optimizer is also pretty impressive.
+
+02:19.200 --> 02:24.810
+It allows you to test variations of a page on a website with no HTML experience required, so you don't
+
+02:24.840 --> 02:28.200
+necessarily have to know anything about code to be able to use this.
+
+02:28.230 --> 02:33.450
+It tracks the conversions on those pages in order to allow you to evaluate the best performer.
+
+02:33.450 --> 02:37.950
+In other words, people click through, they do something, they take the required action.
+
+02:37.950 --> 02:39.210
+That's conversion.
+
+02:39.240 --> 02:45.170
+To start a test, all you really do is you point visual website optimizer to the URL of your choice.
+
+02:45.180 --> 02:51.060
+The tool grabs the page and that allows you to create variations of that page on the fly so you can
+
+02:51.060 --> 02:54.750
+literally adjust things using the software.
+
+02:54.750 --> 02:56.840
+It creates a variation page for you.
+
+02:56.850 --> 02:57.900
+It's pretty interesting.
+
+02:57.900 --> 03:02.310
+It's ideal for someone who doesn't have advanced coding technical skills.
+
+03:02.310 --> 03:08.490
+This software makes testing very, very simple with what's called tagless integration, meaning that
+
+03:08.490 --> 03:14.130
+you're not going to be very dependent on it folks or developers for complicated coding things.
+
+03:14.130 --> 03:15.220
+It's really simple.
+
+03:15.220 --> 03:18.910
+It's really straightforward and it's very, very insightful.

@@ -1,0 +1,109 @@
+WEBVTT
+
+00:00.900 --> 00:01.920
+-: At this point in this course,
+
+00:01.920 --> 00:04.200
+we've learned quite a bit about Docker containers,
+
+00:04.200 --> 00:07.680
+about images, about Docker CLI, and Docker Compose.
+
+00:07.680 --> 00:09.030
+But we still don't know a lot
+
+00:09.030 --> 00:10.980
+about how to actually use Docker
+
+00:10.980 --> 00:13.440
+in a production type environment.
+
+00:13.440 --> 00:15.810
+In other words, how do we actually develop an application
+
+00:15.810 --> 00:18.300
+that uses Docker, and then eventually push it
+
+00:18.300 --> 00:22.620
+to some outside hosting service like AWS or DigitalOcean?
+
+00:22.620 --> 00:25.110
+Well, in this section and the next couple of videos,
+
+00:25.110 --> 00:27.660
+we're gonna get a much better idea of how we do that
+
+00:27.660 --> 00:30.240
+by walking through an entire workflow
+
+00:30.240 --> 00:34.320
+that uses Docker to author and publish an application.
+
+00:34.320 --> 00:36.210
+In this section, I'm gonna show you a couple of diagrams
+
+00:36.210 --> 00:38.520
+to give you an overview of the flow
+
+00:38.520 --> 00:40.260
+that we're going to implement.
+
+00:40.260 --> 00:41.640
+Now, when I say flow,
+
+00:41.640 --> 00:45.150
+I'm talking about the process of developing, testing,
+
+00:45.150 --> 00:47.520
+and then eventually deploying your application,
+
+00:47.520 --> 00:51.540
+and then most importantly, at some point in the future,
+
+00:51.540 --> 00:54.450
+doing some additional development, additional testing,
+
+00:54.450 --> 00:57.420
+and then redeploying the application.
+
+00:57.420 --> 01:00.330
+So it's not enough to just deploy an application one time,
+
+01:00.330 --> 01:02.070
+no app gets deployed one time.
+
+01:02.070 --> 01:03.660
+Instead, we deploy an app,
+
+01:03.660 --> 01:05.520
+we do some additional development,
+
+01:05.520 --> 01:08.490
+we make some changes, and we re-push the application,
+
+01:08.490 --> 01:11.910
+we redeploy some additional changes.
+
+01:11.910 --> 01:13.050
+So it's really important to make sure
+
+01:13.050 --> 01:14.880
+that any flow that we come up with
+
+01:14.880 --> 01:17.670
+has the ability for us to do some additional development,
+
+01:17.670 --> 01:20.610
+testing, and redeployment in the future.
+
+01:20.610 --> 01:22.680
+So with that in mind, let's take a quick break.
+
+01:22.680 --> 01:24.210
+In the next section, we're gonna come back
+
+01:24.210 --> 01:25.770
+and start talking about the flow
+
+01:25.770 --> 01:27.670
+that you and I are going to implement.

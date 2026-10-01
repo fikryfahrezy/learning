@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+-: In the last section,
+
+00:01.643 --> 00:04.620
+we started up our docker compose up command.
+
+00:04.620 --> 00:07.320
+That is now gonna start up our single container
+
+00:07.320 --> 00:09.390
+and it's gonna set up two different volume mounts
+
+00:09.390 --> 00:11.490
+inside of it, one to kind of bookmark
+
+00:11.490 --> 00:13.500
+or hold onto the reference to node modules
+
+00:13.500 --> 00:14.820
+locally inside the container,
+
+00:14.820 --> 00:17.430
+and the other to map up all of our source code files
+
+00:17.430 --> 00:21.030
+on our local machine into the container's app directory.
+
+00:21.030 --> 00:23.880
+I now see the successful startup message
+
+00:23.880 --> 00:25.500
+from Docker Compose,
+
+00:25.500 --> 00:28.320
+so I should now be able to flip back over to my browser,
+
+00:28.320 --> 00:30.993
+refresh the app and still see the app appear.
+
+00:31.920 --> 00:33.930
+I should also be able to open up my browser
+
+00:33.930 --> 00:37.800
+or see my code editor in the source app.js file
+
+00:37.800 --> 00:39.870
+and change the by their text again.
+
+00:39.870 --> 00:42.183
+So I'll say something like "I was changed"
+
+00:43.590 --> 00:45.240
+and then if I save this,
+
+00:45.240 --> 00:46.530
+I can flip back with the browser
+
+00:46.530 --> 00:48.330
+and see that content up here
+
+00:48.330 --> 00:50.340
+and of course, I can always refresh again
+
+00:50.340 --> 00:52.740
+and make sure that content is still there.
+
+00:52.740 --> 00:57.180
+Awesome, we've now set up the volume mounting system.
+
+00:57.180 --> 00:58.680
+There's one really interesting thing
+
+00:58.680 --> 01:00.330
+that I wanna mention here.
+
+01:00.330 --> 01:02.250
+So like we've said a couple times
+
+01:02.250 --> 01:04.020
+by setting up that volume mount,
+
+01:04.020 --> 01:07.230
+anytime that the Docker container looks into the app folder
+
+01:07.230 --> 01:09.630
+it's essentially gonna get a reference back
+
+01:09.630 --> 01:12.420
+to all these local files we have on our machine
+
+01:12.420 --> 01:14.580
+and so question that you might be asking yourself
+
+01:14.580 --> 01:16.611
+is inside of our Docker file,
+
+01:16.611 --> 01:20.010
+do we still have to execute this copy step right here?
+
+01:20.010 --> 01:22.140
+Because we're essentially saying copy everything
+
+01:22.140 --> 01:24.060
+over into that app directory,
+
+01:24.060 --> 01:26.460
+but then anytime that the Docker container
+
+01:26.460 --> 01:28.710
+tries to look into that app directory,
+
+01:28.710 --> 01:31.230
+actually go back to the local machine
+
+01:31.230 --> 01:33.690
+that the container is running on.
+
+01:33.690 --> 01:35.670
+So in truth, we could probably get away with
+
+01:35.670 --> 01:37.800
+deleting the copy line right here.
+
+01:37.800 --> 01:40.380
+We would still want to copy over the package.json file
+
+01:40.380 --> 01:42.390
+because we do have to run MP install
+
+01:42.390 --> 01:43.860
+to get our dependencies.
+
+01:43.860 --> 01:45.630
+But as far as all of our source code goes,
+
+01:45.630 --> 01:47.910
+that gets copied over the copy instruction
+
+01:47.910 --> 01:50.379
+well, we might be able to do away without that.
+
+01:50.379 --> 01:51.699
+Now, for me personally,
+
+01:51.699 --> 01:56.040
+I would choose to leave this instruction in, and here's why.
+
+01:56.040 --> 01:58.620
+At the end of the day, we're making use of Docker Compose
+
+01:58.620 --> 02:02.190
+to solve all this kind of volume mounting stuff
+
+02:02.190 --> 02:03.960
+and all this issues with getting
+
+02:03.960 --> 02:05.580
+all of our source code over.
+
+02:05.580 --> 02:07.050
+But at some point in time in the future,
+
+02:07.050 --> 02:10.440
+you might decide to no longer make use of Docker Compose,
+
+02:10.440 --> 02:13.590
+or alternatively, you might decide to use this docker file
+
+02:13.590 --> 02:15.390
+right here as inspiration to set
+
+02:15.390 --> 02:17.373
+up your production docker file.
+
+02:18.570 --> 02:21.030
+In either case, you would definitely still need
+
+02:21.030 --> 02:23.640
+to have this copy instruction right here.
+
+02:23.640 --> 02:25.740
+You would definitely need to still have the copy instruction
+
+02:25.740 --> 02:28.050
+to copy over all of your source code
+
+02:28.050 --> 02:30.060
+and so even though it's not strictly necessary
+
+02:30.060 --> 02:31.320
+for what we're doing right now,
+
+02:31.320 --> 02:33.600
+I would probably still leave it in there kind of as a
+
+02:33.600 --> 02:36.183
+reminder or a reference for myself in the future.
+
+02:37.410 --> 02:38.760
+All right, so that's pretty much it.
+
+02:38.760 --> 02:40.264
+We have solved everything we need to solve
+
+02:40.264 --> 02:42.300
+with running our react application
+
+02:42.300 --> 02:46.080
+in a development environment inside of a Docker container.
+
+02:46.080 --> 02:47.190
+We still have a lot of work to do,
+
+02:47.190 --> 02:49.819
+however so let's take a quick pause
+
+02:49.819 --> 02:51.083
+and continue in the next section.

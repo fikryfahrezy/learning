@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00.840 --> 00:01.673
+-: In the last section,
+
+00:01.673 --> 00:03.480
+we went over the behind the scenes flow
+
+00:03.480 --> 00:05.850
+of what occurred during that Docker build process.
+
+00:05.850 --> 00:07.260
+Now that was a rather long section
+
+00:07.260 --> 00:09.120
+and we went through a lot of detail.
+
+00:09.120 --> 00:11.460
+So in this section I wanna do a quick recap,
+
+00:11.460 --> 00:12.690
+just a very quick overview
+
+00:12.690 --> 00:15.690
+on the really important critical flow to understand.
+
+00:15.690 --> 00:17.130
+Now, if you don't wanna hear me lecture
+
+00:17.130 --> 00:18.060
+about this stuff anymore,
+
+00:18.060 --> 00:20.250
+if you feel like you already have a good understanding,
+
+00:20.250 --> 00:21.990
+no problem, pause the video right now
+
+00:21.990 --> 00:23.550
+and move on to the next section.
+
+00:23.550 --> 00:25.110
+Again, we're only gonna do a recap
+
+00:25.110 --> 00:27.330
+of what we just spoke about a moment ago.
+
+00:27.330 --> 00:30.630
+Okay, so here's the recap with a slightly different diagram.
+
+00:30.630 --> 00:33.960
+So everything started with the affirm Alpine instruction.
+
+00:33.960 --> 00:36.480
+That told the Docker server or Docker daemon
+
+00:36.480 --> 00:38.730
+to go and download the Alpine image.
+
+00:38.730 --> 00:41.340
+And we use the Alpine image as a base because
+
+00:41.340 --> 00:44.370
+it comes pre-installed with some really handy programs
+
+00:44.370 --> 00:47.013
+that are useful for us creating our image.
+
+00:48.330 --> 00:49.380
+The next thing that occurred
+
+00:49.380 --> 00:53.580
+was the run instruction was executed by the Docker server.
+
+00:53.580 --> 00:55.890
+The first thing that occurred there was it looked
+
+00:55.890 --> 00:58.380
+for the image from the previous step,
+
+00:58.380 --> 01:00.090
+and so it went back to the previous step
+
+01:00.090 --> 01:03.093
+and got the Alpine image that had just been downloaded.
+
+01:04.110 --> 01:06.780
+That image was then used to create a brand new
+
+01:06.780 --> 01:08.760
+very temporary container.
+
+01:08.760 --> 01:10.680
+So here's our container over here
+
+01:10.680 --> 01:13.050
+and then the command that we had specified,
+
+01:13.050 --> 01:15.930
+so apk add --update redis
+
+01:15.930 --> 01:18.903
+was executed inside of that temporary container.
+
+01:19.770 --> 01:22.170
+The APK program was executed.
+
+01:22.170 --> 01:23.910
+It downloaded and installed Redis
+
+01:23.910 --> 01:26.670
+inside the file system of that container.
+
+01:26.670 --> 01:30.240
+So the result is a container with a modified file system.
+
+01:30.240 --> 01:32.733
+It now has Redis added onto it.
+
+01:34.200 --> 01:37.620
+We then took a snapshot of that container's new file system
+
+01:37.620 --> 01:40.380
+and the result was a file system snapshot.
+
+01:40.380 --> 01:42.450
+We then shut down the temporary container,
+
+01:42.450 --> 01:45.180
+like this one right here that had just been created,
+
+01:45.180 --> 01:48.690
+and we got our image ready for the next instruction.
+
+01:48.690 --> 01:52.350
+And the image that we're using is that file system snapshot,
+
+01:52.350 --> 01:54.360
+the modified one that we just created
+
+01:54.360 --> 01:56.580
+when we installed Redis.
+
+01:56.580 --> 01:57.900
+So you can now imagine
+
+01:57.900 --> 02:00.330
+that we are now passing on to the next step.
+
+02:00.330 --> 02:03.270
+We are essentially passing along the Alpine image,
+
+02:03.270 --> 02:06.213
+but with Redis added on top.
+
+02:07.380 --> 02:10.680
+So we then move on to the command Redis server instruction.
+
+02:10.680 --> 02:13.020
+We again get the image from the previous step.
+
+02:13.020 --> 02:15.390
+We again create a temporary container out of it,
+
+02:15.390 --> 02:16.290
+but this time around,
+
+02:16.290 --> 02:18.810
+rather than executing a command inside there,
+
+02:18.810 --> 02:21.240
+which is the purpose of the run instruction,
+
+02:21.240 --> 02:23.640
+we instead use the CMD instruction,
+
+02:23.640 --> 02:27.030
+which is used to specify what the container should do,
+
+02:27.030 --> 02:28.170
+or excuse me, what the image should do
+
+02:28.170 --> 02:30.393
+when it is started up as a container.
+
+02:31.830 --> 02:34.410
+So we told the temporary container that we just created
+
+02:34.410 --> 02:36.480
+that whenever it gets started in the future,
+
+02:36.480 --> 02:40.290
+it should try to execute the command redis-server.
+
+02:40.290 --> 02:41.850
+And the result was a container
+
+02:41.850 --> 02:44.343
+that has a modified primary command.
+
+02:45.210 --> 02:47.340
+We then shut down that temporary container
+
+02:47.340 --> 02:49.920
+and we got it ready, where you took an image out of it,
+
+02:49.920 --> 02:52.260
+and got it ready for the next instruction.
+
+02:52.260 --> 02:54.450
+But in that case, there are no more instructions,
+
+02:54.450 --> 02:57.180
+no more steps to execute inside this file.
+
+02:57.180 --> 03:00.060
+And so the output of the overall series of steps
+
+03:00.060 --> 03:02.190
+is whatever image was generated
+
+03:02.190 --> 03:06.120
+during the last instruction inside of our Docker file.
+
+03:06.120 --> 03:08.040
+All right, so like I said, just a quick recap
+
+03:08.040 --> 03:11.400
+on that entire process one more time, because it is,
+
+03:11.400 --> 03:12.570
+it's not super critical
+
+03:12.570 --> 03:14.100
+that you have an in-depth understanding here,
+
+03:14.100 --> 03:16.260
+but it definitely makes a lot of this Docker stuff
+
+03:16.260 --> 03:20.910
+a lot easier if you have a good grasp on this entire flow.
+
+03:20.910 --> 03:22.440
+So let's take a quick pause right here
+
+03:22.440 --> 03:24.390
+and we'll continue in the next section.

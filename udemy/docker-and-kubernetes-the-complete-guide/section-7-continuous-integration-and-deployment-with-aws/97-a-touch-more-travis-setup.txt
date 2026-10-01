@@ -1,0 +1,304 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+Instructor: In the last section,
+
+00:01.763 --> 00:04.170
+we started putting together our Travis.yml file.
+
+00:04.170 --> 00:06.450
+Remember, this is the file that's gonna tell Travis
+
+00:06.450 --> 00:08.550
+what we want it to do with our code.
+
+00:08.550 --> 00:12.300
+So we've now told it that we have a copy of Docker running,
+
+00:12.300 --> 00:14.100
+and we've also told it to build an image
+
+00:14.100 --> 00:16.440
+using the Dockerfile.dev file.
+
+00:16.440 --> 00:19.230
+We now need to add in one last little line of configuration
+
+00:19.230 --> 00:22.551
+that's gonna tell Travis how to run our test suite.
+
+00:22.551 --> 00:25.920
+So back inside of my .travis.yml file
+
+00:25.920 --> 00:28.923
+I'm gonna add in a new section called script.
+
+00:30.000 --> 00:32.070
+The script section is supposed to contain
+
+00:32.070 --> 00:34.170
+all the different commands that need to be executed
+
+00:34.170 --> 00:36.480
+to actually run our test suite.
+
+00:36.480 --> 00:38.490
+So these are gonna be a series of commands
+
+00:38.490 --> 00:41.250
+just like before install was that are going to be ran
+
+00:41.250 --> 00:43.803
+when our tests need to actually be executed.
+
+00:44.646 --> 00:46.380
+Travis CI is going to be watching
+
+00:46.380 --> 00:48.420
+the output of each of these commands,
+
+00:48.420 --> 00:49.253
+and from each command,
+
+00:49.253 --> 00:52.890
+if it ever gets a return status code other than zero
+
+00:52.890 --> 00:55.140
+Travis is going to assume that our build failed
+
+00:55.140 --> 00:57.510
+or that our test suite failed to run properly
+
+00:57.510 --> 00:58.920
+and it's going to assume that our code
+
+00:58.920 --> 01:00.033
+is essentially broken.
+
+01:00.870 --> 01:02.610
+So in order to actually run our tests,
+
+01:02.610 --> 01:04.080
+we're gonna use the same Docker command
+
+01:04.080 --> 01:05.460
+that we used just a little bit ago
+
+01:05.460 --> 01:08.910
+to start up our container out of that image right there
+
+01:08.910 --> 01:11.160
+and run the test inside of it.
+
+01:11.160 --> 01:12.900
+So, quick reminder on how we do that.
+
+01:12.900 --> 01:13.740
+We're essentially gonna say
+
+01:13.740 --> 01:16.620
+something like docker run, the image,
+
+01:16.620 --> 01:19.050
+and then we're going to override the default start command
+
+01:19.050 --> 01:22.290
+by saying npm run test, like so.
+
+01:22.290 --> 01:26.040
+Now one little gotcha here, just a tiny little gotcha.
+
+01:26.040 --> 01:28.890
+Anytime that we run our test suite on Travis CI,
+
+01:28.890 --> 01:31.500
+Travis is going to assume that our test suite runs
+
+01:31.500 --> 01:33.150
+and then exits automatically.
+
+01:33.150 --> 01:33.983
+And he essentially says,
+
+01:33.983 --> 01:36.450
+"Okay, I either successfully ran all tests
+
+01:36.450 --> 01:38.970
+or something wrong just occurred."
+
+01:38.970 --> 01:42.030
+However, the default behavior of npm run test,
+
+01:42.030 --> 01:42.900
+let's run this right now
+
+01:42.900 --> 01:45.900
+and you'll see what the default behavior is.
+
+01:45.900 --> 01:49.290
+So the default behavior is to run our test suite one time
+
+01:49.290 --> 01:51.390
+and then present us with this menu right here
+
+01:51.390 --> 01:54.210
+that says, "Okay, well, I'm just gonna sit here
+
+01:54.210 --> 01:55.920
+and wait for you to tell me
+
+01:55.920 --> 01:58.230
+whether you want to do some more tests
+
+01:58.230 --> 02:02.250
+or filter or do whatever else."
+
+02:02.250 --> 02:04.470
+So the default npm run test command
+
+02:04.470 --> 02:08.130
+just kind of hangs there and never exits ever.
+
+02:08.130 --> 02:10.230
+And so if we ran this on Travis CI,
+
+02:10.230 --> 02:13.800
+Travis would say, "Well, you know, it's been like 30 days
+
+02:13.800 --> 02:16.920
+and I'm still waiting here for the results of npm run test."
+
+02:16.920 --> 02:18.060
+And they're never gonna come
+
+02:18.060 --> 02:20.130
+because NPM run test just sits and hangs
+
+02:20.130 --> 02:22.950
+and waits for input from you and I.
+
+02:22.950 --> 02:24.840
+So to work around this
+
+02:24.840 --> 02:27.270
+and make sure that the test suite automatically exits
+
+02:27.270 --> 02:29.850
+the instant that the first run is completed,
+
+02:29.850 --> 02:32.670
+we're gonna add on a little additional command up here.
+
+02:32.670 --> 02:37.350
+We're gonna say -- --coverage, like so.
+
+02:37.350 --> 02:40.110
+So notice how there's two sets of dashes.
+
+02:40.110 --> 02:41.210
+So I'm gonna run that.
+
+02:42.120 --> 02:44.550
+And then we're going to see that the test suite runs
+
+02:44.550 --> 02:47.040
+and then exits back to the command line.
+
+02:47.040 --> 02:48.387
+You'll notice that when it runs,
+
+02:48.387 --> 02:50.550
+we get a little bit of output right here.
+
+02:50.550 --> 02:53.400
+This is essentially telling us how much code
+
+02:53.400 --> 02:55.860
+inside of our project is being covered by our tests.
+
+02:55.860 --> 02:58.830
+In reality, it's essentially saying how many lines of code
+
+02:58.830 --> 03:00.690
+or functions or whatever it might be
+
+03:00.690 --> 03:03.810
+actually got executed when the tests were executed.
+
+03:03.810 --> 03:04.830
+Now, it's totally fine
+
+03:04.830 --> 03:07.140
+that we return this stuff to Travis CI again.
+
+03:07.140 --> 03:09.570
+The only thing that Travis cares about is the status code
+
+03:09.570 --> 03:12.030
+that comes back from running this command.
+
+03:12.030 --> 03:15.510
+So we're just gonna add on that -- --coverage
+
+03:15.510 --> 03:18.450
+just to make sure that the npm run test command
+
+03:18.450 --> 03:21.750
+automatically exits when the test suite is done.
+
+03:21.750 --> 03:24.930
+Okay, so with that in mind, back at script right here,
+
+03:24.930 --> 03:28.140
+to run our test suite, we're gonna say docker run.
+
+03:28.140 --> 03:31.050
+Then we'll provide the name of the image that we just built,
+
+03:31.050 --> 03:34.143
+stephengrider/docker-react,
+
+03:35.430 --> 03:37.410
+and then we'll override the default command
+
+03:37.410 --> 03:42.030
+by saying npm run test -- --coverage.
+
+03:42.030 --> 03:44.430
+Again, don't forget the two sets of dashes there
+
+03:44.430 --> 03:46.623
+with the space in between.
+
+03:48.690 --> 03:50.820
+All right, and that is pretty much it.
+
+03:50.820 --> 03:52.770
+That's all we have to do right now.
+
+03:52.770 --> 03:55.020
+So now anytime that Travis sees
+
+03:55.020 --> 03:57.960
+that we have pushed a new commit up to GitHub,
+
+03:57.960 --> 03:59.550
+it's gonna clone all of our code
+
+03:59.550 --> 04:01.920
+and then use these series of directions
+
+04:01.920 --> 04:04.500
+to build our docker image, run some tests,
+
+04:04.500 --> 04:07.950
+and then report on whether our tests succeeded or failed.
+
+04:07.950 --> 04:09.690
+So let's save this file.
+
+04:09.690 --> 04:11.160
+We're gonna take a break right now
+
+04:11.160 --> 04:13.853
+and then we'll test out the setup in the next section.

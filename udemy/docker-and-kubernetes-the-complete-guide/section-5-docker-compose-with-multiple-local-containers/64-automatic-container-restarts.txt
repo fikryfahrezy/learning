@@ -1,0 +1,736 @@
+WEBVTT
+
+00:00.720 --> 00:02.610
+-: In the last section, we started taking a look
+
+00:02.610 --> 00:05.340
+at how we can get Docker Compose to automatically maintain
+
+00:05.340 --> 00:07.140
+and restart our containers.
+
+00:07.140 --> 00:08.610
+We added in a little bit of code
+
+00:08.610 --> 00:10.680
+to our node server to make sure
+
+00:10.680 --> 00:12.420
+that anytime we visited our route
+
+00:12.420 --> 00:14.580
+the server would automatically exit.
+
+00:14.580 --> 00:15.900
+When we visited that route
+
+00:15.900 --> 00:17.942
+we were then able to flip on over
+
+00:17.942 --> 00:19.770
+to our terminal and see that our container stopped.
+
+00:19.770 --> 00:22.020
+We were also able to run Docker ps
+
+00:22.020 --> 00:23.280
+and verify that, yep
+
+00:23.280 --> 00:25.410
+we only have one container now running.
+
+00:25.410 --> 00:26.670
+So in this section we're gonna figure out
+
+00:26.670 --> 00:28.320
+exactly how we can get Docker Compose
+
+00:28.320 --> 00:31.743
+to automatically restart that crashed or stopped container.
+
+00:32.580 --> 00:34.620
+Now the first thing I wanna tell you about
+
+00:35.689 --> 00:37.230
+is that little line of code that we added inside
+
+00:37.230 --> 00:39.810
+of our index.js file inside of here.
+
+00:39.810 --> 00:41.910
+We added in process.exit
+
+00:41.910 --> 00:44.910
+and passed in the number zero right there.
+
+00:44.910 --> 00:46.410
+The zero that we're adding in right there
+
+00:46.410 --> 00:49.650
+is what we refer to as a exit status code.
+
+00:49.650 --> 00:51.930
+By adding in a zero, we are indicating
+
+00:51.930 --> 00:54.180
+that we just exited our node server
+
+00:54.180 --> 00:56.670
+and we exited because we wanted to.
+
+00:56.670 --> 00:57.690
+Everything is okay.
+
+00:57.690 --> 00:59.220
+We didn't run into any errors.
+
+00:59.220 --> 01:00.750
+We stopped that running process
+
+01:00.750 --> 01:02.700
+because we meant to.
+
+01:02.700 --> 01:06.390
+if we added in a status code of anything besides zero
+
+01:06.390 --> 01:10.367
+so 1, 2, 3, 300, 400, 500,
+
+01:10.367 --> 01:12.660
+5,000, any number besides zero
+
+01:12.660 --> 01:14.820
+that means that our running process exited
+
+01:14.820 --> 01:18.300
+because an error occurred or something went wrong.
+
+01:18.300 --> 01:21.150
+Now that's a very important little tidbit to be aware of
+
+01:21.150 --> 01:24.330
+because it's going to affect exactly how Docker decides
+
+01:24.330 --> 01:26.460
+whether or not to restart our containers.
+
+01:26.460 --> 01:29.400
+So just keep that in your mind for just a moment.
+
+01:29.400 --> 01:31.320
+Okay, so here's how we're going to get Docker Compose
+
+01:31.320 --> 01:33.570
+to automatically restart a container
+
+01:33.570 --> 01:36.870
+we're going to specify something called a restart policy
+
+01:36.870 --> 01:39.280
+inside of our Docker Compose file
+
+01:40.663 --> 01:42.374
+there are four different restart policies.
+
+01:42.374 --> 01:43.207
+So we have access to.
+
+01:43.207 --> 01:44.040
+By default
+
+01:44.040 --> 01:46.530
+we have the no restart policy assigned
+
+01:46.530 --> 01:48.030
+to all of our containers.
+
+01:48.030 --> 01:50.760
+The no restart policy means if this thing crashes
+
+01:50.760 --> 01:54.900
+for any reason, do not attempt to restart the container.
+
+01:54.900 --> 01:57.030
+We also get the always restart policy
+
+01:57.030 --> 01:58.470
+which as you might guess means
+
+01:58.470 --> 02:01.590
+if the container stops for absolutely any reason whatsoever
+
+02:01.590 --> 02:04.080
+automatically attempt to restart it.
+
+02:04.080 --> 02:04.913
+We get two others.
+
+02:04.913 --> 02:06.210
+So we'll talk about in just a moment,
+
+02:06.210 --> 02:07.050
+but before we do
+
+02:07.050 --> 02:09.660
+let's try adding in the always restart policy
+
+02:09.660 --> 02:10.950
+to our node server
+
+02:10.950 --> 02:12.360
+and then try visiting it again
+
+02:12.360 --> 02:14.130
+and trying to get it to crash.
+
+02:14.130 --> 02:15.750
+So let's get to it.
+
+02:15.750 --> 02:17.940
+I'm gonna flip back on my code editor.
+
+02:17.940 --> 02:20.910
+I'm gonna open up my Docker Compose file
+
+02:20.910 --> 02:23.070
+and then I'm going to add a new line right
+
+02:23.070 --> 02:26.070
+after our node app specification right here.
+
+02:26.070 --> 02:28.593
+I'm gonna say restart always.
+
+02:29.610 --> 02:30.443
+So as you might guess,
+
+02:30.443 --> 02:33.540
+this specifies the always restart policy
+
+02:33.540 --> 02:36.030
+for our node app container.
+
+02:36.030 --> 02:38.520
+Notice how we specified a restart policy
+
+02:38.520 --> 02:40.350
+for one specific service
+
+02:40.350 --> 02:43.290
+or one specific container.
+
+02:43.290 --> 02:45.870
+If we wanted to add a restart policy to the writer's server
+
+02:45.870 --> 02:49.440
+we would have to add it onto that one specifically as well.
+
+02:49.440 --> 02:52.440
+But right now we'll go with just node app.
+
+02:52.440 --> 02:53.670
+Now I'm gonna save this file
+
+02:53.670 --> 02:54.660
+and we're gonna try bringing
+
+02:54.660 --> 02:57.390
+up our Docker Compose containers again
+
+02:57.390 --> 03:00.843
+and seeing what happens when our node application crashes.
+
+03:01.980 --> 03:04.350
+Okay, so I'm gonna flip back on my terminal.
+
+03:04.350 --> 03:06.647
+I'm going to hit control C to stop that
+
+03:06.647 --> 03:08.650
+Docker Compose process
+
+03:09.958 --> 03:10.800
+and then I will start them back up with
+
+03:10.800 --> 03:12.183
+Docker Compose up.
+
+03:15.600 --> 03:17.613
+We'll now flip open our browser again.
+
+03:18.450 --> 03:19.980
+I'll open a new tab.
+
+03:19.980 --> 03:21.720
+I do encourage you to make a new tab here
+
+03:21.720 --> 03:24.720
+as opposed to just refreshing the existing one you have.
+
+03:24.720 --> 03:28.020
+Sometimes Chrome does not quite refresh the server
+
+03:28.020 --> 03:31.110
+as you would expect if you reuse your tab.
+
+03:31.110 --> 03:33.933
+So I'm going to visit local host :4,001.
+
+03:35.976 --> 03:37.470
+Again, I get the error message here
+
+03:38.666 --> 03:40.727
+which is okay if I flip backward my terminal
+
+03:40.727 --> 03:41.560
+after a second and two, you'll notice
+
+03:41.560 --> 03:44.460
+that we have gotten that exit message right there.
+
+03:44.460 --> 03:45.870
+But then very quickly after that
+
+03:45.870 --> 03:48.270
+we got this new color here that essentially means
+
+03:48.270 --> 03:51.360
+that we just restarted that running container.
+
+03:51.360 --> 03:52.590
+So we've restarted the container
+
+03:52.590 --> 03:55.590
+and we again have a copy of node js listing
+
+03:55.590 --> 03:58.620
+on port 81 inside the container.
+
+03:58.620 --> 03:59.970
+One thing that's kind of interesting here is
+
+03:59.970 --> 04:02.670
+so you'll notice that we are seeing multiple listening on
+
+04:02.670 --> 04:05.400
+Port 81 messages here.
+
+04:05.400 --> 04:06.420
+That's totally fine.
+
+04:06.420 --> 04:08.910
+Technically, when you and I are stopping our container
+
+04:08.910 --> 04:10.830
+with that process.exit line
+
+04:10.830 --> 04:14.520
+we're not actually deleting the container or stopping it
+
+04:14.520 --> 04:16.920
+or anything like or killing it or anything like that.
+
+04:16.920 --> 04:19.110
+Technically the container just stopping
+
+04:19.110 --> 04:22.320
+and when Docker Compose decides to restart the container
+
+04:22.320 --> 04:25.830
+it's reusing the one that we had previously created.
+
+04:25.830 --> 04:27.790
+And so when we reuse that container
+
+04:29.208 --> 04:30.960
+we attach to the standard out log
+
+04:30.960 --> 04:33.870
+which has all the previous messages appended on it as well.
+
+04:33.870 --> 04:35.550
+And that's why we're seeing multiple listing
+
+04:35.550 --> 04:37.263
+on port 81 right here.
+
+04:38.670 --> 04:41.430
+All right, so back over to our diagrams.
+
+04:41.430 --> 04:43.830
+So as you might guess, the always restart policy says,
+
+04:43.830 --> 04:46.230
+'Hey if this container stops for any reason
+
+04:46.230 --> 04:47.730
+just go ahead and attempt to restart it.'
+
+04:47.730 --> 04:51.510
+And we just saw that in action when we crashed our server.
+
+04:51.510 --> 04:54.600
+Now we also get access to the on failure restart policy.
+
+04:54.600 --> 04:55.860
+As you might guess,
+
+04:55.860 --> 04:57.030
+the on failure policy
+
+04:57.030 --> 05:00.180
+is only going to attempt to restart the running container
+
+05:00.180 --> 05:02.160
+if we get a error code.
+
+05:02.160 --> 05:03.390
+So a status code
+
+05:03.390 --> 05:07.230
+from that process.exit line other than on zero.
+
+05:07.230 --> 05:08.063
+Let's try testing that
+
+05:08.063 --> 05:10.190
+out right now and just seeing what happens.
+
+05:11.558 --> 05:14.460
+Now, I'm going to leave process.exit inside
+
+05:14.460 --> 05:16.830
+of index.js at zero right here.
+
+05:16.830 --> 05:19.110
+Okay, so we're still going to have an exit code of zero
+
+05:19.110 --> 05:22.380
+which means we exited because we wanted to.
+
+05:22.380 --> 05:24.300
+But inside of my Docker Compose file
+
+05:24.300 --> 05:26.470
+I'm gonna change the restart policy to be
+
+05:28.664 --> 05:29.497
+on - failure
+
+05:30.480 --> 05:31.313
+like so.
+
+05:32.370 --> 05:34.380
+Now I'll go back over to my terminal,
+
+05:34.380 --> 05:36.963
+I'll stop that running process with control C.
+
+05:38.571 --> 05:39.990
+I'll then start my Docker Compose group back up
+
+05:39.990 --> 05:41.463
+with Docker Compose up.
+
+05:43.680 --> 05:46.380
+Now if I open up my browser again
+
+05:46.380 --> 05:50.373
+I'll again create a new tab and visit local host 4001.
+
+05:51.960 --> 05:53.523
+I don't get any feedback here.
+
+05:54.635 --> 05:55.468
+If I go to my terminal,
+
+05:55.468 --> 05:58.080
+I'll see that I have an exit with status code Zero
+
+05:58.080 --> 06:00.300
+and now in this case we say that,
+
+06:00.300 --> 06:02.160
+'Hey we exited because we wanted to'
+
+06:02.160 --> 06:03.600
+No error whatsoever
+
+06:03.600 --> 06:06.210
+but we specified a restart policy that says,
+
+06:06.210 --> 06:08.850
+'Only attempt to restart it if we had a failure.'
+
+06:08.850 --> 06:09.683
+So in this case
+
+06:09.683 --> 06:12.090
+we're never going to see the container restart.
+
+06:12.090 --> 06:14.310
+We would have to change our exit code
+
+06:14.310 --> 06:17.100
+in order to see it restarted when using the
+
+06:17.100 --> 06:18.513
+on failure policy.
+
+06:19.410 --> 06:21.270
+Now, if you want to test that out yourself
+
+06:21.270 --> 06:22.103
+feel free to do so.
+
+06:22.103 --> 06:24.090
+You could change the exit of zero right here
+
+06:24.090 --> 06:27.810
+to one or 10 or 100
+
+06:27.810 --> 06:30.480
+or essentially any non-zero number.
+
+06:30.480 --> 06:32.180
+Just remember that if you do that,
+
+06:33.163 --> 06:34.913
+you will have to rebuild your image
+
+06:35.979 --> 06:39.930
+by using Docker Compose up dash dash built like so.
+
+06:39.930 --> 06:41.430
+So again, if you wanna try it yourself
+
+06:41.430 --> 06:43.330
+just don't forget the dash dash built.
+
+06:44.580 --> 06:46.530
+Now, the last policy that I wanna tell you
+
+06:47.593 --> 06:49.830
+about is the unless stopped policy.
+
+06:49.830 --> 06:51.300
+So unless stopped means
+
+06:51.300 --> 06:53.380
+always attempt to restart this container
+
+06:54.327 --> 06:56.010
+unless you or I at the command line
+
+06:56.010 --> 06:58.050
+forcibly tell that container to stop
+
+06:58.050 --> 07:00.120
+by running Docker stop.
+
+07:00.120 --> 07:02.182
+So unless stopped right here
+
+07:02.182 --> 07:03.030
+basically means just always restart it.
+
+07:03.030 --> 07:04.980
+But if you and I really want it to stop,
+
+07:04.980 --> 07:06.213
+then it will stop.
+
+07:07.590 --> 07:10.530
+Now, one quick note here about the 'no' restart policy
+
+07:10.530 --> 07:11.550
+you'll notice it in this case
+
+07:11.550 --> 07:12.810
+we put quotes around,
+
+07:12.810 --> 07:15.120
+'No' that's actually on purpose.
+
+07:15.120 --> 07:16.740
+So with all the other policies
+
+07:16.740 --> 07:18.960
+like always on failure and unless stopped,
+
+07:18.960 --> 07:21.210
+you can just type in the raw policy name
+
+07:21.210 --> 07:22.950
+into your Docker Compose file.
+
+07:22.950 --> 07:25.230
+So on failure like that right there.
+
+07:25.230 --> 07:28.470
+But if you're going to make use of the 'no' restart policy
+
+07:28.470 --> 07:30.450
+you specifically have to put it in quotes
+
+07:30.450 --> 07:32.670
+either double or single.
+
+07:32.670 --> 07:35.220
+The reason for that is that in a YAML file,
+
+07:35.220 --> 07:36.240
+the value no
+
+07:36.240 --> 07:37.350
+and you can see when I type it in
+
+07:37.350 --> 07:39.360
+it appears as orange right here.
+
+07:39.360 --> 07:40.230
+So in a YAML file,
+
+07:40.230 --> 07:43.110
+the value no gets interpreted as false.
+
+07:43.110 --> 07:45.090
+So a false restart policy is
+
+07:45.090 --> 07:47.520
+different than a string of no.
+
+07:47.520 --> 07:51.472
+So that's why 'no' specifically needs to be added in quotes
+
+07:51.472 --> 07:53.160
+so that it understands this is not a Boolean false
+
+07:53.160 --> 07:55.103
+it's specifically the string, 'no.'
+
+07:56.490 --> 07:59.280
+Okay, so that's pretty much it on restart policies.
+
+07:59.280 --> 08:02.033
+Now, the last thing you might be a little bit curious about
+
+08:02.033 --> 08:03.480
+is why would we ever want to use always
+
+08:03.480 --> 08:05.460
+versus on failure?
+
+08:05.460 --> 08:06.330
+Well, it really comes down
+
+08:06.330 --> 08:08.610
+to the purpose of your Docker container.
+
+08:08.610 --> 08:09.570
+In some cases
+
+08:09.570 --> 08:12.510
+you might have a container that you always, always
+
+08:12.510 --> 08:14.970
+always want to make sure is running.
+
+08:14.970 --> 08:17.370
+A good example of this would be a web server.
+
+08:17.370 --> 08:19.710
+If you are running some public web application
+
+08:19.710 --> 08:21.540
+chances are a hundred percent
+
+08:21.540 --> 08:24.390
+of the time you want that server to be available.
+
+08:24.390 --> 08:26.040
+And so if you are running some type
+
+08:26.040 --> 08:27.840
+of web application, well
+
+08:27.840 --> 08:30.540
+I would kind of expect you to use the always restart policy
+
+08:30.540 --> 08:31.952
+so that you are
+
+08:31.952 --> 08:34.560
+at least always attempting to keep your server running.
+
+08:34.560 --> 08:35.490
+On the other hand
+
+08:35.490 --> 08:39.030
+if you are running some type of worker process
+
+08:39.030 --> 08:42.042
+like some container that is meant to do some amount
+
+08:42.042 --> 08:44.310
+of processing on some file and then naturally exit
+
+08:44.310 --> 08:46.210
+that would probably be a good use case
+
+08:47.468 --> 08:48.570
+for the on failure policy
+
+08:48.570 --> 08:49.920
+because that worker container might eventually
+
+08:49.920 --> 08:51.003
+finish its job,
+
+08:51.899 --> 08:52.732
+it might finish processing a file
+
+08:52.732 --> 08:54.840
+and when it's completed processing that file
+
+08:54.840 --> 08:56.730
+Well, you probably don't wanna start it back
+
+08:56.730 --> 08:58.170
+up because it finished its job
+
+08:58.170 --> 09:00.000
+and you should probably just let it die
+
+09:00.000 --> 09:02.940
+and let it close out and not get restarted.
+
+09:02.940 --> 09:05.550
+And so if you have a worker process of some sort
+
+09:05.550 --> 09:07.680
+well that's probably where I would expect you to use the
+
+09:07.680 --> 09:09.600
+on failure policy.
+
+09:09.600 --> 09:10.650
+Okay, so that's pretty much it.
+
+09:10.650 --> 09:12.900
+That's how we get Docker Compose to automatically
+
+09:12.900 --> 09:14.220
+maintain our containers.
+
+09:14.220 --> 09:15.630
+Now, there's one last little note
+
+09:15.630 --> 09:17.220
+that I wanna share around Docker Compose.
+
+09:17.220 --> 09:18.630
+So let's take a quick break right here
+
+09:18.630 --> 09:20.403
+and continue in the next section.

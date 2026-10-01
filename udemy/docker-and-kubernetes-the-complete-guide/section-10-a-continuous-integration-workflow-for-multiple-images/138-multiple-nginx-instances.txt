@@ -1,0 +1,391 @@
+WEBVTT
+
+00:01.020 --> 00:01.853
+-: In the last section
+
+00:01.853 --> 00:03.810
+we started putting together production versions
+
+00:03.810 --> 00:06.780
+of our Docker files for nginx server and worker.
+
+00:06.780 --> 00:07.860
+We're now going to start to move forward
+
+00:07.860 --> 00:09.750
+to our client project.
+
+00:09.750 --> 00:12.180
+Now, we're going to be writing a production Docker file
+
+00:12.180 --> 00:14.310
+for a React project right here.
+
+00:14.310 --> 00:16.530
+As you might recall, we already did this
+
+00:16.530 --> 00:19.260
+during our single container deployment section
+
+00:19.260 --> 00:21.510
+many, many videos ago.
+
+00:21.510 --> 00:24.000
+I took the liberty of opening up the Docker file
+
+00:24.000 --> 00:25.060
+from that project
+
+00:25.909 --> 00:28.200
+and I'm going to pull it on the screen here really quickly.
+
+00:28.200 --> 00:30.060
+So again, this is the production Docker file
+
+00:30.060 --> 00:33.180
+for the single container deployment that we worked on before
+
+00:33.180 --> 00:36.660
+specifically tailored to a React type application.
+
+00:36.660 --> 00:38.670
+Although to be honest, we could have used it just as well
+
+00:38.670 --> 00:40.653
+with any other front end framework.
+
+00:42.540 --> 00:44.640
+This was a multi-stage deployment
+
+00:44.640 --> 00:47.973
+where we first started with a node image.
+
+00:49.200 --> 00:50.730
+We installed all of our dependencies
+
+00:50.730 --> 00:53.760
+and then ran NPM run build to build production versions
+
+00:53.760 --> 00:55.860
+of all of our assets.
+
+00:55.860 --> 00:57.990
+We then started up a second layer right here
+
+00:57.990 --> 01:00.180
+or a second phase of the build process
+
+01:00.180 --> 01:02.070
+where we started from nginx.
+
+01:02.070 --> 01:03.453
+We opened up port 80,
+
+01:04.980 --> 01:06.810
+and then we copied over the production version
+
+01:06.810 --> 01:10.050
+of all of our assets into that image.
+
+01:10.050 --> 01:11.370
+So that's what we did before
+
+01:11.370 --> 01:14.160
+on this single container deployment.
+
+01:14.160 --> 01:16.020
+Now things this time around are going to be just
+
+01:16.020 --> 01:19.740
+very slightly different than what we had back then.
+
+01:19.740 --> 01:22.950
+So here's a diagram of the single container deployment.
+
+01:22.950 --> 01:26.370
+We had the nginx with production versions
+
+01:26.370 --> 01:28.110
+of our React files inside of it,
+
+01:28.110 --> 01:31.650
+and that was all running on an Elastic Beanstalk instance.
+
+01:31.650 --> 01:34.770
+Anytime a browser made a request to Elastic Beanstalk,
+
+01:34.770 --> 01:37.950
+nginx automatically responded on port 80
+
+01:37.950 --> 01:40.653
+with the production version of those React files.
+
+01:41.580 --> 01:43.560
+Now I want to give you a quick reminder of how
+
+01:43.560 --> 01:46.510
+our architecture is a little bit different this time around
+
+01:47.370 --> 01:48.870
+with our multi container set up
+
+01:48.870 --> 01:51.630
+specifically in the development environment.
+
+01:51.630 --> 01:53.850
+So this time on this project,
+
+01:53.850 --> 01:57.930
+browser will make a request into the initial nginx server.
+
+01:57.930 --> 01:59.220
+And this nginx server right here,
+
+01:59.220 --> 02:02.550
+this is specifically responsible for routing
+
+02:02.550 --> 02:05.853
+and making sure that requests get to the correct backend.
+
+02:07.110 --> 02:09.180
+When a request goes off to get our production,
+
+02:09.180 --> 02:11.130
+or excuse me, our React assets,
+
+02:11.130 --> 02:13.770
+a request is made or forwarded onto port 3000
+
+02:13.770 --> 02:15.243
+on the React server.
+
+02:16.200 --> 02:17.940
+Now when we move into production,
+
+02:17.940 --> 02:21.243
+we have to take that port 3000 right there into account.
+
+02:22.290 --> 02:25.500
+So this time around we're still going to have a nginx server
+
+02:25.500 --> 02:27.810
+that is solely dedicated to serving up
+
+02:27.810 --> 02:29.850
+our production React files.
+
+02:29.850 --> 02:33.060
+But this time around, rather than listening on port 80
+
+02:33.060 --> 02:35.280
+and being like the first jump inside of the
+
+02:35.280 --> 02:37.500
+Elastic Beanstalk instance,
+
+02:37.500 --> 02:40.350
+it's going to be listening on port 3000.
+
+02:40.350 --> 02:42.660
+And users are only going to be able to access
+
+02:42.660 --> 02:44.160
+this nginx server right here
+
+02:44.160 --> 02:45.630
+with all of our production files
+
+02:45.630 --> 02:48.690
+by first going through the other copy of nginx
+
+02:48.690 --> 02:51.933
+that is specifically responsible for, again, routing.
+
+02:52.830 --> 02:54.930
+So between the previous version of this
+
+02:54.930 --> 02:56.460
+React front end Docker file
+
+02:56.460 --> 03:00.000
+and all this kind of production-izing of the React project
+
+03:00.000 --> 03:03.360
+before we will, we're 100% concerned with port 80,
+
+03:03.360 --> 03:06.030
+this time around we need to do a little bit of configuration
+
+03:06.030 --> 03:08.580
+of the nginx server to make sure that it instead
+
+03:08.580 --> 03:11.490
+listens on port 3000 and still exposes
+
+03:11.490 --> 03:15.873
+all the React production assets on Port 3000, instead.
+
+03:17.070 --> 03:18.690
+Now, quick question, you might have.
+
+03:18.690 --> 03:21.360
+You might be curious, "Steven we've got two copies
+
+03:21.360 --> 03:23.040
+of nginx right here.
+
+03:23.040 --> 03:27.060
+Could we, instead, just like make use of one copy?
+
+03:27.060 --> 03:29.520
+Like maybe just have a single copy of nginx
+
+03:29.520 --> 03:31.650
+that listens on port 80,
+
+03:31.650 --> 03:33.900
+and both service up production React files,
+
+03:33.900 --> 03:36.930
+and does routing to our back end services?
+
+03:36.930 --> 03:38.670
+You know, in this case we'd only have the express server
+
+03:38.670 --> 03:40.440
+but we could very easily have other services
+
+03:40.440 --> 03:41.790
+back here, as well."
+
+03:41.790 --> 03:43.290
+The answer to that is "Yes."
+
+03:43.290 --> 03:45.090
+We could absolutely collapse this down
+
+03:45.090 --> 03:48.090
+to just use one single nginx server.
+
+03:48.090 --> 03:49.710
+However, there are definite reasons
+
+03:49.710 --> 03:52.650
+that you might want to run multiple copies of nginx.
+
+03:52.650 --> 03:54.840
+The easiest reason for that might be
+
+03:54.840 --> 03:57.570
+maybe two serve up our production React files over here,
+
+03:57.570 --> 03:59.430
+maybe we were not running nginx.
+
+03:59.430 --> 04:04.430
+Maybe it was a much more simplistic file system data store.
+
+04:05.040 --> 04:06.930
+And so there was no nginx there and it was just like,
+
+04:06.930 --> 04:10.830
+flat files were being served for whatever crazy reason.
+
+04:10.830 --> 04:11.730
+So if that was the case
+
+04:11.730 --> 04:14.220
+we would still need to have the nginx server out here
+
+04:14.220 --> 04:15.810
+and still have it route traffic
+
+04:15.810 --> 04:17.460
+looking for our production assets
+
+04:17.460 --> 04:19.980
+to some specific port where users could get
+
+04:19.980 --> 04:21.780
+our production files.
+
+04:21.780 --> 04:24.810
+So it just happens that in our example right now
+
+04:24.810 --> 04:27.570
+we are using nginx for both of these servers.
+
+04:27.570 --> 04:29.940
+It could be very well possible,
+
+04:29.940 --> 04:32.790
+that we are using different services for the two.
+
+04:32.790 --> 04:35.280
+And because of that, I want to give you the more like,
+
+04:35.280 --> 04:37.680
+complete, complicated example here
+
+04:37.680 --> 04:38.880
+to get you a little bit more ready
+
+04:38.880 --> 04:41.400
+for real world production deployments.
+
+04:41.400 --> 04:44.430
+Where you might have one container responsible for routing
+
+04:44.430 --> 04:46.980
+and a different container entirely responsible
+
+04:46.980 --> 04:49.110
+for serving up your front end assets.
+
+04:49.110 --> 04:51.510
+So yes, we could condense the two down
+
+04:51.510 --> 04:53.070
+to just one nginx server,
+
+04:53.070 --> 04:54.840
+but we're going to leave it as two separate servers
+
+04:54.840 --> 04:57.690
+just to give you a little bit more complex example
+
+04:57.690 --> 05:00.753
+that transitions to the real world a little bit more nicely.
+
+05:01.830 --> 05:03.420
+Okay? So a lot of talking.
+
+05:03.420 --> 05:05.760
+At the end of the day all I'm really trying to say here is
+
+05:05.760 --> 05:09.210
+when we build our production Docker file for the React app,
+
+05:09.210 --> 05:10.860
+we need to customize nginx
+
+05:10.860 --> 05:12.960
+to make sure that it listens on port 3000.
+
+05:12.960 --> 05:14.610
+And that's pretty much it.
+
+05:14.610 --> 05:16.920
+So with that in mind, let's take a quick pause.
+
+05:16.920 --> 05:18.330
+We're going to come back the next section,
+
+05:18.330 --> 05:20.070
+we're going to start working on the Docker file
+
+05:20.070 --> 05:21.450
+for our client project.
+
+05:21.450 --> 05:23.100
+So I'll see you in just a moment.

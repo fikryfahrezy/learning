@@ -1,0 +1,142 @@
+WEBVTT
+
+00:00.340 --> 00:04.150
+So we now find ourselves at the end of our little user experience journey.
+
+00:04.150 --> 00:12.340
+And as such, I would like to leave you with some parting thoughts and opinions and commentary, as
+
+00:12.340 --> 00:13.030
+it were.
+
+00:13.210 --> 00:18.310
+There are lots of things I could tell you at this point, but I think where I want to sort of begin
+
+00:18.340 --> 00:25.960
+is that I want you to remember that user experience design encompasses a whole lot more than just what's
+
+00:25.960 --> 00:33.310
+seen on the screen than just what the system does, what it looks like, what it acts like.
+
+00:33.400 --> 00:34.870
+It's a lot more than that.
+
+00:34.870 --> 00:35.250
+Okay.
+
+00:35.260 --> 00:37.870
+And most importantly, it's informed.
+
+00:37.870 --> 00:44.650
+It's derived from the attitudes, the expectations, the preconceptions that we all carry with us about
+
+00:44.650 --> 00:49.600
+a particular thing, how it's supposed to work, how we envision it will work, how we speculate it
+
+00:49.600 --> 00:50.380
+might work.
+
+00:50.500 --> 00:57.340
+Whether an experience is positive or negative is largely dependent on the incentives that people have
+
+00:57.340 --> 00:58.470
+to use that thing.
+
+00:58.480 --> 01:03.980
+In fact, that very scenario is what gave birth to the term change management in business to business
+
+01:03.980 --> 01:04.460
+environments.
+
+01:04.460 --> 01:09.890
+You know IT consultants have been saying this for years because in order to make people actually use
+
+01:09.890 --> 01:13.490
+something, you have to persuade them to change their behaviors first.
+
+01:13.490 --> 01:15.200
+And how do you do that?
+
+01:15.200 --> 01:22.400
+Well, by satisfying their needs, by giving them a good reason to participate in the experience, by
+
+01:22.400 --> 01:24.040
+providing value.
+
+01:24.050 --> 01:25.040
+In other words.
+
+01:25.240 --> 01:32.750
+Okay, good user experience looks like feels like, smells like and is by its very nature, value in
+
+01:32.750 --> 01:41.150
+order to drive success, in order to have profitability, whatever your criteria for succeeding is the
+
+01:41.150 --> 01:47.690
+experience, the system or the app or the site or whatever it is delivers has to contain value certainly
+
+01:47.690 --> 01:51.050
+for the end users, but also for the creator.
+
+01:51.080 --> 01:56.510
+Okay, Whether that's you or whether it's a business you're working for, there has to be value, okay?
+
+01:56.510 --> 01:57.770
+There has to be trust.
+
+01:57.770 --> 02:04.100
+And that trust has to be built by enabling successful task completion, which means it's fast, it's
+
+02:04.100 --> 02:05.570
+intuitive, it's efficient.
+
+02:05.570 --> 02:11.900
+Okay, Any one of those adjectives, when that doesn't happen, the thing falls flat on its face.
+
+02:11.930 --> 02:15.860
+It doesn't work and it doesn't achieve the intended results.
+
+02:15.860 --> 02:16.130
+Okay.
+
+02:16.130 --> 02:21.590
+From our perspective as a user, the mantra is basically this If this doesn't make my life easier,
+
+02:21.590 --> 02:22.790
+I'm not using it.
+
+02:23.450 --> 02:23.840
+Okay.
+
+02:23.840 --> 02:26.710
+We all have more than enough on our plates at any given time.
+
+02:26.720 --> 02:28.090
+That's a reality.
+
+02:28.100 --> 02:28.370
+Okay.
+
+02:28.370 --> 02:29.720
+That's where we are right now.
+
+02:29.720 --> 02:35.990
+We're living in information overload daily, so anything that doesn't help simplify our daily process,
+
+02:35.990 --> 02:41.330
+whether it's a work process or a personal process, is either ignored or it's misused.
+
+02:41.330 --> 02:48.200
+So if an electronic screen of any kind is the delivery medium for what you're doing, you have to recognize
+
+02:48.200 --> 02:54.140
+that the user experience people have is the critical indicator of the value you are providing.
+
+02:54.140 --> 03:00.350
+If there's no value to users, there is no value coming back to you or back to the client that you're
+
+03:00.350 --> 03:01.190
+working for.
+
+03:01.460 --> 03:04.550
+User experience equals value.

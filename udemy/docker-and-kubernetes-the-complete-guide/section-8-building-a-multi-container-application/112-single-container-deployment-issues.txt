@@ -1,0 +1,235 @@
+WEBVTT
+
+00:01.350 --> 00:02.183
+-: In last section,
+
+00:02.183 --> 00:04.500
+we finished up our single container deployment
+
+00:04.500 --> 00:06.960
+over to Amazon Elastic Beanstalk.
+
+00:06.960 --> 00:08.760
+Before we move on, quick reminder,
+
+00:08.760 --> 00:11.730
+please do not forget to terminate the application
+
+00:11.730 --> 00:13.080
+that we just put together.
+
+00:13.080 --> 00:13.913
+I put directions
+
+00:13.913 --> 00:16.320
+for terminating the app in the last section.
+
+00:16.320 --> 00:18.330
+Kind of a quick text section that shows you very
+
+00:18.330 --> 00:20.640
+quickly how to terminate the application.
+
+00:20.640 --> 00:21.870
+You need to terminate that thing
+
+00:21.870 --> 00:24.120
+so that you do not get billed money.
+
+00:24.120 --> 00:25.710
+If you're okay with paying a couple of bucks,
+
+00:25.710 --> 00:27.720
+then you can certainly leave the application running.
+
+00:27.720 --> 00:29.430
+But if you don't want to be billed any money,
+
+00:29.430 --> 00:32.580
+then please make sure that you terminate the application.
+
+00:32.580 --> 00:34.350
+All right, so we finished up the application
+
+00:34.350 --> 00:35.820
+on the entire deployment successfully,
+
+00:35.820 --> 00:37.980
+but there was a couple of big-ticket items
+
+00:37.980 --> 00:40.290
+in there that I think were kind of big issues.
+
+00:40.290 --> 00:43.770
+Things that we did not quite do as well as we could have.
+
+00:43.770 --> 00:45.750
+So here are some of the issues that I think we ran
+
+00:45.750 --> 00:49.290
+into with that single container deployment process.
+
+00:49.290 --> 00:51.780
+First off, the entire application was very simple.
+
+00:51.780 --> 00:54.060
+It was a single React application backed
+
+00:54.060 --> 00:56.010
+up by an NGINX server.
+
+00:56.010 --> 00:58.710
+Not a real a lot of complexity there.
+
+00:58.710 --> 01:01.590
+We weren't relying upon any outside services
+
+01:01.590 --> 01:03.657
+or databases or anything like that.
+
+01:03.657 --> 01:06.390
+And so I think that if we are going to really get mastery
+
+01:06.390 --> 01:09.120
+of containers and deployment and all that kind of stuff,
+
+01:09.120 --> 01:09.953
+we might need to work
+
+01:09.953 --> 01:12.330
+on an application that is a little bit more complex.
+
+01:12.330 --> 01:14.340
+And maybe has kind of a intermix
+
+01:14.340 --> 01:16.040
+of a couple of different services.
+
+01:17.070 --> 01:18.540
+The other thing that I wanna point out is
+
+01:18.540 --> 01:21.540
+that we were building our image multiple times.
+
+01:21.540 --> 01:23.160
+We built out our image over
+
+01:23.160 --> 01:25.410
+on Travis CI when we ran our tests,
+
+01:25.410 --> 01:27.990
+and we also built the image a second time
+
+01:27.990 --> 01:30.660
+after we pushed all of our code through Travis
+
+01:30.660 --> 01:33.210
+over to Amazon Elastic Beanstalk.
+
+01:33.210 --> 01:34.200
+And I'm gonna suggest that,
+
+01:34.200 --> 01:36.210
+maybe that wasn't the best approach
+
+01:36.210 --> 01:38.940
+because we were essentially taking our web server
+
+01:38.940 --> 01:40.380
+or the web application,
+
+01:40.380 --> 01:43.740
+and we were using it to build our image.
+
+01:43.740 --> 01:45.870
+Chances are, we really want our web server
+
+01:45.870 --> 01:48.870
+to be just concerned with running our web server,
+
+01:48.870 --> 01:51.180
+and we probably don't want to have it to have
+
+01:51.180 --> 01:54.480
+to do this extra process of building out our image.
+
+01:54.480 --> 01:57.120
+So I think that maybe that was kind of a bad approach
+
+01:57.120 --> 02:00.630
+to allow our Docker image to be built multiple times,
+
+02:00.630 --> 02:02.460
+and most especially, allow it to build
+
+02:02.460 --> 02:04.593
+on our active running web server.
+
+02:06.090 --> 02:08.160
+The third item and this is very close related
+
+02:08.160 --> 02:10.170
+to the first one we just spoke about,
+
+02:10.170 --> 02:12.930
+we had a very simple, very straightforward application.
+
+02:12.930 --> 02:15.510
+It did not make use of any outside services.
+
+02:15.510 --> 02:17.820
+So there was no database that we made use of,
+
+02:17.820 --> 02:22.530
+no API, no Redis server for caching or anything like that.
+
+02:22.530 --> 02:25.560
+So I think that if we really want to get some mastery
+
+02:25.560 --> 02:28.290
+of Docker and really understand how this stuff works,
+
+02:28.290 --> 02:29.640
+we probably need to work
+
+02:29.640 --> 02:32.550
+on a little bit more complicated application.
+
+02:32.550 --> 02:34.230
+And that's exactly what we're gonna start doing
+
+02:34.230 --> 02:35.370
+in this section.
+
+02:35.370 --> 02:36.210
+We're gonna figure out
+
+02:36.210 --> 02:39.150
+how to build a multi-container application
+
+02:39.150 --> 02:42.030
+that makes use of multiple different databases
+
+02:42.030 --> 02:45.810
+or sources of information, tie it all together with Docker
+
+02:45.810 --> 02:48.570
+and Docker Compose, and then eventually deployed off
+
+02:48.570 --> 02:52.770
+to Amazon Beanstalk as a multi-container application.
+
+02:52.770 --> 02:54.630
+So let's take a quick pause right here.
+
+02:54.630 --> 02:56.100
+We're gonna continue in the next section,
+
+02:56.100 --> 02:58.230
+and we're gonna talk about the specifics
+
+02:58.230 --> 03:00.510
+of the application that we're gonna put together.
+
+03:00.510 --> 03:02.160
+So I'll see you in just a minute.

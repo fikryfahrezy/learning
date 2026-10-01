@@ -1,0 +1,292 @@
+WEBVTT
+
+00:01.251 --> 00:03.398
+-: (narrator) In this section we're gonna wire up
+
+00:03.398 --> 00:04.650
+both the other page.js file
+
+00:04.650 --> 00:09.650
+and the fib.js file two, our app.js component
+
+00:10.320 --> 00:13.140
+which can be found inside the SRC directory
+
+00:13.140 --> 00:15.540
+because we're making use of two separate components here
+
+00:15.540 --> 00:17.730
+and we want to have some navigation between the two.
+
+00:17.730 --> 00:20.820
+We're gonna make use of the React router dom library.
+
+00:20.820 --> 00:22.500
+So before we forget, let's add that
+
+00:22.500 --> 00:27.300
+as a dependency to the clients' package.json file.
+
+00:27.300 --> 00:28.830
+So inside of my client directory
+
+00:28.830 --> 00:31.440
+I'll find package.json.
+
+00:31.440 --> 00:33.270
+I'll find the list of dependencies.
+
+00:33.270 --> 00:34.890
+And then inside of here, I'm gonna add
+
+00:34.890 --> 00:39.890
+on the React Router dom package at version 4.3.1.
+
+00:41.700 --> 00:42.600
+And we're also making use
+
+00:42.600 --> 00:44.910
+of the Axios library for making some requests.
+
+00:44.910 --> 00:48.243
+So I'll add on Axios here as well at version 018.0.
+
+00:50.040 --> 00:51.810
+And as usual, please double check and make sure
+
+00:51.810 --> 00:54.900
+that you get commas in all the appropriate locations.
+
+00:54.900 --> 00:59.133
+So comma 1, 2, 3, 4, and then no comma after Axios.
+
+01:00.090 --> 01:01.290
+I'll then save this file
+
+01:02.670 --> 01:06.420
+and then we will open up the app.js file.
+
+01:06.420 --> 01:08.100
+So here's app.js.
+
+01:08.100 --> 01:10.530
+So essentially all we wanna do is import
+
+01:10.530 --> 01:12.000
+in the two components we just made
+
+01:12.000 --> 01:15.630
+to this thing and then wire them up to React router.
+
+01:15.630 --> 01:17.610
+Now that might sound like it's really complicated
+
+01:17.610 --> 01:19.980
+if you're not coming from the world of React, but trust me
+
+01:19.980 --> 01:21.840
+it won't be that bad.
+
+01:21.840 --> 01:23.160
+The first thing we're going to do is add
+
+01:23.160 --> 01:26.520
+in a couple of import statements at the top of the file.
+
+01:26.520 --> 01:31.350
+So I'll say import rouser router, as router
+
+01:31.350 --> 01:34.200
+also import route and link.
+
+01:34.200 --> 01:35.600
+And that's all going to come
+
+01:37.110 --> 01:40.203
+from the React router dom library.
+
+01:43.620 --> 01:46.140
+I'll then import the two components that we just created.
+
+01:46.140 --> 01:50.340
+So other page from ./other page
+
+01:50.340 --> 01:53.733
+and I'll import fib from ./fib.
+
+01:58.140 --> 01:59.640
+All right, now down inside
+
+01:59.640 --> 02:02.850
+of the render method of the app component
+
+02:02.850 --> 02:05.070
+you'll notice that there's already a return statement inside
+
+02:05.070 --> 02:06.030
+of here.
+
+02:06.030 --> 02:07.890
+We're gonna wrap all the markup that already
+
+02:07.890 --> 02:11.490
+exists right here with a new router, component.
+
+02:11.490 --> 02:14.250
+So I'll put in the router tag like so I'll close it
+
+02:14.250 --> 02:17.820
+off at the very bottom, and then I'm going to indent the div
+
+02:17.820 --> 02:19.220
+and everything inside of it.
+
+02:22.710 --> 02:25.650
+Next up, I'm gonna find the P tag inside of here.
+
+02:25.650 --> 02:27.873
+I'm gonna delete the entire paragraph tag.
+
+02:28.860 --> 02:30.333
+I'll replace it with a Div.
+
+02:32.220 --> 02:35.070
+And this dig, div is gonna have two routes associated
+
+02:35.070 --> 02:36.060
+with it.
+
+02:36.060 --> 02:40.560
+I'll make a route with props exact and path equal
+
+02:40.560 --> 02:42.960
+to forward slash and I'll define a
+
+02:42.960 --> 02:45.153
+component property of fib.
+
+02:46.380 --> 02:49.980
+And then the second route will have a path
+
+02:49.980 --> 02:53.640
+of /other page and that will show the component
+
+02:53.640 --> 02:56.553
+as you might guess, other page.
+
+02:59.220 --> 03:02.250
+And then finally, very last thing inside the header
+
+03:02.250 --> 03:06.240
+after the image tag and the H one, I'll place a link tag
+
+03:06.240 --> 03:10.743
+to the root route and I'll give it the text home.
+
+03:11.580 --> 03:13.620
+And then right next to it I'll do another link tag
+
+03:13.620 --> 03:18.620
+to other page and I'll give it the text other page like so.
+
+03:22.586 --> 03:24.780
+So now when our application first boots up
+
+03:24.780 --> 03:27.750
+it's going to attempt to show the component associated
+
+03:27.750 --> 03:28.650
+with the root route.
+
+03:28.650 --> 03:30.600
+So that's gonna be the Fib calculator.
+
+03:30.600 --> 03:33.810
+Essentially all the stuff that you see right here
+
+03:33.810 --> 03:36.690
+inside the header, we're also gonna show links to go
+
+03:36.690 --> 03:38.430
+to the current page that we're already on.
+
+03:38.430 --> 03:40.800
+So essentially just like an identity route right here.
+
+03:40.800 --> 03:42.000
+But we'll also show a link to go
+
+03:42.000 --> 03:43.770
+to this other page component
+
+03:43.770 --> 03:45.930
+which is associated with this route right here.
+
+03:45.930 --> 03:47.880
+Again, the only reason that we're doing this is so
+
+03:47.880 --> 03:51.030
+that if you're from the React JS world and you are familiar
+
+03:51.030 --> 03:52.800
+with React router, you'll know how to kind of set
+
+03:52.800 --> 03:55.260
+up some basic routing with Engine X and make sure
+
+03:55.260 --> 03:57.630
+that it correctly works with HTML five routing.
+
+03:57.630 --> 03:58.920
+And again, that's something that we'll talk
+
+03:58.920 --> 04:01.080
+about a little bit later on.
+
+04:01.080 --> 04:01.913
+So that's pretty much it.
+
+04:01.913 --> 04:05.820
+For this application, we have put together two components.
+
+04:05.820 --> 04:08.400
+We wired them up inside the app.js file.
+
+04:08.400 --> 04:11.190
+The fib component is going to attempt to fetch information
+
+04:11.190 --> 04:13.800
+from the Express API and show it on the screen.
+
+04:13.800 --> 04:16.590
+It also has the ability to eventually take some input
+
+04:16.590 --> 04:18.090
+from the user and post it up
+
+04:18.090 --> 04:21.780
+as a new index that needs to be calculated by the back end.
+
+04:21.780 --> 04:23.970
+Now one last quick thing that I wanna check here.
+
+04:23.970 --> 04:25.320
+We might have made a little typo.
+
+04:25.320 --> 04:27.090
+Yeah, I think we made a little typo.
+
+04:27.090 --> 04:27.930
+Let's take a quick pause.
+
+04:27.930 --> 04:29.430
+We're gonna come back to the next section and fix
+
+04:29.430 --> 04:32.010
+up one tiny little issue that I realized we just
+
+04:32.010 --> 04:33.630
+made. fully my mistake.
+
+04:33.630 --> 04:36.080
+So quick pause and I'll see you in just a minute.

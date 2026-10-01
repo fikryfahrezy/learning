@@ -1,0 +1,1078 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+Speaker: In the last section,
+
+00:01.643 --> 00:05.340
+we went over the majority of our client-pod.yaml file.
+
+00:05.340 --> 00:08.160
+We spoke about what a pod is and what its purpose is.
+
+00:08.160 --> 00:10.620
+We also spoke about the spec section down here a little bit
+
+00:10.620 --> 00:12.240
+but we have not yet spoken very much
+
+00:12.240 --> 00:14.370
+about this metadata section.
+
+00:14.370 --> 00:15.930
+Now, very quickly on metadata,
+
+00:15.930 --> 00:18.060
+the name is pretty much what you would expect.
+
+00:18.060 --> 00:19.890
+It's gonna name the pod that gets created
+
+00:19.890 --> 00:23.580
+and this is mostly used for a lot of logging purposes.
+
+00:23.580 --> 00:26.340
+We're gonna see the name of client-pod used
+
+00:26.340 --> 00:28.950
+when we start using kubectl to print out information
+
+00:28.950 --> 00:31.410
+about our running cluster at the terminal.
+
+00:31.410 --> 00:33.060
+Now, the other piece of information inside
+
+00:33.060 --> 00:36.540
+of metadata is labels right here with component web
+
+00:36.540 --> 00:39.570
+and that's very tightly coupled to the other config file
+
+00:39.570 --> 00:42.060
+that we're going to start to discuss right now.
+
+00:42.060 --> 00:43.110
+So, in this section,
+
+00:43.110 --> 00:45.840
+we're gonna focus on the second config file we put together,
+
+00:45.840 --> 00:48.450
+the one with a kind of service.
+
+00:48.450 --> 00:51.480
+So, let's talk about what's going on inside here.
+
+00:51.480 --> 00:52.980
+All right, so at this point,
+
+00:52.980 --> 00:56.070
+we've spoken about the object with type pod.
+
+00:56.070 --> 00:58.470
+A pod is used anytime we want to run one
+
+00:58.470 --> 01:01.740
+or more very closely related containers.
+
+01:01.740 --> 01:02.790
+So, we're now gonna start talking
+
+01:02.790 --> 01:06.450
+about a second kind of very commonly used object.
+
+01:06.450 --> 01:08.430
+The second object type that we're gonna discuss,
+
+01:08.430 --> 01:10.080
+and again, this is a type that we're going
+
+01:10.080 --> 01:13.560
+to be discussing just so much throughout this course
+
+01:13.560 --> 01:14.820
+because all this networking stuff
+
+01:14.820 --> 01:17.400
+is so important to understand.
+
+01:17.400 --> 01:18.660
+Anyways, second object type,
+
+01:18.660 --> 01:20.010
+yeah, services.
+
+01:20.010 --> 01:22.260
+We use this object type anytime that we want
+
+01:22.260 --> 01:24.210
+to set up some amount of networking
+
+01:24.210 --> 01:26.373
+inside of a Kubernetes cluster.
+
+01:27.300 --> 01:29.340
+So, let's take a look at a couple diagrams
+
+01:29.340 --> 01:30.870
+that are going to give you a better idea
+
+01:30.870 --> 01:34.650
+of exactly what a service is and how it behaves.
+
+01:34.650 --> 01:36.480
+And the first thing I want you to understand,
+
+01:36.480 --> 01:37.740
+is that in the world of pods,
+
+01:37.740 --> 01:39.390
+we have basically just pods
+
+01:39.390 --> 01:41.640
+that's it, like that is the object type.
+
+01:41.640 --> 01:43.380
+But in the world of services,
+
+01:43.380 --> 01:46.380
+there are four very commonly used subtypes,
+
+01:46.380 --> 01:48.240
+in fact there's only four subtypes.
+
+01:48.240 --> 01:50.430
+And so I've listed all the subtypes
+
+01:50.430 --> 01:52.653
+of the service object type right here.
+
+01:53.820 --> 01:54.960
+So as a service,
+
+01:54.960 --> 01:57.965
+we can create a service of type ClusterIP,
+
+01:57.965 --> 02:00.930
+NodePort, Load balancer and Ingress.
+
+02:00.930 --> 02:02.760
+Inside of our particular file,
+
+02:02.760 --> 02:04.620
+we specified a object type
+
+02:04.620 --> 02:06.990
+or a primary object type of service
+
+02:06.990 --> 02:08.430
+with the kind property up here.
+
+02:08.430 --> 02:10.800
+And then inside of the spec section,
+
+02:10.800 --> 02:12.480
+we specified a subtype
+
+02:12.480 --> 02:16.380
+or a type of service known as a NodePort.
+
+02:16.380 --> 02:19.503
+So we are making a NodePort service.
+
+02:21.390 --> 02:24.960
+The purpose of a NodePort service is to expose a container
+
+02:24.960 --> 02:26.340
+to the outside world,
+
+02:26.340 --> 02:27.630
+or in other words,
+
+02:27.630 --> 02:29.460
+to be able to allow you,
+
+02:29.460 --> 02:31.770
+like you as a developer on your computer,
+
+02:31.770 --> 02:33.420
+to open up your web browser
+
+02:33.420 --> 02:36.000
+and access that running container.
+
+02:36.000 --> 02:40.470
+A NodePort service is only good for development purposes
+
+02:40.470 --> 02:43.230
+and we do not use NodePort as a service type
+
+02:43.230 --> 02:45.210
+inside of production environments,
+
+02:45.210 --> 02:48.510
+outside of one or two very specific exceptions
+
+02:48.510 --> 02:49.740
+and actually, one of those exceptions
+
+02:49.740 --> 02:51.480
+is something we're going to cover later on,
+
+02:51.480 --> 02:53.310
+inside this course.
+
+02:53.310 --> 02:55.650
+Now, you'll notice that on the other service types on here,
+
+02:55.650 --> 02:58.440
+I'm not putting any notes or anything on here,
+
+02:58.440 --> 03:00.690
+we are going talk about the other service types
+
+03:00.690 --> 03:02.880
+in tremendous detail throughout this course,
+
+03:02.880 --> 03:04.590
+again, services and networking
+
+03:04.590 --> 03:06.480
+is a very important topic to understand,
+
+03:06.480 --> 03:08.550
+but if I added in those other descriptions right now,
+
+03:08.550 --> 03:10.230
+it would just be a little bit confusing,
+
+03:10.230 --> 03:12.180
+so I'm gonna leave the other descriptions off.
+
+03:12.180 --> 03:13.013
+And for right now,
+
+03:13.013 --> 03:16.113
+we're just gonna focus on the NodePort service type.
+
+03:17.340 --> 03:19.890
+Okay, so again NodePort is something that we use
+
+03:19.890 --> 03:22.410
+to expose a container to the outside world
+
+03:22.410 --> 03:24.990
+and essentially allow you and I to access that container
+
+03:24.990 --> 03:26.223
+inside of our browser.
+
+03:27.240 --> 03:28.800
+Now, I wanna show you a series of diagrams
+
+03:28.800 --> 03:29.940
+to give you a better idea
+
+03:29.940 --> 03:32.400
+of what this service is doing for us,
+
+03:32.400 --> 03:33.750
+so inside this diagram,
+
+03:33.750 --> 03:36.030
+the overall blue box is our computer.
+
+03:36.030 --> 03:37.350
+And so at some point in time,
+
+03:37.350 --> 03:38.280
+you and I are going to want
+
+03:38.280 --> 03:40.410
+to open up our browser and connect
+
+03:40.410 --> 03:42.090
+to that multi-client container
+
+03:42.090 --> 03:44.550
+that is running inside of our pod.
+
+03:44.550 --> 03:46.770
+That pod, and the container inside of it,
+
+03:46.770 --> 03:49.590
+are running on the local Kubernetes node.
+
+03:49.590 --> 03:50.943
+Remember this is the,
+
+03:52.410 --> 03:53.243
+VM,
+
+03:53.243 --> 03:55.650
+created by minikube,
+
+03:55.650 --> 03:58.200
+that is running on your local machine.
+
+03:58.200 --> 04:01.110
+Now, when we create that service of type NodePort,
+
+04:01.110 --> 04:03.330
+it's gonna set up a communication layer
+
+04:03.330 --> 04:05.370
+between the outside world
+
+04:05.370 --> 04:08.790
+and the container running inside of that pod.
+
+04:08.790 --> 04:10.050
+You'll notice that there's another box
+
+04:10.050 --> 04:12.720
+on here called the kube-proxy.
+
+04:12.720 --> 04:15.390
+Every single node or every single member
+
+04:15.390 --> 04:17.280
+of a Kubernetes cluster that we create
+
+04:17.280 --> 04:20.310
+has a program on it called the kube-proxy.
+
+04:20.310 --> 04:23.910
+The kube-proxy is essentially the one single window
+
+04:23.910 --> 04:25.470
+to the outside world.
+
+04:25.470 --> 04:28.170
+So anytime that request comes into a node,
+
+04:28.170 --> 04:31.650
+it's going to flow through this thing called the kube-proxy.
+
+04:31.650 --> 04:33.780
+This proxy is going to inspect the request
+
+04:33.780 --> 04:35.070
+and decide how to route it
+
+04:35.070 --> 04:37.290
+to different services or different pods
+
+04:37.290 --> 04:40.350
+that we may have created inside of this node.
+
+04:40.350 --> 04:43.140
+So right now, I'm only reflecting one service right here.
+
+04:43.140 --> 04:44.610
+But over time, we might end up
+
+04:44.610 --> 04:47.280
+with multiple different services.
+
+04:47.280 --> 04:48.300
+Something like that right there,
+
+04:48.300 --> 04:50.190
+as messy as that may be.
+
+04:50.190 --> 04:51.990
+And so when we end up with multiple services
+
+04:51.990 --> 04:53.370
+inside of a single node,
+
+04:53.370 --> 04:54.990
+it would be up to kube-proxy
+
+04:54.990 --> 04:56.550
+to make sure that incoming requests,
+
+04:56.550 --> 04:58.863
+are sent off to the appropriate service.
+
+05:01.200 --> 05:03.570
+Now, when request comes into the NodePort service
+
+05:03.570 --> 05:04.950
+that you and I are going to create,
+
+05:04.950 --> 05:07.500
+it's going to attempt to take that request
+
+05:07.500 --> 05:09.780
+and forward it onto port 3000
+
+05:09.780 --> 05:11.790
+on our multi-client container,
+
+05:11.790 --> 05:14.433
+that we defined to run inside of our pod.
+
+05:15.540 --> 05:17.730
+Now, that gives you an idea of the placement
+
+05:17.730 --> 05:19.110
+of the service here,
+
+05:19.110 --> 05:20.790
+but that doesn't really,
+
+05:20.790 --> 05:22.920
+kind of describe everything else
+
+05:22.920 --> 05:24.330
+that's going on inside of here.
+
+05:24.330 --> 05:26.700
+So, what's going on with the three different ports?
+
+05:26.700 --> 05:29.310
+And what's going on with the selector down here?
+
+05:29.310 --> 05:30.900
+Let's take a look at another diagram
+
+05:30.900 --> 05:32.610
+that's going to be slightly more detailed
+
+05:32.610 --> 05:33.600
+than this one right here,
+
+05:33.600 --> 05:34.830
+that's gonna give you a better idea
+
+05:34.830 --> 05:36.720
+of those different pieces of configuration
+
+05:36.720 --> 05:38.580
+and their purpose.
+
+05:38.580 --> 05:40.440
+Okay, so very similar diagram,
+
+05:40.440 --> 05:42.183
+just with more detail added in.
+
+05:45.120 --> 05:47.190
+I just gotta fix that thing or I'm gonna go crazy.
+
+05:47.190 --> 05:49.290
+Okay, so on the service you'll notice I added in,
+
+05:49.290 --> 05:51.540
+kind of a long statement right here.
+
+05:51.540 --> 05:54.030
+If you look at the client's configuration file,
+
+05:54.030 --> 05:56.310
+you'll notice that at the very bottom is a selector
+
+05:56.310 --> 05:59.040
+that says component:web
+
+05:59.040 --> 06:01.620
+You'll also notice that there's nothing else inside
+
+06:01.620 --> 06:03.723
+this file that seems to indicate,
+
+06:04.710 --> 06:07.380
+that this service should be handling network traffic
+
+06:07.380 --> 06:10.200
+for our pod with a name of client-pod.
+
+06:10.200 --> 06:11.280
+Here's the pod file,
+
+06:11.280 --> 06:13.143
+it's got a name of client-pod.
+
+06:13.980 --> 06:16.230
+Here's the service file,
+
+06:16.230 --> 06:18.720
+nowhere in here do we say client-pod.
+
+06:18.720 --> 06:19.553
+So in other words,
+
+06:19.553 --> 06:20.386
+there's nothing inside of here
+
+06:20.386 --> 06:23.490
+that says I need to send...
+
+06:23.490 --> 06:25.830
+traffic to client-pod.
+
+06:25.830 --> 06:28.950
+There's no declaration like that inside of here.
+
+06:28.950 --> 06:31.470
+Instead, rather than referring to the service,
+
+06:31.470 --> 06:33.000
+versus maybe the pod that we want to have
+
+06:33.000 --> 06:34.830
+this service direct traffic to,
+
+06:34.830 --> 06:37.200
+rather than using any naming system,
+
+06:37.200 --> 06:39.180
+we instead use a system in Kubernetes
+
+06:39.180 --> 06:42.570
+called the Label Selector System.
+
+06:42.570 --> 06:44.340
+So inside of this service file,
+
+06:44.340 --> 06:45.480
+you'll notice that down at the bottom
+
+06:45.480 --> 06:49.080
+we have a selector of component:web
+
+06:49.080 --> 06:51.660
+And then over here back inside of the pod file,
+
+06:51.660 --> 06:56.460
+we have a metadata labels property of component:web
+
+06:56.460 --> 06:59.643
+That's how these two different objects get linked together.
+
+07:00.780 --> 07:02.670
+When the service first boots up,
+
+07:02.670 --> 07:03.510
+it's going to say,
+
+07:03.510 --> 07:05.190
+okay, I need to do some port forwarding.
+
+07:05.190 --> 07:08.610
+I don't know who I'm supposed to forward this traffic to.
+
+07:08.610 --> 07:11.190
+It's then going to see its selector property down here
+
+07:11.190 --> 07:12.023
+and it's gonna say,
+
+07:12.023 --> 07:15.300
+oh okay, I'm gonna look for any other pod
+
+07:15.300 --> 07:17.430
+or any other object that is running
+
+07:17.430 --> 07:19.890
+that has a key value pair,
+
+07:19.890 --> 07:22.320
+of component:web
+
+07:22.320 --> 07:24.360
+And if I see any other object running
+
+07:24.360 --> 07:26.220
+inside this Kubernetes cluster
+
+07:26.220 --> 07:28.980
+with the label of component:web
+
+07:28.980 --> 07:31.170
+I'm going to direct all traffic
+
+07:31.170 --> 07:33.930
+to these ports on that thing.
+
+07:33.930 --> 07:35.640
+So the service that we've created
+
+07:35.640 --> 07:38.160
+and the pod that we created are linked together
+
+07:38.160 --> 07:40.980
+by the label inside the client-pod
+
+07:40.980 --> 07:43.710
+and the selector inside the service.
+
+07:43.710 --> 07:44.910
+Now, the one thing that I want to make sure
+
+07:44.910 --> 07:46.680
+is really clear is that the selector
+
+07:46.680 --> 07:49.080
+that we've used here of component:web
+
+07:49.080 --> 07:51.120
+is 100% arbitrary.
+
+07:51.120 --> 07:54.213
+So we could have just as easily called this thing like tier,
+
+07:55.170 --> 07:56.760
+front-end.
+
+07:56.760 --> 07:57.960
+If we had made that change,
+
+07:57.960 --> 07:59.010
+we would just need to make sure
+
+07:59.010 --> 08:01.710
+that the client pod has the same label as well.
+
+08:01.710 --> 08:03.120
+And so back inside the client pod,
+
+08:03.120 --> 08:06.180
+we would need to have tier front-end as well,
+
+08:06.180 --> 08:09.000
+to make sure that the two are a hundred percent identical
+
+08:09.000 --> 08:10.800
+and match up perfectly.
+
+08:10.800 --> 08:13.080
+Now, I am going to undo those changes
+
+08:13.080 --> 08:15.720
+and I'm gonna go back over to component:web
+
+08:15.720 --> 08:17.943
+on both configuration files.
+
+08:19.230 --> 08:20.400
+Okay, so again,
+
+08:20.400 --> 08:21.930
+when the service boots up, it says
+
+08:21.930 --> 08:24.000
+I'm going to look at my selector property
+
+08:24.000 --> 08:24.833
+and it's going to see
+
+08:24.833 --> 08:28.200
+that it has a key value pair of component:web
+
+08:28.200 --> 08:30.600
+It's then going to reach out in the Kubernetes cluster
+
+08:30.600 --> 08:34.200
+and it's gonna find every other object that has a label
+
+08:34.200 --> 08:36.630
+of component:web
+
+08:36.630 --> 08:38.580
+And it's going to attempt to expose
+
+08:38.580 --> 08:42.000
+port 3000 to the outside world more or less.
+
+08:42.000 --> 08:43.290
+And so of course our pod needs
+
+08:43.290 --> 08:46.240
+to have the appropriate label of component:web
+
+08:47.760 --> 08:49.050
+Okay so,
+
+08:49.050 --> 08:50.820
+that brings us up to speed on
+
+08:50.820 --> 08:53.910
+the selector inside the client-node pod file
+
+08:53.910 --> 08:56.940
+and the label in the client-pod file.
+
+08:56.940 --> 08:58.170
+Now, the last thing I wanna tell you about,
+
+08:58.170 --> 09:01.050
+is the collection of ports right here.
+
+09:01.050 --> 09:02.250
+We have ports,
+
+09:02.250 --> 09:03.875
+TargetPort,
+
+09:03.875 --> 09:05.670
+NodePort, all these different things.
+
+09:05.670 --> 09:07.050
+Now, one quick thing I just realized,
+
+09:07.050 --> 09:08.490
+I put ports right here,
+
+09:08.490 --> 09:09.720
+that is a little typo
+
+09:09.720 --> 09:11.190
+it should be port singular,
+
+09:11.190 --> 09:12.390
+like so my mistake.
+
+09:12.390 --> 09:14.970
+I'll mention that again at the end of this video just
+
+09:14.970 --> 09:16.560
+to make sure that if you're speeding through this section,
+
+09:16.560 --> 09:19.050
+you don't miss out on that little fact.
+
+09:19.050 --> 09:22.110
+Okay, so in this service we have a port section.
+
+09:22.110 --> 09:24.150
+This is describing all the different collections
+
+09:24.150 --> 09:25.770
+of ports that need to be opened up
+
+09:25.770 --> 09:28.263
+or mapped on the target object.
+
+09:29.400 --> 09:30.470
+One thing I wanna point out here,
+
+09:30.470 --> 09:33.300
+is that the service ports property is an array
+
+09:33.300 --> 09:35.970
+and so we could very easily have additional ports
+
+09:35.970 --> 09:38.340
+that we're trying to be mapped on here as well.
+
+09:38.340 --> 09:39.240
+So we could do like, I don't know,
+
+09:39.240 --> 09:41.670
+9,000 or whatever it might be.
+
+09:41.670 --> 09:43.140
+Now, something that might seem a little bit weird is
+
+09:43.140 --> 09:45.930
+the fact that we have three different ports inside of here.
+
+09:45.930 --> 09:47.220
+First thing I want you to notice is
+
+09:47.220 --> 09:50.040
+that the TargetPort of 3000 is identical
+
+09:50.040 --> 09:54.780
+to the container port over inside of the pod definition.
+
+09:54.780 --> 09:55.980
+Now, that's not really a lot of help,
+
+09:55.980 --> 09:57.180
+let's just look at a diagram.
+
+09:57.180 --> 09:59.520
+It's gonna explain these different things.
+
+09:59.520 --> 10:01.020
+All right, I'm wasting time.
+
+10:01.020 --> 10:02.130
+Here we go.
+
+10:02.130 --> 10:04.170
+Okay so, inside the NodePort service,
+
+10:04.170 --> 10:05.850
+we're exposing those three different properties
+
+10:05.850 --> 10:08.220
+so we have defined those three different properties.
+
+10:08.220 --> 10:09.053
+Now, the first thing
+
+10:09.053 --> 10:11.490
+that we're defining inside there is port.
+
+10:11.490 --> 10:13.290
+Port for you and me is more
+
+10:13.290 --> 10:14.910
+or less a hundred percent worthless
+
+10:14.910 --> 10:17.640
+for the application that we are putting together right now.
+
+10:17.640 --> 10:21.840
+The port property is going to be the port that another pod
+
+10:21.840 --> 10:25.950
+or another container inside of our application could access
+
+10:25.950 --> 10:29.550
+in order to get access to the multi-client pod.
+
+10:29.550 --> 10:31.080
+So this multi-client pod right here,
+
+10:31.080 --> 10:33.180
+that represents the actual pod
+
+10:33.180 --> 10:36.510
+that the service is trying to map traffic over to,
+
+10:36.510 --> 10:37.740
+so we can imagine,
+
+10:37.740 --> 10:40.440
+if there is some other pod inside of our application,
+
+10:40.440 --> 10:42.480
+like let's say other pod,
+
+10:42.480 --> 10:43.313
+right here,
+
+10:43.313 --> 10:46.140
+there's some other pod that needs access to multi-client,
+
+10:46.140 --> 10:47.220
+it could connect to it through
+
+10:47.220 --> 10:49.620
+this port designation right here.
+
+10:49.620 --> 10:50.550
+So again, for you and I,
+
+10:50.550 --> 10:53.160
+for the application we're doing right now,
+
+10:53.160 --> 10:54.990
+this port property is not useful
+
+10:54.990 --> 10:57.720
+because we do not have any other objects
+
+10:57.720 --> 11:00.000
+or anything else inside of our Kubernetes cluster
+
+11:00.000 --> 11:03.603
+that's going to attempt to reach into that multi-client pod.
+
+11:05.250 --> 11:07.920
+Now, the next property inside there is the TargetPort.
+
+11:07.920 --> 11:08.850
+So as you might imagine,
+
+11:08.850 --> 11:11.000
+the TargetPort is the port inside
+
+11:11.000 --> 11:14.760
+of that pod that we want to open up traffic to.
+
+11:14.760 --> 11:17.010
+We used a TargetPort of 3000 right here,
+
+11:17.010 --> 11:18.150
+which indicates that we want
+
+11:18.150 --> 11:22.470
+to send any incoming traffic into port 3000,
+
+11:22.470 --> 11:23.910
+inside of this pod.
+
+11:23.910 --> 11:25.440
+And port 3000 has been mapped up
+
+11:25.440 --> 11:27.213
+to the multi-client container.
+
+11:29.070 --> 11:31.800
+Now, the last thing on here is the NodePort.
+
+11:31.800 --> 11:33.420
+You'll notice that for the NodePort,
+
+11:33.420 --> 11:35.670
+we used a rather, large port number.
+
+11:35.670 --> 11:38.010
+I used 31515.
+
+11:38.010 --> 11:40.230
+Now, the NodePort is the one that you
+
+11:40.230 --> 11:42.270
+and I probably care about the most
+
+11:42.270 --> 11:45.150
+whenever we make use of a NodePort type,
+
+11:45.150 --> 11:46.920
+the NodePort is the port that you
+
+11:46.920 --> 11:50.640
+and I inside of our browser are going to access
+
+11:50.640 --> 11:53.550
+whenever you and I like want to actually test out
+
+11:53.550 --> 11:55.860
+the container running inside that pod.
+
+11:55.860 --> 11:57.420
+So the NodePort right here is going
+
+11:57.420 --> 12:00.510
+to be essentially what you and I type into our browser.
+
+12:00.510 --> 12:01.590
+So as the URL,
+
+12:01.590 --> 12:03.660
+you know, we'll do whatever the IP address is,
+
+12:03.660 --> 12:05.580
+colon three...
+
+12:05.580 --> 12:07.230
+what was it?
+
+12:07.230 --> 12:08.883
+31515.
+
+12:09.960 --> 12:11.490
+So we're gonna type in that port
+
+12:11.490 --> 12:15.780
+into our browser in order to access the multi-client pod.
+
+12:15.780 --> 12:18.240
+So again, we can kind of ignore the port property
+
+12:18.240 --> 12:19.377
+for this application we're doing right now.
+
+12:19.377 --> 12:21.690
+The NodePort is what gets exposed
+
+12:21.690 --> 12:23.610
+to the outside world and the TargetPort
+
+12:23.610 --> 12:27.330
+is what gets opened up inside of the targeted pod.
+
+12:27.330 --> 12:28.410
+Now, the last thing I wanna mention is
+
+12:28.410 --> 12:30.660
+that the NodePort is going to always
+
+12:30.660 --> 12:33.456
+be a number between 30,000
+
+12:33.456 --> 12:35.520
+and 32,767.
+
+12:35.520 --> 12:37.650
+If you do not specify the NodePort,
+
+12:37.650 --> 12:39.300
+so we are not required to specify it,
+
+12:39.300 --> 12:41.370
+we could actually delete it if we wanted to.
+
+12:41.370 --> 12:43.260
+If we do not specify that port one
+
+12:43.260 --> 12:45.030
+will be randomly assigned to us,
+
+12:45.030 --> 12:49.680
+it'll be between 30,000 and 32,767 as well.
+
+12:49.680 --> 12:50.513
+Now, the reason,
+
+12:50.513 --> 12:52.500
+or I should say one of the reasons
+
+12:52.500 --> 12:53.730
+that you and I do not make use
+
+12:53.730 --> 12:56.190
+of the NodePort service in a production environment,
+
+12:56.190 --> 12:59.100
+is because of these funky port mappings.
+
+12:59.100 --> 13:02.700
+Obviously when a user goes to something like google.com
+
+13:02.700 --> 13:04.170
+they wanna go to google.com
+
+13:04.170 --> 13:09.170
+they don't wanna go to google.com:351515 or whatever right?
+
+13:10.470 --> 13:12.300
+Now again, that's just one reason of many
+
+13:12.300 --> 13:15.210
+that we do not use a NodePort in a production environment,
+
+13:15.210 --> 13:18.450
+outside of some very specific exceptions.
+
+13:18.450 --> 13:20.100
+Okay, so I think that explains
+
+13:20.100 --> 13:23.160
+just about everything inside of our client-pod file
+
+13:23.160 --> 13:26.280
+and the client-node port file as well.
+
+13:26.280 --> 13:27.480
+So now the last thing we have to do
+
+13:27.480 --> 13:29.460
+is take these two configuration files
+
+13:29.460 --> 13:32.010
+and we're gonna load them into our Kubernetes cluster
+
+13:32.010 --> 13:34.620
+through the kubectl command line tool.
+
+13:34.620 --> 13:37.420
+So, quick pause and we'll come back in the next section.

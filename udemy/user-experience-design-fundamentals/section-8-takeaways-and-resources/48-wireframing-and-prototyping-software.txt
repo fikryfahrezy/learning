@@ -1,0 +1,214 @@
+WEBVTT
+
+00:00.930 --> 00:05.350
+Now let's take a look at some software used to create wireframes and prototypes.
+
+00:05.370 --> 00:10.440
+As time goes by, there are more and more of these cropping up, and the ones that currently exist already
+
+00:10.440 --> 00:12.360
+just seem to keep getting better.
+
+00:12.360 --> 00:14.580
+So it can be a tough choice to make.
+
+00:14.580 --> 00:20.640
+But what you'll find is that there are sort of subtle differences between these products and you may
+
+00:20.640 --> 00:27.450
+use one or the other or both in different situations, depending on what you have to do, who you have
+
+00:27.450 --> 00:29.610
+to do it for and what the outcome needs to be.
+
+00:29.970 --> 00:36.450
+The first and easiest to use of these tools is something called balsamic mockups.
+
+00:36.480 --> 00:43.890
+It's an extremely easy to use rapid wireframing tool, emphasis on rapid because the learning curve
+
+00:43.890 --> 00:46.020
+is very, very, very low here.
+
+00:46.050 --> 00:51.360
+Balsamic aims to reproduce the experience of sketching on a whiteboard, but because you're using a
+
+00:51.360 --> 00:56.550
+computer that makes them easier to share, easier to modify, easier to put them in front of people
+
+00:56.640 --> 00:58.500
+and get feedback on what you've done.
+
+00:58.530 --> 01:04.450
+One of the most important features here is that wireframes made with balsamic look like sketches, and
+
+01:04.450 --> 01:08.170
+that means that stakeholders won't get distracted by visual details.
+
+01:08.440 --> 01:13.960
+They won't get hung up on what color something is, which allows them to focus on content, features
+
+01:13.960 --> 01:17.920
+and functions and how appropriate those things are instead.
+
+01:17.950 --> 01:23.770
+So if you're absolutely new to the idea of wireframing, I would highly suggest that you go check out
+
+01:23.770 --> 01:27.460
+balsamic.com and play around with the software.
+
+01:27.460 --> 01:31.390
+It's a really, really good place to start and they really make it easy.
+
+01:32.020 --> 01:37.570
+Azure just happens to be the one that I use most, and it allows you to very quickly create detailed
+
+01:37.570 --> 01:41.320
+wireframes with boxes, placeholders, shapes and text.
+
+01:41.350 --> 01:42.490
+To me, it's very simple.
+
+01:42.490 --> 01:43.240
+It's very easy.
+
+01:43.240 --> 01:44.480
+It's all drag and drop.
+
+01:44.500 --> 01:49.750
+What I like about it in particular is that you can use Masters to create reusable design elements,
+
+01:49.750 --> 01:53.050
+things like headers, footers, overall page templates.
+
+01:53.090 --> 01:53.370
+All right.
+
+01:53.410 --> 01:59.350
+So that if you have to make a change to a persistent component, that change is reflected everywhere
+
+01:59.350 --> 02:01.300
+that the master is used in the wireframe.
+
+02:01.330 --> 02:08.050
+The other thing that I really find valuable about Axure is the fact that I pretty much only have to
+
+02:08.050 --> 02:12.950
+click a button and Axure will generate the design to an HTML JavaScript prototype.
+
+02:12.970 --> 02:17.630
+It can be viewed in Internet Explorer and Firefox and Safari in Chrome.
+
+02:17.650 --> 02:23.830
+I can also publish it to a network, drive, a web server or a service that they provide called Axure,
+
+02:23.830 --> 02:28.630
+which means I can share it with other project team members, with clients, with whomever.
+
+02:28.660 --> 02:32.570
+They can view it, they can interact with it, and they don't have to install anything.
+
+02:32.570 --> 02:35.780
+So Axure happens to be my personal favorite.
+
+02:35.960 --> 02:38.930
+Okay, but any of these are very good choices.
+
+02:38.930 --> 02:44.540
+And again, you want to try it out, see how comfortable you are using it and see whether its features
+
+02:44.570 --> 02:45.710
+give you what you need.
+
+02:46.220 --> 02:48.800
+Hot Glue is one that I've checked out recently.
+
+02:48.800 --> 02:53.960
+And what's interesting about this one is that it's both a wireframing and a prototyping tool all in
+
+02:53.960 --> 03:00.110
+one, Much like Axure Hot Glue has a very simple, very straightforward interface which makes object
+
+03:00.110 --> 03:02.630
+selection and placement extremely, extremely easy.
+
+03:02.630 --> 03:08.660
+So it allows individuals or teams to wireframe in real time together to get work done very quickly.
+
+03:08.670 --> 03:11.120
+Another neat feature, the fact that you can collaborate.
+
+03:11.150 --> 03:13.430
+It's pretty simple to link elements to pages.
+
+03:13.460 --> 03:19.820
+It's pretty simple to set up different user scenarios with states, with view stacks, all sorts of
+
+03:19.820 --> 03:20.260
+things.
+
+03:20.270 --> 03:26.900
+It also above all, that contains a built in chat function that's pretty cool, that allows you to communicate
+
+03:26.900 --> 03:29.840
+with clients and coworkers as you're doing things.
+
+03:29.840 --> 03:34.310
+It's probably the only wireframing and prototyping software I've ever seen with a chat feature, so
+
+03:34.310 --> 03:36.050
+that alone makes it pretty unique.
+
+03:36.630 --> 03:43.440
+Much like balsamic uxpin I think is perfect for those who are sort of new to user experience design.
+
+03:43.470 --> 03:47.370
+It offers a complete toolkit of very useful design elements and patterns.
+
+03:47.370 --> 03:51.810
+Everything's built in everything you need to create a fully rendered design is pretty much here.
+
+03:51.840 --> 03:57.060
+It also makes responsive design very easy, creating something that's going to work equally well on
+
+03:57.060 --> 03:59.700
+a laptop as on a smartphone or a tablet.
+
+03:59.730 --> 04:04.950
+It has built in breakpoints that allow you to create responsive prototypes and wireframes that look
+
+04:04.950 --> 04:07.560
+really good on multiple devices and resolutions.
+
+04:07.740 --> 04:10.110
+It does a really good job of that.
+
+04:10.140 --> 04:15.660
+Finally, it's built in functionality, allows you to collaborate with teammates, with clients, with
+
+04:15.660 --> 04:21.570
+stakeholders, which means you can exchange ideas, you can discuss solutions, you can have everybody
+
+04:21.570 --> 04:24.310
+look at the design from very different perspectives.
+
+04:24.330 --> 04:29.580
+In any design process, the more collaboration you have with other people, whether they be clients
+
+04:29.580 --> 04:32.760
+or whether they be team members, the better off you're going to be.
+
+04:32.760 --> 04:39.580
+So to have some of these software applications that allow that, that encourage it, that make it very
+
+04:39.580 --> 04:42.130
+simple, really, really, really big benefits.
+
+04:42.130 --> 04:45.240
+So I'd encourage you to check out all four of these.
+
+04:45.250 --> 04:45.490
+Okay.
+
+04:45.490 --> 04:49.720
+There are many more, certainly, but these four are probably the place to start.

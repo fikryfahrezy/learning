@@ -1,0 +1,202 @@
+WEBVTT
+
+00:00.920 --> 00:06.860
+Now that you're well versed on matters of scope, I am going to ask you to do a little exercise where
+
+00:06.860 --> 00:09.560
+you create a product evolution plan.
+
+00:09.800 --> 00:10.150
+Okay.
+
+00:10.160 --> 00:12.710
+You're going to assume that you'll release your digital product.
+
+00:12.710 --> 00:16.340
+Any digital product can be made up in three staged releases.
+
+00:16.370 --> 00:21.980
+You're going to list each component of your product and you're going to assign a level of effort to
+
+00:21.980 --> 00:22.760
+each component.
+
+00:22.760 --> 00:27.950
+You're going to give it a score of three for high, two for medium and one for low.
+
+00:28.100 --> 00:33.590
+Given your competition, your resources and your time and budget, I want you to assume that you can
+
+00:33.590 --> 00:39.320
+only accommodate a total of 12 points across three staged releases.
+
+00:39.320 --> 00:41.120
+And don't worry, I'll give you an example.
+
+00:41.150 --> 00:44.690
+Your task is to define each release.
+
+00:44.690 --> 00:50.840
+You want to group those components into staged offerings that meaningfully increase the product's value
+
+00:50.840 --> 00:52.850
+to customers and to you.
+
+00:52.850 --> 00:57.740
+Okay, so if there are three stages of release at each point, what you're trying to do is make sure
+
+00:57.740 --> 01:04.080
+that you deliver more value, increased value each time, both to the people that use it and back to
+
+01:04.080 --> 01:05.310
+your own organization.
+
+01:05.700 --> 01:12.120
+So for each of your three stage releases, I want you to list the features that make up the offering.
+
+01:12.150 --> 01:15.570
+Describe the value to the customer and to the business.
+
+01:15.570 --> 01:21.600
+For each of those features, I want you to give each release a title and a short description of what
+
+01:21.600 --> 01:23.580
+it is and what its goals are.
+
+01:23.940 --> 01:26.040
+So here's an example of what I'm talking about.
+
+01:26.040 --> 01:30.060
+Let's assume that your business is an online hotel site.
+
+01:30.090 --> 01:32.850
+You're going to release this website in three phases.
+
+01:32.850 --> 01:36.510
+Starting out, you have four distinct features and functions.
+
+01:36.510 --> 01:36.720
+Okay.
+
+01:36.720 --> 01:42.000
+The first is an insider guide that provides expert advice, reservations, tickets, day planning tools,
+
+01:42.000 --> 01:43.110
+that kind of stuff.
+
+01:43.290 --> 01:48.060
+Then you're going to offer one click reservation, okay, where registered users can reserve a room
+
+01:48.060 --> 01:51.120
+with a single click, you know, like Amazon's one click shopping.
+
+01:51.300 --> 01:57.450
+Then you're going to offer dining reservations so people can book reservations at restaurants that partner
+
+01:57.450 --> 01:59.340
+with your hotel over the website.
+
+01:59.370 --> 02:05.070
+Then you're going to offer a Wi-Fi rebate free Wi-Fi service at the hotel for anyone who signs up for
+
+02:05.070 --> 02:06.240
+online services.
+
+02:06.270 --> 02:12.240
+Now you're going to assign points to each one of those based on what you think the level of value is
+
+02:12.270 --> 02:13.380
+both to customers.
+
+02:13.380 --> 02:14.940
+And again, back to you.
+
+02:14.940 --> 02:18.480
+So for insider guide, I give that a one.
+
+02:18.510 --> 02:22.230
+Okay, It's nice, but it's not earth shattering for one click reservation.
+
+02:22.230 --> 02:23.790
+That's probably right in between.
+
+02:23.790 --> 02:25.200
+So I'm going to give that a two.
+
+02:25.230 --> 02:30.270
+Dining reservations is a big deal when you're out and you're looking for places to eat.
+
+02:30.270 --> 02:31.860
+So I think that's a three.
+
+02:31.890 --> 02:33.720
+Wi-Fi rebates.
+
+02:34.140 --> 02:40.410
+It's nice, but some hotels offer free Wi-Fi service, so that may not be a big competing idea.
+
+02:40.410 --> 02:41.880
+So I'm going to give that a one.
+
+02:42.060 --> 02:44.940
+So once you've done that, you're going to plot the results.
+
+02:44.940 --> 02:47.040
+And again, we said we were going to do three results.
+
+02:47.040 --> 02:50.550
+So you have release one, release two and release three.
+
+02:50.550 --> 02:53.100
+And for each of those there's a stage.
+
+02:53.100 --> 02:53.370
+Okay.
+
+02:53.370 --> 02:55.770
+So we're going to do a description of the stage.
+
+02:55.770 --> 03:01.740
+We're going to describe customer value, what customer experience is happen during this stage, what's
+
+03:01.740 --> 03:06.690
+meaningful, and then you're going to consider the business value, which is the strategic or financial
+
+03:06.690 --> 03:08.070
+value of this stage.
+
+03:08.070 --> 03:10.530
+What does it contribute both to them and to you?
+
+03:10.530 --> 03:16.170
+And then finally, you're going to consider the points that you assigned, which is based on functionality,
+
+03:16.170 --> 03:19.500
+the list of features that are released in each stage.
+
+03:19.500 --> 03:25.230
+So for each of these releases, you will have a total number of points that get assigned.
+
+03:25.230 --> 03:32.700
+And what you want to see is you want to have it planned out so that the number of points increases from
+
+03:32.700 --> 03:40.860
+release one to release three you want value meaning usefulness to increase at each point.
+
+03:40.860 --> 03:42.390
+Okay, That's product evolution.
+
+03:42.390 --> 03:47.850
+That's making sure that as the product evolves, changes, upgrades, whatever you want to call it,
+
+03:47.880 --> 03:54.200
+the value to people and the value back to you as a creator or as the organization continues to grow.
+
+03:54.210 --> 03:54.540
+All right.
+
+03:54.540 --> 04:01.470
+So try that out and it'll give you some indication of what it takes to create a really meaningful,
+
+04:01.470 --> 04:03.810
+useful product design plan.

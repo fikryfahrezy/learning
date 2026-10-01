@@ -1,0 +1,433 @@
+WEBVTT
+
+00:01.080 --> 00:01.913
+Instructor: In the last section,
+
+00:01.913 --> 00:03.510
+we said that Kubernetes is a system
+
+00:03.510 --> 00:05.550
+for running many different types of containers
+
+00:05.550 --> 00:06.870
+over multiple machines
+
+00:06.870 --> 00:09.840
+and we choose to use it if we have an application
+
+00:09.840 --> 00:12.330
+that specifically requires us to run
+
+00:12.330 --> 00:14.730
+multiple different types of containers.
+
+00:14.730 --> 00:16.860
+If you are planning on creating an application
+
+00:16.860 --> 00:18.240
+that would largely just have
+
+00:18.240 --> 00:19.890
+one type of container inside of it,
+
+00:19.890 --> 00:23.070
+Kubernetes might not be the best solution for you.
+
+00:23.070 --> 00:25.260
+Now in this section, we're gonna continue a little bit more
+
+00:25.260 --> 00:27.090
+by talking about how we use Kubernetes
+
+00:27.090 --> 00:29.580
+in a development or production environment.
+
+00:29.580 --> 00:31.560
+And then we're going to start setting up Kubernetes
+
+00:31.560 --> 00:32.883
+on our local machine.
+
+00:33.840 --> 00:37.380
+All right, so when we work with Kubernetes,
+
+00:37.380 --> 00:39.300
+there is a very large distinction
+
+00:39.300 --> 00:41.730
+between using it in a development environment,
+
+00:41.730 --> 00:45.720
+as in on your local computer and in a production environment
+
+00:45.720 --> 00:48.330
+where you would expect some outside traffic or users
+
+00:48.330 --> 00:50.700
+to visit your application.
+
+00:50.700 --> 00:52.290
+In a development environment,
+
+00:52.290 --> 00:53.640
+we make use of Kubernetes
+
+00:53.640 --> 00:56.163
+by using a program called minikube.
+
+00:57.060 --> 01:00.360
+Minikube is a command line tool whose sole purpose is
+
+01:00.360 --> 01:03.570
+going to be to set up a tiny little Kubernetes cluster
+
+01:03.570 --> 01:07.440
+like the one you see right here on your local computer.
+
+01:07.440 --> 01:10.140
+We'll talk about what minikube does in just a little bit,
+
+01:10.140 --> 01:10.973
+but for right now,
+
+01:10.973 --> 01:12.630
+just understand that it's a program that is used
+
+01:12.630 --> 01:15.303
+to set up Kubernetes on your local machine.
+
+01:16.890 --> 01:19.890
+When we start using Kubernetes in a production capacity,
+
+01:19.890 --> 01:21.990
+we very frequently make use of what are called
+
+01:21.990 --> 01:23.703
+managed solutions.
+
+01:24.570 --> 01:27.660
+Managed solutions are references to outside cloud providers,
+
+01:27.660 --> 01:30.630
+such as Google Cloud or Amazon AWS
+
+01:30.630 --> 01:33.990
+that will set up an entire Kubernetes cluster for you
+
+01:33.990 --> 01:37.260
+and take care of a lot of very low level tasks
+
+01:37.260 --> 01:39.030
+that are required to get everything working
+
+01:39.030 --> 01:42.510
+the way you expect in a secure fashion.
+
+01:42.510 --> 01:45.570
+And so if you're making use of Kubernetes on AWS,
+
+01:45.570 --> 01:47.190
+you would be making use of something called
+
+01:47.190 --> 01:50.400
+Amazon's Elastic Container Service with Kubernetes,
+
+01:50.400 --> 01:53.340
+which is abbreviated as EKS.
+
+01:53.340 --> 01:55.530
+And if you make use of it on Google Cloud,
+
+01:55.530 --> 01:57.330
+you would be making use of something called
+
+01:57.330 --> 02:01.113
+Kubernetes Engine or GKE for short.
+
+02:02.130 --> 02:03.630
+You always also have the option
+
+02:03.630 --> 02:06.060
+to set up a Kubernetes cluster on your own
+
+02:06.060 --> 02:08.610
+as a sort of do it yourself option.
+
+02:08.610 --> 02:11.460
+And so you do not have to use these managed solutions
+
+02:11.460 --> 02:13.080
+that set up everything for you.
+
+02:13.080 --> 02:15.240
+But when you're first getting started with Kubernetes,
+
+02:15.240 --> 02:16.410
+it's without a doubt,
+
+02:16.410 --> 02:19.260
+far easier to go with one of these managed solutions
+
+02:19.260 --> 02:20.760
+until you actually really have
+
+02:20.760 --> 02:22.350
+a deep understanding of Kubernetes
+
+02:22.350 --> 02:24.093
+and how it all works together.
+
+02:25.050 --> 02:27.810
+All right, so the big takeaway in this section is that
+
+02:27.810 --> 02:29.100
+in a development environment,
+
+02:29.100 --> 02:29.940
+you and I are going to be
+
+02:29.940 --> 02:32.580
+making use of something called minikube.
+
+02:32.580 --> 02:33.750
+And a production environment,
+
+02:33.750 --> 02:37.260
+we very frequently make use of these managed solutions.
+
+02:37.260 --> 02:39.270
+Now we're gonna start installing Kubernetes
+
+02:39.270 --> 02:41.160
+on our local machine in the next section.
+
+02:41.160 --> 02:43.560
+But before we do, I wanna tell you just a little bit more
+
+02:43.560 --> 02:45.990
+about the setup process.
+
+02:45.990 --> 02:48.570
+So again, when you're developing locally,
+
+02:48.570 --> 02:51.470
+you're going to be making use of a program called minikube
+
+02:52.530 --> 02:54.960
+Minikube is gonna create a Kubernetes cluster
+
+02:54.960 --> 02:57.300
+on your local machine.
+
+02:57.300 --> 02:58.500
+And so behind the scenes,
+
+02:58.500 --> 03:00.990
+it's essentially going to create a virtual machine
+
+03:00.990 --> 03:03.000
+whose sole purpose is going to be to run
+
+03:03.000 --> 03:04.893
+some number of containers.
+
+03:05.730 --> 03:07.740
+Minikube is a program that is used to
+
+03:07.740 --> 03:09.090
+create this virtual machine
+
+03:09.090 --> 03:12.090
+or this single node on your computer.
+
+03:12.090 --> 03:14.160
+In order to interact with this thing,
+
+03:14.160 --> 03:18.630
+you and I are going to be using a program called kubectl.
+
+03:18.630 --> 03:20.640
+Kubectl is the program that is used
+
+03:20.640 --> 03:23.340
+to interact with a Kubernetes cluster in general
+
+03:23.340 --> 03:25.650
+and manage what all the different nodes are doing
+
+03:25.650 --> 03:28.800
+and what different containers they are running.
+
+03:28.800 --> 03:30.480
+So the reason I'm showing you this diagram right here
+
+03:30.480 --> 03:33.300
+is that we're gonna start using a lot of different programs
+
+03:33.300 --> 03:34.620
+to work with Kubernetes.
+
+03:34.620 --> 03:37.410
+And it's going to very quickly become a little bit confusing
+
+03:37.410 --> 03:39.600
+as to what program is doing what.
+
+03:39.600 --> 03:42.300
+And so as everything moves forward from this point on,
+
+03:42.300 --> 03:44.910
+I want you to remember that we use kubectl
+
+03:44.910 --> 03:48.990
+anytime that you want to tell a virtual machine or a node
+
+03:48.990 --> 03:51.150
+what set of containers it's supposed to be running
+
+03:51.150 --> 03:53.400
+or essentially manage what the node is doing.
+
+03:54.270 --> 03:56.310
+And we use the program minikube
+
+03:56.310 --> 03:59.580
+just to create and run a Kubernetes cluster
+
+03:59.580 --> 04:02.010
+on your local machine.
+
+04:02.010 --> 04:04.290
+When you start moving to a production environment,
+
+04:04.290 --> 04:08.250
+this minikube thing down here falls away.
+
+04:08.250 --> 04:12.270
+So we only make use of minikube in a local environment.
+
+04:12.270 --> 04:15.360
+However, kubectl is going to be a program that you use
+
+04:15.360 --> 04:17.580
+both locally and production.
+
+04:17.580 --> 04:19.980
+So even when you start to deploy your application
+
+04:19.980 --> 04:23.040
+on a Kubernetes cluster off to say Google Cloud,
+
+04:23.040 --> 04:25.923
+we will continue to use kubectl.
+
+04:27.210 --> 04:29.790
+All right, so here's what we're going to do
+
+04:29.790 --> 04:32.580
+to set up Kubernetes on our local machine.
+
+04:32.580 --> 04:35.700
+We're gonna first install that kubectl program.
+
+04:35.700 --> 04:38.820
+We then have to install a virtual machine driver
+
+04:38.820 --> 04:41.400
+that's going to allow us to create that virtual machine
+
+04:41.400 --> 04:44.850
+that we mentioned just a second ago on your local computer.
+
+04:44.850 --> 04:45.690
+Now I want you to remember
+
+04:45.690 --> 04:49.050
+back to our entire discussion about Docker a long time ago,
+
+04:49.050 --> 04:50.310
+you'll recall that we had said that
+
+04:50.310 --> 04:53.040
+when we installed Docker for Mac or Docker for Windows,
+
+04:53.040 --> 04:55.230
+it was technically creating a virtual machine
+
+04:55.230 --> 04:56.700
+at the same time.
+
+04:56.700 --> 04:58.950
+So that's essentially the same thing that's happening
+
+04:58.950 --> 05:00.240
+in the world of Kubernetes.
+
+05:00.240 --> 05:01.260
+The only difference is that
+
+05:01.260 --> 05:03.210
+Docker for Mac or Docker for Windows
+
+05:03.210 --> 05:05.190
+install that virtual machine for you
+
+05:05.190 --> 05:07.860
+and all the associated software with it.
+
+05:07.860 --> 05:11.040
+In the world of Kubernetes, not quite so automatic.
+
+05:11.040 --> 05:13.710
+You and I have to install a little bit of software
+
+05:13.710 --> 05:15.690
+that's going to allow Kubernetes to create,
+
+05:15.690 --> 05:16.740
+or minikube in this case
+
+05:16.740 --> 05:18.603
+to create a virtual machine for you.
+
+05:19.590 --> 05:21.690
+Now to install this virtual machine,
+
+05:21.690 --> 05:23.580
+we're going to be installing a program
+
+05:23.580 --> 05:26.460
+in particular called VirtualBox.
+
+05:26.460 --> 05:29.250
+So after we install a kubectl and VirtualBox,
+
+05:29.250 --> 05:31.290
+we're then going to install minikube.
+
+05:31.290 --> 05:32.760
+Again this is the piece of software
+
+05:32.760 --> 05:35.760
+that it allows you to create a Kubernetes installation
+
+05:35.760 --> 05:37.740
+on your local computer.
+
+05:37.740 --> 05:38.670
+All right, so that's it.
+
+05:38.670 --> 05:39.930
+Let's take a quick pause right here.
+
+05:39.930 --> 05:41.370
+When we come back the next section,
+
+05:41.370 --> 05:43.170
+we're gonna start going to this setup process
+
+05:43.170 --> 05:44.820
+on macOS and Windows.
+
+05:44.820 --> 05:47.270
+So quick break and I'll see you in just a minute.

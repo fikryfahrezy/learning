@@ -1,0 +1,418 @@
+WEBVTT
+
+00:00.750 --> 00:01.583
+-: In the last section,
+
+00:01.583 --> 00:03.270
+we took a look at some of the documentation
+
+00:03.270 --> 00:04.800
+that was going to be used to write
+
+00:04.800 --> 00:07.650
+our Docker run.aws.json file.
+
+00:07.650 --> 00:10.440
+So without further ado, let's get to it.
+
+00:10.440 --> 00:12.300
+I'm gonna flip over to my code editor
+
+00:12.300 --> 00:14.250
+and then side of my root project directory,
+
+00:14.250 --> 00:19.250
+I'll make a new file called dockerrun.aws.json.
+
+00:19.650 --> 00:21.690
+Now I'm gonna blow up the size of my editor here
+
+00:21.690 --> 00:24.030
+just so you can see the name very easily.
+
+00:24.030 --> 00:27.600
+Notice how it is the word docker and then the word run.
+
+00:27.600 --> 00:29.073
+So there's two r's in there.
+
+00:31.680 --> 00:33.690
+Now the file type we're going to be working with here
+
+00:33.690 --> 00:35.310
+is a Json file.
+
+00:35.310 --> 00:38.850
+So we have to enter Json file throughout this entire thing.
+
+00:38.850 --> 00:41.640
+So to get started, we're gonna put down one wrapping object
+
+00:41.640 --> 00:43.980
+with the set of curly braces like so.
+
+00:43.980 --> 00:46.260
+And then we're going to tell Elastic Beanstalk
+
+00:46.260 --> 00:49.470
+what syntax we are using inside this file.
+
+00:49.470 --> 00:54.470
+So we're gonna place AWS eb Docker run version is two.
+
+00:59.670 --> 01:00.660
+So as you might imagine
+
+01:00.660 --> 01:02.790
+there was a version one of this file
+
+01:02.790 --> 01:04.770
+or the syntax used within this file.
+
+01:04.770 --> 01:06.180
+We're using version two,
+
+01:06.180 --> 01:08.280
+which is going to have this file be interpreted
+
+01:08.280 --> 01:10.410
+in a very specific way.
+
+01:10.410 --> 01:12.840
+We'll then put a comma on the very end
+
+01:12.840 --> 01:13.950
+and then we'll start to list out
+
+01:13.950 --> 01:17.013
+all the different container definitions.
+
+01:18.750 --> 01:21.560
+Now, container definitions is very purposefully done
+
+01:21.560 --> 01:22.893
+as a plural.
+
+01:23.850 --> 01:26.670
+So definitions, we have many definitions.
+
+01:26.670 --> 01:28.290
+So we're gonna put an array in here.
+
+01:28.290 --> 01:29.490
+And then we're going to list out
+
+01:29.490 --> 01:32.610
+a number of different container definitions.
+
+01:32.610 --> 01:34.350
+For every entry that you and I
+
+01:34.350 --> 01:35.910
+put into this array right here,
+
+01:35.910 --> 01:38.760
+we're going to have one distinctly separate container
+
+01:38.760 --> 01:41.070
+created inside of our application.
+
+01:41.070 --> 01:42.120
+So at the end of the day,
+
+01:42.120 --> 01:44.430
+you and I have four custom images
+
+01:44.430 --> 01:46.740
+that we want to be hosted by Elastic Beanstalk.
+
+01:46.740 --> 01:48.990
+So we're going to add four separate entries
+
+01:48.990 --> 01:51.333
+inside of this container definitions Array.
+
+01:52.230 --> 01:53.610
+For the first one we put together,
+
+01:53.610 --> 01:55.320
+let's write out the configuration block
+
+01:55.320 --> 01:58.080
+for our client to get started.
+
+01:58.080 --> 02:00.540
+So I'm gonna put a new object inside of here
+
+02:00.540 --> 02:02.580
+with a set of curly braces
+
+02:02.580 --> 02:05.880
+and then I will provide a name for this container.
+
+02:05.880 --> 02:08.742
+The name does not have to be identical
+
+02:08.742 --> 02:12.030
+to the project name or the folder or anything like that.
+
+02:12.030 --> 02:13.500
+This is the name of your container
+
+02:13.500 --> 02:15.630
+that's going to eventually show up on the dashboard
+
+02:15.630 --> 02:17.640
+so that you can identify it.
+
+02:17.640 --> 02:19.710
+Now, just to stay consistent in all things
+
+02:19.710 --> 02:22.380
+we are going to use the same name of our sub-project.
+
+02:22.380 --> 02:27.033
+So we're gonna give it a name of client.
+
+02:29.460 --> 02:31.740
+Next up we're going to list out the image to use
+
+02:31.740 --> 02:32.970
+for this container.
+
+02:32.970 --> 02:34.530
+So again, remember every record
+
+02:34.530 --> 02:36.240
+inside of container definitions,
+
+02:36.240 --> 02:38.460
+so like this record right here
+
+02:38.460 --> 02:40.230
+corresponds to an actual container
+
+02:40.230 --> 02:42.990
+that is going to be created along with our deployment.
+
+02:42.990 --> 02:46.440
+So right here we're going to specify the exact image
+
+02:46.440 --> 02:49.023
+that will be used to represent this container.
+
+02:50.250 --> 02:51.540
+So the image we're going to use
+
+02:51.540 --> 02:53.820
+is going to be the multi-client image
+
+02:53.820 --> 02:56.040
+that we just pushed to Docker Hub.
+
+02:56.040 --> 02:58.293
+So multi client, this one right here.
+
+02:59.400 --> 03:00.960
+Now, to specify that image,
+
+03:00.960 --> 03:02.519
+this is what I was talking about nonstop
+
+03:02.519 --> 03:04.740
+in the last couple of sections when I was saying
+
+03:04.740 --> 03:06.090
+oh yeah Docker Hub is great
+
+03:06.090 --> 03:08.070
+because it's like the central repo
+
+03:08.070 --> 03:10.920
+for all these different deployment services.
+
+03:10.920 --> 03:14.250
+So in order to specify that image on Docker Hub,
+
+03:14.250 --> 03:16.720
+all you have to do is write out your Docker id
+
+03:17.610 --> 03:19.770
+and then the name of that image.
+
+03:19.770 --> 03:21.240
+So for me, it's multi-client.
+
+03:21.240 --> 03:23.670
+Chances are that for you it's the same.
+
+03:23.670 --> 03:25.763
+So when AWS sees this string right here,
+
+03:25.763 --> 03:29.280
+it's gonna say oh, they must be talking about Docker Hub.
+
+03:29.280 --> 03:31.410
+And so they're going to go off to Docker Hub,
+
+03:31.410 --> 03:33.360
+they're gonna look up your Docker id,
+
+03:33.360 --> 03:36.435
+and then see if you have a repo in there
+
+03:36.435 --> 03:39.090
+or a image with the name of multi-client.
+
+03:39.090 --> 03:41.760
+And if you do, it'll then pull down that image
+
+03:41.760 --> 03:45.020
+and use it as the basis for this container right here.
+
+03:45.020 --> 03:47.610
+So like I said, really easy to use Docker Hub
+
+03:47.610 --> 03:49.960
+with a lot of these different hosting services.
+
+03:51.990 --> 03:56.278
+Now the next thing we're going to do is set up a host name.
+
+03:56.278 --> 03:57.930
+Now the host name is a little bit more complicated.
+
+03:57.930 --> 03:59.190
+Let's fill out the entry here
+
+03:59.190 --> 04:01.590
+and I'll tell you a little bit more about what it's for.
+
+04:01.590 --> 04:04.290
+So we're gonna say that it's going to be a client.
+
+04:04.290 --> 04:05.700
+Okay, so quick reminder here.
+
+04:05.700 --> 04:08.340
+Remember that back inside of our Docker Compose file,
+
+04:08.340 --> 04:10.680
+I'm gonna open up it up GitHub here really quickly.
+
+04:10.680 --> 04:13.170
+Inside this file, we had the list of services
+
+04:13.170 --> 04:15.390
+and every service had a different name.
+
+04:15.390 --> 04:18.810
+So for example, our client was called Client.
+
+04:18.810 --> 04:20.190
+By setting up this name right here,
+
+04:20.190 --> 04:22.950
+it essentially created a new host name
+
+04:22.950 --> 04:25.980
+that could be accessed by any other container
+
+04:25.980 --> 04:28.470
+that was created by Docker Compose.
+
+04:28.470 --> 04:30.870
+And so the end result of that was, for example,
+
+04:30.870 --> 04:32.850
+inside of our Nginx folder,
+
+04:32.850 --> 04:35.400
+if you look at that default.com file,
+
+04:35.400 --> 04:36.630
+remember that inside of here
+
+04:36.630 --> 04:39.390
+we were able to reference another container
+
+04:39.390 --> 04:43.410
+simply by writing out like oh yeah, http client.
+
+04:43.410 --> 04:44.370
+So client right here you know,
+
+04:44.370 --> 04:47.160
+you would normally write something like google.com,
+
+04:47.160 --> 04:50.250
+but we were able to just write out client
+
+04:50.250 --> 04:52.830
+and that was resolved as that other container
+
+04:52.830 --> 04:55.740
+inside of our grouping of containers.
+
+04:55.740 --> 04:59.190
+And so with the Docker Compose file,
+
+04:59.190 --> 05:00.660
+we kind of set up that host name
+
+05:00.660 --> 05:03.630
+by just defining the name of the service right here.
+
+05:03.630 --> 05:06.900
+But in the world of the Dockerrunaws.json file
+
+05:06.900 --> 05:09.690
+we have to specify a very distinct host name.
+
+05:09.690 --> 05:11.220
+And so when we say host name right here,
+
+05:11.220 --> 05:13.740
+we're essentially giving every other container
+
+05:13.740 --> 05:15.660
+in this group of containers
+
+05:15.660 --> 05:18.810
+the ability to access this container right here
+
+05:18.810 --> 05:22.470
+by trying to make a request with a host name of client.
+
+05:22.470 --> 05:24.060
+So if you really wanted to mess things up,
+
+05:24.060 --> 05:26.310
+you could do something like google.com.
+
+05:26.310 --> 05:27.690
+And then if you ever tried to make a request
+
+05:27.690 --> 05:30.300
+to google.com from one of your containers,
+
+05:30.300 --> 05:32.730
+rather than going to the real google.com
+
+05:32.730 --> 05:35.250
+it would go to this container right here.
+
+05:35.250 --> 05:37.350
+And obviously that's not what we want.
+
+05:37.350 --> 05:40.150
+So we're going to give it a host name of client instead.
+
+05:41.040 --> 05:43.257
+Okay, let's take a quick pause right here
+
+05:43.257 --> 05:44.340
+and we'll continue working on the Docker run file
+
+05:44.340 --> 05:45.213
+in just a moment.

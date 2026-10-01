@@ -1,0 +1,298 @@
+WEBVTT
+
+00:01.110 --> 00:06.600
+A content inventory is a foundation of just about any kind of redesign project that you're ever going
+
+00:06.600 --> 00:07.730
+to undertake.
+
+00:07.740 --> 00:09.330
+And it's exactly what it sounds like.
+
+00:09.330 --> 00:17.310
+It's a quantitative look at all the content that makes up what people will engage with, read, interact
+
+00:17.310 --> 00:17.670
+with.
+
+00:17.670 --> 00:18.090
+ET cetera.
+
+00:18.090 --> 00:18.840
+ET cetera.
+
+00:18.870 --> 00:22.430
+Typically, a content inventory is a list of files.
+
+00:22.440 --> 00:22.630
+Okay?
+
+00:22.680 --> 00:27.960
+It's a list of content based files that are used either in a site or an application, and they use as
+
+00:27.960 --> 00:34.320
+a starting point in your path from the as is state to the to be state.
+
+00:34.440 --> 00:38.960
+And there are several reasons to create a content inventory, several ways it can help you.
+
+00:38.970 --> 00:46.080
+Number one, it helps you assess what the as is landscape of your site or your app or your system currently
+
+00:46.080 --> 00:46.710
+is.
+
+00:46.740 --> 00:52.950
+It also gives you a basis to accurately estimate the amount of work that you have to do, because you
+
+00:52.950 --> 00:56.580
+need to know the amount of content that you're going to have to deal with in one way or another.
+
+00:56.670 --> 01:04.660
+It also helps identify patterns in content structure, particularly in the case of existing sites,
+
+01:04.660 --> 01:09.910
+apps or systems, because you've got an existing infrastructure, so to speak, that you're going to
+
+01:09.910 --> 01:11.830
+have to to deal with.
+
+01:11.860 --> 01:18.790
+It also sets a baseline so that you can measure where you started from and where you wind up in the
+
+01:18.790 --> 01:19.930
+final redesign.
+
+01:20.200 --> 01:23.290
+It also gives you a basis to track migration.
+
+01:23.290 --> 01:30.250
+If you're only going to take 50% of the content that's in the current iteration, you want a way to
+
+01:30.250 --> 01:31.480
+track that migration.
+
+01:31.480 --> 01:32.590
+You know, what did we take?
+
+01:32.590 --> 01:34.300
+What did we throw out?
+
+01:34.300 --> 01:35.080
+What did we keep?
+
+01:35.080 --> 01:37.480
+What did we revise the time to do?
+
+01:37.480 --> 01:42.760
+All this is at the start of any project, any type of design or redesign project.
+
+01:42.910 --> 01:48.850
+Also, any time you're going to migrate a content management system from one to the other or an upgrade
+
+01:48.850 --> 01:54.970
+or a site redesign where you're migrating content, content inventory software allows the content manager
+
+01:54.970 --> 01:59.650
+or strategist or in some cases just the designer or developer to quickly create a site.
+
+01:59.650 --> 02:02.020
+Inventory tells you about what you've got.
+
+02:02.050 --> 02:07.480
+It gives you data on each page, the links in and out, the number of names and images, videos, documents,
+
+02:07.480 --> 02:13.270
+everything that's associated with each page, including metadata comparison features in some of these
+
+02:13.270 --> 02:15.430
+software packages are very important as well.
+
+02:15.430 --> 02:20.530
+You can run an inventory right now, save the report, run it again later, and then you can obviously
+
+02:20.530 --> 02:26.230
+see what's changed, being able to sort of quickly locate new, removed or changed files makes it a
+
+02:26.230 --> 02:28.450
+lot easier to keep that inventory up to date.
+
+02:28.480 --> 02:33.490
+It goes a long way in allowing efficient quality insurance.
+
+02:33.490 --> 02:40.360
+It helps ensure that you have a clear picture of the site or the system or the app at any given time.
+
+02:40.360 --> 02:47.110
+And that's important for the simple reason that understanding where you are makes it easier to plan
+
+02:47.110 --> 02:48.400
+where you want to be.
+
+02:49.090 --> 02:56.200
+The best and brightest of the bunch comes from content insight, whose content analysis, tool or cat
+
+02:56.230 --> 03:00.910
+saves you a lot of time by gathering a great deal of data.
+
+03:00.940 --> 03:06.710
+It automates the process of building a very comprehensive content inventory using one tool.
+
+03:06.730 --> 03:09.910
+It gives you a way to communicate website size to stakeholders.
+
+03:09.910 --> 03:13.240
+It allows you to create base documents for content audits.
+
+03:13.240 --> 03:19.330
+But what's particularly good about this tool is that even though a normal inventory will contain a hell
+
+03:19.330 --> 03:25.150
+of a lot of data, what's important is that it hits all the core areas of content.
+
+03:25.180 --> 03:32.170
+Cat inventories include, among lots of other things, your URLs, file types, images, videos, documents,
+
+03:32.170 --> 03:39.160
+metadata, one text links in links out, and it also includes a screenshot of the page, which is particularly
+
+03:39.160 --> 03:46.240
+helpful when you're going through all this stuff and you're knee deep in the 11th hour, it can become
+
+03:46.240 --> 03:49.160
+hard to sort of remember well which page is that?
+
+03:49.160 --> 03:53.570
+To have a visual reference, at least to me, is extremely helpful.
+
+03:53.570 --> 03:58.880
+It helps you make a much quicker correlation between the data that you're looking at on the screen and
+
+03:58.880 --> 04:01.700
+the actual page or screen that it belongs to.
+
+04:01.700 --> 04:07.130
+So of these content insights tool is by far the most comprehensive.
+
+04:07.460 --> 04:13.400
+In some cases it may give you more than what you want, but I think it's probably better to err on the
+
+04:13.400 --> 04:18.350
+side of having too much information when you're talking about content rather than too little.
+
+04:18.380 --> 04:23.900
+Because if you miss something and you don't account for it in your in your redesign process and your
+
+04:23.900 --> 04:29.150
+migration process and your build process, it's going to be really painful later to try and sort of
+
+04:29.150 --> 04:31.820
+wedge it in when you've already built a foundation.
+
+04:32.640 --> 04:39.120
+Screaming Frog is software that Spider's website links images, CSS script and apps.
+
+04:39.120 --> 04:44.550
+From an SEO perspective, what it does is it goes and fetches key page elements, things that are on
+
+04:44.550 --> 04:51.150
+the page, and it presents them in tabs segregated by each type, and then it allows you to filter those
+
+04:51.150 --> 04:53.070
+for common SEO issues.
+
+04:53.100 --> 04:58.620
+Now what's interesting about this one in particular is that it's really not built explicitly for content
+
+04:58.620 --> 05:02.520
+inventory, but it actually serves that purpose really well.
+
+05:02.670 --> 05:08.970
+It's really good for analyzing medium to large sites where if you had to manually check every page,
+
+05:08.970 --> 05:12.930
+it would be extremely labor intensive and in some cases impossible.
+
+05:13.140 --> 05:17.730
+It's just too much work, especially if you're one person or if you have a very small staff.
+
+05:17.760 --> 05:24.960
+Its breadth, though it's its depth, makes sure that you capture every redirect, meta refreshes,
+
+05:24.960 --> 05:32.160
+duplicate page issues, all the things that you probably may not see as clearly in a typical content
+
+05:32.260 --> 05:33.490
+inventory manager software.
+
+05:33.490 --> 05:38.050
+So this one in particular is worth checking out, even though it's an SEO tool.
+
+05:38.080 --> 05:43.330
+Again, it functions extremely, extremely well as a site inventory tool.
+
+05:44.180 --> 05:45.800
+Much like screaming frog.
+
+05:45.830 --> 05:53.720
+Xenu's Link Sleuth is also not made specifically for content inventory, but it performs that function
+
+05:53.720 --> 05:54.770
+extremely well.
+
+05:55.150 --> 06:00.440
+It's a very no frills application and its job is to check websites for broken links.
+
+06:00.440 --> 06:07.220
+And a byproduct of that process is you actually get a really comprehensive content inventory.
+
+06:07.250 --> 06:13.790
+Link verification is done on normal links, images, frames, plug ins, backgrounds, local image maps,
+
+06:13.790 --> 06:17.090
+stylesheets scripts, Java, applets, etcetera, etcetera, etcetera.
+
+06:17.090 --> 06:23.570
+So again, it's cataloging a whole lot of information across a lot of different categories.
+
+06:23.600 --> 06:30.380
+What it gives you is a continuously updated list of URLs which you can sort by different criteria and
+
+06:30.380 --> 06:35.570
+you can also produce reports for yourself, for clients, for stakeholders, for project team members,
+
+06:35.570 --> 06:36.380
+etcetera, etcetera.
+
+06:36.380 --> 06:43.400
+So even though it's it's dead simple, it's a bare bones kind of application, it actually does this
+
+06:43.400 --> 06:49.860
+job better than a lot of the more polished software that I have looked at.
+
+06:49.860 --> 06:51.330
+So that's why it made this list.
+
+06:51.330 --> 06:54.390
+It just does a really good job of capturing everything.
+
+06:54.390 --> 06:55.740
+And that's really the gig.
+
+06:55.740 --> 06:57.780
+You want to make sure you're not missing anything.
+
+06:57.780 --> 07:04.530
+You want to make sure you have an overlooked anything because those blind corners, so to speak, become
+
+07:04.530 --> 07:07.380
+real problems later on in development.
+
+07:07.380 --> 07:09.420
+So check out Link Sleuth.
+
+07:09.420 --> 07:09.990
+It's free.
+
+07:10.020 --> 07:12.690
+Play with it and see what you think.

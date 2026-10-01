@@ -1,0 +1,31 @@
+WEBVTT
+
+00:00.810 --> 00:02.910
+-: Oops, one little thing we missed
+
+00:02.910 --> 00:04.950
+in our class of fib right here,
+
+00:04.950 --> 00:07.380
+we completely forgot to export this component
+
+00:07.380 --> 00:08.520
+down at the bottom.
+
+00:08.520 --> 00:11.823
+So in fib.js, I'm gonna go down to the bottom of this file,
+
+00:12.960 --> 00:16.530
+and outside of that closing curly brace for the class fib,
+
+00:16.530 --> 00:20.250
+I'll add in export default fib, like so.
+
+00:20.250 --> 00:22.530
+Oops, again, my mistake, I apologize for that.
+
+00:22.530 --> 00:23.640
+But we're good to go now,
+
+00:23.640 --> 00:26.540
+so let's take a quick break and continue in just a moment.

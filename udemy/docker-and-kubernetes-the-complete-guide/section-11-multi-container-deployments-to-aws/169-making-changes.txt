@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00.630 --> 00:01.463
+-: In the last section,
+
+00:01.463 --> 00:03.360
+we made a very small change to our application
+
+00:03.360 --> 00:05.040
+and then redeployed it again.
+
+00:05.040 --> 00:08.490
+As usual, went up to Travis CI, that built our images,
+
+00:08.490 --> 00:10.050
+pushed them over to Docker hub,
+
+00:10.050 --> 00:11.940
+and then pushed our entire project
+
+00:11.940 --> 00:13.680
+over to Elastic Beanstalk.
+
+00:13.680 --> 00:14.970
+Elastic Beanstalk then saw
+
+00:14.970 --> 00:18.480
+the updated Dockerrun.aws.json file,
+
+00:18.480 --> 00:19.620
+pulled down the new images,
+
+00:19.620 --> 00:22.620
+and launched them as new containers for our application.
+
+00:22.620 --> 00:26.010
+So now if we revisit our link we'll see "Fib Calculator"
+
+00:26.010 --> 00:28.230
+appear as the title at the very top.
+
+00:28.230 --> 00:30.060
+Cool, so that's pretty much it.
+
+00:30.060 --> 00:32.460
+Well, we've looked through at everything we need to know
+
+00:32.460 --> 00:34.050
+about single container deployments
+
+00:34.050 --> 00:37.530
+and multi-container deployments on Elastic Beanstalk.
+
+00:37.530 --> 00:40.080
+Now, before we move on, one quick reminder here.
+
+00:40.080 --> 00:43.110
+It's extremely important for you to close down
+
+00:43.110 --> 00:46.140
+all the resources that we used during this section,
+
+00:46.140 --> 00:49.290
+unless you very specifically want to keep them around.
+
+00:49.290 --> 00:50.730
+So one last quick break.
+
+00:50.730 --> 00:51.563
+In the next section,
+
+00:51.563 --> 00:53.280
+we're going to walk through the process together
+
+00:53.280 --> 00:56.193
+of shutting down all the resources that we just created.

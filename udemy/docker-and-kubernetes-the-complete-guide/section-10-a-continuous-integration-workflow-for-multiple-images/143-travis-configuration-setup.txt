@@ -1,0 +1,589 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+-: In the last section,
+
+00:01.643 --> 00:04.200
+we put together the production version of our Docker file
+
+00:04.200 --> 00:06.420
+for the client project.
+
+00:06.420 --> 00:07.860
+Now that we've got production versions
+
+00:07.860 --> 00:10.680
+and we've essentially productionized
+
+00:10.680 --> 00:13.230
+I guess is the best term all these sub-projects,
+
+00:13.230 --> 00:15.900
+we're now gonna start to work on the Travis dot yml file,
+
+00:15.900 --> 00:17.520
+which is going to instruct Travis
+
+00:17.520 --> 00:19.650
+on exactly how to handle our build
+
+00:19.650 --> 00:22.140
+when we push our code up to GitHub.
+
+00:22.140 --> 00:23.580
+I put together a couple of steps
+
+00:23.580 --> 00:25.890
+of what we're going to do inside the Travis file.
+
+00:25.890 --> 00:27.480
+Now in general, all the configuration
+
+00:27.480 --> 00:30.060
+that's gonna go inside of here is gonna look very similar
+
+00:30.060 --> 00:33.420
+to the last Travis dot yml file we put together.
+
+00:33.420 --> 00:35.310
+So at the top of the Travis dot yml file,
+
+00:35.310 --> 00:38.340
+we're gonna specify Docker as a dependency.
+
+00:38.340 --> 00:40.260
+We're then going to build a test version
+
+00:40.260 --> 00:41.550
+of the React Project,
+
+00:41.550 --> 00:44.070
+cause remember part of the entire purpose of Travis CI
+
+00:44.070 --> 00:46.470
+is to run some number of tests.
+
+00:46.470 --> 00:48.930
+So we're going to build out the React project
+
+00:48.930 --> 00:51.750
+using the development Docker file,
+
+00:51.750 --> 00:53.610
+because only the development Docker file
+
+00:53.610 --> 00:57.420
+has all the source code required for running our tests.
+
+00:57.420 --> 00:58.470
+We'll run the tests
+
+00:58.470 --> 01:00.900
+and then as long as the tests are successful,
+
+01:00.900 --> 01:03.720
+we'll build production versions of all the sub-projects,
+
+01:03.720 --> 01:05.100
+we'll push them off to Docker hub
+
+01:05.100 --> 01:07.800
+and then we'll tell Elastic Beanstalk to update.
+
+01:07.800 --> 01:11.250
+Now quick reminder, we have not yet created an instance
+
+01:11.250 --> 01:12.810
+of Elastic Beanstalk.
+
+01:12.810 --> 01:14.490
+So at this point we're just gonna do kind of like
+
+01:14.490 --> 01:16.680
+half of the Travis dot yml file
+
+01:16.680 --> 01:19.440
+and then we're going to flip over to Elastic Beanstalk
+
+01:19.440 --> 01:22.950
+and make sure that we have an environment ready for us.
+
+01:22.950 --> 01:24.510
+Now one other quick thing I wanna mention here,
+
+01:24.510 --> 01:25.530
+this quick note,
+
+01:25.530 --> 01:27.150
+we are only going to be running tests
+
+01:27.150 --> 01:29.280
+around the React project.
+
+01:29.280 --> 01:32.070
+If you had other tests for say the server
+
+01:32.070 --> 01:33.570
+or the worker projects,
+
+01:33.570 --> 01:37.350
+we could very easily expand the Travis dot yml file
+
+01:37.350 --> 01:40.470
+to build out the test versions of images
+
+01:40.470 --> 01:42.000
+for the server and the worker
+
+01:42.000 --> 01:45.000
+and run tests inside of those images or those containers
+
+01:45.000 --> 01:46.620
+at the same time as well.
+
+01:46.620 --> 01:49.260
+So even though we're only doing tests for the React project
+
+01:49.260 --> 01:51.630
+it would be very easy, very straightforward
+
+01:51.630 --> 01:54.783
+to add in other test suites to this entire process as well.
+
+01:56.130 --> 01:58.980
+Okay, so with all this in mind, let's get to it.
+
+01:58.980 --> 02:01.110
+I'll flip back over to my code editor,
+
+02:01.110 --> 02:03.150
+inside of my route project directory,
+
+02:03.150 --> 02:08.150
+I'll make a new file called, dot Travis dot yml.
+
+02:08.370 --> 02:11.520
+Again, remember, we have a leading dot on here.
+
+02:11.520 --> 02:13.920
+Please don't forget the leading dot.
+
+02:13.920 --> 02:15.120
+And then inside of here we'll put down
+
+02:15.120 --> 02:17.880
+a little bit of configuration that looks very similar
+
+02:17.880 --> 02:19.590
+to what we did previously.
+
+02:19.590 --> 02:21.543
+So I'll say pseudo is required,
+
+02:22.770 --> 02:25.720
+for services we want to get access to a copy of Docker
+
+02:27.060 --> 02:29.190
+and then as a before install step,
+
+02:29.190 --> 02:33.270
+we're going to build a test version of our client project
+
+02:33.270 --> 02:35.910
+and then eventually run some tests inside of it.
+
+02:35.910 --> 02:38.610
+So remember to build out a test version
+
+02:38.610 --> 02:39.810
+of the client project,
+
+02:39.810 --> 02:43.680
+we'll make an image out of the docker file dot dev file.
+
+02:43.680 --> 02:46.680
+Again, we're making use of the development Docker file here,
+
+02:46.680 --> 02:49.320
+because we only get access to all these test suites
+
+02:49.320 --> 02:50.610
+and all that kind of good stuff
+
+02:50.610 --> 02:52.440
+when we have all of the dependencies
+
+02:52.440 --> 02:53.763
+attached to the project.
+
+02:54.870 --> 02:58.050
+The production Docker file installs dependencies,
+
+02:58.050 --> 02:59.850
+builds a production version of the project
+
+02:59.850 --> 03:03.780
+and then copies over just the very raw production version
+
+03:03.780 --> 03:04.800
+of our assets
+
+03:04.800 --> 03:05.880
+and so that's why we're not gonna use
+
+03:05.880 --> 03:07.410
+the production Docker file.
+
+03:07.410 --> 03:10.893
+Production Docker file does not allow us to run any tests.
+
+03:12.090 --> 03:15.990
+Okay, so we'll say dash Docker, build,
+
+03:15.990 --> 03:18.960
+we'll tag the image with your Docker I.D.
+
+03:18.960 --> 03:21.780
+and then some name for this image, I'll call it React test,
+
+03:21.780 --> 03:23.460
+that works just fine.
+
+03:23.460 --> 03:26.190
+And now this time around we do have to specify
+
+03:26.190 --> 03:28.710
+or override the default Docker file.
+
+03:28.710 --> 03:30.780
+So I'll say dash F.
+
+03:30.780 --> 03:33.600
+Now this time, remember our Travis dot yml file
+
+03:33.600 --> 03:35.520
+is in the root project directory,
+
+03:35.520 --> 03:38.070
+but we want to specify a Docker file
+
+03:38.070 --> 03:40.470
+that exists inside the client directory.
+
+03:40.470 --> 03:43.350
+So we have to provide a relative path
+
+03:43.350 --> 03:46.833
+to the client Docker file dot dev file.
+
+03:48.030 --> 03:51.940
+So I will say dash F dot slash client
+
+03:53.100 --> 03:55.990
+Docker file dot dev, like so
+
+03:57.127 --> 03:59.393
+and I'll zoom out just so you can see that whole line.
+
+04:01.500 --> 04:04.380
+And then after that, we still need to also specify
+
+04:04.380 --> 04:06.600
+the build context where essentially
+
+04:06.600 --> 04:10.440
+where all of our project files for the image can be found.
+
+04:10.440 --> 04:13.170
+We've always been doing dot before,
+
+04:13.170 --> 04:14.670
+because we always wanted to use the current
+
+04:14.670 --> 04:18.660
+working directory as essentially the build context,
+
+04:18.660 --> 04:20.790
+but again, this time around we wanna specify
+
+04:20.790 --> 04:24.840
+this nested folder of client as our build context.
+
+04:24.840 --> 04:28.230
+So rather than just specifying dot as the build context,
+
+04:28.230 --> 04:30.810
+I'll say dot slash client,
+
+04:30.810 --> 04:33.540
+which means look into the client directory
+
+04:33.540 --> 04:35.373
+to get the build context.
+
+04:40.560 --> 04:43.053
+Okay, so that's it for the before install step.
+
+04:44.400 --> 04:46.260
+So after we've built out that image
+
+04:46.260 --> 04:49.200
+we then need to use it to run a couple of tests.
+
+04:49.200 --> 04:52.080
+So I'll specify the script section.
+
+04:52.080 --> 04:53.310
+Remember the script section
+
+04:53.310 --> 04:55.920
+is the primary test running section.
+
+04:55.920 --> 04:58.260
+If any of the scripts that we add inside of here
+
+04:58.260 --> 05:00.870
+exit with a status code other than zero
+
+05:00.870 --> 05:04.140
+then Travis CI is going to assume that our build failed.
+
+05:04.140 --> 05:06.360
+So if you had other, like I just said a moment ago,
+
+05:06.360 --> 05:09.000
+if you had other projects or other sub-projects
+
+05:09.000 --> 05:12.300
+or images in here that you wanted to run tests for,
+
+05:12.300 --> 05:14.310
+you could add in an additional
+
+05:14.310 --> 05:15.600
+build install script right here
+
+05:15.600 --> 05:18.810
+to essentially Docker build my other project.
+
+05:18.810 --> 05:21.930
+And then on the script section you would do a Docker run,
+
+05:21.930 --> 05:24.480
+my other project and then you would override
+
+05:24.480 --> 05:27.090
+the default startup command with run my tests
+
+05:27.090 --> 05:28.440
+or whatever it might be.
+
+05:28.440 --> 05:29.273
+Again, you can add in
+
+05:29.273 --> 05:31.770
+as many scripts right here as you want to
+
+05:31.770 --> 05:33.333
+for running your test suites.
+
+05:34.680 --> 05:38.310
+But in our case, we want to run a very specific script.
+
+05:38.310 --> 05:40.800
+We want to do Docker run,
+
+05:40.800 --> 05:43.050
+we want to use the image that we just created,
+
+05:43.050 --> 05:47.440
+so it'll be your Docker I.D. slash React test
+
+05:48.360 --> 05:51.270
+and then we will override the default startup command
+
+05:51.270 --> 05:52.830
+with NPM test.
+
+05:52.830 --> 05:56.400
+And remember how by default NPM test enters watch mode,
+
+05:56.400 --> 05:58.380
+which means it's never going to exit
+
+05:58.380 --> 05:59.820
+and so we're gonna make sure that this thing
+
+05:59.820 --> 06:04.590
+eventually exits by adding on dash dash space,
+
+06:04.590 --> 06:06.633
+dash dash coverage like so.
+
+06:09.277 --> 06:11.310
+So that's going to make sure that the test script
+
+06:11.310 --> 06:14.400
+eventually exits with a status code of either zero
+
+06:14.400 --> 06:16.593
+or not zero if the test failed.
+
+06:18.900 --> 06:20.760
+Okay, so this looks pretty good.
+
+06:20.760 --> 06:22.890
+So after we run the script
+
+06:22.890 --> 06:25.590
+and after everything passes successfully,
+
+06:25.590 --> 06:29.133
+we'll then add on a after success block right here.
+
+06:31.800 --> 06:33.660
+Inside of the after success block
+
+06:33.660 --> 06:35.460
+we're gonna start to add in the configuration
+
+06:35.460 --> 06:37.170
+that's going to build the production version
+
+06:37.170 --> 06:41.190
+of all of our projects and then push them off to Docker Hub.
+
+06:41.190 --> 06:43.890
+So let's first begin by doing the production version
+
+06:43.890 --> 06:46.950
+of each of our different sub=projects in here.
+
+06:46.950 --> 06:49.410
+So we need to do a docker build for the client,
+
+06:49.410 --> 06:51.813
+NGINX server and worker folders.
+
+06:53.040 --> 06:58.040
+So I will do a Docker build, dash T, Stephen Grider
+
+07:00.210 --> 07:02.940
+and then we're going to give a very real
+
+07:02.940 --> 07:05.430
+image name to this one, so it has my image names,
+
+07:05.430 --> 07:07.800
+like I'm gonna use kind of a consistent scheme here.
+
+07:07.800 --> 07:10.050
+I'm gonna call each of these multi
+
+07:10.050 --> 07:11.670
+and then the name of the project,
+
+07:11.670 --> 07:15.000
+so like multi dash client.
+
+07:15.000 --> 07:16.230
+I'm using the word multi right here
+
+07:16.230 --> 07:19.020
+just because this is a multi container project.
+
+07:19.020 --> 07:20.910
+In general you can call the image whatever you want
+
+07:20.910 --> 07:22.530
+for the repository name,
+
+07:22.530 --> 07:24.630
+but again I'm going to use multi dash
+
+07:24.630 --> 07:26.880
+and then the name of the sub-project over here
+
+07:26.880 --> 07:28.730
+just to stay a little bit consistent.
+
+07:30.030 --> 07:31.650
+And then as the build context
+
+07:31.650 --> 07:35.850
+I'll make sure that I pass in, client like so.
+
+07:35.850 --> 07:36.683
+Now this time around
+
+07:36.683 --> 07:38.550
+we do not have to specify the Docker file,
+
+07:38.550 --> 07:40.830
+because it can use the default Docker file
+
+07:40.830 --> 07:43.023
+of simply Docker file right there.
+
+07:44.400 --> 07:46.110
+Now we're gonna repeat the same process
+
+07:46.110 --> 07:48.510
+for all the other directories as well.
+
+07:48.510 --> 07:51.270
+So I'll do a docker build dash T,
+
+07:51.270 --> 07:54.960
+Stephen Grider multi NGINX,
+
+07:54.960 --> 07:57.480
+dot slash NGINX.
+
+07:57.480 --> 08:02.480
+I'll do a Docker build multi server, with dot slash server
+
+08:06.300 --> 08:11.300
+and then a Docker build dash T, a Stephen Grider
+
+08:13.110 --> 08:17.163
+multi worker with the worker folder like so.
+
+08:19.050 --> 08:20.700
+So again, this is going to go through
+
+08:20.700 --> 08:21.870
+each of these sub folders
+
+08:21.870 --> 08:24.300
+and build images using the production Docker file
+
+08:24.300 --> 08:25.860
+for each one.
+
+08:25.860 --> 08:28.590
+So after we build these production version of the images
+
+08:28.590 --> 08:31.350
+we then have to push them all off to Docker Hub.
+
+08:31.350 --> 08:33.630
+So at this point we've kind of gone for a long time.
+
+08:33.630 --> 08:35.070
+Let's take a quick pause right here.
+
+08:35.070 --> 08:36.360
+When we come back to the next section,
+
+08:36.360 --> 08:38.820
+we're gonna add on a little bit more code
+
+08:38.820 --> 08:41.490
+to make sure that we push off everything to Docker Hub
+
+08:41.490 --> 08:43.140
+and then we'll be just about set.
+
+08:43.140 --> 08:45.590
+So quick break and I'll see you in just a minute.

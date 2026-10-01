@@ -1,0 +1,379 @@
+WEBVTT
+
+00:00.690 --> 00:01.523
+Narrator: In the last section,
+
+00:01.523 --> 00:03.060
+we had a quick discussion around the differences
+
+00:03.060 --> 00:06.330
+between Ingress-NGINX and Kubernetes ingress.
+
+00:06.330 --> 00:08.190
+We're now going to continue and start to talk
+
+00:08.190 --> 00:10.110
+about how this ingress stuff works
+
+00:10.110 --> 00:12.120
+behind the scenes to somehow get some amount
+
+00:12.120 --> 00:13.890
+of traffic into your application.
+
+00:13.890 --> 00:15.660
+So, let's get to it.
+
+00:15.660 --> 00:18.300
+Now, I wanna first begin by giving you a quick reminder
+
+00:18.300 --> 00:19.560
+of how we've been doing things
+
+00:19.560 --> 00:21.660
+throughout this entire course.
+
+00:21.660 --> 00:24.180
+Throughout the entire course, we've been making config
+
+00:24.180 --> 00:28.020
+files that contain the desired state of our application.
+
+00:28.020 --> 00:30.780
+So for example, we've been writing config files that say
+
+00:30.780 --> 00:34.680
+that we want to be running three pods or three replicas,
+
+00:34.680 --> 00:37.560
+each of which run the multi-client image.
+
+00:37.560 --> 00:39.690
+We then feed that into kubectl
+
+00:39.690 --> 00:42.390
+and that creates a deployment object, and it's up
+
+00:42.390 --> 00:46.020
+to that deployment object to look at our current state
+
+00:46.020 --> 00:48.240
+and then look at our desired state and figure
+
+00:48.240 --> 00:50.820
+out some migration path or some way to get
+
+00:50.820 --> 00:53.280
+from the current state to the desired state.
+
+00:53.280 --> 00:55.020
+And so after the deployment jumps
+
+00:55.020 --> 00:57.000
+into effect and starts working,
+
+00:57.000 --> 00:59.850
+it's going to eventually create three new pods
+
+00:59.850 --> 01:02.343
+each of which are running the multi-client image.
+
+01:03.180 --> 01:05.310
+Now, the reason I'm giving you this reminder
+
+01:05.310 --> 01:07.020
+about how all this stuff works is
+
+01:07.020 --> 01:09.750
+that this deployment object right here is what
+
+01:09.750 --> 01:12.510
+we're referred to as a type of controller.
+
+01:12.510 --> 01:15.750
+In Kubernetes, a controller is any type of object
+
+01:15.750 --> 01:18.930
+that constantly works to make some desired state
+
+01:18.930 --> 01:21.780
+a reality inside of our cluster.
+
+01:21.780 --> 01:24.480
+So in the world of ingresses, and as we start to talk
+
+01:24.480 --> 01:27.420
+about ingress, the exact same strategy right
+
+01:27.420 --> 01:30.750
+here all applies a hundred percent.
+
+01:30.750 --> 01:33.480
+You and I are going to write some config file
+
+01:33.480 --> 01:35.880
+that describes a set of routing rules
+
+01:35.880 --> 01:38.190
+to take incoming traffic and send it
+
+01:38.190 --> 01:41.790
+off to the appropriate services inside of our cluster.
+
+01:41.790 --> 01:45.210
+We're then going to feed that config file into kubectl
+
+01:45.210 --> 01:47.460
+And kubectl is going to create something called
+
+01:47.460 --> 01:49.710
+an ingress controller.
+
+01:49.710 --> 01:52.320
+So it is a controller, it is something that's going to look
+
+01:52.320 --> 01:55.770
+at our current state, it's gonna look at the desired state
+
+01:55.770 --> 01:58.290
+and then create some infrastructure that's going to
+
+01:58.290 --> 02:00.630
+make our desired state a reality.
+
+02:00.630 --> 02:04.170
+So in the case of our particular ingress controller
+
+02:04.170 --> 02:07.410
+which is, as you might guess, using NGINX behind the scenes,
+
+02:07.410 --> 02:10.470
+when we feed in this config file, the controller is going
+
+02:10.470 --> 02:13.680
+to create a pod running NGINX that's gonna have
+
+02:13.680 --> 02:16.260
+a very particular set of rules to make sure
+
+02:16.260 --> 02:18.330
+that traffic comes in and gets sent off
+
+02:18.330 --> 02:21.990
+to the appropriate different services inside of our cluster.
+
+02:21.990 --> 02:23.820
+So you can kind of think that this entire setup
+
+02:23.820 --> 02:27.030
+around ingress looks a little something like this.
+
+02:27.030 --> 02:29.130
+We have our ingress config over here,
+
+02:29.130 --> 02:31.110
+which is our config file that describes
+
+02:31.110 --> 02:32.880
+all the routing rules that we want
+
+02:32.880 --> 02:34.580
+to have inside of our application.
+
+02:35.430 --> 02:37.890
+That's going to be fed into kubectl,
+
+02:37.890 --> 02:39.900
+where an ingress controller is going to
+
+02:39.900 --> 02:42.690
+be constantly working behind the scenes to make sure
+
+02:42.690 --> 02:45.030
+that all of the routing rules that we define
+
+02:45.030 --> 02:48.840
+inside the ingress config are actually implemented and met.
+
+02:48.840 --> 02:51.060
+And so it's going to be up to the ingress controller
+
+02:51.060 --> 02:54.630
+to create something, something you know,
+
+02:54.630 --> 02:56.310
+who knows what it is, but something
+
+02:56.310 --> 02:59.400
+inside of our cluster that will take the incoming traffic,
+
+02:59.400 --> 03:01.710
+read some parameters in that traffic,
+
+03:01.710 --> 03:04.560
+and then send it off to the appropriate service.
+
+03:04.560 --> 03:06.300
+So the big takeaway right here, the only thing
+
+03:06.300 --> 03:08.280
+I want you to understand right now is that you
+
+03:08.280 --> 03:11.250
+and I are gonna create something called an ingress config
+
+03:11.250 --> 03:14.100
+which is going to be a set of routing rules.
+
+03:14.100 --> 03:16.200
+We're going to feed it into kubectl
+
+03:16.200 --> 03:18.600
+which is going to create this ingress controller.
+
+03:18.600 --> 03:21.390
+And the ingresses controller's job is to look
+
+03:21.390 --> 03:23.040
+at the ingress config or that set
+
+03:23.040 --> 03:25.950
+of routing rules and make that a reality.
+
+03:25.950 --> 03:28.680
+The ingress controller has to create some infrastructure
+
+03:28.680 --> 03:30.510
+inside of our cluster to make sure
+
+03:30.510 --> 03:33.810
+that we're actually obeying those routing rules.
+
+03:33.810 --> 03:36.090
+And so the ingress controller is going to make, again,
+
+03:36.090 --> 03:38.793
+some thing that accepts incoming traffic.
+
+03:39.930 --> 03:42.120
+Okay, so that's the kind of high level description
+
+03:42.120 --> 03:43.530
+of what's going on here.
+
+03:43.530 --> 03:46.530
+Now, in the case of the project that we are using,
+
+03:46.530 --> 03:49.530
+Ingress-NGINX, things are going to work very similar
+
+03:49.530 --> 03:52.830
+to this but just a tiny, tiny, tiny bit differently.
+
+03:52.830 --> 03:55.290
+And so infinitesimally differently, differently
+
+03:55.290 --> 03:57.270
+that I almost don't even want to tell you
+
+03:57.270 --> 03:58.500
+that it's working differently.
+
+03:58.500 --> 04:00.300
+But I am anyways just so you understand
+
+04:00.300 --> 04:02.340
+how things are working behind the scenes.
+
+04:02.340 --> 04:04.680
+So with the very particular project that we are using
+
+04:04.680 --> 04:07.680
+of Ingress-NGINX, the ingress controller
+
+04:07.680 --> 04:10.560
+and the thing that actually accepts traffic and routes it
+
+04:10.560 --> 04:14.280
+off to the appropriate location is actually the same thing.
+
+04:14.280 --> 04:17.460
+So with the very particular ingress project
+
+04:17.460 --> 04:19.530
+that we are using, the ingress controller
+
+04:19.530 --> 04:22.130
+and the thing that routes traffic is the same thing.
+
+04:22.980 --> 04:24.570
+So we can kind of imagine, again, that you
+
+04:24.570 --> 04:26.520
+and I are going to make a ingress config
+
+04:26.520 --> 04:27.960
+or a set of routing rules.
+
+04:27.960 --> 04:30.330
+We're gonna feed it into kubectl
+
+04:30.330 --> 04:32.010
+and then the project that we are using,
+
+04:32.010 --> 04:35.700
+Ingress-NGINX, is gonna create a single deployment,
+
+04:35.700 --> 04:38.970
+whose job is to both read in the ingress config
+
+04:38.970 --> 04:42.930
+and simultaneously create a pod that meets all
+
+04:42.930 --> 04:44.640
+of those different routing rules.
+
+04:44.640 --> 04:47.730
+Now again, this is a very tiny, tiny, tiny distinction
+
+04:47.730 --> 04:50.310
+and I only mention this to you because we are going to look
+
+04:50.310 --> 04:52.050
+at some of the behind the scenes setup
+
+04:52.050 --> 04:54.300
+of Ingress-NGINX inside of our project.
+
+04:54.300 --> 04:55.980
+And you're going to notice that there are not
+
+04:55.980 --> 04:58.740
+like the three separate things that I show you right here.
+
+04:58.740 --> 05:01.380
+In our project, there's only the two separate things
+
+05:01.380 --> 05:03.690
+as shown in this diagram right here.
+
+05:03.690 --> 05:06.000
+Okay, so with that in mind, let's take a quick pause.
+
+05:06.000 --> 05:07.230
+We're gonna come back to the next section
+
+05:07.230 --> 05:08.760
+and there's just a little bit more
+
+05:08.760 --> 05:11.190
+around some behind the scenes action
+
+05:11.190 --> 05:13.020
+for this ingress stuff that I wanna show you
+
+05:13.020 --> 05:14.430
+before we start going through the setup.
+
+05:14.430 --> 05:17.080
+So quick break and I'll talk to you in just a minute.

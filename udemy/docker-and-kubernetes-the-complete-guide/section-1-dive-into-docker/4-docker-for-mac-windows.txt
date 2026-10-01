@@ -1,0 +1,163 @@
+WEBVTT
+
+00:00.600 --> 00:02.520
+-: In the last section we tried to answer the question,
+
+00:02.520 --> 00:03.690
+what is Docker?
+
+00:03.690 --> 00:05.820
+But we didn't really get a great explanation.
+
+00:05.820 --> 00:08.250
+We said, okay, it's a reference to a bunch of products.
+
+00:08.250 --> 00:10.380
+We then started to talk about something called an image
+
+00:10.380 --> 00:12.180
+and something called a container.
+
+00:12.180 --> 00:13.650
+At this point, we need to install
+
+00:13.650 --> 00:15.300
+some more software onto our machine
+
+00:15.300 --> 00:16.830
+so that you and I can work directly
+
+00:16.830 --> 00:18.570
+with images and containers
+
+00:18.570 --> 00:21.120
+so that we can get a better idea of how they work.
+
+00:21.120 --> 00:23.070
+So here's what you and I are going to do.
+
+00:23.070 --> 00:25.230
+We're going to be installing a piece of software
+
+00:25.230 --> 00:28.170
+called Docker for Windows, or Docker for Mac
+
+00:28.170 --> 00:30.330
+depending upon your operating system.
+
+00:30.330 --> 00:33.450
+Inside of this program are two very important tools
+
+00:33.450 --> 00:36.660
+that we're going to be making use of throughout this course.
+
+00:36.660 --> 00:38.460
+The first tool that's inside this package
+
+00:38.460 --> 00:40.770
+is something called the Docker client.
+
+00:40.770 --> 00:43.200
+The Docker client, also known as the Docker CLI
+
+00:43.200 --> 00:44.460
+is a program that you and I
+
+00:44.460 --> 00:47.430
+are going to interact with quite a bit from our terminal.
+
+00:47.430 --> 00:49.680
+We're going to enter in commands to our terminal,
+
+00:49.680 --> 00:52.066
+issue them to Docker client.
+
+00:52.066 --> 00:52.899
+It's gonna take our commands
+
+00:52.899 --> 00:54.630
+and figure out what to do with them.
+
+00:54.630 --> 00:56.790
+Now the Docker client itself
+
+00:56.790 --> 01:00.450
+doesn't actually do anything with containers or images.
+
+01:00.450 --> 01:03.390
+Instead, the Docker client is really just a tool
+
+01:03.390 --> 01:06.060
+or a portal of sorts to help us interact
+
+01:06.060 --> 01:07.800
+with another piece of software
+
+01:07.800 --> 01:10.950
+that is included in this Docker for Windows or Mac package
+
+01:10.950 --> 01:12.690
+called the Docker server.
+
+01:12.690 --> 01:15.660
+This is also frequently called the Docker Damon.
+
+01:15.660 --> 01:17.910
+This program right here is the actual tool
+
+01:17.910 --> 01:19.320
+or the actual piece of software
+
+01:19.320 --> 01:22.770
+that is responsible for creating containers, images,
+
+01:22.770 --> 01:25.440
+maintaining containers, uploading images,
+
+01:25.440 --> 01:27.900
+and doing just about everything you can possibly imagine
+
+01:27.900 --> 01:29.820
+around the world of Docker.
+
+01:29.820 --> 01:32.460
+So it's the Docker client that you and I issue commands to.
+
+01:32.460 --> 01:34.170
+It's a thing that we interact with.
+
+01:34.170 --> 01:35.160
+And behind the scenes,
+
+01:35.160 --> 01:38.640
+this client is interacting with the Docker server.
+
+01:38.640 --> 01:40.770
+You and I are never going to really reach directly
+
+01:40.770 --> 01:42.000
+out to this docker server.
+
+01:42.000 --> 01:43.410
+It's something that's just kind of running it
+
+01:43.410 --> 01:44.981
+behind the scenes.
+
+01:44.981 --> 01:47.550
+So again, we're gonna take a quick break right now.
+
+01:47.550 --> 01:48.780
+We're gonna come back to the next section
+
+01:48.780 --> 01:50.940
+and we're going to start installing this package
+
+01:50.940 --> 01:52.620
+so that we can get a better sense
+
+01:52.620 --> 01:55.170
+of how to work with images and containers.
+
+01:55.170 --> 01:57.620
+So quick break and I'll see you in just a minute.

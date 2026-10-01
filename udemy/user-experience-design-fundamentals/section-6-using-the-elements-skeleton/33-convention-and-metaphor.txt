@@ -1,0 +1,616 @@
+WEBVTT
+
+00:00.930 --> 00:07.130
+Much of what you'll do in terms of interface design and navigation design involve convention and metaphor,
+
+00:07.140 --> 00:11.700
+and we use both in order to set and keep standards.
+
+00:11.700 --> 00:13.320
+And I'll explain what I mean by that.
+
+00:13.320 --> 00:20.240
+The appearance and location of common navigation systems have evolved and over time they've become conventions.
+
+00:20.250 --> 00:28.320
+For example, when tabbed navigation was first introduced somewhere back in the early 2000s, the rest
+
+00:28.320 --> 00:30.480
+of the world went, Oh my God, that makes so much sense.
+
+00:30.480 --> 00:35.850
+Now we have to have tabs for navigation, and that's a convention that continues to this day.
+
+00:35.850 --> 00:37.320
+So it sort of became a standard.
+
+00:37.320 --> 00:40.860
+It's not the only way to navigate, mind you, but it's a convention.
+
+00:40.860 --> 00:42.960
+When we look at it, we know exactly what it is.
+
+00:43.110 --> 00:47.880
+Conventions tell us what to look for and where to look when we need them.
+
+00:47.880 --> 00:53.340
+So putting them in a standard place lets us locate them quickly.
+
+00:53.340 --> 00:59.730
+If you've been around for a while, you'll notice that at one point on the web, left hand navigation
+
+00:59.730 --> 01:01.090
+was very common.
+
+01:01.090 --> 01:06.430
+Main navigation, left handed navigation was almost always sort of the way to go.
+
+01:06.430 --> 01:11.620
+Well, then at some point we started moving towards this idea that horizontal navigation across the
+
+01:11.620 --> 01:18.220
+top was much more efficient because it took up less screen real estate and as monitor screens became
+
+01:18.220 --> 01:21.850
+wider as opposed to taller, it made more sense.
+
+01:21.850 --> 01:27.700
+So when that NAV is up there front and center, we can locate it quickly because we're used to seeing
+
+01:27.700 --> 01:28.300
+it there.
+
+01:28.510 --> 01:34.210
+When we standardize the appearance of things, that makes it easy to pick them out among everything
+
+01:34.210 --> 01:34.690
+else.
+
+01:34.690 --> 01:41.140
+When there's a tab at the top, we know that that's a navigation menu when it's just some text that
+
+01:41.140 --> 01:46.690
+happens to appear up there next to the logo, it's not quite as easy to tell that.
+
+01:46.690 --> 01:48.400
+Okay, well, that's my wayfinding mechanism.
+
+01:48.400 --> 01:49.390
+That's that's the nav.
+
+01:49.420 --> 01:50.470
+That's how I get around.
+
+01:50.470 --> 01:55.630
+So the way that you treat it determines how easy it is to sort of segregate it in your mind and go,
+
+01:55.630 --> 01:56.320
+okay, I get it.
+
+01:56.320 --> 01:58.180
+That's what that is, and that's how it works.
+
+01:58.360 --> 02:02.650
+It's extremely frustrating to us when one of those conventions is broken.
+
+02:02.650 --> 02:09.700
+For instance, if somebody tomorrow decided we're going to put main navigation on the bottom of the
+
+02:09.700 --> 02:14.980
+screen from now on, that would frustrate us because we would be looking at the top of the screen,
+
+02:14.980 --> 02:20.500
+wondering where the hell the navigation is, because we're not used to looking down at the bottom for
+
+02:20.500 --> 02:21.550
+that core component.
+
+02:21.550 --> 02:23.590
+It's not where we expect it to be.
+
+02:23.590 --> 02:26.530
+It's not the position we expect it to take.
+
+02:26.530 --> 02:30.220
+And it doesn't match our model of how things work.
+
+02:30.220 --> 02:36.220
+So setting those standards and then being consistent in how you apply them is extremely important.
+
+02:36.400 --> 02:39.340
+So let's take a look at some standard Web based conventions.
+
+02:39.370 --> 02:42.850
+The first core component of just about any Web site is the header.
+
+02:42.850 --> 02:45.430
+And in the header, we expect to see certain things.
+
+02:45.460 --> 02:50.920
+Number one, a site identifier, which is typically a logo located in the left hand corner.
+
+02:50.920 --> 02:55.840
+And we also typically know that by clicking on that logo, we can get back to the home screen at any
+
+02:55.840 --> 02:56.350
+point.
+
+02:56.350 --> 03:02.980
+Again, that's something that's been built in over time and we're used to it and we recognize it.
+
+03:03.010 --> 03:09.070
+We also almost always have a search function, especially on some sort of site or application that has
+
+03:09.070 --> 03:11.050
+a large volume of information.
+
+03:11.050 --> 03:15.730
+We know that we can use search as a faster method of finding exactly what we want.
+
+03:15.760 --> 03:18.370
+Next, we have a main navigation menu.
+
+03:18.370 --> 03:22.000
+This is our core tool for getting around the site.
+
+03:22.030 --> 03:25.600
+We know that it represents all the core areas of information.
+
+03:25.600 --> 03:30.940
+It represents all the main categories that are contained within, and it gives us an immediate sense
+
+03:30.940 --> 03:32.320
+of where we can go.
+
+03:32.470 --> 03:40.030
+There is also usually a set of utilities that are relegated to a higher position, almost always in
+
+03:40.030 --> 03:41.110
+the top right corner.
+
+03:41.140 --> 03:47.590
+Those are things like sign in to your account, your order status on an e-commerce site, any personalized
+
+03:47.590 --> 03:50.380
+information like your profile or things like that.
+
+03:50.380 --> 03:53.530
+And any help is usually located in that area as well.
+
+03:53.560 --> 03:59.290
+Finally, in the case of an e-commerce site, we have an area that shows us our shopping cart.
+
+03:59.320 --> 04:00.970
+Here's what we've bought so far.
+
+04:00.970 --> 04:02.320
+Here's what we've put in our cart.
+
+04:02.350 --> 04:09.010
+The point is that if we're browsing the web, these are conventions that we absolutely expect to come
+
+04:09.010 --> 04:09.610
+across.
+
+04:09.610 --> 04:16.510
+We expect to see them up there, and we typically expect them to be in these positions next, especially
+
+04:16.510 --> 04:23.410
+in the case of e-commerce sites, we almost always see some sort of left hand local navigation.
+
+04:23.410 --> 04:25.480
+These are things at the current level.
+
+04:25.480 --> 04:29.590
+These are things within the current category that I am browsing.
+
+04:29.590 --> 04:35.110
+These are choices I can make based on the category of information that I've selected, the things I
+
+04:35.110 --> 04:36.340
+can do right now.
+
+04:36.460 --> 04:41.530
+Next, there's a page name which reiterates where I am in the current scheme of things.
+
+04:41.530 --> 04:45.340
+It confirms that what I clicked on is indeed where I landed.
+
+04:45.370 --> 04:48.460
+The next thing I see is a current or a new feature.
+
+04:48.490 --> 04:55.150
+This is either something that the site's creator wants me to see up front or it's something that I am
+
+04:55.150 --> 04:58.600
+most likely to need or be interested in.
+
+04:58.780 --> 05:00.430
+It's almost always a link.
+
+05:00.660 --> 05:05.870
+To more detailed content, more expansive content, but it's giving me a taste of it up front.
+
+05:05.880 --> 05:09.670
+At that point, I'm usually given some level of social proof.
+
+05:09.690 --> 05:16.410
+The rise of social media and social networking has given way to the idea that, whenever possible,
+
+05:16.410 --> 05:19.340
+we want to show people what other people are doing.
+
+05:19.440 --> 05:23.700
+Okay, In this case, we see customer favorites and we have categories for that.
+
+05:23.730 --> 05:24.780
+Essential Reading.
+
+05:24.780 --> 05:28.020
+This is what people deem to be noteworthy.
+
+05:28.050 --> 05:31.860
+We have the under 299 section, which I'm sure is very popular with people.
+
+05:31.860 --> 05:35.670
+We have new releases, spotlight releases, and then we have what's trending.
+
+05:35.670 --> 05:37.350
+What are people into now?
+
+05:37.350 --> 05:39.120
+What's becoming popular?
+
+05:39.150 --> 05:40.710
+These are all conventions.
+
+05:40.710 --> 05:43.160
+These are all things that we expect to see.
+
+05:43.170 --> 05:50.340
+These are all things that we instantly recognize without having to think very hard, if at all, about.
+
+05:50.370 --> 05:53.910
+And there are things that we can instantly act upon.
+
+05:53.940 --> 05:57.630
+That's the importance and the power of convention.
+
+05:57.630 --> 05:59.760
+You're leveraging what I already know.
+
+05:59.790 --> 06:06.100
+You're leveraging what I expect to see, and you're matching my expectations about what these things
+
+06:06.100 --> 06:10.300
+are, how they're organized, where they are on the screen and how they work.
+
+06:11.190 --> 06:16.750
+Conventions are valuable largely because they speak directly to habit and reflex.
+
+06:16.770 --> 06:22.720
+Convention allows us to apply those same reflexes in different circumstances.
+
+06:22.740 --> 06:28.440
+For example, conventions often become standards for devices that have nothing to do with the one that
+
+06:28.440 --> 06:29.580
+started the idea.
+
+06:29.580 --> 06:35.340
+And perhaps most importantly, an interface design should be consistent with other interfaces that people
+
+06:35.340 --> 06:36.540
+are already familiar with.
+
+06:36.570 --> 06:39.980
+They're not using what you've built and designed in a vacuum, okay?
+
+06:39.990 --> 06:42.630
+They're using it in conjunction with lots of other things.
+
+06:42.630 --> 06:49.260
+So while your product may be a mobile app, they're also using stuff on a laptop.
+
+06:49.260 --> 06:50.940
+They're also using stuff on a desktop.
+
+06:50.940 --> 06:53.940
+They're also interacting with screen controls on their TV.
+
+06:53.970 --> 06:59.580
+They're having all these different experiences which affect how they expect things to work.
+
+06:59.580 --> 07:04.950
+So a certain degree of consistency goes a long way and your interface should also be consistent with
+
+07:04.950 --> 07:05.850
+itself.
+
+07:05.880 --> 07:12.220
+As we said a short while ago, once you introduce a behavior, once you introduce where something is
+
+07:12.220 --> 07:19.720
+located, what it looks like, what it does, how it behaves, that should carry through every subsequent
+
+07:19.720 --> 07:20.860
+experience.
+
+07:20.860 --> 07:28.720
+You know, Windows 8 at the moment has taken a very bold step forward in introducing sort of a new interaction
+
+07:28.720 --> 07:33.370
+paradigm, specifically in the way that it looks, the way it sits on the screen and the way that you
+
+07:33.370 --> 07:34.510
+move through the information.
+
+07:34.510 --> 07:38.440
+However, some of this stuff is still very familiar.
+
+07:38.440 --> 07:45.670
+We're still dealing with tiled icons on a screen, which is essentially a metaphor that's been around
+
+07:45.670 --> 07:52.120
+for a while from the first mobile phones to having icons on a Windows desktop.
+
+07:52.120 --> 07:53.350
+It's the same thing.
+
+07:53.350 --> 07:58.540
+It's done in a very different way and it navigates in a somewhat different fashion, right?
+
+07:58.540 --> 08:04.120
+There's sort of a scrolling motion that happens from left to right, but again, it's still rooted in
+
+08:04.120 --> 08:06.910
+things that we already know and understand.
+
+08:06.940 --> 08:11.260
+It's still rooted in the same conventions that we're familiar with.
+
+08:11.260 --> 08:17.650
+So even though it breaks some of those, it probably still has a very good chance of high adoption rate.
+
+08:17.650 --> 08:22.990
+You know, people will become familiar with its with its ins and outs and its little idiosyncrasies.
+
+08:22.990 --> 08:29.410
+What the key is going to be for Microsoft is that they apply these behaviors and these interactions
+
+08:29.410 --> 08:34.300
+and all these things that they're introducing in this new system consistently throughout the operating
+
+08:34.300 --> 08:41.260
+system, throughout any related applications, throughout every device that it lives on, right.
+
+08:41.260 --> 08:43.990
+From laptops to tablets to mobile phones.
+
+08:43.990 --> 08:51.310
+It's got to be consistent and it's got to reinforce those lessons of how this works over and over and
+
+08:51.310 --> 08:55.870
+over and over again, because that's how people will become familiar enough with it that the ways in
+
+08:55.870 --> 08:59.410
+which they use it will become habits and reflexes.
+
+09:00.470 --> 09:06.530
+Metaphors are also often used in interface design, and in order for them to be effective, they have
+
+09:06.530 --> 09:08.770
+to be intuitive and they have to be obvious.
+
+09:08.780 --> 09:12.600
+Just like a spoken metaphor can provide a shortcut in terms of language.
+
+09:12.620 --> 09:16.910
+A visual metaphor provides the same kind of shortcut for how to use something.
+
+09:16.910 --> 09:22.710
+An intuitive interface often leans on a metaphor that we instantly recognize from day to day life.
+
+09:22.730 --> 09:24.820
+These are called affordances.
+
+09:24.830 --> 09:29.330
+They're visual cues for what you can do and how you can do it.
+
+09:29.360 --> 09:33.990
+Gaming and entertainment apps in particular benefit greatly from metaphor.
+
+09:34.030 --> 09:35.530
+Okay, here are some examples.
+
+09:35.540 --> 09:40.010
+Here's a virtual DJ app that you use on your phone to do some mixing and scratching.
+
+09:40.010 --> 09:40.460
+Right?
+
+09:40.460 --> 09:44.270
+But the metaphor is the same as the real world object.
+
+09:44.270 --> 09:49.010
+It's a turntable with a slab of vinyl on it, and you can manipulate it with your hand just like you
+
+09:49.010 --> 09:51.280
+can a regular turntable.
+
+09:51.290 --> 09:55.100
+Here's an interface that simulates a guitar amp and an effects pedal.
+
+09:55.130 --> 09:57.440
+Common metaphors to guitarists.
+
+09:57.440 --> 09:59.870
+These look exactly like the real world objects.
+
+09:59.870 --> 10:01.800
+The knobs are in the same place.
+
+10:01.800 --> 10:04.080
+They visually look exactly the same.
+
+10:04.080 --> 10:09.030
+So when somebody uses this, they automatically know what to do with all these things.
+
+10:09.030 --> 10:10.260
+That's an affordance.
+
+10:10.260 --> 10:13.230
+That's a visual cue based on a metaphor.
+
+10:13.410 --> 10:20.340
+Here's Apple's bookshelf app that shows you all the books and or PDFs that you've downloaded.
+
+10:20.370 --> 10:25.590
+The metaphor is it's just like a shelf at home that has all your books on it, except for the fact that
+
+10:25.590 --> 10:28.140
+you're looking at the covers instead of the spines.
+
+10:28.170 --> 10:28.860
+Okay.
+
+10:29.040 --> 10:34.320
+A truer metaphor would be to show the spines, but at the same time, it doesn't matter.
+
+10:34.320 --> 10:35.310
+We get it anyway.
+
+10:35.310 --> 10:36.270
+We still know what it is.
+
+10:36.270 --> 10:37.110
+We still know what it means.
+
+10:37.110 --> 10:38.600
+We still know what to do with it.
+
+10:38.610 --> 10:44.940
+Finally, here's a virtual wallet which shows our credit cards stacked up in much the same way we would
+
+10:44.940 --> 10:47.030
+find them in an actual wallet.
+
+10:47.040 --> 10:49.260
+Again, the metaphor holds true.
+
+10:49.290 --> 10:50.310
+Makes perfect sense.
+
+10:50.310 --> 10:53.970
+We automatically know what these things are and we know what we can do with them.
+
+10:53.970 --> 10:59.640
+So those are just some ways in which metaphors can be used to enable use.
+
+11:00.330 --> 11:05.400
+While metaphors are valuable, it's also very easy to abuse them.
+
+11:05.520 --> 11:11.910
+You need to use metaphors with caution whenever you're considering the use of a metaphor in an interface
+
+11:11.910 --> 11:12.690
+design.
+
+11:12.720 --> 11:15.840
+Remember that metaphors are culturally subjective.
+
+11:15.870 --> 11:21.240
+If what you're creating potentially has global use, you have to realize that some of the things that
+
+11:21.240 --> 11:28.980
+you take for granted in terms of people recognizing them may not be equally relevant to people from
+
+11:28.980 --> 11:30.030
+different cultures.
+
+11:30.090 --> 11:34.110
+The other thing about metaphors is that they require mental effort.
+
+11:34.260 --> 11:40.980
+So in situations where actions or activity has to be absolutely, you know, sort of lightning quick
+
+11:41.220 --> 11:45.480
+metaphors may not be the best way to go about representing things.
+
+11:45.630 --> 11:50.260
+Metaphors can also obscure the nature of a feature instead of revealing it.
+
+11:50.280 --> 11:56.550
+That's especially true if the range of content, features and functionality is very diverse.
+
+11:56.580 --> 12:02.920
+The guess that happens when we try to figure out what the metaphor means becomes less reliable, the
+
+12:02.920 --> 12:05.500
+more options that there are behind it.
+
+12:05.530 --> 12:10.810
+In most cases it would be better and simpler just to eliminate guesswork altogether.
+
+12:10.930 --> 12:16.540
+Last but not least, metaphors that have universal understanding are pretty hard to come by, to be
+
+12:16.540 --> 12:17.050
+honest.
+
+12:17.050 --> 12:22.330
+Even though an association between a metaphor and a feature or a function might be very clear to you.
+
+12:22.360 --> 12:26.650
+It's probably one of any number of associations that someone else might make.
+
+12:26.680 --> 12:26.980
+Okay.
+
+12:27.010 --> 12:31.840
+Your users, especially if they come, as we said, from a different cultural background than you do.
+
+12:31.840 --> 12:37.600
+For instance, the page curl feature that exists on the iPhone is something at this point that we know
+
+12:37.600 --> 12:38.140
+how to use.
+
+12:38.140 --> 12:43.690
+But the reason we know how to use it is because the very first time we inadvertently touched the map,
+
+12:43.690 --> 12:49.330
+we saw what happened in that scenario where there's no real consequence for not figuring that out right
+
+12:49.330 --> 12:49.930
+away.
+
+12:49.960 --> 12:54.850
+That's okay because we have time to learn how it works and it's kind of fun figuring it out.
+
+12:54.850 --> 13:00.730
+But in the situation of a work related application where let's say you use the same metaphor and you
+
+13:00.730 --> 13:06.010
+hide features underneath the page, curl in something completely different, there's a little more stress
+
+13:06.010 --> 13:12.640
+associated with a work related task, So it may not be the appropriate place to invite people to have
+
+13:12.640 --> 13:15.760
+fun and figure out, you know, how your interface works.
+
+13:15.760 --> 13:18.700
+They're just trying to get their job done right and they really don't want to play games.
+
+13:18.700 --> 13:20.350
+They just want to get done and get out.
+
+13:20.380 --> 13:27.370
+So metaphors are certainly helpful, but you have to be very, very conscious of the context in which
+
+13:27.370 --> 13:34.120
+you use them and you have to be sure that they're going to be well understood by the majority of your
+
+13:34.120 --> 13:34.840
+users.

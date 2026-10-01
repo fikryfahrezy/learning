@@ -1,0 +1,640 @@
+WEBVTT
+
+00:00.900 --> 00:06.120
+Two of the most obvious components of what we see on the surface are color and typography.
+
+00:06.120 --> 00:07.680
+And let's start with color.
+
+00:07.710 --> 00:09.630
+Color matters.
+
+00:09.660 --> 00:17.190
+Color is a critical visual element of most user interfaces, and that's because color has associated
+
+00:17.190 --> 00:19.740
+meanings that create emotional responses.
+
+00:19.740 --> 00:26.340
+And those emotional responses will either drive us to do what is intended or it will drive us to do
+
+00:26.340 --> 00:28.200
+something that was not intended.
+
+00:28.230 --> 00:31.740
+Either way, you have to be aware of how you're influencing behavior.
+
+00:31.740 --> 00:36.870
+So to prevent confusion in meaning, color has to be used very consistently.
+
+00:36.870 --> 00:40.860
+And in addition to that, in order to get the desired emotional response.
+
+00:40.890 --> 00:43.050
+Color has to be used appropriately.
+
+00:43.080 --> 00:44.760
+Take a look at this interface design.
+
+00:44.760 --> 00:48.420
+This is for a sleep meditation app.
+
+00:48.750 --> 00:54.130
+Its goal is to sort of help you relax and get into a meditative state so that you can sleep better.
+
+00:54.150 --> 00:56.940
+Now, do you see a ton of contrast?
+
+00:56.970 --> 01:00.070
+Do you see stark black and white colors?
+
+01:00.090 --> 01:04.390
+Do you see bright dayglo screaming colors?
+
+01:04.420 --> 01:05.140
+No.
+
+01:05.170 --> 01:12.340
+You see sort of this nice peach orangey type color with a nice tan background and a baby blue header
+
+01:12.370 --> 01:19.660
+up here and a typeface that is very friendly and welcoming and says sleep goals.
+
+01:19.900 --> 01:20.440
+Okay.
+
+01:20.440 --> 01:27.520
+Everything is very sedate and subtle and pleasant.
+
+01:27.550 --> 01:33.910
+That's an instance where color use is very much in line with the intended emotional response.
+
+01:33.940 --> 01:39.610
+Certain colors are specifically used in order to provide a calming effect.
+
+01:40.250 --> 01:42.570
+So color does some pretty important things.
+
+01:42.590 --> 01:48.080
+First and foremost, the right color combination draws the eye to the most important things, the most
+
+01:48.080 --> 01:50.780
+important areas on the screen.
+
+01:50.810 --> 01:56.540
+The right color combinations maximize readability and they minimize optical fatigue.
+
+01:56.540 --> 02:02.360
+If the balance of contrast and saturation in particular is right, it means our eyes have to strain
+
+02:02.360 --> 02:08.510
+a lot less to read because we can obviously easily tell the difference between the background and the
+
+02:08.510 --> 02:10.250
+text color that's on top of it.
+
+02:10.280 --> 02:16.640
+Color also delivers symbolic meanings that support and enhance the visual experience and the elements
+
+02:16.640 --> 02:17.430
+of the design.
+
+02:17.450 --> 02:24.920
+There's an intended idea or concept that is meant to be communicated, and color goes a long way in
+
+02:24.920 --> 02:26.330
+helping reinforce that.
+
+02:26.330 --> 02:31.460
+And of course, it almost goes without saying, but color makes things look good.
+
+02:31.460 --> 02:32.900
+It pleases the eye.
+
+02:32.930 --> 02:38.120
+And if we like what we see that sustains our visual interest, okay, it keeps us there.
+
+02:38.120 --> 02:42.460
+It makes the whole experience feel pleasurable, feel comfortable.
+
+02:42.470 --> 02:48.830
+Here's an example where a lot of those things come into play in a single interface in terms of the most
+
+02:48.830 --> 02:50.510
+important areas on the screen.
+
+02:50.510 --> 02:52.340
+You know, what's your eye drawn to first?
+
+02:52.340 --> 02:56.290
+Well, those blue bars are definitely points of fixation, okay?
+
+02:56.300 --> 03:00.410
+And they just happen to be headings of chunks of information.
+
+03:00.410 --> 03:00.680
+Okay.
+
+03:00.680 --> 03:04.760
+They represent the different areas of information on the screen.
+
+03:04.760 --> 03:09.920
+So you can sort of quickly scan, bounce from each bar and know almost immediately what you would find
+
+03:09.920 --> 03:10.700
+underneath.
+
+03:10.700 --> 03:15.350
+And you'll see that there's a contrasting orange color all the way up at the top where it says back
+
+03:15.350 --> 03:16.070
+to questions.
+
+03:16.070 --> 03:18.440
+Okay, that's a core action, core activity.
+
+03:18.440 --> 03:23.750
+And because of that, they're using an orange color, which is a very stark contrast to the blue and
+
+03:23.750 --> 03:28.730
+white that we see below that button because of its color treatment and because of the neutral background
+
+03:28.730 --> 03:31.220
+that it sits on, calls attention to itself.
+
+03:31.220 --> 03:34.910
+It's very easy to go up there and have sort of an exit route.
+
+03:34.910 --> 03:37.970
+And overall, okay, color makes things look good.
+
+03:37.970 --> 03:43.470
+If you go down to these charts and graphs below where it says number of physicians in your area, they're
+
+03:43.470 --> 03:46.410
+sort of very pleasant to look at these nice little shapes.
+
+03:46.410 --> 03:49.080
+We have a number correlation that's next to each shape.
+
+03:49.080 --> 03:53.520
+So overall, everything is put together in a way that's very visually pleasing.
+
+03:53.520 --> 03:57.120
+It's not only well-organized, it's also nice to look at.
+
+03:57.570 --> 04:01.080
+Now, when you use color, you want to use it to highlight.
+
+04:01.080 --> 04:02.970
+You don't want to use it to determine.
+
+04:02.970 --> 04:04.040
+And here's what I mean.
+
+04:04.050 --> 04:08.150
+Color should never be the sole differentiator of things in an interface.
+
+04:08.160 --> 04:09.740
+It can be used to help and highlight.
+
+04:09.750 --> 04:16.560
+It can certainly be used to guide attention, but it should not be the only way you can tell the difference
+
+04:16.560 --> 04:18.660
+between one element and the next.
+
+04:18.660 --> 04:20.520
+You also do that through size.
+
+04:20.520 --> 04:22.530
+You also do that through font style.
+
+04:22.530 --> 04:24.690
+You also do that through shape.
+
+04:24.690 --> 04:29.850
+Color in and of itself can't be the only differentiator if for no other reason than, you know, some
+
+04:29.850 --> 04:36.450
+folks are color blind and therefore if color is the only thing they have to go by in order to differentiate
+
+04:36.450 --> 04:38.370
+one thing from another, they're going to have trouble.
+
+04:38.370 --> 04:44.000
+So you should never solely rely on color to call out stark differences between items.
+
+04:44.010 --> 04:50.220
+Now, for extended screen use situations, you always want to use light, muted background colors.
+
+04:50.220 --> 04:56.850
+That means grays, it means tans, it means neutral colors that don't have a lot of saturation.
+
+04:56.850 --> 05:03.190
+Bright saturated colors should only be used as visual accents to call attention to something.
+
+05:03.190 --> 05:09.790
+And it's the kind of thing where if there's too much bright color everywhere, then everything seems
+
+05:09.790 --> 05:14.680
+like it's of equal importance and you can't tell the difference between what's really important and
+
+05:14.680 --> 05:16.510
+what may or may not be important.
+
+05:16.510 --> 05:20.800
+It's like the old story of the boy crying wolf who does it all the time, every day.
+
+05:20.800 --> 05:24.760
+And then when something really does happen and he's crying wolf, nobody believes him.
+
+05:24.850 --> 05:25.120
+All right.
+
+05:25.120 --> 05:26.680
+This is very, very similar.
+
+05:26.710 --> 05:32.920
+Be very selective in where you apply color to call attention to things.
+
+05:32.920 --> 05:37.900
+The way to do that is start with one dominant neutral color.
+
+05:37.900 --> 05:42.250
+And then once you have that down, add an accent color or two accent colors.
+
+05:42.280 --> 05:47.470
+Okay, but sort of work with one at a time and then add things as they make sense.
+
+05:47.470 --> 05:53.050
+What should happen is you'll start to see that if you apply too much color, things all sort of start
+
+05:53.050 --> 05:55.330
+becoming equally visually important.
+
+05:55.330 --> 05:58.210
+That's when you know you're using a color too much.
+
+05:58.210 --> 06:03.610
+So here's an excellent example of an accent color being used in a very effective way.
+
+06:03.610 --> 06:08.440
+When we're looking at this interface and we're sort of glancing at the screen to see how many messages
+
+06:08.440 --> 06:12.970
+we have, that stark orange circle really stands out.
+
+06:12.970 --> 06:18.430
+The number three in the Orange circle jumps out from the gray background to tell us at a quick glance.
+
+06:18.430 --> 06:20.890
+Less than a second, I got three new messages.
+
+06:20.890 --> 06:27.010
+It's repeated right below it, next to the word inbox in a bit of a more subtle manner, but it's still
+
+06:27.010 --> 06:27.490
+there.
+
+06:27.490 --> 06:32.980
+Now notice that they used color very differently in both those instances up above and messages.
+
+06:32.980 --> 06:39.190
+When we have the orange oval and the white three, there's a ton of contrast in that combination.
+
+06:39.190 --> 06:42.190
+So it automatically becomes the first thing that we see.
+
+06:42.220 --> 06:46.480
+It automatically assumes a position of priority down in inbox.
+
+06:46.480 --> 06:49.840
+The only thing that has color is the number itself.
+
+06:49.840 --> 06:51.010
+So it's still important.
+
+06:51.010 --> 06:54.100
+It still stands out from the gray background, but it's secondary.
+
+06:54.100 --> 07:00.310
+All right, So it plays second fiddle, so to speak, to that that large message icon above.
+
+07:00.340 --> 07:05.350
+That's a great example of using color very sparingly and very effectively.
+
+07:05.380 --> 07:11.530
+Here's another example where color is used to highlight what's being selected currently on the left,
+
+07:11.530 --> 07:16.660
+I've selected commissions, so therefore it's highlighted in orange and the resulting table, the bar
+
+07:16.660 --> 07:21.850
+that I have chosen is also highlighted in a dark gray for the name and then an orange for all the relevant
+
+07:21.850 --> 07:22.810
+information.
+
+07:22.810 --> 07:26.950
+The submenu that I get below that is also called out.
+
+07:26.980 --> 07:32.650
+My default state is I am on the summary tab, so therefore it's got an orange outline above it.
+
+07:32.650 --> 07:39.880
+And again, just like the example that we saw previously, notice that as I drill down, color use becomes
+
+07:39.880 --> 07:41.530
+more and more spare.
+
+07:41.530 --> 07:47.290
+We went from a heavy, solid orange on the left side from the first thing that I clicked.
+
+07:47.290 --> 07:52.150
+Then we get a little more subtle treatment on the bar with the name and information in it, and then
+
+07:52.150 --> 07:58.150
+it gets even more subtle with this orange outline around the summary and then again around the page
+
+07:58.150 --> 07:59.530
+number that I happen to be on.
+
+07:59.530 --> 08:05.440
+And this is an excellent example of how you use color to segregate and differentiate information.
+
+08:06.120 --> 08:10.680
+So if you're concerned about whether or not you're using color properly, there are some things you
+
+08:10.680 --> 08:13.320
+can do to evaluate your color use.
+
+08:13.560 --> 08:17.430
+You can evaluate color in your design by asking these questions.
+
+08:17.430 --> 08:20.160
+First, are colors used sparingly?
+
+08:20.190 --> 08:25.560
+Next, do my colors reinforce or interfere with hierarchy and content?
+
+08:25.590 --> 08:31.180
+Do they make it easier to understand the order of importance, or does it make things more confusing?
+
+08:31.200 --> 08:35.670
+Is my color scheme used consistently right once I've established it?
+
+08:35.700 --> 08:36.570
+Is it consistent?
+
+08:36.570 --> 08:38.160
+From screen to screen to screen?
+
+08:38.190 --> 08:41.910
+Is my color use functional or is it just decorative?
+
+08:41.910 --> 08:43.620
+And should it be one or the other?
+
+08:43.620 --> 08:44.850
+Or should it be both?
+
+08:44.880 --> 08:47.970
+Does my functionality depend on color?
+
+08:47.970 --> 08:53.820
+And the corollary question to that is would this be just as functional for someone who's colorblind?
+
+08:53.850 --> 08:58.560
+So ask yourself those questions and pay very close attention to the answers.
+
+08:59.220 --> 09:05.880
+When it comes to typography, the question that gets asked most is serif or sans serif, which is better,
+
+09:05.880 --> 09:07.080
+which is more readable?
+
+09:07.110 --> 09:13.110
+The bottom line is this Some people have argued that sans serif typefaces are easier to read because
+
+09:13.110 --> 09:13.740
+they're playing.
+
+09:13.770 --> 09:20.010
+Other people have said no serif fonts are easier to read because the serifs, those little decorations
+
+09:20.010 --> 09:22.950
+on the end of the letter draw the eye toward the letter.
+
+09:22.980 --> 09:29.340
+The bottom line is that research shows absolutely no difference in comprehension reading, speed or
+
+09:29.340 --> 09:32.770
+any kind of preference between serif and sans serif fonts.
+
+09:32.790 --> 09:36.330
+This block of text that you're looking at right now is very easy to read.
+
+09:36.330 --> 09:37.190
+But you know what?
+
+09:37.200 --> 09:38.300
+So is this one.
+
+09:38.310 --> 09:39.900
+It's just as easy to read.
+
+09:39.900 --> 09:41.640
+It doesn't take you any longer to read it.
+
+09:41.640 --> 09:44.220
+It doesn't take you any longer to comprehend the meaning of it.
+
+09:44.220 --> 09:50.790
+So when someone asks you, well, is sans serif or serif better, you just say yes.
+
+09:51.610 --> 09:56.260
+The important thing to know about using typography is that you have to use it purposefully.
+
+09:56.260 --> 10:01.960
+So any time you're planning to use more than one typeface, each one should be very visually distinct
+
+10:01.960 --> 10:02.860
+from each other.
+
+10:02.890 --> 10:04.180
+Take a look at this example.
+
+10:04.180 --> 10:09.940
+We've got several areas where there's typography in the logo where it says Southern savers immediately
+
+10:09.940 --> 10:12.610
+to the right in the navigation printables.
+
+10:12.640 --> 10:18.400
+Learn to coupon whatever it says there below where it says, Welcome to Southern Savers.
+
+10:18.400 --> 10:21.610
+Then we go down further and we see some text, etcetera, etcetera.
+
+10:21.640 --> 10:27.850
+Notice that when they use typography in the headlines and then in the body content, they're very different.
+
+10:27.880 --> 10:32.920
+That allows us to draw very quick distinction between labels and content.
+
+10:32.920 --> 10:38.800
+So the only reason we use different styles at all is to indicate differences in the information being
+
+10:38.800 --> 10:39.480
+presented.
+
+10:39.490 --> 10:40.750
+Here's another example.
+
+10:40.750 --> 10:42.520
+This is Nike's fuel app.
+
+10:42.520 --> 10:48.070
+Notice that workout summary is in a very different font style than everything else on the screen.
+
+10:48.070 --> 10:48.490
+Why?
+
+10:48.520 --> 10:51.440
+Because it's a general categorization.
+
+10:51.440 --> 10:56.930
+It tells you what is on the screen that you're looking at, and it stands apart from the actual content
+
+10:56.930 --> 11:04.250
+that you're meant to absorb, such as you earned 450 fuel points or your total time was 1639 or your
+
+11:04.250 --> 11:07.130
+rank or your calories, your distance, all these things below.
+
+11:07.160 --> 11:10.430
+When the information is different, you use a different style.
+
+11:10.430 --> 11:15.410
+Now the same thing can also be done with font weight, bold versus regular fonts.
+
+11:15.410 --> 11:20.720
+In this example, you can see that there are several differences in font weight that communicate the
+
+11:20.720 --> 11:22.250
+hierarchy of information.
+
+11:22.250 --> 11:29.300
+Just wonderful is all the way at the top and that's your core heading and it's very separate from the
+
+11:29.300 --> 11:30.610
+categories that appear below it.
+
+11:30.620 --> 11:32.330
+Dream Interpretation My Trip to England.
+
+11:32.330 --> 11:33.290
+Favorite music.
+
+11:33.320 --> 11:40.880
+Okay, and off to the right, we have very gray, subtle, almost faint dates that are associated with
+
+11:40.880 --> 11:41.450
+those things.
+
+11:41.450 --> 11:47.750
+So the weight of the font, the visual weight is what allows us to discern between one type of information
+
+11:47.750 --> 11:48.830
+and the next.
+
+11:48.860 --> 11:55.910
+We should also provide clear contrast between styles so that we can draw the user's attention as needed.
+
+11:55.910 --> 12:01.400
+Here's another example where I'm looking at a reading list from a reading app.
+
+12:01.400 --> 12:05.630
+Notice that the headlines really stand out because there's a lot of contrast.
+
+12:05.660 --> 12:08.360
+They're big, they're bold, they're black.
+
+12:08.390 --> 12:15.380
+They stand out very much from the short description that appears below and also from the website source
+
+12:15.380 --> 12:17.210
+that appears above them.
+
+12:17.210 --> 12:23.870
+So our attention is absolutely drawn to those big, bold, dark areas where there's very high contrast.
+
+12:24.110 --> 12:30.830
+Another thing we do in order to use typography purposefully is we create very consistent styles and
+
+12:30.830 --> 12:33.800
+that starts with identifying different types of content.
+
+12:33.830 --> 12:39.140
+We have headlines, we have body text, we have bullets, we have charts, etcetera.
+
+12:39.140 --> 12:43.580
+So each one of those is a very different type of content.
+
+12:43.610 --> 12:51.320
+Next, we create very specific styles for each the font that's used, the weight of that font bold versus
+
+12:51.320 --> 12:53.270
+regular, and the color of that font.
+
+12:53.300 --> 12:58.850
+If you look here at this example, there are five separate styles being used here.
+
+12:58.850 --> 13:02.900
+Style one is for the main headline, style two is for the body content.
+
+13:02.900 --> 13:06.080
+Style three is for call out, text and style.
+
+13:06.080 --> 13:11.390
+Four and five have to do with information that appears in chart or graphic form.
+
+13:11.390 --> 13:17.450
+So we've created very specific styles for each type of information that we're going to surface.
+
+13:17.480 --> 13:24.080
+Now what we do is we apply those styles consistently on every subsequent screen.
+
+13:24.080 --> 13:26.090
+And here's an example of how we do that.
+
+13:26.090 --> 13:32.090
+If we move to another screen in the same app, notice that we are reusing the styles that we've already
+
+13:32.090 --> 13:32.720
+created.
+
+13:32.720 --> 13:39.410
+Style one is used once again for the headline style two is used once again for body text.
+
+13:39.410 --> 13:43.070
+Style three is used once again for the callout.
+
+13:43.100 --> 13:50.720
+Style five is once again used for a visual description, a visual chart, a visual accompaniment of
+
+13:50.720 --> 13:51.500
+some kind.
+
+13:51.530 --> 13:51.830
+Okay.
+
+13:51.830 --> 13:58.280
+The point is, we created a bunch of styles and we are now applying them consistently through every
+
+13:58.280 --> 13:59.360
+single screen.
+
+13:59.390 --> 14:07.910
+That consistency enhances usability, increases comprehension, and improves overall user experience.

@@ -1,0 +1,520 @@
+WEBVTT
+
+00:00.720 --> 00:01.800
+-: In the last section we finished
+
+00:01.800 --> 00:03.930
+up with our POSTGRES deployment file
+
+00:03.930 --> 00:06.900
+and the associated cluster IP service as well.
+
+00:06.900 --> 00:09.167
+So that's pretty much it for the boring configuration files,
+
+00:09.167 --> 00:11.940
+at least the ones around the cluster IP service
+
+00:11.940 --> 00:13.170
+and deployments.
+
+00:13.170 --> 00:14.003
+We're still going to write
+
+00:14.003 --> 00:15.702
+out a couple of different config files,
+
+00:15.702 --> 00:17.550
+but they're going to be much different
+
+00:17.550 --> 00:19.161
+than the ones we put together so far, because
+
+00:19.161 --> 00:22.050
+they're going to serve dramatically different purposes
+
+00:22.050 --> 00:25.200
+than the services and deployments we've taken a look at.
+
+00:25.200 --> 00:27.390
+In this section in particular, we're gonna start looking
+
+00:27.390 --> 00:30.960
+at what a POSTGRES PVC thing down here is.
+
+00:30.960 --> 00:33.480
+First beginning by getting a better understanding
+
+00:33.480 --> 00:36.282
+on why we need this PVC thing at all.
+
+00:36.282 --> 00:41.282
+So just so you know, PVC stands for persistent volume claim.
+
+00:42.390 --> 00:45.780
+Now the word volume in here, is the same type of volume
+
+00:45.780 --> 00:48.600
+that we had worked back with in the world of Docker
+
+00:48.600 --> 00:50.640
+and Docker Compose a while ago.
+
+00:50.640 --> 00:52.380
+You might recall that we had previously made use
+
+00:52.380 --> 00:54.960
+of volumes in order to share the file system
+
+00:54.960 --> 00:57.780
+of a host operating system or a host machine,
+
+00:57.780 --> 01:00.360
+with the file system inside of a container.
+
+01:00.360 --> 01:02.651
+And so we had previously used it with Docker Compose
+
+01:02.651 --> 01:06.000
+when we were working on that create React app,
+
+01:06.000 --> 01:07.620
+we had wanted to make sure that every time
+
+01:07.620 --> 01:09.630
+we changed the source code of our project
+
+01:09.630 --> 01:12.197
+on our local machine, it somehow updated the files
+
+01:12.197 --> 01:14.553
+inside of the container as well.
+
+01:15.480 --> 01:16.950
+Now, to give you a good idea
+
+01:16.950 --> 01:19.170
+of what a persistent volume claim is,
+
+01:19.170 --> 01:21.994
+I first wanna do a very quick review on what a volume is
+
+01:21.994 --> 01:25.974
+and why we need a volume at all with POSTGRES in particular.
+
+01:25.974 --> 01:27.570
+Because if we just start talking about
+
+01:27.570 --> 01:29.475
+what a volume claim is without really understanding
+
+01:29.475 --> 01:32.370
+and remembering what a volume is a lot of this stuff
+
+01:32.370 --> 01:33.390
+won't make sense.
+
+01:33.390 --> 01:36.000
+So in this section, quick review on volumes and why
+
+01:36.000 --> 01:37.563
+we need one with POSTGRES.
+
+01:38.430 --> 01:41.010
+All right, now, I just took the diagram
+
+01:41.010 --> 01:42.210
+we were looking at a second ago,
+
+01:42.210 --> 01:44.220
+like this big one right here in particular,
+
+01:44.220 --> 01:46.163
+the deployment and POSTGRES pod piece
+
+01:46.163 --> 01:50.130
+and I blew it up to be its own kind of diagram right here
+
+01:50.130 --> 01:50.970
+as you see.
+
+01:50.970 --> 01:54.420
+So we still have the deployment, which creates a pod,
+
+01:54.420 --> 01:58.290
+and inside that pod we have a single POSTGRES container.
+
+01:58.290 --> 02:01.170
+And inside that container is a file system, totally
+
+02:01.170 --> 02:04.803
+isolated to just be accessible by the container itself.
+
+02:05.896 --> 02:07.706
+Now, I want you to recall that POSTGRES is a database
+
+02:07.706 --> 02:11.670
+and the POSTGRES database, very similar to many other types
+
+02:11.670 --> 02:14.190
+of databases, though not relevant for Redis
+
+02:14.190 --> 02:17.130
+because that is specifically an in-memory data store,
+
+02:17.130 --> 02:19.830
+POSTGRES takes in some amount of data and writes it
+
+02:19.830 --> 02:21.960
+to a file system.
+
+02:21.960 --> 02:24.330
+So we can imagine that a request to write some data
+
+02:24.330 --> 02:26.477
+or essentially save some data with POSTGRES,
+
+02:26.477 --> 02:28.440
+comes into the container.
+
+02:28.440 --> 02:31.027
+POSTGRES is going to process it and then eventually say
+
+02:31.027 --> 02:34.230
+"Okay, I want to store this information on a file system
+
+02:34.230 --> 02:36.270
+or a hard drive of sorts."
+
+02:36.270 --> 02:38.850
+So inside that container, we can imagine that there is
+
+02:38.850 --> 02:41.130
+that file system and some amount of data
+
+02:41.130 --> 02:42.333
+is being stored on it.
+
+02:43.440 --> 02:44.880
+Now here's the thing to keep in mind
+
+02:44.880 --> 02:49.060
+about any file system that is maintained inside
+
+02:49.060 --> 02:50.820
+of a container.
+
+02:50.820 --> 02:54.241
+If we ever had a situation where for, if any reason you
+
+02:54.241 --> 02:57.520
+can possibly imagine, this POSTGRES container
+
+02:57.520 --> 03:01.110
+or the pod kind of wrapping it and managing it crashes,
+
+03:01.110 --> 03:04.320
+then everything over here gets a hundred percent lost,
+
+03:04.320 --> 03:06.525
+including the file system that exists inside
+
+03:06.525 --> 03:08.880
+of the POSTGRES container.
+
+03:08.880 --> 03:11.010
+So if we just use our copy of POSTGRES
+
+03:11.010 --> 03:14.760
+as it stands right now, like this single deployment
+
+03:14.760 --> 03:17.220
+with this pod inside of it and no associated bells
+
+03:17.220 --> 03:20.850
+or whistles or volumes and stuff associated with it,
+
+03:20.850 --> 03:22.950
+if we just write data to POSTGRES
+
+03:22.950 --> 03:25.920
+and then that pod or that container eventually crashes
+
+03:25.920 --> 03:30.180
+that entire pod is going to be deleted by the deployment,
+
+03:30.180 --> 03:33.420
+and a brand new pod is going to be created in its place.
+
+03:33.420 --> 03:35.220
+And this new pod is going to have absolutely
+
+03:35.220 --> 03:37.140
+no carryover of data.
+
+03:37.140 --> 03:38.840
+So none of the data on the file system
+
+03:38.840 --> 03:41.220
+or the original container, gets brought over
+
+03:41.220 --> 03:44.130
+to this new container or the pod that wraps it.
+
+03:44.130 --> 03:46.260
+So essentially the instant that the deployment
+
+03:46.260 --> 03:48.840
+starts up a new pod, we'd lose all the data
+
+03:48.840 --> 03:50.490
+sitting inside of our database.
+
+03:50.490 --> 03:53.370
+And as you might guess, that is a hundred percent
+
+03:53.370 --> 03:55.620
+not something we want to ever deal with.
+
+03:55.620 --> 03:58.200
+We never want to experience any type of data loss
+
+03:58.200 --> 04:01.170
+with any database such as POSTGRES.
+
+04:01.170 --> 04:02.310
+So that's the issue.
+
+04:02.310 --> 04:05.280
+If we just let POSTGRES save all of its data
+
+04:05.280 --> 04:07.740
+inside the file system maintained by the container,
+
+04:07.740 --> 04:09.678
+we're gonna lose it as soon as this pod crashes
+
+04:09.678 --> 04:12.750
+or the container crashes, and we have to absolutely assume
+
+04:12.750 --> 04:15.000
+that that might happen at some point in time.
+
+04:16.050 --> 04:17.610
+So how are we gonna solve this?
+
+04:17.610 --> 04:20.130
+Well recall that is where volumes come in.
+
+04:20.130 --> 04:22.260
+Now, when we had previously used volumes, it was all
+
+04:22.260 --> 04:25.470
+in the context of kind of being allowed to make changes
+
+04:25.470 --> 04:26.441
+to our source code files
+
+04:26.441 --> 04:29.040
+and have them show up inside the container.
+
+04:29.040 --> 04:32.138
+But we can also make use of volumes to have a consistent
+
+04:32.138 --> 04:35.434
+file system, that can be accessed by a database
+
+04:35.434 --> 04:37.560
+such as POSTGRES.
+
+04:37.560 --> 04:40.188
+So we can now imagine that with a volume in place
+
+04:40.188 --> 04:43.260
+that is running on a host machine,
+
+04:43.260 --> 04:44.970
+if we have a request to write data that comes
+
+04:44.970 --> 04:47.234
+into the container, POSTGRES is going to think
+
+04:47.234 --> 04:49.890
+that it's writing it to a file system that exists
+
+04:49.890 --> 04:51.540
+inside the container, but in reality
+
+04:51.540 --> 04:54.823
+it's going to be a volume that actually exists outside
+
+04:54.823 --> 04:56.463
+on the host machine.
+
+04:57.450 --> 05:00.660
+The results of this is that if our original pod
+
+05:00.660 --> 05:02.845
+or the POSTGRES container inside of it crashes
+
+05:02.845 --> 05:05.520
+for whatever reason whatsoever,
+
+05:05.520 --> 05:07.740
+the deployment is going to delete that thing
+
+05:07.740 --> 05:09.450
+and then create a brand new pod
+
+05:09.450 --> 05:12.120
+with a brand new copy of POSTGRES inside of it.
+
+05:12.120 --> 05:13.410
+But we're going to make sure
+
+05:13.410 --> 05:15.665
+that this new copy of POSTGRES that gets created
+
+05:15.665 --> 05:18.900
+gets access to the exact same volume.
+
+05:18.900 --> 05:21.229
+And so we'll have access to all of the data
+
+05:21.229 --> 05:23.772
+that had been written by the previous copy of POSTGRES
+
+05:23.772 --> 05:25.383
+that already existed.
+
+05:26.940 --> 05:28.920
+So that's the idea behind a volume, and that's how
+
+05:28.920 --> 05:32.190
+we're going to allow ourselves to save some amount of data
+
+05:32.190 --> 05:35.100
+with a database, but not have to worry about all the data
+
+05:35.100 --> 05:37.890
+inside there being deleted anytime that the container has to
+
+05:37.890 --> 05:40.615
+be restarted or crashes or whatever reason,
+
+05:40.615 --> 05:42.840
+whatever might happen.
+
+05:42.840 --> 05:45.630
+Now, one quick thing that I wanna mention here.
+
+05:45.630 --> 05:47.940
+You'll notice that inside of our POSTGRES deployment
+
+05:47.940 --> 05:51.180
+you'll recall we put down replicas of one right here.
+
+05:51.180 --> 05:53.077
+Now, I want you to recall that I told you,
+
+05:53.077 --> 05:56.070
+"Yeah, we can set up POSTGRES to have like some amount
+
+05:56.070 --> 05:59.070
+of replication or clustering that's going to
+
+05:59.070 --> 06:02.640
+improve the availability and performance of our database."
+
+06:02.640 --> 06:05.143
+Just to make sure it's really clear, if we just
+
+06:05.143 --> 06:07.230
+like bump that up to Replica's,
+
+06:07.230 --> 06:09.270
+like to right there,
+
+06:09.270 --> 06:11.040
+we would end up with a situation like this,
+
+06:11.040 --> 06:13.560
+where we have two pods that might be accessing
+
+06:13.560 --> 06:14.910
+the same volume.
+
+06:14.910 --> 06:18.470
+Having two different databases access the same file system
+
+06:18.470 --> 06:20.640
+without them being aware of each other
+
+06:20.640 --> 06:23.400
+and have them very distinctly cooperating with each other,
+
+06:23.400 --> 06:25.500
+is a recipe for disaster.
+
+06:25.500 --> 06:28.040
+So at no point in time are you ever going to want to just
+
+06:28.040 --> 06:31.010
+arbitrarily dial up replicas to two, like so,
+
+06:31.010 --> 06:33.720
+in attempt to have two copies of POSTGRES
+
+06:33.720 --> 06:35.700
+accessing the same volume.
+
+06:35.700 --> 06:38.490
+Now that's not just isolated to the world of POSTGRES
+
+06:38.490 --> 06:40.920
+many other databases, you're gonna find the same problem.
+
+06:40.920 --> 06:44.100
+So for whatever reason you want to scale up your copy
+
+06:44.100 --> 06:46.020
+of POSTGRES and make it more available
+
+06:46.020 --> 06:48.480
+by having more copies of it running or whatever it might be,
+
+06:48.480 --> 06:51.634
+you have to go through some additional configuration steps,
+
+06:51.634 --> 06:54.720
+besides just incrementing that Replica's number
+
+06:54.720 --> 06:55.590
+right there.
+
+06:55.590 --> 06:57.330
+So again, I just wanna make sure that was really,
+
+06:57.330 --> 06:58.860
+really, really clear.
+
+06:58.860 --> 07:01.500
+Okay, so now that we recall why we make use of volumes
+
+07:01.500 --> 07:04.500
+and why a volume is so important to use with a database,
+
+07:04.500 --> 07:06.900
+let's continue in the next section where we're going to
+
+07:06.900 --> 07:09.780
+start to talk about exactly what a persistent volume claim
+
+07:09.780 --> 07:12.840
+is and how it's going to assist us in setting up a volume
+
+07:12.840 --> 07:14.880
+for our POSTGRES pod.
+
+07:14.880 --> 07:17.330
+So quick break and I'll see you in just a minute.

@@ -1,0 +1,619 @@
+WEBVTT
+
+00:00.810 --> 00:02.580
+Narrator: Now that our Elastic Beanstalk instance
+
+00:02.580 --> 00:05.190
+has been created, we're gonna start to configure
+
+00:05.190 --> 00:08.550
+Travis CI to automatically deploy our application over
+
+00:08.550 --> 00:12.540
+to AWS once our tests has successfully passed.
+
+00:12.540 --> 00:14.970
+So to do so, we're gonna add some more configuration
+
+00:14.970 --> 00:17.040
+to the travis.yml file
+
+00:17.040 --> 00:20.250
+that we had created inside of our route project directory.
+
+00:20.250 --> 00:22.260
+I'm gonna open up my code editor and then
+
+00:22.260 --> 00:25.710
+inside of here I'm gonna find the travis.yml file.
+
+00:25.710 --> 00:27.060
+You'll recall that we currently have the
+
+00:27.060 --> 00:30.180
+before install and script sections inside of here
+
+00:30.180 --> 00:32.340
+and both those are concerned solely
+
+00:32.340 --> 00:35.250
+with putting together our initial image
+
+00:35.250 --> 00:37.786
+and then running some tests using that image.
+
+00:37.786 --> 00:40.620
+I'm gonna add in another section towards the bottom
+
+00:40.620 --> 00:41.453
+of this file
+
+00:41.453 --> 00:44.460
+called, as you might guess, deploy.
+
+00:44.460 --> 00:46.620
+So inside this section we're gonna add in a bunch
+
+00:46.620 --> 00:49.515
+of configuration to tell Travis CI exactly how
+
+00:49.515 --> 00:53.359
+to take our application and deploy it off to AWS.
+
+00:53.359 --> 00:54.960
+Now, some of these settings that we're gonna put
+
+00:54.960 --> 00:57.180
+in here are gonna be a little bit laborious
+
+00:57.180 --> 00:59.850
+so I really gotta ask you to watch really closely
+
+00:59.850 --> 01:03.580
+and make sure that you follow along as closely as possible.
+
+01:03.580 --> 01:05.480
+Now, the first option we're gonna add in here
+
+01:05.480 --> 01:07.770
+is gonna be really easy and straightforward.
+
+01:07.770 --> 01:12.000
+We're gonna say provider is Elastic Beanstalk.
+
+01:12.000 --> 01:13.503
+All one word like so.
+
+01:15.690 --> 01:17.850
+Travis CI comes pre configured
+
+01:17.850 --> 01:20.310
+to deploy our application to a handful of different
+
+01:20.310 --> 01:23.772
+providers or hosting providers such as AWS or
+
+01:23.772 --> 01:27.210
+Digital Ocean or whichever other you can possibly imagine.
+
+01:27.210 --> 01:29.790
+And so by just saying ProviderElasticBeanstalk
+
+01:29.790 --> 01:32.220
+we're essentially telling Travis CI that,
+
+01:32.220 --> 01:34.500
+Hey, we want you to use this set of instructions
+
+01:34.500 --> 01:37.740
+to attempt to automatically deploy our application.
+
+01:37.740 --> 01:40.320
+So by just specifying that right there, Travis CI
+
+01:40.320 --> 01:43.290
+is gonna really do a lot of stuff for us automatically.
+
+01:43.290 --> 01:45.390
+Now we're gonna still provide a lot of other options in
+
+01:45.390 --> 01:49.350
+here as well to just provide some further customization.
+
+01:49.350 --> 01:51.942
+The next one we're going to provide is region.
+
+01:51.942 --> 01:54.450
+Now region is gonna be a little bit of a tough one
+
+01:54.450 --> 01:56.910
+because the region that you're gonna specify depends
+
+01:56.910 --> 02:00.510
+upon exactly where you originally created your
+
+02:00.510 --> 02:02.190
+Elastic Beanstalk instance.
+
+02:02.190 --> 02:03.990
+Let me tell you what I mean by that.
+
+02:05.100 --> 02:07.890
+If you flip back over to your Elastic Beanstalk dashboard
+
+02:07.890 --> 02:09.150
+which should look like this
+
+02:09.150 --> 02:12.810
+I want you to look very closely at that URL, again.
+
+02:12.810 --> 02:16.140
+I'm gonna copy the URL and I'm gonna put it over
+
+02:16.140 --> 02:19.413
+into my code editor just so you can read mine very easily.
+
+02:20.640 --> 02:23.130
+So when you created your Elastic Beanstalk instance
+
+02:23.130 --> 02:26.040
+you created it in a particular region.
+
+02:26.040 --> 02:27.660
+And when I say region, I'm talking about
+
+02:27.660 --> 02:29.260
+like area of the earth or
+
+02:29.260 --> 02:31.920
+kind of continent essentially.
+
+02:31.920 --> 02:34.460
+So me personally, I created the region in the,
+
+02:34.460 --> 02:36.480
+to me the Elastic Beanstalk instance
+
+02:36.480 --> 02:39.150
+in the region, US-West-2.
+
+02:39.150 --> 02:42.210
+So right here you need to specify whatever region
+
+02:42.210 --> 02:45.150
+your Elastic Beanstalk instance was just created in.
+
+02:45.150 --> 02:48.600
+You might have something like US-East-1, US-West-1,
+
+02:48.600 --> 02:51.120
+you might have a totally different country inside of here.
+
+02:51.120 --> 02:53.483
+It's gonna be up to you to find whichever code it is
+
+02:53.483 --> 02:55.128
+and you're gonna take that code
+
+02:55.128 --> 02:59.010
+and put it in as the region wrapped inside of quotes.
+
+02:59.010 --> 03:03.390
+So I'll say US-West-2, and again, what you put
+
+03:03.390 --> 03:05.730
+in here is going to be whatever you see right there
+
+03:05.730 --> 03:08.313
+before the ElasticBeanstalk.com.
+
+03:10.680 --> 03:12.150
+All right, so once we got that in there
+
+03:12.150 --> 03:14.880
+we're then gonna add in a couple other options.
+
+03:14.880 --> 03:17.310
+We're gonna specify the name of our app.
+
+03:17.310 --> 03:19.920
+Now the name of the app is the same name
+
+03:19.920 --> 03:21.090
+that you had created
+
+03:21.090 --> 03:24.270
+back over here on the Elastic Beanstalk Dashboard.
+
+03:24.270 --> 03:26.324
+So you see how we have all applications right here.
+
+03:26.324 --> 03:30.420
+The first word right after that is the name of your app.
+
+03:30.420 --> 03:33.030
+So I called my docker, you might have called yours something
+
+03:33.030 --> 03:35.430
+like docker - react.
+
+03:35.430 --> 03:36.630
+Whatever you have right there,
+
+03:36.630 --> 03:38.820
+you're gonna take it letter for letter
+
+03:38.820 --> 03:41.400
+and you're gonna enter it in as the app right here.
+
+03:41.400 --> 03:44.343
+And so for me, I'm gonna put in simply docker, like so.
+
+03:46.050 --> 03:47.850
+The next configuration piece we're gonna add in
+
+03:47.850 --> 03:49.893
+is the environment name.
+
+03:49.893 --> 03:51.810
+So when we created the application
+
+03:51.810 --> 03:53.490
+of docker or docker - react,
+
+03:53.490 --> 03:54.810
+that's kind of just setting up
+
+03:54.810 --> 03:57.900
+a common set of configuration.
+
+03:57.900 --> 04:00.240
+The actual app that's running inside of here
+
+04:00.240 --> 04:01.560
+it's not really referred to as an app
+
+04:01.560 --> 04:04.170
+but instead referred to as an environment.
+
+04:04.170 --> 04:06.900
+And so the environment is gonna be the last piece on there.
+
+04:06.900 --> 04:11.040
+For me, my environment name is docker-env.
+
+04:11.040 --> 04:14.100
+So you're gonna take whatever's listed right there,
+
+04:14.100 --> 04:15.557
+you're gonna copy it,
+
+04:15.557 --> 04:18.213
+and then we're gonna put it right in there for env.
+
+04:22.140 --> 04:24.190
+All right, so that's looking pretty good.
+
+04:25.080 --> 04:27.330
+Now the next piece of configuration here
+
+04:27.330 --> 04:28.980
+is gonna be just a little bit nastier
+
+04:28.980 --> 04:30.780
+than the two we just went through.
+
+04:30.780 --> 04:33.180
+We're gonna put in a bucket name.
+
+04:33.180 --> 04:36.390
+So when Travis decides to deploy your code base
+
+04:36.390 --> 04:38.340
+it's gonna take all of the files
+
+04:38.340 --> 04:40.260
+inside of your GitHub repository.
+
+04:40.260 --> 04:43.050
+It's gonna zip them all up into one single file
+
+04:43.050 --> 04:45.150
+and then it's going to copy all them
+
+04:45.150 --> 04:48.480
+over to an, excuse me, an S3 bucket
+
+04:48.480 --> 04:52.590
+which is essentially a hard drive running on AWS.
+
+04:52.590 --> 04:54.213
+Once it copies all those files over,
+
+04:54.213 --> 04:56.970
+Travis CI is then going to essentially poke
+
+04:56.970 --> 04:58.590
+at Elastic Beanstalk and say,
+
+04:58.590 --> 05:00.849
+Hey, I just uploaded this new zip file.
+
+05:00.849 --> 05:04.290
+Use that to redeploy your application.
+
+05:04.290 --> 05:07.210
+So we need to provide the name of the bucket
+
+05:08.310 --> 05:12.150
+that Travis CI is going to put our zip file into.
+
+05:12.150 --> 05:14.130
+Now that might sound like it's a little complicated.
+
+05:14.130 --> 05:15.810
+The good news here is that
+
+05:15.810 --> 05:18.270
+this has been a S3 bucket that is already
+
+05:18.270 --> 05:20.760
+automatically generated for you when you initially
+
+05:20.760 --> 05:23.130
+created the Elastic Beanstalk instance.
+
+05:23.130 --> 05:25.130
+All we have to do is get the name of it.
+
+05:26.460 --> 05:30.240
+So to get the name, we're gonna go up to services up here
+
+05:30.240 --> 05:33.150
+and then we're gonna do a search for S3.
+
+05:33.150 --> 05:36.333
+And then you should see S3 Scalable Storage in the cloud.
+
+05:39.150 --> 05:41.880
+Then on here you're gonna look up and down this list.
+
+05:41.880 --> 05:43.836
+You'll notice that I have a tremendous number
+
+05:43.836 --> 05:46.302
+but hopefully you'll have a little, little bit fewer
+
+05:46.302 --> 05:47.670
+than what I have.
+
+05:47.670 --> 05:50.070
+You're looking for something like this right here.
+
+05:50.070 --> 05:53.311
+You should see one called Elastic Beanstalk -
+
+05:53.311 --> 05:55.080
+and then the name of the region
+
+05:55.080 --> 05:56.550
+that your bucket or, excuse me, that your
+
+05:56.550 --> 05:58.470
+Elastic Beanstalk was placed in.
+
+05:58.470 --> 06:01.830
+So like I just said, mine is US-West-2.
+
+06:01.830 --> 06:03.840
+So I'm going to be looking for something like
+
+06:03.840 --> 06:06.930
+Elastic Beanstalk-US-West-2.
+
+06:06.930 --> 06:08.940
+and mine is right there.
+
+06:08.940 --> 06:09.885
+So I'm going to
+
+06:09.885 --> 06:11.650
+click on that thing
+
+06:12.960 --> 06:15.960
+and then I'll see the name of the bucket right up here
+
+06:15.960 --> 06:16.793
+and it might be a little bit,
+
+06:16.793 --> 06:18.480
+I'm having a tough time, select it myself.
+
+06:18.480 --> 06:19.890
+There we go.
+
+06:19.890 --> 06:20.880
+If I just right click it
+
+06:20.880 --> 06:23.073
+I get the full selection and I can copy it.
+
+06:23.970 --> 06:25.500
+So I'll take that back over.
+
+06:25.500 --> 06:28.250
+And for the bucket name, I'm gonna paste it in like so.
+
+06:29.220 --> 06:32.370
+And then we're going to also do the bucket path.
+
+06:32.370 --> 06:35.370
+So this bucket right here where this S3 bucket
+
+06:35.370 --> 06:37.290
+that's holding all these different files
+
+06:37.290 --> 06:39.172
+it gets reused for all other different
+
+06:39.172 --> 06:42.180
+Elastic Beanstalk environments that you create.
+
+06:42.180 --> 06:44.160
+So as you can see, I've got a couple
+
+06:44.160 --> 06:46.740
+of different environments that have been created over time.
+
+06:46.740 --> 06:48.870
+And so inside of here, I'm going to be looking
+
+06:48.870 --> 06:52.800
+for the folder that is essentially the name of my project.
+
+06:52.800 --> 06:56.340
+Now, when you first create your Elastic Beanstalk instance
+
+06:56.340 --> 06:58.770
+chances are it's not going to create a folder
+
+06:58.770 --> 07:00.630
+by default automatically.
+
+07:00.630 --> 07:02.610
+That folder is only going to be created the
+
+07:02.610 --> 07:04.740
+first time that you do a deploy.
+
+07:04.740 --> 07:06.300
+So by default, the bucket path
+
+07:06.300 --> 07:08.730
+that you're supposed to use is going to be exactly equal
+
+07:08.730 --> 07:10.200
+to the app name.
+
+07:10.200 --> 07:11.880
+So you see I have app right here.
+
+07:11.880 --> 07:14.790
+I'm gonna use the exact name for my bucket path.
+
+07:14.790 --> 07:17.490
+So for me, I have docker as my app name
+
+07:17.490 --> 07:20.280
+and I'm going to copy that right down to bucket path.
+
+07:20.280 --> 07:22.890
+Again, you might have used something like docker - react.
+
+07:22.890 --> 07:24.598
+So make sure if you have the different app name
+
+07:24.598 --> 07:26.523
+make sure you use it in there as well.
+
+07:27.780 --> 07:29.310
+All right, so now last thing we're gonna do in here
+
+07:29.310 --> 07:32.340
+for right now, remember back to the entire
+
+07:32.340 --> 07:34.697
+deployment flow that we spoke about a while ago.
+
+07:34.697 --> 07:37.610
+We had said that we wanted to make sure that anytime
+
+07:37.610 --> 07:40.650
+we deploy, or excuse me, we push our code
+
+07:40.650 --> 07:43.770
+up to a feature branch on the GitHub repository,
+
+07:43.770 --> 07:46.440
+we had said that we're going to make a pull request to merge
+
+07:46.440 --> 07:47.490
+into master.
+
+07:47.490 --> 07:48.930
+And we had said that the master branch
+
+07:48.930 --> 07:51.900
+was essentially gonna be our very special branch.
+
+07:51.900 --> 07:53.970
+Anytime we merge code into master
+
+07:53.970 --> 07:56.772
+that means it is time to deploy our application.
+
+07:56.772 --> 08:00.330
+If we just merge code or push code up to the feature branch
+
+08:00.330 --> 08:01.830
+we don't want to deploy the app.
+
+08:01.830 --> 08:04.920
+We don't wanna deploy the app using just the feature branch.
+
+08:04.920 --> 08:07.050
+The feature branch is for active development
+
+08:07.050 --> 08:09.180
+and it might have new features that are not
+
+08:09.180 --> 08:10.770
+ready to be deployed.
+
+08:10.770 --> 08:12.060
+So the last piece of configuration
+
+08:12.060 --> 08:13.560
+that we're gonna put in there for right now,
+
+08:13.560 --> 08:16.470
+we're gonna say only attempt to deploy the application
+
+08:16.470 --> 08:19.413
+when the master branch gets some new code.
+
+08:20.490 --> 08:22.710
+So as a very last thing that I'll do for right now, I'll say
+
+08:22.710 --> 08:27.300
+on branch master like so,
+
+08:27.300 --> 08:28.133
+and so, as you might guess
+
+08:28.133 --> 08:30.420
+this essentially means anytime we push code
+
+08:30.420 --> 08:33.033
+to branch master, that's the time to deploy.
+
+08:33.990 --> 08:35.700
+All right, so I think that's good for right now.
+
+08:35.700 --> 08:37.530
+Now there's gonna be two other tiny pieces
+
+08:37.530 --> 08:38.910
+of configuration we have to add in
+
+08:38.910 --> 08:41.100
+but those are gonna take just a little bit of time.
+
+08:41.100 --> 08:42.720
+So take a quick pause right here
+
+08:42.720 --> 08:44.070
+and continue the next section
+
+08:44.070 --> 08:46.023
+and handle those two last pieces.

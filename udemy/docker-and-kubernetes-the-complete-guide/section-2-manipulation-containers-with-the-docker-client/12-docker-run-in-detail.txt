@@ -1,0 +1,148 @@
+WEBVTT
+
+00:00.810 --> 00:02.700
+-: Starting this section and the next couple,
+
+00:02.700 --> 00:03.570
+we're gonna start to look at
+
+00:03.570 --> 00:05.610
+the Docker client or Docker CLI
+
+00:05.610 --> 00:07.440
+inside of our terminal a little bit more
+
+00:07.440 --> 00:09.240
+and learn about some of the very basic commands
+
+00:09.240 --> 00:12.510
+that we used to interact with Docker containers and images.
+
+00:12.510 --> 00:15.000
+Now, fair warning here, some of these sections
+
+00:15.000 --> 00:16.050
+are gonna be a little bit boring
+
+00:16.050 --> 00:18.570
+cause we're essentially just gonna be typing in commands
+
+00:18.570 --> 00:20.010
+and looking at the output that comes.
+
+00:20.010 --> 00:21.690
+But I'm gonna do my best to make sure
+
+00:21.690 --> 00:23.610
+to share a lot of interesting information
+
+00:23.610 --> 00:24.900
+with you along the way.
+
+00:24.900 --> 00:26.040
+So let's get to it.
+
+00:26.040 --> 00:27.270
+The first command that we're gonna look at
+
+00:27.270 --> 00:29.370
+is one that we ran very briefly before,
+
+00:29.370 --> 00:32.280
+is the command that we're going to use to run, excuse me,
+
+00:32.280 --> 00:35.884
+to create and run a container using an image.
+
+00:35.884 --> 00:39.930
+So at the command line, we're going to execute docker, run,
+
+00:39.930 --> 00:42.330
+and then the name of the image that we want to use
+
+00:42.330 --> 00:44.550
+as the basis for this container.
+
+00:44.550 --> 00:47.010
+Now, we've already gone through this process once before.
+
+00:47.010 --> 00:51.052
+At the command line, we ran Docker, run, Hello Dash world
+
+00:51.052 --> 00:54.120
+and then we saw that message appear on the screen.
+
+00:54.120 --> 00:56.190
+Now, using the knowledge that you now have
+
+00:56.190 --> 00:58.710
+about what a Docker container really is,
+
+00:58.710 --> 01:01.200
+I want you to think about what probably just occurred
+
+01:01.200 --> 01:02.619
+when we ran that command.
+
+01:02.619 --> 01:06.660
+Chances are that somewhere on our hard disc
+
+01:06.660 --> 01:09.720
+is an image that has that file system snapshot
+
+01:09.720 --> 01:12.150
+with one single program inside of it.
+
+01:12.150 --> 01:14.280
+Maybe that thing is called, I don't know, Hello world.
+
+01:14.280 --> 01:15.965
+Who knows what it's really called.
+
+01:15.965 --> 01:20.100
+So when we executed Docker Run Hello World,
+
+01:20.100 --> 01:22.579
+we took that little snapshot of the hard drive.
+
+01:22.579 --> 01:25.260
+We stuck it into this little container thing
+
+01:25.260 --> 01:28.050
+or this kind of grouping of resources,
+
+01:28.050 --> 01:31.380
+and then we executed the command run Hello World.
+
+01:31.380 --> 01:34.560
+And so the running process up here was Hello world.
+
+01:34.560 --> 01:37.350
+That thing ran and then eventually exited.
+
+01:37.350 --> 01:39.210
+So that's what is happening behind the scenes
+
+01:39.210 --> 01:41.100
+when you execute that command.
+
+01:41.100 --> 01:44.160
+Now there's a lot of variations on this Docker run command
+
+01:44.160 --> 01:46.440
+and a lot of very small subtleties around it.
+
+01:46.440 --> 01:47.670
+So let's take a quick pause.
+
+01:47.670 --> 01:49.110
+We're gonna come back to the next section.
+
+01:49.110 --> 01:49.943
+We're gonna start looking at
+
+01:49.943 --> 01:52.350
+some of the interesting features around the run command.
+
+01:52.350 --> 01:54.000
+So I'll see you in just a minute.

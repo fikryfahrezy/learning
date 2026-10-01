@@ -1,0 +1,502 @@
+WEBVTT
+
+00:00.840 --> 00:02.010
+-: In the last section we spoke about
+
+00:02.010 --> 00:04.440
+how we're going to update an existing object.
+
+00:04.440 --> 00:06.270
+We're gonna take that existing config file,
+
+00:06.270 --> 00:08.040
+leave the name and the kind the same,
+
+00:08.040 --> 00:09.180
+and we can make any other change
+
+00:09.180 --> 00:12.720
+we want to to the file, and throw that back into kubectl.
+
+00:12.720 --> 00:15.420
+And our expectation is that we are going to update
+
+00:15.420 --> 00:18.570
+an existing object as opposed to creating a new one.
+
+00:18.570 --> 00:22.440
+So, let's flip on over to our config file.
+
+00:22.440 --> 00:25.710
+Remember, our goal right now is to update the existing pod
+
+00:25.710 --> 00:29.580
+to use the multi worker image instead of the multi client.
+
+00:29.580 --> 00:33.330
+Now, quick note here, remember that the multi worker image
+
+00:33.330 --> 00:36.720
+really expects to have a copy of Redis available.
+
+00:36.720 --> 00:39.600
+And so it's entirely possible that when we do this update,
+
+00:39.600 --> 00:40.920
+something is going to crash,
+
+00:40.920 --> 00:44.370
+or I should say the container that gets created might crash
+
+00:44.370 --> 00:47.010
+because there is no copy of Redis available.
+
+00:47.010 --> 00:48.930
+Nonetheless, I just want to make sure
+
+00:48.930 --> 00:51.120
+that we have the ability to update the image
+
+00:51.120 --> 00:52.110
+that is being used.
+
+00:52.110 --> 00:53.220
+And I'm not really concerned
+
+00:53.220 --> 00:55.020
+about getting a pod successfully running.
+
+00:55.020 --> 00:58.230
+I just wanna update the image right now. That's all.
+
+00:58.230 --> 01:01.470
+All right, so we're gonna open up our code editor.
+
+01:01.470 --> 01:04.170
+We're gonna find the client pod file.
+
+01:04.170 --> 01:06.390
+We're going to leave the kind the same,
+
+01:06.390 --> 01:08.670
+and the name identical as well.
+
+01:08.670 --> 01:10.470
+The only thing we're going to update inside of here
+
+01:10.470 --> 01:12.600
+is the image that we are using.
+
+01:12.600 --> 01:14.500
+So instead of using multi client,
+
+01:14.500 --> 01:18.000
+I'm going to use multi worker instead.
+
+01:18.000 --> 01:20.100
+We'll leave everything else inside of here identical.
+
+01:20.100 --> 01:22.770
+I'm not gonna change the port even though multi worker
+
+01:22.770 --> 01:24.990
+doesn't really expose anything on port 3000
+
+01:24.990 --> 01:26.490
+or anything like that.
+
+01:26.490 --> 01:27.990
+Again, I just wanna update the image
+
+01:27.990 --> 01:30.600
+and make sure that we are updating a pod
+
+01:30.600 --> 01:33.543
+in place and not creating a new separate pod.
+
+01:34.410 --> 01:37.230
+All right, so I made the change to multi worker.
+
+01:37.230 --> 01:38.880
+I'm gonna save the file.
+
+01:38.880 --> 01:41.460
+I'm gonna flip back over to my terminal.
+
+01:41.460 --> 01:42.810
+I'm gonna make sure I'm still inside
+
+01:42.810 --> 01:44.880
+my simple K8s directory.
+
+01:44.880 --> 01:46.140
+And then I'm going to feed
+
+01:46.140 --> 01:49.380
+this updated configuration file back into kubectl
+
+01:49.380 --> 01:51.570
+by using that apply command.
+
+01:51.570 --> 01:53.910
+Remember, apply is the magic command,
+
+01:53.910 --> 01:57.452
+it's how we make any changes to the configuration
+
+01:57.452 --> 01:59.580
+of our Kubernetes cluster.
+
+01:59.580 --> 02:04.580
+So I'll say kubectl apply-F, client-pod.eml.
+
+02:05.940 --> 02:07.770
+And now you'll notice that when we hit enter
+
+02:07.770 --> 02:09.000
+and we submit that command,
+
+02:09.000 --> 02:11.100
+we do not see something that says like,
+
+02:11.100 --> 02:13.980
+oh, I'm gonna update or I'm going to create a new pod,
+
+02:13.980 --> 02:14.850
+or anything like that.
+
+02:14.850 --> 02:16.830
+Instead it says very specifically,
+
+02:16.830 --> 02:19.200
+client pod has been configured.
+
+02:19.200 --> 02:21.180
+When you see the message configured, it means
+
+02:21.180 --> 02:24.156
+that we've updated the configuration that is applied
+
+02:24.156 --> 02:26.700
+to client-pod.
+
+02:26.700 --> 02:30.450
+So we should now be able to run that get pods command
+
+02:30.450 --> 02:33.660
+and verify that there is still one pod that exists
+
+02:33.660 --> 02:36.030
+inside of our entire cluster.
+
+02:36.030 --> 02:39.197
+So I'll do kubectl, get pods,
+
+02:39.197 --> 02:43.290
+and you'll notice that we now have still just one pod.
+
+02:43.290 --> 02:44.670
+It has a name of client pod.
+
+02:44.670 --> 02:46.440
+There's one copy, it's running.
+
+02:46.440 --> 02:48.930
+There's two restarts currently because we just
+
+02:48.930 --> 02:51.930
+caused this thing to be restarted when we updated the image
+
+02:51.930 --> 02:53.250
+that it's running.
+
+02:53.250 --> 02:55.560
+Now the only thing that's kind of awkward right now
+
+02:55.560 --> 02:58.740
+is that we can't really inspect this pod
+
+02:58.740 --> 03:03.090
+and verify that it is in fact running the updated image.
+
+03:03.090 --> 03:05.460
+So I want to figure out some way that we can actually look
+
+03:05.460 --> 03:08.070
+at this very specific pod right here and look
+
+03:08.070 --> 03:10.170
+at the different containers that are running inside there
+
+03:10.170 --> 03:13.440
+and verify that a hundred percent, no two ways about it.
+
+03:13.440 --> 03:16.530
+Yes, we are running the multi worker image.
+
+03:16.530 --> 03:19.920
+So in order to inspect this very particular pod right here
+
+03:19.920 --> 03:23.850
+we're going to learn a new command on kubectl.
+
+03:23.850 --> 03:25.590
+Here's the new command.
+
+03:25.590 --> 03:27.428
+Oh, not there. Not there.
+
+03:27.428 --> 03:29.370
+Where'd it go? Here we go.
+
+03:29.370 --> 03:31.290
+So to get detailed information
+
+03:31.290 --> 03:33.240
+about an object inside of our cluster,
+
+03:33.240 --> 03:37.560
+we're going to use the kubectl describe command.
+
+03:37.560 --> 03:40.440
+Describe is used to print out a ton of information
+
+03:40.440 --> 03:42.840
+about a very particular object.
+
+03:42.840 --> 03:45.180
+So we'll say kubectl describe.
+
+03:45.180 --> 03:47.310
+We'll then pass in an object type,
+
+03:47.310 --> 03:49.920
+and then the name of the particular object
+
+03:49.920 --> 03:52.020
+that we want to investigate.
+
+03:52.020 --> 03:53.940
+Now, just as a quick curiosity here
+
+03:53.940 --> 03:55.170
+or something that's kind of interesting.
+
+03:55.170 --> 03:58.200
+You can actually omit the object name if you want to.
+
+03:58.200 --> 04:00.330
+If you do that, you'll get detailed information
+
+04:00.330 --> 04:02.790
+about every different object type
+
+04:02.790 --> 04:03.960
+of the specify, or excuse me,
+
+04:03.960 --> 04:07.050
+every different object with the specified object type.
+
+04:07.050 --> 04:08.400
+But it's a ton of information.
+
+04:08.400 --> 04:10.890
+So in general, we usually use the full command
+
+04:10.890 --> 04:13.860
+which is kubectl describe, the type and the name,
+
+04:13.860 --> 04:17.280
+to just get information about that one particular object.
+
+04:17.280 --> 04:19.080
+So let's try that out right now.
+
+04:19.080 --> 04:21.120
+Again, we're going to run this command to verify
+
+04:21.120 --> 04:25.170
+that the client pod is in fact running that updated image.
+
+04:25.170 --> 04:30.170
+So I'll do kubectl, describe, our object type is pod.
+
+04:30.390 --> 04:33.990
+So we could simply say pod, either one is fine, pods or pod.
+
+04:33.990 --> 04:35.190
+And then we'll put in the name
+
+04:35.190 --> 04:39.063
+of that very particular object, which is client-pod.
+
+04:40.864 --> 04:44.716
+So that's gonna print out a ton of very detailed information
+
+04:44.716 --> 04:47.730
+about that very particular pod.
+
+04:47.730 --> 04:49.950
+Down at the very bottom you're gonna see a series
+
+04:49.950 --> 04:51.150
+of events right here.
+
+04:51.150 --> 04:52.410
+Very frequently, this is going to be
+
+04:52.410 --> 04:54.750
+some of the most interesting information.
+
+04:54.750 --> 04:56.370
+This is going to be events that are not
+
+04:56.370 --> 04:59.280
+logs coming outta the containers, but events that have
+
+04:59.280 --> 05:01.830
+occurred over the life cycle of the pod.
+
+05:01.830 --> 05:04.440
+So you'll see messages about things that have crashed
+
+05:04.440 --> 05:08.970
+or pulling new images or changing images or stuff like that.
+
+05:08.970 --> 05:11.610
+Now if we scroll up a little bit higher, there is a ton
+
+05:11.610 --> 05:14.400
+of information in here that's kind of outside the scope
+
+05:14.400 --> 05:16.740
+of what we want to talk about right now.
+
+05:16.740 --> 05:18.780
+But if you scroll up, scroll up, scroll up,
+
+05:18.780 --> 05:20.820
+you will see containers.
+
+05:20.820 --> 05:23.700
+We have a container with a name of clients.
+
+05:23.700 --> 05:26.790
+Recall that client name right there was provided
+
+05:26.790 --> 05:28.470
+inside of our configuration file.
+
+05:28.470 --> 05:30.220
+So there's name client right there.
+
+05:31.500 --> 05:34.710
+And then we're told that the client container,
+
+05:34.710 --> 05:35.850
+remember that's the name of the container.
+
+05:35.850 --> 05:38.190
+This is kind of misleading 'cause we have this,
+
+05:38.190 --> 05:40.320
+these kind of conflicting names all over the place.
+
+05:40.320 --> 05:45.060
+But essentially the image is the multi worker image.
+
+05:45.060 --> 05:47.520
+That's exactly what we just updated our configuration file
+
+05:47.520 --> 05:48.353
+to use.
+
+05:48.353 --> 05:51.750
+So without a doubt, updating that configuration file
+
+05:51.750 --> 05:56.550
+and leaving the name and the kind identical
+
+05:56.550 --> 05:59.130
+found an existing object that was already running
+
+05:59.130 --> 06:01.873
+inside of our cluster and it updated it in place
+
+06:01.873 --> 06:05.910
+as opposed to trying to create a completely separate pod.
+
+06:05.910 --> 06:06.743
+All right, so that's it.
+
+06:06.743 --> 06:09.150
+That's a quick example of this entire idea
+
+06:09.150 --> 06:14.101
+of declarative versus imperative deployments.
+
+06:14.101 --> 06:17.100
+So we like to use declarative as much as possible
+
+06:17.100 --> 06:20.040
+and the formula for doing a declarative update
+
+06:20.040 --> 06:23.760
+is always gonna be the same thing over and over.
+
+06:23.760 --> 06:25.980
+We're gonna go find our original config file.
+
+06:25.980 --> 06:27.360
+We're gonna make a change to it,
+
+06:27.360 --> 06:30.990
+leaving the type or kind and the name the same.
+
+06:30.990 --> 06:32.850
+We'll update some configuration inside the file
+
+06:32.850 --> 06:35.130
+and then we're gonna throw it back into kubectl.
+
+06:35.130 --> 06:36.360
+And our master is just going to
+
+06:36.360 --> 06:38.670
+kind of make the change for us.
+
+06:38.670 --> 06:39.990
+And we don't have to worry about
+
+06:39.990 --> 06:42.240
+manually printing out a list of running pods
+
+06:42.240 --> 06:45.002
+and issuing a command to update a very specific pod
+
+06:45.002 --> 06:47.070
+or anything like that.
+
+06:47.070 --> 06:49.140
+We're gonna see this declarative approach
+
+06:49.140 --> 06:51.180
+throughout this entire course, just nonstop.
+
+06:51.180 --> 06:53.550
+It's gonna be all we are doing throughout the entire course.
+
+06:53.550 --> 06:56.640
+Update the config file, throw it in kubectl,
+
+06:56.640 --> 06:59.610
+verify that in fact everything worked correctly.
+
+06:59.610 --> 07:00.930
+Okay, so that's a good example.
+
+07:00.930 --> 07:02.130
+Let's take a quick pause right here
+
+07:02.130 --> 07:04.080
+and we'll continue in the next section.

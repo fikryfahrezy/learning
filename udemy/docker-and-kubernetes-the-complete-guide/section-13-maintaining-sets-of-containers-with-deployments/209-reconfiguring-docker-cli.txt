@@ -1,0 +1,481 @@
+WEBVTT
+
+00:00.990 --> 00:01.823
+-: In the last section,
+
+00:01.823 --> 00:04.890
+I showed you how I had multiple terminal windows open,
+
+00:04.890 --> 00:06.690
+and between the different terminal windows,
+
+00:06.690 --> 00:09.600
+I had reconfigured my copy of Docker client.
+
+00:09.600 --> 00:10.800
+And so in this section I'm gonna show you
+
+00:10.800 --> 00:11.940
+how you can do the same thing,
+
+00:11.940 --> 00:13.260
+and then we'll talk a little bit about
+
+00:13.260 --> 00:15.840
+why you would want to do this at all.
+
+00:15.840 --> 00:16.673
+All right.
+
+00:16.673 --> 00:18.300
+So here's what we're gonna do,
+
+00:18.300 --> 00:20.040
+anytime that you want to configure
+
+00:20.040 --> 00:23.670
+your local copy of the Docker CLI,
+
+00:23.670 --> 00:25.350
+remember that's the thing that we are accessing
+
+00:25.350 --> 00:26.183
+inside of our terminal.
+
+00:26.183 --> 00:28.200
+This is Docker CLI right here.
+
+00:28.200 --> 00:31.410
+If you want to reconfigure your copy of Docker CLI
+
+00:31.410 --> 00:33.990
+to communicate with a copy of Docker server
+
+00:33.990 --> 00:35.850
+inside of the virtual machine
+
+00:35.850 --> 00:38.940
+we're going to run this command right here.
+
+00:38.940 --> 00:41.310
+So I'm gonna copy that command.
+
+00:41.310 --> 00:43.770
+I'm gonna go over to a new terminal window,
+
+00:43.770 --> 00:45.600
+and over here when I do a docker ps,
+
+00:45.600 --> 00:47.250
+you'll see that I am clearly connected
+
+00:47.250 --> 00:49.980
+to my local copy of Docker server.
+
+00:49.980 --> 00:51.930
+Now, I'm going to run
+
+00:51.930 --> 00:53.040
+that command right there.
+
+00:53.040 --> 00:55.080
+I'll leave it on the screen so you can read it
+
+00:55.080 --> 00:57.923
+and you can type it inside of your terminal, if you want to.
+
+00:59.400 --> 01:01.740
+So when I run this command right here,
+
+01:01.740 --> 01:03.720
+it's going to, very temporarily,
+
+01:03.720 --> 01:06.840
+reconfigure my copy of Docker client
+
+01:06.840 --> 01:09.840
+or Docker CLI to connect to the Docker server
+
+01:09.840 --> 01:12.720
+inside of my Kubernetes node.
+
+01:12.720 --> 01:16.650
+So after running that command, I can now do a docker ps
+
+01:16.650 --> 01:19.080
+and I'll see the print up from all the different containers
+
+01:19.080 --> 01:22.200
+that are running inside of my virtual machine.
+
+01:22.200 --> 01:23.100
+Now, quick note here,
+
+01:23.100 --> 01:27.210
+and this is an extremely important thing to understand,
+
+01:27.210 --> 01:29.880
+anytime that you run that eval command right there,
+
+01:29.880 --> 01:34.880
+it is a very temporary reconfiguration of your Docker CLI.
+
+01:35.040 --> 01:36.330
+So when you run this command,
+
+01:36.330 --> 01:39.420
+it's only going to reconfigure your Docker CLI
+
+01:39.420 --> 01:42.600
+in your current terminal window.
+
+01:42.600 --> 01:43.620
+What that means is,
+
+01:43.620 --> 01:45.270
+right here if I do a docker ps,
+
+01:45.270 --> 01:47.880
+I clearly am working with the reconfigured version
+
+01:47.880 --> 01:49.290
+of the Docker client,
+
+01:49.290 --> 01:52.200
+but as soon as I open up a new terminal window,
+
+01:52.200 --> 01:54.540
+it goes back to its old behavior.
+
+01:54.540 --> 01:57.390
+So when you run that command, two things to be aware of;
+
+01:57.390 --> 01:59.490
+first off, it is not a permanent change,
+
+01:59.490 --> 02:01.018
+you're not permanently reconfiguring
+
+02:01.018 --> 02:03.240
+your copy of Docker client.
+
+02:03.240 --> 02:04.260
+The other thing to remember
+
+02:04.260 --> 02:07.500
+is that if you decide to close down your terminal window,
+
+02:07.500 --> 02:09.330
+maybe you take a break from Docker,
+
+02:09.330 --> 02:11.310
+or something like that, or you turn off your computer
+
+02:11.310 --> 02:13.290
+and close all the programs running on it.
+
+02:13.290 --> 02:16.920
+If for whatever reason, you close that terminal window,
+
+02:16.920 --> 02:19.560
+you have to rerun this command right here
+
+02:19.560 --> 02:22.503
+to reconfigure your Docker CLI again.
+
+02:23.970 --> 02:26.820
+All right, So just to really make sure that's very clear,
+
+02:27.990 --> 02:29.070
+I'm gonna show you one more time.
+
+02:29.070 --> 02:31.110
+I know this is getting a little bit repetitive,
+
+02:31.110 --> 02:32.730
+but I can just about guarantee you
+
+02:32.730 --> 02:33.720
+that at some point in time
+
+02:33.720 --> 02:35.317
+you're gonna run docker ps and say,
+
+02:35.317 --> 02:37.590
+"Hey, wait why am I not seeing everything
+
+02:37.590 --> 02:39.390
+inside the virtual machine?"
+
+02:39.390 --> 02:42.090
+So when I run that command and do a docker ps,
+
+02:42.090 --> 02:44.481
+I see everything inside of the virtual machine.
+
+02:44.481 --> 02:46.800
+As soon as I open up a new terminal window
+
+02:46.800 --> 02:50.100
+and do a docker ps, again. Back to old behavior.
+
+02:50.100 --> 02:51.570
+So throughout the rest of this course,
+
+02:51.570 --> 02:52.837
+if I ever say to you,
+
+02:52.837 --> 02:54.420
+"Hey, let's see what Docker
+
+02:54.420 --> 02:56.400
+inside the virtual machine is doing,"
+
+02:56.400 --> 02:58.110
+you need to make sure that you first run
+
+02:58.110 --> 02:59.370
+that command right there.
+
+02:59.370 --> 03:01.110
+Otherwise, you're not going to be able
+
+03:01.110 --> 03:03.660
+to look inside of the virtual machine and figure out
+
+03:03.660 --> 03:06.750
+what the copy of Docker inside there is doing.
+
+03:06.750 --> 03:07.830
+Now, just in case you're curious
+
+03:07.830 --> 03:10.590
+about what exactly this command right here is doing,
+
+03:10.590 --> 03:11.423
+you can actually take
+
+03:11.423 --> 03:14.613
+just the minikube docker-env command right there,
+
+03:15.840 --> 03:17.073
+and run it by itself.
+
+03:17.910 --> 03:19.080
+When you do so,
+
+03:19.080 --> 03:20.100
+you'll see that it's actually
+
+03:20.100 --> 03:23.550
+just exporting a couple of environment variables.
+
+03:23.550 --> 03:26.730
+So just so you know, whenever you use a Docker CLI command
+
+03:26.730 --> 03:28.950
+like say docker ps right here.
+
+03:28.950 --> 03:30.510
+When Docker is invoked,
+
+03:30.510 --> 03:32.790
+it's going to look at a set of environment variables
+
+03:32.790 --> 03:35.130
+to decide what copy of Docker server
+
+03:35.130 --> 03:36.750
+it is supposed to connect to
+
+03:36.750 --> 03:39.510
+and attempt to execute this command on.
+
+03:39.510 --> 03:43.470
+So when we run this minikube docker-env command,
+
+03:43.470 --> 03:46.110
+with the eval command especially,
+
+03:46.110 --> 03:48.330
+it's gonna set up some new environment variables
+
+03:48.330 --> 03:49.890
+that are going to tell Docker CLI
+
+03:49.890 --> 03:51.660
+to reach into the virtual machine
+
+03:51.660 --> 03:54.270
+to find the copy of Docker server
+
+03:54.270 --> 03:56.070
+that it's supposed to work with.
+
+03:56.070 --> 03:58.800
+And if you look at this Docker host variable right here,
+
+03:58.800 --> 04:01.470
+you might even be able to recognize the IP address.
+
+04:01.470 --> 04:04.350
+It's actually the IP address of your Minikube server.
+
+04:04.350 --> 04:07.890
+For example, if you do minikube ip right now,
+
+04:07.890 --> 04:10.020
+you'll see it prints out the identical IP address
+
+04:10.020 --> 04:12.630
+to what we're telling the Docker client
+
+04:12.630 --> 04:13.880
+to attempt to connect to.
+
+04:15.240 --> 04:16.073
+All right.
+
+04:16.073 --> 04:17.790
+Now, one last thing I wanna mention here.
+
+04:17.790 --> 04:21.960
+It's kind of hard to remember this entire command by itself.
+
+04:21.960 --> 04:23.310
+You know, it's kind of hard to remember this
+
+04:23.310 --> 04:25.920
+and have to recall it at some point in the future
+
+04:25.920 --> 04:28.620
+when you want to reconfigure your shell.
+
+04:28.620 --> 04:31.650
+I found that a very easy way to remember this command
+
+04:31.650 --> 04:33.713
+is to instead memorize the command,
+
+04:33.713 --> 04:36.030
+minikube docker-env, by itself.
+
+04:36.030 --> 04:37.920
+Remember that's what we just ran two seconds ago
+
+04:37.920 --> 04:40.440
+to print out all those environment variables.
+
+04:40.440 --> 04:43.560
+When you run just minikube docker-env by itself,
+
+04:43.560 --> 04:44.497
+it will actually tell you,
+
+04:44.497 --> 04:46.260
+"Hey, if you want to configure your shell,
+
+04:46.260 --> 04:48.172
+or essentially your current terminal window,
+
+04:48.172 --> 04:49.830
+here is what you need to run."
+
+04:49.830 --> 04:51.120
+And it's the full length command
+
+04:51.120 --> 04:52.923
+with the eval on there as well.
+
+04:53.850 --> 04:56.370
+So a very easy way of memorizing how to do this
+
+04:56.370 --> 04:58.620
+is not to memorize the eval part
+
+04:58.620 --> 05:01.260
+just memorize minikube docker-env.
+
+05:01.260 --> 05:02.580
+That's all you have to remember.
+
+05:02.580 --> 05:04.920
+And as long as you can remember that, type that in,
+
+05:04.920 --> 05:07.740
+and then it will tell you exactly what to type right here.
+
+05:07.740 --> 05:11.370
+So you can copy, paste that in, and boom, you're good to go.
+
+05:11.370 --> 05:13.260
+All right, so that is what is going on,
+
+05:13.260 --> 05:14.850
+when we run that docker ps
+
+05:14.850 --> 05:16.500
+and see a listing of all the containers
+
+05:16.500 --> 05:17.910
+inside the virtual machine.
+
+05:17.910 --> 05:19.710
+Now, the very last thing I wanna tell you is
+
+05:19.710 --> 05:21.780
+why we would want to do this, right?
+
+05:21.780 --> 05:24.270
+Why would we ever want to look at the copy of Docker
+
+05:24.270 --> 05:26.100
+running inside of the virtual machine?
+
+05:26.100 --> 05:27.840
+Especially since I told you,
+
+05:27.840 --> 05:29.430
+when we first started looking at Kubernetes,
+
+05:29.430 --> 05:30.919
+that you and I as developers,
+
+05:30.919 --> 05:33.420
+do not mess around with the inner workings
+
+05:33.420 --> 05:34.290
+of the virtual machine.
+
+05:34.290 --> 05:35.400
+Remember, I told you,
+
+05:35.400 --> 05:37.710
+We don't mess around with the virtual machine ourselves.
+
+05:37.710 --> 05:41.160
+We leave it up to the master to change the configuration
+
+05:41.160 --> 05:42.300
+of the virtual machine,
+
+05:42.300 --> 05:44.820
+or change the different containers running inside there.
+
+05:44.820 --> 05:46.200
+So let's take a quick pause right now.
+
+05:46.200 --> 05:47.460
+When we come back in the next section,
+
+05:47.460 --> 05:50.610
+we'll talk about why we might want to reach into this thing
+
+05:50.610 --> 05:52.740
+and inspect the different containers that are running
+
+05:52.740 --> 05:55.050
+and kind of mess around with them a little bit.
+
+05:55.050 --> 05:57.773
+All right. So quick pause and I'll see you in just a minute.

@@ -1,0 +1,886 @@
+WEBVTT
+
+00:01.050 --> 00:01.883
+Instructor: In the last section,
+
+00:01.883 --> 00:04.260
+we started talking about the overall architecture of the app
+
+00:04.260 --> 00:05.760
+that we're going to put together.
+
+00:05.760 --> 00:07.200
+Again, I can't say it enough,
+
+00:07.200 --> 00:08.880
+way more complicated than it needs to be,
+
+00:08.880 --> 00:11.490
+just so we have multiple containers to work with.
+
+00:11.490 --> 00:12.323
+So in this section,
+
+00:12.323 --> 00:14.010
+we're gonna start putting together the source code
+
+00:14.010 --> 00:15.960
+for the entire application.
+
+00:15.960 --> 00:18.240
+A quick note here in this section
+
+00:18.240 --> 00:19.770
+and the next couple of videos,
+
+00:19.770 --> 00:21.480
+we're going to be putting together
+
+00:21.480 --> 00:24.180
+the JavaScript side of the application.
+
+00:24.180 --> 00:26.670
+We're not gonna touch any Docker stuff for right now.
+
+00:26.670 --> 00:29.190
+So no Dockerfiles, no Docker Compose,
+
+00:29.190 --> 00:30.630
+no Travis, no deployment,
+
+00:30.630 --> 00:32.100
+nothing like that.
+
+00:32.100 --> 00:33.600
+The reason that we're gonna focus just
+
+00:33.600 --> 00:35.190
+on the JavaScript side for right now,
+
+00:35.190 --> 00:39.060
+is that if you do not care about all this JavaScript stuff
+
+00:39.060 --> 00:40.530
+like you don't care about React,
+
+00:40.530 --> 00:41.850
+you don't care about Express,
+
+00:41.850 --> 00:43.320
+you don't care about any of that stuff,
+
+00:43.320 --> 00:44.940
+totally fine.
+
+00:44.940 --> 00:46.230
+You can skip this video
+
+00:46.230 --> 00:47.340
+and the next couple,
+
+00:47.340 --> 00:49.050
+you can move on to the next section.
+
+00:49.050 --> 00:50.130
+And in that section,
+
+00:50.130 --> 00:51.690
+I'm gonna post all the code
+
+00:51.690 --> 00:54.120
+that we're gonna write right now up for download.
+
+00:54.120 --> 00:56.220
+So if you don't care about JavaScript stuff at all,
+
+00:56.220 --> 00:57.053
+totally fine.
+
+00:57.053 --> 00:57.990
+Pause the video here,
+
+00:57.990 --> 01:00.060
+and skip ahead a couple of videos.
+
+01:00.060 --> 01:02.520
+I wanna make sure that if you are not a JavaScript person,
+
+01:02.520 --> 01:04.590
+you don't have to sit through all this stuff.
+
+01:04.590 --> 01:05.880
+I'm only showing how to put
+
+01:05.880 --> 01:07.290
+the application together from scratch
+
+01:07.290 --> 01:09.570
+in case you are a JavaScript person
+
+01:09.570 --> 01:12.120
+and you're kinda curious about how to work with Redis
+
+01:12.120 --> 01:13.440
+and set up this kind of like,
+
+01:13.440 --> 01:14.820
+worker over here,
+
+01:14.820 --> 01:16.470
+and Postgres and Redis,
+
+01:16.470 --> 01:18.210
+and all that kind of other good stuff.
+
+01:18.210 --> 01:20.760
+So again, if you don't care about the JavaScript stuff,
+
+01:20.760 --> 01:23.280
+pause here, skip forward a couple videos.
+
+01:23.280 --> 01:26.253
+Otherwise, we're gonna get started right now.
+
+01:27.420 --> 01:29.220
+Okay, so the first thing we're gonna put together
+
+01:29.220 --> 01:31.500
+is this worker process.
+
+01:31.500 --> 01:34.020
+Remember, the worker process is going to watch Redis
+
+01:34.020 --> 01:37.140
+for any new indexes that get inserted.
+
+01:37.140 --> 01:41.070
+Anytime the worker sees a new index added to Redis
+
+01:41.070 --> 01:42.480
+it's gonna pull that index
+
+01:42.480 --> 01:45.900
+and then calculate the appropriate Fibonacci value for it.
+
+01:45.900 --> 01:47.580
+Now, as we put this worker together,
+
+01:47.580 --> 01:49.590
+I'm not gonna tell you too much about
+
+01:49.590 --> 01:51.150
+the behind the scenes stuff,
+
+01:51.150 --> 01:53.280
+like specifically how we work with Redis
+
+01:53.280 --> 01:54.540
+from JavaScript code,
+
+01:54.540 --> 01:56.760
+because that's not really the goal of this course.
+
+01:56.760 --> 01:58.770
+But I will give you just a little bit of commentary
+
+01:58.770 --> 02:01.710
+to make sure you have the general idea of what's going on.
+
+02:01.710 --> 02:02.763
+So let's get to it.
+
+02:03.750 --> 02:07.260
+I'm gonna first begin by changing on over to my terminal.
+
+02:07.260 --> 02:08.190
+You'll notice that I'm back
+
+02:08.190 --> 02:10.140
+in a workspace directory of sorts,
+
+02:10.140 --> 02:12.420
+so I'm no longer inside of any of the folders
+
+02:12.420 --> 02:14.430
+that we've been working on so far.
+
+02:14.430 --> 02:15.840
+I'm gonna make a new folder inside
+
+02:15.840 --> 02:18.510
+of here called, "Complex."
+
+02:18.510 --> 02:19.530
+And the idea behind this
+
+02:19.530 --> 02:20.970
+is that the name of our application
+
+02:20.970 --> 02:23.703
+will be kind of like a more complex application.
+
+02:24.930 --> 02:27.510
+I'm then going to change into that folder
+
+02:27.510 --> 02:28.343
+and then inside of here
+
+02:28.343 --> 02:29.670
+I'm gonna make another folder
+
+02:29.670 --> 02:31.650
+that's gonna house all of the source code
+
+02:31.650 --> 02:33.930
+for this kind of worker process
+
+02:33.930 --> 02:37.110
+that's gonna calculate the actual Fibonacci values.
+
+02:37.110 --> 02:40.830
+So I'll make a new folder inside of here called, "Worker."
+
+02:40.830 --> 02:41.663
+And then finally,
+
+02:41.663 --> 02:43.380
+I'm gonna start up my code editor inside
+
+02:43.380 --> 02:45.483
+of the complex directory.
+
+02:48.540 --> 02:49.413
+All right.
+
+02:50.610 --> 02:53.250
+So here's the worker folder that we just created.
+
+02:53.250 --> 02:54.780
+I'm gonna first begin by adding
+
+02:54.780 --> 02:57.930
+a package.json file to it.
+
+02:57.930 --> 02:59.820
+So inside the worker directory,
+
+02:59.820 --> 03:02.133
+I'll make a package.json file.
+
+03:03.330 --> 03:04.470
+Then inside of here,
+
+03:04.470 --> 03:07.380
+we'll put down a little bit of configuration.
+
+03:07.380 --> 03:09.840
+We're gonna add in a couple of dependencies
+
+03:09.840 --> 03:11.640
+that we're going to need.
+
+03:11.640 --> 03:15.120
+The first dependency that I'm going to want is nodemon,
+
+03:15.120 --> 03:18.180
+which is gonna give us some live reload of code anytime
+
+03:18.180 --> 03:21.330
+that we change the source of our project.
+
+03:21.330 --> 03:23.790
+We'll go more into that a little bit later.
+
+03:23.790 --> 03:28.203
+The version of nodemon that I'm gonna get is 1.18.3.
+
+03:29.460 --> 03:31.350
+I'm also gonna get a Redis client
+
+03:31.350 --> 03:33.930
+that will allow us to connect to a copy of Redis
+
+03:33.930 --> 03:35.370
+and pull values out of it
+
+03:35.370 --> 03:38.010
+and do all the stuff that we need to do with Redis.
+
+03:38.010 --> 03:42.453
+And for that, I'm gonna get version 2.8.0, like so.
+
+03:44.070 --> 03:44.903
+Now, at this point,
+
+03:44.903 --> 03:46.650
+please make sure that you're keeping track
+
+03:46.650 --> 03:48.690
+of the code that I'm typing
+
+03:48.690 --> 03:49.740
+and the code you're typing.
+
+03:49.740 --> 03:51.840
+Please double-check for typos and whatnot
+
+03:51.840 --> 03:53.850
+because we're not gonna run any of this code
+
+03:53.850 --> 03:55.260
+for several sections.
+
+03:55.260 --> 03:56.760
+So if you make a typo in here,
+
+03:56.760 --> 03:58.890
+it's gonna be kinda challenging to come back later on
+
+03:58.890 --> 04:01.140
+and find where you made that typo.
+
+04:01.140 --> 04:03.210
+So for example, make sure you get the comma
+
+04:03.210 --> 04:04.890
+at the end of the nodemon line,
+
+04:04.890 --> 04:06.420
+make sure you do not have a comma
+
+04:06.420 --> 04:07.770
+at the end of the Redis sign,
+
+04:07.770 --> 04:08.603
+and so on.
+
+04:09.750 --> 04:12.030
+So now we're going to also put a script section
+
+04:12.030 --> 04:13.200
+in here as well.
+
+04:13.200 --> 04:16.590
+I'm gonna add a comma at the end of dependencies,
+
+04:16.590 --> 04:18.093
+and I'll put in scripts.
+
+04:18.990 --> 04:21.210
+And then we're gonna add on a start script
+
+04:21.210 --> 04:23.970
+of node index.js,
+
+04:23.970 --> 04:26.820
+and I'll do a dev script of simply,
+
+04:26.820 --> 04:28.203
+nodemon, like so.
+
+04:30.300 --> 04:32.640
+All right, so that's it for our package.json file.
+
+04:32.640 --> 04:36.450
+Again, please double-check the placement of your commas.
+
+04:36.450 --> 04:37.283
+Please make sure
+
+04:37.283 --> 04:39.480
+that you're using double quotes everywhere inside of here,
+
+04:39.480 --> 04:40.890
+and both all the keys
+
+04:40.890 --> 04:42.900
+and all the values should have double quotes
+
+04:42.900 --> 04:43.953
+around them as well.
+
+04:45.330 --> 04:47.460
+So that's all we need for package.json.
+
+04:47.460 --> 04:49.440
+I'm now gonna create a separate file inside
+
+04:49.440 --> 04:52.560
+of here called, "index.js."
+
+04:52.560 --> 04:55.020
+So this is where we're gonna put all of our primary logic
+
+04:55.020 --> 04:56.880
+for connecting to Redis,
+
+04:56.880 --> 04:57.990
+watching for values,
+
+04:57.990 --> 05:00.993
+and then eventually, calculating our Fibonacci value.
+
+05:02.850 --> 05:05.700
+All the configuration or kind of keys
+
+05:05.700 --> 05:08.250
+that we're going to need for connecting over to Redis
+
+05:08.250 --> 05:10.710
+are gonna be stored inside of a separate file.
+
+05:10.710 --> 05:12.690
+So the first thing I'm gonna do inside of here
+
+05:12.690 --> 05:17.310
+is require in a file that we're going to call, "Keys."
+
+05:17.310 --> 05:19.890
+And again, this file is gonna house the host name
+
+05:19.890 --> 05:23.013
+and the port required for connecting over to Redis.
+
+05:24.360 --> 05:25.860
+So inside of the worker folder,
+
+05:25.860 --> 05:30.177
+I'm gonna make another file called, "Keys.js,"
+
+05:31.140 --> 05:32.130
+and inside of here,
+
+05:32.130 --> 05:34.713
+we're gonna add in a module.exports.
+
+05:36.000 --> 05:37.680
+That's gonna be an object,
+
+05:37.680 --> 05:42.680
+that's gonna have a Redis host of process.env Redis host,
+
+05:44.160 --> 05:49.160
+and a Redis port of process.env Redis port.
+
+05:52.860 --> 05:54.810
+So anytime that we want to connect to Redis,
+
+05:54.810 --> 05:56.820
+we're gonna look for the host name
+
+05:56.820 --> 06:00.000
+or essentially, URL of sorts, for Redis,
+
+06:00.000 --> 06:02.670
+and the port that we're supposed to connect to it from,
+
+06:02.670 --> 06:04.710
+from our environment variables.
+
+06:04.710 --> 06:06.300
+So when we run this application,
+
+06:06.300 --> 06:08.370
+we darn sure better well have
+
+06:08.370 --> 06:10.380
+a Redis host environment variable
+
+06:10.380 --> 06:14.040
+and a Redis port environment variable defined as well.
+
+06:14.040 --> 06:16.410
+So that's all we have to put inside the keys file.
+
+06:16.410 --> 06:19.680
+I'm gonna go back over to index.js
+
+06:19.680 --> 06:20.513
+and then inside of here,
+
+06:20.513 --> 06:22.290
+now that we've got our API keys,
+
+06:22.290 --> 06:23.850
+or essentially, just connection keys,
+
+06:23.850 --> 06:25.290
+I should call it, put together.
+
+06:25.290 --> 06:26.970
+We're gonna start putting together the logic
+
+06:26.970 --> 06:30.603
+to get a connection over to our Redis server.
+
+06:31.560 --> 06:33.783
+So I'm gonna first import a Redis client,
+
+06:35.880 --> 06:37.530
+we'll then create a Redis client.
+
+06:42.900 --> 06:43.733
+And to this thing,
+
+06:43.733 --> 06:45.180
+we're gonna pass an object
+
+06:45.180 --> 06:49.350
+that has a host of keys.redis host,
+
+06:49.350 --> 06:52.110
+a port of keys.redis port,
+
+06:52.110 --> 06:54.150
+and we're gonna add on one other little option
+
+06:54.150 --> 06:59.150
+in here called, "Retry underscore strategy."
+
+06:59.340 --> 07:01.530
+And this is gonna tell the Redis client
+
+07:01.530 --> 07:02.700
+that we're using right here,
+
+07:02.700 --> 07:05.370
+that if it ever loses connection to our Redis server,
+
+07:05.370 --> 07:07.710
+it should attempt to automatically reconnect
+
+07:07.710 --> 07:10.470
+to the server once every one second
+
+07:10.470 --> 07:12.723
+or once every 1,000 milliseconds.
+
+07:14.700 --> 07:16.650
+After that, we're going to make a duplicate
+
+07:16.650 --> 07:18.600
+of the Redis client that we just put together.
+
+07:18.600 --> 07:20.940
+We'll talk about why we're doing that in just a moment.
+
+07:20.940 --> 07:25.940
+We'll say, consSub is redisclient.duplicate, like so.
+
+07:30.660 --> 07:32.250
+All right, after that,
+
+07:32.250 --> 07:33.840
+we'll then put together the function
+
+07:33.840 --> 07:35.190
+that's going to be actually used
+
+07:35.190 --> 07:37.860
+for calculating these Fibonacci values,
+
+07:37.860 --> 07:40.020
+given some particular index.
+
+07:40.020 --> 07:42.240
+So the work function,
+
+07:42.240 --> 07:46.263
+we'll say, function fib will be called with some index.
+
+07:47.580 --> 07:50.970
+We're gonna say, "If index is ever less than two,
+
+07:50.970 --> 07:53.250
+then we're going to return the value one,
+
+07:53.250 --> 07:58.170
+otherwise, we're going to return fib index minus one
+
+07:58.170 --> 08:01.083
+plus fib index minus two.
+
+08:02.070 --> 08:04.020
+This right here is a very classic solution
+
+08:04.020 --> 08:06.273
+to the Fibonacci sequence.
+
+08:07.200 --> 08:09.960
+It's going to return the value one
+
+08:09.960 --> 08:12.930
+if the index submitted is ever less than two.
+
+08:12.930 --> 08:15.450
+Otherwise, it's gonna take the previous two values
+
+08:15.450 --> 08:17.670
+add them together, and then return that.
+
+08:17.670 --> 08:18.690
+Now, we could talk for days
+
+08:18.690 --> 08:20.820
+about exactly how this solution right here works.
+
+08:20.820 --> 08:22.950
+If you want to, you could always go look at a blog post
+
+08:22.950 --> 08:24.780
+or two to get a better idea about
+
+08:24.780 --> 08:27.420
+the Fibonacci recursive solution.
+
+08:27.420 --> 08:28.890
+Now, we're very purposefully using
+
+08:28.890 --> 08:30.780
+a recursive solution right here
+
+08:30.780 --> 08:32.100
+because it's very slow
+
+08:32.100 --> 08:34.050
+and it's gonna give us kind of a better reason
+
+08:34.050 --> 08:35.460
+for making use of Redis
+
+08:35.460 --> 08:37.650
+and having a separate worker process
+
+08:37.650 --> 08:40.050
+to calculate these Fibonacci values.
+
+08:40.050 --> 08:42.120
+So this is not an ideal solution right here,
+
+08:42.120 --> 08:45.180
+but it's one that kinda simulates why we would want to have
+
+08:45.180 --> 08:46.833
+a separate worker process.
+
+08:47.670 --> 08:49.620
+Now, the last thing that we need to do inside of here,
+
+08:49.620 --> 08:51.990
+we're going to use the Redis client connection
+
+08:51.990 --> 08:53.040
+we just put together.
+
+08:53.040 --> 08:54.120
+We're gonna watch Redis
+
+08:54.120 --> 08:56.820
+for any time we get a new value inserted into it.
+
+08:56.820 --> 08:58.500
+And anytime we see a new value,
+
+08:58.500 --> 09:01.450
+we're gonna run our fib function that we just put together.
+
+09:02.460 --> 09:03.720
+We'll say, oops,
+
+09:03.720 --> 09:04.770
+we'll say, sub,
+
+09:04.770 --> 09:06.870
+which remember, is the duplicate client right here.
+
+09:06.870 --> 09:08.790
+Sub stands for subscription
+
+09:08.790 --> 09:10.020
+'cause we're gonna watch Redis,
+
+09:10.020 --> 09:13.530
+and get a message anytime that a new value shows up.
+
+09:13.530 --> 09:15.903
+We'll say, sub.on message.
+
+09:16.740 --> 09:19.890
+So anytime that we get a new message,
+
+09:19.890 --> 09:21.570
+run this callback function
+
+09:21.570 --> 09:23.170
+that we're gonna add right here.
+
+09:24.600 --> 09:26.160
+The callback function will be called
+
+09:26.160 --> 09:28.980
+with something called a channel
+
+09:28.980 --> 09:29.973
+and a message.
+
+09:32.520 --> 09:35.410
+We'll then say, redisclient.hsetvalues message.
+
+09:40.080 --> 09:40.913
+And then finally,
+
+09:40.913 --> 09:43.110
+we're gonna calculate the actual Fibonacci value
+
+09:43.110 --> 09:46.920
+by saying fib, parseInt,
+
+09:46.920 --> 09:48.750
+and message, like so.
+
+09:48.750 --> 09:51.143
+And let me zoom out so you can see that whole line.
+
+09:52.890 --> 09:56.850
+So anytime that we get a new value that shows up in Redis,
+
+09:56.850 --> 10:00.120
+we're going to calculate a new Fibonacci value
+
+10:00.120 --> 10:03.780
+and then insert that into a hash of values
+
+10:03.780 --> 10:05.820
+or a hash called, "Values."
+
+10:05.820 --> 10:07.950
+The key will be the index that we receive.
+
+10:07.950 --> 10:10.140
+So message right here is going to be the index value
+
+10:10.140 --> 10:11.940
+that was submitted into our form
+
+10:11.940 --> 10:14.520
+and then we push in the value for Fibonacci sequence
+
+10:14.520 --> 10:17.010
+that we just calculated as well.
+
+10:17.010 --> 10:17.843
+And then the last thing
+
+10:17.843 --> 10:19.290
+that we're gonna do inside this file,
+
+10:19.290 --> 10:21.040
+we'll say, sub.subscribe
+
+10:23.010 --> 10:25.440
+to any insert event.
+
+10:25.440 --> 10:28.920
+So anytime someone inserts a new value into Redis,
+
+10:28.920 --> 10:30.540
+we're gonna get that value,
+
+10:30.540 --> 10:33.120
+and attempt to calculate the Fibonacci value for it,
+
+10:33.120 --> 10:37.260
+and then toss that value back into the Redis instance.
+
+10:37.260 --> 10:38.130
+All right, so like I said,
+
+10:38.130 --> 10:40.140
+we're going very light on detail right now,
+
+10:40.140 --> 10:43.050
+because this is super off topic related to
+
+10:43.050 --> 10:45.330
+or compared to the actual Docker stuff
+
+10:45.330 --> 10:46.950
+that we're trying to talk about.
+
+10:46.950 --> 10:48.060
+The very last thing I want to do
+
+10:48.060 --> 10:51.510
+is I wanna try to run this index.js file.
+
+10:51.510 --> 10:53.460
+The file's not gonna run successfully,
+
+10:53.460 --> 10:54.840
+but it should at least tell us whether
+
+10:54.840 --> 10:57.000
+or not you have a typo in here.
+
+10:57.000 --> 10:58.560
+So back at my terminal,
+
+10:58.560 --> 11:02.460
+I'm gonna change into that worker directory.
+
+11:02.460 --> 11:03.480
+And then inside of here,
+
+11:03.480 --> 11:07.830
+I'm gonna execute nodeindex.js.
+
+11:07.830 --> 11:09.607
+Now if you see a message right here that says,
+
+11:09.607 --> 11:12.120
+"Cannot find module Redis," that's good.
+
+11:12.120 --> 11:13.560
+That's what we want to see.
+
+11:13.560 --> 11:15.180
+If you made a typo somewhere in here,
+
+11:15.180 --> 11:17.760
+like let's say, I have an extra colon or three
+
+11:17.760 --> 11:19.203
+on this line right here,
+
+11:20.280 --> 11:22.200
+and then I try to run nodeindex.js,
+
+11:22.200 --> 11:23.460
+I'll see a different message.
+
+11:23.460 --> 11:24.457
+I'll see something that says,
+
+11:24.457 --> 11:26.070
+"Hey, you made a typo."
+
+11:26.070 --> 11:29.730
+So if you see anything other than "Cannot find module Redis"
+
+11:29.730 --> 11:31.530
+that means that you made a typo somewhere
+
+11:31.530 --> 11:33.120
+and you need to double-check
+
+11:33.120 --> 11:36.600
+and find that typo in your code and fix it.
+
+11:36.600 --> 11:38.400
+All right, so that's it for the worker process.
+
+11:38.400 --> 11:39.570
+Let's take a quick pause right here
+
+11:39.570 --> 11:41.520
+and we'll continue in the next section.

@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+Instructor: In the last section,
+
+00:01.763 --> 00:04.560
+we spoke about what a volume is in the role of Kubernetes.
+
+00:04.560 --> 00:05.940
+We're now going to start to talk about
+
+00:05.940 --> 00:08.580
+these two other types of objects that we can create as well,
+
+00:08.580 --> 00:12.030
+a persistent volume claim and a persistent volume.
+
+00:12.030 --> 00:14.460
+We'll first begin by comparing and contrasting
+
+00:14.460 --> 00:17.640
+the differences between a persistent volume and a volume.
+
+00:17.640 --> 00:19.560
+So quick diagram to figure out what
+
+00:19.560 --> 00:22.380
+the difference is between these two are.
+
+00:22.380 --> 00:23.730
+All right, so in this diagram.
+
+00:23.730 --> 00:24.630
+on the left hand side,
+
+00:24.630 --> 00:26.970
+we have a Postgres deployment with a volume.
+
+00:26.970 --> 00:28.170
+That's exactly what we were talking
+
+00:28.170 --> 00:29.550
+about in the last section.
+
+00:29.550 --> 00:30.630
+We had said that a volume
+
+00:30.630 --> 00:34.738
+is going to be some long term storage that is tied to a pod.
+
+00:34.738 --> 00:38.070
+Whenever the pod is created, the volume is created.
+
+00:38.070 --> 00:40.470
+If a container crashes for any reason,
+
+00:40.470 --> 00:42.240
+the volume will stick around.
+
+00:42.240 --> 00:43.680
+The volume will persist.
+
+00:43.680 --> 00:44.670
+And so we had said that
+
+00:44.670 --> 00:47.280
+if we end up with a new Postgres container,
+
+00:47.280 --> 00:48.390
+for whatever reason,
+
+00:48.390 --> 00:50.520
+no problem, it can freely connect back
+
+00:50.520 --> 00:54.390
+to this existing volume that had been created.
+
+00:54.390 --> 00:56.430
+And so we can kind of imagine that the old container
+
+00:56.430 --> 00:58.710
+might fall away and it gets replaced with this new one.
+
+00:58.710 --> 01:01.590
+Still gets access to all that volume data.
+
+01:01.590 --> 01:04.500
+However, if the entire pod crashes for any reason,
+
+01:04.500 --> 01:08.400
+everything inside the pod is lost, including that volume.
+
+01:08.400 --> 01:09.840
+All right, so that's a volume.
+
+01:09.840 --> 01:11.520
+That's what we spoke about in the last section.
+
+01:11.520 --> 01:13.470
+So now let's compare and contrast that
+
+01:13.470 --> 01:15.780
+against a persistent volume.
+
+01:15.780 --> 01:17.070
+With a persistent volume,
+
+01:17.070 --> 01:20.265
+we are creating some type of long term durable storage
+
+01:20.265 --> 01:23.430
+that is not tied to any specific pod
+
+01:23.430 --> 01:26.700
+or any specific container. So you can kind of imagine
+
+01:26.700 --> 01:28.890
+that the persistent volume is outside the pod,
+
+01:28.890 --> 01:31.170
+completely separate from the pod.
+
+01:31.170 --> 01:33.420
+If this container crashes for any reason
+
+01:33.420 --> 01:36.540
+or if it needs to be recreated for any reason,
+
+01:36.540 --> 01:38.010
+no problem whatsoever.
+
+01:38.010 --> 01:39.622
+The old container will fall away
+
+01:39.622 --> 01:41.580
+and the new one can connect
+
+01:41.580 --> 01:44.730
+to that persistent volume that exists outside the pod.
+
+01:44.730 --> 01:46.410
+Now, let's consider the other case.
+
+01:46.410 --> 01:47.940
+The case in which maybe a pod
+
+01:47.940 --> 01:49.800
+needs to be deleted or recreated
+
+01:49.800 --> 01:53.220
+for some fashion, for some reason, excuse me.
+
+01:53.220 --> 01:54.210
+So we can kind of imagine
+
+01:54.210 --> 01:58.623
+that if this pod crashes entirely and gets recreated,
+
+02:00.420 --> 02:03.090
+no problem whatsoever, the old pod falls away,
+
+02:03.090 --> 02:05.550
+it completely disappears but the persistent volume
+
+02:05.550 --> 02:07.530
+is still going to stick around.
+
+02:07.530 --> 02:08.820
+When the new pod is created
+
+02:08.820 --> 02:10.980
+with a new copy of pod Postgres,
+
+02:10.980 --> 02:12.390
+that container is going to be able
+
+02:12.390 --> 02:14.820
+to connect to that persistent volume
+
+02:14.820 --> 02:17.280
+that exists outside of the pod.
+
+02:17.280 --> 02:19.980
+So that's a big difference between a normal volume
+
+02:19.980 --> 02:21.270
+and a persistent volume.
+
+02:21.270 --> 02:24.000
+Essentially, we're talking about the life cycle
+
+02:24.000 --> 02:25.530
+of the volume itself.
+
+02:25.530 --> 02:26.460
+With a normal volume,
+
+02:26.460 --> 02:28.350
+it's tied to the life cycle of the pod.
+
+02:28.350 --> 02:29.520
+With a persistent volume,
+
+02:29.520 --> 02:31.230
+it's going to last for all time,
+
+02:31.230 --> 02:32.850
+or essentially until you and I,
+
+02:32.850 --> 02:34.770
+as developers, or as the administrators,
+
+02:34.770 --> 02:37.020
+decide to delete it for some reason.
+
+02:37.020 --> 02:39.510
+But with a persistent volume, we can recreate a container,
+
+02:39.510 --> 02:41.640
+we can recreate a pod, no problem.
+
+02:41.640 --> 02:43.440
+The volume is still going to stick around
+
+02:43.440 --> 02:46.200
+with all the data that you would expect to have.
+
+02:46.200 --> 02:47.520
+All right, So that's the differences
+
+02:47.520 --> 02:49.800
+between a persistent volume and a volume.
+
+02:49.800 --> 02:51.570
+So let's take another quick break right here
+
+02:51.570 --> 02:52.403
+and we'll talk about
+
+02:52.403 --> 02:54.900
+what the differences are between a persistent volume
+
+02:54.900 --> 02:56.850
+and a persistent volume claim.
+
+02:56.850 --> 02:59.643
+So, quick pause and I'll catch you in just a second.

@@ -1,0 +1,715 @@
+WEBVTT
+
+00:01.015 --> 00:02.100
+-: In the last section we spoke about
+
+00:02.100 --> 00:05.460
+how we're going to put an Nginx server into our application,
+
+00:05.460 --> 00:07.920
+its job is going to be watch for incoming requests
+
+00:07.920 --> 00:10.590
+and route them off to the appropriate back-end server.
+
+00:10.590 --> 00:12.960
+In order to set up Nginx in this fashion
+
+00:12.960 --> 00:14.640
+and give it a set of routing rules,
+
+00:14.640 --> 00:18.540
+we're gonna create a file called default.com.
+
+00:18.540 --> 00:20.280
+This is a very special file
+
+00:20.280 --> 00:22.350
+that will be added to an Nginx image
+
+00:22.350 --> 00:24.270
+that you and I are going to put together.
+
+00:24.270 --> 00:26.670
+This file is gonna add a little bit of configuration
+
+00:26.670 --> 00:29.370
+to implement that set of routing rules.
+
+00:29.370 --> 00:32.640
+Now, of course this is a course about Docker
+
+00:32.640 --> 00:34.200
+not quite about Nginx,
+
+00:34.200 --> 00:36.030
+nonetheless, I wanna tell you a little bit
+
+00:36.030 --> 00:38.340
+about the configuration we're going to put together
+
+00:38.340 --> 00:40.530
+because I really do believe that you're gonna end up
+
+00:40.530 --> 00:43.980
+using Nginx on a majority of Docker-based projects.
+
+00:43.980 --> 00:45.660
+Maybe not but I wanna at least
+
+00:45.660 --> 00:47.730
+give you a little bit of knowledge here.
+
+00:47.730 --> 00:49.800
+So, inside of this configuration file
+
+00:49.800 --> 00:52.680
+we're going to put down a little bit of configuration
+
+00:52.680 --> 00:54.360
+that's gonna set up all the instructions
+
+00:54.360 --> 00:56.400
+that you see on the right-hand side.
+
+00:56.400 --> 00:58.080
+First off, we're gonna tell Nginx
+
+00:58.080 --> 01:01.200
+that there is something called an upstream server
+
+01:01.200 --> 01:05.010
+at client:3000 and server:5000.
+
+01:05.010 --> 01:06.750
+Let's break down both those statements right there
+
+01:06.750 --> 01:09.450
+and kinda quantify what they're trying to communicate.
+
+01:10.680 --> 01:12.360
+So, as we just said a moment ago
+
+01:12.360 --> 01:15.810
+Nginx is going to watch for requests from the outside world
+
+01:15.810 --> 01:18.600
+and then route them to appropriate servers.
+
+01:18.600 --> 01:22.110
+These servers are kind of behind Nginx,
+
+01:22.110 --> 01:23.700
+you cannot access these servers
+
+01:23.700 --> 01:26.130
+unless you go through the Nginx server.
+
+01:26.130 --> 01:29.430
+And so Nginx refers to these as upstream servers,
+
+01:29.430 --> 01:31.590
+they are servers that Nginx can optionally
+
+01:31.590 --> 01:33.303
+redirect traffic over to.
+
+01:34.140 --> 01:35.340
+Now, in both these statements
+
+01:35.340 --> 01:36.660
+you'll also notice that I said
+
+01:36.660 --> 01:41.660
+there is a server at Client:3000 and server:5000.
+
+01:41.700 --> 01:42.930
+So, as a quick reminder,
+
+01:42.930 --> 01:46.230
+when we put together our initial server implementation,
+
+01:46.230 --> 01:49.590
+inside the server directory you'll find that index.js file,
+
+01:49.590 --> 01:52.560
+at the very bottom of it you'll see that we are listening
+
+01:52.560 --> 01:55.020
+on the server on port 5,000.
+
+01:55.020 --> 01:58.167
+So, the server is watching for traffic on port 5,000
+
+01:58.167 --> 02:01.230
+and the client as a Create React App application
+
+02:01.230 --> 02:04.560
+by default listens for traffic on port 3,000,
+
+02:04.560 --> 02:06.930
+so that's where we are getting those two ports from.
+
+02:06.930 --> 02:09.660
+Create React App by default port 3000,
+
+02:09.660 --> 02:13.020
+our server by default port 5,000.
+
+02:13.020 --> 02:17.250
+Now, the client right there, client:3000 and server:5000,
+
+02:17.250 --> 02:19.440
+those are both actual addresses.
+
+02:19.440 --> 02:22.650
+And so client and server are actual host names
+
+02:22.650 --> 02:24.660
+or essentially URLs
+
+02:24.660 --> 02:27.663
+that Nginx is going to try to direct traffic to.
+
+02:28.500 --> 02:31.410
+We are specifically using client and server right there
+
+02:31.410 --> 02:32.970
+because those are the names
+
+02:32.970 --> 02:35.700
+of the client and server services
+
+02:35.700 --> 02:38.580
+we put together inside of our Docker composed file.
+
+02:38.580 --> 02:41.670
+Here's client and up here is server right here.
+
+02:41.670 --> 02:44.340
+Remember, anytime you make a Docker composed file
+
+02:44.340 --> 02:47.430
+the different service names are essentially used
+
+02:47.430 --> 02:49.500
+as domains of sorts,
+
+02:49.500 --> 02:52.590
+and you can refer to them in order to access the service
+
+02:52.590 --> 02:54.960
+that is hosted by the service.
+
+02:54.960 --> 02:56.460
+So that's why we're gonna direct traffic
+
+02:56.460 --> 02:59.793
+specifically to client:3000 and server:5000.
+
+03:00.690 --> 03:03.180
+After we put together those two quick definitions
+
+03:03.180 --> 03:04.410
+we'll then tell Nginx
+
+03:04.410 --> 03:07.620
+that it's going to listen by default on port 80.
+
+03:07.620 --> 03:10.590
+Now, remember this is port 80 inside the container
+
+03:10.590 --> 03:11.670
+and so it doesn't really matter
+
+03:11.670 --> 03:14.940
+if we say port 80 or we say port 5 billion,
+
+03:14.940 --> 03:17.730
+at the end of the day when we run our Docker composed file
+
+03:17.730 --> 03:19.530
+we can change the actual port
+
+03:19.530 --> 03:21.900
+that is more or less exposed to the outside world,
+
+03:21.900 --> 03:23.900
+or essentially set up that port mapping.
+
+03:25.500 --> 03:26.880
+After we do do that
+
+03:26.880 --> 03:28.500
+we'll then set up the two roles
+
+03:28.500 --> 03:31.710
+that say, "Essentially, if anyone comes to the slash
+
+03:31.710 --> 03:33.000
+or kind of route route,
+
+03:33.000 --> 03:35.400
+we wanna send them to the client upstream,"
+
+03:35.400 --> 03:36.843
+so that's this upstream right here,
+
+03:36.843 --> 03:39.240
+"... and if anyone goes to /API,
+
+03:39.240 --> 03:41.580
+send them to the server upstream."
+
+03:41.580 --> 03:43.320
+All right, so that's what we're gonna do inside this file,
+
+03:43.320 --> 03:45.810
+I figured it would be easier to tell you with a diagram
+
+03:45.810 --> 03:48.840
+rather than write out the file and tell you along the way.
+
+03:48.840 --> 03:51.030
+So, let's now flip over to our code editor
+
+03:51.030 --> 03:53.133
+and we're gonna put that file together.
+
+03:54.570 --> 03:57.540
+So, to locate this file I'm gonna make a new folder
+
+03:57.540 --> 03:59.880
+inside of my route project directory
+
+03:59.880 --> 04:02.613
+and I'm gonna call this new folder Nginx.
+
+04:03.720 --> 04:05.490
+So, inside of the Nginx folder
+
+04:05.490 --> 04:09.510
+I'll make a new file called default.com.
+
+04:09.510 --> 04:11.940
+Again, this is a very special file name,
+
+04:11.940 --> 04:14.953
+we're going to eventually work it into a Docker file
+
+04:14.953 --> 04:18.480
+or, excuse me, a docker image in just a little bit as well,
+
+04:18.480 --> 04:21.333
+so make sure you specifically name it default.com.
+
+04:22.500 --> 04:26.070
+So, now inside of here we'll set up these two upstreams.
+
+04:26.070 --> 04:29.280
+I'll first say upstream client,
+
+04:29.280 --> 04:32.700
+this sets up the definition of an upstream called client
+
+04:32.700 --> 04:34.530
+and then inside of here we're gonna say that
+
+04:34.530 --> 04:37.980
+it refers to a server that is hosted at
+
+04:37.980 --> 04:41.040
+client:3000, like so.
+
+04:41.040 --> 04:43.990
+And notice how there is a semicolon on the end of the line.
+
+04:45.570 --> 04:47.310
+So, again, the syntax here says
+
+04:47.310 --> 04:50.940
+there is a upstream, we are calling it client,
+
+04:50.940 --> 04:54.510
+it is located at the domain name
+
+04:54.510 --> 04:57.810
+or the URL client port 3000.
+
+04:57.810 --> 05:00.780
+This right here is how you can access it.
+
+05:00.780 --> 05:04.320
+So, now we'll do the same thing for our API as well.
+
+05:04.320 --> 05:05.520
+Now, as we put this together
+
+05:05.520 --> 05:07.710
+you're gonna notice something a little bit awkward,
+
+05:07.710 --> 05:12.213
+it's not gonna say upstream_server_server_server:5000.
+
+05:13.680 --> 05:15.660
+Now, when you look at the previous example,
+
+05:15.660 --> 05:19.500
+in order to tell Nginx that the location of this upstream
+
+05:19.500 --> 05:23.760
+is at client:3000, we use the keyword server right here.
+
+05:23.760 --> 05:26.100
+But as we set up our docker composed file
+
+05:26.100 --> 05:28.680
+we've been referring to the express API
+
+05:28.680 --> 05:30.570
+with the name of server,
+
+05:30.570 --> 05:32.610
+that is the name of the service
+
+05:32.610 --> 05:35.430
+as we defined it inside of the Docker composed file.
+
+05:35.430 --> 05:36.420
+So, as you might imagine,
+
+05:36.420 --> 05:38.820
+having upstream_server_server_server,
+
+05:38.820 --> 05:41.490
+this is really confusing and in the world of Nginx
+
+05:41.490 --> 05:44.040
+server might even be a protected keyword.
+
+05:44.040 --> 05:47.070
+And so if we tried using this in our configuration file
+
+05:47.070 --> 05:49.927
+we might end up seeing an error because it might say like,
+
+05:49.927 --> 05:52.590
+"Hey, why are you putting the word server right here?
+
+05:52.590 --> 05:56.070
+I'm Nginx and the word server to me is an operator."
+
+05:56.070 --> 05:58.980
+So, just to make Nginx a little bit happy
+
+05:58.980 --> 06:02.310
+we're gonna change our terminology for our back-end server,
+
+06:02.310 --> 06:05.610
+or the back-end service, of server just a little bit.
+
+06:05.610 --> 06:08.820
+So, we're going to refer to this as the API
+
+06:08.820 --> 06:11.370
+rather than as the name of server,
+
+06:11.370 --> 06:14.370
+and so that also includes our Docker composed file.
+
+06:14.370 --> 06:15.870
+Inside of Docker compose,
+
+06:15.870 --> 06:17.610
+rather than giving this a name of server
+
+06:17.610 --> 06:20.010
+we're going to call it API, like so.
+
+06:20.010 --> 06:23.010
+And, again, we're just doing this to make Nginx happy
+
+06:23.010 --> 06:25.650
+so that we don't use the word server all over the place,
+
+06:25.650 --> 06:28.080
+and probably end up with like a syntax error
+
+06:28.080 --> 06:31.563
+when Nginx tries to make use of our default.com file.
+
+06:33.300 --> 06:36.240
+Okay, now, again, please make sure you got a semicolon
+
+06:36.240 --> 06:38.400
+on the end of that line,
+
+06:38.400 --> 06:41.370
+and then underneath those two upstream definitions
+
+06:41.370 --> 06:43.350
+we'll then set up this server block
+
+06:43.350 --> 06:46.410
+that sets up the main body of configuration.
+
+06:46.410 --> 06:47.243
+So, we're gonna say,
+
+06:47.243 --> 06:49.770
+"Nginx, we want there to be a server
+
+06:49.770 --> 06:52.140
+that listens on port 80."
+
+06:52.140 --> 06:55.020
+So, notice how we got server, listen, 80,
+
+06:55.020 --> 06:57.573
+and note the semicolon right there.
+
+06:58.740 --> 06:59.890
+And then inside of here
+
+07:00.900 --> 07:03.750
+we're gonna set up our two routing rules,
+
+07:03.750 --> 07:07.200
+we're gonna say, "If anyone ever goes to slash
+
+07:07.200 --> 07:11.070
+then setup a proxy and essentially pass through this request
+
+07:11.070 --> 07:13.650
+to the client upstream."
+
+07:13.650 --> 07:14.731
+So, to do so we say
+
+07:14.731 --> 07:19.731
+proxy_underscored_pass_http://frontend, like so.
+
+07:25.890 --> 07:27.690
+So, if a request ever comes in
+
+07:27.690 --> 07:31.170
+that matches just slash by itself, like so,
+
+07:31.170 --> 07:35.790
+take the request and send it off to this upstream.
+
+07:35.790 --> 07:37.920
+Excuse me, I put front end in here, I apologize for that
+
+07:37.920 --> 07:39.450
+it should be client.
+
+07:39.450 --> 07:42.060
+Ugh, I feel so bad about that.
+
+07:42.060 --> 07:44.790
+Okay, hopefully you can forgive me for that, I apologize,
+
+07:44.790 --> 07:48.120
+it should be client, that's the name of the upstream client.
+
+07:48.120 --> 07:51.240
+So, now we're gonna do the same thing for API as well.
+
+07:51.240 --> 07:54.033
+I'll say location/API,
+
+07:55.177 --> 07:57.330
+"If anyone ever comes here,
+
+07:57.330 --> 08:02.330
+then pass this request upstream to http://API, like so."
+
+08:05.820 --> 08:07.920
+And then on this rule right here we're actually gonna add in
+
+08:07.920 --> 08:10.290
+one other piece of configuration.
+
+08:10.290 --> 08:12.340
+Remember how I told you just a moment ago
+
+08:13.860 --> 08:18.420
+when a request comes from the browser with a route of /API,
+
+08:18.420 --> 08:20.220
+after it goes through Nginx
+
+08:20.220 --> 08:25.220
+it trims off that /API part of the request path.
+
+08:25.440 --> 08:28.200
+Well, actually that's not a automatic operation
+
+08:28.200 --> 08:30.720
+that is actually something that we configure,
+
+08:30.720 --> 08:32.710
+so we can figure Nginx to specifically
+
+08:33.780 --> 08:37.530
+chop off that first little /API part of the url.
+
+08:37.530 --> 08:41.760
+And so to do so, right above the proxy pass part we will say
+
+08:41.760 --> 08:46.760
+rewrite /API/parentheses.* /$1 break.
+
+08:55.590 --> 08:59.250
+So, this is a rewrite directive or a rewrite rule,
+
+08:59.250 --> 09:02.700
+it means apply a reg X of /API,
+
+09:02.700 --> 09:05.640
+so essentially match this reg X right here
+
+09:05.640 --> 09:07.500
+against the path name,
+
+09:07.500 --> 09:09.660
+and if we match anything to this
+
+09:09.660 --> 09:14.660
+then take off the /API and leave it as just /$1.
+
+09:14.820 --> 09:17.040
+The $1 right here is actually a reference
+
+09:17.040 --> 09:20.360
+to whatever text was matched by this Reg X right here,
+
+09:20.360 --> 09:22.290
+ao essentially whatever gets matched
+
+09:22.290 --> 09:26.793
+will be added or resubstituted in here as $1.
+
+09:27.840 --> 09:30.300
+The break keyword on the very end is a directive
+
+09:30.300 --> 09:31.590
+and it essentially means,
+
+09:31.590 --> 09:34.800
+do not try to apply any other rewrite rules
+
+09:34.800 --> 09:36.420
+after applying this one.
+
+09:36.420 --> 09:39.960
+So, if we had other rules in place to rewrite the URL
+
+09:39.960 --> 09:42.787
+or the path name here, the break keyword essentially means
+
+09:42.787 --> 09:46.500
+"Hey, Nginx, don't try to do any other rewrite here."
+
+09:46.500 --> 09:47.880
+The reason you put in break right here
+
+09:47.880 --> 09:50.460
+is essentially to keep from going through continuous rules
+
+09:50.460 --> 09:53.820
+as Nginx rewrites the URL and then tries to match it
+
+09:53.820 --> 09:56.943
+to a new route with the new rewritten url.
+
+09:58.530 --> 10:01.830
+Then after that we say the proxy pass to /API, like so,
+
+10:01.830 --> 10:03.690
+and that's pretty much it.
+
+10:03.690 --> 10:05.190
+Now, again, I want you to make sure,
+
+10:05.190 --> 10:06.750
+please, please, please double check,
+
+10:06.750 --> 10:08.220
+make sure you've got semicolons
+
+10:08.220 --> 10:10.860
+on the end of each of the statement lines.
+
+10:10.860 --> 10:12.540
+On my screen they're showing up
+
+10:12.540 --> 10:14.610
+as that gray that it's kind of hard to see,
+
+10:14.610 --> 10:16.350
+just make sure that you got semicolons
+
+10:16.350 --> 10:18.750
+on the end of each of those lines.
+
+10:18.750 --> 10:20.100
+Okay, so that's pretty much it.
+
+10:20.100 --> 10:23.280
+That's all we have to put into our default.com file.
+
+10:23.280 --> 10:25.650
+Now, the last thing we have to do,
+
+10:25.650 --> 10:28.140
+and I'm going to just throw this at you out of the blue
+
+10:28.140 --> 10:30.720
+'cause I didn't really mention it earlier on,
+
+10:30.720 --> 10:33.090
+we put together the default.com file
+
+10:33.090 --> 10:36.933
+but we need to actually get it into Nginx in some way.
+
+10:38.100 --> 10:41.010
+So, if you remember the diagram we were looking at before,
+
+10:41.010 --> 10:44.580
+everything else inside of here was a docker container.
+
+10:44.580 --> 10:46.800
+Well, that's no different with Nginx,
+
+10:46.800 --> 10:50.010
+we're gonna create a separate Nginx container,
+
+10:50.010 --> 10:52.020
+we're gonna build a docker file for it
+
+10:52.020 --> 10:55.320
+and we're going to essentially get our configuration file
+
+10:55.320 --> 10:58.260
+into Nginx through the use of that docker file.
+
+10:58.260 --> 10:59.610
+So, let's take a quick pause right here,
+
+10:59.610 --> 11:00.990
+we'll come back to the next section.
+
+11:00.990 --> 11:02.760
+We're gonna put together a docker file
+
+11:02.760 --> 11:05.940
+that is going to create a Nginx custom image
+
+11:05.940 --> 11:09.570
+that has a little bit of custom configuration applied to it.
+
+11:09.570 --> 11:11.993
+So, quick break and I'll see you in just a minute.

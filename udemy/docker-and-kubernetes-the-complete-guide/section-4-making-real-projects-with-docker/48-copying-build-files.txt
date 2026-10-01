@@ -1,0 +1,352 @@
+WEBVTT
+
+00:00.870 --> 00:02.491
+Instructor: In last section,
+
+00:02.491 --> 00:04.350
+we saw that the npm install command failed to run
+
+00:04.350 --> 00:06.810
+because the package.json file was not found,
+
+00:06.810 --> 00:08.640
+and we spoke about why that was.
+
+00:08.640 --> 00:10.680
+In this section, we're gonna figure out how we can make sure
+
+00:10.680 --> 00:13.170
+that the package.json file is available
+
+00:13.170 --> 00:17.460
+before npm install is executed inside of the container.
+
+00:17.460 --> 00:20.340
+To do so, we're gonna add one little instruction
+
+00:20.340 --> 00:22.320
+to our Docker file.
+
+00:22.320 --> 00:23.490
+This is going to be an instruction
+
+00:23.490 --> 00:25.656
+that we've not used before.
+
+00:25.656 --> 00:26.489
+It's the copy instruction.
+
+00:26.489 --> 00:27.630
+And as you might guess,
+
+00:27.630 --> 00:29.730
+the copy instruction is used to move files
+
+00:29.730 --> 00:33.360
+and folders from our local file system on your machine
+
+00:33.360 --> 00:36.120
+to the file system inside of that temporary container
+
+00:36.120 --> 00:38.193
+that is created during the build process.
+
+00:39.428 --> 00:41.550
+The overall syntax for this is copy,
+
+00:41.550 --> 00:45.270
+then a path to the folder on your local file system,
+
+00:45.270 --> 00:47.880
+and then the path that you want to copy that stuff to
+
+00:47.880 --> 00:49.770
+inside the container.
+
+00:49.770 --> 00:52.290
+Right now, I'm showing these commands with a dot slash,
+
+00:52.290 --> 00:55.380
+which means the current working directory.
+
+00:55.380 --> 00:59.100
+Now, one little technicality here, the path from our folder,
+
+00:59.100 --> 01:00.570
+the first argument right here,
+
+01:00.570 --> 01:03.240
+is relative to the build context.
+
+01:03.240 --> 01:04.440
+And you'll recall that I had said
+
+01:04.440 --> 01:07.950
+that the build context is the dot right here
+
+01:07.950 --> 01:10.320
+when we execute docker build at the terminal.
+
+01:10.320 --> 01:13.260
+So build right here means simpleweb directory
+
+01:13.260 --> 01:15.030
+or the current working directory.
+
+01:15.030 --> 01:19.170
+So we have set the current build context to be simpleweb.
+
+01:19.170 --> 01:21.240
+So then inside the copy command right here,
+
+01:21.240 --> 01:22.350
+when I say dot slash,
+
+01:22.350 --> 01:26.190
+that means the build context, which is simpleweb.
+
+01:26.190 --> 01:27.540
+I know that's a little bit confusing.
+
+01:27.540 --> 01:30.360
+It's essentially kind of like two layers of indirection.
+
+01:30.360 --> 01:32.130
+Again, we're gonna see a better example
+
+01:32.130 --> 01:34.380
+of why we would alter this build context stuff
+
+01:34.380 --> 01:36.809
+in the future when we start working
+
+01:36.809 --> 01:37.860
+on some more complicated projects.
+
+01:37.860 --> 01:39.570
+For right now, all we really need to know is
+
+01:39.570 --> 01:42.750
+that if we add this right here to our Docker file,
+
+01:42.750 --> 01:43.860
+we're gonna copy everything
+
+01:43.860 --> 01:46.890
+from our current working directory into the container.
+
+01:46.890 --> 01:48.600
+And that's pretty much it.
+
+01:48.600 --> 01:50.880
+So let's flip over to our Docker file and we're gonna add
+
+01:50.880 --> 01:54.273
+in this instruction and then try to rebuild our image.
+
+01:56.250 --> 01:57.510
+Now we definitely wanna make sure
+
+01:57.510 --> 02:00.789
+that the package.json file is available
+
+02:00.789 --> 02:02.700
+before we run npm install.
+
+02:02.700 --> 02:05.880
+I'm gonna add in the new instruction right above that.
+
+02:05.880 --> 02:09.480
+So I'll say copy dot slash, dot slash.
+
+02:09.480 --> 02:12.180
+Again, everything from the current working directory
+
+02:12.180 --> 02:16.080
+of simpleweb to the current working directory
+
+02:16.080 --> 02:17.433
+inside the container.
+
+02:18.360 --> 02:19.800
+All right, so I'm gonna save this
+
+02:19.800 --> 02:22.770
+and then we're going to try to run the docker build command
+
+02:22.770 --> 02:24.633
+again over at our terminal.
+
+02:25.530 --> 02:30.273
+So I'm gonna flip back over, and I'll do docker build dot.
+
+02:31.320 --> 02:32.580
+We'll run that.
+
+02:32.580 --> 02:34.410
+Now between the last section and this one,
+
+02:34.410 --> 02:37.110
+I removed my alpine image or the node alpine image.
+
+02:37.110 --> 02:38.490
+So I had to re-download it.
+
+02:38.490 --> 02:40.740
+But after that, we should see the copy step.
+
+02:40.740 --> 02:42.638
+There it is right there.
+
+02:42.638 --> 02:43.710
+We'll then see npm install.
+
+02:43.710 --> 02:45.960
+Now you will notice a couple of little warnings.
+
+02:45.960 --> 02:47.550
+The warnings are totally fine.
+
+02:47.550 --> 02:50.520
+If you see a notice and then three warnings in a row,
+
+02:50.520 --> 02:52.500
+that's totally fine, no issue.
+
+02:52.500 --> 02:54.360
+So we've now successfully installed
+
+02:54.360 --> 02:56.370
+all of our npm dependencies.
+
+02:56.370 --> 02:58.050
+And then if we keep on scrolling down,
+
+02:58.050 --> 03:00.390
+we'll eventually see at the the bottom
+
+03:00.390 --> 03:02.130
+that we have correctly generated this new image.
+
+03:02.130 --> 03:04.650
+And this is the ID of the new image.
+
+03:04.650 --> 03:06.480
+Now remember, it's not really nice
+
+03:06.480 --> 03:08.958
+to work with IDs all the time.
+
+03:08.958 --> 03:10.860
+Let's try running the docker build command again.
+
+03:10.860 --> 03:13.680
+But this time we're going to tag the image.
+
+03:13.680 --> 03:18.333
+So I'll say docker build dash t, then my docker ID,
+
+03:19.350 --> 03:22.170
+and then the name of this project,
+
+03:22.170 --> 03:23.820
+which we are calling simpleweb.
+
+03:23.820 --> 03:25.500
+And then I'm gonna make sure that I pass in
+
+03:25.500 --> 03:27.513
+the build context on the very end.
+
+03:28.350 --> 03:30.690
+You'll notice I did not put on the colon latest
+
+03:30.690 --> 03:32.491
+to the tag right there.
+
+03:32.491 --> 03:34.650
+It's because, remember, the colon latest tag is
+
+03:34.650 --> 03:37.473
+automatically appended if you don't specify it in here.
+
+03:39.000 --> 03:40.530
+Now one thing I just wanna remind you about,
+
+03:40.530 --> 03:42.930
+please don't forget the dot on the very end.
+
+03:42.930 --> 03:44.400
+And once you've got that all on there,
+
+03:44.400 --> 03:46.410
+we'll hit Enter to rebuild it.
+
+03:46.410 --> 03:49.460
+And now we have tagged that newly built image
+
+03:49.460 --> 03:51.810
+as your docker ID slash simpleweb.
+
+03:51.810 --> 03:53.940
+So now last thing we're going to do is try to start
+
+03:53.940 --> 03:57.510
+out that image and get the node server running.
+
+03:57.510 --> 04:02.283
+So I'll do a docker run stephengrider slash simpleweb.
+
+04:05.580 --> 04:07.180
+All right, so I very quickly see
+
+04:08.038 --> 04:10.290
+that the node index.js command was issued
+
+04:10.290 --> 04:12.210
+through the npm start command.
+
+04:12.210 --> 04:14.550
+I then see that the server is correctly listening
+
+04:14.550 --> 04:15.840
+on port 8080.
+
+04:15.840 --> 04:16.860
+So I think that we're ready
+
+04:16.860 --> 04:19.920
+to open up a web browser and test this thing out.
+
+04:19.920 --> 04:21.930
+So I'm gonna flip on over to my browser.
+
+04:21.930 --> 04:24.000
+And to visit that running application,
+
+04:24.000 --> 04:29.000
+we should be able to go to local host colon 8080.
+
+04:30.780 --> 04:33.480
+But once I do, I get a nasty little error message
+
+04:33.480 --> 04:35.583
+that says, this site can't be reached.
+
+04:36.750 --> 04:38.100
+Well, we definitely got our image built,
+
+04:38.100 --> 04:40.260
+and we are running a container out of it,
+
+04:40.260 --> 04:43.380
+but we still are not able to actually visit this port
+
+04:43.380 --> 04:45.450
+or see the web application running.
+
+04:45.450 --> 04:47.610
+So let's take a quick pause right here and we'll continue
+
+04:47.610 --> 04:50.360
+in the next section and figure out what is going wrong.

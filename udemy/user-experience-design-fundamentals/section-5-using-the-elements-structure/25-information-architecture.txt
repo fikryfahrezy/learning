@@ -1,0 +1,376 @@
+WEBVTT
+
+00:00.990 --> 00:03.690
+On the information side of the structure plane.
+
+00:03.690 --> 00:05.890
+We have information architecture.
+
+00:05.910 --> 00:12.450
+Information architecture, or AIA is all about the organization grouping, ordering, and presentation
+
+00:12.450 --> 00:13.300
+of content.
+
+00:13.320 --> 00:14.520
+What's the content?
+
+00:14.550 --> 00:16.080
+How much of it is there?
+
+00:16.080 --> 00:17.400
+How is it going to be organized?
+
+00:17.400 --> 00:22.530
+What are we going to call it, and what's its order of importance and priority to the person on the
+
+00:22.530 --> 00:23.280
+receiving end?
+
+00:23.310 --> 00:28.410
+So information architecture is all about organizing, categorizing, prioritizing.
+
+00:28.440 --> 00:33.230
+Information architecture is the creation of organizational and navigational schemes.
+
+00:33.480 --> 00:38.460
+We're figuring out the ways in which people move through information and what's going to make sense
+
+00:38.460 --> 00:39.010
+to them.
+
+00:39.030 --> 00:44.640
+A good AIA allows people to move through that content efficiently and effectively, but it's about a
+
+00:44.640 --> 00:46.590
+lot more than just finding content.
+
+00:46.590 --> 00:50.520
+It's also about educating, informing and persuading.
+
+00:50.520 --> 00:54.030
+And often those things happen in very equal doses.
+
+00:54.060 --> 01:00.610
+It's not just about sort of exposing it, it's about teaching people what it is and how it's organized,
+
+01:00.610 --> 01:00.920
+right?
+
+01:00.970 --> 01:04.270
+Setting expectations and then meeting those expectations.
+
+01:04.270 --> 01:06.460
+And sometimes it is about persuading, right?
+
+01:06.460 --> 01:10.210
+It's about motivating a person to take a specific action.
+
+01:10.360 --> 01:12.880
+An effective AIA is flexible.
+
+01:12.880 --> 01:14.140
+It accommodates growth.
+
+01:14.140 --> 01:20.110
+It adapts to change much in the way that the physical structure of the site or the app adapts.
+
+01:20.110 --> 01:27.040
+To change information is the same way when you set categories and say, Here are the buckets of information,
+
+01:27.040 --> 01:28.450
+this is what we're going to call things.
+
+01:28.450 --> 01:31.740
+These are our main areas of categorization.
+
+01:31.750 --> 01:39.310
+You want them to be the types of things that are going to have a long shelf life as the product evolves.
+
+01:39.700 --> 01:46.600
+There are multiple ways to organize information, but primary and most obvious method is hierarchy.
+
+01:46.630 --> 01:52.540
+A hierarchy pattern is essentially a very standard site structure with an index page and a series of
+
+01:52.540 --> 01:53.380
+sub pages.
+
+01:53.380 --> 01:56.890
+It's the model that most websites are based on.
+
+01:56.890 --> 02:03.850
+It's very good for organizing very complex structures that resemble like a desktop site or a system
+
+02:03.850 --> 02:04.420
+structure.
+
+02:04.420 --> 02:09.640
+It makes sense when there's a lot of complexity and it has to be very strictly organized in order for
+
+02:09.640 --> 02:11.260
+us to be able to get through all of it.
+
+02:11.410 --> 02:18.250
+The issue is that multi faceted structures like this can prevent a problem to people using a small screen
+
+02:18.250 --> 02:21.100
+simply because they can't see all this depth.
+
+02:21.100 --> 02:28.120
+All these areas with a hierarchy pattern, you typically have a high volume of content and a high degree
+
+02:28.120 --> 02:28.960
+of organization.
+
+02:28.960 --> 02:30.100
+So there's multiple tiers.
+
+02:30.100 --> 02:32.920
+There's a primary level, a secondary level, a tertiary level.
+
+02:32.920 --> 02:33.280
+ET cetera.
+
+02:33.280 --> 02:33.880
+ET cetera.
+
+02:33.880 --> 02:41.140
+And on a small screen, it's really difficult to see sort of the breadth and width or even depth of
+
+02:41.140 --> 02:42.250
+all your options.
+
+02:42.340 --> 02:49.060
+We can also use a hub and spoke pattern, which is a very typical setup for software, definitely for
+
+02:49.060 --> 02:54.760
+mobile applications, where you start with a very central location, you bounce out to do something
+
+02:54.760 --> 02:56.980
+and then you come back to that central location.
+
+02:56.980 --> 03:03.100
+So what we're doing is we're providing a central index person navigates out from that index and then
+
+03:03.100 --> 03:04.090
+they come back.
+
+03:04.120 --> 03:09.220
+The constraint here is that users can't navigate from one spoke to the other.
+
+03:09.250 --> 03:11.170
+They always have to go back to the hub.
+
+03:11.170 --> 03:17.020
+This is really good for multifunctional tools where sort of each thing that you use has a very distinct
+
+03:17.050 --> 03:20.180
+navigation and a very distinct purpose.
+
+03:20.200 --> 03:26.530
+The downside is this is not always a good choice for users who want to multitask, Even though we're
+
+03:26.560 --> 03:32.350
+typically not very good at multitasking, there are certain situations which sort of demand it right?
+
+03:32.350 --> 03:39.850
+I need to be able to go from sub task A to sub task, C to sub task F in some situations that may be
+
+03:39.880 --> 03:40.480
+warranted.
+
+03:40.480 --> 03:44.710
+So a hub and spoke model has certain constraints that you have to be aware of.
+
+03:44.980 --> 03:52.120
+A nested structure is a very linear progression where we go from a very high level to a more detailed
+
+03:52.120 --> 03:55.750
+level to an even more detailed level to an even more detailed level.
+
+03:55.960 --> 03:58.900
+And we have the ability to go back to the previous section.
+
+03:58.900 --> 04:02.950
+This is a very linear way to move to more detailed content.
+
+04:02.950 --> 04:07.960
+Nesting provides a very quick, very easy method of navigating under stress.
+
+04:07.990 --> 04:12.160
+Any interactive experience carries with it a certain degree of stress.
+
+04:12.160 --> 04:18.610
+And I don't mean the bad kind of stress where you're freaked out and under pressure and nervous and
+
+04:18.610 --> 04:19.810
+frustrated and agitated.
+
+04:19.810 --> 04:20.740
+That's not what I mean.
+
+04:20.740 --> 04:26.080
+There's always a certain degree of stress that's correlated with task completion or goal completion,
+
+04:26.080 --> 04:29.290
+and that's simply because we have an objective and we're trying to meet it.
+
+04:29.290 --> 04:35.620
+If a task has a lot of steps, nesting gives us a really strong sense of where we are in the process.
+
+04:35.650 --> 04:42.850
+It's really good for applications or sites that have either a singular topic or very closely related
+
+04:42.880 --> 04:46.310
+topics because it's easy to see the relationships between things.
+
+04:46.330 --> 04:52.630
+The downside can be that a nice linear progression, while it's very neat and very easy to execute,
+
+04:52.660 --> 04:58.420
+can be a barrier to exploring, people won't be able to sort of quickly switch between sections.
+
+04:58.420 --> 05:00.310
+They're forced to go down a very narrow.
+
+05:00.650 --> 05:03.890
+Structured path and they have to experience A before.
+
+05:03.920 --> 05:05.840
+B before C before D.
+
+05:06.170 --> 05:11.290
+Next, we have a bento box or a dashboard, which everybody I think is pretty familiar with.
+
+05:11.300 --> 05:17.420
+With a dashboard, you start out in a single location and then you sort of navigate out into one of
+
+05:17.420 --> 05:18.770
+many areas.
+
+05:18.800 --> 05:25.430
+The dashboard model is meant to give you a taste, a sample of what's available in those areas where
+
+05:25.430 --> 05:30.230
+you can go, what you can do and what you can expect to find once you get there.
+
+05:30.360 --> 05:35.250
+The dashboard pattern displays portions of related tools or content on a main screen.
+
+05:35.270 --> 05:41.300
+This pattern is much more suited to a desktop or a tablet situation versus mobile simply because it's
+
+05:41.300 --> 05:46.850
+complex and because it requires a certain amount of screen real estate to properly stand all this stuff
+
+05:46.850 --> 05:50.450
+up and give people the indication of what's there, of what they can expect.
+
+05:50.450 --> 05:55.220
+That sample, the idea of giving them a taste of what's ahead is really, really important.
+
+05:55.250 --> 05:58.850
+The dashboard allows the user to get key information at a glance.
+
+05:58.880 --> 06:04.050
+The kicker is it relies very heavily on a well designed user interface.
+
+06:04.080 --> 06:10.290
+A dashboard that's poorly designed will not be used because it typically will give the user no sense
+
+06:10.290 --> 06:13.890
+of what's ahead or of what value it is to them.
+
+06:13.920 --> 06:18.030
+Bad design makes it very difficult to tell one choice from another.
+
+06:18.030 --> 06:21.540
+And if we can't do that, we really have no sense of what's possible.
+
+06:21.570 --> 06:27.960
+The dashboard approach is really good for multifunctional tools and content based tablet apps that have
+
+06:27.960 --> 06:29.140
+similar themes.
+
+06:29.160 --> 06:32.490
+The tablet screen gives you more space to utilize this pattern.
+
+06:32.490 --> 06:37.050
+Well, as I said a minute ago, simply because you've got more screen real estate, you've got more
+
+06:37.050 --> 06:41.300
+to deal with, and it's much easier to give people a solid sense of what's ahead.
+
+06:41.310 --> 06:47.430
+What's really critical is that you fully understand how that person is going to interact with each piece
+
+06:47.430 --> 06:50.910
+of content and how they're going to move between each piece of content.
+
+06:51.210 --> 06:56.040
+Because similar to the hub and spoke model, once you go out, you have to be able to get back.
+
+06:56.040 --> 07:01.470
+And it's entirely possible that you may have to jump to another subsection as opposed to returning to
+
+07:01.470 --> 07:02.300
+the home screen.
+
+07:02.310 --> 07:06.720
+So you've got to think hard about how people are going to move between areas of information.
+
+07:07.080 --> 07:09.960
+Finally, we have what's called a filtered view.
+
+07:09.990 --> 07:12.900
+This is a pattern that you see a lot on e-commerce sites.
+
+07:12.900 --> 07:18.570
+And in just about any situation where you have to search across very complex sets of information.
+
+07:18.780 --> 07:24.180
+But once you do a search, then you can sort of narrow it by certain attributes, certain filters.
+
+07:24.210 --> 07:29.820
+This is a pattern that allows people to use filtering options to create an alternate view of a specific
+
+07:29.820 --> 07:30.950
+set of information.
+
+07:30.960 --> 07:33.120
+I did a search and I get my results.
+
+07:33.120 --> 07:36.530
+And now I want to narrow what I see and what I don't see.
+
+07:36.540 --> 07:40.530
+It's really good for apps or sites that have a high volume of content.
+
+07:40.530 --> 07:43.890
+When people know the information set is dense, it's complex.
+
+07:43.890 --> 07:47.730
+They will almost always go to search as opposed to browse.
+
+07:47.970 --> 07:54.930
+It can be a really good basis for magazine style apps or sites or as a sub pattern inside another navigational
+
+07:54.930 --> 07:55.530
+pattern.
+
+07:55.560 --> 08:01.050
+The issue with taking a filtered view approach is that it can be really difficult to execute on a mobile
+
+08:01.050 --> 08:06.510
+screen because exposing all the possible filters, all the possible facets of a search demand screen
+
+08:06.510 --> 08:12.840
+real estate, you've almost always got a lot of choices and when your form factor is limited, it's
+
+08:12.840 --> 08:18.960
+really hard to fit all that stuff on this tiny surface and have it be visible, obvious and easy to
+
+08:18.960 --> 08:19.620
+use.

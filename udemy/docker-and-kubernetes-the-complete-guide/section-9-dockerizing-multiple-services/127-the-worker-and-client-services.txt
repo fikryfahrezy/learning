@@ -1,0 +1,235 @@
+WEBVTT
+
+00:00.780 --> 00:03.270
+-: In last section, we added in a ton of configuration
+
+00:03.270 --> 00:06.780
+to our Docker Compose file to get our server up and running.
+
+00:06.780 --> 00:08.670
+The server is now aware of a couple
+
+00:08.670 --> 00:10.470
+of different environment variables that it's going
+
+00:10.470 --> 00:14.220
+to need to successfully connect to both Redis and Postgres.
+
+00:14.220 --> 00:16.020
+We're now gonna start to move forward.
+
+00:16.020 --> 00:17.730
+The other two sections of configuration
+
+00:17.730 --> 00:20.250
+that we need to add into this file are services
+
+00:20.250 --> 00:23.220
+for both the worker and the client projects.
+
+00:23.220 --> 00:25.263
+So let's add both those in right now.
+
+00:26.370 --> 00:28.320
+I'm gonna go down to the bottom of the file
+
+00:28.320 --> 00:31.797
+and I'll add in a new service that we'll call "Client".
+
+00:33.510 --> 00:35.460
+Now for the client service, we're gonna end up
+
+00:35.460 --> 00:36.780
+with a couple of different properties
+
+00:36.780 --> 00:38.220
+that are just about identical
+
+00:38.220 --> 00:40.320
+to the last Docker Compose file that we put together,
+
+00:40.320 --> 00:42.750
+and even identical to the server service
+
+00:42.750 --> 00:45.270
+that we just added a moment ago as well.
+
+00:45.270 --> 00:48.810
+So for the client, we need to specify a build option
+
+00:48.810 --> 00:51.810
+for telling this thing what the context folder is
+
+00:51.810 --> 00:53.460
+and where the Docker file is.
+
+00:53.460 --> 00:56.520
+We also need to specify the relevant volumes as well,
+
+00:56.520 --> 00:57.480
+to make sure that we don't have
+
+00:57.480 --> 01:00.570
+to constantly re-build the client image every time
+
+01:00.570 --> 01:02.670
+that we change some code inside there.
+
+01:02.670 --> 01:04.920
+And then we're gonna do the exact same two steps
+
+01:04.920 --> 01:07.440
+for the worker project as well.
+
+01:07.440 --> 01:09.510
+So for build on the client,
+
+01:09.510 --> 01:14.280
+we're gonna say your Docker file is dockerfile.dev.
+
+01:14.280 --> 01:18.150
+And the context is going to be the client directory.
+
+01:18.150 --> 01:20.760
+So inside the client directory is all the source code
+
+01:20.760 --> 01:23.610
+relevant for the client service.
+
+01:23.610 --> 01:26.883
+The context will be ./client like so.
+
+01:30.360 --> 01:33.750
+We'll then set up the two volumes for the client.
+
+01:33.750 --> 01:38.100
+So I'll say volumes. We're going again going to say
+
+01:38.100 --> 01:40.380
+that we want to put that kind of Bookmark halt
+
+01:40.380 --> 01:44.130
+on app node_modules. So that's gonna make sure
+
+01:44.130 --> 01:45.900
+that the node_modules directory
+
+01:45.900 --> 01:48.300
+inside the container does not get overwritten
+
+01:48.300 --> 01:49.920
+by any node_modules folder
+
+01:49.920 --> 01:52.440
+that we might have inside the client.
+
+01:52.440 --> 01:54.690
+And then we'll also set up the relationship
+
+01:54.690 --> 01:57.570
+between all of the source code inside the client directory
+
+01:57.570 --> 02:00.630
+and the app folder inside of the container.
+
+02:00.630 --> 02:01.830
+So I'll say everything
+
+02:01.830 --> 02:04.680
+inside the client directory should be shared
+
+02:04.680 --> 02:07.443
+with the app folder inside the container.
+
+02:10.620 --> 02:12.390
+All right, so now last thing we need to do is set
+
+02:12.390 --> 02:16.230
+up the same service for our worker process as well.
+
+02:16.230 --> 02:18.900
+So I'll say we're gonna have a worker service.
+
+02:18.900 --> 02:23.883
+It will have a Build with a Docker file of Dockerfile.dev.
+
+02:26.130 --> 02:29.493
+It will have a context of the worker directory.
+
+02:30.570 --> 02:35.233
+And it's gonna have volumes of both app node_modules
+
+02:36.420 --> 02:40.170
+and ./worker. And everything inside
+
+02:40.170 --> 02:42.920
+that folder is gonna be kind of mapped over virtually
+
+02:42.920 --> 02:45.483
+to the app folder inside of the container.
+
+02:46.470 --> 02:48.990
+All right, so that looks pretty good.
+
+02:48.990 --> 02:53.070
+Now, we're just about done with a Docker Compose file.
+
+02:53.070 --> 02:55.290
+But you might notice that there's one very
+
+02:55.290 --> 02:57.180
+distinct thing that we're currently missing
+
+02:57.180 --> 02:59.040
+inside the entire project.
+
+02:59.040 --> 03:02.640
+We have not yet set up any port mapping whatsoever.
+
+03:02.640 --> 03:05.700
+So there's no port mapping to expose the server
+
+03:05.700 --> 03:06.780
+to the outside world.
+
+03:06.780 --> 03:09.240
+And there's no mapping for the React project
+
+03:09.240 --> 03:11.850
+as well as we had done on the previous React project
+
+03:11.850 --> 03:14.820
+that we just put together. Now I wanna direct you back
+
+03:14.820 --> 03:17.940
+to a diagram we were looking at just a moment ago.
+
+03:17.940 --> 03:20.910
+This one right here. So we had said that with development,
+
+03:20.910 --> 03:23.760
+we were gonna have this NGINX server out here
+
+03:23.760 --> 03:26.070
+that was somehow reacting to information
+
+03:26.070 --> 03:29.400
+or kind of like proxying or routing it requests
+
+03:29.400 --> 03:33.210
+from the browser to the React server or the Express server.
+
+03:33.210 --> 03:34.560
+Let's take a quick pause right now.
+
+03:34.560 --> 03:36.060
+We'll come back to the next section, and we'll talk
+
+03:36.060 --> 03:38.550
+about the purpose of this little NGINX thing right here,
+
+03:38.550 --> 03:40.380
+and what it's going to be doing for us.
+
+03:40.380 --> 03:42.030
+So I'll see you in just a minute.

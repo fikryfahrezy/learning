@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00.386 --> 00:01.470
+-: In the last section,
+
+00:01.470 --> 00:04.140
+we tried to answer the question of why use Docker?
+
+00:04.140 --> 00:05.790
+And we eventually said that we use Docker
+
+00:05.790 --> 00:08.100
+because it makes it really easy to install
+
+00:08.100 --> 00:10.770
+and run new software on our computer.
+
+00:10.770 --> 00:13.650
+We're not gonna try to answer the other big question here,
+
+00:13.650 --> 00:15.810
+which is, what is Docker?
+
+00:15.810 --> 00:19.080
+Well, this question is a lot more challenging to answer.
+
+00:19.080 --> 00:21.300
+Anytime you see someone refer to Docker
+
+00:21.300 --> 00:23.130
+in a blog post or an article
+
+00:23.130 --> 00:25.350
+or a forum or wherever it might be,
+
+00:25.350 --> 00:28.320
+they're kind of making reference to an entire ecosystem
+
+00:28.320 --> 00:32.190
+of different projects, tools, and pieces of software.
+
+00:32.190 --> 00:35.940
+So if someone says, "oh yeah, I use Docker on my project"
+
+00:35.940 --> 00:39.570
+they might be referring to Docker client or a Docker server.
+
+00:39.570 --> 00:42.180
+They might be referring to Docker hub or Docker Compose.
+
+00:42.180 --> 00:45.990
+Again, these are all projects, tools, pieces of software
+
+00:45.990 --> 00:49.860
+that come together to form a platform or ecosystem
+
+00:49.860 --> 00:53.910
+around creating and running something called containers.
+
+00:53.910 --> 00:56.310
+And so your immediate question might be,
+
+00:56.310 --> 00:58.440
+Okay well what's a container?
+
+00:58.440 --> 00:59.430
+That's a good question
+
+00:59.430 --> 01:00.330
+and that's a question
+
+01:00.330 --> 01:01.620
+that we're going to be trying to answer
+
+01:01.620 --> 01:03.540
+throughout this entire course.
+
+01:03.540 --> 01:06.540
+Just a moment ago, when I ran that command at my terminal
+
+01:06.540 --> 01:08.880
+of Docker run Redis,
+
+01:08.880 --> 01:11.910
+it went through a little series of actions behind the scenes
+
+01:11.910 --> 01:14.370
+and we're going to examine that entire series of actions
+
+01:14.370 --> 01:15.750
+very closely over time.
+
+01:15.750 --> 01:16.583
+But for right now,
+
+01:16.583 --> 01:19.560
+let me give you two important pieces of terminology.
+
+01:19.560 --> 01:21.090
+When I ran that command,
+
+01:21.090 --> 01:23.580
+something called the Docker CLI reached out
+
+01:23.580 --> 01:25.770
+to something called the Docker hub
+
+01:25.770 --> 01:29.610
+and it downloaded a single file called an image.
+
+01:29.610 --> 01:32.940
+An image is a single file containing all the dependencies
+
+01:32.940 --> 01:34.680
+and all the configuration required
+
+01:34.680 --> 01:37.260
+to run a very specific program.
+
+01:37.260 --> 01:39.630
+For example, Redis, which is what the image
+
+01:39.630 --> 01:42.360
+that I just downloaded was supposed to run.
+
+01:42.360 --> 01:45.660
+This is a single file that gets stored on your hard drive.
+
+01:45.660 --> 01:46.800
+And at some point in time,
+
+01:46.800 --> 01:48.540
+you can use this image to create
+
+01:48.540 --> 01:50.193
+something called a container.
+
+01:51.030 --> 01:53.640
+A container is an instance of an image
+
+01:53.640 --> 01:55.539
+and you can kind of think of it
+
+01:55.539 --> 01:57.600
+as being like a running program.
+
+01:57.600 --> 01:59.580
+We're gonna go into great detail over time,
+
+01:59.580 --> 02:03.390
+over behind to learn exactly how a container works exactly.
+
+02:03.390 --> 02:05.610
+But right now, all we really need to understand
+
+02:05.610 --> 02:07.740
+is that a container is a program
+
+02:07.740 --> 02:10.980
+with its own isolated set of hardware resources.
+
+02:10.980 --> 02:12.660
+So it kind of has its own little set
+
+02:12.660 --> 02:14.340
+or its own little space of memory,
+
+02:14.340 --> 02:17.610
+has its own little space of networking technology
+
+02:17.610 --> 02:21.117
+and its own little space of hard drive space as well.
+
+02:21.117 --> 02:24.300
+Okay, so I didn't really answer the question here
+
+02:24.300 --> 02:26.280
+of what Docker is,
+
+02:26.280 --> 02:28.830
+but we did learn at least that a reference to Docker
+
+02:28.830 --> 02:30.510
+is really talking about a whole collection
+
+02:30.510 --> 02:32.100
+of different projects and tools,
+
+02:32.100 --> 02:35.430
+and we also picked up two important pieces of terminology,
+
+02:35.430 --> 02:37.980
+a docker image and a container.
+
+02:37.980 --> 02:39.570
+Now these images and containers
+
+02:39.570 --> 02:40.770
+are the absolute backbone
+
+02:40.770 --> 02:42.210
+of what you and I are going to working with
+
+02:42.210 --> 02:43.620
+throughout the rest of this course.
+
+02:43.620 --> 02:45.180
+So let's take a quick pause right now.
+
+02:45.180 --> 02:46.530
+We're gonna come back to the next section
+
+02:46.530 --> 02:48.210
+and we're gonna start talking a little bit more
+
+02:48.210 --> 02:50.820
+about how we work with images and containers.
+
+02:50.820 --> 02:53.270
+So quick break and I'll see you in just a minute.

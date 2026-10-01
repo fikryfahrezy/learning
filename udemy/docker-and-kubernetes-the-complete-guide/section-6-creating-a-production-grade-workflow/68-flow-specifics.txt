@@ -1,0 +1,517 @@
+WEBVTT
+
+00:00.900 --> 00:03.270
+-: In the last section, we started talking about how
+
+00:05.163 --> 00:05.996
+we're going to develop a development workflow
+
+00:05.996 --> 00:08.040
+that's going to allow us to develop our application,
+
+00:08.040 --> 00:09.420
+test it in some fashion,
+
+00:09.420 --> 00:10.253
+deploy it
+
+00:10.253 --> 00:12.930
+and then repeat that process all over again.
+
+00:12.930 --> 00:14.370
+So in this section, we're gonna start talking
+
+00:14.370 --> 00:17.250
+about some more specifics around that flow.
+
+00:17.250 --> 00:19.110
+Now I'm gonna give you a diagram here
+
+00:19.110 --> 00:21.330
+that's going to be just a little bit interactive.
+
+00:21.330 --> 00:23.160
+So I'm going to add in a couple of elements
+
+00:23.160 --> 00:25.440
+as we go through this description over time.
+
+00:25.440 --> 00:26.940
+The important thing to keep in mind here
+
+00:26.940 --> 00:28.110
+around this diagram is
+
+00:28.110 --> 00:30.121
+that we're not gonna talk too much
+
+00:30.121 --> 00:31.440
+about Dockers flow in this just yet.
+
+00:31.440 --> 00:33.304
+Instead, I'm gonna focus
+
+00:33.304 --> 00:34.590
+on telling you about some outside services
+
+00:34.590 --> 00:36.690
+and outside technologies that we're going to use
+
+00:36.690 --> 00:39.210
+to set up this development workflow.
+
+00:39.210 --> 00:41.640
+Once we kind of understand the core principles
+
+00:41.640 --> 00:44.670
+or the kind of design behind this development workflow
+
+00:44.670 --> 00:46.110
+we will then kind of introduce Docker
+
+00:46.110 --> 00:49.620
+and tell about how Docker kind of facilitates everything.
+
+00:49.620 --> 00:50.943
+Okay, so let's get to it.
+
+00:52.320 --> 00:54.270
+Our development workflow is going to revolve
+
+00:54.270 --> 00:57.180
+around creating a GitHub repository.
+
+00:57.180 --> 00:59.160
+This GitHub repository is going to kind of serve
+
+00:59.160 --> 01:02.100
+as the central point of coordination for all the codes
+
+01:02.100 --> 01:03.360
+that you and I are going to write
+
+01:03.360 --> 01:04.500
+and then eventually deploy
+
+01:04.500 --> 01:07.053
+to outside hosting service.
+
+01:07.890 --> 01:10.350
+Our GitHub repository is going to have two
+
+01:10.350 --> 01:11.940
+different branches.
+
+01:11.940 --> 01:14.610
+One branch we're going to call the feature branch.
+
+01:14.610 --> 01:17.130
+This feature branch is essentially a development branch
+
+01:17.130 --> 01:17.963
+of sorts.
+
+01:17.963 --> 01:18.810
+This is a branch that you
+
+01:18.810 --> 01:22.080
+and I are going to add code to make changes or
+
+01:22.080 --> 01:25.560
+do whatever it is we need to do to update our application.
+
+01:25.560 --> 01:27.900
+We're also going to have a master branch.
+
+01:27.900 --> 01:28.833
+A master branch,
+
+01:29.750 --> 01:30.990
+it belongs to traditionally every GIT repository
+
+01:30.990 --> 01:32.340
+that you might make.
+
+01:32.340 --> 01:34.260
+Our master branch is going to kind of
+
+01:34.260 --> 01:39.120
+represent our very clean working copy of our code base.
+
+01:39.120 --> 01:42.060
+Any changes that we make to this master branch right here
+
+01:42.060 --> 01:45.030
+are going to be eventually automatically deployed out
+
+01:45.030 --> 01:47.250
+to our hosting provider.
+
+01:47.250 --> 01:49.980
+Let's now draw on a couple arrows here to kinda walk
+
+01:49.980 --> 01:51.930
+through the process through which you and I are going to
+
+01:51.930 --> 01:54.210
+make changes to our code base and then eventually
+
+01:54.210 --> 01:55.650
+deploy those.
+
+01:55.650 --> 01:57.360
+So everything is gonna start off with you and I
+
+01:57.360 --> 01:59.550
+on some local development machine,
+
+01:59.550 --> 02:02.190
+like your desktop or your laptop.
+
+02:02.190 --> 02:07.140
+You and I are going to pull all the latest code that we have
+
+02:07.140 --> 02:08.760
+from our feature branch.
+
+02:08.760 --> 02:11.875
+And so we're going to imagine that maybe you are working
+
+02:11.875 --> 02:13.170
+on this project with some other engineer
+
+02:13.170 --> 02:16.020
+and maybe they have already published some amount of code
+
+02:16.020 --> 02:18.120
+on this feature branch.
+
+02:18.120 --> 02:20.250
+So you're gonna pull down that code base
+
+02:20.250 --> 02:21.600
+and then on your laptop
+
+02:21.600 --> 02:23.700
+you are gonna make some amount of changes
+
+02:23.700 --> 02:25.110
+to the application.
+
+02:25.110 --> 02:27.180
+After you've made those changes, you'll then
+
+02:27.180 --> 02:31.830
+push those changes back up to the GitHub repository again
+
+02:31.830 --> 02:33.990
+to the feature branch.
+
+02:33.990 --> 02:36.990
+You are never going to push code directly to master.
+
+02:36.990 --> 02:38.910
+You're only going to pull and push code
+
+02:38.910 --> 02:40.413
+from the feature branch.
+
+02:41.310 --> 02:44.280
+Once you push your changes up to this feature branch
+
+02:44.280 --> 02:47.520
+you'll then create what is called a pull request.
+
+02:47.520 --> 02:50.430
+So we're gonna make a pull request to take all the changes
+
+02:50.430 --> 02:52.800
+or all the new features you've added to this feature
+
+02:52.800 --> 02:57.800
+branch right here and merge them over to the master branch.
+
+02:57.810 --> 03:00.450
+So this kind of merging of code from feature over
+
+03:00.450 --> 03:04.263
+to master is done by what we call that pull request.
+
+03:05.550 --> 03:06.870
+Now this pull request right here
+
+03:06.870 --> 03:08.910
+or this request to add some code
+
+03:08.910 --> 03:10.770
+from feature over to master,
+
+03:10.770 --> 03:12.900
+is going to set off a series of actions
+
+03:12.900 --> 03:13.733
+that are going to kind
+
+03:13.733 --> 03:16.413
+of govern how you manage your code base.
+
+03:17.430 --> 03:19.530
+So once you create this pull request right here
+
+03:19.530 --> 03:21.720
+and then eventually merge it into master
+
+03:21.720 --> 03:24.570
+two very important things are going to occur.
+
+03:24.570 --> 03:27.510
+First off, when you make this little pull request
+
+03:27.510 --> 03:30.360
+we're going to set up a workflow that is going to
+
+03:30.360 --> 03:33.690
+automatically take our application and push it
+
+03:33.690 --> 03:35.650
+over to a service called Travis CI
+
+03:36.750 --> 03:39.780
+Travis CI is a continuous integration provider
+
+03:39.780 --> 03:42.600
+and essentially what they do is pull down your code
+
+03:42.600 --> 03:47.600
+and run a set of tests that you write on your code base.
+
+03:47.700 --> 03:49.650
+These are tests that you are gonna write yourself.
+
+03:49.650 --> 03:51.480
+Now for your particular application
+
+03:51.480 --> 03:53.640
+or wherever you go and use this flow,
+
+03:53.640 --> 03:55.800
+you'll end up using tests relevant
+
+03:55.800 --> 03:57.000
+to your particular application
+
+03:57.000 --> 03:58.980
+or whatever language you're working with.
+
+03:58.980 --> 04:00.030
+For our application
+
+04:00.030 --> 04:02.520
+the one that we're going to kind of test this flow out on
+
+04:02.520 --> 04:03.960
+we're going to just be making use
+
+04:03.960 --> 04:05.370
+of a couple of pre-generated tests.
+
+04:05.370 --> 04:06.540
+So we don't need to worry too much
+
+04:06.540 --> 04:08.090
+about the testing for right now
+
+04:09.270 --> 04:12.450
+Assuming that Travis CI is able to pull all the code
+
+04:12.450 --> 04:16.020
+from our master branch and run tests on it successfully
+
+04:16.020 --> 04:18.060
+Travis CI is then going to be set
+
+04:18.060 --> 04:20.730
+up to automatically take our code base
+
+04:20.730 --> 04:22.110
+take our entire project,
+
+04:22.110 --> 04:25.658
+and push it over to some Amazon web services hosting.
+
+04:25.658 --> 04:28.890
+So essentially this entire flow is going to be
+
+04:28.890 --> 04:31.350
+depending upon you pushing some code
+
+04:31.350 --> 04:32.760
+up to this feature branch,
+
+04:32.760 --> 04:34.290
+creating the pull request
+
+04:34.290 --> 04:36.480
+merging the pull request with the master branch.
+
+04:36.480 --> 04:38.790
+And the instant you do that, we'd run our tests.
+
+04:38.790 --> 04:40.380
+If the test runs successfully
+
+04:40.380 --> 04:44.640
+Travis CI will automatically deploy your application to AWS.
+
+04:44.640 --> 04:46.590
+So that is the flow in a nutshell.
+
+04:46.590 --> 04:48.180
+Now this flow is a little bit complicated,
+
+04:48.180 --> 04:50.370
+so I want to talk about the entire flow again,
+
+04:50.370 --> 04:51.720
+like from start to finish.
+
+04:51.720 --> 04:54.570
+One more time in a slightly different format
+
+04:54.570 --> 04:55.920
+just kind of a different diagram here,
+
+04:55.920 --> 04:57.360
+just to give you kind of a different take
+
+04:57.360 --> 04:58.560
+on what's going on.
+
+04:58.560 --> 04:59.835
+If you feel
+
+04:59.835 --> 05:00.750
+like you already understand this flow,
+
+05:00.750 --> 05:01.590
+that's totally fine.
+
+05:01.590 --> 05:02.760
+Take a pause right here
+
+05:02.760 --> 05:04.110
+and skip over to the next video.
+
+05:04.110 --> 05:05.490
+Otherwise gonna give you essentially
+
+05:05.490 --> 05:06.510
+the same description again
+
+05:06.510 --> 05:08.360
+but with a different set of diagrams.
+
+05:09.780 --> 05:10.613
+All right
+
+05:10.613 --> 05:12.960
+so we can kind of imagine that we're gonna have three phases
+
+05:12.960 --> 05:14.160
+to our project here.
+
+05:14.160 --> 05:15.630
+We've got the dev phase,
+
+05:15.630 --> 05:16.830
+the testing phase
+
+05:16.830 --> 05:18.900
+and the production phase.
+
+05:18.900 --> 05:20.100
+During the dev phase,
+
+05:20.100 --> 05:22.200
+you and I are going to make some number of changes
+
+05:22.200 --> 05:23.160
+to our code base.
+
+05:23.160 --> 05:24.690
+And again, these are all going to be made
+
+05:24.690 --> 05:27.600
+to a branch that is not the master branch.
+
+05:27.600 --> 05:29.250
+We're gonna call it our feature branch
+
+05:29.250 --> 05:31.950
+'cause it's where we develop new features.
+
+05:31.950 --> 05:34.680
+Once we make our changes to that feature branch
+
+05:34.680 --> 05:36.980
+we're then going to push our changes to GitHub
+
+05:37.913 --> 05:39.840
+and then we're going to create a pull request to merge
+
+05:39.840 --> 05:42.060
+with the master branch.
+
+05:42.060 --> 05:46.050
+As soon as we make that pull request, we are gonna set
+
+05:46.050 --> 05:49.770
+up Travis CI to automatically pull that master branch
+
+05:49.770 --> 05:51.990
+with the new and updated code.
+
+05:51.990 --> 05:54.810
+Travis CI is then going to run our tests.
+
+05:54.810 --> 05:57.480
+If all the tests are executed successfully
+
+05:57.480 --> 05:58.410
+We're gonna say great
+
+05:58.410 --> 06:01.503
+we can merge all the changes over to the master branch.
+
+06:02.640 --> 06:05.640
+We're going to again, push our code over to Travis CI
+
+06:05.640 --> 06:07.840
+We're gonna run the test one more time
+
+06:08.734 --> 06:11.250
+and then have Travis CI automatically deploy our application
+
+06:11.250 --> 06:13.170
+over to AWS services.
+
+06:13.170 --> 06:17.822
+So we're essentially a very specific service set
+
+06:17.822 --> 06:19.290
+is called elastic beanstalk
+
+06:19.290 --> 06:21.360
+Okay, so that's kind of the whole flow
+
+06:21.360 --> 06:25.260
+that we're gonna go through here in two different diagrams.
+
+06:25.260 --> 06:26.880
+Let's take a quick pause right here.
+
+06:26.880 --> 06:28.080
+We're gonna come back to the next section
+
+06:28.080 --> 06:31.173
+and start talking about how Docker fits into all this stuff.

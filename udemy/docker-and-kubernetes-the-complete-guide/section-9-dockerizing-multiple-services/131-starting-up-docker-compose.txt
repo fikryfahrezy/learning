@@ -1,0 +1,148 @@
+WEBVTT
+
+00:01.080 --> 00:01.913
+Narrator: In the last section,
+
+00:01.913 --> 00:05.100
+we added in Nginx service to our Docker composed file
+
+00:05.100 --> 00:06.870
+and we're now ready to actually test this out
+
+00:06.870 --> 00:09.270
+at our terminal and inside the browser.
+
+00:09.270 --> 00:10.320
+Now before we test it out,
+
+00:10.320 --> 00:13.320
+I just want you to know that it is extremely likely
+
+00:13.320 --> 00:15.420
+that the first time we start this thing up,
+
+00:15.420 --> 00:16.530
+it will crash.
+
+00:16.530 --> 00:18.630
+It's very likely that one of these services
+
+00:18.630 --> 00:21.000
+is gonna fail to start up appropriately.
+
+00:21.000 --> 00:23.190
+The reason for that is that the first time
+
+00:23.190 --> 00:24.960
+that we start up Docker Compose,
+
+00:24.960 --> 00:26.640
+we have to build and download
+
+00:26.640 --> 00:28.650
+many of these different images.
+
+00:28.650 --> 00:31.380
+And some of the code around the API
+
+00:31.380 --> 00:33.630
+and some of the code around the worker
+
+00:33.630 --> 00:35.880
+kind of want to make sure that a copy of Redis
+
+00:35.880 --> 00:38.220
+is already running before they start up.
+
+00:38.220 --> 00:40.230
+And so it's entirely possible that since it might take
+
+00:40.230 --> 00:42.450
+longer this first time to start up Redis,
+
+00:42.450 --> 00:44.340
+either the worker or the API
+
+00:44.340 --> 00:46.680
+might fail to start up appropriately.
+
+00:46.680 --> 00:49.410
+I really do also expect Nginx to crash
+
+00:49.410 --> 00:50.580
+the first time we run it.
+
+00:50.580 --> 00:53.400
+But since we put on the restart policy right here,
+
+00:53.400 --> 00:56.280
+it should automatically reboot itself and keep going.
+
+00:56.280 --> 00:57.750
+So with all that in mind,
+
+00:57.750 --> 01:00.060
+we're probably gonna start up Docker Compose one time
+
+01:00.060 --> 01:02.370
+and then maybe just kill it right away
+
+01:02.370 --> 01:04.563
+and then start it up a second time, okay?
+
+01:06.180 --> 01:07.320
+All right so let's get to it.
+
+01:07.320 --> 01:08.790
+I'll flip over to my terminal.
+
+01:08.790 --> 01:11.580
+Now I've got a previous copy of Docker Compose running.
+
+01:11.580 --> 01:13.540
+I'm gonna kill it by hitting Control C
+
+01:14.640 --> 01:17.100
+and then I will start up all of the services
+
+01:17.100 --> 01:19.500
+listed inside of my Docker Compose file
+
+01:19.500 --> 01:22.440
+with Docker Compose up and I'm gonna force
+
+01:22.440 --> 01:26.133
+a rebuild of everything by adding on the --build flag.
+
+01:27.600 --> 01:29.040
+One last thing really quickly,
+
+01:29.040 --> 01:31.710
+make sure you're in the complex directory.
+
+01:31.710 --> 01:33.893
+Just wanna make sure we're in the right spot.
+
+01:34.740 --> 01:36.510
+All right, so we're gonna see a little bit
+
+01:36.510 --> 01:38.310
+of build process going on right here.
+
+01:38.310 --> 01:39.960
+This is gonna take just a moment or two.
+
+01:39.960 --> 01:42.000
+So I will pause the video right here
+
+01:42.000 --> 01:43.440
+and we'll continue in the next section.
+
+01:43.440 --> 01:45.720
+Just as a quick reminder, if anything crashes,
+
+01:45.720 --> 01:48.570
+totally fine, we'll fix it all up in the next section.
+
+01:48.570 --> 01:50.220
+So I'll see you in just a minute.

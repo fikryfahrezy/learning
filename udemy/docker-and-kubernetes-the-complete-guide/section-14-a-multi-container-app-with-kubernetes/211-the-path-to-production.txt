@@ -1,0 +1,409 @@
+WEBVTT
+
+00:00.780 --> 00:02.700
+-: At this point, I think that we understand some
+
+00:02.700 --> 00:05.280
+of the core components of the world of Kubernetes.
+
+00:05.280 --> 00:07.530
+We understand what pods are, what deployments are,
+
+00:07.530 --> 00:09.360
+and how we can expose pods
+
+00:09.360 --> 00:12.240
+to the outside world through the use of basic services
+
+00:12.240 --> 00:14.760
+like the cluster IP service.
+
+00:14.760 --> 00:15.593
+In this section,
+
+00:15.593 --> 00:17.940
+we're going to start taking our previous application,
+
+00:17.940 --> 00:20.400
+so that multi container app that was calculating
+
+00:20.400 --> 00:22.890
+in Fibonacci values, and we're going to
+
+00:22.890 --> 00:25.620
+bring it into the world of Kubernetes.
+
+00:25.620 --> 00:26.730
+We've kind of already been going
+
+00:26.730 --> 00:29.730
+down that path with this simple K8's folder, right?
+
+00:29.730 --> 00:32.640
+We've been setting up our multi client image a little bit,
+
+00:32.640 --> 00:33.810
+and working around with it,
+
+00:33.810 --> 00:36.300
+but we're not gonna start putting a concerted effort
+
+00:36.300 --> 00:38.610
+together to take that previous multi container
+
+00:38.610 --> 00:40.170
+application we had put together,
+
+00:40.170 --> 00:44.130
+and adopt it into a sort of Kubernetes architecture.
+
+00:44.130 --> 00:47.100
+I've got a diagram that's gonna be a high level overview
+
+00:47.100 --> 00:49.980
+of the general architecture that we're going to use.
+
+00:49.980 --> 00:52.920
+So, everything that you see here is in a single node.
+
+00:52.920 --> 00:55.290
+We're going to first develop all this stuff locally.
+
+00:55.290 --> 00:56.910
+We're gonna set up the entire application
+
+00:56.910 --> 00:59.430
+on our local Kubernetes cluster.
+
+00:59.430 --> 01:01.440
+After we get this all put together locally,
+
+01:01.440 --> 01:02.820
+we're then going to deploy it off
+
+01:02.820 --> 01:07.080
+to a service provider such as AWS or Google Cloud.
+
+01:07.080 --> 01:07.970
+When we deploy it out there,
+
+01:07.970 --> 01:11.340
+we will have the option to expand to multiple nodes.
+
+01:11.340 --> 01:13.350
+So, we won't necessarily just be limited
+
+01:13.350 --> 01:15.060
+to one single virtual machine
+
+01:15.060 --> 01:18.270
+for all these different objects that we're going to create.
+
+01:18.270 --> 01:20.040
+But for right now, we're just going to kind of imagine
+
+01:20.040 --> 01:22.090
+that it's all sitting on one single note.
+
+01:23.190 --> 01:25.320
+Now, this diagram is showing the general overall
+
+01:25.320 --> 01:27.270
+architecture that we're going to use
+
+01:27.270 --> 01:29.670
+for us moving our multi container app
+
+01:29.670 --> 01:31.530
+into the world of Kubernetes.
+
+01:31.530 --> 01:32.640
+You'll notice that there are some
+
+01:32.640 --> 01:34.560
+very familiar pieces in here.
+
+01:34.560 --> 01:37.050
+So, we've got the multi-client set of pods
+
+01:37.050 --> 01:38.850
+all being managed by deployment.
+
+01:38.850 --> 01:41.400
+We've got the multi-server, remember, that's the express
+
+01:41.400 --> 01:43.980
+API being managed by deployment.
+
+01:43.980 --> 01:45.450
+And then you'll notice that I've also added
+
+01:45.450 --> 01:48.000
+in Redis as a pod this time around,
+
+01:48.000 --> 01:51.420
+and Postgres as a pod this time around as well.
+
+01:51.420 --> 01:53.490
+So, back on the multi container deployment
+
+01:53.490 --> 01:56.970
+on Amazon Web services, when we used Elastic Beanstalk,
+
+01:56.970 --> 02:00.360
+we delegated to these outside services provided by AWS
+
+02:00.360 --> 02:03.120
+to manage our Redis and Postgres needs.
+
+02:03.120 --> 02:05.280
+But now that we're moving over to Kubernetes,
+
+02:05.280 --> 02:08.010
+we're going to put these things together
+
+02:08.010 --> 02:11.010
+in a production environment ourselves, rather than relying
+
+02:11.010 --> 02:13.773
+upon some outside service to do it for us.
+
+02:14.820 --> 02:17.310
+The overall purpose of the app is going to stay the same.
+
+02:17.310 --> 02:18.510
+So, it's still going to be all
+
+02:18.510 --> 02:21.390
+about calculating some Fibonacci values.
+
+02:21.390 --> 02:22.740
+I know it's kind of a silly example,
+
+02:22.740 --> 02:25.140
+but it works, and it allows us to have a couple
+
+02:25.140 --> 02:28.860
+of different services that work together in a nice fashion.
+
+02:28.860 --> 02:30.720
+Now, you will notice that inside this diagram,
+
+02:30.720 --> 02:33.510
+there are a couple of new terms as well.
+
+02:33.510 --> 02:35.820
+So for example, on the far left hand side is something
+
+02:35.820 --> 02:37.800
+called an ingress service.
+
+02:37.800 --> 02:40.920
+You'll notice that rather than having the node ports
+
+02:40.920 --> 02:43.530
+on our deployment for multi client that we had previously,
+
+02:43.530 --> 02:45.750
+we now have a cluster IP.
+
+02:45.750 --> 02:46.583
+And it looks
+
+02:46.583 --> 02:48.300
+like just about every deployment that we put together,
+
+02:48.300 --> 02:50.490
+with the exception of the multi worker right here,
+
+02:50.490 --> 02:54.300
+has a cluster IP, kind is somewhat attached to it.
+
+02:54.300 --> 02:55.380
+So of course, we're going to talk
+
+02:55.380 --> 02:59.550
+about what an ingress is, and what a cluster IP is as well.
+
+02:59.550 --> 03:01.740
+The other new piece of terminology that you'll notice inside
+
+03:01.740 --> 03:05.280
+of here is something called a Postgres PVC.
+
+03:05.280 --> 03:08.850
+PVC stands for Persistent Volume Claim, and of course,
+
+03:08.850 --> 03:10.710
+we'll talk about what that means when we get
+
+03:10.710 --> 03:12.843
+to setting up our Postgres stuff as well.
+
+03:13.740 --> 03:14.880
+All right, so that's the idea.
+
+03:14.880 --> 03:17.040
+We're going to take our previous application,
+
+03:17.040 --> 03:20.610
+and we're going to move it into the world of Kubernetes.
+
+03:20.610 --> 03:23.040
+Now, here's the general series of steps
+
+03:23.040 --> 03:24.270
+that we're going to take.
+
+03:24.270 --> 03:26.040
+So, in a development environment,
+
+03:26.040 --> 03:28.260
+we're going to first create a config file
+
+03:28.260 --> 03:32.310
+for every last thing that you just saw in that diagram.
+
+03:32.310 --> 03:34.350
+So, we're gonna have configuration files
+
+03:34.350 --> 03:37.050
+for the ingress service, for this cluster IP,
+
+03:37.050 --> 03:39.090
+for this cluster IP, for this one, for this one,
+
+03:39.090 --> 03:40.500
+and we're going to have config files
+
+03:40.500 --> 03:42.840
+for every single one of these deployments as well.
+
+03:42.840 --> 03:44.220
+And we'll also have a config file
+
+03:44.220 --> 03:45.910
+for this persistent volume claim
+
+03:47.179 --> 03:48.150
+down here too.
+
+03:48.150 --> 03:50.430
+So in total, we're talking about like 10 or 12,
+
+03:50.430 --> 03:52.680
+or something like that, different config files.
+
+03:52.680 --> 03:54.420
+It is going to be a lot of typing,
+
+03:54.420 --> 03:56.610
+but we definitely are going to learn a lot
+
+03:56.610 --> 03:59.700
+about these configuration files along the way.
+
+03:59.700 --> 04:01.770
+Now, once we put together all these config files,
+
+04:01.770 --> 04:03.270
+we're then going to test everything out
+
+04:03.270 --> 04:05.100
+locally on mini queue.
+
+04:05.100 --> 04:05.940
+So, we're going to make sure
+
+04:05.940 --> 04:08.130
+that everything works locally first,
+
+04:08.130 --> 04:10.380
+and we're going to use it as our development environment.
+
+04:10.380 --> 04:13.530
+We're going to be, as you know, kind of as confident
+
+04:13.530 --> 04:15.840
+as we possibly can, that when we eventually push this
+
+04:15.840 --> 04:17.520
+up to a production environment,
+
+04:17.520 --> 04:20.400
+everything will work the way we expect.
+
+04:20.400 --> 04:22.410
+After that, we're going to build a GitHub
+
+04:22.410 --> 04:24.690
+and Travis deployment flow, very similar
+
+04:24.690 --> 04:26.010
+to the one we had done previously
+
+04:26.010 --> 04:27.330
+for both the single container
+
+04:27.330 --> 04:29.280
+and multi container applications.
+
+04:29.280 --> 04:31.560
+But of course, there will be some edits to it,
+
+04:31.560 --> 04:32.610
+to make sure that everything is
+
+04:32.610 --> 04:34.650
+set up for a Kubernetes deployment,
+
+04:34.650 --> 04:36.570
+as opposed to the rather easy
+
+04:36.570 --> 04:39.520
+and straightforward Elastic Beanstalk we were doing before.
+
+04:40.380 --> 04:42.210
+And then of course, the very last step is to make sure
+
+04:42.210 --> 04:44.010
+that we can actually deploy this entire thing
+
+04:44.010 --> 04:47.520
+to a cloud provider like AWS or Google Cloud.
+
+04:47.520 --> 04:48.630
+And yes, we're gonna go through that
+
+04:48.630 --> 04:50.280
+entire series of steps together,
+
+04:50.280 --> 04:53.070
+and make sure that people can actually visit our application
+
+04:53.070 --> 04:55.110
+in a meaningful way.
+
+04:55.110 --> 04:57.090
+All right, so we definitely have our work
+
+04:57.090 --> 04:59.310
+cut out for us, no two ways about it.
+
+04:59.310 --> 05:01.560
+So when we come back together in the next section,
+
+05:01.560 --> 05:03.060
+we're going to flip back over
+
+05:03.060 --> 05:06.300
+to our complex multi container project,
+
+05:06.300 --> 05:08.460
+and we're going to start setting up config files
+
+05:08.460 --> 05:10.170
+for everything inside of here.
+
+05:10.170 --> 05:12.653
+So, quick break, and I'll see you in just a minute.

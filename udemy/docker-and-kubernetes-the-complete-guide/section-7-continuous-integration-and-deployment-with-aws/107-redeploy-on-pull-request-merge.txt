@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00.750 --> 00:03.030
+-: In the last section we created a new pull request
+
+00:03.030 --> 00:04.740
+to merge code from our feature branch
+
+00:04.740 --> 00:06.300
+into the master branch.
+
+00:06.300 --> 00:08.400
+As soon as we created that pull request,
+
+00:08.400 --> 00:09.780
+Travis CI kicked into gear
+
+00:09.780 --> 00:12.300
+and ran some tests over our codebase.
+
+00:12.300 --> 00:13.470
+You'll notice that there were actually,
+
+00:13.470 --> 00:15.990
+two sets of checks that were issued.
+
+00:15.990 --> 00:19.410
+The first check was the fact that we just pushed some code
+
+00:19.410 --> 00:20.400
+up to GitHub.
+
+00:20.400 --> 00:23.970
+The second check, kind of, faked merging our code
+
+00:23.970 --> 00:25.080
+into the master branch,
+
+00:25.080 --> 00:26.760
+and then, running the tests.
+
+00:26.760 --> 00:27.630
+So, one test,
+
+00:27.630 --> 00:29.347
+or one set of tests right here, was to say,
+
+00:29.347 --> 00:31.950
+"Hey, the code that was pushed by itself is valid,
+
+00:31.950 --> 00:36.120
+and the code that was merged to master is valid as well."
+
+00:36.120 --> 00:38.100
+So, now that both of our checks have succeeded,
+
+00:38.100 --> 00:40.260
+we can now merge the pull request.
+
+00:40.260 --> 00:42.720
+As soon as we merge this pull request,
+
+00:42.720 --> 00:45.450
+Travis CI is gonna kick in to gear again.
+
+00:45.450 --> 00:47.850
+It's going to run our tests a third time,
+
+00:47.850 --> 00:48.683
+and then, after it,
+
+00:48.683 --> 00:51.600
+because it is a change that was issued to the master branch,
+
+00:51.600 --> 00:53.040
+it's going to automatically attempt
+
+00:53.040 --> 00:54.570
+to deploy our application,
+
+00:54.570 --> 00:57.270
+again, over to Elastic Beanstalk.
+
+00:57.270 --> 00:59.377
+So, in theory, someone might say, like,
+
+00:59.377 --> 01:01.467
+"Your code looks good."
+
+01:02.490 --> 01:04.470
+So, maybe, that's some other engineer.
+
+01:04.470 --> 01:05.737
+I would see that, I'd say,
+
+01:05.737 --> 01:07.470
+"Okay, cool. Time to merge."
+
+01:07.470 --> 01:09.150
+So, I'd merge the pull request,
+
+01:09.150 --> 01:12.330
+confirm the merge that merges the code,
+
+01:12.330 --> 01:15.210
+we now have all of our changes safely merged
+
+01:15.210 --> 01:16.620
+into the master branch.
+
+01:16.620 --> 01:19.020
+So, now we can go back over to Travis CI,
+
+01:19.020 --> 01:20.160
+after a second or two,
+
+01:20.160 --> 01:22.350
+we'll see a new build appear over here.
+
+01:22.350 --> 01:23.280
+I'll try refreshing,
+
+01:23.280 --> 01:25.743
+just to get it to pop up a second sooner.
+
+01:26.850 --> 01:30.240
+Come on, come on, any second now.
+
+01:30.240 --> 01:32.130
+Well, I'm not gonna make you wait too long,
+
+01:32.130 --> 01:34.110
+but eventually the build is gonna kick off
+
+01:34.110 --> 01:36.330
+because we made a change to the master branch,
+
+01:36.330 --> 01:38.790
+and then, because it's a change to master,
+
+01:38.790 --> 01:40.260
+Travis is going to deploy
+
+01:40.260 --> 01:42.780
+back over to Elastic Beanstalk afterwards.
+
+01:42.780 --> 01:44.520
+So, we'll take another quick break right here.
+
+01:44.520 --> 01:46.980
+I'm gonna let the build run again,
+
+01:46.980 --> 01:49.290
+and I'm gonna let the deploy run again as well.
+
+01:49.290 --> 01:50.940
+Oh, and there's the build right there.
+
+01:50.940 --> 01:52.440
+So, I'll let both the builds run,
+
+01:52.440 --> 01:53.580
+and the redeploy run,
+
+01:53.580 --> 01:55.560
+and then, we'll join back up in the next section,
+
+01:55.560 --> 01:56.490
+and just verify
+
+01:56.490 --> 01:58.470
+that everything got deployed successfully.
+
+01:58.470 --> 01:59.303
+So, quick break,
+
+01:59.303 --> 02:01.323
+and I'll see you in another minute.

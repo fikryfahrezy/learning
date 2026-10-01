@@ -1,0 +1,325 @@
+WEBVTT
+
+00:00.840 --> 00:02.520
+Instructor: We now have a rock solid
+
+00:02.520 --> 00:05.670
+Travis CI deployment process or maybe pre-deployment,
+
+00:05.670 --> 00:07.020
+I guess would be the best way of saying it.
+
+00:07.020 --> 00:09.060
+It's our build pipeline of sorts.
+
+00:09.060 --> 00:12.180
+Anytime that we make a change to our GitHub repository,
+
+00:12.180 --> 00:14.760
+Travis is going to automatically pull down a repo
+
+00:14.760 --> 00:17.550
+and build out a new set of production images
+
+00:17.550 --> 00:19.710
+and then push them off to Docker Hub.
+
+00:19.710 --> 00:20.970
+So now we need to start thinking about
+
+00:20.970 --> 00:22.830
+how we're going to use these images
+
+00:22.830 --> 00:25.410
+and actually deploy them in production.
+
+00:25.410 --> 00:26.243
+So for that,
+
+00:26.243 --> 00:29.760
+we're going to again be using Amazon Elastic Beanstalk.
+
+00:29.760 --> 00:30.990
+Now as a quick reminder,
+
+00:30.990 --> 00:33.270
+back when we had a single Docker container
+
+00:33.270 --> 00:35.910
+in our last project, something was kind of going on
+
+00:35.910 --> 00:37.440
+automatically behind the scenes
+
+00:37.440 --> 00:41.070
+anytime that we pushed our code over to Elastic Beanstalk.
+
+00:41.070 --> 00:42.720
+You might have noticed that you and I
+
+00:42.720 --> 00:45.480
+did not have to set up any custom configuration
+
+00:45.480 --> 00:47.820
+or anything to tell Elastic Elastic Beanstalk that,
+
+00:47.820 --> 00:49.620
+hey, you need to take this Docker file
+
+00:49.620 --> 00:52.590
+and build it and run the image that comes out of that.
+
+00:52.590 --> 00:54.210
+That was an automated process.
+
+00:54.210 --> 00:56.550
+We didn't have to add any configuration.
+
+00:56.550 --> 00:58.590
+We essentially just took our project directory
+
+00:58.590 --> 01:01.240
+with a Docker file in the root directory
+
+01:02.460 --> 01:04.380
+drew it over to Elastic Beanstalk.
+
+01:04.380 --> 01:07.200
+And Elastic Beanstalk said, well, you know what?
+
+01:07.200 --> 01:08.580
+They got a Docker file,
+
+01:08.580 --> 01:10.230
+I guess I might as well build it
+
+01:10.230 --> 01:13.260
+and try running the image that comes out of that.
+
+01:13.260 --> 01:14.730
+So now, this time around,
+
+01:14.730 --> 01:17.250
+we're in a very different situation.
+
+01:17.250 --> 01:19.500
+We don't have a single Docker file anymore.
+
+01:19.500 --> 01:21.420
+We have a couple of different folders
+
+01:21.420 --> 01:24.930
+and each of them has a separate Docker file.
+
+01:24.930 --> 01:27.120
+And so if we just toss this entire project directory
+
+01:27.120 --> 01:29.460
+off to Elastic Beanstalk, it would probably say,
+
+01:29.460 --> 01:31.950
+hey, look, I know you got these Docker files.
+
+01:31.950 --> 01:34.320
+I don't know which one you want me to run.
+
+01:34.320 --> 01:37.650
+So anytime that we want to run multiple separate containers
+
+01:37.650 --> 01:39.840
+on Elastic Beanstalk at the same time,
+
+01:39.840 --> 01:43.530
+we have to go through an extra little step of configuration
+
+01:43.530 --> 01:48.180
+to tell Elastic Beanstalk exactly how to treat our project.
+
+01:48.180 --> 01:49.680
+So here's what we're gonna do.
+
+01:50.610 --> 01:52.350
+Inside of our project directory,
+
+01:52.350 --> 01:55.500
+we're going to create a file with a very special name.
+
+01:55.500 --> 01:59.970
+This file is called Dockerrun.aws.json.
+
+01:59.970 --> 02:01.710
+This is going to be a JSON file.
+
+02:01.710 --> 02:03.930
+So it's gonna contain some JSON data
+
+02:03.930 --> 02:07.680
+that's going to tell Elastic Beanstalk exactly where to pull
+
+02:07.680 --> 02:09.450
+all of our images from,
+
+02:09.450 --> 02:12.180
+what resources to allocate to each one,
+
+02:12.180 --> 02:14.070
+how to set up some port mappings,
+
+02:14.070 --> 02:16.353
+and some associated information.
+
+02:17.190 --> 02:18.960
+In fact, when you think about the purpose
+
+02:18.960 --> 02:21.330
+of this Docker run AWS JSON file,
+
+02:21.330 --> 02:23.700
+it's going to very quickly remind you
+
+02:23.700 --> 02:28.410
+of exactly how our Dockercompose.yml file is set up.
+
+02:28.410 --> 02:31.080
+Remember, Docker Compose is primarily meant for use
+
+02:31.080 --> 02:34.140
+in development environments, and you can kind of think of it
+
+02:34.140 --> 02:37.020
+as a single file that encodes a lot of directions
+
+02:37.020 --> 02:39.933
+that would normally be passed directly to Docker run.
+
+02:40.890 --> 02:43.170
+Inside of our current Docker Composed file,
+
+02:43.170 --> 02:45.540
+we list out a bunch of different services,
+
+02:45.540 --> 02:46.860
+and then with each service,
+
+02:46.860 --> 02:49.590
+we tell Docker how to build the image,
+
+02:49.590 --> 02:51.690
+what ports to open, environment variables,
+
+02:51.690 --> 02:53.240
+and a bunch of stuff like that.
+
+02:54.360 --> 02:56.370
+So we're gonna do a very similar thing
+
+02:56.370 --> 02:59.700
+with this Docker run AWS JSON file.
+
+02:59.700 --> 03:01.590
+The only difference is that rather than referring
+
+03:01.590 --> 03:02.910
+to these as services,
+
+03:02.910 --> 03:04.800
+like they're called over on Docker Compose,
+
+03:04.800 --> 03:08.940
+the Docker run file refers to them as container definitions.
+
+03:08.940 --> 03:10.410
+The biggest difference that you're going to see
+
+03:10.410 --> 03:13.710
+between these two files is that in the Docker Compose file,
+
+03:13.710 --> 03:15.720
+it's going to contain some information
+
+03:15.720 --> 03:19.560
+about how to build an image using a Docker file, right?
+
+03:19.560 --> 03:21.750
+That's what we were doing inside of Docker Compose.
+
+03:21.750 --> 03:24.360
+If you go open up the Docker Compose file right now,
+
+03:24.360 --> 03:25.710
+you'll see that in each service
+
+03:25.710 --> 03:28.020
+we have the different build directions.
+
+03:28.020 --> 03:30.570
+But in the case of the AWS JSON file,
+
+03:30.570 --> 03:32.820
+we already have a set of images.
+
+03:32.820 --> 03:35.280
+So rather than saying, "Oh, here's how to build a client
+
+03:35.280 --> 03:38.047
+or here's how to build NGINX," we're just gonna say,
+
+03:38.047 --> 03:41.250
+"Go and pull the image from Docker Hub
+
+03:41.250 --> 03:45.270
+with the name of your Docker ID/multi-client."
+
+03:45.270 --> 03:47.073
+We just say, "Go pull this image.
+
+03:48.120 --> 03:50.370
+Elastic Beanstalk is going to automatically pull down
+
+03:50.370 --> 03:52.920
+that image and use it for each of these different
+
+03:52.920 --> 03:56.070
+container definitions that we're going to add."
+
+03:56.070 --> 03:57.720
+So again, I really want you to think
+
+03:57.720 --> 04:00.060
+of these two files as being rather similar.
+
+04:00.060 --> 04:02.430
+The Docker run file is really just customized
+
+04:02.430 --> 04:04.740
+to work directly with AWS
+
+04:04.740 --> 04:06.390
+and the big difference between the two
+
+04:06.390 --> 04:08.850
+is that the Docker Compose file has directions
+
+04:08.850 --> 04:10.440
+on how to build an image.
+
+04:10.440 --> 04:11.970
+But with the Docker run file,
+
+04:11.970 --> 04:14.820
+we have already built the image, no build required.
+
+04:14.820 --> 04:18.120
+We're just going to specify the image to use.
+
+04:18.120 --> 04:19.920
+So let's take a quick pause right here.
+
+04:19.920 --> 04:21.840
+In the next section, we're gonna start putting together
+
+04:21.840 --> 04:26.487
+our container definition file, the Dockerrun.AWS.json file.
+
+04:27.690 --> 04:29.340
+So I'll see you in just a minute.

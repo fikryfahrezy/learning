@@ -1,0 +1,400 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.968
+[MUSIC]
+
+2
+00:00:07.968 --> 00:00:11.548
+There's an old Chinese folk tale about
+three blind men who encountered an
+
+3
+00:00:11.548 --> 00:00:15.200
+elephant for the first time, attempting to
+learn about it by touch alone.
+
+4
+00:00:15.200 --> 00:00:17.910
+The experience of each man is unique
+because
+
+5
+00:00:17.910 --> 00:00:20.570
+each touches a different part of the
+elephant.
+
+6
+00:00:20.570 --> 00:00:21.910
+This ancient story can teach us
+
+7
+00:00:21.910 --> 00:00:25.090
+something very important about user
+experience design.
+
+8
+00:00:25.090 --> 00:00:26.500
+So let's start there.
+
+9
+00:00:26.500 --> 00:00:27.620
+The tale goes like this.
+
+10
+00:00:29.040 --> 00:00:31.020
+One day three blind men happened to meet
+each
+
+11
+00:00:31.020 --> 00:00:34.030
+other and gossiped a long time about many
+things.
+
+12
+00:00:34.030 --> 00:00:38.420
+Suddenly one of them recalled, I heard
+that an elephant is a strange animal.
+
+13
+00:00:38.420 --> 00:00:40.200
+Too bad we're blind and can't see it.
+
+14
+00:00:41.800 --> 00:00:43.860
+yes, truly too bad we don't have the good
+
+15
+00:00:43.860 --> 00:00:46.420
+fortune to see this strange animal,
+another one sighed.
+
+16
+00:00:47.530 --> 00:00:50.900
+The third one, quite annoyed joined in and
+said, see?
+
+17
+00:00:50.900 --> 00:00:51.750
+Forget it.
+
+18
+00:00:51.750 --> 00:00:53.220
+Just to feel it would be great.
+
+19
+00:00:54.500 --> 00:00:56.460
+Well, that's true if there were only some
+way
+
+20
+00:00:56.460 --> 00:00:58.740
+of touching the elephant, we would be able
+to know.
+
+21
+00:00:58.740 --> 00:00:59.440
+They all agreed.
+
+22
+00:01:00.810 --> 00:01:02.310
+It just so happened that a merchant with a
+
+23
+00:01:02.310 --> 00:01:05.430
+herd of elephants was passing by and
+overheard their conversation.
+
+24
+00:01:06.430 --> 00:01:09.350
+You fellows, do you really want to feel an
+elephant?
+
+25
+00:01:09.350 --> 00:01:11.410
+Then follow me, I will show you, he said.
+
+26
+00:01:12.530 --> 00:01:14.910
+The three men were surprised and happy.
+
+27
+00:01:14.910 --> 00:01:16.700
+Taking each other's hand, they quickly
+formed a
+
+28
+00:01:16.700 --> 00:01:18.690
+line and followed while the merchant led
+the way.
+
+29
+00:01:18.690 --> 00:01:21.020
+After reaching their destination, the
+merchant asked
+
+30
+00:01:21.020 --> 00:01:22.830
+them to sit on the ground and wait.
+
+31
+00:01:22.830 --> 00:01:26.180
+In a few minutes, he led the first blind
+man to feel the elephant.
+
+32
+00:01:26.180 --> 00:01:30.490
+With an outstretched hand he touched first
+left foreleg and then the right.
+
+33
+00:01:30.490 --> 00:01:33.480
+After he felt the two legs from the top to
+the bottom, with a
+
+34
+00:01:33.480 --> 00:01:37.790
+beaming face he turned around to say, so,
+the animal is just like that.
+
+35
+00:01:39.140 --> 00:01:40.480
+Then he slowly returned to the group.
+
+36
+00:01:41.670 --> 00:01:44.410
+The second man was then led to the rear of
+the elephant.
+
+37
+00:01:44.410 --> 00:01:45.910
+He touched the tail, which wagged a
+
+38
+00:01:45.910 --> 00:01:49.100
+few times and he exclaimed with
+satisfaction, Ha!
+
+39
+00:01:49.100 --> 00:01:51.840
+Truly a strange animal, truly odd.
+
+40
+00:01:51.840 --> 00:01:53.160
+I know now, I know!
+
+41
+00:01:54.220 --> 00:01:56.340
+He hurriedly stepped aside.
+
+42
+00:01:56.340 --> 00:01:59.650
+The third blind man's turn came and he
+touched the elephant's trunk,
+
+43
+00:01:59.650 --> 00:02:04.010
+which moved back and forth, twisting and
+turning, and he thought, that's it!
+
+44
+00:02:04.010 --> 00:02:04.570
+I've learned.
+
+45
+00:02:06.030 --> 00:02:09.630
+The three blind men thanked the merchant,
+and went on their way.
+
+46
+00:02:09.630 --> 00:02:13.320
+Each one was secretly excited over the
+experience, and had a lot to say.
+
+47
+00:02:13.320 --> 00:02:15.690
+They all walked very rapidly and didn't
+say a word.
+
+48
+00:02:17.080 --> 00:02:19.010
+Let's sit down and have a discussion about
+this
+
+49
+00:02:19.010 --> 00:02:22.670
+queer animal, the second blind man said,
+breaking the silence.
+
+50
+00:02:22.670 --> 00:02:25.460
+A very good Idea, very good, the other two
+agreed.
+
+51
+00:02:25.460 --> 00:02:27.860
+For they also had this in mind.
+
+52
+00:02:27.860 --> 00:02:32.310
+Without waiting for anyone to be properly
+seated, the second one blurted out, this
+
+53
+00:02:32.310 --> 00:02:36.240
+animal is like our straw fan swinging back
+and forth to give us a breeze.
+
+54
+00:02:36.240 --> 00:02:39.100
+However, it's not so big or well made.
+
+55
+00:02:39.100 --> 00:02:40.576
+The main portion is rather wispy.
+
+56
+00:02:40.576 --> 00:02:43.900
+No, no, no, no, the first blind man
+shouted in
+
+57
+00:02:43.900 --> 00:02:46.030
+disagreement, this strange animal
+resembles
+
+58
+00:02:46.030 --> 00:02:49.070
+two big trees without any branches.
+
+59
+00:02:49.070 --> 00:02:51.560
+You're both wrong, the third man replied.
+
+60
+00:02:51.560 --> 00:02:54.150
+This exotic animal is similar to a snake.
+
+61
+00:02:54.150 --> 00:02:57.020
+It's long and round and very strong.
+
+62
+00:02:58.370 --> 00:02:59.730
+On and on they argued.
+
+63
+00:02:59.730 --> 00:03:02.160
+Each one insisting that he alone was
+correct.
+
+64
+00:03:03.300 --> 00:03:05.840
+Of course, there was no conclusion, for
+
+65
+00:03:05.840 --> 00:03:08.940
+not one had thoroughly examined the whole
+elephant.
+
+66
+00:03:09.990 --> 00:03:12.440
+And how can anyone describe the whole
+until
+
+67
+00:03:12.440 --> 00:03:14.460
+he has learned the total of the parts?
+
+68
+00:03:16.750 --> 00:03:20.390
+Developers, programmers, designers, and
+business people struggle every
+
+69
+00:03:20.390 --> 00:03:23.040
+day to make sense of user experiences on
+it.
+
+70
+00:03:23.040 --> 00:03:24.850
+Stumbling blindly to some degree because
+they're
+
+71
+00:03:24.850 --> 00:03:28.230
+touching only small, specific parts of the
+whole.
+
+72
+00:03:28.230 --> 00:03:29.410
+And they're coming away with a very
+
+73
+00:03:29.410 --> 00:03:32.180
+narrow and fragmented understanding of
+what it means.
+
+74
+00:03:33.520 --> 00:03:37.060
+And to make matters worse, many
+practitioners of user experience design
+
+75
+00:03:37.060 --> 00:03:41.930
+make it unnecessarily difficult to explore
+the discipline from multiple perspectives.
+
+76
+00:03:41.930 --> 00:03:43.500
+So, a lot of what we see and here is
+
+77
+00:03:43.500 --> 00:03:47.290
+essentially a very limited set of pre
+determined questions and answers.
+
+78
+00:03:48.460 --> 00:03:51.350
+Part of that simply results from the
+complexity of the discipline, because its
+
+79
+00:03:51.350 --> 00:03:56.330
+core focus is human beings, and let's face
+it, we humans are pretty complex.
+
+80
+00:03:56.330 --> 00:04:00.590
+So it can be pretty time consuming to
+explore UXD thoroughly.
+
+81
+00:04:00.590 --> 00:04:02.890
+Without the ability to examine multiple
+perspectives,
+
+82
+00:04:02.890 --> 00:04:04.640
+at the same time, many of the
+
+83
+00:04:04.640 --> 00:04:07.070
+meaningful relationships that work
+together, to create
+
+84
+00:04:07.070 --> 00:04:11.190
+a memorable, valuable user experience
+remain hidden.
+
+85
+00:04:11.190 --> 00:04:13.350
+The purpose of this class is to shed some
+light
+
+86
+00:04:13.350 --> 00:04:16.520
+on user experience design by going back to
+the fundamentals.
+

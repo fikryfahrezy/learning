@@ -1,0 +1,127 @@
+WEBVTT
+
+00:00.690 --> 00:01.523
+-: In the last section,
+
+00:01.523 --> 00:04.860
+we finished up a couple of changes to our travis.yml file,
+
+00:04.860 --> 00:07.410
+and then pushed those changes up to GitHub.
+
+00:07.410 --> 00:08.820
+Once we pushed the changes up,
+
+00:08.820 --> 00:12.090
+Travis CI automatically woke up, pulled down our files,
+
+00:12.090 --> 00:16.350
+and ran the directions we added to the travis.yml file.
+
+00:16.350 --> 00:18.360
+It looks like the build was successful,
+
+00:18.360 --> 00:19.740
+but let's take a look at some of the output
+
+00:19.740 --> 00:21.600
+and just see what happened.
+
+00:21.600 --> 00:23.940
+If you scroll down a little bit, you'll see that Docker,
+
+00:23.940 --> 00:25.500
+or excuse me, Travis,
+
+00:25.500 --> 00:30.243
+successfully built our image using the client directory,
+
+00:31.170 --> 00:34.350
+and then ran some tests using that image.
+
+00:34.350 --> 00:37.320
+All the tests ran successfully, and after they did,
+
+00:37.320 --> 00:40.290
+we then attempted to build our four different images
+
+00:40.290 --> 00:42.360
+using the production dockerfile
+
+00:42.360 --> 00:45.090
+in each of those sub-directories.
+
+00:45.090 --> 00:48.900
+We then successfully logged into the Docker CLI,
+
+00:48.900 --> 00:50.100
+and then successfully pushed
+
+00:50.100 --> 00:53.460
+all four images up to Docker Hub.
+
+00:53.460 --> 00:55.710
+So we can now open up a new browser tab
+
+00:55.710 --> 00:58.773
+and navigate to hub.docker.com.
+
+00:59.790 --> 01:00.750
+And once you go there,
+
+01:00.750 --> 01:04.050
+you'll see four brand new repositories appear right here.
+
+01:04.050 --> 01:06.630
+Each of these represents one of those different images
+
+01:06.630 --> 01:08.580
+that we just pushed up.
+
+01:08.580 --> 01:12.450
+So we could look at say, how about multi-nginx right here?
+
+01:12.450 --> 01:14.640
+And we can look at our tags.
+
+01:14.640 --> 01:17.400
+And right now we have just the latest tag,
+
+01:17.400 --> 01:18.570
+cause remember, by default,
+
+01:18.570 --> 01:20.970
+whenever we tag an image with a name,
+
+01:20.970 --> 01:25.970
+the default version used on the very end is latest.
+
+01:27.480 --> 01:29.280
+So cool, that's pretty much it.
+
+01:29.280 --> 01:30.960
+We now have a rock solid process
+
+01:30.960 --> 01:32.730
+to take our GitHub repository
+
+01:32.730 --> 01:36.600
+and build Docker images out of each of those sub-projects,
+
+01:36.600 --> 01:39.330
+and then push them up to Docker Hub.
+
+01:39.330 --> 01:40.740
+So let's take a quick pause right here.
+
+01:40.740 --> 01:42.570
+We're gonna continue in the next section,
+
+01:42.570 --> 01:44.550
+and start thinking about deploying this app
+
+01:44.550 --> 01:46.980
+over to Amazon Elastic Beanstalk.
+
+01:46.980 --> 01:49.463
+So quick break, and I'll see you in just a minute.

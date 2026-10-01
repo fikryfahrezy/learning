@@ -1,0 +1,562 @@
+WEBVTT
+
+00:00.344 --> 00:02.790
+-: All right, my friends, we've got a whole bunch
+
+00:02.790 --> 00:04.650
+of experience with Docker under our belts.
+
+00:04.650 --> 00:07.830
+So now it's time to move on to the world of Kubernetes.
+
+00:07.830 --> 00:09.810
+In this section, we're gonna start doing a little
+
+00:09.810 --> 00:11.760
+introduction to the world of Kubernetes,
+
+00:11.760 --> 00:15.047
+first beginning by answering two very important questions.
+
+00:15.047 --> 00:17.130
+First off, what is Kubernetes?
+
+00:17.130 --> 00:20.100
+Secondly, why would we ever want to use it?
+
+00:20.100 --> 00:22.050
+Now, we're gonna try to answer both these questions
+
+00:22.050 --> 00:25.890
+at the same time inside this section, so let's get to it.
+
+00:25.890 --> 00:28.020
+All right, so to begin, I want you to think back
+
+00:28.020 --> 00:30.060
+to the Elastic Beanstalk application
+
+00:30.060 --> 00:31.444
+that we just put together.
+
+00:31.444 --> 00:34.588
+Inside that application, we had four different containers
+
+00:34.588 --> 00:37.110
+running at the same exact time.
+
+00:37.110 --> 00:39.810
+We had Nginx, which was forwarding traffic to our server
+
+00:39.810 --> 00:42.090
+in our client, and then behind the scenes we kind
+
+00:42.090 --> 00:44.820
+of had that worker process running as well.
+
+00:44.820 --> 00:47.610
+And of course, we had a copy of Redis and Postgres
+
+00:47.610 --> 00:49.862
+running as well, but those weren't really containers
+
+00:49.862 --> 00:52.590
+that were running with the rest of all of our other
+
+00:52.590 --> 00:53.610
+containers as well.
+
+00:53.610 --> 00:55.710
+They were outside services.
+
+00:55.710 --> 00:57.450
+Now, I wanna think about this application
+
+00:57.450 --> 01:00.150
+and I wanna ask you a very simple question.
+
+01:00.150 --> 01:03.630
+How would we scale up this application?
+
+01:03.630 --> 01:05.340
+In other words, if we started getting a lot
+
+01:05.340 --> 01:07.230
+of traffic and we started having a lot
+
+01:07.230 --> 01:09.210
+of different users starting to enter
+
+01:09.210 --> 01:11.040
+in different numbers to calculate the
+
+01:11.040 --> 01:12.870
+Fibonacci sequence four.
+
+01:12.870 --> 01:15.300
+How would we kind of respond to that?
+
+01:15.300 --> 01:17.020
+Well, if I had to take a guess, I would say
+
+01:17.020 --> 01:19.710
+that it would probably be this worker container
+
+01:19.710 --> 01:22.920
+over here that was doing the absolute brunt
+
+01:22.920 --> 01:25.920
+of all the work inside of our application.
+
+01:25.920 --> 01:29.150
+In other words, this worker process was using an algorithm
+
+01:29.150 --> 01:31.240
+for calculating that Fibonacci value
+
+01:31.240 --> 01:33.600
+that was very inefficient
+
+01:33.600 --> 01:35.338
+and we very purposefully left it kind of
+
+01:35.338 --> 01:37.376
+inefficient just to see what would happen
+
+01:37.376 --> 01:38.580
+if it took a long time
+
+01:38.580 --> 01:42.090
+for that particular container to get some work done.
+
+01:42.090 --> 01:45.030
+And so if we started having a lot of users making use
+
+01:45.030 --> 01:48.240
+of our application, the most critical part to make sure
+
+01:48.240 --> 01:50.130
+that this thing was working correctly
+
+01:50.130 --> 01:51.586
+or the entire application was working correctly,
+
+01:51.586 --> 01:55.110
+would've been this worker container over here.
+
+01:55.110 --> 01:57.540
+Now, ideally, what would've been really nice
+
+01:57.540 --> 02:01.770
+is if we had some way to easily spin up multiple processes
+
+02:01.770 --> 02:05.250
+or multiple containers of that worker image.
+
+02:05.250 --> 02:08.250
+And so if we had like three users come into our application
+
+02:08.250 --> 02:10.081
+at the exact same time, it would've been great
+
+02:10.081 --> 02:12.780
+if we had three different workers.
+
+02:12.780 --> 02:15.360
+One of each could've been used to create
+
+02:15.360 --> 02:18.480
+or to calculate a different Fibonacci value.
+
+02:18.480 --> 02:21.750
+However, this would've been rather challenging to do
+
+02:21.750 --> 02:24.270
+in the world of Elastic Beanstalk.
+
+02:24.270 --> 02:27.690
+You see, in order to scale a application by default
+
+02:27.690 --> 02:30.450
+with Elastic Beanstalk, here's what actually happens
+
+02:30.450 --> 02:31.890
+behind the scenes.
+
+02:31.890 --> 02:35.010
+So this is the typical scaling strategy
+
+02:35.010 --> 02:37.110
+for Elastic Beanstalk.
+
+02:37.110 --> 02:40.309
+Rather than creating more copies of a single container
+
+02:40.309 --> 02:45.309
+Elastic Beanstalk looks at that dockerrun.aws.json file
+
+02:45.360 --> 02:47.430
+and it spins up additional copies
+
+02:47.430 --> 02:50.940
+of the entire set of containers.
+
+02:50.940 --> 02:53.430
+In other words, we can kind of imagine that to scale up
+
+02:53.430 --> 02:55.530
+our application, Elastic Beanstalk
+
+02:55.530 --> 02:58.860
+would've created maybe two, three, four, five different
+
+02:58.860 --> 03:01.083
+sets of all of our containers.
+
+03:02.040 --> 03:04.230
+Now, unfortunately, we don't really have a lot
+
+03:04.230 --> 03:06.120
+of control over what each
+
+03:06.120 --> 03:08.730
+of these different groups of containers are doing.
+
+03:08.730 --> 03:10.590
+In other words, on each
+
+03:10.590 --> 03:12.060
+of these different groups of containers
+
+03:12.060 --> 03:15.330
+we got an additional copy of nginx, an additional copy
+
+03:15.330 --> 03:18.540
+of the server and an additional copy of the client.
+
+03:18.540 --> 03:20.300
+But at the end of the day, chances are
+
+03:20.300 --> 03:23.926
+that the Nginx or the client or the server images
+
+03:23.926 --> 03:26.040
+or the containers that we were running were not
+
+03:26.040 --> 03:28.860
+going to be really the limiting factor of performance
+
+03:28.860 --> 03:30.330
+inside of our application.
+
+03:30.330 --> 03:32.760
+Like we just discussed, it was the worker container
+
+03:32.760 --> 03:34.530
+that was the limiting factor.
+
+03:34.530 --> 03:37.140
+And so it would've been way more ideal
+
+03:37.140 --> 03:40.830
+to scale our application if we had the opportunity
+
+03:40.830 --> 03:45.830
+to do something a little bit more like this.
+
+03:45.900 --> 03:48.450
+Let me show you, it would've been just great
+
+03:48.450 --> 03:49.620
+if we had the ability to spin
+
+03:49.620 --> 03:52.607
+up these additional machines and just create a ton
+
+03:52.607 --> 03:57.150
+of additional copies of that worker container on each one.
+
+03:57.150 --> 03:59.340
+Chances are we didn't really need multiple copies
+
+03:59.340 --> 04:01.691
+of Nginx or the server API or the client.
+
+04:01.691 --> 04:04.500
+They were all relatively simple and for the most part
+
+04:04.500 --> 04:07.140
+were just kind of serving up flat files
+
+04:07.140 --> 04:10.080
+or responding to very simple API requests.
+
+04:10.080 --> 04:12.360
+It was only the worker container that was doing
+
+04:12.360 --> 04:15.630
+some major computational work inside of our application.
+
+04:15.630 --> 04:17.430
+And so it probably would've been ideal
+
+04:17.430 --> 04:20.403
+if we could have done something like this instead.
+
+04:21.360 --> 04:23.790
+So as you might imagine, this is the type
+
+04:23.790 --> 04:26.850
+of approach that Kubernetes would allow us to have.
+
+04:26.850 --> 04:28.380
+If we were making use of Kubernetes,
+
+04:28.380 --> 04:31.380
+we could have had additional machines running each
+
+04:31.380 --> 04:33.630
+of our containers, and we could have had a lot
+
+04:33.630 --> 04:36.450
+of control over what these additional machines were doing
+
+04:36.450 --> 04:38.520
+or what containers they were running.
+
+04:38.520 --> 04:40.290
+So let's take a look at a quick diagram
+
+04:40.290 --> 04:42.210
+of how Kubernetes could have been used
+
+04:42.210 --> 04:44.493
+to solve this entire scaling issue.
+
+04:45.690 --> 04:47.424
+So what you see on the screen right here is a diagram
+
+04:47.424 --> 04:50.493
+of a very simple Kubernetes cluster.
+
+04:51.480 --> 04:54.180
+A cluster in the world of Kubernetes is the assembly
+
+04:54.180 --> 04:59.130
+of something called a master, and one or more nodes.
+
+04:59.130 --> 05:01.472
+A node, which is each of these blue boxes right here,
+
+05:01.472 --> 05:04.838
+are a virtual machine or a physical computer
+
+05:04.838 --> 05:07.410
+that is going to be used to run some number
+
+05:07.410 --> 05:09.630
+of different containers.
+
+05:09.630 --> 05:11.314
+So each of these different virtual machines
+
+05:11.314 --> 05:13.740
+or physical computers that you see right here
+
+05:13.740 --> 05:17.370
+can be used to run different sets of containers.
+
+05:17.370 --> 05:18.608
+I wanna be really clear that each of them
+
+05:18.608 --> 05:21.210
+can run different containers.
+
+05:21.210 --> 05:24.210
+Like different images or even different numbers.
+
+05:24.210 --> 05:26.640
+So for example, the node on the far right hand side
+
+05:26.640 --> 05:29.880
+over here is running three separate containers,
+
+05:29.880 --> 05:33.180
+and the one in the middle is running just one container.
+
+05:33.180 --> 05:35.100
+These can be completely different containers.
+
+05:35.100 --> 05:36.813
+They don't have to be identical.
+
+05:37.830 --> 05:39.707
+And so in the world of Kubernetes, you can imagine
+
+05:39.707 --> 05:43.260
+that we could have very easily gotten closer to a kind
+
+05:43.260 --> 05:45.360
+of scaling flow like this right here.
+
+05:45.360 --> 05:48.353
+Or maybe we had just one node or one virtual machine
+
+05:48.353 --> 05:51.577
+that was running Nginx, our server in our client
+
+05:51.577 --> 05:54.463
+and then maybe we had a bunch of additional nodes
+
+05:54.463 --> 05:56.427
+or virtual machines that were running
+
+05:56.427 --> 05:58.953
+copies of our worker image.
+
+06:01.020 --> 06:02.580
+Now, in the world of Kubernetes
+
+06:02.580 --> 06:05.250
+all these different nodes that get created are managed
+
+06:05.250 --> 06:07.620
+by something called a master.
+
+06:07.620 --> 06:09.810
+This master down here has a set
+
+06:09.810 --> 06:12.285
+of different programs running on it that control what each
+
+06:12.285 --> 06:16.140
+of these different nodes is running at any given time.
+
+06:16.140 --> 06:20.010
+You and I as developers interact with a Kubernetes cluster
+
+06:20.010 --> 06:22.920
+by reaching out to this master right here.
+
+06:22.920 --> 06:26.040
+You and I give some set of directions to the master.
+
+06:26.040 --> 06:26.873
+For example, we might say,
+
+06:26.873 --> 06:29.576
+"Hey please run five containers using
+
+06:29.576 --> 06:32.850
+the client worker image."
+
+06:32.850 --> 06:34.256
+The master receives that command
+
+06:34.256 --> 06:36.624
+and then ultimately relays that command
+
+06:36.624 --> 06:38.943
+to all of these different nodes.
+
+06:39.870 --> 06:42.030
+Now, outside of our cluster, which is represented
+
+06:42.030 --> 06:45.436
+by this gray block box right here, we have a load balancer
+
+06:45.436 --> 06:48.050
+which will take some amount of outside traffic
+
+06:48.050 --> 06:51.638
+in the form of network requests and relay all those requests
+
+06:51.638 --> 06:54.750
+into each of our different nodes.
+
+06:54.750 --> 06:56.970
+Now, one thing that's going to be a big point of discussion
+
+06:56.970 --> 06:59.139
+for us is exactly how this node balancer works
+
+06:59.139 --> 07:01.020
+and so that's gonna be something we talk
+
+07:01.020 --> 07:03.765
+about inside of the next many videos
+
+07:03.765 --> 07:07.170
+on Kubernetes that we're going to go through as well.
+
+07:07.170 --> 07:09.383
+Okay, so in this section, just a very high level discussion
+
+07:09.383 --> 07:13.439
+on Kubernetes and what it is and what it does for us.
+
+07:13.439 --> 07:15.283
+So at this point, I think we've kind of established
+
+07:15.283 --> 07:17.089
+that Kubernetes is a system
+
+07:17.089 --> 07:20.105
+for running many different containers, so different types
+
+07:20.105 --> 07:22.830
+of containers, different numbers of containers
+
+07:22.830 --> 07:27.150
+over several different computers or virtual machines.
+
+07:27.150 --> 07:29.730
+And we would choose to use Kubernetes
+
+07:29.730 --> 07:32.670
+if we had the need to scale up our application
+
+07:32.670 --> 07:34.860
+and run multiple different types
+
+07:34.860 --> 07:37.590
+of containers in different quantities.
+
+07:37.590 --> 07:42.230
+If we only wanted to have a system where we essentially ran-
+
+07:42.230 --> 07:43.803
+Let's go back way over here.
+
+07:43.803 --> 07:45.128
+If we ran the same set
+
+07:45.128 --> 07:48.144
+of containers over and over again, like you see right here,
+
+07:48.144 --> 07:50.730
+not a lot of good reason to use Kubernetes.
+
+07:50.730 --> 07:53.070
+Again, we want to use it anytime we expect to have
+
+07:53.070 --> 07:54.540
+an application that consists
+
+07:54.540 --> 07:56.880
+of many different types of containers,
+
+07:56.880 --> 07:58.620
+running in different quantities
+
+07:58.620 --> 08:00.633
+on multiple different computers.
+
+08:01.470 --> 08:02.970
+All right, so with all that in mind
+
+08:02.970 --> 08:04.260
+let's take a quick pause right here
+
+08:04.260 --> 08:05.973
+and continue in the next section.

@@ -1,0 +1,382 @@
+WEBVTT
+
+00:00.750 --> 00:01.583
+Narrator: In the last section
+
+00:01.583 --> 00:05.130
+we put together the core of the node.js web application.
+
+00:05.130 --> 00:06.050
+If you didn't follow along
+
+00:06.050 --> 00:08.700
+in the last section and you just copy pasted the code
+
+00:08.700 --> 00:11.400
+just make sure that you've got your index.js file
+
+00:11.400 --> 00:13.590
+and a package.json file.
+
+00:13.590 --> 00:14.760
+You'll also want to make sure
+
+00:14.760 --> 00:17.040
+that you've got your terminal open inside
+
+00:17.040 --> 00:18.420
+of your project directory.
+
+00:18.420 --> 00:20.520
+And so if I list out my current files and folders
+
+00:20.520 --> 00:24.600
+I should see the index.js and package.json files.
+
+00:24.600 --> 00:26.580
+Okay, so we've got some source code here
+
+00:26.580 --> 00:28.590
+and now we need to figure out how we can wrap this all
+
+00:28.590 --> 00:30.900
+up inside of a Docker container.
+
+00:30.900 --> 00:32.520
+I wanna first begin by telling you
+
+00:32.520 --> 00:34.200
+a little bit about node.js
+
+00:34.200 --> 00:36.900
+and how we're going to start up this application.
+
+00:36.900 --> 00:40.080
+So just in case you've never made use of node before
+
+00:40.080 --> 00:41.880
+two commands that you need to be aware of
+
+00:41.880 --> 00:45.630
+to install dependencies and start up this application.
+
+00:45.630 --> 00:47.730
+Anytime that we want to start up a node app
+
+00:47.730 --> 00:49.690
+we have to first install a set
+
+00:50.549 --> 00:51.382
+of dependencies
+
+00:51.382 --> 00:53.070
+and we can install all of our dependencies
+
+00:53.070 --> 00:55.770
+by running a command npm install inside
+
+00:55.770 --> 00:57.540
+of our project directory.
+
+00:57.540 --> 01:00.270
+This starts up a little program called npm
+
+01:00.270 --> 01:01.920
+which is somewhat colloquially
+
+01:01.920 --> 01:04.350
+known as the node package manager.
+
+01:04.350 --> 01:06.270
+This is going to run that program
+
+01:06.270 --> 01:08.160
+and install a couple dependencies for us.
+
+01:08.160 --> 01:09.420
+And of course it assumes
+
+01:09.420 --> 01:12.120
+that npm is installed on our local machine.
+
+01:12.120 --> 01:14.420
+We're inside the container as the case may be.
+
+01:15.570 --> 01:16.650
+The other thing to be aware of
+
+01:16.650 --> 01:18.180
+is that we're going to have to eventually
+
+01:18.180 --> 01:20.370
+start our server up and to do so
+
+01:20.370 --> 01:21.660
+we're going to run the command
+
+01:21.660 --> 01:24.120
+npm start at the terminal as well.
+
+01:24.120 --> 01:25.890
+And again, this also kind of assumes
+
+01:25.890 --> 01:28.560
+that npm is already installed.
+
+01:28.560 --> 01:29.790
+All right, so with all this in mind,
+
+01:29.790 --> 01:30.780
+let's now start thinking
+
+01:30.780 --> 01:33.480
+about the Docker file that we have to put together.
+
+01:33.480 --> 01:35.970
+Now, this series of operations that we are gonna put
+
+01:35.970 --> 01:38.910
+into the Docker file is going to end up looking very similar
+
+01:38.910 --> 01:41.670
+to what we did in the last application.
+
+01:41.670 --> 01:44.460
+So in this somewhat complicated diagram
+
+01:44.460 --> 01:46.380
+our template that we're kind of following here
+
+01:46.380 --> 01:49.890
+for our Docker file is to specify a base image
+
+01:49.890 --> 01:52.500
+run some command to install some dependencies
+
+01:52.500 --> 01:55.470
+which definitely sounds like something we have to do.
+
+01:55.470 --> 01:57.840
+And then specify the command to run on startup
+
+01:57.840 --> 02:00.603
+which as we just discussed is that npm start thing.
+
+02:01.680 --> 02:04.350
+Now over when we were working on the Redis image
+
+02:04.350 --> 02:07.320
+we said from Alpine to specify the base image.
+
+02:07.320 --> 02:10.270
+We ran apk add Redis to install the dependency
+
+02:11.160 --> 02:13.530
+and then we set up the default command as Redis server.
+
+02:13.530 --> 02:15.210
+And so it really seems like we have
+
+02:15.210 --> 02:18.030
+some very direct parallels this time around.
+
+02:18.030 --> 02:19.710
+I think that for the node application
+
+02:19.710 --> 02:23.040
+we could probably do a Docker file that specifies Alpine
+
+02:23.040 --> 02:24.480
+as our base image.
+
+02:24.480 --> 02:26.790
+We can then run npm install
+
+02:26.790 --> 02:28.470
+to install all of our dependencies,
+
+02:28.470 --> 02:31.860
+and then we can set up the default command of npm start to
+
+02:31.860 --> 02:35.280
+run the server when the container first comes online.
+
+02:35.280 --> 02:37.620
+So we're gonna take this type of approach right here
+
+02:37.620 --> 02:39.540
+by creating a Docker file and then essentially
+
+02:39.540 --> 02:43.170
+putting almost exactly these instructions inside of it.
+
+02:43.170 --> 02:46.230
+Now, quick disclaimer, just quick disclaimer here.
+
+02:46.230 --> 02:48.960
+Remember I had said we're gonna do a few things here
+
+02:48.960 --> 02:51.570
+slightly wrong, just so you can see some very
+
+02:51.570 --> 02:54.780
+common error messages that you are just about
+
+02:54.780 --> 02:57.630
+guaranteed to see on your own personal projects.
+
+02:57.630 --> 02:59.550
+So maybe in this discussion
+
+02:59.550 --> 03:01.154
+or the series of steps that I just described
+
+03:01.154 --> 03:04.230
+there might be something in here that doesn't quite
+
+03:04.230 --> 03:07.470
+line up with what's reality or what we really have to do.
+
+03:07.470 --> 03:08.940
+Okay?
+
+03:08.940 --> 03:10.140
+All right, so let's get started.
+
+03:10.140 --> 03:12.000
+I'm going to begin by making sure
+
+03:12.000 --> 03:14.130
+I've got my code editor open
+
+03:14.130 --> 03:16.530
+based on that simple web directory
+
+03:16.530 --> 03:20.610
+and inside of here I'm gonna make a new Docker file.
+
+03:20.610 --> 03:22.860
+Remember, it's Docker with a capital D
+
+03:22.860 --> 03:25.830
+and there is no file extension on there.
+
+03:25.830 --> 03:26.670
+Then inside of here
+
+03:26.670 --> 03:29.820
+we're going to first specify our base image.
+
+03:29.820 --> 03:31.320
+And just to be really complete
+
+03:31.320 --> 03:33.073
+I'm gonna add in some comments for these steps
+
+03:33.073 --> 03:35.130
+just to remind you what we're doing
+
+03:35.130 --> 03:36.450
+every step along the way.
+
+03:36.450 --> 03:40.290
+So I'll say specify a base image.
+
+03:40.290 --> 03:41.123
+And you know what?
+
+03:41.123 --> 03:42.720
+Let's use that Alpine image again.
+
+03:42.720 --> 03:45.370
+It really seemed like it worked out last time for us.
+
+03:46.380 --> 03:50.583
+Next up, we're going to install some dependencies.
+
+03:52.650 --> 03:55.860
+To do so, we will run the command npm install
+
+03:55.860 --> 03:58.500
+like I just said, the npm install command is how
+
+03:58.500 --> 04:01.710
+we install dependencies on a node.js project.
+
+04:01.710 --> 04:05.400
+And then finally, we will set up a default command
+
+04:05.400 --> 04:07.410
+which we can do by running out CMD.
+
+04:07.410 --> 04:10.320
+And then we put down a set of square brackets.
+
+04:10.320 --> 04:12.210
+And then in a set of double quotes,
+
+04:12.210 --> 04:15.000
+we separately list out all the parts of the command
+
+04:15.000 --> 04:18.030
+that we want to run when the container is first created.
+
+04:18.030 --> 04:19.710
+And so to start up our server
+
+04:19.710 --> 04:23.310
+we are probably going to want npm start like so.
+
+04:23.310 --> 04:26.223
+Notice that I've got a comma between those two strings.
+
+04:27.930 --> 04:29.550
+All right, I think this looks pretty good.
+
+04:29.550 --> 04:32.370
+It definitely looks very similar to what we did for Redis.
+
+04:32.370 --> 04:34.440
+So let's now flip back over to our terminal
+
+04:34.440 --> 04:38.901
+and see what happens when we try to build this image.
+
+04:38.901 --> 04:41.400
+So I'm gonna list out my files and folders
+
+04:41.400 --> 04:44.820
+and verify that I now see the Docker file inside of here.
+
+04:44.820 --> 04:47.010
+And then remember to build an image
+
+04:47.010 --> 04:49.380
+we can run Docker build
+
+04:49.380 --> 04:51.060
+and then we put the dot in there
+
+04:51.060 --> 04:55.119
+to specify the build context of the current directory.
+
+04:55.119 --> 05:00.119
+So I'll run that and then we very quickly see npm not found.
+
+05:00.810 --> 05:02.280
+All right, so first problem
+
+05:02.280 --> 05:04.020
+of a couple that we're going to see.
+
+05:04.020 --> 05:05.700
+So let's take a quick pause right here.
+
+05:05.700 --> 05:07.530
+We're going to start to investigate
+
+05:07.530 --> 05:10.140
+why we are seeing this error and fix it up.
+
+05:10.140 --> 05:12.563
+So quick break and I'll see you in just a minute.

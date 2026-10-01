@@ -1,0 +1,448 @@
+WEBVTT
+
+00:00.720 --> 00:01.680
+-: In the last section, we set
+
+00:01.680 --> 00:04.140
+up ingress-NGINX on our local machine.
+
+00:04.140 --> 00:06.000
+Now the last thing we have to do is create a
+
+00:06.000 --> 00:08.910
+new config file that's going to specify the different sets
+
+00:08.910 --> 00:09.743
+of routing rules
+
+00:09.743 --> 00:11.790
+that we want to use, inside of our application.
+
+00:11.790 --> 00:13.953
+We're going to use the exact same routing rules
+
+00:13.953 --> 00:17.010
+that we had to use back on some of our previous projects
+
+00:17.010 --> 00:19.740
+specifically the Elastic Beanstalk one
+
+00:19.740 --> 00:22.560
+where we set up our own custom NGINX server.
+
+00:22.560 --> 00:25.350
+So if you recall back on that project, we had said
+
+00:25.350 --> 00:27.750
+that anytime we had some amount of incoming traffic
+
+00:27.750 --> 00:29.820
+we looked at the path of the request
+
+00:29.820 --> 00:33.090
+and we had said that if the request started with slash API
+
+00:33.090 --> 00:34.980
+we were going to automatically send that request
+
+00:34.980 --> 00:36.210
+off to the server.
+
+00:36.210 --> 00:37.740
+Otherwise, we would send the request
+
+00:37.740 --> 00:39.060
+off to the client assuming
+
+00:39.060 --> 00:42.210
+that it needed to access some of the client side resources.
+
+00:42.210 --> 00:44.790
+So we're going to set up a ingress config file
+
+00:44.790 --> 00:48.960
+right now that's going to implement this routing rule set.
+
+00:48.960 --> 00:50.890
+So inside of my code editor
+
+00:51.990 --> 00:54.780
+I'm gonna find my K8s directory, and inside there
+
+00:54.780 --> 00:58.047
+I'm gonna make a new file called ingresservice.yaml.
+
+01:01.920 --> 01:02.910
+Then inside of here
+
+01:02.910 --> 01:04.920
+we're gonna to write out our config file.
+
+01:04.920 --> 01:07.770
+That as usual, is gonna look very similar to a lot
+
+01:07.770 --> 01:10.440
+of the other config files we've already put together.
+
+01:10.440 --> 01:12.870
+So I'm gonna specify an API version.
+
+01:12.870 --> 01:15.090
+This one is going to have a longer version
+
+01:15.090 --> 01:16.860
+on it that we've not used before.
+
+01:16.860 --> 01:20.073
+We'll say extensions B1 beta one.
+
+01:21.090 --> 01:24.780
+The kind of object we are gonna create is an ingress.
+
+01:24.780 --> 01:27.030
+We'll then set up our metadata.
+
+01:27.030 --> 01:29.400
+So we'll give it a name of ingress service,
+
+01:29.400 --> 01:32.610
+and then unlike previous metadata fields that we set up
+
+01:32.610 --> 01:34.170
+this one is actually gonna have a couple
+
+01:34.170 --> 01:37.110
+of other metadata properties as well.
+
+01:37.110 --> 01:41.340
+So I'm gonna add on a new thing to this called annotations.
+
+01:41.340 --> 01:43.680
+Annotations are essentially additional configuration
+
+01:43.680 --> 01:46.230
+options that are going to specify a little bit kind
+
+01:46.230 --> 01:48.210
+of higher level configuration
+
+01:48.210 --> 01:51.630
+around the ingress object that it gets created.
+
+01:51.630 --> 01:54.510
+So the first thing we're gonna do here, we're gonna add
+
+01:54.510 --> 01:59.510
+on kubernetes.io/ingress.class of NGINX like so.
+
+02:03.150 --> 02:05.700
+So this configuration rule right here is essentially
+
+02:05.700 --> 02:08.190
+telling Kubernetes that we want to create a ingress
+
+02:08.190 --> 02:12.210
+controller based on the NGINX project.
+
+02:12.210 --> 02:13.890
+Then immediately after that, we're going to add
+
+02:13.890 --> 02:16.650
+in another configuration rule that's going to specifically
+
+02:16.650 --> 02:20.040
+configure how our copy of NGINX behaves.
+
+02:20.040 --> 02:20.873
+So I'm gonna say
+
+02:20.873 --> 02:25.700
+NGINX.ingress.kubernetes.io/rewrite target/ like so.
+
+02:32.490 --> 02:34.950
+So this additional annotation right here, again
+
+02:34.950 --> 02:37.800
+this is going to configure how the actual copy
+
+02:37.800 --> 02:39.540
+of NGINX behaves.
+
+02:39.540 --> 02:41.460
+This rule in particular says that if we end
+
+02:41.460 --> 02:44.250
+up matching a route like slash API right here
+
+02:44.250 --> 02:48.930
+after deciding to send it to the server, that configuration
+
+02:48.930 --> 02:52.110
+is gonna first do a little bit of a rewrite on the request
+
+02:52.110 --> 02:56.070
+and essentially it's going to remove the slash API part.
+
+02:56.070 --> 02:56.903
+Now again
+
+02:56.903 --> 02:58.800
+we did a step like this, very similar back on
+
+02:58.800 --> 03:01.740
+the Elastic Beanstalk project that we put together.
+
+03:01.740 --> 03:02.573
+We had said
+
+03:02.573 --> 03:04.890
+that we probably did not want to put some configuration
+
+03:04.890 --> 03:07.620
+inside of our server that very tightly coupled it
+
+03:07.620 --> 03:09.600
+to the routing that got request
+
+03:09.600 --> 03:11.430
+to the server in the first place.
+
+03:11.430 --> 03:14.010
+So we had decided to remove these slash API
+
+03:14.010 --> 03:15.930
+outta the incoming request just so
+
+03:15.930 --> 03:18.360
+that we did not have to write slash API
+
+03:18.360 --> 03:20.673
+on every different route on the server itself.
+
+03:22.380 --> 03:23.608
+Okay, so that's exactly what this line
+
+03:23.608 --> 03:26.910
+of configuration is doing right here.
+
+03:26.910 --> 03:31.910
+So now after that we'll un indent and we'll add in a spec.
+
+03:31.950 --> 03:34.950
+So for the spec we're gonna add a series of different rules.
+
+03:34.950 --> 03:36.990
+In our case, we're gonna have just one rule.
+
+03:36.990 --> 03:39.660
+So I'm gonna put in a single dash like so
+
+03:39.660 --> 03:43.683
+and then I'll say HTTP paths.
+
+03:44.940 --> 03:46.560
+This is going to be an array as well.
+
+03:46.560 --> 03:47.850
+So I'll do a dash
+
+03:47.850 --> 03:52.850
+and I'll say path slash backend is going to be service name
+
+03:54.060 --> 03:58.500
+of our cluster client cluster IP service, which has a name
+
+03:58.500 --> 04:00.310
+of client cluster IP service
+
+04:03.930 --> 04:07.650
+and a service port of 3000.
+
+04:07.650 --> 04:09.490
+I'll then add in another path here
+
+04:10.620 --> 04:15.450
+of slash API slash I'll give it a backend as well.
+
+04:15.450 --> 04:18.720
+This is going to have a backend that points at the
+
+04:18.720 --> 04:19.553
+where is it?
+
+04:19.553 --> 04:22.680
+Server cluster IP service right here, which has a name
+
+04:22.680 --> 04:25.023
+of server cluster IP service,
+
+04:30.660 --> 04:33.633
+and a service port of 5,000.
+
+04:34.770 --> 04:37.200
+Okay, so let's talk about exactly what's happening here.
+
+04:37.200 --> 04:39.000
+Now we discuss the annotations
+
+04:39.000 --> 04:42.330
+and then we very quickly dove into all the different rules.
+
+04:42.330 --> 04:45.780
+So our rules are saying that there are two
+
+04:45.780 --> 04:48.720
+possible paths that we can match traffic to.
+
+04:48.720 --> 04:51.420
+If someone ever comes to the path of just slash
+
+04:51.420 --> 04:54.180
+by itself or any route that looks like slash followed
+
+04:54.180 --> 04:57.690
+by anything besides slash API, then we want to
+
+04:57.690 --> 05:00.960
+send that request to whatever set of pods are governed
+
+05:00.960 --> 05:04.950
+by the service of client cluster IP service.
+
+05:04.950 --> 05:06.600
+And again, we just referred to the name
+
+05:06.600 --> 05:09.030
+of that other service as we had designated it inside
+
+05:09.030 --> 05:11.853
+of our client cluster IP service file.
+
+05:13.440 --> 05:16.770
+Then if a request came in with a leading route name
+
+05:16.770 --> 05:20.227
+of slash API, we wanted to to instead send it to the set of
+
+05:20.227 --> 05:23.580
+of pods that are governed or managed by the server
+
+05:23.580 --> 05:25.530
+cluster IP service.
+
+05:25.530 --> 05:28.140
+So essentially we're setting up the exact same relationship
+
+05:28.140 --> 05:30.600
+that you just saw in this diagram right here.
+
+05:30.600 --> 05:32.670
+The NGINX configuration that we're putting together
+
+05:32.670 --> 05:35.430
+is going to send all this incoming traffic to
+
+05:35.430 --> 05:38.250
+either the multi-client set of pods governed
+
+05:38.250 --> 05:41.190
+by this cluster IP service or the multi server set
+
+05:41.190 --> 05:43.950
+of pods governed by this cluster IP service.
+
+05:43.950 --> 05:46.110
+We don't have to actually specify the IP address
+
+05:46.110 --> 05:48.030
+of these servers inside our cluster.
+
+05:48.030 --> 05:50.820
+We just refer to the name of the service and then
+
+05:50.820 --> 05:53.820
+all this NGINX ingress stuff is going to figure it out
+
+05:53.820 --> 05:54.990
+from there.
+
+05:54.990 --> 05:56.760
+You'll notice that we also had to specify the port
+
+05:56.760 --> 05:58.443
+for both these services as well.
+
+05:59.310 --> 06:01.410
+Okay, So that's pretty much it for this config file.
+
+06:01.410 --> 06:03.270
+Now, the description that I've given you
+
+06:03.270 --> 06:05.100
+of this config file is pretty light
+
+06:05.100 --> 06:07.020
+at this point in time, like I haven't really told you
+
+06:07.020 --> 06:09.000
+about why we have multiple rules
+
+06:09.000 --> 06:12.150
+in here or this http flag or stuff like that.
+
+06:12.150 --> 06:14.040
+We are going to actually come back to this file
+
+06:14.040 --> 06:17.400
+over time and make a couple of additions to it over time.
+
+06:17.400 --> 06:19.200
+So don't we worry we are gonna come back
+
+06:19.200 --> 06:21.090
+to this file and have some further discussion
+
+06:21.090 --> 06:22.940
+about what's going on inside of here.
+
+06:24.000 --> 06:25.920
+Now last thing I wanna do is take this file
+
+06:25.920 --> 06:28.950
+and apply it with Cube ctl, which should set
+
+06:28.950 --> 06:31.770
+up some networking inside of our application.
+
+06:31.770 --> 06:33.770
+So I'm gonna flip on over to my terminal
+
+06:34.740 --> 06:38.670
+and I'm going to do a cube CTL apply dash F
+
+06:38.670 --> 06:39.630
+and then as usual
+
+06:39.630 --> 06:43.380
+we'll just apply everything inside of the K8s directory.
+
+06:43.380 --> 06:45.930
+So I'm gonna run that and somewhere inside of here
+
+06:45.930 --> 06:49.263
+we should see ingress service created right there.
+
+06:50.850 --> 06:52.200
+So let's take a quick pause right here.
+
+06:52.200 --> 06:53.550
+When we come back to the next section
+
+06:53.550 --> 06:55.230
+we're gonna do a little bit of work to make sure
+
+06:55.230 --> 06:57.960
+that the ingress is up and running as we would expect.
+
+06:57.960 --> 07:00.410
+So quick pause and I'll see you in just a minute.

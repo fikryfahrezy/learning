@@ -1,0 +1,481 @@
+WEBVTT
+
+00:00.780 --> 00:02.670
+-: In the last section, we made a very small change
+
+00:02.670 --> 00:04.560
+to our pod configuration file,
+
+00:04.560 --> 00:06.480
+updating its container port.
+
+00:06.480 --> 00:07.499
+But when we did so,
+
+00:07.499 --> 00:09.630
+we very quickly saw an error message
+
+00:09.630 --> 00:11.250
+that said that we were not allowed
+
+00:11.250 --> 00:14.130
+to update certain fields that are tied to a pod.
+
+00:14.130 --> 00:15.840
+And so essentially that message is telling us
+
+00:15.840 --> 00:17.190
+that there are some fields,
+
+00:17.190 --> 00:19.170
+so we are allowed to update such as the image
+
+00:19.170 --> 00:20.970
+that a pod uses.
+
+00:20.970 --> 00:22.740
+But there are other fields we are not allowed
+
+00:22.740 --> 00:25.560
+to touch at all once the pod has been created.
+
+00:25.560 --> 00:27.090
+And so this kind of flies in the face
+
+00:27.090 --> 00:29.610
+of everything I just told you about making changes
+
+00:29.610 --> 00:31.200
+to a configuration file.
+
+00:31.200 --> 00:33.690
+In other words, how are we gonna change a configuration file
+
+00:33.690 --> 00:36.780
+to change an object inside of our cluster
+
+00:36.780 --> 00:37.710
+if there are fields
+
+00:37.710 --> 00:41.280
+that we are not at all allowed to update or touch?
+
+00:41.280 --> 00:42.630
+Well, to solve this issue,
+
+00:42.630 --> 00:46.260
+we're gonna start making use of a new type of object
+
+00:46.260 --> 00:48.990
+that is going to replace our usage of pod inside
+
+00:48.990 --> 00:52.110
+of our very simple application as it stands right now.
+
+00:52.110 --> 00:54.810
+So the new type of object that we're going to make use of,
+
+00:54.810 --> 00:56.580
+in addition to pods and services
+
+00:56.580 --> 00:59.370
+is something called a deployment.
+
+00:59.370 --> 01:01.740
+A deployment is a Kubernetes object
+
+01:01.740 --> 01:05.220
+that is meant to maintain a set of identical pods.
+
+01:05.220 --> 01:08.010
+So that can be one pod, two pod, three pod,
+
+01:08.010 --> 01:10.080
+whatever number, and the deployment
+
+01:10.080 --> 01:11.430
+is going to constantly work
+
+01:11.430 --> 01:13.170
+to make sure that every single pod
+
+01:13.170 --> 01:14.910
+in its set that it's supposed to manage
+
+01:14.910 --> 01:17.670
+is always running the correct configuration,
+
+01:17.670 --> 01:19.980
+and is always in a runnable state.
+
+01:19.980 --> 01:21.780
+In order words, it is not crashing
+
+01:21.780 --> 01:24.600
+or it's not dead or anything like that.
+
+01:24.600 --> 01:28.320
+Now, a deployment is very similar in nature to a pod.
+
+01:28.320 --> 01:30.870
+Yes, I just said a deployment contains a set
+
+01:30.870 --> 01:32.130
+or maintains a set of pods
+
+01:32.130 --> 01:33.420
+but at the end of the day,
+
+01:33.420 --> 01:36.390
+we can use either deployments or pods
+
+01:36.390 --> 01:40.113
+with Kubernetes to run containers for our application.
+
+01:41.100 --> 01:43.200
+So let's compare and contrast some of the differences
+
+01:43.200 --> 01:45.720
+between pods and deployments.
+
+01:45.720 --> 01:47.940
+So with a pod, we're running a single set
+
+01:47.940 --> 01:50.640
+of very closely related containers.
+
+01:50.640 --> 01:51.750
+Remember, in a pod,
+
+01:51.750 --> 01:54.120
+we're only gonna stick in multiple containers
+
+01:54.120 --> 01:56.720
+if they have very tight integration with each other.
+
+01:57.600 --> 01:59.460
+In reality, pods are only used
+
+01:59.460 --> 02:01.740
+in a development environment.
+
+02:01.740 --> 02:02.970
+And usually only if you have
+
+02:02.970 --> 02:05.490
+like a very one-off single container
+
+02:05.490 --> 02:08.580
+or a very small group of containers that you want to run.
+
+02:08.580 --> 02:11.010
+We do not actually make use of pods directly
+
+02:11.010 --> 02:12.630
+in a production environment
+
+02:12.630 --> 02:14.730
+because of these limitations around being able
+
+02:14.730 --> 02:18.420
+to update its configuration and stuff like that.
+
+02:18.420 --> 02:19.740
+Now, a deployment, on the other hand,
+
+02:19.740 --> 02:21.600
+again is meant to set
+
+02:21.600 --> 02:25.800
+or is meant to run and manage a set of identical pods.
+
+02:25.800 --> 02:27.300
+So that is one or more.
+
+02:27.300 --> 02:29.040
+That can be one pod, two pod, three pod,
+
+02:29.040 --> 02:31.170
+however many you want.
+
+02:31.170 --> 02:32.310
+In that set of pods,
+
+02:32.310 --> 02:35.100
+every pod is going to be running the exact same set
+
+02:35.100 --> 02:37.623
+of containers with identical configuration.
+
+02:38.550 --> 02:39.960
+Now, the deployment itself
+
+02:39.960 --> 02:42.600
+is going to monitor the state of each pod.
+
+02:42.600 --> 02:44.730
+It's gonna watch the configuration of each one.
+
+02:44.730 --> 02:46.110
+It's gonna make sure that every pod
+
+02:46.110 --> 02:48.750
+is running the container successfully inside of it.
+
+02:48.750 --> 02:51.360
+If any pod happens to crash for any reason,
+
+02:51.360 --> 02:53.430
+the deployment is going to automatically attempt
+
+02:53.430 --> 02:56.370
+to restart that pod or completely recreate it
+
+02:56.370 --> 02:58.530
+in a fresh new state.
+
+02:58.530 --> 03:00.030
+We make use of deployments
+
+03:00.030 --> 03:01.560
+in a development environment,
+
+03:01.560 --> 03:03.810
+and we use them as the primary means
+
+03:03.810 --> 03:07.560
+of running containers in a production environment as well.
+
+03:07.560 --> 03:10.800
+So in this course, I first started off showing you pods,
+
+03:10.800 --> 03:13.470
+just so you understand here's a very basic way
+
+03:13.470 --> 03:15.960
+of creating a container with Kubernetes.
+
+03:15.960 --> 03:17.550
+But in reality, when we start making use
+
+03:17.550 --> 03:19.770
+of Kubernetes for any serious purpose,
+
+03:19.770 --> 03:21.390
+we make use of deployments
+
+03:21.390 --> 03:23.316
+as opposed to individual pods.
+
+03:23.316 --> 03:25.530
+So from here on forward,
+
+03:25.530 --> 03:29.760
+we're going to kind of tend to forgot that pods exist,
+
+03:29.760 --> 03:32.310
+and we're going to instead make use of deployments
+
+03:32.310 --> 03:34.800
+for running all of our different containers.
+
+03:34.800 --> 03:36.960
+Again, behind the scenes, a deployment is just making use
+
+03:36.960 --> 03:38.670
+of pods, so it's still very important
+
+03:38.670 --> 03:40.020
+to understand what a pod is
+
+03:40.020 --> 03:41.250
+and how you work with one,
+
+03:41.250 --> 03:43.530
+but again, we're going to make use of deployments
+
+03:43.530 --> 03:46.620
+in our development and production environments.
+
+03:46.620 --> 03:47.453
+Now, the last thing I wanna show you
+
+03:47.453 --> 03:50.190
+is just a very quick diagram here
+
+03:50.190 --> 03:52.890
+of what's kind of going on behind the scenes.
+
+03:52.890 --> 03:55.140
+So when we create a deployment object,
+
+03:55.140 --> 03:56.820
+it's going to have attached to it something
+
+03:56.820 --> 03:58.710
+called a pod template.
+
+03:58.710 --> 04:01.020
+A pod template is essentially a little block
+
+04:01.020 --> 04:02.340
+of configuration file,
+
+04:02.340 --> 04:04.200
+or excuse me, a little block of configuration
+
+04:04.200 --> 04:06.510
+that says hey, here's what any pod
+
+04:06.510 --> 04:09.330
+that is created by this deployment is supposed to look like.
+
+04:09.330 --> 04:11.280
+So the pod template might say okay,
+
+04:11.280 --> 04:13.380
+every pod that this deployment manages
+
+04:13.380 --> 04:15.300
+is supposed to have one container
+
+04:15.300 --> 04:17.010
+that has the name of Client
+
+04:17.010 --> 04:18.870
+that exposes port 3000
+
+04:18.870 --> 04:21.270
+and uses the image multiworker.
+
+04:21.270 --> 04:23.370
+And so that deployment would use this template
+
+04:23.370 --> 04:25.620
+to create a pod that looks like this.
+
+04:25.620 --> 04:27.540
+A pod that has the name of oh,
+
+04:27.540 --> 04:29.613
+not Client Pod, just simply Client.
+
+04:31.500 --> 04:33.480
+It's running the multiworker image
+
+04:33.480 --> 04:37.200
+and it exposes port 3000 to the outside world.
+
+04:37.200 --> 04:40.140
+If we made a change to the pod template over here,
+
+04:40.140 --> 04:44.376
+like let's say we're instead supposed to expose port 3000.
+
+04:44.376 --> 04:47.520
+We can change that to 999 like so.
+
+04:47.520 --> 04:48.780
+Then the deployment would attempt
+
+04:48.780 --> 04:51.780
+to either change the existing pod that it's managing
+
+04:51.780 --> 04:53.430
+or alternatively, it would attempt
+
+04:53.430 --> 04:55.020
+to kill this pod entirely
+
+04:55.020 --> 04:57.180
+and replace it with a brand new pod
+
+04:57.180 --> 05:00.420
+that has the correct port assigned to it, like so.
+
+05:00.420 --> 05:02.190
+So again, this deployment object over here
+
+05:02.190 --> 05:05.310
+is going to be constantly watching all of the different pods
+
+05:05.310 --> 05:06.210
+that it maintains.
+
+05:06.210 --> 05:07.380
+It's gonna be watching their state
+
+05:07.380 --> 05:10.290
+and making sure that they have the correct state.
+
+05:10.290 --> 05:11.790
+So at the end of the day,
+
+05:11.790 --> 05:13.800
+to solve this issue that we're having right how
+
+05:13.800 --> 05:16.530
+with updating the configuration for our pod,
+
+05:16.530 --> 05:18.450
+rather than trying to make use of a pod
+
+05:18.450 --> 05:20.010
+and update the container port,
+
+05:20.010 --> 05:22.230
+we're going to instead refactor this thing
+
+05:22.230 --> 05:24.232
+to instead be a deployment
+
+05:24.232 --> 05:28.590
+that creates a pod running the multiworker image
+
+05:28.590 --> 05:31.590
+and with a very specific container port.
+
+05:31.590 --> 05:33.150
+Once we make use of the deployment,
+
+05:33.150 --> 05:35.880
+all those restrictions around updating certain variables,
+
+05:35.880 --> 05:37.320
+like say the container port right here
+
+05:37.320 --> 05:39.810
+or the name of the container will be lifted.
+
+05:39.810 --> 05:41.730
+With a deployment, we can change any piece
+
+05:41.730 --> 05:44.340
+of configuration tied to a pod that we want to.
+
+05:44.340 --> 05:46.350
+We don't have to worry about seeing that error message,
+
+05:46.350 --> 05:47.500
+like we did previously.
+
+05:48.360 --> 05:49.980
+Okay, so let's take a quick pause right here.
+
+05:49.980 --> 05:51.570
+We're gonna come back in the next section
+
+05:51.570 --> 05:55.110
+and we're going to start to refactor our client pod file
+
+05:55.110 --> 05:57.180
+or just completely recreate it for that matter
+
+05:57.180 --> 05:58.080
+and we're going to turn it
+
+05:58.080 --> 06:01.080
+into a deployment object type instead.
+
+06:01.080 --> 06:02.730
+So I'll see you in just a minute.

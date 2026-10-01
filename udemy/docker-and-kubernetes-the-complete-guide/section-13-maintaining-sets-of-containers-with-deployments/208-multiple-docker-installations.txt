@@ -1,0 +1,415 @@
+WEBVTT
+
+00:00.930 --> 00:03.450
+-: When we first started talking about pods and deployments
+
+00:03.450 --> 00:05.730
+about a dozen videos or so ago,
+
+00:05.730 --> 00:07.740
+you might recall that I opened up my terminal
+
+00:07.740 --> 00:09.510
+at some point in time and I told you
+
+00:09.510 --> 00:11.880
+that I was going to run a series of commands,
+
+00:11.880 --> 00:14.280
+and I also told you, don't try to run these commands.
+
+00:14.280 --> 00:16.110
+I told you don't run these because you're probably
+
+00:16.110 --> 00:18.900
+gonna see an error message or something like that.
+
+00:18.900 --> 00:20.520
+And so one of the commands that I ran
+
+00:20.520 --> 00:24.180
+at that point in time, was a simple Docker P S.
+
+00:24.180 --> 00:27.540
+Remember the Docker PS commands will print out the status
+
+00:27.540 --> 00:29.250
+of all the different containers that are running
+
+00:29.250 --> 00:30.990
+on your local machine.
+
+00:30.990 --> 00:33.578
+So you saw me run this command, and when I did so
+
+00:33.578 --> 00:36.420
+there appeared to be a tremendous number
+
+00:36.420 --> 00:39.330
+of containers running on my local machine.
+
+00:39.330 --> 00:41.490
+Now, if you open up your terminal right now
+
+00:41.490 --> 00:43.491
+and you run a docker PS as well,
+
+00:43.491 --> 00:46.800
+you're probably only gonna see like maybe zero,
+
+00:46.800 --> 00:49.110
+one, two or three local containers.
+
+00:49.110 --> 00:50.850
+And chances are there are they're going to be containers
+
+00:50.850 --> 00:52.860
+that we had started up in previous sections
+
+00:52.860 --> 00:55.440
+that you never cleaned up or anything like that.
+
+00:55.440 --> 00:57.303
+So why am I seeing this output right here
+
+00:57.303 --> 00:59.580
+of all these different containers?
+
+00:59.580 --> 01:00.720
+And if you look at the name of them
+
+01:00.720 --> 01:04.500
+they all appear to be very clearly related to Kubernetes.
+
+01:04.500 --> 01:06.780
+So why am I seeing all this output right here
+
+01:06.780 --> 01:09.720
+and why are you only seeing one or two or three?
+
+01:09.720 --> 01:11.010
+Well, in this section we're going to
+
+01:11.010 --> 01:12.510
+investigate this a little bit.
+
+01:12.510 --> 01:13.860
+We're going to get a better idea
+
+01:13.860 --> 01:17.700
+of what docker is doing for us both on our local computer
+
+01:17.700 --> 01:20.730
+and inside that virtual machine that forms our node,
+
+01:20.730 --> 01:21.930
+we're going to get a better idea
+
+01:21.930 --> 01:24.330
+of how we can kind of reach into the node
+
+01:24.330 --> 01:27.517
+and play around with a copy of docker inside there.
+
+01:27.517 --> 01:29.730
+All right, so first off, couple diagrams.
+
+01:29.730 --> 01:31.740
+Now we've looked at some variations
+
+01:31.740 --> 01:34.140
+on this diagram right here a couple time,
+
+01:34.140 --> 01:36.300
+and we've gone over the process of what happens
+
+01:36.300 --> 01:38.769
+when we feed in a config file through kubectl
+
+01:38.769 --> 01:40.140
+a couple times as well.
+
+01:40.140 --> 01:42.240
+But I wanna give you just one more quick reminder
+
+01:42.240 --> 01:43.590
+of what's going on.
+
+01:43.590 --> 01:45.810
+So remember we take a configuration file
+
+01:45.810 --> 01:49.260
+that wants to create either a pod or a deployment.
+
+01:49.260 --> 01:51.510
+We feed that into kubectl,
+
+01:51.510 --> 01:53.100
+that gets passed off to the master,
+
+01:53.100 --> 01:56.340
+and then the master reaches into the virtual machine
+
+01:56.340 --> 01:58.380
+and communicates with the copy of docker
+
+01:58.380 --> 02:01.650
+that runs only inside of the virtual machine,
+
+02:01.650 --> 02:03.840
+and it tells it, hey docker client
+
+02:03.840 --> 02:05.970
+we need to create a new container.
+
+02:05.970 --> 02:08.720
+Go off and grab this image and create a container out of it.
+
+02:08.720 --> 02:11.030
+The docker client then turns around
+
+02:11.030 --> 02:14.250
+and says to the docker server, hey docker server
+
+02:14.250 --> 02:16.170
+we need to go and grab an image
+
+02:16.170 --> 02:18.510
+and we need to create a container out of it.
+
+02:18.510 --> 02:20.582
+And so it's then up to the docker server
+
+02:20.582 --> 02:24.517
+to reach out to docker hub, download an image,
+
+02:24.517 --> 02:26.989
+store it inside of some local cash,
+
+02:26.989 --> 02:29.280
+and then build a container out of it.
+
+02:29.280 --> 02:32.310
+Again, we've gone over this flow several times,
+
+02:32.310 --> 02:34.350
+now something else that we've discussed a couple times
+
+02:34.350 --> 02:36.930
+is the fact that we have two copies of docker
+
+02:36.930 --> 02:38.940
+running on your local machine right now.
+
+02:38.940 --> 02:41.160
+We have the copy of docker that's running inside
+
+02:41.160 --> 02:44.476
+of the virtual machine, and we have the copy of docker
+
+02:44.476 --> 02:47.910
+that we installed way back at the start of this course,
+
+02:47.910 --> 02:51.000
+when we ran docker for Mac or docker for Windows.
+
+02:51.000 --> 02:53.560
+That's the copy of docker that's associated
+
+02:53.560 --> 02:55.740
+with this status bar drop down right here.
+
+02:55.740 --> 02:56.573
+All right, now I wanna show you
+
+02:56.573 --> 02:58.800
+something really interesting, all right,
+
+02:58.800 --> 03:00.810
+I'm gonna flip back over to my terminal
+
+03:00.810 --> 03:02.940
+and inside of this terminal window right here
+
+03:02.940 --> 03:05.670
+I'm going to run docker PS again.
+
+03:05.670 --> 03:07.110
+When I run that, you're gonna see, yep
+
+03:07.110 --> 03:09.900
+I've got all this output from docker right here.
+
+03:09.900 --> 03:13.020
+Now I'm gonna open up another terminal window,
+
+03:13.020 --> 03:15.990
+so here's just another simple terminal window over here
+
+03:15.990 --> 03:19.050
+and I'm going to do a docker PS over here as well.
+
+03:19.050 --> 03:21.030
+And when I do it over here, it appears that
+
+03:21.030 --> 03:24.180
+I'm running absolutely no containers whatsoever.
+
+03:24.180 --> 03:26.130
+So what's going on here?
+
+03:26.130 --> 03:28.260
+Well, essentially I have configured docker
+
+03:28.260 --> 03:31.560
+inside of these two terminal windows to connect
+
+03:31.560 --> 03:33.900
+to one of these different docker servers
+
+03:33.900 --> 03:36.510
+that's running on my local computer.
+
+03:36.510 --> 03:39.810
+So whenever I type in a command inside my terminal,
+
+03:39.810 --> 03:42.600
+I'm accessing the copy of docker client
+
+03:42.600 --> 03:44.760
+that was set up with docker for Mac,
+
+03:44.760 --> 03:47.463
+when I installed it way earlier inside this course.
+
+03:49.320 --> 03:51.480
+My first terminal window over here,
+
+03:51.480 --> 03:53.250
+this one where I run docker PS
+
+03:53.250 --> 03:55.890
+and I see no running containers whatsoever.
+
+03:55.890 --> 03:57.630
+This copy of the docker client
+
+03:57.630 --> 03:58.950
+or the docker CLI,
+
+03:58.950 --> 04:01.170
+is connecting to the docker server
+
+04:01.170 --> 04:03.000
+that is running on my local computer,
+
+04:03.000 --> 04:04.950
+and again, this is the copy of Docker server
+
+04:04.950 --> 04:07.443
+that was installed with Docker for Mac.
+
+04:08.310 --> 04:09.630
+In the second terminal window,
+
+04:09.630 --> 04:11.280
+I bet you can guess what's going on
+
+04:11.280 --> 04:13.230
+in the second terminal window over here,
+
+04:13.230 --> 04:16.038
+I have configured my local copy of Docker client,
+
+04:16.038 --> 04:19.893
+not to connect to my local Docker server.
+
+04:21.600 --> 04:24.660
+Instead, I have reconfigured it to talk to the copy
+
+04:24.660 --> 04:28.602
+of Docker server running inside of the virtual machine.
+
+04:28.602 --> 04:32.610
+So, inside of this very specific terminal window right here
+
+04:32.610 --> 04:37.560
+when I do a docker PS, my copy of Docker client,
+
+04:37.560 --> 04:40.980
+the Docker CLI is reaching into the virtual machine.
+
+04:40.980 --> 04:43.560
+It's getting in contact with a copy of Docker server
+
+04:43.560 --> 04:45.150
+inside there, and it's asking it,
+
+04:45.150 --> 04:48.120
+hey what different containers are you running?
+
+04:48.120 --> 04:50.730
+And so that's why inside of this terminal window right here
+
+04:50.730 --> 04:54.570
+I see this big list of Kubernetes related containers
+
+04:54.570 --> 04:57.570
+including the multi-client container right here.
+
+04:57.570 --> 04:59.340
+And again, all these containers are running
+
+04:59.340 --> 05:01.980
+inside of my virtual machine.
+
+05:01.980 --> 05:04.067
+All right, so again the idea here
+
+05:04.067 --> 05:06.210
+all I want you to understand right now
+
+05:06.210 --> 05:08.850
+is that I have one copy of Docker client
+
+05:08.850 --> 05:11.580
+and between these two terminal windows, I have configured it
+
+05:11.580 --> 05:15.240
+to either talk to my local copy of Docker server
+
+05:15.240 --> 05:17.850
+or the copy of Docker server that is running inside
+
+05:17.850 --> 05:19.380
+of the virtual machine.
+
+05:19.380 --> 05:20.880
+So let's take a quick pause right here,
+
+05:20.880 --> 05:22.140
+now that we understand that,
+
+05:22.140 --> 05:23.580
+when we come back the next section
+
+05:23.580 --> 05:25.770
+I'm gonna show you how you can reconfigure
+
+05:25.770 --> 05:27.550
+your local copy of Docker client
+
+05:27.550 --> 05:30.900
+to talk to Docker server inside the virtual machine.
+
+05:30.900 --> 05:32.134
+And of course, I'll also tell you
+
+05:32.134 --> 05:34.920
+why we would want to do this at all.
+
+05:34.920 --> 05:35.790
+All right, so quick break
+
+05:35.790 --> 05:37.790
+and we'll come back in the next section.

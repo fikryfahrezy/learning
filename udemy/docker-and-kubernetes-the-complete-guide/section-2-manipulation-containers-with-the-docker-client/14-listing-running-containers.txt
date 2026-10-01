@@ -1,0 +1,298 @@
+WEBVTT
+
+00:00.870 --> 00:02.820
+-: In this section, we're gonna take another look at
+
+00:02.820 --> 00:04.650
+a very commonly used command.
+
+00:04.650 --> 00:08.460
+So the command that we're gonna look at is Docker PS.
+
+00:08.460 --> 00:09.720
+This command will list all
+
+00:09.720 --> 00:11.310
+the different running containers that are
+
+00:11.310 --> 00:13.200
+currently on your machine.
+
+00:13.200 --> 00:16.590
+Let's try running it right now and just seeing what happens.
+
+00:16.590 --> 00:18.300
+I'll flip on over to my terminal
+
+00:18.300 --> 00:20.530
+and I'll run Docker PS.
+
+00:20.530 --> 00:22.440
+When I run this command
+
+00:22.440 --> 00:25.350
+you're gonna see some headers for a table.
+
+00:25.350 --> 00:28.000
+At present we have no containers running our machine,
+
+00:28.992 --> 00:31.110
+so we have no entries inside this table.
+
+00:31.110 --> 00:33.360
+At this point, we've only been running images
+
+00:33.360 --> 00:36.210
+or creating containers that run very quickly
+
+00:36.210 --> 00:38.190
+and then immediately close down.
+
+00:38.190 --> 00:42.210
+So for example, when we were running Docker run BusyBox
+
+00:42.210 --> 00:45.570
+and Echo High there, that container starts up
+
+00:45.570 --> 00:48.060
+and then almost immediately exits us back to
+
+00:48.060 --> 00:49.320
+the command line.
+
+00:49.320 --> 00:52.140
+So if we want Docker PS to be meaningful at all,
+
+00:52.140 --> 00:54.660
+we have to have some container that is running for
+
+00:54.660 --> 00:56.463
+some longer amount of time.
+
+00:57.600 --> 01:00.030
+In order to get a container running a little bit longer
+
+01:00.030 --> 01:03.030
+we could substitute the command that is executed when
+
+01:03.030 --> 01:04.650
+that container starts up.
+
+01:04.650 --> 01:06.960
+So rather than running Echo High there,
+
+01:06.960 --> 01:09.660
+I'll try Docker run BusyBox,
+
+01:09.660 --> 01:13.200
+and then I'll do Ping Google.com.
+
+01:13.200 --> 01:14.970
+This is a command that's going to attempt to
+
+01:14.970 --> 01:18.660
+ping Google servers and measure the amount of latency.
+
+01:18.660 --> 01:20.670
+It's a command that's going to continue running
+
+01:20.670 --> 01:22.860
+for a quite a long time.
+
+01:22.860 --> 01:24.990
+So here it is running right here, and as you can see
+
+01:24.990 --> 01:26.850
+it takes about two or three milliseconds
+
+01:26.850 --> 01:29.730
+for me to ping Google and get a response back.
+
+01:29.730 --> 01:31.560
+This command is going to continue running
+
+01:31.560 --> 01:34.920
+so we can now run Docker PS in a second window
+
+01:34.920 --> 01:39.030
+and we should see this container up here in the listing.
+
+01:39.030 --> 01:41.320
+I'm gonna open up a second terminal window
+
+01:42.330 --> 01:44.880
+and then I'll execute Docker PS.
+
+01:44.880 --> 01:47.820
+And when I do so, I'll then see that running container.
+
+01:47.820 --> 01:49.620
+I'm gonna get this on one line really quickly.
+
+01:49.620 --> 01:50.900
+There we go.
+
+01:50.900 --> 01:53.490
+So this is a print up for the container that is
+
+01:53.490 --> 01:56.880
+currently running that was issued the command of
+
+01:56.880 --> 01:59.040
+ping google.com.
+
+01:59.040 --> 02:01.080
+We also see the container's ID,
+
+02:01.080 --> 02:03.480
+which we can use for a lot of other operations that
+
+02:03.480 --> 02:04.920
+we'll look into later on.
+
+02:04.920 --> 02:07.350
+We'll see the image that was used for the container.
+
+02:07.350 --> 02:09.900
+We can see how long ago it was created.
+
+02:09.900 --> 02:13.800
+We get a status, currently it's been up for 24 seconds.
+
+02:13.800 --> 02:15.810
+We'll see a listing of any ports that have been
+
+02:15.810 --> 02:17.310
+opened for outside access,
+
+02:17.310 --> 02:18.510
+and we're gonna talk a lot about
+
+02:18.510 --> 02:20.370
+ports later on inside this course.
+
+02:20.370 --> 02:22.050
+And at the very end, we'll also see
+
+02:22.050 --> 02:25.410
+a randomly generated name to identify this container.
+
+02:25.410 --> 02:28.533
+In my case, the randomly generated name was Epic Corey.
+
+02:29.910 --> 02:32.970
+If I now flip back over to that running ping process
+
+02:32.970 --> 02:36.300
+I can press control C on my keyboard to stop it.
+
+02:36.300 --> 02:38.670
+So I'll press control C right now and
+
+02:38.670 --> 02:41.010
+I get kicked back to my command line.
+
+02:41.010 --> 02:45.060
+As you might expect, if I then run Docker PS a second time
+
+02:45.060 --> 02:47.910
+I would not see that container anymore.
+
+02:47.910 --> 02:52.320
+So Docker PS specifically shows running containers.
+
+02:52.320 --> 02:55.080
+We can modify the Docker PS command just a little bit
+
+02:55.080 --> 02:57.420
+to show all containers that have ever been created
+
+02:57.420 --> 02:58.710
+on our machine.
+
+02:58.710 --> 03:03.710
+To do so, we can execute Docker PS, dash, dash all.
+
+03:05.850 --> 03:07.500
+Oh, just two dashes, there we go.
+
+03:08.460 --> 03:10.770
+When we execute that command, we'll see a listing of
+
+03:10.770 --> 03:13.320
+all the containers that we have ever created.
+
+03:13.320 --> 03:15.840
+And so I'm gonna zoom out again here really quickly
+
+03:15.840 --> 03:17.400
+just so I can see this table.
+
+03:17.400 --> 03:18.233
+There we go.
+
+03:19.440 --> 03:21.060
+So for every one of these containers,
+
+03:21.060 --> 03:22.560
+these have all been containers
+
+03:22.560 --> 03:25.560
+that we have started up and then have either been shut down
+
+03:25.560 --> 03:28.410
+on our behalf or shut down naturally.
+
+03:28.410 --> 03:30.780
+So for each one of them, we'll see the container ID,
+
+03:30.780 --> 03:33.450
+image, command, when it was created,
+
+03:33.450 --> 03:36.480
+its current status, in this case they're all exited,
+
+03:36.480 --> 03:38.100
+any ports that have been opened up.
+
+03:38.100 --> 03:39.390
+Again, we'll talk about those later.
+
+03:39.390 --> 03:41.673
+And the randomly generated name for each one.
+
+03:43.050 --> 03:44.970
+So in practice, we're going to end up using
+
+03:44.970 --> 03:47.070
+the Docker PS command quite a bit to see
+
+03:47.070 --> 03:49.890
+what containers are currently running on our machine.
+
+03:49.890 --> 03:52.290
+One of the most common uses of Docker PS is
+
+03:52.290 --> 03:53.580
+not only to see what's running,
+
+03:53.580 --> 03:56.280
+but also to get the ID of a running container,
+
+03:56.280 --> 03:57.330
+because like I said,
+
+03:57.330 --> 03:59.490
+we very frequently want to issue commands
+
+03:59.490 --> 04:03.362
+on a very specific container, and for that we need its ID.
+
+04:03.362 --> 04:05.550
+All right, so that's the Docker PS command.
+
+04:05.550 --> 04:07.140
+Let's take a quick pause right here and
+
+04:07.140 --> 04:08.673
+continue in the next section.

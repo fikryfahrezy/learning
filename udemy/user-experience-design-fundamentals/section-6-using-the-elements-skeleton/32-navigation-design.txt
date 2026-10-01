@@ -1,0 +1,880 @@
+WEBVTT
+
+00:01.040 --> 00:04.710
+On the information side of things, we have navigation design.
+
+00:04.730 --> 00:09.120
+Any part of the interface that allows people to go places is navigation.
+
+00:09.140 --> 00:14.060
+It enables the user to see that structure and it's the means by which they can move through it.
+
+00:14.090 --> 00:18.380
+Think of navigation design as the place where the site map meets the design.
+
+00:18.410 --> 00:25.310
+The navigational system, along with content and the context of that content, should help someone understand
+
+00:25.310 --> 00:28.310
+where they are along with where they can go.
+
+00:28.340 --> 00:33.690
+Navigation design typically starts with a site map which looks something like this.
+
+00:33.710 --> 00:39.800
+You start at some sort of index page, which in this case is a home page, and then you have choices.
+
+00:39.830 --> 00:45.950
+As you dig into each one of those choices, you may also have additional choices underneath that.
+
+00:46.010 --> 00:52.490
+A site map like this is where we begin figuring out how many areas of content there are, how many things
+
+00:52.490 --> 00:57.380
+we need to be able to move people to and through, and how they're going to get to all of it.
+
+00:57.410 --> 00:58.230
+How is it organized?
+
+00:58.250 --> 00:59.210
+How is it prioritized?
+
+00:59.210 --> 01:01.820
+How many levels down does it exist?
+
+01:01.830 --> 01:06.930
+That gives us a sense of how the navigation is going to have to be designed.
+
+01:07.730 --> 01:12.950
+Good navigation design passes what author Steve Krug calls the trunk test.
+
+01:12.980 --> 01:13.810
+Okay.
+
+01:13.820 --> 01:20.510
+The way he explains it is let's say you're blindfolded, thrown in the trunk of a car and driven around
+
+01:20.510 --> 01:27.350
+the city, you know, for an hour and then unceremoniously dumped out in some random part of the city.
+
+01:27.380 --> 01:30.650
+Now, in most cases, you'll have no idea where you are.
+
+01:30.680 --> 01:39.740
+But if there is some type of effective navigation design around you, some wayfinding, some signposts
+
+01:39.740 --> 01:43.400
+that enable you to answer four very important questions.
+
+01:43.400 --> 01:44.810
+Where are you?
+
+01:45.420 --> 01:47.130
+How did you arrive here?
+
+01:47.520 --> 01:49.650
+What can you do here?
+
+01:49.950 --> 01:52.020
+And where can you go from here?
+
+01:53.060 --> 01:58.730
+Now, if you answer all four of those questions correctly, it means that the navigation design has
+
+01:58.730 --> 02:00.100
+done several things right.
+
+02:00.110 --> 02:05.390
+First of all, it's provided a strong sense of place, you know where you are in the grand scheme of
+
+02:05.390 --> 02:05.990
+things.
+
+02:06.020 --> 02:06.160
+Okay?
+
+02:06.230 --> 02:11.960
+And not only do you know where you are, but you have a general sense of how big and how large and how
+
+02:11.990 --> 02:13.550
+deep your surroundings are.
+
+02:13.760 --> 02:19.970
+It also sets the correct expectations in that you have an immediate sense of what you can do and where
+
+02:19.970 --> 02:20.800
+you can go.
+
+02:20.840 --> 02:27.470
+And finally, it makes it possible for people to accurately predict the outcomes of your interactions.
+
+02:27.500 --> 02:27.920
+Okay.
+
+02:27.920 --> 02:31.340
+If I go this way, I'm headed towards this place.
+
+02:31.340 --> 02:34.530
+If I head this other way, I'm headed toward this place.
+
+02:34.550 --> 02:37.070
+That's what good navigation design does.
+
+02:37.070 --> 02:42.560
+And the trunk test is a really good way of ascertaining at any given point.
+
+02:42.560 --> 02:42.810
+Okay.
+
+02:42.830 --> 02:45.320
+Across your application, across your site, across your whatever.
+
+02:45.320 --> 02:50.350
+It's a really good way to stop and check if your navigation design is doing its job.
+
+02:50.360 --> 02:56.550
+Any time you get an I don't know answer to any one of those questions, you know, you've got a navigation
+
+02:56.550 --> 02:57.180
+problem.
+
+02:57.850 --> 03:03.080
+Good navigation design is all about finding what you want, and you do that in a number of ways.
+
+03:03.100 --> 03:08.620
+You're either browsing, using a navigation system, you're searching, using keywords or phrases.
+
+03:08.620 --> 03:15.910
+You're using filters to narrow large lists or large sets of information, or you're using some sort
+
+03:15.910 --> 03:19.990
+of pagination control, which gives you location information.
+
+03:19.990 --> 03:22.030
+It gives you a sense of depth.
+
+03:22.030 --> 03:28.270
+It tells you how potentially large this place you're in might be, and it gives you the ability to move
+
+03:28.270 --> 03:30.640
+around within a large information set.
+
+03:30.970 --> 03:37.240
+The interface for Google Analytics is a really good example of this because it allows multiple ways
+
+03:37.240 --> 03:39.370
+for a user to get at the things that they want.
+
+03:39.430 --> 03:39.900
+Okay.
+
+03:39.910 --> 03:46.360
+On the left, you obviously you have a search for reports for certain statistics, etcetera, etcetera,
+
+03:46.360 --> 03:51.580
+but you have a very clear navigation tree that happens on the left that shows you how things are related,
+
+03:51.580 --> 03:52.870
+how things are organized.
+
+03:52.870 --> 03:58.670
+And it sort of illustrates the core areas that you can go to once you select any one of those things,
+
+03:58.670 --> 04:01.160
+as in this case where we're looking at demographics.
+
+04:01.190 --> 04:06.860
+You then have ways to control and manipulate and filter the information on that screen.
+
+04:06.860 --> 04:11.470
+All of that increases your ability to easily find what you want.
+
+04:11.480 --> 04:18.800
+It increases your sense of how much is available to you and it increases and enhances your ability to
+
+04:18.800 --> 04:20.830
+move around within that data.
+
+04:20.840 --> 04:23.750
+So this is navigation design on multiple levels, okay?
+
+04:23.750 --> 04:27.470
+We're not just dealing with a single navigation menu.
+
+04:27.500 --> 04:35.150
+We've got multiple facets of navigation, each of which is very specific and contextual to what's being
+
+04:35.150 --> 04:35.810
+shown.
+
+04:36.110 --> 04:40.340
+One of the jobs of navigation design, as we said, is to reveal depth.
+
+04:40.340 --> 04:45.830
+So how can we reveal the depth of content before people navigate anywhere, before they go anywhere?
+
+04:45.830 --> 04:47.380
+Well, there's a couple of ways we can do that.
+
+04:47.390 --> 04:51.050
+First, we've all seen dynamic submenus on a main nav menu.
+
+04:51.050 --> 04:52.280
+Okay, which is a mouseover.
+
+04:52.280 --> 04:57.350
+You roll over something and you get a dropdown menu or you click something and you get a submenu that
+
+04:57.350 --> 04:59.420
+sort of appears or reveals itself.
+
+04:59.420 --> 05:05.300
+The second way is by search results, and that includes the volume of results, how you filter those
+
+05:05.300 --> 05:07.400
+results and how you move through those results.
+
+05:07.400 --> 05:14.090
+In terms of pagination, both of those things provide feedback, which is incredibly, incredibly important.
+
+05:14.120 --> 05:17.540
+There's an obvious result that comes from action.
+
+05:17.540 --> 05:20.100
+Information is delivered when requested.
+
+05:20.120 --> 05:22.220
+You also get a very clear sense of place.
+
+05:22.220 --> 05:23.840
+You get a sense of how much there is.
+
+05:23.840 --> 05:28.160
+You know, when you see those page numbers at the bottom of a Google search result, you have an immediate
+
+05:28.160 --> 05:33.530
+sense of how much potential stuff there is that you may or may not want to deal with.
+
+05:33.560 --> 05:39.680
+The other way that depth is revealed is by using indicators and context to provide a sense of place.
+
+05:39.680 --> 05:45.150
+Every single element of the page, no matter how seemingly insignificant, contribute to this.
+
+05:45.170 --> 05:52.940
+Here's a very simple example The fact that a page title matches literally the navigation label and the
+
+05:52.940 --> 05:54.080
+navigation menu.
+
+05:54.080 --> 05:59.930
+The label says how we do it when we hit the page, guess what the page title says, how we do it.
+
+05:59.930 --> 06:06.770
+The page title doesn't say our process or our methodology or the way we go about creating design.
+
+06:06.770 --> 06:08.840
+No, it says how we do it.
+
+06:08.840 --> 06:14.480
+That sends a very clear, immediate, quick, almost subconscious signal to the user that, yes, this
+
+06:14.480 --> 06:17.360
+is the page I selected, I got what I asked for.
+
+06:17.360 --> 06:20.540
+What I intended to do is what I actually did.
+
+06:20.720 --> 06:24.950
+An important principle of navigation design is information scent.
+
+06:24.950 --> 06:29.900
+And while that sounds kind of funny, I'm going to explain what it is people typically estimate based
+
+06:29.900 --> 06:34.220
+on what they see, how much useful information they're likely to find on any given path.
+
+06:34.220 --> 06:41.180
+In other words, based on what I see right now, at this very moment, I'm making a judgment as to whether
+
+06:41.180 --> 06:45.890
+what comes after this is going to be useful or valuable or meaningful.
+
+06:45.890 --> 06:48.530
+I'm judging the book by its cover in a lot of ways.
+
+06:48.560 --> 06:53.930
+Now, after I go down the path, then I compare what actually happened with my prediction.
+
+06:53.930 --> 06:54.430
+Was I right?
+
+06:54.440 --> 06:55.190
+Was I wrong?
+
+06:55.220 --> 06:59.840
+As soon as I no longer expect to find useful information, I move to another path.
+
+06:59.840 --> 07:00.860
+I move to another source.
+
+07:00.860 --> 07:02.390
+I click on something else.
+
+07:02.390 --> 07:05.690
+I leave, I visit another website, that kind of thing.
+
+07:05.690 --> 07:10.220
+So maintaining what's called information scent is very important.
+
+07:10.220 --> 07:16.190
+That simply means that at every level, when someone drills down into a process, when someone drills
+
+07:16.190 --> 07:22.270
+down into part of the interface, they have to see evidence that the stuff they're looking for is there.
+
+07:22.280 --> 07:24.080
+Here's a very simple example.
+
+07:24.080 --> 07:30.170
+On the Home Depot website, you have a category that says essential products for winter.
+
+07:30.170 --> 07:37.640
+And when you click it, you get this large contextual navigation menu that shows you a bunch of categories.
+
+07:37.670 --> 07:42.950
+Underneath each main category, there are individual choices under winter essentials.
+
+07:42.950 --> 07:47.990
+I have snow blowers, snow shovels, salt spreaders, ice melt and traction control, whole house generators,
+
+07:47.990 --> 07:49.160
+portable generators.
+
+07:49.190 --> 07:56.030
+The point is this the minute I see that list, I need to see at least one thing that sort of speaks
+
+07:56.030 --> 07:57.380
+to what I'm after.
+
+07:57.490 --> 08:03.400
+If I glance over this entire list and I don't see something that matches what I need, or at least indicates
+
+08:03.400 --> 08:07.150
+to me that they have what I need, I'm not going to go past this point.
+
+08:07.180 --> 08:09.280
+I'm not going to click anything to try and find out.
+
+08:09.280 --> 08:11.170
+I'm probably going to bail.
+
+08:11.200 --> 08:16.210
+Now, I realize that may sound extreme, but that's exactly what most people do.
+
+08:16.210 --> 08:23.560
+And the reason they do it is because we all know that we have infinite choices at our fingertips.
+
+08:23.560 --> 08:32.260
+We know that there are 16 2600 other websites that we can go to to look for the same information.
+
+08:32.260 --> 08:38.710
+So there's no penalty for bailing out and starting over the minute the information scent starts to get
+
+08:38.740 --> 08:39.130
+weak.
+
+08:39.160 --> 08:44.410
+The minute we feel like we're not going to find what we're looking for, the minute there's any doubt
+
+08:44.410 --> 08:47.230
+planted in our heads, we're taking another path.
+
+08:47.320 --> 08:52.780
+Another important thing to remember about navigation design is that the path is rarely direct.
+
+08:52.810 --> 08:54.910
+People meander to some degree.
+
+08:54.910 --> 09:01.070
+Okay, we follow links based on contextual relevance on our interest level and sometimes just on whim,
+
+09:01.070 --> 09:06.290
+we think something sounds interesting or we think something seems important when we don't know where
+
+09:06.290 --> 09:08.460
+we are and we don't know how we got there.
+
+09:08.480 --> 09:11.840
+We attempt to back out or navigate to known location.
+
+09:11.840 --> 09:17.120
+That's why people freak out if they don't see the word home somewhere or they don't see a little home
+
+09:17.120 --> 09:17.630
+icon.
+
+09:17.630 --> 09:21.740
+It's why if you're a developer, your clients are going, Well, how do I get back to the home page?
+
+09:21.740 --> 09:22.640
+Where's the home page?
+
+09:22.640 --> 09:24.080
+Why isn't there a home link?
+
+09:24.080 --> 09:28.640
+Even though there's a well-established convention that when you click on the logo in the left hand corner,
+
+09:28.640 --> 09:29.930
+you go back to the home page.
+
+09:29.930 --> 09:35.030
+We sort of want that safety of, okay, I know where I am now, but what that also tells you is that
+
+09:35.030 --> 09:37.640
+something is wrong with your navigation model.
+
+09:37.640 --> 09:42.590
+And what may be happening is you may need more than one way to navigate.
+
+09:42.590 --> 09:47.320
+Although navigation bars are very common, they're not the only method for finding your way.
+
+09:47.330 --> 09:50.300
+Search filters, tags, Contextual links.
+
+09:50.300 --> 09:52.700
+These things can all be used to find information.
+
+09:52.700 --> 09:58.160
+For instance, what you often see in the body of text is that there are links contained within so that
+
+09:58.160 --> 10:03.530
+as someone's reading, if they hit upon some important keyword and they decide they want more information,
+
+10:03.530 --> 10:04.370
+they may click on it.
+
+10:04.370 --> 10:06.710
+In this case, we see, okay, health care.
+
+10:06.710 --> 10:08.180
+Yeah, that's an industry I'm interested in.
+
+10:08.180 --> 10:09.320
+Maybe I'll click on this.
+
+10:09.320 --> 10:11.720
+That's a clue that it goes somewhere.
+
+10:11.720 --> 10:17.750
+So while that may not always be the primary means of navigation, it's equally as important.
+
+10:17.750 --> 10:22.460
+It's extremely important to consider indirect paths to moving around the site.
+
+10:23.000 --> 10:28.250
+Icons and labels can play an extremely important role in aiding navigation design.
+
+10:28.250 --> 10:33.980
+And there are two types of icons in particular that you have to be aware of because each is interpreted
+
+10:33.980 --> 10:35.100
+in a very different way.
+
+10:35.120 --> 10:41.200
+Representational icons have clear meanings based on their similarity of familiar objects and or actions.
+
+10:41.210 --> 10:41.440
+Okay.
+
+10:41.450 --> 10:46.190
+When you look at this set of icons, you know at a glance what these are, you don't need a label underneath
+
+10:46.190 --> 10:46.370
+them.
+
+10:46.370 --> 10:47.930
+You don't need a word next to them.
+
+10:47.930 --> 10:51.530
+You've seen them a hundred thousand times and you know exactly what they do.
+
+10:51.560 --> 10:57.380
+Abstract icons, on the other hand, typically require context and experience in order to learn their
+
+10:57.380 --> 10:58.010
+meanings.
+
+10:58.010 --> 11:03.260
+When you look at the illustrations, do those really resemble anything you've ever seen in the real
+
+11:03.260 --> 11:03.800
+world?
+
+11:03.800 --> 11:10.520
+Or do you know what they are because you've had repeated exposure to them over time and you've come
+
+11:10.520 --> 11:12.020
+to know what they mean?
+
+11:12.020 --> 11:13.010
+Very different.
+
+11:13.010 --> 11:19.250
+So whenever you make a conscious choice to use a more abstract icon, there are some important questions
+
+11:19.250 --> 11:22.590
+you have to ask to sort of confirm whether you're making the right choice or not.
+
+11:22.620 --> 11:28.400
+Number one, how important is it that someone can recognize and act on that icon that they see?
+
+11:28.410 --> 11:31.180
+Is it going to clue them in as to what they're supposed to do?
+
+11:31.200 --> 11:32.540
+Are they going to get it immediately?
+
+11:32.550 --> 11:34.020
+Have they seen it before?
+
+11:34.050 --> 11:39.240
+Is there additional context on the screen that also tells them what to do or what this is?
+
+11:39.270 --> 11:41.760
+Is there a label underneath the icon?
+
+11:41.760 --> 11:43.440
+Is there a label next to the icon?
+
+11:43.440 --> 11:48.840
+Are there other things on the screen that make it obvious or sort of go some distance in explaining
+
+11:48.840 --> 11:50.250
+what that thing is?
+
+11:50.280 --> 11:54.690
+And most importantly, is there a time for them to figure it out, which there may not be?
+
+11:54.720 --> 12:00.690
+For example, a couple of years ago I worked on an application that was meant for first responders at
+
+12:00.690 --> 12:07.500
+disaster sites, situations where a building is on fire or there's a tornado or a hurricane or, you
+
+12:07.500 --> 12:09.270
+know, something is happening.
+
+12:09.270 --> 12:13.800
+And they these people need to be using this application as they're doing their jobs.
+
+12:13.800 --> 12:17.550
+In that type of situation, there's no time to be figuring things out, okay?
+
+12:17.550 --> 12:21.720
+Everything's got to be very intuitive, very obvious and very clear.
+
+12:21.720 --> 12:25.830
+So abstract icons wouldn't make any sense in that instance.
+
+12:25.830 --> 12:32.100
+But using recognized icons, things that people are intimately familiar with, things that are instantly
+
+12:32.100 --> 12:38.790
+recognized no matter what the visual style may be, go a long way in allowing people to act and act
+
+12:38.790 --> 12:39.630
+quickly.
+
+12:39.780 --> 12:46.020
+There are some very specific things we can do to make sure that we're designing navigation that works
+
+12:46.020 --> 12:47.610
+in the true sense of the word.
+
+12:47.640 --> 12:54.330
+Number one, we can make sure that we use meaningful labels for navigation links and buttons.
+
+12:54.330 --> 13:01.590
+Don't be cute, don't use esoteric terms, don't use slang, don't use acronyms.
+
+13:01.620 --> 13:01.920
+Okay?
+
+13:01.920 --> 13:07.050
+Use things that just about anybody can instantly recognize, instantly understand.
+
+13:07.050 --> 13:08.730
+Call it what it is.
+
+13:08.760 --> 13:15.480
+Next, you can reduce memory load by ensuring that the navigation and the links are visible, findable
+
+13:15.480 --> 13:16.710
+and informative.
+
+13:16.710 --> 13:20.550
+And I want to talk a minute about memory load, because this is really important.
+
+13:20.550 --> 13:25.500
+There's a pervading myth where people say, you know, there should never be more than seven items on
+
+13:25.500 --> 13:28.410
+a navigation menu because people can't remember more than that.
+
+13:28.410 --> 13:34.290
+There was a big article that came out years ago that lots of folks I know adhere to and believe to be
+
+13:34.290 --> 13:34.920
+gospel.
+
+13:34.950 --> 13:38.110
+The article was called The Magic Number seven plus or minus two.
+
+13:38.130 --> 13:43.890
+The idea behind this this experiment that was based on was to measure short term memory by the number
+
+13:43.890 --> 13:45.570
+of things a person can recall.
+
+13:45.570 --> 13:52.470
+The key word here is recall, because in that experiment, they showed people information and then took
+
+13:52.470 --> 13:53.250
+it away.
+
+13:53.250 --> 13:56.850
+And after a few minutes, they asked him to recall what they've seen.
+
+13:57.210 --> 14:03.780
+When was the last time you saw a website or an app or a system that showed you stuff, then took it
+
+14:03.780 --> 14:06.510
+away and made you remember what you just saw?
+
+14:06.540 --> 14:08.430
+Never, never happened.
+
+14:08.460 --> 14:09.210
+Doesn't happen.
+
+14:09.210 --> 14:09.510
+Okay.
+
+14:09.510 --> 14:17.220
+So that rule, that theory, that experiment, that article has absolutely zero to do with the real
+
+14:17.220 --> 14:21.060
+world of navigation Design recall is irrelevant.
+
+14:21.090 --> 14:23.280
+You're striving for recognition.
+
+14:23.280 --> 14:26.790
+Navigation should never show something and then remove it.
+
+14:26.790 --> 14:29.880
+Designing an interactive product isn't a recall task.
+
+14:29.880 --> 14:31.500
+It's a recognition task.
+
+14:31.500 --> 14:37.470
+So as long as a human being can recognize that this is the navigation right here, these are the links
+
+14:37.470 --> 14:40.100
+and the labels on those things are meaningful.
+
+14:40.110 --> 14:43.920
+A large navigation set doesn't really present any real problem.
+
+14:43.920 --> 14:44.190
+Okay.
+
+14:44.220 --> 14:48.600
+You're more likely to be limited or constrained by the device's form factor, right?
+
+14:48.600 --> 14:51.390
+It's monitor size or its screen resolution.
+
+14:51.390 --> 14:55.410
+Then by the number of elements in the navigation menu.
+
+14:55.410 --> 15:00.810
+The next thing we want to do is reduce cognitive friction by making sure that people don't have to study
+
+15:00.810 --> 15:03.120
+or decode the navigation system.
+
+15:03.120 --> 15:07.620
+What they see there should be obvious, understandable and intuitive.
+
+15:07.650 --> 15:12.750
+You want them to be able to find things quickly and you want them to be able to use what they find.
+
+15:12.780 --> 15:16.650
+You don't want them to spend time looking for things.
+
+15:16.920 --> 15:20.190
+Navigation shouldn't resemble a scavenger hunt.
+
+15:20.190 --> 15:20.700
+Okay.
+
+15:20.700 --> 15:22.470
+Your navigation system isn't.
+
+15:22.590 --> 15:25.110
+A treasure map, so it shouldn't be cryptic.
+
+15:25.140 --> 15:32.280
+That goes back to what I said about cute labels or slang labels or acronyms or things that only people
+
+15:32.280 --> 15:34.260
+in the know would recognize.
+
+15:34.290 --> 15:35.540
+Call it what it is.
+
+15:35.550 --> 15:41.760
+You don't want to force people to search for or chase the information features or functionality or tools
+
+15:41.760 --> 15:43.040
+or whatever that they need.
+
+15:43.050 --> 15:44.400
+You want it to come to them.
+
+15:44.400 --> 15:46.380
+You want it to be readily available to them.
+
+15:46.380 --> 15:49.680
+You want them to be able to find it quickly and easily.
+
+15:49.710 --> 15:56.010
+Good information design brings information and interactivity to the person when they need it, how they
+
+15:56.010 --> 15:56.490
+need it.
+
+15:56.490 --> 16:01.710
+That also means that the content that they see is contextually meaningful.
+
+16:01.710 --> 16:01.980
+Right?
+
+16:01.980 --> 16:05.040
+It's in context with what they're trying to do.
+
+16:05.040 --> 16:07.650
+It's in context with the things they're trying to learn.
+
+16:07.650 --> 16:11.730
+It's in context with what they've seen previously.
+
+16:11.730 --> 16:15.480
+It's in context with the end goal that they're trying to achieve.
+
+16:15.720 --> 16:22.870
+Finally, good navigation design should always be consistent, and that means using the same interactions,
+
+16:22.870 --> 16:28.390
+behaviors and visual styles throughout the site, throughout the app, throughout the system.
+
+16:28.480 --> 16:33.130
+Elements of navigation of any kind should never appear and disappear.
+
+16:33.160 --> 16:38.110
+They should never rearrange their order and they should never move to a different location.
+
+16:38.140 --> 16:40.270
+Those are three absolutes.
+
+16:40.270 --> 16:45.820
+If you are doing any of those things in whatever you're building, your navigation is flawed and people
+
+16:45.820 --> 16:47.890
+will have a problem using your product.
+
+16:47.890 --> 16:53.920
+I promise you that even changing the organization of the page underneath the navigation area disrupts
+
+16:53.920 --> 16:55.870
+the person's understanding of how things work.
+
+16:55.870 --> 17:01.000
+Okay, There are certain conventions that happen there that set an expectation about what they're going
+
+17:01.000 --> 17:07.330
+to experience and how it's going to be presented, and that affects their ability to effectively move
+
+17:07.330 --> 17:07.900
+through it.
+
+17:07.910 --> 17:09.160
+I'll give you an example.
+
+17:09.160 --> 17:14.770
+If I choose the first item in this navigation menu, notice how it highlights number one in dark gray.
+
+17:14.800 --> 17:20.410
+Number two, I get a dropdown menu with categories of things undergraduate, postgraduate professional
+
+17:20.410 --> 17:26.710
+development International students titles are in gray, and I've got a list of additional categories
+
+17:26.710 --> 17:28.300
+under each main category.
+
+17:28.300 --> 17:32.320
+If I click on the second item in that same navigation menu, guess what?
+
+17:32.350 --> 17:35.380
+It behaves the same way it highlights in gray.
+
+17:35.380 --> 17:38.980
+It drops down in menu categories subcategories.
+
+17:38.980 --> 17:42.100
+Even though there isn't the same volume of information.
+
+17:42.100 --> 17:46.720
+The behavior, the appearance, the functionality is exactly the same.
+
+17:46.720 --> 17:52.180
+That allows me to accurately predict what's going to happen every time I interact with that top menu.
+
+17:52.180 --> 17:57.190
+And just to prove my little theory, I click for business and hey, there it is again.
+
+17:57.190 --> 17:58.150
+Same thing.
+
+17:58.150 --> 18:05.080
+I now have an accurate model of how this navigation works and what I can expect when I touch it.
+
+18:05.080 --> 18:08.620
+So now that I know how this works, I don't ever have to think about it again.
+
+18:08.620 --> 18:12.430
+I can go on about my business and it becomes just another tool in my arsenal.
+
+18:12.430 --> 18:14.170
+I can focus on the content at hand.
+
+18:14.200 --> 18:16.870
+I can focus on the tasks I'm trying to accomplish.
+
+18:16.960 --> 18:20.050
+That's why consistency is so important.
+
+18:20.080 --> 18:21.010
+Set it.
+
+18:21.010 --> 18:21.850
+Forget it.
+
+18:21.850 --> 18:24.400
+Focus on the things that are most important.

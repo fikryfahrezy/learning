@@ -1,0 +1,475 @@
+WEBVTT
+
+00:01.030 --> 00:05.440
+Another important component of successful visual design is consistency.
+
+00:05.440 --> 00:09.280
+And consistency is essentially what makes a system a system.
+
+00:09.280 --> 00:14.650
+It's what unifies all those disparate parts, those different screens, those different features, those
+
+00:14.650 --> 00:15.900
+different functions.
+
+00:15.910 --> 00:22.540
+It's what brings them together and enables us to perceive them as all being part of the same whole consistency
+
+00:22.540 --> 00:27.340
+and visual design allows us to build an accurate mental model of the way the site or the app or the
+
+00:27.340 --> 00:28.420
+system works.
+
+00:28.450 --> 00:35.260
+It allows us to again leverage our prior experience with other things to figure out how what's in front
+
+00:35.260 --> 00:36.040
+of us works.
+
+00:36.070 --> 00:40.420
+It also leads to reduced time and cost in terms of training and support.
+
+00:40.420 --> 00:47.440
+If my prior experience and subsequent knowledge allows me to sort of automatically grasp 60 to 70% of
+
+00:47.440 --> 00:54.970
+what's in front of me, that means that someone has to spend a lot less time explaining to me how something
+
+00:54.970 --> 00:55.510
+works.
+
+00:55.510 --> 01:01.370
+And in terms of formal training and support programs, those things cost organizations money.
+
+01:01.370 --> 01:06.140
+So if that doesn't have to happen, that can represent significant cost savings.
+
+01:06.140 --> 01:10.910
+If people can sort of get in and use the application quicker, that can be a very, very big benefit.
+
+01:10.940 --> 01:18.320
+The way you evaluate consistency is by asking some important questions, such as are buttons and controls
+
+01:18.320 --> 01:19.670
+placed consistently?
+
+01:19.700 --> 01:22.610
+Is language consistent and labels and messages?
+
+01:22.640 --> 01:28.490
+Are we using full words or are we using cryptic abbreviations that only people inside our organization
+
+01:28.490 --> 01:29.330
+would understand?
+
+01:29.330 --> 01:36.440
+Okay, acronyms especially fall into this category because it's really easy and really tempting to use
+
+01:36.440 --> 01:38.000
+all these terms that are very familiar to us.
+
+01:38.000 --> 01:44.570
+But you don't realize that most people have no idea what all those series of capital letters mean.
+
+01:44.570 --> 01:47.210
+So language has to be clear and consistent.
+
+01:47.240 --> 01:53.750
+Our font styles, images, graphic elements, color schemes all applied consistently across each screen.
+
+01:53.750 --> 01:59.000
+If we're using certain fonts for headlines, subheads and body text, are we repeating that on every
+
+01:59.000 --> 01:59.570
+screen?
+
+01:59.570 --> 02:04.430
+Are we using the same kind of elements on each page?
+
+02:04.430 --> 02:07.310
+Our buttons and controls displayed consistently?
+
+02:07.340 --> 02:09.530
+Do they graphically look the same?
+
+02:09.530 --> 02:09.830
+Okay.
+
+02:09.860 --> 02:12.530
+Is your primary action always treated the same way?
+
+02:12.530 --> 02:18.620
+Is it always a big red button or do we get to screen three and all of a sudden my primary action is
+
+02:18.650 --> 02:19.700
+an orange circle.
+
+02:19.700 --> 02:20.780
+That's consistency.
+
+02:20.780 --> 02:26.330
+It's got to look the same as it did the last time I experienced it so that I automatically recognize
+
+02:26.330 --> 02:28.550
+what it is and what I'm supposed to do with it.
+
+02:28.550 --> 02:35.180
+Related to that, do buttons or controls respond to user actions consistently in terms of the way they're
+
+02:35.180 --> 02:35.990
+displayed?
+
+02:36.020 --> 02:39.380
+Appropriate context, appropriate functionality.
+
+02:39.380 --> 02:45.560
+If I click a button on one screen and the result is I'm taken to a new page, then the next time I click
+
+02:45.590 --> 02:48.230
+a button, that's what I'm going to expect to happen.
+
+02:48.230 --> 02:53.510
+If I click that button and I suddenly get a pop up window, that's a disconnect in my understanding
+
+02:53.510 --> 02:54.740
+of how things work.
+
+02:54.740 --> 03:00.680
+And those are the types of things which confuse people, no matter how obvious the content may be that
+
+03:00.680 --> 03:02.270
+appears in that pop up screen.
+
+03:02.270 --> 03:05.300
+The point is, it didn't behave like it did the last time.
+
+03:05.300 --> 03:08.030
+It didn't behave the way the last one I used did.
+
+03:08.030 --> 03:13.790
+So every time that happens, every time there's an inconsistency like that, you introduce doubt in
+
+03:13.790 --> 03:17.300
+the user's mind as to whether they're using the system properly.
+
+03:17.300 --> 03:21.950
+When consistency is lacking in some way, we sort of see it in two ways.
+
+03:21.950 --> 03:25.100
+The first way is external inconsistency.
+
+03:25.100 --> 03:29.930
+And what that means is that different products within a single family of products reflect different
+
+03:29.930 --> 03:30.920
+design approaches.
+
+03:30.920 --> 03:36.080
+There's variations in the way that things appear and behave on the screen.
+
+03:36.080 --> 03:39.920
+For example, we have iTunes app on the iPhone.
+
+03:39.920 --> 03:42.380
+If we're playing, Treble comes running by spoon.
+
+03:42.380 --> 03:44.420
+Our interface typically looks like this.
+
+03:44.450 --> 03:49.790
+We've got the time and duration of the song up above and we've got our play controls at the bottom and
+
+03:49.790 --> 03:52.490
+at the very bottom of the screen we've got our volume control.
+
+03:52.520 --> 03:54.200
+Okay, pretty straightforward.
+
+03:54.200 --> 03:58.310
+However, when we go to the iPad, we suddenly get a different set of controls.
+
+03:58.310 --> 04:04.400
+It's actually hard to believe that these two variations came from the same company because now at the
+
+04:04.400 --> 04:08.360
+top I see my play controls, which used to be at the bottom.
+
+04:08.360 --> 04:10.130
+Okay, didn't see that one coming.
+
+04:10.130 --> 04:15.740
+Then I see that my sort of duration and time control is very different.
+
+04:15.770 --> 04:22.310
+I suddenly have volume control at the top instead of the bottom, and now I've got a whole new set of
+
+04:22.310 --> 04:25.580
+menu items happening down at the bottom of the screen.
+
+04:25.580 --> 04:30.650
+Now keep in mind that the iPhone came out years before the iPad did.
+
+04:30.650 --> 04:36.830
+So as a user, if you use me as an example, I've been using this phone for four years before I ever
+
+04:36.830 --> 04:37.610
+had a tablet.
+
+04:37.610 --> 04:44.750
+So I've got a certain expectation, a certain ingrained, reflexive, habitual way that I use this phone.
+
+04:44.750 --> 04:45.920
+When I play iTunes.
+
+04:45.920 --> 04:50.240
+I know where everything is, so I get the iPad and everything's in a different place.
+
+04:50.240 --> 04:55.940
+And therefore the first thing that happens is I'm aggravated because things aren't where I expect them
+
+04:55.940 --> 04:56.270
+to be.
+
+04:56.270 --> 04:59.660
+It's like walking into your house and finding that someone has.
+
+04:59.800 --> 05:02.770
+Arranged all your furniture in the two hours that you were gone.
+
+05:03.760 --> 05:04.240
+Okay.
+
+05:04.480 --> 05:05.950
+It really is the same thing.
+
+05:05.950 --> 05:08.710
+It's a very frustrating, aggravating experience.
+
+05:08.740 --> 05:10.000
+Here's another example.
+
+05:10.000 --> 05:14.660
+If I look at my artist list on the iPhone, it looks like this.
+
+05:14.680 --> 05:21.250
+I've got a pretty simple list of things I can scroll down at alphabetically, just like I can in my
+
+05:21.250 --> 05:22.370
+contacts on my phone.
+
+05:22.390 --> 05:26.810
+Again, paradigm I've been using for four years makes total sense to me on the iPad.
+
+05:26.830 --> 05:33.190
+However, all of a sudden it's all visual and I have to suddenly change my orientation and I have to
+
+05:33.190 --> 05:39.670
+choose a different viewpoint in order to get back to something resembling the display that I used to
+
+05:39.670 --> 05:41.380
+see before for the last four years.
+
+05:41.410 --> 05:47.480
+It's aggravating and it's a radical change from what our existing mental model is.
+
+05:47.500 --> 05:49.570
+That's a poor design decision.
+
+05:49.810 --> 05:56.290
+No matter how popular Apple may be, no matter how far on top of the design heap that that they have
+
+05:56.290 --> 05:59.490
+sat for years, this is still a mistake.
+
+05:59.500 --> 06:02.600
+Introduced seeing change in increments.
+
+06:02.630 --> 06:04.080
+Never a bad idea.
+
+06:04.100 --> 06:10.370
+Wholesale change for the sake of changing with no prior precedent, with no bearing or relationship
+
+06:10.370 --> 06:12.860
+on what people's existing mental models are.
+
+06:12.890 --> 06:13.820
+Bad decision.
+
+06:13.820 --> 06:18.920
+Because all you're doing is you're frustrating people and when they get frustrated and they have other
+
+06:18.920 --> 06:25.010
+choices regarding what they can use instead of your product, they will do so if you aggravate them,
+
+06:25.010 --> 06:27.800
+if you frustrate them, if you confuse them.
+
+06:28.040 --> 06:35.060
+Internal inconsistency is when different parts or different screens of the same application or the same
+
+06:35.060 --> 06:38.790
+system or the same site reflect very different design approaches.
+
+06:38.810 --> 06:46.310
+You're in one single site, one single system, and you get different results from doing different things.
+
+06:46.430 --> 06:49.370
+For example, this is the Goucher College website.
+
+06:49.400 --> 06:54.230
+Now I land on this page and the first thing I do within sort of 3 to 5 seconds is I get the lay of the
+
+06:54.230 --> 06:54.560
+land.
+
+06:54.560 --> 06:56.360
+Okay, the navigation is up top.
+
+06:56.360 --> 06:58.430
+I've got a sub nav here on my left.
+
+06:58.430 --> 07:01.760
+I've got some photos, I got a tour, campus handbook, social media.
+
+07:01.790 --> 07:02.270
+Okay, great.
+
+07:02.270 --> 07:02.930
+I get it.
+
+07:02.930 --> 07:06.950
+But what I'm really here for is the alumni link, because I.
+
+07:06.980 --> 07:09.320
+Let's say I graduated from here.
+
+07:09.320 --> 07:15.710
+So at the far right, I find my alumni link and I say, Great, I'm going to click on that and I get
+
+07:15.710 --> 07:17.270
+something completely different.
+
+07:17.270 --> 07:20.480
+This doesn't look anything like the website that I came from.
+
+07:20.480 --> 07:23.420
+So what will happen immediately?
+
+07:23.420 --> 07:32.090
+In my mind, no matter how intelligent I may be, what will happen immediately is I will have a moment
+
+07:32.090 --> 07:34.070
+of what just happened.
+
+07:34.070 --> 07:34.670
+Where am I?
+
+07:34.910 --> 07:35.480
+Was that right?
+
+07:35.510 --> 07:36.260
+Was that the right link?
+
+07:36.260 --> 07:37.250
+Did I click on the right thing?
+
+07:37.280 --> 07:44.900
+Because the established pattern, the established lay of the land that I just saw has radically changed.
+
+07:44.900 --> 07:45.890
+Everything shifted.
+
+07:45.890 --> 07:46.760
+Everything moved.
+
+07:46.760 --> 07:51.890
+There is nothing familiar about this page that relates to where I came from.
+
+07:51.890 --> 07:53.450
+That's a disconnect.
+
+07:53.450 --> 07:59.720
+And what you have here is a team or a designer or somebody saying, Well, you know, it's different.
+
+07:59.750 --> 08:04.190
+Alumni are a different audience group and they should have their own corner of the universe.
+
+08:04.580 --> 08:06.650
+That's not inaccurate.
+
+08:06.650 --> 08:16.880
+But you have to, again, understand the psychology and even physiology to some degree behind how people
+
+08:16.880 --> 08:20.150
+make visual associations to us.
+
+08:20.180 --> 08:23.660
+We are on a completely different website and that's all there is to it.
+
+08:23.660 --> 08:26.540
+And that momentary what the hell just happened?
+
+08:26.540 --> 08:32.450
+Feeling is enough to make us click the back button and wonder if that was the right link or not.
+
+08:32.450 --> 08:36.950
+The reason I give you this example is because I've seen people do it for years and years and years and
+
+08:36.950 --> 08:38.510
+years and usability tests.
+
+08:38.510 --> 08:42.980
+They go to a link, they click it, and if it doesn't look like what they expect, they hit the back
+
+08:42.980 --> 08:46.580
+button, they go back, then they click the link again and it's the same thing.
+
+08:46.580 --> 08:48.590
+And they go, Wait a minute, maybe I did it wrong again.
+
+08:48.590 --> 08:53.030
+And they click the back button again and go back and try it again.
+
+08:53.120 --> 08:55.040
+Okay, that's not an accident.
+
+08:55.040 --> 08:58.940
+If one out of 300 people did it, it would be an accident.
+
+08:58.940 --> 09:04.130
+If 200 out of 300 people do it, there's something wrong.
+
+09:04.130 --> 09:04.580
+Okay.
+
+09:04.580 --> 09:10.310
+And what's wrong is that there's a large degree of internal inconsistency.
+
+09:10.310 --> 09:14.660
+So that's something that you have to be aware of when you're designing various segments of a site.
+
+09:14.660 --> 09:20.300
+If you have a private section that's behind a login, you may say to yourself, Well, it's a different
+
+09:20.300 --> 09:20.960
+part altogether.
+
+09:20.960 --> 09:22.160
+So it can look differently.
+
+09:22.160 --> 09:23.480
+No, it can't.
+
+09:23.510 --> 09:27.950
+It has to carry some of the same elements, the same structural organization.
+
+09:27.950 --> 09:35.060
+It has to carry some flavor of where the person came from in order for them to feel like they didn't
+
+09:35.060 --> 09:36.380
+just make a mistake.
+
+09:36.410 --> 09:40.310
+A certain degree of consistency is incredibly, incredibly important.

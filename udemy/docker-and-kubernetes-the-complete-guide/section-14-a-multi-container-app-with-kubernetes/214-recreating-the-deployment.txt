@@ -1,0 +1,400 @@
+WEBVTT
+
+00:01.063 --> 00:02.424
+-: In the last section, we tested out
+
+00:02.424 --> 00:05.193
+our multi-container application with Docker Compose,
+
+00:05.193 --> 00:06.597
+just to make sure that everything was still working
+
+00:06.597 --> 00:08.095
+the way we expect.
+
+00:08.095 --> 00:11.857
+I'm now going to close down Docker Compose
+
+00:11.857 --> 00:14.326
+and return back to the Command line.
+
+00:14.326 --> 00:17.316
+Now from this section on, we're gonna start to make changes
+
+00:17.316 --> 00:19.847
+to our project inside the complex directory,
+
+00:19.847 --> 00:21.237
+so if you want to keep a record
+
+00:21.237 --> 00:24.425
+of all the stuff that we had done for Elastic Beanstalk
+
+00:24.425 --> 00:26.839
+and for Docker Compose and whatnot,
+
+00:26.839 --> 00:30.058
+feel free to make a backup of this folder right now.
+
+00:30.058 --> 00:32.757
+I, in particular, already made a copy of this folder.
+
+00:32.757 --> 00:35.546
+I made a copy and called it Complex Elastic Beanstalk,
+
+00:35.546 --> 00:37.546
+just to serve as a backup of sorts.
+
+00:37.546 --> 00:40.315
+Now, of course, I can rely upon Git as a backup as well.
+
+00:40.315 --> 00:43.246
+Just to make it easy for you to refer to all of my code
+
+00:43.246 --> 00:44.521
+at some point in the future,
+
+00:44.521 --> 00:47.606
+I made the easy backup folder right here.
+
+00:47.606 --> 00:49.937
+All right, so I'm gonna go back into the complex directory
+
+00:49.937 --> 00:51.719
+and then I'm going to start up my code editor
+
+00:51.719 --> 00:53.298
+inside this folder.
+
+00:53.298 --> 00:54.578
+Now we're going to first begin
+
+00:54.578 --> 00:57.326
+by cleaning up our project directory a little bit.
+
+00:57.326 --> 00:59.349
+We're going to delete some of the different files
+
+00:59.349 --> 01:01.648
+and folders that are not going to be required
+
+01:01.648 --> 01:05.329
+for this new Kubernetes version of this application.
+
+01:05.329 --> 01:06.498
+So the first thing I'm going to do
+
+01:06.498 --> 01:09.827
+is find the travis.yml file, the Docker Compose
+
+01:09.827 --> 01:11.749
+and the Docker run files,
+
+01:11.749 --> 01:13.937
+and I'm going to delete all three of those.
+
+01:13.937 --> 01:15.685
+We do not need these files anymore
+
+01:15.685 --> 01:17.845
+because we're going to rely upon Kubernetes
+
+01:17.845 --> 01:19.618
+to run our application both in a development
+
+01:19.618 --> 01:21.429
+and production environment,
+
+01:21.429 --> 01:22.979
+and for the travis.yml file,
+
+01:22.979 --> 01:26.206
+we're going to essentially recreate that thing from scratch
+
+01:26.206 --> 01:28.099
+when we eventually try to take this application
+
+01:28.099 --> 01:29.432
+to Travis again.
+
+01:31.509 --> 01:35.239
+Now, I'm also going to delete the NGINX folder.
+
+01:35.239 --> 01:37.538
+We previously had a NGINX image
+
+01:37.538 --> 01:39.537
+to serve as kind of the primary routing
+
+01:39.537 --> 01:41.697
+inside of our entire cluster of containers,
+
+01:41.697 --> 01:43.888
+but now for routing, we're going to rely upon something
+
+01:43.888 --> 01:46.680
+called the Ingress service, which we're going to talk about
+
+01:46.680 --> 01:48.087
+at great length in a little bit,
+
+01:48.087 --> 01:50.165
+but for right now, just know that we don't need
+
+01:50.165 --> 01:52.279
+this NGINX image anymore,
+
+01:52.279 --> 01:54.757
+so I'm gonna delete that thing as well.
+
+01:54.757 --> 01:57.350
+All right, so now I have just client, server and worker,
+
+01:57.350 --> 01:58.848
+and nothing else.
+
+01:58.848 --> 02:00.046
+Now, the first thing I'm going to do
+
+02:00.046 --> 02:04.978
+is create a new folder inside of here called K8s, like so,
+
+02:04.978 --> 02:06.179
+and we're going to use this folder
+
+02:06.179 --> 02:08.678
+to house all of the different configuration files
+
+02:08.678 --> 02:11.807
+that we're going to create for our project.
+
+02:11.807 --> 02:13.079
+In total, we're going to have
+
+02:13.079 --> 02:15.209
+one separate configuration file
+
+02:15.209 --> 02:17.227
+for each of these different objects
+
+02:17.227 --> 02:18.860
+that you see on the screen.
+
+02:18.860 --> 02:21.943
+So 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+
+02:26.389 --> 02:28.140
+11 configuration files.
+
+02:28.140 --> 02:31.080
+Yeah, that's a lot, but hey, we'll get through it.
+
+02:31.080 --> 02:32.610
+So let's first begin by putting together
+
+02:32.610 --> 02:36.450
+a configuration file to create our multi-client deployment.
+
+02:36.450 --> 02:38.880
+We've already put together a configuration file for this
+
+02:38.880 --> 02:41.310
+on the project we were just working on a second ago
+
+02:41.310 --> 02:43.260
+as we were first learning Kubernetes,
+
+02:43.260 --> 02:44.580
+but we're just gonna recreate the thing
+
+02:44.580 --> 02:45.780
+from scratch right now,
+
+02:45.780 --> 02:47.640
+just to get some of the common typing
+
+02:47.640 --> 02:49.540
+that we have to do inside of our head.
+
+02:50.700 --> 02:53.250
+All right, so inside of my K8s folder,
+
+02:53.250 --> 02:58.250
+I'm going to make a new file called client-deployment.yml.
+
+02:58.860 --> 03:00.300
+And then inside of here, we'll put together
+
+03:00.300 --> 03:03.300
+all the configuration required to create this deployment
+
+03:03.300 --> 03:08.300
+with three child pods running the multi-client image.
+
+03:08.520 --> 03:10.710
+So at the very top, we'll start off by designating
+
+03:10.710 --> 03:13.110
+the API version that we want to use,
+
+03:13.110 --> 03:15.660
+which is going to be Apps v1.
+
+03:15.660 --> 03:18.900
+We'll specify the kind of object that we're going to create
+
+03:18.900 --> 03:21.573
+inside of this file, it's going to be a deployment.
+
+03:22.410 --> 03:24.180
+And then we'll add on some metadata,
+
+03:24.180 --> 03:26.640
+in this case just the name of the deployment,
+
+03:26.640 --> 03:28.790
+and it's going to be Our Client Deployment.
+
+03:30.630 --> 03:32.010
+Next up, we'll add a spec
+
+03:32.010 --> 03:34.410
+that's going to configure this deployment.
+
+03:34.410 --> 03:37.550
+So we're going to say that we want three replicas
+
+03:37.550 --> 03:40.170
+of the multi-client image,
+
+03:40.170 --> 03:42.330
+or really the multi-client pod, running,
+
+03:42.330 --> 03:44.220
+and we want those three replicas to be managed
+
+03:44.220 --> 03:45.633
+by this deployment.
+
+03:46.650 --> 03:49.380
+After that, we'll put down our selector,
+
+03:49.380 --> 03:50.970
+I'll say match labels,
+
+03:50.970 --> 03:53.460
+and then I'm going to use the same key value pair
+
+03:53.460 --> 03:55.320
+as a label that we had used previously,
+
+03:55.320 --> 03:57.690
+which is to say component web.
+
+03:57.690 --> 04:00.060
+In other words, this means that the component
+
+04:00.060 --> 04:01.830
+of our application that this deployment
+
+04:01.830 --> 04:03.960
+is going to be managing is the web
+
+04:03.960 --> 04:05.853
+or front end side of things.
+
+04:06.840 --> 04:09.693
+After that, we'll specify the pod template.
+
+04:11.130 --> 04:13.230
+Now remember, the template right here is going to be
+
+04:13.230 --> 04:17.190
+on the same indentation layer as the selector above it.
+
+04:17.190 --> 04:20.190
+So for the template, I'll provide some metadata
+
+04:20.190 --> 04:24.720
+that will provide a label of component web.
+
+04:24.720 --> 04:27.330
+Remember, the selector out here and the label
+
+04:27.330 --> 04:29.820
+inside the template is how the deployment
+
+04:29.820 --> 04:31.860
+is going to identify the different pods
+
+04:31.860 --> 04:33.310
+that it's supposed to manage.
+
+04:34.710 --> 04:37.890
+Next up, we're going to add a spec, and again,
+
+04:37.890 --> 04:40.200
+this is going to be on the same indentation level
+
+04:40.200 --> 04:41.373
+as metadata.
+
+04:42.540 --> 04:44.580
+And then we'll specify all the different containers
+
+04:44.580 --> 04:46.590
+that are going to run inside this pod.
+
+04:46.590 --> 04:49.080
+In this case, we have just one container.
+
+04:49.080 --> 04:51.480
+It's gonna have a name of Client.
+
+04:51.480 --> 04:54.990
+The image we want it to use will be Your Docker id,
+
+04:54.990 --> 04:56.193
+multi-client.
+
+04:57.780 --> 05:00.510
+And then finally we'll specify a port to open.
+
+05:00.510 --> 05:03.210
+We'll use a container port of 3000,
+
+05:03.210 --> 05:05.730
+and that's gonna be the port that is mapped up
+
+05:05.730 --> 05:08.160
+to the multi-client image.
+
+05:08.160 --> 05:10.440
+All right, so that's pretty much it
+
+05:10.440 --> 05:11.970
+for our client deployment.
+
+05:11.970 --> 05:13.320
+Let's take a quick pause right now,
+
+05:13.320 --> 05:14.730
+when we come back in the next section,
+
+05:14.730 --> 05:16.470
+we're going to very quickly put together
+
+05:16.470 --> 05:19.500
+a new configuration file for this service right here,
+
+05:19.500 --> 05:20.580
+and we'll talk a little bit
+
+05:20.580 --> 05:23.520
+about exactly what a cluster IP is,
+
+05:23.520 --> 05:26.610
+because previously we had only used a node port.
+
+05:26.610 --> 05:29.160
+So, quick break, and I'll see you in just a minute.

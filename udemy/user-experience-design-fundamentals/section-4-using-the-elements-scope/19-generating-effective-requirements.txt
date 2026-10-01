@@ -1,0 +1,1075 @@
+WEBVTT
+
+00:00.910 --> 00:08.980
+First and foremost, I'd like to dispel a common phrase that I hear an awful lot, and I think it leads
+
+00:08.980 --> 00:13.870
+to a great deal of misunderstanding among players on a project team.
+
+00:14.020 --> 00:17.080
+And the phrase is gathering requirements.
+
+00:17.110 --> 00:20.260
+Requirements can't be gathered.
+
+00:20.290 --> 00:25.480
+Gathering implies that requirements exist out on a tree somewhere, and they're just sort of waiting
+
+00:25.510 --> 00:26.500
+to be discovered.
+
+00:26.510 --> 00:31.800
+You know, they'll they'll fall from the sky and we just pick them up and gather them and.
+
+00:31.800 --> 00:34.930
+And wow, we know everything there is to know about this project.
+
+00:34.960 --> 00:37.720
+Now, okay, it really doesn't work that way.
+
+00:37.720 --> 00:42.510
+And there are no existing requirements, okay?
+
+00:42.520 --> 00:44.730
+Requirements have to be generated.
+
+00:44.740 --> 00:46.960
+They have to be created.
+
+00:46.960 --> 00:52.870
+They have to be ideated through discussion, discussion with clients, discussion with users.
+
+00:52.870 --> 00:54.520
+You have to uncover this stuff.
+
+00:54.520 --> 01:02.330
+You have to uncover the needs and then make design decisions based on what you uncover or in a traditional
+
+01:02.330 --> 01:03.670
+requirements process.
+
+01:03.680 --> 01:09.800
+In my experience, very much of what's provided is based on executive opinion, technology preferences
+
+01:09.830 --> 01:12.170
+or what customers claim they want.
+
+01:12.200 --> 01:16.820
+None of those things necessarily result in a good product.
+
+01:17.330 --> 01:25.670
+Opinions have no place in requirements gathering, exercise, educated guesses hypothesis.
+
+01:25.700 --> 01:26.540
+Absolutely.
+
+01:26.540 --> 01:27.950
+But personal opinion?
+
+01:27.980 --> 01:28.550
+No.
+
+01:28.550 --> 01:29.330
+Sorry.
+
+01:29.360 --> 01:37.340
+There's almost always an IT team internally who may have a specific preference as to what the technology
+
+01:37.340 --> 01:38.000
+should be.
+
+01:38.000 --> 01:39.350
+That's fine.
+
+01:39.350 --> 01:45.770
+But you also everyone in the room also needs to be asking the question as to whether that is the right
+
+01:45.800 --> 01:48.380
+technology to solve this problem.
+
+01:48.380 --> 01:48.770
+Okay.
+
+01:48.770 --> 01:54.070
+Just because we think we might know what's applicable doesn't mean it's right.
+
+01:54.080 --> 02:00.590
+You got to test that theory, bear it out, ask a lot of questions, try to poke holes in it and figure
+
+02:00.590 --> 02:02.540
+out whether it really is the right thing or not.
+
+02:03.070 --> 02:10.060
+And in terms of what people say they want, you're much better off trying to find some evidence of what
+
+02:10.060 --> 02:12.910
+their behavior is versus what they tell you.
+
+02:12.910 --> 02:16.810
+And this is something I've discussed before, but it bears repeating.
+
+02:17.230 --> 02:21.280
+What people say they want is not always what they want.
+
+02:21.310 --> 02:25.700
+What they say they will do is not always what they say they will do.
+
+02:25.720 --> 02:31.180
+So you want to be in a position where, you know, you can you can go shadow somebody and sort of watch
+
+02:31.180 --> 02:34.330
+them go through your day in business to business situations.
+
+02:34.330 --> 02:35.420
+We do this a lot, okay?
+
+02:35.500 --> 02:41.500
+Because the client will typically have, you know, a customer who has 40 people using this piece of
+
+02:41.500 --> 02:42.040
+software.
+
+02:42.040 --> 02:47.490
+So we say, okay, can we go sit with those folks for a day and just sort of observe?
+
+02:47.500 --> 02:54.640
+And nine times out of ten, we're able to do it and we learn a lot more about what needs to happen doing
+
+02:54.640 --> 03:01.960
+that than we ever could through conversation or guesswork, no matter how educated it may be.
+
+03:01.990 --> 03:06.530
+The other problem with the term gathering is that it gives the impression that our job is to simply
+
+03:06.530 --> 03:07.480
+take orders.
+
+03:07.490 --> 03:12.410
+You're a pair of hands, make the design pretty, you know, build the website.
+
+03:12.410 --> 03:17.390
+Just just push your little code buttons and make technology happen.
+
+03:17.390 --> 03:18.950
+It doesn't work that way.
+
+03:19.130 --> 03:20.180
+You're there.
+
+03:20.180 --> 03:23.420
+You're in that room because you have a certain degree of expertise.
+
+03:23.450 --> 03:25.310
+You have a certain degree of understanding.
+
+03:25.310 --> 03:29.360
+Hopefully you have some degree of empathy towards the situation.
+
+03:29.750 --> 03:33.920
+It is your job to help figure out what the requirements should be.
+
+03:33.920 --> 03:34.240
+Okay.
+
+03:34.250 --> 03:40.010
+You have an important skill set and important knowledge that should be applied to that process.
+
+03:40.490 --> 03:44.150
+If you're just taking orders, there are two things that are happening.
+
+03:44.150 --> 03:47.570
+Number one, you're devaluing your contribution.
+
+03:47.960 --> 03:53.600
+You're not nearly as valuable to that client or that organization as you possibly could be, and they
+
+03:53.600 --> 03:58.700
+will pay you appropriately based on that understanding of your value.
+
+03:58.910 --> 04:04.970
+The second thing that's happening is that you're not really helping them get to the right solution,
+
+04:04.970 --> 04:10.040
+and that too will come around back to you in some way as the project progresses.
+
+04:10.040 --> 04:11.390
+I can guarantee you that.
+
+04:11.390 --> 04:17.450
+And you know, God forbid the thing launches and it doesn't work the way people expected it to or it
+
+04:17.450 --> 04:20.360
+doesn't achieve the goals that the business expected it to.
+
+04:20.930 --> 04:21.830
+I got news for you.
+
+04:21.830 --> 04:23.540
+That one comes back to you as well.
+
+04:23.660 --> 04:26.320
+So don't be an order taker.
+
+04:26.330 --> 04:27.300
+Add value.
+
+04:27.320 --> 04:28.880
+Seek to add value.
+
+04:29.490 --> 04:37.680
+Finally, without good processes in place, good tools to evaluate possible requirements, what typically
+
+04:37.680 --> 04:43.110
+gets kicked out and what stays is left to popular opinion and political compromise.
+
+04:43.140 --> 04:47.460
+Neither one of those things winds up in a good product.
+
+04:47.460 --> 04:53.370
+It winds up with a product that delivers value to customers and by doing so, delivers value back to
+
+04:53.370 --> 04:57.700
+the organization, which is the entire point of user experience.
+
+04:57.720 --> 05:00.530
+So we've got to take our opinions out of the equation.
+
+05:00.540 --> 05:09.030
+We have to be as objective as possible and we have to make sure that we find answers as opposed to simply
+
+05:09.030 --> 05:12.930
+looking and waiting for solutions to drop into our laps.
+
+05:13.670 --> 05:19.970
+Another misunderstanding that I want to get rid of is the idea that requirements are the same as features.
+
+05:20.270 --> 05:21.500
+They're not.
+
+05:22.100 --> 05:25.470
+They're absolutely, positively not the same thing.
+
+05:25.530 --> 05:26.090
+Okay.
+
+05:26.090 --> 05:27.860
+Requirements are needs.
+
+05:28.100 --> 05:30.170
+Features are solutions.
+
+05:30.170 --> 05:36.560
+And when you're in the requirements generating phase, you want to be stating needs, not solutions.
+
+05:36.590 --> 05:38.250
+And here's an example of that.
+
+05:38.270 --> 05:44.570
+Instead of saying it has to be web based, which is a solution, that's an answer.
+
+05:44.600 --> 05:45.770
+That's a feature.
+
+05:45.950 --> 05:53.450
+Instead of saying that you want to say it won't have time to install software on every PC, that is
+
+05:53.450 --> 05:54.080
+a need.
+
+05:54.110 --> 05:56.720
+There's a consequence attached to action.
+
+05:56.720 --> 05:57.890
+That's a need.
+
+05:57.920 --> 06:01.400
+That's what you're trying to achieve with a requirement.
+
+06:01.400 --> 06:06.930
+You're trying to fulfill a need and identify how you're going to fulfill that need.
+
+06:06.950 --> 06:12.020
+So what you do is you state the need first and you give everyone the chance to see the opportunities
+
+06:12.020 --> 06:13.740
+and come up with better solutions.
+
+06:13.920 --> 06:19.500
+This is a discussion, your brainstorming, you're writing on a whiteboard, You're just you're generating
+
+06:19.500 --> 06:20.310
+ideas.
+
+06:20.340 --> 06:24.270
+Give everybody in the room the opportunity to sort of chime in.
+
+06:24.270 --> 06:24.500
+Right.
+
+06:24.600 --> 06:27.390
+And work together, leverage everybody's brainpower.
+
+06:27.420 --> 06:32.730
+Part of the reason that needs are often combined with solutions is because people often communicate
+
+06:32.730 --> 06:35.040
+need by suggesting solutions.
+
+06:35.040 --> 06:39.860
+That's sort of our common way of addressing things.
+
+06:39.900 --> 06:43.740
+You know, if we're out in the rain and we're getting wet and we say, I need an umbrella, well, that's
+
+06:43.740 --> 06:44.460
+a solution.
+
+06:45.630 --> 06:51.270
+But the need, the real underlying need there is probably that you need to plan better or you need to
+
+06:51.270 --> 06:55.860
+make sure that you you need a mechanism for making sure you check the weather before you leave the house.
+
+06:55.860 --> 07:02.280
+Or you need to make sure that your umbrella is packed in your bag at all times or under the seat of
+
+07:02.280 --> 07:03.240
+your car.
+
+07:03.510 --> 07:07.440
+The underlying need is very different from the at the moment solution.
+
+07:07.920 --> 07:13.890
+So you want to get everyone focused on the need behind the requirements instead of just taking those
+
+07:13.890 --> 07:15.390
+things at face value.
+
+07:15.420 --> 07:23.410
+Explore everything that everybody says and ask yourself, Is that a need or is it a solution?
+
+07:23.430 --> 07:27.870
+If it's a solution, then that means someone's giving you a feature.
+
+07:27.870 --> 07:35.670
+And until you know something about need, you have no idea how to validate whether that feature is relevant,
+
+07:35.670 --> 07:37.770
+appropriate or valuable.
+
+07:38.630 --> 07:41.330
+There are lots of different kinds of requirements.
+
+07:41.420 --> 07:47.510
+I'm going to talk about the four most common here in that, you know, again, if you're not building
+
+07:47.510 --> 07:52.940
+some gigantic piece of enterprise software, you don't want to get bogged down in all this detail and
+
+07:52.940 --> 07:55.790
+you don't want to be writing novel length requirements, documents.
+
+07:55.790 --> 07:56.870
+That's fine.
+
+07:57.050 --> 07:57.330
+Okay.
+
+07:57.350 --> 08:02.050
+But dig into these four areas at least, and ask some questions.
+
+08:02.060 --> 08:05.680
+Try to figure out what fits into each one of these categories.
+
+08:05.690 --> 08:08.560
+The first is objectives, and that's pretty simple.
+
+08:08.570 --> 08:10.730
+What does the user want to accomplish?
+
+08:10.730 --> 08:12.110
+What do they want to do?
+
+08:12.140 --> 08:14.570
+Why are they using this thing in the first place?
+
+08:14.570 --> 08:17.900
+And again, doesn't matter what it is, website and app a system.
+
+08:18.020 --> 08:19.340
+What do they want from you?
+
+08:19.370 --> 08:20.900
+What are they trying to do?
+
+08:21.940 --> 08:25.360
+A functional requirement is a little more detailed.
+
+08:25.390 --> 08:29.140
+What does a user need to do in order to reach their objective?
+
+08:29.170 --> 08:30.640
+What steps are involved?
+
+08:30.640 --> 08:32.260
+How many are there?
+
+08:32.290 --> 08:34.660
+Are there multiple processes?
+
+08:34.690 --> 08:36.850
+Are there conditional things that happen?
+
+08:36.850 --> 08:38.680
+If they do this, then they get this option.
+
+08:38.680 --> 08:40.960
+If they do this other thing, then they get this option.
+
+08:40.990 --> 08:43.210
+Those are functional requirements.
+
+08:43.450 --> 08:45.970
+There are non-functional requirements.
+
+08:46.010 --> 08:47.860
+Non-functional requirements.
+
+08:47.860 --> 08:53.770
+Answer things like what constraints does the site or app have to perform within, such as?
+
+08:53.770 --> 08:55.690
+We have simultaneous users?
+
+08:55.690 --> 09:03.790
+We have the need to grow this system probably in the next six months because we have a plan to add 200
+
+09:03.790 --> 09:05.660
+new employees in that time.
+
+09:05.680 --> 09:07.060
+Bandwidth limits.
+
+09:07.060 --> 09:12.970
+Our server will only support X amount of bandwidth and if we go beyond that, we're going to have a
+
+09:12.970 --> 09:13.490
+problem.
+
+09:13.560 --> 09:13.750
+Okay.
+
+09:13.750 --> 09:15.400
+Those are non-functional requirements.
+
+09:15.400 --> 09:20.590
+There are things that don't directly relate to the things that the user has to do in order to reach
+
+09:20.590 --> 09:21.310
+their objective.
+
+09:21.340 --> 09:26.390
+Non functional requirements have a lot in common with specifications because they're not explicitly
+
+09:26.390 --> 09:27.780
+describing action.
+
+09:27.800 --> 09:29.900
+They're describing attributes.
+
+09:30.800 --> 09:32.960
+Finally, there are business rules.
+
+09:32.960 --> 09:35.150
+What dynamic constraints do we have to meet?
+
+09:35.150 --> 09:40.610
+And by that I mean calculations, definitions, legal concerns.
+
+09:40.640 --> 09:47.540
+Are we allowed to sell this product in all 50 states or can we only sell it in these 12 states?
+
+09:47.540 --> 09:48.500
+That's a business rule.
+
+09:48.500 --> 09:56.180
+The business rule says we can only sell this product in these 12 states, or the business rule says
+
+09:56.180 --> 09:59.030
+we can sell this product in all 50 states.
+
+09:59.030 --> 10:04.280
+The business rule says there is no sales tax charged to California residents.
+
+10:04.280 --> 10:06.140
+Those things are all business rules.
+
+10:06.900 --> 10:12.660
+One of the best ways to generate requirements, which also happens to be my favorite, is to get a bunch
+
+10:12.660 --> 10:16.340
+of people in a room, write project stakeholders, users if possible.
+
+10:16.350 --> 10:16.590
+Okay.
+
+10:16.590 --> 10:20.700
+But nine times out of ten, this happens just with people on the client's team.
+
+10:21.180 --> 10:25.480
+You get everybody in a room and you create what are called use scenarios.
+
+10:25.500 --> 10:33.750
+That's a fancy term for saying we're going to sit down and think about all the different ways that the
+
+10:33.750 --> 10:36.270
+person is going to use our product.
+
+10:36.300 --> 10:36.830
+Okay.
+
+10:36.840 --> 10:38.820
+They want to accomplish task.
+
+10:38.850 --> 10:41.100
+A, how do they do that?
+
+10:41.130 --> 10:45.030
+They want to accomplish task B, How do they do that?
+
+10:45.330 --> 10:49.380
+What comes out of that process is something that looks like this.
+
+10:49.410 --> 10:49.740
+All right.
+
+10:49.740 --> 10:55.110
+This is a sample contracting scenario for insurance agents.
+
+10:55.110 --> 11:01.500
+This is a situation where someone who is not yet an agent has to use an online website, which is sort
+
+11:01.500 --> 11:07.350
+of coupled with a back end process in order to apply to become an agent.
+
+11:07.360 --> 11:09.730
+Then they have to get reviewed, then they have to get validated.
+
+11:09.730 --> 11:11.950
+And there's all these different things that happen during that process.
+
+11:11.950 --> 11:19.180
+So in order for us to figure out what should be on the screen and what the system should do at each
+
+11:19.180 --> 11:24.730
+given point, we first have to walk through, okay, well, what the heck happens in this case?
+
+11:24.730 --> 11:27.120
+What we were documenting is what happens today.
+
+11:27.130 --> 11:27.460
+Okay.
+
+11:27.460 --> 11:28.870
+How does it work today?
+
+11:28.900 --> 11:35.320
+Because if we could nail that down, then we could probably also see where the inefficiencies were in
+
+11:35.320 --> 11:40.210
+the process or where we could potentially improve things in the process.
+
+11:40.210 --> 11:40.420
+Okay.
+
+11:40.420 --> 11:43.090
+So all this really is is a bunch of boxes and arrows.
+
+11:43.240 --> 11:48.970
+The user does this, then he does this, then he's confronted with this and he takes an action.
+
+11:49.570 --> 11:49.840
+All right.
+
+11:49.840 --> 11:54.100
+So in our case, if we go from left to right, we start with our prospective agent.
+
+11:54.130 --> 11:55.840
+He uses the website.
+
+11:55.930 --> 11:59.180
+He chooses a product or he chooses a carrier.
+
+11:59.200 --> 12:00.910
+He starts in either one of those areas.
+
+12:00.910 --> 12:03.550
+But the end result of his action is he does something.
+
+12:03.550 --> 12:05.560
+He requests a contract.
+
+12:05.830 --> 12:12.580
+When he does that, when he clicks the request contract button, an automatic email gets sent to a third
+
+12:12.580 --> 12:16.650
+party who is then responsible for doing what's called scrubbing the application.
+
+12:16.660 --> 12:16.890
+Okay.
+
+12:16.900 --> 12:23.140
+And that essentially means that they have to go through the application and make sure that everything
+
+12:23.140 --> 12:24.880
+is accurate and correct.
+
+12:24.880 --> 12:29.530
+And from there, what we were doing is we were referencing another abbreviated process.
+
+12:29.680 --> 12:34.690
+This is a very simple way of identifying all the steps that need to happen and the possible choices
+
+12:34.690 --> 12:37.480
+that the person needs to see at any given point.
+
+12:37.510 --> 12:39.340
+That's a use scenario.
+
+12:40.070 --> 12:45.500
+So all we really have to do in order to create a use scenario is to ask some questions.
+
+12:45.770 --> 12:51.140
+And those questions are, first of all, who are the users at each point of activity?
+
+12:51.260 --> 12:53.300
+What information do they need?
+
+12:53.390 --> 12:55.670
+What actions do they need to take?
+
+12:55.700 --> 12:58.820
+What should the system do in response to those actions?
+
+12:59.030 --> 13:01.830
+What's it going to take to make that happen?
+
+13:01.850 --> 13:05.780
+For instance, we may diagram something like this and client may say to us, Well, wait a minute,
+
+13:06.140 --> 13:09.450
+there is nobody in that second situation to scrub the app.
+
+13:09.470 --> 13:11.420
+We need the system to do that.
+
+13:11.450 --> 13:16.100
+Well, now we have a sense that, okay, we have to build something that we probably didn't plan on
+
+13:16.100 --> 13:17.930
+building before this conversation took place.
+
+13:18.260 --> 13:19.510
+What does it take to make that happen?
+
+13:19.520 --> 13:21.020
+That's that's where we're getting at.
+
+13:21.560 --> 13:23.480
+And are there multiple approaches?
+
+13:23.510 --> 13:30.170
+Is there more than one way to accomplish the same goal, same use scenario and which are better than
+
+13:30.170 --> 13:30.470
+others?
+
+13:30.470 --> 13:33.850
+What are we gaining or losing in those processes?
+
+13:33.860 --> 13:35.360
+So that's a use scenario.
+
+13:35.360 --> 13:38.840
+And to me, again, this is the absolute best way.
+
+13:38.840 --> 13:46.500
+I think, to start generating effective, useful, valuable, relevant.
+
+13:48.060 --> 13:49.830
+The adjectives go on and on.
+
+13:50.430 --> 13:51.690
+Requirements.
+
+13:52.370 --> 13:56.730
+Next, I want to talk about three basic steps for creating effective scenarios.
+
+13:56.800 --> 13:56.950
+Okay.
+
+13:56.990 --> 14:03.080
+Whether you're doing an actual use scenario and mapping out what the person does or you're just simply,
+
+14:03.080 --> 14:08.960
+you know, brainstorming and trying to think through something, you want to create a context rich scenario.
+
+14:08.960 --> 14:14.990
+And what I mean by that is you want all the requirements and ideas that that you're generating to be
+
+14:14.990 --> 14:22.280
+based in a real context of use, in some tangible, concrete way that the person is actually going to
+
+14:22.280 --> 14:23.240
+use the product.
+
+14:23.240 --> 14:31.100
+So the place you start is to identify the types of scenarios that you need and those tell you the situations
+
+14:31.100 --> 14:38.330
+that the user finds themselves in, the major activities that they undertake in those scenarios, it
+
+14:38.330 --> 14:43.880
+tells you whether those activities occur together because if they do, you want to group them in a scenario.
+
+14:43.880 --> 14:47.420
+If they don't, you want to add them In another scenario.
+
+14:47.450 --> 14:54.600
+The next step is to take each one of those stories or scenarios and develop them, expand them, try
+
+14:54.600 --> 15:00.840
+to follow the user down some imaginary path and think about the things that they could possibly do.
+
+15:00.870 --> 15:04.410
+You're asking yourself questions and trying to find answers.
+
+15:04.410 --> 15:07.210
+So first, what actions does the user take, right?
+
+15:07.230 --> 15:08.190
+What do they do?
+
+15:08.190 --> 15:11.640
+Literally, what do they do and how many of those actions are there?
+
+15:11.640 --> 15:13.110
+Why do they act?
+
+15:13.140 --> 15:14.280
+What's the reason?
+
+15:14.280 --> 15:17.640
+What's the motivation for them doing something in the first place?
+
+15:17.640 --> 15:20.900
+When and how often does that happen?
+
+15:20.910 --> 15:23.790
+Does it happen once during the process?
+
+15:23.790 --> 15:25.710
+Does it happen repeatedly?
+
+15:25.740 --> 15:29.160
+Do they have to do multiple things at the same time?
+
+15:29.460 --> 15:31.200
+What data is exchanged?
+
+15:31.230 --> 15:33.330
+What information do they input?
+
+15:33.360 --> 15:38.070
+What does the system output either to them or to somebody else?
+
+15:38.070 --> 15:43.050
+What information is being either created or manipulated or acted upon?
+
+15:43.050 --> 15:47.490
+And finally, to further the story, what design principles apply to this?
+
+15:47.520 --> 15:54.840
+What design principles can we apply to these actions and these processes to make them simpler, easily
+
+15:54.840 --> 15:58.920
+understood, obvious, easily recognizable?
+
+15:58.920 --> 16:05.640
+You're trying to walk down this path with the person and identify, you know, what are all the possible
+
+16:05.640 --> 16:11.250
+scenarios and paths and actions and reactions that happen as a result?
+
+16:11.810 --> 16:15.800
+So now that you've got your stories and scenarios, it's time to communicate them.
+
+16:15.800 --> 16:20.090
+You've got to communicate them to the client project stakeholders.
+
+16:20.090 --> 16:26.690
+You've got to communicate them to your fellow development team members, your design team, maybe your
+
+16:26.690 --> 16:28.880
+copywriters, whoever is involved.
+
+16:28.880 --> 16:30.680
+Okay, All the folks involved in the project.
+
+16:30.680 --> 16:32.750
+You've got to communicate all this stuff in some way.
+
+16:32.750 --> 16:37.670
+And the best way to do that is to create a compelling narrative.
+
+16:37.700 --> 16:42.740
+Think of it in terms of a story or a movie or anything like that.
+
+16:42.740 --> 16:43.430
+It unfolds.
+
+16:43.430 --> 16:50.510
+It's an experience that unfolds over time, and there are really important plot points, right?
+
+16:50.510 --> 16:55.940
+There are really important actions that the actors take that affect how the story turns out.
+
+16:55.940 --> 16:57.020
+This is no different.
+
+16:57.020 --> 17:03.380
+You're telling the story of how people interact with this thing, what happens as a result and what
+
+17:03.380 --> 17:04.940
+the potential outcomes are.
+
+17:05.090 --> 17:08.390
+These scenarios should be visual, not verbal.
+
+17:08.390 --> 17:13.170
+You want to show all these different paths that they could possibly go through.
+
+17:13.170 --> 17:20.400
+And part of the reason for that is that people get a much clearer sense of the amount of considerations
+
+17:20.400 --> 17:26.160
+that are involved in each step, or possibly the number of screens necessary or the amount of time it's
+
+17:26.160 --> 17:28.860
+going to take to figure out how to do all that.
+
+17:28.860 --> 17:30.840
+If they can see it in front of them.
+
+17:30.840 --> 17:37.200
+If you're just standing up there talking, they're not going to have any reference as to scope issues.
+
+17:37.200 --> 17:39.600
+You want to build very high level diagrams.
+
+17:39.600 --> 17:43.800
+It's really nothing more complicated than the sketch that I showed you earlier.
+
+17:43.800 --> 17:45.030
+Boxes and arrows.
+
+17:45.030 --> 17:46.110
+This happens first.
+
+17:46.110 --> 17:47.370
+This happens next.
+
+17:47.400 --> 17:50.580
+These three things happen as a result of that action.
+
+17:50.610 --> 17:52.980
+The user has these choices in this area.
+
+17:52.980 --> 17:54.960
+If he follows this path, this happens.
+
+17:54.960 --> 17:57.990
+If he follows the other path, something else happens, whatever it is.
+
+17:57.990 --> 17:59.730
+Okay, But keep it very high level.
+
+17:59.730 --> 18:06.180
+Don't get bogged down in how you're going to execute that function, whether you're going to use JavaScript
+
+18:06.180 --> 18:11.070
+or you're going to be calling information from a SQL database, it doesn't matter.
+
+18:11.100 --> 18:12.450
+The details do not matter.
+
+18:12.450 --> 18:12.960
+Right now.
+
+18:12.960 --> 18:18.120
+What you're trying to get to is whether that scenario is accurate or not.
+
+18:18.150 --> 18:22.230
+You're not only trying to communicate it to everybody, but you're also trying to validate it.
+
+18:22.230 --> 18:25.590
+Another way is by sketched storyboards.
+
+18:25.590 --> 18:31.080
+If the product is a is a machine control that gets used on a shop floor somewhere, a lot of times what
+
+18:31.080 --> 18:34.500
+we'll do is we'll literally draw out a storyboard.
+
+18:34.500 --> 18:38.940
+And again, you don't have to have excellent drawing skills to do this and you can use a computer to
+
+18:38.940 --> 18:39.150
+do it.
+
+18:39.150 --> 18:45.060
+But the point is you have a high level sort of rendering of the person's position where their hand is,
+
+18:45.060 --> 18:50.670
+what else they might be doing at the same time and what things they're doing and how that narrative
+
+18:50.670 --> 18:51.360
+unfolds.
+
+18:51.360 --> 18:51.570
+Okay.
+
+18:51.570 --> 18:53.400
+So that's another way to do the same thing.
+
+18:53.400 --> 18:57.510
+And finally, you want to make sure that there's discussion afterwards.
+
+18:57.510 --> 19:01.740
+You want to go through each scenario, you want to go through each point that you've made.
+
+19:01.740 --> 19:09.210
+You want to go through all the related potential requirements that may have come up during that conversation.
+
+19:09.210 --> 19:15.450
+So you want to have an active, engaged discussion and you want to write down what gets talked about.
+
+19:15.450 --> 19:21.540
+If in no other way, write it down on a whiteboard in that same room so people can sort of kick it around
+
+19:21.540 --> 19:27.660
+and validate it again, the validation part of this is extraordinarily important.
+
+19:27.690 --> 19:34.080
+This last step of communicating your scenarios cements the idea in everybody's head, and it goes a
+
+19:34.080 --> 19:36.690
+long way in getting everybody on the same page.
+
+19:37.550 --> 19:44.180
+Finally, I want to give you some idea of how requirements are generated from scenarios when you're
+
+19:44.180 --> 19:45.350
+describing a scenario.
+
+19:45.380 --> 19:52.880
+There are any number of things, any number of sentences or descriptions or steps that will directly
+
+19:52.880 --> 19:54.950
+relate to requirements.
+
+19:54.980 --> 19:56.540
+Here's some examples of that.
+
+19:56.750 --> 20:02.720
+The scenario is this After a meeting, Joe pulls out his iPhone to note follow up items, check the
+
+20:02.720 --> 20:07.040
+time and location of his upcoming meeting date and see if anything important has come up.
+
+20:07.070 --> 20:08.380
+That's a quick little narrative.
+
+20:08.390 --> 20:12.320
+It's one sentence, but out of that, we get four requirements.
+
+20:12.350 --> 20:18.150
+We know that Joe needs the ability to enter text and he needs to be able to save whatever he enters.
+
+20:18.170 --> 20:21.790
+He needs the ability to view and edit a calendar.
+
+20:21.800 --> 20:26.870
+He needs the ability to see a list of messages that pertain to him.
+
+20:26.870 --> 20:29.560
+And he also needs a portable device size.
+
+20:29.570 --> 20:35.210
+So out of that simple little narrative, four requirements came to light just in the simple act of writing
+
+20:35.210 --> 20:35.900
+a sentence.
+
+20:35.930 --> 20:37.040
+Here's another one.
+
+20:37.410 --> 20:43.230
+Joe sees an indication that he has two emails marked urgent, along with a voicemail from a client,
+
+20:43.230 --> 20:48.210
+which the iPhone says is top priority after he listens to the voicemail.
+
+20:48.210 --> 20:50.100
+And it does turn out to be important.
+
+20:50.130 --> 20:52.680
+He selects the option to call the client back.
+
+20:52.710 --> 20:56.760
+Again, we have requirements that result from that statement, that scenario.
+
+20:56.790 --> 21:01.000
+He needs the ability to see his email and the voicemail in a single place.
+
+21:01.020 --> 21:05.220
+He needs to be able to prioritize messages based on user criteria.
+
+21:05.250 --> 21:10.290
+There needs to be a setting in the phone that says when this person calls, it's priority.
+
+21:10.290 --> 21:10.540
+Okay.
+
+21:10.560 --> 21:13.440
+The iPhone right now uses something called favorites.
+
+21:13.440 --> 21:19.850
+That tells you when there's a little star next to that person that that's an urgent message.
+
+21:19.860 --> 21:20.180
+Okay.
+
+21:20.190 --> 21:22.370
+That allows you to establish priority.
+
+21:22.380 --> 21:24.450
+It allows you to assign priority.
+
+21:24.600 --> 21:30.780
+He needs the ability to listen to voicemail and he needs the ability to return communication directly
+
+21:30.780 --> 21:31.890
+from that message.
+
+21:31.890 --> 21:37.240
+There's an option for him to call the client back from that same voicemail screen.
+
+21:37.260 --> 21:44.820
+So these are some really quick examples of how requirements can be generated from scenarios.
+
+21:44.850 --> 21:51.600
+All you got to do is tell the story, then go back to the story and find the spots that translate into
+
+21:51.600 --> 21:53.580
+things the user needs to be able to do.

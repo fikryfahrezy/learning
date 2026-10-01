@@ -1,0 +1,574 @@
+WEBVTT
+
+00:00.870 --> 00:01.703
+Instructor: In last section,
+
+00:01.703 --> 00:03.990
+we created a new component called Fib
+
+00:03.990 --> 00:06.150
+and we added a couple of methods to it
+
+00:06.150 --> 00:08.880
+to fetch some data from our backend API.
+
+00:08.880 --> 00:10.530
+We're now gonna add on the ability
+
+00:10.530 --> 00:12.300
+for this thing to be rendered onto the screen
+
+00:12.300 --> 00:15.450
+of our browser and show some information to our user.
+
+00:15.450 --> 00:17.490
+So to get started, I'm gonna go to the bottom
+
+00:17.490 --> 00:21.270
+of the Fib class and define a render method.
+
+00:21.270 --> 00:24.810
+Inside of here, I'm gonna return a little bit of JSX.
+
+00:24.810 --> 00:26.163
+I'll return a div.
+
+00:27.030 --> 00:29.550
+We know that we want to show a form to the user
+
+00:29.550 --> 00:31.020
+like this form right here.
+
+00:31.020 --> 00:33.210
+So I'm gonna make a form tab,
+
+00:33.210 --> 00:36.810
+excuse me a form tag that has a label, a text input,
+
+00:36.810 --> 00:38.343
+and a button assigned to it.
+
+00:39.240 --> 00:40.563
+So I'll put in a form.
+
+00:42.630 --> 00:43.983
+I'll put in a label.
+
+00:45.960 --> 00:48.723
+Put some texts like enter your index.
+
+00:49.590 --> 00:51.303
+I'll put in an input.
+
+00:53.280 --> 00:54.633
+And then finally a button.
+
+00:55.650 --> 00:58.830
+And for the button I'll give it some texts like submit,
+
+00:58.830 --> 00:59.663
+like so.
+
+01:00.690 --> 01:03.120
+Now we do have to add in some event handlers
+
+01:03.120 --> 01:05.340
+to the form tag and the input tag,
+
+01:05.340 --> 01:07.530
+but we'll get back to that in just a moment.
+
+01:07.530 --> 01:08.610
+First, let's take care
+
+01:08.610 --> 01:11.340
+of the other two rendering pieces we need.
+
+01:11.340 --> 01:12.720
+So we need to make sure that we print out
+
+01:12.720 --> 01:14.880
+all the different indices that we've ever seen
+
+01:14.880 --> 01:17.370
+and we also have to print out all the different values
+
+01:17.370 --> 01:19.920
+that have been calculated as well.
+
+01:19.920 --> 01:22.290
+So for each of those two little tables right there,
+
+01:22.290 --> 01:26.223
+I'm gonna place an h3 underneath the form tag.
+
+01:27.540 --> 01:28.680
+The first one will have a title
+
+01:28.680 --> 01:31.923
+of something like indexes I have seen,
+
+01:32.820 --> 01:34.710
+and then the second one I'll give some text
+
+01:34.710 --> 01:39.513
+of something like I don't know about calculated values.
+
+01:40.650 --> 01:41.910
+Then underneath each of these
+
+01:41.910 --> 01:43.650
+we're going to call a helper method
+
+01:43.650 --> 01:45.180
+that is going to render the table
+
+01:45.180 --> 01:47.880
+of all the indices that have been seen
+
+01:47.880 --> 01:50.130
+and all the different calculated values
+
+01:50.130 --> 01:52.593
+that have been calculated by the Redis worker.
+
+01:53.460 --> 01:55.920
+So for the first one, I'm gonna make a helper method
+
+01:55.920 --> 01:57.510
+and I will place it inside of here
+
+01:57.510 --> 01:59.670
+with a set of curly braces like so.
+
+01:59.670 --> 02:03.363
+And I'll say this.renderSeenIndexes.
+
+02:04.491 --> 02:06.390
+So we need to define a helper method
+
+02:06.390 --> 02:08.340
+that will essentially just print out the list
+
+02:08.340 --> 02:11.553
+of all the indexes that our backend has ever seen.
+
+02:12.810 --> 02:14.790
+So I'll go and define that helper method
+
+02:14.790 --> 02:18.330
+called renderSeenIndexes right now.
+
+02:18.330 --> 02:19.800
+Right above the render method,
+
+02:19.800 --> 02:21.300
+I'll add in renderSeenIndexes.
+
+02:25.470 --> 02:27.870
+And then inside of here we're gonna look at the value
+
+02:27.870 --> 02:30.690
+of Seen indexes that we fetched
+
+02:30.690 --> 02:34.080
+when we called fetch in indexes right here.
+
+02:34.080 --> 02:39.080
+So I will return this.state.Seen indexes.
+
+02:39.660 --> 02:41.340
+Now, seen indexes, just so you know
+
+02:41.340 --> 02:42.900
+we haven't really looked at these data types
+
+02:42.900 --> 02:43.770
+that are floating around,
+
+02:43.770 --> 02:46.050
+but essentially this is an array
+
+02:46.050 --> 02:48.510
+as a variety of different objects in it.
+
+02:48.510 --> 02:51.330
+And each object has a number property.
+
+02:51.330 --> 02:53.220
+And that number property is the number
+
+02:53.220 --> 02:55.530
+that we want to print out on the screen.
+
+02:55.530 --> 02:59.260
+So I'm gonna map over the list of all those objects
+
+03:01.679 --> 03:04.260
+and I'm gonna put in a function right here.
+
+03:04.260 --> 03:06.600
+Notice how I've got the opening curly brace,
+
+03:06.600 --> 03:08.640
+or excuse me, the parentheses right here.
+
+03:08.640 --> 03:10.890
+I'm gonna pull off just that number property
+
+03:10.890 --> 03:12.540
+that we care about by putting down
+
+03:12.540 --> 03:14.460
+a set of curly braces like so
+
+03:14.460 --> 03:17.070
+and then adding a number to that.
+
+03:17.070 --> 03:20.580
+And then inside the arrow function, I'll put in number.
+
+03:20.580 --> 03:21.810
+So this statement that you see right here
+
+03:21.810 --> 03:24.030
+is going to iterate over every object
+
+03:24.030 --> 03:25.950
+in the seen indexes array
+
+03:25.950 --> 03:28.680
+and just pull out and return the number.
+
+03:28.680 --> 03:30.570
+So the result will be a list of numbers
+
+03:30.570 --> 03:32.670
+that we want to print on the screen.
+
+03:32.670 --> 03:34.560
+So to then make sure that they get printed out
+
+03:34.560 --> 03:37.350
+with a nice little comma in between each one,
+
+03:37.350 --> 03:39.063
+I'll add on a .join.
+
+03:40.080 --> 03:44.340
+And to that I'll give a comma and a space
+
+03:44.340 --> 03:45.690
+right after it like so.
+
+03:45.690 --> 03:47.670
+And so this is going to take all those numbers,
+
+03:47.670 --> 03:49.740
+all the numbers in that array and join them together
+
+03:49.740 --> 03:51.810
+with a little comma and print them out very nicely
+
+03:51.810 --> 03:52.643
+on the screen.
+
+03:54.150 --> 03:56.200
+Okay, so that's it for renderSeenIndexes.
+
+03:57.780 --> 04:01.140
+Now for calculated values, we'll do something very similar.
+
+04:01.140 --> 04:03.390
+Underneath calculated values h3
+
+04:03.390 --> 04:04.980
+I'll place a set of curly braces,
+
+04:04.980 --> 04:08.280
+and we'll define a helper method called renderValues,
+
+04:08.280 --> 04:10.890
+and call it with a set of parenthesis.
+
+04:10.890 --> 04:13.170
+So this will be our helper method
+
+04:13.170 --> 04:15.540
+that will render out all the calculated values
+
+04:15.540 --> 04:18.240
+that we've ever worked with inside of our application.
+
+04:19.230 --> 04:20.640
+I'll again make a helper method
+
+04:20.640 --> 04:22.860
+right above the render method
+
+04:22.860 --> 04:26.913
+and I will call this one renderValues, like so.
+
+04:29.430 --> 04:31.890
+Now in the cases seen indices or seen indexes,
+
+04:31.890 --> 04:34.290
+we were getting back an array of objects.
+
+04:34.290 --> 04:35.850
+That's the default return type
+
+04:35.850 --> 04:38.250
+when we were pulling data out of Postgres.
+
+04:38.250 --> 04:40.530
+And remember this list of data right here
+
+04:40.530 --> 04:42.270
+all being handled by Postgres.
+
+04:42.270 --> 04:43.103
+Where's our diagram?
+
+04:43.103 --> 04:44.340
+Here we go.
+
+04:44.340 --> 04:46.697
+The calculated values table down here is all data
+
+04:46.697 --> 04:48.660
+that is stored inside of Redis
+
+04:48.660 --> 04:50.820
+and we when we pull data out of Redis,
+
+04:50.820 --> 04:53.250
+we're actually going to get back an object
+
+04:53.250 --> 04:55.080
+and that's gonna have a bunch of key value pairs
+
+04:55.080 --> 04:56.190
+inside of it.
+
+04:56.190 --> 04:59.700
+So to build out that little table of values,
+
+04:59.700 --> 05:02.100
+we're gonna do just a little bit different iteration logic
+
+05:02.100 --> 05:03.420
+inside of here.
+
+05:03.420 --> 05:06.840
+I'm gonna first make a new array called entries.
+
+05:06.840 --> 05:11.040
+We'll then iterate over all of the values
+
+05:11.040 --> 05:13.563
+that we have in the state values object.
+
+05:14.880 --> 05:16.710
+And then for every key inside there
+
+05:16.710 --> 05:21.540
+where the key represents the index of the Fibonacci number,
+
+05:21.540 --> 05:25.170
+we're going to push a new entry into that entries array.
+
+05:25.170 --> 05:27.090
+So I'll say entries.push
+
+05:27.090 --> 05:29.540
+and then open a set up a set of parentheses here.
+
+05:30.720 --> 05:33.840
+I'll put in a div that's gonna get a key property
+
+05:33.840 --> 05:36.300
+'cause we are building out a React list.
+
+05:36.300 --> 05:40.320
+And inside there I'll say for index key,
+
+05:40.320 --> 05:45.320
+I calculated this.state.values at key, like so.
+
+05:47.910 --> 05:49.650
+And then at the bottom of render values,
+
+05:49.650 --> 05:53.073
+I will return that list of entries that we created.
+
+05:55.620 --> 05:56.760
+Okay, so this looks pretty good.
+
+05:56.760 --> 05:59.010
+Now very last thing we have to do
+
+05:59.010 --> 06:02.310
+is set up some event handlers on both the input tag
+
+06:02.310 --> 06:04.860
+and the form to watch for any time
+
+06:04.860 --> 06:06.540
+that a user enters in some text
+
+06:06.540 --> 06:08.940
+and then presses the submit button.
+
+06:08.940 --> 06:10.860
+So I'll first start off with the input.
+
+06:10.860 --> 06:13.830
+I'm gonna give myself a little bit of space here.
+
+06:13.830 --> 06:15.131
+I'll add on a value property
+
+06:15.131 --> 06:18.090
+to make this a controlled input.
+
+06:18.090 --> 06:20.820
+And the value property that we want to update here
+
+06:20.820 --> 06:23.373
+is going to be index.
+
+06:26.100 --> 06:27.390
+So back on the input tag,
+
+06:27.390 --> 06:30.480
+we'll do this.state.index.
+
+06:30.480 --> 06:34.830
+We'll do an onChange that's going to be called within event.
+
+06:34.830 --> 06:37.770
+And we'll take that event and update our state.
+
+06:37.770 --> 06:41.700
+So indexes event.target.value.
+
+06:41.700 --> 06:42.600
+I'm gonna zoom out again
+
+06:42.600 --> 06:44.450
+just so you can see that entire line.
+
+06:47.310 --> 06:48.990
+Okay, now the very last thing we do,
+
+06:48.990 --> 06:52.680
+we need to watch for any time that a user submits the form.
+
+06:52.680 --> 06:56.220
+So on the form I will add on a onSubmit event handler
+
+06:56.220 --> 06:58.350
+and that will call a callback that we'll call
+
+06:58.350 --> 07:00.153
+about something like handleSubmit.
+
+07:02.949 --> 07:04.380
+So now we just have to watch
+
+07:04.380 --> 07:07.470
+for the handleSubmit event helper to be called.
+
+07:07.470 --> 07:10.170
+Let's make sure we define that helper method.
+
+07:10.170 --> 07:14.370
+I'm gonna go above renderSeenIndexes right here
+
+07:14.370 --> 07:17.040
+and I'll define handleSubmit.
+
+07:17.040 --> 07:19.560
+Now we want handle submit to be a bound function.
+
+07:19.560 --> 07:21.700
+So I'm gonna say handleSubmit equals
+
+07:22.620 --> 07:25.023
+an arrow function like so.
+
+07:26.160 --> 07:27.900
+This is going to be an async function
+
+07:27.900 --> 07:30.330
+because we are going to try to send some information
+
+07:30.330 --> 07:31.590
+to our backend API.
+
+07:31.590 --> 07:34.293
+So I'm gonna mark it as async as well, like so.
+
+07:35.760 --> 07:36.930
+Then inside of here we'll make sure
+
+07:36.930 --> 07:39.390
+that we keep the form from attempting to submit itself
+
+07:39.390 --> 07:41.643
+by calling event preventDefault.
+
+07:42.780 --> 07:47.780
+And then we'll make a Axios post request to API/values.
+
+07:49.170 --> 07:52.050
+And we're gonna send in an object
+
+07:52.050 --> 07:55.500
+that has a key of index and the value will be
+
+07:55.500 --> 07:57.990
+whatever the user just typed into that input.
+
+07:57.990 --> 08:00.300
+So this.state.index.
+
+08:00.300 --> 08:03.150
+And then after successfully submitting this to the backend,
+
+08:03.150 --> 08:05.340
+I can then clear out the value of the input
+
+08:05.340 --> 08:09.873
+by calling this.setState index will be empty string.
+
+08:11.580 --> 08:13.710
+All right, so that's pretty much it.
+
+08:13.710 --> 08:16.260
+Again, I know we're going through this extremely quickly.
+
+08:16.260 --> 08:17.160
+I can't say it enough.
+
+08:17.160 --> 08:18.540
+I'm just showing you this
+
+08:18.540 --> 08:19.800
+in case you're a little bit curious
+
+08:19.800 --> 08:22.290
+about how this stuff is working behind the Seens.
+
+08:22.290 --> 08:24.330
+But we could just about got everything done
+
+08:24.330 --> 08:25.380
+on the React side.
+
+08:25.380 --> 08:26.760
+So let's take a quick pause right here
+
+08:26.760 --> 08:28.710
+and we'll continue in the next section.

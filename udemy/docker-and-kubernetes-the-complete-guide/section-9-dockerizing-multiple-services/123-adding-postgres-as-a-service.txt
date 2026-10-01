@@ -1,0 +1,499 @@
+WEBVTT
+
+00:00.870 --> 00:02.685
+-: In the last section, we put together Docker files
+
+00:02.685 --> 00:06.180
+for the client, the server, and the worker projects.
+
+00:06.180 --> 00:07.770
+Now that we've got Docker files for each
+
+00:07.770 --> 00:10.050
+of those put together that are specifically made
+
+00:10.050 --> 00:12.030
+for the development environment, we're gonna
+
+00:12.030 --> 00:14.865
+start putting together a Docker Compose file as well,
+
+00:14.865 --> 00:17.820
+just as we did on the previous application.
+
+00:17.820 --> 00:19.140
+Remember, the entire point
+
+00:19.140 --> 00:21.180
+of this Docker Compose file, is to make sure
+
+00:21.180 --> 00:23.310
+that it's a lot easier to start up
+
+00:23.310 --> 00:25.830
+each of these different images as containers
+
+00:25.830 --> 00:27.450
+with the appropriate arguments.
+
+00:27.450 --> 00:30.091
+For example, we need to make sure that the Express server
+
+00:30.091 --> 00:32.580
+is available on some given port.
+
+00:32.580 --> 00:34.350
+Same thing with React Server.
+
+00:34.350 --> 00:36.540
+We need to make sure that the worker has the ability
+
+00:36.540 --> 00:37.747
+to connect over to Redis.
+
+00:37.747 --> 00:41.610
+We need to make sure that the correct environment variables
+
+00:41.610 --> 00:44.160
+for connecting to Redis and Postgres are provided
+
+00:44.160 --> 00:46.706
+to the Express server and the worker as well.
+
+00:46.706 --> 00:49.590
+And so this is all configuration that is going to be done
+
+00:49.590 --> 00:52.593
+inside of our Docker Compose file.
+
+00:53.490 --> 00:58.131
+All right, now the first container that we're going to add
+
+00:58.131 --> 01:01.410
+of our own custom project to our Docker Compose file
+
+01:01.410 --> 01:03.900
+is going to be the server process.
+
+01:03.900 --> 01:06.900
+So just that Express server by itself.
+
+01:06.900 --> 01:09.060
+At the same time, we're also going to start adding
+
+01:09.060 --> 01:12.150
+the Postgres server, or the Postgres database
+
+01:12.150 --> 01:15.690
+and the Redis database to the Compose file as well.
+
+01:15.690 --> 01:17.213
+So in our development environment,
+
+01:17.213 --> 01:19.982
+we will have a complete copy of the Express server,
+
+01:19.982 --> 01:23.970
+a complete copy of Redis, and a complete copy of Postgres
+
+01:23.970 --> 01:26.940
+and they're all gonna work together very nicely.
+
+01:26.940 --> 01:28.767
+Once we get these three pieces put together
+
+01:28.767 --> 01:30.900
+we'll then come back and start to add in
+
+01:30.900 --> 01:32.970
+the React application, the worker,
+
+01:32.970 --> 01:35.043
+and the Nginx server as well.
+
+01:37.260 --> 01:39.060
+All right, now I've got a couple notes on this diagram
+
+01:39.060 --> 01:41.100
+right here, of some of the things that we need to think
+
+01:41.100 --> 01:43.320
+about inside of the Compose file.
+
+01:43.320 --> 01:45.420
+So we know that we need to add in Postgres.
+
+01:45.420 --> 01:48.660
+We know that we need Redis in there as well.
+
+01:48.660 --> 01:51.180
+And in both those cases, we need to figure out what image
+
+01:51.180 --> 01:52.730
+we should use for both of them.
+
+01:53.820 --> 01:56.250
+For the server, we probably need to specify some
+
+01:56.250 --> 01:58.200
+of the options that we had seen on the last Docker
+
+01:58.200 --> 01:59.850
+Compose file we put together.
+
+01:59.850 --> 02:02.490
+So we probably need to specify some build options.
+
+02:02.490 --> 02:04.264
+For example, what Docker file to use.
+
+02:04.264 --> 02:06.660
+We probably need to set up some volumes
+
+02:06.660 --> 02:09.696
+to make sure that anytime we change some of our source code,
+
+02:09.696 --> 02:12.840
+the container source code updates as well.
+
+02:12.840 --> 02:13.860
+And then this is gonna be something
+
+02:13.860 --> 02:16.140
+that we have not done before, but this is gonna be something
+
+02:16.140 --> 02:18.810
+that becomes very important in this application.
+
+02:18.810 --> 02:21.030
+We're gonna have to start thinking about specifying
+
+02:21.030 --> 02:24.827
+some environment variables for the server as well.
+
+02:24.827 --> 02:27.392
+Just in case you downloaded the checkpoint zip file
+
+02:27.392 --> 02:30.090
+and you didn't go through the assembly of the server
+
+02:30.090 --> 02:33.090
+with me, I encourage you to open up
+
+02:33.090 --> 02:34.830
+the server directory right now.
+
+02:34.830 --> 02:37.960
+And inside of here, you'll see a keys.js file.
+
+02:37.960 --> 02:40.854
+This right here is a listing of environment variables
+
+02:40.854 --> 02:44.820
+that we need to make sure are setup for this container.
+
+02:44.820 --> 02:48.793
+So the server application needs to be given a Redis host,
+
+02:48.793 --> 02:52.410
+a Redis port, a Postgres user, Postgres password
+
+02:52.410 --> 02:55.181
+Postgres port, all these different environment variables.
+
+02:55.181 --> 02:58.080
+They all need to be passed into this container
+
+02:58.080 --> 02:59.880
+when it is executed.
+
+02:59.880 --> 03:01.560
+And so that's something that we're going to be doing
+
+03:01.560 --> 03:03.690
+via our Docker Compose file.
+
+03:03.690 --> 03:05.610
+But again, we'll get to that a little bit later on
+
+03:05.610 --> 03:07.170
+in the process.
+
+03:07.170 --> 03:08.550
+Right now, let's get started
+
+03:08.550 --> 03:10.320
+by creating the Docker Compose file
+
+03:10.320 --> 03:12.870
+and we'll add a little bit of basic configuration in there
+
+03:12.870 --> 03:15.543
+for the Postgres and the Redis applications.
+
+03:17.250 --> 03:20.340
+All right, so inside of my root project directory
+
+03:20.340 --> 03:22.221
+I'm not inside of any folder right now.
+
+03:22.221 --> 03:24.090
+My root project directory
+
+03:24.090 --> 03:28.653
+I'll make a Docker dash Compose dot yml file.
+
+03:29.910 --> 03:32.550
+Inside of here we'll put down some of the immediate
+
+03:32.550 --> 03:34.410
+configuration that we know that we always add
+
+03:34.410 --> 03:36.270
+to every Docker Compose file.
+
+03:36.270 --> 03:39.243
+I'll say version is three, like so.
+
+03:40.410 --> 03:42.660
+After that, we'll then start to specify the list
+
+03:42.660 --> 03:45.420
+of different services that should be made available
+
+03:45.420 --> 03:47.520
+when we use this Docker Compose file
+
+03:47.520 --> 03:50.040
+as a starting point for our application.
+
+03:50.040 --> 03:51.990
+So the first service that we're going to define
+
+03:51.990 --> 03:54.690
+will be a Postgres instance.
+
+03:54.690 --> 03:56.728
+So I'm gonna give this a name of Postgres.
+
+03:56.728 --> 03:59.220
+Remember that's the name of the service
+
+03:59.220 --> 04:01.893
+as it's been added to our Docker Compose file now.
+
+04:03.900 --> 04:05.203
+So for the Postgres project
+
+04:05.203 --> 04:08.370
+we don't have to specify the build options
+
+04:08.370 --> 04:11.790
+or volumes or anything like that that we did previously.
+
+04:11.790 --> 04:13.800
+Instead, the only thing we need to specify here
+
+04:13.800 --> 04:15.900
+is the image that we want to use
+
+04:15.900 --> 04:17.359
+for this particular service.
+
+04:17.359 --> 04:20.539
+And so in this case, we're gonna go up to Docker hub.
+
+04:20.539 --> 04:22.980
+We're gonna take a look at the different versions
+
+04:22.980 --> 04:24.630
+of Postgres that are available
+
+04:24.630 --> 04:26.310
+and we'll specify one to be used
+
+04:26.310 --> 04:29.340
+as the base image for our project.
+
+04:29.340 --> 04:34.053
+So inside my browser, I'm gonna navigate to hub.docker.com.
+
+04:35.700 --> 04:39.240
+I'll find explore on the top right hand side.
+
+04:39.240 --> 04:40.247
+And then if we scroll down a little bit
+
+04:40.247 --> 04:45.247
+we'll very quickly see what is the first one Postgres.
+
+04:45.750 --> 04:47.439
+Wanna make sure I wasn't looking at Redis.
+
+04:47.439 --> 04:50.640
+So right here on this list you should see Postgres official
+
+04:50.640 --> 04:51.903
+very quickly pop up.
+
+04:54.240 --> 04:56.880
+And then under the full description for Postgres
+
+04:56.880 --> 05:00.000
+we'll see a couple of different versions that are available.
+
+05:00.000 --> 05:04.590
+At this point in time the latest tag is associated in here-
+
+05:04.590 --> 05:05.423
+Where is it?
+
+05:05.423 --> 05:06.256
+Ah, here we go.
+
+05:06.256 --> 05:07.467
+Version 10 of Postgres.
+
+05:07.467 --> 05:10.767
+Now if you see a latest tag being applied to version 11
+
+05:10.767 --> 05:13.192
+or even version 12 at some point in the future,
+
+05:13.192 --> 05:14.580
+that's totally fine.
+
+05:14.580 --> 05:17.100
+We are not using any advanced features of Postgres
+
+05:17.100 --> 05:20.160
+right now, and so you can safely use the latest tag
+
+05:20.160 --> 05:23.010
+probably without any issue whatsoever.
+
+05:23.010 --> 05:25.710
+So back inside of my Docker Compose file, I'm gonna say
+
+05:25.710 --> 05:28.239
+that the image to use for the Postgres service
+
+05:28.239 --> 05:30.540
+will be Redis, or excuse me, not Redis.
+
+05:30.540 --> 05:34.709
+I keep mixing the two up, Postgres colon latest.
+
+05:34.709 --> 05:37.830
+Oh, latest, like so.
+
+05:37.830 --> 05:39.990
+So now anytime that Docker Compose starts up,
+
+05:39.990 --> 05:42.720
+it's gonna try to create a Postgres service using
+
+05:42.720 --> 05:45.774
+the image Postgres, and they'll use the version of it
+
+05:45.774 --> 05:48.660
+tagged as latest.
+
+05:48.660 --> 05:50.062
+Let's very quickly test this out.
+
+05:50.062 --> 05:51.663
+So I'll save this file.
+
+05:52.740 --> 05:54.338
+I'll go back over to my command line.
+
+05:54.338 --> 05:56.075
+I'm inside of the complex directory,
+
+05:56.075 --> 05:59.001
+and I see the Docker Compose file inside of here.
+
+05:59.001 --> 06:01.833
+So I will run Docker Compose up,
+
+06:02.760 --> 06:05.160
+that will automatically pull down the Postgres image
+
+06:05.160 --> 06:08.490
+and start up a Postgres database on my machine.
+
+06:08.490 --> 06:10.950
+And so after a little bit of download and setup,
+
+06:10.950 --> 06:12.720
+you should eventually see a line that says
+
+06:12.720 --> 06:14.970
+something like, Database system is ready
+
+06:14.970 --> 06:16.743
+to accept connections down here.
+
+06:17.640 --> 06:18.670
+All right, so that's it for Postgres.
+
+06:18.670 --> 06:21.090
+Now, one thing I want you to be aware of,
+
+06:21.090 --> 06:24.633
+is that on the Postgres document or the repository,
+
+06:25.620 --> 06:27.891
+you can scroll down quite a bit and down here
+
+06:27.891 --> 06:29.550
+you'll eventually see something that says
+
+06:29.550 --> 06:31.500
+start a Postgres instance.
+
+06:31.500 --> 06:34.470
+And it shows you how to execute the Docker run command,
+
+06:34.470 --> 06:37.865
+while specifying the Postgres password to use right here.
+
+06:37.865 --> 06:39.300
+And if you scroll down even more,
+
+06:39.300 --> 06:41.460
+you'll see that they are showing a lot of different
+
+06:41.460 --> 06:45.540
+optional values you can pass in as environment variables,
+
+06:45.540 --> 06:47.640
+so that you can customize the way in which
+
+06:47.640 --> 06:49.710
+this Postgres image behaves.
+
+06:49.710 --> 06:52.110
+So we are gonna make use of these in just a little bit.
+
+06:52.110 --> 06:53.100
+So I just want you to be aware
+
+06:53.100 --> 06:55.110
+that we're gonna come back to this page pretty quickly
+
+06:55.110 --> 06:57.780
+and reference them this further documentation.
+
+06:57.780 --> 06:59.730
+But right now, let's take a quick pause.
+
+06:59.730 --> 07:00.930
+When we come back to the next section
+
+07:00.930 --> 07:03.600
+we'll start setting up our Redis service as well.
+
+07:03.600 --> 07:05.250
+So I'll see you in just a minute.

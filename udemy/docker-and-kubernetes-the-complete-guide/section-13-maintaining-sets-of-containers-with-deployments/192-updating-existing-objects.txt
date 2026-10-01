@@ -1,0 +1,457 @@
+WEBVTT
+
+00:00.660 --> 00:01.493
+-: In the last section,
+
+00:01.493 --> 00:03.120
+we had a very long discussion about the differences
+
+00:03.120 --> 00:06.240
+between an imperative and a declarative deployment.
+
+00:06.240 --> 00:08.730
+In this section, we're going to put a little bit
+
+00:08.730 --> 00:11.576
+of practice into this and get a very practical example
+
+00:11.576 --> 00:14.066
+of how we might update an existing object
+
+00:14.066 --> 00:17.100
+using a declarative approach.
+
+00:17.100 --> 00:18.570
+So what are we gonna update?
+
+00:18.570 --> 00:20.460
+Well, we're gonna say that our new goal,
+
+00:20.460 --> 00:22.740
+the old goal was to just create a container
+
+00:22.740 --> 00:24.450
+inside of our Kubernetes cluster.
+
+00:24.450 --> 00:26.580
+We're gonna say that our new goal is to update
+
+00:26.580 --> 00:28.348
+that existing pod that we created
+
+00:28.348 --> 00:31.230
+to use the multi-worker image,
+
+00:31.230 --> 00:33.960
+as opposed to the current multi-client image
+
+00:33.960 --> 00:35.610
+that it is currently using.
+
+00:35.610 --> 00:37.560
+So essentially, what we want to do is find
+
+00:37.560 --> 00:42.360
+that existing pod and update the image that it uses.
+
+00:42.360 --> 00:45.090
+Now let's take a quick thought on how we would do this
+
+00:45.090 --> 00:49.140
+with a imperative approach and a declarative approach.
+
+00:49.140 --> 00:51.480
+So if we took an imperative approach to this,
+
+00:51.480 --> 00:52.920
+we might do something like the series
+
+00:52.920 --> 00:54.840
+of steps you see on the left hand side.
+
+00:54.840 --> 00:57.660
+We might run a command to list out all the different pods
+
+00:57.660 --> 00:59.790
+that we have inside of our cluster right now.
+
+00:59.790 --> 01:01.380
+And then maybe we would issue a follow
+
+01:01.380 --> 01:04.080
+up command to like take an idea or something like
+
+01:04.080 --> 01:06.060
+that out of the current running pod
+
+01:06.060 --> 01:08.280
+and tell that thing very explicitly
+
+01:08.280 --> 01:11.070
+that it should now be running a new image.
+
+01:11.070 --> 01:13.110
+So in this imperative approach over here,
+
+01:13.110 --> 01:15.600
+we would have to essentially get the current state
+
+01:15.600 --> 01:18.120
+of our application by running a command to list
+
+01:18.120 --> 01:20.007
+out the current pods and find some idea
+
+01:20.007 --> 01:23.670
+of the current pod that is running the multi-client image.
+
+01:23.670 --> 01:24.570
+We then have to figure
+
+01:24.570 --> 01:27.690
+out a migration strategy on our own to update
+
+01:27.690 --> 01:30.570
+from the current state to our desired state.
+
+01:30.570 --> 01:32.880
+Now in this case, figuring out that migration strategy
+
+01:32.880 --> 01:33.960
+is pretty straightforward.
+
+01:33.960 --> 01:37.500
+We could probably look up some command API reference
+
+01:37.500 --> 01:38.812
+and figure out how we could tell a pod
+
+01:38.812 --> 01:41.040
+to update the image it uses.
+
+01:41.040 --> 01:43.710
+But again, that would take a little bit of work.
+
+01:43.710 --> 01:44.543
+So I'm gonna suggest
+
+01:44.543 --> 01:47.190
+that we instead use a declarative approach.
+
+01:47.190 --> 01:48.103
+With a declarative approach,
+
+01:48.103 --> 01:50.490
+updating and existing object inside
+
+01:50.490 --> 01:52.710
+of our Kubernetes cluster is always going
+
+01:52.710 --> 01:57.240
+to be the exact same process every single time.
+
+01:57.240 --> 01:59.389
+So we're going to go and find the config file
+
+01:59.389 --> 02:01.764
+that originally created that pod,
+
+02:01.764 --> 02:04.410
+and we'll then make an update to it.
+
+02:04.410 --> 02:06.480
+The update is going to simply say,
+
+02:06.480 --> 02:08.550
+hey, I want to use a new image.
+
+02:08.550 --> 02:11.700
+So inside the config file that we used to create the pod,
+
+02:11.700 --> 02:13.080
+we're going to no longer say,
+
+02:13.080 --> 02:15.390
+I want to use an image of multi-client.
+
+02:15.390 --> 02:19.560
+Instead, I now want to use a new image of multi-worker.
+
+02:19.560 --> 02:21.930
+Once we make that change to the config file,
+
+02:21.930 --> 02:24.420
+we're going to just throw it into kubeCTL
+
+02:24.420 --> 02:26.190
+at the command line and Kubernetes
+
+02:26.190 --> 02:27.840
+is going to work to update
+
+02:27.840 --> 02:31.380
+that existing pod to use the new image.
+
+02:31.380 --> 02:32.929
+Now, one thing that's kind of interesting about the process
+
+02:32.929 --> 02:35.310
+of the declarative approach over here
+
+02:35.310 --> 02:36.420
+is that we're essentially saying
+
+02:36.420 --> 02:38.156
+that we're going to take this config file,
+
+02:38.156 --> 02:40.890
+throw it into kubeCTL, which is of course
+
+02:40.890 --> 02:44.032
+gonna forward it onto Master, and somehow magically
+
+02:44.032 --> 02:46.850
+the Master is going to realize that it needs to
+
+02:46.850 --> 02:51.570
+update this existing pod as opposed to creating a new one.
+
+02:51.570 --> 02:53.040
+That's actually something that's kind of interesting.
+
+02:53.040 --> 02:55.080
+We're just gonna update this config file.
+
+02:55.080 --> 02:57.150
+And you might notice that inside this config file,
+
+02:57.150 --> 03:00.060
+there's really no unique ID or anything like that.
+
+03:00.060 --> 03:01.290
+There's nothing that says,
+
+03:01.290 --> 03:03.630
+hey, go and find this existing pod,
+
+03:03.630 --> 03:06.120
+like a pod we already created and update it.
+
+03:06.120 --> 03:07.770
+And so it might be a little bit confusing to figure
+
+03:07.770 --> 03:10.053
+out when making a change to a configuration file
+
+03:10.053 --> 03:12.254
+will update an existing object,
+
+03:12.254 --> 03:15.990
+as opposed to just deciding to create a completely new one.
+
+03:15.990 --> 03:18.750
+So behind the scenes, here's what Kubernetes does
+
+03:18.750 --> 03:21.000
+anytime that you toss in a configuration
+
+03:21.000 --> 03:23.823
+file into kubeCTL and Master.
+
+03:25.350 --> 03:26.804
+So inside of our config file,
+
+03:26.804 --> 03:29.490
+we're always gonna have an object, or we're always
+
+03:29.490 --> 03:32.130
+going to be creating an object that has a name.
+
+03:32.130 --> 03:34.020
+So every single last object that you
+
+03:34.020 --> 03:36.496
+and I ever create with a config file is always
+
+03:36.496 --> 03:39.030
+going to have a name assigned to it.
+
+03:39.030 --> 03:42.543
+And in our case, we assigned a name of client dash pod.
+
+03:43.440 --> 03:45.360
+In addition, every single config file we ever
+
+03:45.360 --> 03:47.100
+put together is going to have an object
+
+03:47.100 --> 03:48.960
+type assigned to it as well.
+
+03:48.960 --> 03:51.347
+And technically it's not like labeled in there as the type,
+
+03:51.347 --> 03:54.630
+it's really labeled as the kind recall.
+
+03:54.630 --> 03:56.280
+Remember, like right here on line two we say,
+
+03:56.280 --> 03:58.732
+kind pod, not object type, but you get the idea.
+
+03:58.732 --> 04:00.870
+Every config file is going to list
+
+04:00.870 --> 04:03.498
+out the type of object that we want to create.
+
+04:03.498 --> 04:06.750
+So every single time that we take a configuration file
+
+04:06.750 --> 04:08.353
+and pass it in the kubeCTL,
+
+04:08.353 --> 04:11.610
+the Master is going to look at that configuration file,
+
+04:11.610 --> 04:15.990
+and inspect its name and kind properties.
+
+04:15.990 --> 04:17.400
+It's then going to look at all the different
+
+04:17.400 --> 04:20.118
+running services inside the cluster and it's gonna say,
+
+04:20.118 --> 04:23.134
+okay, if I have any other object inside
+
+04:23.134 --> 04:27.365
+of here with a identical name, and in this case we do,
+
+04:27.365 --> 04:30.417
+and an identical type, then that must mean
+
+04:30.417 --> 04:33.750
+that rather than trying to create a new object,
+
+04:33.750 --> 04:36.750
+I'm going to try to take the updated configuration file
+
+04:36.750 --> 04:39.510
+and apply all these changes to the object
+
+04:39.510 --> 04:41.580
+that already exists inside the cluster.
+
+04:41.580 --> 04:43.140
+So in other words, the name
+
+04:43.140 --> 04:47.040
+and the kind are our unique identifying tokens
+
+04:47.040 --> 04:49.230
+for any object that we create.
+
+04:49.230 --> 04:51.407
+If you ever want to update an existing object,
+
+04:51.407 --> 04:54.664
+you're going to take your existing configuration file.
+
+04:54.664 --> 04:57.401
+You're going to always leave the name the same,
+
+04:57.401 --> 05:00.300
+and the kind the same, and you can change
+
+05:00.300 --> 05:01.830
+the rest of the configuration file
+
+05:01.830 --> 05:04.410
+and then feed it all into kubeCTL,
+
+05:04.410 --> 05:05.940
+and Master is going to automatically
+
+05:05.940 --> 05:09.180
+find the existing object and make updates to it.
+
+05:09.180 --> 05:11.160
+Now, if we made a change to the name,
+
+05:11.160 --> 05:13.334
+so if we said client pod, I don't know,
+
+05:13.334 --> 05:16.770
+new or something like that, well it now has a new name.
+
+05:16.770 --> 05:17.880
+So Master's gonna say,
+
+05:17.880 --> 05:20.640
+okay, do I have an existing object that is a pod
+
+05:20.640 --> 05:23.400
+with the name of client pod new?
+
+05:23.400 --> 05:24.960
+And in this case, we do not.
+
+05:24.960 --> 05:27.600
+There's no existing object inside of our cluster
+
+05:27.600 --> 05:29.280
+with that same name and same object type.
+
+05:29.280 --> 05:33.076
+And so Master would say, okay, well this is a new name.
+
+05:33.076 --> 05:35.885
+I guess I need to create a brand new object
+
+05:35.885 --> 05:38.459
+with that name and that type.
+
+05:38.459 --> 05:40.680
+So in short, anytime that we want to make
+
+05:40.680 --> 05:42.288
+an update to an existing object,
+
+05:42.288 --> 05:45.059
+we just go and find the original configuration file.
+
+05:45.059 --> 05:48.270
+We'll leave the name and the kind the same,
+
+05:48.270 --> 05:49.800
+and then we can make any other change
+
+05:49.800 --> 05:51.750
+we want to inside that file.
+
+05:51.750 --> 05:54.180
+So with that in mind, let's take a quick pause right here.
+
+05:54.180 --> 05:56.321
+We're gonna come back the next section.
+
+05:56.321 --> 05:59.220
+We're going to make an update to our configuration file
+
+05:59.220 --> 06:01.050
+and then feed it into kubeCTL.
+
+06:01.050 --> 06:02.250
+And we're going to expect
+
+06:02.250 --> 06:04.560
+that it's going to update an existing pod,
+
+06:04.560 --> 06:07.410
+as opposed to attempting to create a brand new one.
+
+06:07.410 --> 06:09.803
+So quick break and I'll see you in just a minute.

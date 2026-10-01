@@ -1,0 +1,658 @@
+WEBVTT
+
+00:00.970 --> 00:01.803
+-: In the last section,
+
+00:01.803 --> 00:03.930
+we were able to start up our test suite separately
+
+00:03.930 --> 00:06.330
+using Docker Compose.
+
+00:06.330 --> 00:08.190
+This new container definitely respects
+
+00:08.190 --> 00:09.300
+the volumes that we set up.
+
+00:09.300 --> 00:12.390
+So any time that we change our project files or folders,
+
+00:12.390 --> 00:14.970
+the test suite is going to see the change to those files
+
+00:14.970 --> 00:16.290
+and automatically rerun,
+
+00:16.290 --> 00:17.880
+which is definitely ideal.
+
+00:17.880 --> 00:19.290
+However, you'll notice that we've still got
+
+00:19.290 --> 00:21.120
+this kind of interactive menu right here.
+
+00:21.120 --> 00:24.210
+It would be really great to be able to press P, T, or Q
+
+00:24.210 --> 00:26.460
+to filter by file name, test name,
+
+00:26.460 --> 00:27.870
+or essentially just work around
+
+00:27.870 --> 00:29.850
+with the test suite a little bit.
+
+00:29.850 --> 00:32.130
+But we can see that if we hit Enter here,
+
+00:32.130 --> 00:37.130
+or P or Q or T, W, whatever it might be,
+
+00:37.590 --> 00:40.020
+none of this input that we're adding into our terminal
+
+00:40.020 --> 00:42.930
+is getting sent over to the running test suite.
+
+00:42.930 --> 00:45.030
+So quick reminder on why that's occurring.
+
+00:47.010 --> 00:48.960
+Here's a diagram of what's happening right now.
+
+00:48.960 --> 00:52.110
+We've got our test container and the web container.
+
+00:52.110 --> 00:53.730
+Both of those different containers
+
+00:53.730 --> 00:56.190
+start up with a primary command.
+
+00:56.190 --> 00:59.100
+For the test container, it's npm run test.
+
+00:59.100 --> 01:01.950
+And for the web container, it's npm run start.
+
+01:01.950 --> 01:04.620
+Anytime a process is created inside these containers,
+
+01:04.620 --> 01:06.090
+it automatically gets a connection
+
+01:06.090 --> 01:09.330
+to stdin, stdout, and stderr.
+
+01:09.330 --> 01:10.320
+And as a reminder,
+
+01:10.320 --> 01:14.430
+stdout, stdin, and stderr are all process-specific.
+
+01:14.430 --> 01:16.650
+So every different process inside this container
+
+01:16.650 --> 01:20.010
+has its own instance of stdin and stdout.
+
+01:20.010 --> 01:22.440
+Now, we are currently typing in our terminal,
+
+01:22.440 --> 01:25.710
+but there's nothing in place that is taking our text input,
+
+01:25.710 --> 01:27.270
+like the keys we are pressing,
+
+01:27.270 --> 01:29.640
+and automatically forwarding that input
+
+01:29.640 --> 01:32.280
+over to stdin of the test container.
+
+01:32.280 --> 01:33.360
+That would be ideal,
+
+01:33.360 --> 01:35.550
+but it's not set up to do that by default.
+
+01:35.550 --> 01:37.440
+And unfortunately, using Docker Compose,
+
+01:37.440 --> 01:39.900
+we cannot easily set that up.
+
+01:39.900 --> 01:42.810
+So let's try taking a slightly alternate approach here.
+
+01:42.810 --> 01:45.810
+Let's try creating a second terminal window,
+
+01:45.810 --> 01:47.190
+and in that terminal window,
+
+01:47.190 --> 01:50.700
+we're going to run the docker attach command.
+
+01:50.700 --> 01:52.560
+Remember what docker attach does.
+
+01:52.560 --> 01:53.640
+With docker attach,
+
+01:53.640 --> 01:55.800
+we can forward input from our terminal
+
+01:55.800 --> 01:58.680
+directly to a specific container.
+
+01:58.680 --> 02:00.300
+Let's try that out and see if we can't
+
+02:00.300 --> 02:02.790
+kind of get that connection to the test suite
+
+02:02.790 --> 02:04.590
+and be able to hit P, Q, T,
+
+02:04.590 --> 02:08.070
+all those different things to manipulate the test suite.
+
+02:08.070 --> 02:10.770
+All right, so I'm gonna open up a second terminal window,
+
+02:10.770 --> 02:11.603
+and inside of here,
+
+02:11.603 --> 02:14.190
+I'm gonna get the ID of that running container
+
+02:14.190 --> 02:15.900
+with docker ps.
+
+02:15.900 --> 02:17.670
+So here's the ID of the container.
+
+02:17.670 --> 02:20.073
+Make sure you've got the one for npm run start.
+
+02:21.360 --> 02:24.000
+I'll then try running docker attach,
+
+02:24.000 --> 02:25.950
+and then I'll put that ID in.
+
+02:25.950 --> 02:29.190
+So again, remember what docker attach does.
+
+02:29.190 --> 02:32.224
+We are attaching to the stdin, stdout,
+
+02:32.224 --> 02:35.730
+and stderr of the primary process inside that container.
+
+02:35.730 --> 02:38.490
+So in theory, if we type something into our terminal,
+
+02:38.490 --> 02:42.510
+that input will be sent to stdin on that primary process.
+
+02:42.510 --> 02:44.610
+So let's see what happens.
+
+02:44.610 --> 02:45.990
+I'll run that command.
+
+02:45.990 --> 02:47.220
+And then it looks like my cursor
+
+02:47.220 --> 02:48.390
+is just kind of hovering here,
+
+02:48.390 --> 02:50.760
+so it feels like something is going correctly.
+
+02:50.760 --> 02:55.760
+I'll try putting in P, Q, T, W, anything,
+
+02:55.860 --> 02:56.693
+and it looks like,
+
+02:56.693 --> 02:59.520
+well, it's not quite working as we expect.
+
+02:59.520 --> 03:01.590
+Okay, so let me cut to the chase here.
+
+03:01.590 --> 03:04.110
+Unfortunately, this is as good as it gets
+
+03:04.110 --> 03:07.170
+with the Docker Compose solution for running our tests.
+
+03:07.170 --> 03:08.580
+When we use Docker Compose,
+
+03:08.580 --> 03:12.090
+we're not going to be able to manipulate our test suite
+
+03:12.090 --> 03:16.080
+by entering P, T, Q, any of these special commands.
+
+03:16.080 --> 03:17.130
+With Docker Compose,
+
+03:17.130 --> 03:18.930
+this output right here is essentially
+
+03:18.930 --> 03:21.480
+as good as it's going to get.
+
+03:21.480 --> 03:23.460
+But I still wanna show you why that is.
+
+03:23.460 --> 03:25.230
+So I wanna give you a little bit of a background here
+
+03:25.230 --> 03:26.520
+and kind of apply some of the knowledge
+
+03:26.520 --> 03:28.260
+we picked up earlier in the course about Docker
+
+03:28.260 --> 03:30.930
+to understand why we are not going to be able to attach
+
+03:30.930 --> 03:33.570
+directly to that container and enter in commands
+
+03:33.570 --> 03:36.930
+and have them be affecting that running test process.
+
+03:36.930 --> 03:39.483
+Okay, so kind of a deep-dive here, but let's do it.
+
+03:40.530 --> 03:43.230
+So clearly, when we enter in additional text here,
+
+03:43.230 --> 03:46.170
+it is not at all manipulating the test suite.
+
+03:46.170 --> 03:49.170
+I wanna open up a second, or now, a third terminal window.
+
+03:49.170 --> 03:50.040
+And inside of here,
+
+03:50.040 --> 03:52.050
+we're gonna start up a shell instance
+
+03:52.050 --> 03:53.580
+inside that running container,
+
+03:53.580 --> 03:54.480
+and we're going to explore
+
+03:54.480 --> 03:56.520
+some of the different running processes.
+
+03:56.520 --> 03:58.950
+So I'm going to again do docker ps.
+
+03:58.950 --> 04:01.560
+I'm going to get the ID of that container.
+
+04:01.560 --> 04:02.700
+And I'll do, this time,
+
+04:02.700 --> 04:07.440
+docker exec -it, the id, and then sh.
+
+04:07.440 --> 04:08.910
+So remember what this does.
+
+04:08.910 --> 04:10.860
+This is going to run a new command
+
+04:10.860 --> 04:12.560
+inside the container with this ID.
+
+04:13.440 --> 04:14.730
+With -it right here,
+
+04:14.730 --> 04:17.340
+we are starting up a connection to stdin
+
+04:17.340 --> 04:19.770
+on this new command that we are going to run.
+
+04:19.770 --> 04:21.810
+And then sh over here on the very end
+
+04:21.810 --> 04:24.360
+is gonna start up essentially a new shell
+
+04:24.360 --> 04:27.120
+or kind of a command prompt inside the terminal.
+
+04:27.120 --> 04:30.750
+Shell is very similar to Bash or Z shell, if you use that.
+
+04:30.750 --> 04:32.070
+It's essentially just allowing us
+
+04:32.070 --> 04:35.400
+to enter some commands directly into the container.
+
+04:35.400 --> 04:36.330
+So I'm gonna run that.
+
+04:36.330 --> 04:38.340
+You see that we get our command prompt right here.
+
+04:38.340 --> 04:40.440
+And then we're going to run ps,
+
+04:40.440 --> 04:42.810
+which is going to print out all the running processes
+
+04:42.810 --> 04:44.960
+that we have going on inside the container.
+
+04:46.050 --> 04:48.000
+So this is the reason why docker attach
+
+04:48.000 --> 04:50.550
+did not quite work the way we expected.
+
+04:50.550 --> 04:52.950
+Notice how we have a PID right here of 1
+
+04:52.950 --> 04:54.543
+for the command npm.
+
+04:55.530 --> 04:57.840
+We've then got a separate process running
+
+04:57.840 --> 05:00.450
+for react-scripts start
+
+05:00.450 --> 05:04.320
+and yet another PID for some other script's start thing
+
+05:04.320 --> 05:05.490
+right here.
+
+05:05.490 --> 05:08.220
+All right, so why is the text that we're entering
+
+05:08.220 --> 05:11.340
+into the attached window over here not showing up?
+
+05:11.340 --> 05:13.410
+Well, that all comes down to the different processes
+
+05:13.410 --> 05:15.810
+that have been created inside the container.
+
+05:15.810 --> 05:17.940
+You see, when we run npm run test,
+
+05:17.940 --> 05:20.880
+we're not actually running directly npm run test.
+
+05:20.880 --> 05:24.540
+In reality, what is running is the process npm.
+
+05:24.540 --> 05:27.630
+And then npm looks at the additional arguments
+
+05:27.630 --> 05:30.330
+we are providing, specifically run test,
+
+05:30.330 --> 05:33.660
+and it uses those additional arguments to decide what to do.
+
+05:33.660 --> 05:37.530
+So npm is going to eventually start up a second process
+
+05:37.530 --> 05:39.390
+that is actually running our tests,
+
+05:39.390 --> 05:41.190
+and that is one of these two right here.
+
+05:41.190 --> 05:43.050
+I'll be honest, I don't actually know which one it is.
+
+05:43.050 --> 05:45.120
+It's essentially just one of the two.
+
+05:45.120 --> 05:46.290
+And so we might imagine that,
+
+05:46.290 --> 05:47.640
+hey, let's just say it's this one right here.
+
+05:47.640 --> 05:50.370
+That's the process that is running our test suite.
+
+05:50.370 --> 05:51.240
+So we can kind of imagine
+
+05:51.240 --> 05:54.510
+that there's a second process in here called start.js.
+
+05:54.510 --> 05:55.770
+And this is the process
+
+05:55.770 --> 05:57.840
+that is actually executing our test suite
+
+05:57.840 --> 06:00.060
+and receiving commands over stdin
+
+06:00.060 --> 06:02.190
+to understand when to filter down the test suite
+
+06:02.190 --> 06:04.860
+or rerun them or whatever it might be.
+
+06:04.860 --> 06:08.010
+The problem is that when we run docker attach,
+
+06:08.010 --> 06:10.920
+we always attach to stdin
+
+06:10.920 --> 06:13.210
+of the primary process of the container
+
+06:14.370 --> 06:16.500
+with the process ID of 1.
+
+06:16.500 --> 06:19.530
+And so that's always going to be the direct npm command.
+
+06:19.530 --> 06:21.120
+But it's not the npm command
+
+06:21.120 --> 06:23.580
+that is in charge of receiving those key presses
+
+06:23.580 --> 06:27.630
+and interpreting all those kind of different options we have
+
+06:27.630 --> 06:30.870
+of the P, T, and Q, and Enter right here.
+
+06:30.870 --> 06:34.560
+It's the secondary process that was started by npm.
+
+06:34.560 --> 06:37.590
+And so ideally, to be able to interact with that test suite,
+
+06:37.590 --> 06:40.380
+we would want to attach to that other command
+
+06:40.380 --> 06:42.330
+or that other running process.
+
+06:42.330 --> 06:43.770
+But unfortunately, with docker attach,
+
+06:43.770 --> 06:45.810
+that is just not an option.
+
+06:45.810 --> 06:47.430
+Anytime we run docker attach,
+
+06:47.430 --> 06:50.430
+we are always getting a handle on the primary process,
+
+06:50.430 --> 06:52.980
+not the secondary one over there.
+
+06:52.980 --> 06:54.090
+So, like I said,
+
+06:54.090 --> 06:56.550
+unfortunately, as far as the test suite goes,
+
+06:56.550 --> 06:59.160
+this is kind of as good as it gets.
+
+06:59.160 --> 07:01.230
+We can either execute Docker Compose
+
+07:01.230 --> 07:03.720
+to start up our tests inside of a second container.
+
+07:03.720 --> 07:04.800
+Now, that's definitely convenient,
+
+07:04.800 --> 07:06.690
+because we just have to run Docker Compose
+
+07:06.690 --> 07:08.670
+and boom, we get all of our tests running.
+
+07:08.670 --> 07:10.200
+But the downside to this approach
+
+07:10.200 --> 07:12.510
+is that we do not have the ability
+
+07:12.510 --> 07:14.760
+to kind of manipulate the running test suite
+
+07:14.760 --> 07:17.610
+with the P, T, and Q shortcuts.
+
+07:17.610 --> 07:18.750
+That's one option.
+
+07:18.750 --> 07:19.660
+The other option
+
+07:20.700 --> 07:23.370
+is to have just the single running container,
+
+07:23.370 --> 07:27.870
+so that primary container of web right here,
+
+07:27.870 --> 07:30.120
+and then we can run the docker exec command
+
+07:30.120 --> 07:32.250
+to start up our test suite inside there.
+
+07:32.250 --> 07:33.180
+The benefit to that
+
+07:33.180 --> 07:35.190
+is that we can manipulate the test suite,
+
+07:35.190 --> 07:37.530
+but as you saw, the downside was that we had to memorize
+
+07:37.530 --> 07:39.330
+that docker exec command
+
+07:39.330 --> 07:42.300
+and we also had to get the ID of the running container.
+
+07:42.300 --> 07:45.000
+So, like I said, at the end of the day, two solutions here.
+
+07:45.000 --> 07:47.490
+Neither of them are really 100% ideal,
+
+07:47.490 --> 07:49.530
+but at least you can pick one of the two
+
+07:49.530 --> 07:51.390
+that you like a little bit more to run your tests
+
+07:51.390 --> 07:52.593
+if you decide to do so.
+
+07:53.790 --> 07:55.080
+Now, the last thing I wanna mention here
+
+07:55.080 --> 07:57.210
+is that there are definitely test suites out there
+
+07:57.210 --> 08:00.150
+for other languages or even other JavaScript test suites
+
+08:00.150 --> 08:01.530
+besides the one we are using
+
+08:01.530 --> 08:02.760
+that do not actually have
+
+08:02.760 --> 08:05.610
+this kind of command line interaction,
+
+08:05.610 --> 08:06.930
+where you press in these commands
+
+08:06.930 --> 08:09.660
+and it manipulates the test suite in some fashion.
+
+08:09.660 --> 08:11.580
+There are definitely other test suites out there
+
+08:11.580 --> 08:14.040
+that you just run 'em and that's pretty much it.
+
+08:14.040 --> 08:17.130
+They just run, and you don't manipulate them in any fashion.
+
+08:17.130 --> 08:18.630
+So it's definitely not necessarily
+
+08:18.630 --> 08:19.710
+the worst thing in the world
+
+08:19.710 --> 08:21.540
+that we can't kind of get a handle on this thing.
+
+08:21.540 --> 08:22.650
+It would be nice if we could,
+
+08:22.650 --> 08:24.660
+but unfortunately, we just can't.
+
+08:24.660 --> 08:26.520
+So that's pretty much it on testing.
+
+08:26.520 --> 08:28.170
+So let's take a quick pause right here,
+
+08:28.170 --> 08:30.120
+and we'll continue in the next section.

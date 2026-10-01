@@ -1,0 +1,838 @@
+WEBVTT
+
+00:00.845 --> 00:01.770
+-: In the last section,
+
+00:01.770 --> 00:04.170
+we added in some logic to the express server
+
+00:04.170 --> 00:05.820
+that's going to get us a connection over
+
+00:05.820 --> 00:07.440
+to Postgres over here,
+
+00:07.440 --> 00:09.420
+and create a new table inside the database
+
+00:09.420 --> 00:11.220
+if it doesn't already exist.
+
+00:11.220 --> 00:12.870
+We're now gonna make sure that the express server
+
+00:12.870 --> 00:14.640
+has a connection over to Redis.
+
+00:14.640 --> 00:16.410
+So anytime that user submits a new number
+
+00:16.410 --> 00:18.300
+to the React Application.
+
+00:18.300 --> 00:21.115
+React App will push that index over to the express server,
+
+00:21.115 --> 00:23.070
+and the express server will then push
+
+00:23.070 --> 00:26.555
+that index into the running Redis instance.
+
+00:26.555 --> 00:29.070
+So back inside of my index dot js file,
+
+00:29.070 --> 00:31.005
+inside of the server directory.
+
+00:31.005 --> 00:32.820
+Underneath all the Postgres stuff,
+
+00:32.820 --> 00:35.497
+I'll put on a new section that we'll call,
+
+00:35.497 --> 00:37.533
+`Redis client setup.
+
+00:39.090 --> 00:43.260
+So here we'll say, const Redis is require Redis,
+
+00:43.260 --> 00:44.970
+and we're going to do some very similar,
+
+00:44.970 --> 00:47.090
+create client calls, that we did inside
+
+00:47.090 --> 00:49.744
+of the worker folder just a moment ago.
+
+00:49.744 --> 00:52.611
+We'll say, const Redis client is
+
+00:52.611 --> 00:54.693
+Redis dot create client.
+
+00:55.620 --> 00:57.690
+I'm gonna pass this an object
+
+00:57.690 --> 01:01.599
+that's gonna have a host coming from keys dot Redis host.
+
+01:01.599 --> 01:05.280
+A port from keys dot Redis port,
+
+01:05.280 --> 01:08.283
+and then finally we'll define a retry strategy.
+
+01:09.390 --> 01:12.480
+That's gonna be an arrow function that always
+
+01:12.480 --> 01:14.550
+returns the number 1000 to say
+
+01:14.550 --> 01:16.380
+if we ever lose connection to Redis
+
+01:16.380 --> 01:19.650
+try to reconnect to it once every one second.
+
+01:19.650 --> 01:21.330
+One thing I wanna point out here is that the key
+
+01:21.330 --> 01:26.130
+for retry strategy is separated by a underscore right there
+
+01:26.130 --> 01:29.233
+as opposed to the JavaScript standard of Camel case like so.
+
+01:29.233 --> 01:32.370
+So make sure that you've got underscore strategy
+
+01:32.370 --> 01:34.653
+and strategies should have a lowercase s.
+
+01:36.543 --> 01:38.580
+And then very similar to what we did before
+
+01:38.580 --> 01:40.470
+where we created a duplicate connection
+
+01:40.470 --> 01:43.230
+I'm going to also make a Redis publisher.
+
+01:43.230 --> 01:45.930
+I'm gonna use a more descriptive name this time around
+
+01:45.930 --> 01:49.380
+then when we created that duplicate copy of the Redis client
+
+01:49.380 --> 01:51.805
+over inside of the worker index dot js file.
+
+01:51.805 --> 01:54.600
+Just because we have many more variables inside
+
+01:54.600 --> 01:56.970
+of this server file.
+
+01:56.970 --> 01:58.860
+So I'll say const Redis publisher
+
+01:58.860 --> 02:00.100
+will be Redis client
+
+02:01.590 --> 02:03.390
+dot duplicate.
+
+02:03.390 --> 02:04.290
+Now in case you're curious
+
+02:04.290 --> 02:06.270
+we are making these duplicate connections
+
+02:06.270 --> 02:08.070
+in both files because according
+
+02:08.070 --> 02:11.160
+to the Redis documentation for this JavaScript library
+
+02:11.160 --> 02:14.088
+if we ever have a client that's listening
+
+02:14.088 --> 02:16.710
+or publishing information on Redis
+
+02:16.710 --> 02:18.966
+we have to make a duplicate connection
+
+02:18.966 --> 02:20.850
+because when a connection is turned
+
+02:20.850 --> 02:22.590
+into a connection that's going to listen
+
+02:22.590 --> 02:24.630
+or subscribe or publish information
+
+02:24.630 --> 02:26.580
+it cannot be used for other purposes.
+
+02:26.580 --> 02:28.320
+So that's why we're doing this duplicate thing
+
+02:28.320 --> 02:29.523
+in both locations.
+
+02:31.380 --> 02:32.970
+All right, so that's pretty much it
+
+02:32.970 --> 02:34.470
+for the initial setup here.
+
+02:34.470 --> 02:36.210
+Now we're going to start to define some
+
+02:36.210 --> 02:38.160
+of the different routes that our server is going to
+
+02:38.160 --> 02:39.840
+eventually respond to.
+
+02:39.840 --> 02:40.740
+So down here we'll put
+
+02:40.740 --> 02:44.913
+down another section and we'll say express route handlers.
+
+02:45.990 --> 02:47.850
+I'm gonna first make a test route
+
+02:47.850 --> 02:49.140
+something that we can use to make sure
+
+02:49.140 --> 02:51.810
+that our application is working the way we expect.
+
+02:51.810 --> 02:54.753
+I'll say app dot GIT forward slash.
+
+02:56.610 --> 02:57.660
+This thing is going to be called
+
+02:57.660 --> 03:00.270
+with a request and response.
+
+03:00.270 --> 03:03.870
+Anytime someone makes a request to the route route
+
+03:03.870 --> 03:07.020
+of our express application, I'm gonna send back a response
+
+03:07.020 --> 03:07.853
+of hi
+
+03:07.853 --> 03:08.686
+like so
+
+03:11.580 --> 03:14.003
+we'll then define another route handler
+
+03:14.003 --> 03:18.423
+at the route values slash all.
+
+03:20.130 --> 03:21.720
+This route handler is going to be used
+
+03:21.720 --> 03:26.010
+to query or running Postgres instance and retrieve all
+
+03:26.010 --> 03:28.380
+of the different values that have ever been submitted
+
+03:28.380 --> 03:29.490
+to Postgres.
+
+03:29.490 --> 03:31.370
+So this is essentially going to return all
+
+03:31.370 --> 03:33.360
+of the values that have ever been submitted
+
+03:33.360 --> 03:34.193
+to our application
+
+03:34.193 --> 03:36.870
+or all the indices that have been submitted.
+
+03:36.870 --> 03:39.900
+This is going to be an async arrow function
+
+03:39.900 --> 03:42.250
+so don't forget the aysync keyword right there.
+
+03:43.440 --> 03:45.920
+We'll do request and response,
+
+03:45.920 --> 03:47.280
+and then inside of here
+
+03:47.280 --> 03:49.950
+we're gonna make a query to the Postgres instance
+
+03:49.950 --> 03:53.400
+by saying Const values is a weight
+
+03:53.400 --> 03:56.070
+e.g client dot query.
+
+03:56.070 --> 03:57.690
+And the query we're going to issue is going to
+
+03:57.690 --> 03:58.835
+be a sequel query.
+
+03:58.835 --> 04:02.943
+We'll say select star from values.
+
+04:05.910 --> 04:08.040
+So essentially look at the values table
+
+04:08.040 --> 04:09.630
+that we created a little bit ago
+
+04:09.630 --> 04:11.700
+and pull all the information out of it.
+
+04:11.700 --> 04:14.610
+And then we're gonna send all that information back
+
+04:14.610 --> 04:17.610
+to whoever is making request to this route.
+
+04:17.610 --> 04:21.660
+So I'll say res dot send values dot rows.
+
+04:21.660 --> 04:23.460
+The dot rows right here is gonna make sure that
+
+04:23.460 --> 04:26.070
+we only send back the actual information that we retrieve
+
+04:26.070 --> 04:29.520
+from the database and no other information that is contained
+
+04:29.520 --> 04:30.950
+inside this values object.
+
+04:30.950 --> 04:33.510
+The other information that's in here is some information
+
+04:33.510 --> 04:36.240
+about the query itself, like say, how long it took
+
+04:36.240 --> 04:38.760
+or what tables we touched or stuff like that.
+
+04:38.760 --> 04:41.520
+So we're just gonna send back the relevant information
+
+04:41.520 --> 04:43.920
+to whoever made a request to this route handler.
+
+04:45.418 --> 04:49.320
+Next up we're gonna add another GIT Request handler
+
+04:49.320 --> 04:52.080
+to value values slash current.
+
+04:52.080 --> 04:54.540
+This is going to be another async function,
+
+04:54.540 --> 04:56.610
+so don't forget the async keyword.
+
+04:56.610 --> 04:59.790
+We'll do rack res and inside of here
+
+04:59.790 --> 05:02.670
+we're gonna reach into Redis this time.
+
+05:02.670 --> 05:04.936
+So reach into Redis and we're going to retrieve all
+
+05:04.936 --> 05:07.710
+of the different values, all the different indices
+
+05:07.710 --> 05:10.440
+and calculated values that have ever been submitted
+
+05:10.440 --> 05:11.670
+to our backend.
+
+05:11.670 --> 05:13.140
+So find all the value
+
+05:13.140 --> 05:15.712
+or all the indices that have been requested from our users
+
+05:15.712 --> 05:18.360
+and return all the accompanying values that have
+
+05:18.360 --> 05:20.013
+been calculated for each one.
+
+05:22.290 --> 05:27.290
+So inside of here I'll look at Redis client HGETALL
+
+05:27.690 --> 05:28.890
+which essentially means look
+
+05:28.890 --> 05:31.830
+at a hash value inside the Redis instance
+
+05:31.830 --> 05:34.053
+and just get all the information from it.
+
+05:34.890 --> 05:37.773
+The hash that we're gonna look at is called values.
+
+05:39.060 --> 05:41.760
+We're going to pass in a callback function that has
+
+05:41.760 --> 05:43.270
+air and values
+
+05:45.090 --> 05:46.560
+inside this thing we're just gonna
+
+05:46.560 --> 05:49.323
+send back res dot send values.
+
+05:51.330 --> 05:53.220
+Now, quick note here, you'll notice that up here
+
+05:53.220 --> 05:56.730
+we're making use of the Await or Async Await syntax
+
+05:56.730 --> 05:59.640
+and down here we're doing a very classic callback
+
+05:59.640 --> 06:02.670
+for our asynchronous route data handling.
+
+06:02.670 --> 06:04.680
+Unfortunately, the Redis library
+
+06:04.680 --> 06:07.680
+for note js doesn't have out the box promise support
+
+06:07.680 --> 06:09.660
+which is why we have to use callbacks
+
+06:09.660 --> 06:13.140
+as opposed to making use of the nice async await syntax.
+
+06:13.140 --> 06:14.590
+Just a quick side note there.
+
+06:16.350 --> 06:18.060
+All right, so I know this is a long section
+
+06:18.060 --> 06:20.850
+but we just need to do one more route handler down here.
+
+06:20.850 --> 06:22.650
+So let's just get that done with.
+
+06:22.650 --> 06:24.570
+So that last route handler that we're going to
+
+06:24.570 --> 06:26.788
+define is going to receive new values
+
+06:26.788 --> 06:29.010
+from the React application.
+
+06:29.010 --> 06:31.380
+So anytime that a user puts a new index in here
+
+06:31.380 --> 06:33.480
+like say 7, and then clicks on submit
+
+06:33.480 --> 06:36.720
+they're gonna try to post that information to our back end.
+
+06:36.720 --> 06:39.450
+So from the React application to the express server
+
+06:39.450 --> 06:42.210
+that's the route handler that we're gonna define right now.
+
+06:42.210 --> 06:43.263
+Last route handler.
+
+06:44.730 --> 06:46.680
+So I'll say app dot post
+
+06:46.680 --> 06:47.940
+because this time we're going to be listening
+
+06:47.940 --> 06:49.593
+for a post request,
+
+06:50.670 --> 06:51.503
+and I wanna watch
+
+06:51.503 --> 06:54.363
+for a post request to the values endpoint.
+
+06:55.830 --> 06:59.223
+We'll then put in an aysync callback, so rec res.
+
+07:00.480 --> 07:01.380
+And then inside of here
+
+07:01.380 --> 07:05.070
+we're gonna first get the index that the user just submitted
+
+07:05.070 --> 07:08.973
+from rec dot body dot value, excuse me, index.
+
+07:10.050 --> 07:11.190
+So look at the index
+
+07:11.190 --> 07:15.060
+that the user just submitted from rec dot body dot index.
+
+07:15.060 --> 07:15.930
+We're then gonna make sure
+
+07:15.930 --> 07:19.650
+that the index that was submitted is less than 40.
+
+07:19.650 --> 07:21.531
+So if a user puts in a number that's
+
+07:21.531 --> 07:23.910
+or an index that's really high,
+
+07:23.910 --> 07:25.950
+calculating a Fibonacci number
+
+07:25.950 --> 07:27.750
+with a method that we've put together inside
+
+07:27.750 --> 07:29.220
+of our worker process
+
+07:29.220 --> 07:32.550
+for a very large index will take a very, very
+
+07:32.550 --> 07:33.480
+very long time, like
+
+07:33.480 --> 07:36.870
+on the order of years or decades or centuries.
+
+07:36.870 --> 07:39.621
+So we're just going to arbitrarily cap the size
+
+07:39.621 --> 07:41.454
+of the index that the user submit to make sure
+
+07:41.454 --> 07:43.762
+that our worker process does not just
+
+07:43.762 --> 07:47.343
+get arbitrarily forever locked down for all time.
+
+07:48.390 --> 07:53.390
+So I'll say if our sent of index is greater than 40
+
+07:54.238 --> 07:56.490
+then we're going to immediately return
+
+07:56.490 --> 08:00.580
+and send back a status of 4 22
+
+08:01.500 --> 08:06.500
+and send the message value or index to high like so.
+
+08:13.047 --> 08:15.570
+So now that we've got this index or the number
+
+08:15.570 --> 08:18.761
+that we're going to use to calculate a Fibonacci value
+
+08:18.761 --> 08:20.430
+we're gonna first take that value
+
+08:20.430 --> 08:23.010
+and we're gonna put it into our Redis data store.
+
+08:23.010 --> 08:26.350
+So I'll say Redis client dot h set
+
+08:27.720 --> 08:29.070
+values
+
+08:29.070 --> 08:31.110
+we'll put in the index, and then
+
+08:31.110 --> 08:35.703
+as the value for that index, we're gonna put in nothing yet.
+
+08:37.170 --> 08:40.410
+So eventually the worker is gonna come to the hash or kind
+
+08:40.410 --> 08:42.660
+of data structure that we're creating inside of Redis
+
+08:42.660 --> 08:44.640
+and it's going to replace this nothing
+
+08:44.640 --> 08:47.190
+yet string with the actual calculated value.
+
+08:47.190 --> 08:49.230
+So nothing yet essentially means we've not yet
+
+08:49.230 --> 08:52.743
+calculated a Fibonacci value for this particular index.
+
+08:54.592 --> 08:56.098
+After we put the value in there
+
+08:56.098 --> 08:58.499
+we'll look at the Redis publisher
+
+08:58.499 --> 09:02.580
+and we'll publish a new insert event
+
+09:02.580 --> 09:04.050
+of that index.
+
+09:04.050 --> 09:06.690
+So this right here is gonna be the message that gets sent
+
+09:06.690 --> 09:08.250
+over to that worker process.
+
+09:08.250 --> 09:10.080
+It's gonna wake up the worker process and say,
+
+09:10.080 --> 09:12.148
+hey, it's time to pull a new value out of Redis
+
+09:12.148 --> 09:15.870
+and start calculating the Fibonacci value for it.
+
+09:15.870 --> 09:17.160
+And then after doing both those steps
+
+09:17.160 --> 09:17.993
+we're also going to look
+
+09:17.993 --> 09:21.300
+at our Postgres client and we're going to add
+
+09:21.300 --> 09:25.153
+in the new index that was just submitted.
+
+09:25.153 --> 09:28.860
+So remember, the Postgres database is going to
+
+09:28.860 --> 09:32.310
+be storing this kind of permanent record right here.
+
+09:32.310 --> 09:33.960
+It's gonna be storing the permanent record
+
+09:33.960 --> 09:36.930
+of all the different indices that have ever been submitted
+
+09:36.930 --> 09:37.953
+to our application.
+
+09:39.270 --> 09:42.240
+So we'll say pg client dot query
+
+09:42.240 --> 09:45.750
+insert into values.
+
+09:45.750 --> 09:50.520
+We are inserting a value for the number column
+
+09:50.520 --> 09:52.037
+so I'm gonna say number
+
+09:52.037 --> 09:57.030
+and then values dollar sign 1 like so.
+
+09:57.030 --> 10:00.240
+I'll then put in a comma, an array
+
+10:00.240 --> 10:02.340
+and I'll list out the index that was submitted
+
+10:02.340 --> 10:04.023
+to our application for that.
+
+10:06.750 --> 10:09.270
+So this line right here is gonna take the submitted index
+
+10:09.270 --> 10:11.583
+and permanently store it inside of Postgres.
+
+10:13.050 --> 10:15.240
+And then finally, as a response at the very end
+
+10:15.240 --> 10:16.980
+I'll say res dot send.
+
+10:16.980 --> 10:19.410
+And we'll just send back some arbitrary response
+
+10:19.410 --> 10:21.450
+like working true to say.
+
+10:21.450 --> 10:22.283
+All right
+
+10:22.283 --> 10:24.720
+we are doing some work to calculate your Fibonacci value.
+
+10:26.820 --> 10:31.110
+So now as the very last step inside of the index dot js file
+
+10:31.110 --> 10:33.210
+we're gonna set up app dot listen
+
+10:33.210 --> 10:36.310
+and we're gonna listen to port 5000 inside of here
+
+10:37.500 --> 10:40.800
+and we'll set up a callback and we'll just say something
+
+10:40.800 --> 10:45.800
+like console log listening like so.
+
+10:47.880 --> 10:49.500
+All right, so I know that's a lot of typing
+
+10:49.500 --> 10:50.340
+but that's all we have to do
+
+10:50.340 --> 10:54.870
+for the index dot js file and side of our express folder.
+
+10:54.870 --> 10:57.330
+So again, we're gonna try executing this file
+
+10:57.330 --> 10:58.710
+at the command line.
+
+10:58.710 --> 11:00.720
+Now the file's not gonna work as it stands right now
+
+11:00.720 --> 11:02.880
+because we do not have a running Redis server
+
+11:02.880 --> 11:05.310
+or a running Postgres server, but it's going
+
+11:05.310 --> 11:06.990
+to at least allow you to determine
+
+11:06.990 --> 11:09.483
+whether or not you have a typo inside this file.
+
+11:10.701 --> 11:13.110
+So I'm back inside of the complex directory
+
+11:13.110 --> 11:15.888
+which recall is the root folder for our entire project.
+
+11:15.888 --> 11:19.440
+I'm gonna change into the server directory, and then inside
+
+11:19.440 --> 11:22.620
+of here, I will run node index dot js.
+
+11:22.620 --> 11:25.020
+Now you want to see a message of something
+
+11:25.020 --> 11:27.630
+like cannot find module express.
+
+11:27.630 --> 11:31.290
+If you see anything else, that means that you have a typo
+
+11:31.290 --> 11:34.313
+somewhere either inside of the index dot js file
+
+11:34.313 --> 11:37.200
+or inside of the keys dot js file.
+
+11:37.200 --> 11:38.910
+So you'll want to look at both these files and
+
+11:38.910 --> 11:40.620
+try to find the typo.
+
+11:40.620 --> 11:42.690
+Now, if you can't find the typo, that's totally fine.
+
+11:42.690 --> 11:45.990
+Remember, I'm gonna post all of the correct code that we're
+
+11:45.990 --> 11:48.651
+writing right now in like one or two or three more videos.
+
+11:48.651 --> 11:51.450
+So if you see an issue, don't sweat it.
+
+11:51.450 --> 11:52.950
+You don't have to stare at your code all day.
+
+11:52.950 --> 11:54.900
+You can always just open up my copy
+
+11:54.900 --> 11:57.257
+of this project and copy paste everything
+
+11:57.257 --> 12:02.257
+from my index dot js file into your index dot js file.
+
+12:02.498 --> 12:05.070
+Okay, so let's take a quick pause right here
+
+12:05.070 --> 12:06.170
+and the next section, I think
+
+12:06.170 --> 12:08.880
+that we've got just like a tiny bit more.
+
+12:08.880 --> 12:09.713
+Actually, you know what?
+
+12:09.713 --> 12:10.546
+I think that might be it.
+
+12:10.546 --> 12:11.880
+Oh, we gotta do the React application.
+
+12:11.880 --> 12:12.870
+Of course.
+
+12:12.870 --> 12:14.130
+How could I forget?
+
+12:14.130 --> 12:16.380
+All right, so quick pause, come back in just a second
+
+12:16.380 --> 12:17.970
+and we'll put the React app together.
+
+12:17.970 --> 12:19.563
+So I'll see you in just a bit.

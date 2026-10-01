@@ -1,0 +1,346 @@
+WEBVTT
+
+00:00.960 --> 00:01.793
+-: In the last section,
+
+00:01.793 --> 00:04.290
+we spoke about how Docker Compose automatically
+
+00:04.290 --> 00:06.960
+sets up some networking between these different services,
+
+00:06.960 --> 00:09.330
+or these different types of containers that we define
+
+00:09.330 --> 00:11.670
+inside of our Docker composed file.
+
+00:11.670 --> 00:13.530
+Now that all this stuff is supposedly set up,
+
+00:13.530 --> 00:16.170
+let's figure out how to start up Docker Compose
+
+00:16.170 --> 00:17.403
+using this file.
+
+00:18.750 --> 00:20.790
+All right, so remember, the entire purpose,
+
+00:20.790 --> 00:22.680
+or, well, I should say one of the purposes
+
+00:22.680 --> 00:24.930
+of Docker Compose is to kind of make it easier
+
+00:24.930 --> 00:27.120
+to run all the different commands that you usually run
+
+00:27.120 --> 00:28.143
+with docker run.
+
+00:28.980 --> 00:31.470
+So whereas before, we would start up a new instance
+
+00:31.470 --> 00:33.390
+of a container using docker run,
+
+00:33.390 --> 00:34.890
+and then the name of the image that we wanted
+
+00:34.890 --> 00:36.690
+to create the container out of
+
+00:36.690 --> 00:39.300
+to create a instance of all the containers,
+
+00:39.300 --> 00:40.950
+or all the images or all the services
+
+00:40.950 --> 00:42.900
+listed inside of our composed file.
+
+00:42.900 --> 00:46.946
+We're going to run the command docker-compose up.
+
+00:46.946 --> 00:48.750
+Now, that one's pretty straightforward.
+
+00:48.750 --> 00:51.570
+So essentially, instead of saying run, we're gonna say up.
+
+00:51.570 --> 00:53.640
+And we don't have to specify an image.
+
+00:53.640 --> 00:55.170
+We're not specifying an image,
+
+00:55.170 --> 00:57.030
+because Docker Compose is going to look
+
+00:57.030 --> 00:59.490
+into our current working directory,
+
+00:59.490 --> 01:02.460
+and automatically look for a docker-compose file
+
+01:02.460 --> 01:03.716
+inside there.
+
+01:03.716 --> 01:05.673
+Now, the thing to be aware of
+
+01:05.673 --> 01:08.700
+is that before, we had the two separate Docker commands
+
+01:08.700 --> 01:10.830
+to build an image and run it,
+
+01:10.830 --> 01:13.710
+so if we wanted to rebuild the image from our Dockerfile,
+
+01:13.710 --> 01:16.920
+and then start an instance of it, two separate commands.
+
+01:16.920 --> 01:18.540
+But in the Docker Composed world,
+
+01:18.540 --> 01:22.352
+if we ever want to rebuild the images that are listed inside
+
+01:22.352 --> 01:24.390
+of our Docker composed file,
+
+01:24.390 --> 01:27.270
+for example, if we wanted to have Docker Compose
+
+01:27.270 --> 01:29.385
+rebuild this container right here,
+
+01:29.385 --> 01:31.503
+or the image used for that container,
+
+01:32.340 --> 01:36.090
+we write docker compose up --build.
+
+01:36.090 --> 01:38.430
+And so this --build right here is what essentially
+
+01:38.430 --> 01:41.250
+tells Docker Compose, "Start up our containers again,
+
+01:41.250 --> 01:43.200
+but make sure you try to rebuild them ahead
+
+01:43.200 --> 01:46.440
+of time so that we get all the latest changes."
+
+01:46.440 --> 01:48.360
+Okay, so let's give this a shot.
+
+01:48.360 --> 01:50.490
+I'm gonna flip on over to my terminal.
+
+01:50.490 --> 01:53.010
+I'm inside of my project directory,
+
+01:53.010 --> 01:54.330
+and I can definitely verify
+
+01:54.330 --> 01:57.960
+that I have my docker-compose file inside of here.
+
+01:57.960 --> 02:01.593
+So I'm going to run docker-compose up.
+
+02:03.450 --> 02:04.440
+Now, I want you to take a look
+
+02:04.440 --> 02:06.030
+at the very first line right here.
+
+02:06.030 --> 02:07.237
+The very first line says,
+
+02:07.237 --> 02:10.770
+"Creating network visits_default."
+
+02:10.770 --> 02:14.160
+So like I said before, when you just create a new set
+
+02:14.160 --> 02:16.710
+of containers or services with Docker Compose,
+
+02:16.710 --> 02:19.680
+it's going to automatically make a network for you
+
+02:19.680 --> 02:22.530
+that's going to join those different containers together.
+
+02:23.700 --> 02:26.670
+After that, we can see that it is creating an image
+
+02:26.670 --> 02:29.070
+for our Node application.
+
+02:29.070 --> 02:30.840
+And then if we scroll down a little bit more,
+
+02:30.840 --> 02:34.050
+we're gonna see a whole bunch of different output down here.
+
+02:34.050 --> 02:35.707
+The most important lines to see are,
+
+02:35.707 --> 02:38.400
+"Creating visits Node app one."
+
+02:38.400 --> 02:43.080
+So that's a single instance of our node-app service.
+
+02:43.080 --> 02:44.520
+And then we've got a single instance
+
+02:44.520 --> 02:47.190
+of our Redis Server as well.
+
+02:47.190 --> 02:49.260
+After that, we'll then start to see all the output
+
+02:49.260 --> 02:52.650
+from both of those different services start to appear.
+
+02:52.650 --> 02:54.900
+So every line here that's appearing in yellow for me
+
+02:54.900 --> 02:57.030
+is output from the Redis Server.
+
+02:57.030 --> 02:59.040
+And if I scroll down a little bit more,
+
+02:59.040 --> 03:02.370
+I'll eventually see some output from the Node application.
+
+03:02.370 --> 03:04.020
+So it looks like based on ready
+
+03:04.020 --> 03:05.580
+to accept connections right here,
+
+03:05.580 --> 03:08.130
+and listing a Port 8,081 right here,
+
+03:08.130 --> 03:09.990
+definitely looks like both of our containers
+
+03:09.990 --> 03:12.870
+set up were created successfully.
+
+03:12.870 --> 03:14.430
+So let's open up our browser.
+
+03:14.430 --> 03:16.410
+We're gonna try to open up our Node application,
+
+03:16.410 --> 03:18.363
+and see if the entire app works.
+
+03:20.145 --> 03:23.640
+All right, so I'm gonna open up Local Host 4,001.
+
+03:23.640 --> 03:26.280
+Remember, we made that kind of last minute change there.
+
+03:26.280 --> 03:28.890
+We had hard coded to say Port 8,081,
+
+03:28.890 --> 03:31.380
+but at the last minute we decided to change the port used
+
+03:31.380 --> 03:32.730
+to 4,001.
+
+03:32.730 --> 03:36.270
+So make sure you're go into Local Host, 4,001.
+
+03:36.270 --> 03:39.300
+And then sure enough, we see number of visits as zero,
+
+03:39.300 --> 03:40.380
+and then we can refresh.
+
+03:40.380 --> 03:42.000
+And every time that we refresh the page,
+
+03:42.000 --> 03:45.030
+we'll see that number of visits start to increment.
+
+03:45.030 --> 03:46.290
+Awesome.
+
+03:46.290 --> 03:50.010
+So that's a basic usage of Docker Compose.
+
+03:50.010 --> 03:52.110
+We created two separate services,
+
+03:52.110 --> 03:54.960
+and Docker Compose automatically made connections
+
+03:54.960 --> 03:56.760
+between the two available.
+
+03:56.760 --> 03:58.620
+The real key thing to keep in mind here
+
+03:58.620 --> 04:00.601
+is that in order to communicate between the two,
+
+04:00.601 --> 04:05.520
+we used a host name of the name of that other service,
+
+04:05.520 --> 04:07.320
+or that other container that was created,
+
+04:07.320 --> 04:09.720
+and that name is specified inside
+
+04:09.720 --> 04:12.452
+of our Docker composed file right here.
+
+04:12.452 --> 04:14.400
+So anytime you are making use
+
+04:14.400 --> 04:16.740
+of maybe some database driver
+
+04:16.740 --> 04:19.650
+inside of your web application layer,
+
+04:19.650 --> 04:22.200
+anywhere you would normally put in a connection URL,
+
+04:22.200 --> 04:23.370
+or connection URI,
+
+04:23.370 --> 04:26.610
+you can instead just list the name of that other container,
+
+04:26.610 --> 04:29.040
+and the host name will be automatically resolved
+
+04:29.040 --> 04:30.900
+for you by Docker.
+
+04:30.900 --> 04:32.490
+All right, now, quick break.
+
+04:32.490 --> 04:34.290
+There is still one or two quick things
+
+04:34.290 --> 04:36.270
+I want to go over on Docker Compose,
+
+04:36.270 --> 04:38.283
+so I'll see you in just a minute.

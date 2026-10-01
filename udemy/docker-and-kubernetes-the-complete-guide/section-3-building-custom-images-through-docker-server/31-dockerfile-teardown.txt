@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+-: In the last section,
+
+00:01.763 --> 00:03.660
+we put together our very first Docker file
+
+00:03.660 --> 00:05.430
+and then very quickly used it
+
+00:05.430 --> 00:07.830
+at the terminal to build a new image.
+
+00:07.830 --> 00:09.030
+However, we didn't really talk
+
+00:09.030 --> 00:10.830
+about what was going on inside of here.
+
+00:10.830 --> 00:13.800
+So in this section and the next, I wanna do a deep dive
+
+00:13.800 --> 00:16.830
+on all the configuration that we added to the Docker file
+
+00:16.830 --> 00:20.160
+and also what happened over at the terminal afterwards.
+
+00:20.160 --> 00:21.183
+So let's get to it.
+
+00:22.320 --> 00:23.153
+All right.
+
+00:23.153 --> 00:25.560
+So I took every line outta that Docker file except
+
+00:25.560 --> 00:28.290
+for the comments and put it into this diagram right here.
+
+00:28.290 --> 00:31.740
+So you see from Alpine, run and command,
+
+00:31.740 --> 00:33.540
+you'll notice that every line of configuration
+
+00:33.540 --> 00:34.380
+that we put in there
+
+00:34.380 --> 00:36.930
+looked kind of similar to the others.
+
+00:36.930 --> 00:39.210
+Every line started off with a single word
+
+00:39.210 --> 00:41.640
+that we refer to as an instruction.
+
+00:41.640 --> 00:44.370
+This instruction is telling the Docker server
+
+00:44.370 --> 00:47.400
+to do some very specific preparation step
+
+00:47.400 --> 00:50.160
+on the image that we are trying to create.
+
+00:50.160 --> 00:52.410
+The instruction from is used
+
+00:52.410 --> 00:54.240
+to specify the Docker image
+
+00:54.240 --> 00:56.880
+that we want to use as a base.
+
+00:56.880 --> 01:00.330
+The run instruction is used to execute some command
+
+01:00.330 --> 01:03.270
+while we are preparing our custom image.
+
+01:03.270 --> 01:04.380
+And then the CMD
+
+01:04.380 --> 01:07.080
+or command instruction specifies,
+
+01:07.080 --> 01:09.000
+what should be executed
+
+01:09.000 --> 01:10.140
+when our container, sorry,
+
+01:10.140 --> 01:13.830
+when our image is used to start up a brand new container.
+
+01:13.830 --> 01:16.260
+Every line of configuration that you are ever going to add
+
+01:16.260 --> 01:18.540
+to a docker file is always gonna start off
+
+01:18.540 --> 01:19.833
+with an instruction.
+
+01:20.760 --> 01:22.440
+Now, we just used the three most
+
+01:22.440 --> 01:23.970
+important instructions to know,
+
+01:23.970 --> 01:25.980
+there are quite another,
+
+01:25.980 --> 01:28.470
+quite a handful of other instructions out there.
+
+01:28.470 --> 01:30.120
+We're gonna look at a handful of them
+
+01:30.120 --> 01:31.410
+throughout the rest of this course.
+
+01:31.410 --> 01:33.870
+But again, from, run and CMD
+
+01:33.870 --> 01:36.960
+are the most important ones to know and understand.
+
+01:36.960 --> 01:39.660
+After each instruction, we then provided an argument
+
+01:39.660 --> 01:41.640
+to the instruction that kind of customized
+
+01:41.640 --> 01:43.680
+how that instruction was executed.
+
+01:43.680 --> 01:46.080
+So as you might guess, by putting from Alpine
+
+01:46.080 --> 01:50.234
+we are saying we want to use a base image of Alpine
+
+01:50.234 --> 01:52.650
+when preparing our image,
+
+01:52.650 --> 01:53.820
+and we'll talk more about exactly
+
+01:53.820 --> 01:56.520
+what that base image is doing for us in just a moment.
+
+01:57.360 --> 02:01.200
+On the next one, we said we want to run this command.
+
+02:01.200 --> 02:02.640
+This command was the argument
+
+02:02.640 --> 02:04.560
+that was provided to the instruction.
+
+02:04.560 --> 02:06.810
+And then for CMD down here at the bottom, well,
+
+02:06.810 --> 02:10.050
+I bet you can guess, yeah, that is the argument to cmd.
+
+02:10.050 --> 02:11.550
+All right, so that's what was going on
+
+02:11.550 --> 02:14.700
+with the overall structure of the Docker file.
+
+02:14.700 --> 02:17.100
+But that doesn't really explain a lot of the pieces
+
+02:17.100 --> 02:19.950
+or kinda like what the intent of each of these lines were
+
+02:19.950 --> 02:22.620
+outside of the comments that we added on there
+
+02:22.620 --> 02:24.300
+while we were writing the Docker file.
+
+02:24.300 --> 02:25.620
+So let's take a quick pause.
+
+02:25.620 --> 02:27.000
+We're gonna come back to the next section
+
+02:27.000 --> 02:27.870
+and we're gonna start to look
+
+02:27.870 --> 02:29.100
+at the output that we got
+
+02:29.100 --> 02:32.070
+inside of our terminal and try to understand
+
+02:32.070 --> 02:35.006
+how each of those lines of configuration was interpreted
+
+02:35.006 --> 02:38.460
+by the Docker server and used to build our image.
+
+02:38.460 --> 02:40.910
+So quick break and I'll see you in just a minute.

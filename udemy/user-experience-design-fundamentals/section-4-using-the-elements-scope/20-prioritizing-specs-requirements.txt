@@ -1,0 +1,298 @@
+WEBVTT
+
+00:00.890 --> 00:04.750
+So once we have requirements, now we got to prioritize them, okay?
+
+00:04.790 --> 00:06.470
+Because we can't do everything all at once.
+
+00:06.470 --> 00:07.790
+It's just not possible.
+
+00:07.790 --> 00:14.030
+Even if we were able to bend the laws of time and space, which I'm sure some of our clients would like
+
+00:14.030 --> 00:18.830
+us to be able to do, but the reality of the situation is that it simply isn't possible.
+
+00:18.830 --> 00:25.160
+So we have to make some hard decisions about what gets included, what gets included overall in the
+
+00:25.160 --> 00:26.270
+entire project.
+
+00:26.270 --> 00:31.940
+And also when you're thinking in terms of development sprints where you're doing a chunk of the project
+
+00:31.940 --> 00:35.120
+at a time, you know, what can we do in what period of time?
+
+00:35.120 --> 00:40.250
+If we're going to have two week sprints and two week reviews, you know, every two weeks we're going
+
+00:40.250 --> 00:45.620
+to check our progress and look at what we've built, you know, what gets included now, what has to
+
+00:45.620 --> 00:52.220
+wait, regardless of whether you're trying to decide, you know, overall what the entire set of requirements
+
+00:52.220 --> 00:58.610
+is or whether you're just trying to prioritize for the next two weeks, you still have to answer some
+
+00:58.610 --> 00:59.840
+specific questions.
+
+01:00.080 --> 01:06.960
+So the place to start is to associate the requirements you have with strategic objectives, see what
+
+01:06.990 --> 01:13.170
+lines up with the various strategic needs and goals that you identified at the beginning of the project.
+
+01:13.170 --> 01:15.840
+And that usually means asking four questions.
+
+01:15.840 --> 01:19.200
+First, does the requirement fulfill a user need?
+
+01:19.230 --> 01:26.760
+Is it in line with something that we know users of the system or the product or the app need to do or
+
+01:26.760 --> 01:29.550
+need to have access to next?
+
+01:29.550 --> 01:32.430
+Does the requirement fulfill a business objective?
+
+01:32.460 --> 01:38.520
+Is the requirement a stepping stone to getting the business the return on investment that they want?
+
+01:38.550 --> 01:42.090
+Is it getting them the use and adoption that they want?
+
+01:42.120 --> 01:45.990
+Does it meet one of their stated goals or objectives?
+
+01:46.230 --> 01:48.510
+How feasible is the requirement?
+
+01:48.510 --> 01:51.780
+Can we actually design it, build it and test it?
+
+01:51.780 --> 01:55.740
+Are we able to do it with the people that we have with the time that we have with the budget that we
+
+01:55.740 --> 01:56.310
+have?
+
+01:56.610 --> 01:57.360
+Is it realistic?
+
+01:57.360 --> 01:58.730
+Can we actually do this?
+
+01:58.740 --> 02:05.570
+And finally, are there any potential conflicts between requirements As you look across your list,
+
+02:05.600 --> 02:10.220
+are there any things that seem to be sort of in opposition with each other?
+
+02:10.220 --> 02:14.840
+And chances are, you know, on almost every project, there's almost at least one.
+
+02:14.870 --> 02:20.810
+You're always going to find one where there's two things that don't quite live too well together.
+
+02:20.810 --> 02:25.610
+And usually what happens is an altogether new requirement comes out of that scenario.
+
+02:25.640 --> 02:32.440
+These are the things that have to get explored and recognized and understood before you go forward.
+
+02:32.450 --> 02:38.630
+One of my personal rules of thumb is that any requirement that's not in line with the project strategy
+
+02:38.630 --> 02:39.740
+is out of scope.
+
+02:39.740 --> 02:45.950
+If it doesn't help us further our goals, either on the user side or the business side, then we probably
+
+02:45.950 --> 02:48.380
+shouldn't be doing it in the first place.
+
+02:48.380 --> 02:54.290
+The next thing we have to ask ourselves in terms of prioritizing our requirements is how does each requirement
+
+02:54.290 --> 02:56.090
+affect the product itself?
+
+02:56.120 --> 03:02.430
+The way to answer that question is to separate all the requirements into three categories and the first
+
+03:02.430 --> 03:05.580
+is requirements that make the product useful.
+
+03:05.700 --> 03:07.560
+Is this useful to a customer?
+
+03:07.560 --> 03:09.060
+Is it useful to us?
+
+03:09.090 --> 03:11.760
+Is it useful to our partners and suppliers?
+
+03:11.760 --> 03:15.960
+So requirements category number one are things that make the product useful.
+
+03:16.110 --> 03:19.770
+Next up are requirements that make the product saleable.
+
+03:19.800 --> 03:22.290
+Could we sell it if we had this?
+
+03:22.320 --> 03:25.770
+Does it help us sell the product if we had this feature?
+
+03:25.770 --> 03:30.000
+And by sell, I don't just mean an exchange of dollars and cents.
+
+03:30.030 --> 03:33.300
+Your goal with anything that you produce is to get people to use it.
+
+03:33.300 --> 03:37.950
+There's some convincing that needs to happen and whether they're giving you money or not to use it,
+
+03:37.950 --> 03:40.980
+you still have to sort of sell the idea.
+
+03:40.980 --> 03:48.120
+So again, does this requirement add something of value that that sort of helps you sell it?
+
+03:48.210 --> 03:53.190
+And finally, there are requirements that make the product buildable.
+
+03:53.190 --> 03:55.410
+Can we affordably build this?
+
+03:55.440 --> 03:57.930
+Is this something that we can easily do?
+
+03:57.930 --> 03:59.100
+Is it difficult to do?
+
+03:59.100 --> 04:01.740
+Is it going to require extra resources?
+
+04:01.770 --> 04:03.660
+Is it right in line with our skill set?
+
+04:03.660 --> 04:04.020
+Okay.
+
+04:04.020 --> 04:10.530
+Anything and everything that falls into the category of making it possible to build goes in this third
+
+04:10.530 --> 04:11.310
+category.
+
+04:11.490 --> 04:16.170
+And one thing I want to mention here is that your work in the strategy plan should have identified a
+
+04:16.170 --> 04:20.250
+clear hierarchy of priorities across all three of these areas.
+
+04:20.250 --> 04:27.150
+If you had a decent discovery session or several conversations or brainstorming or whatever it is,
+
+04:27.150 --> 04:33.420
+chances are you're going to have priorities that fall in each each one of those three categories without
+
+04:33.420 --> 04:34.290
+even trying.
+
+04:35.480 --> 04:42.740
+And the final takeaway in terms of doing requirements right is that you have to consider external forces.
+
+04:42.740 --> 04:48.460
+And that's because every single force that acts upon a project evolves requirements.
+
+04:48.470 --> 04:49.520
+Here's what I mean by that.
+
+04:49.520 --> 04:55.040
+Requirements have to be filtered through every force at play that affects the product itself, the end
+
+04:55.040 --> 04:57.380
+product that you're designing and the project.
+
+04:57.380 --> 05:05.270
+And that's any number of things it could be audience needs, it could be client desires, ethical obligations,
+
+05:05.300 --> 05:06.950
+aesthetic inclinations, right?
+
+05:06.950 --> 05:11.030
+Everyone's got their own opinion of what's good and what's bad and what looks good and what looks bad.
+
+05:11.030 --> 05:11.360
+ET cetera.
+
+05:11.360 --> 05:11.960
+ET cetera.
+
+05:11.990 --> 05:13.220
+Material Properties.
+
+05:13.220 --> 05:14.900
+What are we using to build it?
+
+05:14.930 --> 05:16.700
+Cultural presuppositions, right?
+
+05:16.700 --> 05:19.490
+Everyone has ideas about how the way things should work.
+
+05:19.490 --> 05:21.860
+Functional requirements time.
+
+05:21.860 --> 05:24.950
+How much time do we have to do this to pull this off?
+
+05:24.950 --> 05:26.180
+What's our budget?
+
+05:26.210 --> 05:27.710
+What are our resources?
+
+05:27.710 --> 05:28.730
+How many people?
+
+05:28.730 --> 05:31.190
+Is it just a one man show here?
+
+05:31.190 --> 05:36.080
+Or do we have, you know, six bodies that we could sort of divide and conquer with?
+
+05:36.090 --> 05:42.900
+So every one of those forces evolves requirements because they all have an impact on whether you can
+
+05:42.930 --> 05:45.450
+or cannot include that feature.
+
+05:45.480 --> 05:54.270
+They all have an impact on how well you will be able to define and design and develop that feature.
+
+05:54.270 --> 06:00.300
+So try not to get yourself sort of locked into the vacuum of, okay, I know exactly what my requirements
+
+06:00.300 --> 06:01.440
+are, let's go.
+
+06:02.010 --> 06:03.060
+Not so fast.
+
+06:03.090 --> 06:09.960
+Think about all the things external to you and external to the project that could have an impact on
+
+06:09.960 --> 06:11.730
+what you can and cannot do.

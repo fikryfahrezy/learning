@@ -1,0 +1,1330 @@
+WEBVTT
+
+00:01.040 --> 00:05.330
+On the information side of things, we have content requirements.
+
+00:05.330 --> 00:10.970
+And content, of course, is the reason people are coming to your site or using your app or your system
+
+00:10.970 --> 00:11.960
+in the first place.
+
+00:12.440 --> 00:19.670
+All the stuff that they can read, consume, absorb, interact with is essentially content, and as
+
+00:19.670 --> 00:22.820
+such, there are a lot of different types of content.
+
+00:22.850 --> 00:30.470
+While we typically think of content as text based images, audio and video are also all content types
+
+00:30.470 --> 00:36.950
+and they're all things that have to be considered because in many cases, all these different content
+
+00:36.980 --> 00:43.320
+types wind up working together in order to fulfill a single requirement or a single feature specification.
+
+00:43.340 --> 00:50.270
+For example, an article that you read online, aside from just the text, may also have photos accompanying
+
+00:50.270 --> 00:57.410
+it, may have video clips accompanying it, a how to section or a help section in a system that you
+
+00:57.410 --> 01:05.820
+use at work may very well have audio or video or diagrams or things that help you understand the content.
+
+01:05.820 --> 01:11.370
+So content is sort of the sum total of everything that shows up on the screen.
+
+01:11.400 --> 01:17.100
+If we know what the different content types are associated with each feature, we're able to determine
+
+01:17.100 --> 01:23.430
+what resources we need to produce that content or in some cases whether we can even produce it at all.
+
+01:23.610 --> 01:29.730
+So in that way, content has major impacts on user experience design decisions.
+
+01:29.730 --> 01:34.920
+And first in line is the content's format and its purpose.
+
+01:35.040 --> 01:36.720
+Those are two very different things.
+
+01:37.050 --> 01:43.440
+A really good example of that comes from Jesse James Garrett's book, The Elements of User Experience,
+
+01:43.440 --> 01:48.300
+where he says that when discussing content requirements with stakeholders, one of the first things
+
+01:48.300 --> 01:51.780
+that's usually said is we should have FAQs.
+
+01:51.780 --> 01:58.290
+But in that light, when the person says FAQ, they're really only referring to format, content, format,
+
+01:58.290 --> 02:00.600
+a simple series of questions and answers.
+
+02:00.630 --> 02:07.320
+However, the real value that's provided by an FAQ is the fact that it provides easy access to commonly
+
+02:07.320 --> 02:08.670
+needed information.
+
+02:08.670 --> 02:10.620
+That is its purpose.
+
+02:10.680 --> 02:11.760
+Okay, very different.
+
+02:11.790 --> 02:14.670
+Other content requirements can fulfill that same purpose.
+
+02:14.670 --> 02:19.590
+But when the focus is on the format, the purpose itself can be forgotten.
+
+02:19.590 --> 02:19.880
+Right?
+
+02:19.920 --> 02:26.910
+It's easy to sort of forget why it's there in the first place, and more often than not, FAQs tend
+
+02:26.910 --> 02:31.500
+to neglect the quote unquote frequently part of the equation.
+
+02:31.920 --> 02:38.130
+And instead you get sort of answers to whatever questions the provider just happened to think of.
+
+02:38.220 --> 02:44.790
+And that's why a lot of times you go into the Help section or the FAQ section, and a lot of what you
+
+02:44.790 --> 02:47.730
+find there really doesn't help you do anything.
+
+02:47.730 --> 02:54.540
+That's because the focus in creating that content was squarely on format as opposed to purpose.
+
+02:54.780 --> 02:57.990
+The next thing we have to consider is the size of each feature.
+
+02:57.990 --> 02:59.460
+What's our word count?
+
+02:59.490 --> 03:05.220
+How much text do we have to support if it's an image, what are the pixel dimensions of each image?
+
+03:05.220 --> 03:07.800
+Are there multiple sizes of images?
+
+03:07.800 --> 03:10.320
+How are we going to browse them?
+
+03:10.320 --> 03:11.970
+How are we going to collect them?
+
+03:12.120 --> 03:14.610
+What can people do with them once they're there?
+
+03:14.610 --> 03:16.350
+How big is each image?
+
+03:16.350 --> 03:16.750
+Right?
+
+03:16.770 --> 03:21.330
+If we're streaming audio or video, what kind of bandwidth is required?
+
+03:21.330 --> 03:23.820
+Will the hosting service support it?
+
+03:23.820 --> 03:26.880
+Will our internal server support that load?
+
+03:26.880 --> 03:31.170
+Will it support multiple connections, you know, thousands of connections at the same time, whatever
+
+03:31.170 --> 03:32.220
+the case may be?
+
+03:33.090 --> 03:37.740
+So how does size impact what we design and what we build?
+
+03:37.770 --> 03:39.930
+How do we work that into our specs?
+
+03:40.290 --> 03:46.290
+The last thing is what resources do we need in order to produce each type of content?
+
+03:46.340 --> 03:46.660
+Okay.
+
+03:46.710 --> 03:52.440
+For text, obviously you need writers, whether it's a professional writer or whether it's just somebody
+
+03:52.440 --> 03:58.440
+within the company who's tasked with writing down all this information and getting it to the project
+
+03:58.470 --> 03:59.000
+team.
+
+03:59.010 --> 04:00.990
+Someone has to do the writing.
+
+04:00.990 --> 04:08.100
+In the case of images, some one either has to create those images or someone has to go to a stock photo
+
+04:08.100 --> 04:14.310
+site, pick out a bunch of images that they feel are suitable, purchase them and then hand them off
+
+04:14.310 --> 04:18.240
+to the project team who probably then has to optimize them.
+
+04:18.240 --> 04:18.990
+Crop them.
+
+04:18.990 --> 04:19.410
+ET cetera.
+
+04:19.410 --> 04:19.770
+ET cetera.
+
+04:19.770 --> 04:20.430
+ET cetera.
+
+04:20.580 --> 04:21.540
+For audio.
+
+04:21.540 --> 04:24.120
+For video, who's going to create this stuff?
+
+04:24.120 --> 04:27.510
+And then once it's created, where do we store it?
+
+04:27.540 --> 04:28.640
+Is it on our server?
+
+04:28.650 --> 04:29.810
+Is it somewhere else?
+
+04:29.820 --> 04:34.370
+Do we need to purchase a third party service in order to serve up this content?
+
+04:34.380 --> 04:40.830
+Okay, so every single piece of content that we decide to include has ramifications.
+
+04:40.830 --> 04:44.490
+There are resource considerations that have to be made.
+
+04:45.220 --> 04:51.130
+Just like many of the other items and elements that we've discussed so far, content should be strategic
+
+04:51.130 --> 04:54.850
+in addition to just serving a functional purpose, a tactical purpose.
+
+04:54.970 --> 05:02.080
+It should be leveraged in some strategic way to serve a goal, to deliver a specific message, to end
+
+05:02.110 --> 05:07.150
+users, to make them feel a certain way, to give them the information that they're desperately looking
+
+05:07.150 --> 05:07.810
+for.
+
+05:07.840 --> 05:14.440
+So because of strategic, it means that there are certain considerations that have to be taken into
+
+05:14.440 --> 05:21.280
+account when we're in the phase of developing content and thinking about what kinds of content we're
+
+05:21.280 --> 05:22.220
+going to have.
+
+05:22.240 --> 05:30.100
+And most of those considerations revolve around the idea of content being relevant and appropriate.
+
+05:30.130 --> 05:36.250
+Is it relevant to the reason that people have come to see us or to interact with our product in the
+
+05:36.250 --> 05:37.030
+first place?
+
+05:37.060 --> 05:40.750
+Is it relevant to our reason for being?
+
+05:40.780 --> 05:47.780
+Is it appropriate in terms of representing who we are and what we believe in and what we have to offer?
+
+05:47.810 --> 05:53.100
+Is it appropriate in terms of speaking the language of the customer on the receiving end?
+
+05:53.120 --> 05:56.810
+Are they going to get what they read or are they going to identify with it?
+
+05:56.840 --> 05:59.030
+Is it going to mean something to them?
+
+05:59.060 --> 06:03.800
+Is it going to cause them to stick around a little bit longer and maybe dig a little deeper?
+
+06:03.830 --> 06:12.980
+So the degree of relevance and the degree of appropriateness hinges on different things, such as the
+
+06:12.980 --> 06:14.180
+method of delivery.
+
+06:14.180 --> 06:16.610
+How are we going to deliver content?
+
+06:16.610 --> 06:21.230
+Is it just text that sits on the screen and people read it and absorb it?
+
+06:21.560 --> 06:25.370
+Is it a moving animation that tells the story?
+
+06:25.400 --> 06:29.660
+Is it some combination of audio and video?
+
+06:29.690 --> 06:31.340
+Do they watch it on the screen?
+
+06:31.370 --> 06:33.110
+Do they download it and watch it later?
+
+06:33.140 --> 06:35.360
+Do they save it to their phone and watch it?
+
+06:35.360 --> 06:35.620
+Okay.
+
+06:35.630 --> 06:37.130
+What's the method of delivery?
+
+06:37.130 --> 06:39.710
+How are we getting it to the audience?
+
+06:39.890 --> 06:48.730
+The second consideration in terms of being appropriate is its style and its structure in terms of style.
+
+06:48.740 --> 06:54.830
+Is it consistent with the message that we're putting out everywhere else?
+
+06:54.830 --> 07:01.760
+Is it consistent in terms of theme tone of voice, in terms of factual information?
+
+07:01.790 --> 07:03.350
+Is it telling the truth?
+
+07:05.420 --> 07:06.440
+Is it appropriate?
+
+07:06.470 --> 07:08.090
+Is it casual and relaxed?
+
+07:08.120 --> 07:10.820
+Is it formal and strict?
+
+07:10.850 --> 07:13.130
+Is it rigid?
+
+07:13.160 --> 07:16.310
+Is it cultured?
+
+07:16.340 --> 07:17.060
+Is it hip?
+
+07:17.090 --> 07:19.160
+Is it you know, what's the what's its style?
+
+07:19.160 --> 07:24.740
+And is that style appropriate both for the business and the audience?
+
+07:24.920 --> 07:28.040
+And is the structure appropriate as well?
+
+07:28.250 --> 07:36.770
+The way that it's organized, the way that it flows, the way that it's categorized or organized or
+
+07:36.770 --> 07:42.340
+prioritized, the physical structure of it, whether it's audio or video or text, Right.
+
+07:42.350 --> 07:43.640
+Which is most appropriate.
+
+07:43.640 --> 07:47.990
+And how are we going to structure the information in each one of those cases?
+
+07:48.230 --> 07:51.260
+And finally, you have to think about substance.
+
+07:51.290 --> 07:58.660
+Is this information going to really be useful or valuable or meaningful to the people that consume it?
+
+07:58.670 --> 08:04.490
+Is it telling them something that's that's of dire importance, something we really want them to know
+
+08:04.490 --> 08:06.680
+or something that they need to know?
+
+08:07.010 --> 08:10.940
+Or is it what Steve Krug calls happy talk?
+
+08:10.970 --> 08:15.700
+Is it we are a leading provider of blah, blah, blah, blah, blah, blah, blah, blah, blah.
+
+08:15.710 --> 08:16.010
+Okay.
+
+08:16.040 --> 08:19.160
+Is it all about you or is it all about them?
+
+08:19.360 --> 08:27.230
+Are you talking about yourself for 20 minutes or are you explaining to the viewer what's in it for them
+
+08:27.230 --> 08:28.570
+for 20 minutes?
+
+08:28.580 --> 08:32.630
+One of those two things is infinitely more valuable than the other.
+
+08:33.290 --> 08:36.500
+From a from a user experience point of view.
+
+08:36.710 --> 08:40.760
+But most content tends to be very one sided.
+
+08:40.760 --> 08:47.390
+You know, people sort of forget that your job is not to tell people how great you are or what you've
+
+08:47.390 --> 08:53.330
+accomplished or how long you've been in business or what your position in the marketplace is.
+
+08:53.360 --> 08:57.920
+Your job is to tell them why any of that matters to them.
+
+08:58.190 --> 08:58.640
+Okay.
+
+08:58.670 --> 09:00.530
+What's in it for me?
+
+09:00.770 --> 09:02.570
+That's the thing you've got to remember.
+
+09:03.440 --> 09:10.040
+The process of generating content requirements starts with identifying and validating content sources
+
+09:10.040 --> 09:12.800
+and the appropriateness of each source.
+
+09:12.800 --> 09:19.340
+So first and foremost, we have to identify content sources as early as possible.
+
+09:19.340 --> 09:22.600
+We want to know where all this stuff is coming from.
+
+09:22.610 --> 09:29.630
+You don't want to be surprised later on in the process to find out that, Oh geez, there's 12 different
+
+09:29.630 --> 09:34.670
+departments that we probably should have talked to six months ago, but we didn't.
+
+09:34.670 --> 09:41.960
+And now we've got, I don't know, a novel's worth of content that has to be added to this thing.
+
+09:41.960 --> 09:43.970
+That's not a good problem to have.
+
+09:44.000 --> 09:50.240
+Part of the reason you want to identify those sources as early as possible is so you can identify inappropriate
+
+09:50.240 --> 09:52.430
+content as early as possible.
+
+09:52.430 --> 10:01.400
+Inappropriate in terms of it either doesn't further the business goals, it doesn't speak to your differential.
+
+10:01.400 --> 10:02.390
+What makes you special?
+
+10:02.390 --> 10:04.050
+What makes you better?
+
+10:04.050 --> 10:07.250
+Or it's something that people just don't care about.
+
+10:07.250 --> 10:13.370
+Okay, that's that's inappropriate or it's content that's simply no longer true.
+
+10:13.370 --> 10:20.120
+In any case, you want to identify what's appropriate and what isn't very, very early in the process.
+
+10:20.150 --> 10:26.390
+Next, once you've got all these content features or suggested content features, you want to validate
+
+10:26.390 --> 10:28.970
+them against your strategic objectives.
+
+10:29.000 --> 10:31.160
+Okay, what are we trying to achieve?
+
+10:31.160 --> 10:37.100
+And does all this content that we have help us get there, tell the story.
+
+10:37.100 --> 10:43.210
+I always say your content core job is to tell a compelling story.
+
+10:43.230 --> 10:46.940
+It doesn't matter what you do, it doesn't matter what industry you're in, doesn't matter what you're
+
+10:46.940 --> 10:47.570
+selling.
+
+10:47.570 --> 10:53.750
+You have to tell a compelling story if for no other reason than to get people to stick around for longer
+
+10:53.750 --> 10:54.950
+than three seconds.
+
+10:54.950 --> 11:01.460
+You've got to give them a reason to believe Maybe the biggest reason you want to get a handle on content
+
+11:01.460 --> 11:07.920
+early on is because, you know, every content idea sounds great when somebody else is responsible for
+
+11:07.920 --> 11:08.730
+creating it.
+
+11:09.210 --> 11:12.990
+Okay, You might come up with all these ideas and go, Man, that's fantastic.
+
+11:12.990 --> 11:18.510
+And then say, Well, geez, I got to create all this stuff that that changes the game.
+
+11:18.510 --> 11:24.000
+At least half of that stuff doesn't sound so good anymore when it's sort of all weighing on your shoulders
+
+11:24.000 --> 11:25.080
+to make it happen.
+
+11:25.110 --> 11:32.430
+You got to talk about this stuff early and often because if designer development proceeds without strategic
+
+11:32.430 --> 11:38.070
+features, without sourcing clearly identified and validated, the product fails.
+
+11:38.100 --> 11:40.080
+You're building things in a vacuum.
+
+11:40.080 --> 11:42.570
+You're developing in a vacuum, you're designing in a vacuum.
+
+11:42.570 --> 11:48.330
+And as content comes along and you've already set all these foundations, you've already built walls
+
+11:48.690 --> 11:58.860
+on the house, then when someone says, Well, geez, I've got furniture for 40 rooms and we only have
+
+11:58.860 --> 12:01.710
+ten rooms here, all right, now you've got a problem.
+
+12:01.710 --> 12:06.390
+You have to go back and redesign and rework architect and rebuild.
+
+12:06.390 --> 12:13.020
+And the chances are it's going to be very difficult for you to negotiate any additional time or any
+
+12:13.020 --> 12:20.340
+additional money with a client, because, unfortunately, you know, the way that they'll tend to look
+
+12:20.340 --> 12:23.820
+at it is, well, you should have told us that earlier.
+
+12:23.820 --> 12:27.180
+You know, you should have told us this was a problem or you should have told us that we needed to let
+
+12:27.180 --> 12:30.070
+you know how much content we had before.
+
+12:30.090 --> 12:39.030
+So, again, this is not me saying it's all on you in some negative way, but the truth of the matter
+
+12:39.030 --> 12:47.550
+is that you'll be much happier and more content and more satisfied in your chosen career path.
+
+12:47.940 --> 12:55.230
+If you take the time to discuss all this stuff and identify these sources, identify what your content
+
+12:55.230 --> 12:58.710
+is, where it's coming from, who's going to do it up front.
+
+12:58.740 --> 13:02.940
+The sooner you do that, the more smoothly the rest of the project will go.
+
+13:03.470 --> 13:05.810
+Content should also be contextual.
+
+13:05.810 --> 13:12.860
+And what I mean by that is people are going to be operating in a very specific context when they interact
+
+13:12.860 --> 13:14.900
+with what you're doing.
+
+13:15.550 --> 13:22.930
+There are different modes and aspects of the ways in which they'll be interacting with your content.
+
+13:22.930 --> 13:29.800
+For example, there are physical considerations here and those are largely concerned with doing things
+
+13:29.800 --> 13:33.780
+that a person is actually doing, such as their environmental factors.
+
+13:33.790 --> 13:35.950
+Okay, what's the room like that they're in?
+
+13:35.980 --> 13:36.880
+Is it noisy?
+
+13:36.880 --> 13:37.510
+Is it loud?
+
+13:37.540 --> 13:38.950
+Is it a crowded office?
+
+13:38.980 --> 13:43.210
+Are they viewing content on their phone as they're walking down the street?
+
+13:43.540 --> 13:45.910
+What sensory stimuli are there?
+
+13:45.910 --> 13:47.230
+Is there traffic noise?
+
+13:47.260 --> 13:51.280
+Is there, you know, large crowds of people or people bumping into each other?
+
+13:51.670 --> 13:53.260
+Are they waiting in line in the grocery store?
+
+13:53.260 --> 13:57.250
+And they're holding stuff in their right hand and they're using the phone with the left hand, things
+
+13:57.250 --> 14:00.820
+like this, physical activity, habits, What are their preferences, Right?
+
+14:00.820 --> 14:02.890
+How do they prefer to access the content?
+
+14:02.920 --> 14:04.000
+Is it on the phone?
+
+14:04.000 --> 14:05.080
+Is it on the desktop?
+
+14:05.080 --> 14:07.030
+Is it on their tablet?
+
+14:07.030 --> 14:10.870
+Are there learning disabilities or physical disabilities at play?
+
+14:10.870 --> 14:14.140
+Here is a specific percentage of our audience.
+
+14:14.140 --> 14:15.700
+Colorblind.
+
+14:15.700 --> 14:19.080
+Do we have folks who have hearing difficulties?
+
+14:19.090 --> 14:25.270
+There are lots of physical characteristics and attributes that have to be taken into consideration that
+
+14:25.270 --> 14:28.420
+affect the context in which people absorb information.
+
+14:28.600 --> 14:30.580
+The next is emotional.
+
+14:30.580 --> 14:32.530
+How is the person feeling?
+
+14:32.530 --> 14:34.060
+What's their psychological state?
+
+14:34.060 --> 14:35.590
+What's their stress level?
+
+14:35.590 --> 14:37.150
+You know, what are their desires?
+
+14:37.150 --> 14:38.620
+What are their wants, what are their needs?
+
+14:38.620 --> 14:42.460
+And all those things influence how things are perceived.
+
+14:42.460 --> 14:50.020
+I routinely tell both clients and students that any time someone interacts with content, there is always
+
+14:50.020 --> 14:52.510
+a certain amount of stress present.
+
+14:52.540 --> 14:58.330
+It's not necessarily the kind of stress that makes you tense and frustrated and anxious or any of those
+
+14:58.330 --> 14:59.020
+things.
+
+14:59.020 --> 15:04.840
+But there's always a certain amount of stress involved because there's a need present.
+
+15:04.870 --> 15:12.700
+Okay, There's a drive to get information or there's a purpose that has set their interaction with you
+
+15:12.700 --> 15:13.810
+into motion.
+
+15:13.810 --> 15:17.180
+And that purpose involves all these things.
+
+15:17.210 --> 15:18.500
+What do they want from you?
+
+15:18.530 --> 15:19.880
+What are they after?
+
+15:20.270 --> 15:21.950
+What can't they live without?
+
+15:21.950 --> 15:26.440
+You know, if they feel like they don't get this information from you, what happens?
+
+15:26.450 --> 15:27.860
+Is there a consequence?
+
+15:27.860 --> 15:34.610
+Those are all psychological aspects, emotional parts of how we interact with content and they need
+
+15:34.610 --> 15:35.840
+to be considered.
+
+15:36.050 --> 15:39.680
+Finally, there's a cognitive aspect which involves learning.
+
+15:39.680 --> 15:41.300
+How do we absorb the information?
+
+15:41.300 --> 15:45.650
+What assumptions do we make based on what we read and what we interact with?
+
+15:45.650 --> 15:47.690
+What's our ability to learn?
+
+15:47.720 --> 15:50.510
+Do we experience it once and then we get it?
+
+15:50.540 --> 15:52.550
+We know how to use it after that.
+
+15:52.550 --> 15:54.140
+Does it take multiple tries?
+
+15:54.170 --> 15:59.990
+Does it take multiple reads to understand Is it suitable for all education levels?
+
+16:00.020 --> 16:07.160
+You know, are we talking to a very narrow, specifically well defined group of people, or is this
+
+16:07.160 --> 16:16.430
+a mass market product with varying degrees of literacy and education levels and the ability to sort
+
+16:16.430 --> 16:18.920
+of understand and complex tasks?
+
+16:18.920 --> 16:20.480
+You have to think about all these things.
+
+16:20.480 --> 16:27.590
+Okay, this is all part of content strategy and what kinds of content are going to be required and what
+
+16:27.590 --> 16:32.630
+kinds of content, quite frankly, are going to be most useful, what kinds of content are going to
+
+16:32.630 --> 16:35.780
+sort of further the success of the product?
+
+16:35.990 --> 16:42.950
+So if content should be contextual, then that also means that content requirements should be contextual,
+
+16:42.950 --> 16:48.890
+and that also means that they should be very well defined and they should be specific, they shouldn't
+
+16:48.890 --> 16:53.720
+be subjective, they shouldn't be subject to interpretation.
+
+16:54.020 --> 16:55.100
+I'll give you an example.
+
+16:55.100 --> 16:59.300
+We ask a client What are your goals for this content?
+
+16:59.300 --> 17:03.530
+And they say to us, Well, it should sell products.
+
+17:03.530 --> 17:07.940
+And we say, Well, can you be more specific than that?
+
+17:07.940 --> 17:13.910
+And they think about it for a second and they go, okay, it's it's meant to sell a specific product.
+
+17:14.330 --> 17:15.500
+Okay, well, that's good.
+
+17:15.530 --> 17:19.130
+But it's not quite it's not quite there yet.
+
+17:19.160 --> 17:24.080
+We can't necessarily build a strategy around sell a specific product.
+
+17:24.080 --> 17:25.730
+Well, what is the product?
+
+17:25.760 --> 17:27.740
+What are people going to do with it?
+
+17:27.890 --> 17:29.690
+Do they want it, etcetera, etcetera, etcetera?
+
+17:29.690 --> 17:36.740
+So we push them a little bit more and he says, okay, we'll list and demonstrate the benefits of this
+
+17:36.740 --> 17:37.520
+product.
+
+17:37.550 --> 17:38.930
+We're getting closer, right?
+
+17:38.930 --> 17:44.680
+Because now we're talking about specifically some sort of list of features and benefits.
+
+17:44.690 --> 17:50.840
+We've got a format that we're after, but again, it's still not quite defined.
+
+17:50.840 --> 17:58.370
+So we typically in this case suggest something like, why don't we show how this product helps middle
+
+17:58.370 --> 17:59.570
+school teachers?
+
+17:59.600 --> 18:06.620
+Now we're getting contextual, Now we're getting specific because we're talking about a this particular
+
+18:06.620 --> 18:11.360
+product and be a very particular specific audience.
+
+18:11.390 --> 18:13.520
+Listen to demonstrate benefits, fine.
+
+18:13.520 --> 18:14.960
+But the benefits.
+
+18:15.080 --> 18:18.710
+That specifically help middle school teachers?
+
+18:18.740 --> 18:20.020
+Not just anybody.
+
+18:20.030 --> 18:27.650
+This particular person, this particular role with this particular responsibilities, with these particular
+
+18:27.650 --> 18:29.540
+concerns, you understand?
+
+18:29.540 --> 18:30.950
+So that's context.
+
+18:30.980 --> 18:37.520
+That's how you create a content requirement that is specific enough that you can build a strategy around.
+
+18:37.550 --> 18:42.380
+Now you know who you're talking to, and that gives you an idea of what needs to be said.
+
+18:43.210 --> 18:52.660
+Content should also be user centered, meaning that its purpose, its strategy, its form and its function
+
+18:52.660 --> 18:55.890
+all revolve around the user's perspective.
+
+18:55.940 --> 18:56.110
+Okay.
+
+18:56.110 --> 19:03.220
+The person who is the consumer of the information dictates what it is, how it's presented, how much
+
+19:03.220 --> 19:05.350
+of it there is, and whether it's appropriate or not.
+
+19:05.410 --> 19:06.850
+I'll give you some examples.
+
+19:06.850 --> 19:13.990
+The wrong way to create user centered content would be to design a site map that essentially mirrors
+
+19:13.990 --> 19:17.170
+the company's org chart or their service offerings.
+
+19:17.170 --> 19:18.840
+And I've seen this countless times, right?
+
+19:18.850 --> 19:25.990
+A company that has a slew of products will organize those products on its website in the same logical
+
+19:25.990 --> 19:28.570
+way that they're connected within the organization.
+
+19:28.750 --> 19:30.820
+But to the audience.
+
+19:30.970 --> 19:32.110
+That doesn't mean a whole lot.
+
+19:32.140 --> 19:38.350
+They're not operating in the same context, so that organization doesn't necessarily reflect what they
+
+19:38.350 --> 19:39.590
+care about most.
+
+19:39.610 --> 19:46.520
+So the right way to do that is to design a site map to reflect prioritized user needs.
+
+19:46.550 --> 19:51.620
+It's great that you've got all these product categories, but the three that we care about most are
+
+19:51.620 --> 19:57.020
+A, B and C, and those are the things that need to be front and center because quite frankly, the
+
+19:57.020 --> 19:59.570
+other stuff is all secondary considerations for us.
+
+19:59.660 --> 20:08.840
+I've seen no shortage of software sites, apps that insistently use the client's internal mental models
+
+20:08.840 --> 20:10.040
+and vocabulary.
+
+20:10.070 --> 20:17.450
+They reflect the company's understanding of the way things work and they reflect the language and terms
+
+20:17.450 --> 20:19.020
+that the company uses.
+
+20:19.040 --> 20:24.890
+For instance, we've all seen things that are filled with acronyms, lettered abbreviations.
+
+20:24.890 --> 20:33.170
+Well, they mean a great deal to the people inside the company's walls, but the customer base has no
+
+20:33.170 --> 20:35.690
+idea what any of those things mean.
+
+20:35.720 --> 20:40.910
+Tech industry in particular is riddled with this stuff, and what they forget is that they're talking
+
+20:40.940 --> 20:42.890
+to human beings.
+
+20:43.070 --> 20:44.740
+Okay.
+
+20:44.740 --> 20:52.050
+Human beings who don't necessarily understand what all those eight gazillion acronyms mean.
+
+20:52.060 --> 20:57.550
+So the right way to do that is to match the user's mental model of the world and the ways in which they
+
+20:57.550 --> 20:59.660
+use specific terms and phrases.
+
+20:59.680 --> 21:05.020
+If they call your product a screen door, and that's how they look for it and that's how they search
+
+21:05.020 --> 21:07.150
+for it and that's how they understand it.
+
+21:07.300 --> 21:16.330
+You're calling it an exterior middle door or a storm door or any number of other things isn't necessarily
+
+21:16.330 --> 21:17.230
+a good decision.
+
+21:17.230 --> 21:24.460
+So you have to you have to match the way that that your site visitor, your user thinks about those
+
+21:24.460 --> 21:24.700
+things.
+
+21:24.700 --> 21:29.020
+And you have to think hard about what they would call it versus what you would call it.
+
+21:29.410 --> 21:36.010
+Another of my favorite wrong ways to do things is to go on and on and on and on and on and on about
+
+21:36.010 --> 21:41.350
+how great the organization is and how great its products are and how millions of people use them.
+
+21:41.350 --> 21:46.250
+We are a leading provider of blah, blah, blah, blah, blah, blah, blah, all about us, blah,
+
+21:46.250 --> 21:47.180
+blah blah blah blah.
+
+21:47.210 --> 21:47.900
+All about us.
+
+21:47.930 --> 21:48.170
+Us.
+
+21:48.170 --> 21:48.380
+Us.
+
+21:48.380 --> 21:48.650
+Us.
+
+21:48.650 --> 21:48.860
+Us.
+
+21:48.860 --> 21:49.400
+Us.
+
+21:49.700 --> 21:57.530
+The right way to do it is to make sure that every piece of content essentially says, Here's what's
+
+21:57.530 --> 22:00.140
+in it for you if you do business with us.
+
+22:00.140 --> 22:08.150
+If you use this app, if you use this website, if you decide to adopt this system in your company as
+
+22:08.150 --> 22:11.930
+your new time and attendance system, here's what's in it for you.
+
+22:11.960 --> 22:14.360
+Here's why it's going to matter to you.
+
+22:14.360 --> 22:15.920
+Here's why it's going to be valuable.
+
+22:15.920 --> 22:21.560
+Here's why it's going to pay for itself in spades in the first three months.
+
+22:21.590 --> 22:26.330
+Those are the kinds of things that have to come across in content.
+
+22:27.140 --> 22:33.470
+The absolute best way to start generating content requirements is to ask questions and not only questions,
+
+22:33.470 --> 22:35.540
+but ask the right questions.
+
+22:35.600 --> 22:41.390
+I'm going to give you some examples of the types of questions we typically ask up front when we're trying
+
+22:41.390 --> 22:43.610
+to get a handle on content.
+
+22:43.640 --> 22:47.270
+The first question we ask is who's going to create all this?
+
+22:47.390 --> 22:48.440
+Is it us?
+
+22:48.470 --> 22:49.730
+Is it the client?
+
+22:49.760 --> 22:51.910
+Is it someone on the client's team?
+
+22:51.920 --> 22:53.780
+Is it a third party copywriter?
+
+22:53.780 --> 22:54.890
+Who's the creator?
+
+22:55.130 --> 22:58.190
+Or if there are more than one, who are the creators?
+
+22:58.490 --> 23:02.510
+Who's going to edit or approve all the stuff that they create?
+
+23:02.540 --> 23:04.490
+Is it someone on the client's team?
+
+23:04.490 --> 23:07.040
+And ideally, the answer to that question is yes.
+
+23:07.370 --> 23:11.600
+It should be someone on the client's team because they're going to know whether that content is appropriate
+
+23:11.600 --> 23:19.340
+to a much more accurate degree than you will, whether it's an outside copywriter or an outside team
+
+23:19.340 --> 23:20.960
+or someone on the client's team.
+
+23:20.960 --> 23:23.360
+Someone has got to do editing and approval.
+
+23:23.510 --> 23:30.540
+Who's responsible for managing content, Who's responsible for updating content once we know what content
+
+23:30.540 --> 23:36.180
+we are going to use once it's been written, once it's been edited, who's responsible for sort of wrangling
+
+23:36.180 --> 23:41.640
+all of it and making sure that it stays organized, making sure that the design and development teams
+
+23:41.640 --> 23:48.150
+have access to it, making sure that it's all categorized properly, making sure that the way it was
+
+23:48.150 --> 23:53.070
+organized in writing was also the way it's organized on the final site.
+
+23:53.070 --> 23:58.560
+And then once it launches, once the site launches or the app launches or the system is in place, who's
+
+23:58.560 --> 24:03.860
+going to be responsible for updating that stuff when it needs to change from that point forward?
+
+24:03.870 --> 24:08.820
+Again, you want to identify this because you don't want there to be any open assumptions that you're
+
+24:08.820 --> 24:09.750
+going to do it.
+
+24:10.020 --> 24:11.850
+What are our competitors doing?
+
+24:11.850 --> 24:14.460
+What kind of content are they giving people?
+
+24:14.580 --> 24:20.370
+This is particularly helpful because if one of the client's competitors, you know, is has a majority
+
+24:20.370 --> 24:26.400
+of the market share 80% and you're your client is the upstart, then they're probably doing something
+
+24:26.400 --> 24:26.820
+right.
+
+24:26.820 --> 24:30.450
+So it's worth taking a look at their content and seeing what are they giving their folks?
+
+24:30.450 --> 24:31.770
+Is it audio, is it video?
+
+24:31.770 --> 24:33.720
+Is it a lot of text?
+
+24:33.750 --> 24:34.830
+A little bit of text?
+
+24:34.860 --> 24:36.780
+Is it white papers?
+
+24:36.780 --> 24:37.740
+You know, what is it?
+
+24:37.740 --> 24:40.440
+It pays to take a look around at the competition.
+
+24:40.710 --> 24:44.400
+One of the most important questions is, will people find this useful?
+
+24:44.400 --> 24:45.690
+Will they find it valuable?
+
+24:45.690 --> 24:47.220
+Will it mean anything to them?
+
+24:47.220 --> 24:52.290
+Will they be able to take this information and somehow act on it afterwards?
+
+24:52.290 --> 24:56.120
+Will it enable an understanding of something that they didn't understand before?
+
+24:56.130 --> 25:02.910
+Will it allow them to step through this process that we need them to step through useful, valuable
+
+25:02.940 --> 25:04.650
+to really, really key words?
+
+25:04.650 --> 25:08.700
+When you're talking about content, how will people find all this stuff?
+
+25:08.700 --> 25:16.680
+If your content is especially large and your copywriter or the client's team or everybody combined is
+
+25:16.680 --> 25:23.970
+coming up with this sort of novel length collection of content ideas, you have to sort of take a step
+
+25:23.970 --> 25:30.440
+back and say, Well, wait a minute, can we really design and categorize and prioritize an effective
+
+25:30.440 --> 25:34.220
+navigation to allow people to be able to get to all this stuff?
+
+25:34.220 --> 25:35.510
+Is it going to be too deep?
+
+25:36.360 --> 25:38.160
+It's a question you have to ask.
+
+25:38.160 --> 25:44.340
+And while you may not be directly involved in the creation of content, you do want to be involved enough
+
+25:44.340 --> 25:51.360
+so that you can raise a warning flag to everybody involved and say, Hey guys, it's great that we have
+
+25:51.360 --> 25:55.440
+all this stuff, but I don't know that I'm realistically going to be able to create a way for people
+
+25:55.440 --> 25:55.980
+to find it.
+
+25:55.980 --> 25:57.210
+This could be a problem.
+
+25:57.480 --> 26:01.650
+How many different kinds of content are there you want to have a handle on?
+
+26:01.650 --> 26:05.850
+How many different content types you're going to have to support.
+
+26:05.850 --> 26:10.830
+And by support, that means visually displaying them on the screen.
+
+26:10.830 --> 26:14.610
+It also certainly means organizing and prioritizing them and all those good things.
+
+26:15.030 --> 26:21.240
+And from a technical standpoint, it means that someone is going to have to develop a platform or widgets
+
+26:21.240 --> 26:25.650
+or a service delivery method of some sort to stand all these things up.
+
+26:25.650 --> 26:28.710
+So how many different kinds are we dealing with?
+
+26:28.740 --> 26:30.360
+You know, what do we have to worry about?
+
+26:30.570 --> 26:32.790
+Where does this fit in the structure?
+
+26:32.790 --> 26:37.770
+Where do these content types fit within our establish site structure?
+
+26:37.770 --> 26:42.870
+Is video spread throughout the site or does it live in its own sort of little universe?
+
+26:42.870 --> 26:45.900
+You know, there's a navigation category called video.
+
+26:45.930 --> 26:51.720
+If there are PDF downloads, for instance, Whitepapers, where are they?
+
+26:51.750 --> 26:54.570
+Do they sit again in their own category?
+
+26:54.580 --> 26:56.070
+Are they sprinkled throughout?
+
+26:56.100 --> 27:02.910
+Is there any activity that has to take place before the user sees or downloads or experiences that content?
+
+27:02.910 --> 27:08.040
+You need to know where each piece of content is going to sit within the structure that you're developing.
+
+27:08.550 --> 27:15.330
+How are we going to display this, especially in the case of multimedia type content where it's video
+
+27:15.330 --> 27:21.570
+or it's animation or it's, you know, somebody's PowerPoint presentation, whatever it may be, you
+
+27:21.570 --> 27:25.650
+have to know how you're going to stand that up in the user interface.
+
+27:25.650 --> 27:29.020
+And then once it's there, what can people do with it?
+
+27:29.040 --> 27:30.420
+Are they able to start and stop?
+
+27:30.420 --> 27:31.890
+Are they able to rewind?
+
+27:31.890 --> 27:34.110
+Are they able to forward?
+
+27:34.140 --> 27:38.040
+Can they sort of jump navigate to different sections?
+
+27:38.070 --> 27:41.190
+Can they download the source file, etcetera, etcetera, etcetera.
+
+27:41.190 --> 27:47.340
+So there are lots of considerations that happen on the surface level of things where content is concerned.
+
+27:47.640 --> 27:50.460
+Finally, what are the form factor restrictions?
+
+27:50.490 --> 27:56.910
+Is this content going to live on a desktop, on a laptop, on a tablet, on a phone?
+
+27:57.030 --> 27:58.190
+All of the above.
+
+27:58.200 --> 28:02.880
+And is every piece of content going to live on every one of those devices, or are we going to cherry
+
+28:02.880 --> 28:10.170
+pick certain areas of content or specific content types for different devices?
+
+28:10.200 --> 28:13.200
+Those are questions that need to be asked.
+
+28:13.230 --> 28:19.020
+You may very well find that certain multimedia content, for example, does not display very well on
+
+28:19.020 --> 28:24.540
+a phone or God forbid, someone created it in flash and it won't work on the iPhone.
+
+28:24.540 --> 28:28.900
+And the iPhone makes up 80% of your target audience.
+
+28:28.920 --> 28:29.630
+Okay.
+
+28:29.640 --> 28:31.210
+These are things you have to be aware of.
+
+28:31.230 --> 28:35.430
+So form factor, you know, is really important.
+
+28:35.580 --> 28:42.870
+So at the outset of any project, if you only ask these questions where content is concerned, I can
+
+28:42.870 --> 28:50.460
+guarantee you you're going to have a really solid leg up in managing all the potential headaches that
+
+28:50.460 --> 28:51.900
+content can cause.
+
+28:51.930 --> 28:52.290
+All right.
+
+28:52.340 --> 28:59.580
+It's a big ball of wax, but if you ask these questions up front and make sure you get answers that
+
+28:59.580 --> 29:03.450
+are as detailed as possible, you're going to be one step ahead of the game.

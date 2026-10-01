@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00.780 --> 00:02.520
+-: In the last section, we made a change
+
+00:02.520 --> 00:04.740
+to our pod configuration file.
+
+00:04.740 --> 00:06.810
+That very particular property that we updated
+
+00:06.810 --> 00:08.700
+was the image right here.
+
+00:08.700 --> 00:10.380
+We then fed that back into kubectl
+
+00:10.380 --> 00:14.520
+and we saw the updated pod using the described command.
+
+00:14.520 --> 00:16.560
+In this section, I wanna make another change
+
+00:16.560 --> 00:18.240
+to this configuration file.
+
+00:18.240 --> 00:19.770
+Now, this next change we're going to make
+
+00:19.770 --> 00:22.620
+is going to appear to be a very small change,
+
+00:22.620 --> 00:25.650
+like similar in nature to changing the image.
+
+00:25.650 --> 00:28.530
+But when we try to feed the configuration file
+
+00:28.530 --> 00:31.170
+or the updated configuration file in a kubectl,
+
+00:31.170 --> 00:33.960
+we're going to very quickly see an error message.
+
+00:33.960 --> 00:35.370
+So let's go through this process.
+
+00:35.370 --> 00:36.600
+We're gonna see the error message
+
+00:36.600 --> 00:39.000
+and we'll talk about why we are seeing the error message
+
+00:39.000 --> 00:40.470
+that we're going to see.
+
+00:40.470 --> 00:42.480
+All right, so inside my client pod file,
+
+00:42.480 --> 00:45.270
+I'm gonna find the container port listed down here.
+
+00:45.270 --> 00:47.940
+Now remember, multi-worker doesn't do anything
+
+00:47.940 --> 00:51.330
+with container port 3000, no usage whatsoever.
+
+00:51.330 --> 00:53.910
+Multi-worker has no ability to receive
+
+00:53.910 --> 00:56.850
+or make outgoing requests or anything like that.
+
+00:56.850 --> 00:58.770
+So we'll just make an arbitrary change here.
+
+00:58.770 --> 01:00.990
+I'm gonna change the container port from 3000
+
+01:00.990 --> 01:03.633
+to about 9999, like so.
+
+01:04.770 --> 01:08.220
+So totally arbitrary change, no rhyme or reason behind it.
+
+01:08.220 --> 01:09.690
+I'm gonna save this file now,
+
+01:09.690 --> 01:12.960
+and then we're going to try to update our pod in place
+
+01:12.960 --> 01:15.510
+by using the kubectl apply command again.
+
+01:15.510 --> 01:16.980
+And again, when we run this command,
+
+01:16.980 --> 01:19.170
+you're gonna see an error message and we're gonna talk about
+
+01:19.170 --> 01:21.570
+why we are seeing the error message.
+
+01:21.570 --> 01:23.190
+All right, So I'm gonna save the file.
+
+01:23.190 --> 01:25.230
+I'll then flip back over to my terminal
+
+01:25.230 --> 01:30.230
+and I'll do kubectl apply, clientadd.aml again.
+
+01:31.620 --> 01:32.490
+Now when I run this command,
+
+01:32.490 --> 01:35.460
+we're gonna see this tremendous amount of output right here.
+
+01:35.460 --> 01:38.883
+I want you to scroll up to the very top of this message.
+
+01:39.930 --> 01:43.110
+And up here, you're gonna see the reason for the error.
+
+01:43.110 --> 01:45.660
+Essentially, it says, that we are not allowed
+
+01:45.660 --> 01:48.990
+to update any pod configuration piece
+
+01:48.990 --> 01:53.370
+other than the image used, some other image property,
+
+01:53.370 --> 01:57.420
+some active deadline something, or tolerations property.
+
+01:57.420 --> 01:59.550
+So this error message right here is essentially saying
+
+01:59.550 --> 02:02.370
+that when we update a pod, we are only allowed
+
+02:02.370 --> 02:06.030
+to update these four different configuration properties.
+
+02:06.030 --> 02:08.880
+And so, this definitely kind of goes very much
+
+02:08.880 --> 02:10.710
+in the face of what I just told you
+
+02:10.710 --> 02:12.960
+about how we make updates.
+
+02:12.960 --> 02:14.910
+I had just told you two seconds ago that, yeah,
+
+02:14.910 --> 02:16.710
+we make updates to existing objects
+
+02:16.710 --> 02:18.840
+by updating the configuration file
+
+02:18.840 --> 02:21.390
+and then feeding that into kubectl.
+
+02:21.390 --> 02:24.060
+But in this case, we just made a very simple change
+
+02:24.060 --> 02:25.380
+to our configuration file
+
+02:25.380 --> 02:28.320
+and we very quickly saw an error message.
+
+02:28.320 --> 02:29.310
+So how do we use
+
+02:29.310 --> 02:31.920
+this kind of configuration file based process
+
+02:31.920 --> 02:35.010
+of updating something if kubectl won't allow us
+
+02:35.010 --> 02:38.100
+to change something as basic as a container port?
+
+02:38.100 --> 02:40.020
+Well, of course, there is a workaround to this.
+
+02:40.020 --> 02:41.760
+So let's take a quick pause right here
+
+02:41.760 --> 02:43.140
+and we're gonna come back the next section
+
+02:43.140 --> 02:44.850
+and we're going to start to investigate
+
+02:44.850 --> 02:48.660
+how we can use a different type of object besides a pod
+
+02:48.660 --> 02:51.840
+to be allowed to change any piece of configuration tied
+
+02:51.840 --> 02:53.310
+to a pod that we want to.
+
+02:53.310 --> 02:55.673
+So quick break and I'll see you in just a minute.

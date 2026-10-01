@@ -1,0 +1,319 @@
+WEBVTT
+
+00:01.050 --> 00:03.480
+-: In the last section, we put together our RDS instance
+
+00:03.480 --> 00:05.010
+and we're just gonna let it do its thing
+
+00:05.010 --> 00:06.660
+as it creates that database.
+
+00:06.660 --> 00:08.760
+While that's working, we're going to flip on
+
+00:08.760 --> 00:09.990
+over to another dashboard
+
+00:09.990 --> 00:13.920
+and create our Elastic Cache instance as well.
+
+00:13.920 --> 00:15.780
+So I'll click on services up at the top
+
+00:15.780 --> 00:18.630
+and I'll search for Elastic Cache.
+
+00:18.630 --> 00:20.910
+And okay, I've been saying Elastic Cache.
+
+00:20.910 --> 00:25.383
+I guess it's really ElastiCache, whatever, all the same.
+
+00:27.090 --> 00:29.070
+Okay, so once over here, we're gonna scroll down
+
+00:29.070 --> 00:32.430
+a little bit and we really want to launch a cluster
+
+00:32.430 --> 00:33.263
+but it's showing me this
+
+00:33.263 --> 00:35.130
+kind of annoying dashboard right here.
+
+00:35.130 --> 00:37.530
+Let's try clicking on Redis on the left hand side
+
+00:37.530 --> 00:39.873
+and then we'll find the Create button up here.
+
+00:41.610 --> 00:42.750
+So then this is going to walk us
+
+00:42.750 --> 00:44.880
+through the process of creating a cluster.
+
+00:44.880 --> 00:46.050
+Now the interesting thing here is
+
+00:46.050 --> 00:48.720
+we are specifically making a cluster.
+
+00:48.720 --> 00:51.660
+So technically when you make an ElastiCache instance
+
+00:51.660 --> 00:55.050
+we are getting a copy of Redis, but there's some kind
+
+00:55.050 --> 00:58.590
+of separate nodes that just relay information
+
+00:58.590 --> 01:00.668
+from the primary Redis node.
+
+01:00.668 --> 01:03.090
+Way more detail than we really need to go in.
+
+01:03.090 --> 01:04.140
+Just so you know essentially we're
+
+01:04.140 --> 01:06.660
+getting a very high powered copy of Redis
+
+01:06.660 --> 01:10.170
+that would do really really well if we had a lot of traffic.
+
+01:10.170 --> 01:12.960
+Now, by default, we don't really get the cluster created
+
+01:12.960 --> 01:15.180
+unless you select that little option right there.
+
+01:15.180 --> 01:18.480
+We do not need a cluster so we're just going to leave it set
+
+01:18.480 --> 01:21.063
+as Redis without that check box checked.
+
+01:22.770 --> 01:25.770
+So we'll throw a couple of options in here for the name
+
+01:25.770 --> 01:29.490
+I will enter in Multi Docker Redis.
+
+01:29.490 --> 01:31.290
+We don't need a description.
+
+01:31.290 --> 01:33.750
+We can leave just about everything else on here
+
+01:33.750 --> 01:36.780
+at the default, except for the node type.
+
+01:36.780 --> 01:38.850
+So the default node type is a very
+
+01:38.850 --> 01:40.440
+expensive little instance.
+
+01:40.440 --> 01:42.300
+You would pay a lot of money for this thing
+
+01:42.300 --> 01:46.050
+so we want to 120% make sure that you do not
+
+01:46.050 --> 01:48.090
+use the default selection here.
+
+01:48.090 --> 01:50.490
+So we'll click on the little dropdown
+
+01:50.490 --> 01:52.800
+and then we're going to go to t2
+
+01:52.800 --> 01:55.200
+and we want to do cache.t2.micro
+
+01:55.200 --> 01:57.270
+which is the cheapest copy around.
+
+01:57.270 --> 01:58.380
+It's also the lowest performance
+
+01:58.380 --> 02:00.270
+but of course our application doesn't really
+
+02:00.270 --> 02:03.660
+have very high performance demands, and we'll click on Save.
+
+02:03.660 --> 02:06.480
+Now, I want you to really verify right here
+
+02:06.480 --> 02:09.840
+that we do in fact have the cheapest option selected
+
+02:09.840 --> 02:12.240
+which should be a cache.t2.micro.
+
+02:12.240 --> 02:13.950
+If you have anything else selected
+
+02:13.950 --> 02:16.353
+you will pay some dollars for it.
+
+02:17.460 --> 02:20.220
+We then get asked for the number of replicas.
+
+02:20.220 --> 02:21.900
+In this case replicas would be kind of those
+
+02:21.900 --> 02:24.840
+separate nodes that kind of supercharge your copy of Redis.
+
+02:24.840 --> 02:27.810
+Again, kind of outside the scope, we don't need any replicas
+
+02:27.810 --> 02:30.900
+because we definitely do not have high performance demands
+
+02:30.900 --> 02:31.980
+for our application.
+
+02:31.980 --> 02:33.933
+So I'm gonna change replicas to none.
+
+02:35.100 --> 02:37.800
+All right, so now we get asked a couple
+
+02:37.800 --> 02:38.760
+of other settings over here.
+
+02:38.760 --> 02:40.800
+Some of these are just a little bit nasty.
+
+02:40.800 --> 02:43.530
+We get asked to create a subnet for this.
+
+02:43.530 --> 02:44.700
+We'll create a new subnet.
+
+02:44.700 --> 02:46.830
+This has to do a little bit with security.
+
+02:46.830 --> 02:48.390
+We don't really need to focus on the details
+
+02:48.390 --> 02:49.530
+of the thing too much.
+
+02:49.530 --> 02:52.050
+All we need to do is put in some name right here.
+
+02:52.050 --> 02:53.913
+I'll say Redis Group.
+
+02:55.080 --> 02:58.770
+The one thing we do care about is marking the VPC ID as the
+
+02:58.770 --> 03:00.480
+default VPC.
+
+03:00.480 --> 03:02.760
+And so if you have a fresh AWS account
+
+03:02.760 --> 03:05.400
+or if you've never created any other VPCs
+
+03:05.400 --> 03:07.590
+the only option right here will be the default
+
+03:07.590 --> 03:09.870
+VPC that is created for your region.
+
+03:09.870 --> 03:12.600
+And so you will want to select that default VPC
+
+03:12.600 --> 03:15.420
+so that it's in the same kind of networking group
+
+03:15.420 --> 03:18.360
+as the RDS instance we put together already
+
+03:18.360 --> 03:20.190
+and the Elastic Beanstalk instance that we
+
+03:20.190 --> 03:21.393
+put together as well.
+
+03:22.890 --> 03:24.540
+And then for the subnets
+
+03:24.540 --> 03:26.280
+we can just check both these right here
+
+03:26.280 --> 03:27.480
+and it's just gonna give us access
+
+03:27.480 --> 03:29.670
+to those different subnets.
+
+03:29.670 --> 03:30.900
+All right, and that's pretty much it.
+
+03:30.900 --> 03:32.550
+You'll notice that we also have the option to
+
+03:32.550 --> 03:34.020
+select a security group right here
+
+03:34.020 --> 03:34.853
+but we're gonna take care
+
+03:34.853 --> 03:36.690
+of the security group in just a little bit
+
+03:36.690 --> 03:39.360
+as a little follow up to all this stuff.
+
+03:39.360 --> 03:41.010
+So I'll scroll on down to the bottom
+
+03:41.010 --> 03:42.453
+and I'll click on Create.
+
+03:43.920 --> 03:44.850
+And that's pretty much it.
+
+03:44.850 --> 03:49.360
+It's now creating our instance of a Redis group of
+
+03:50.220 --> 03:53.190
+I don't know, cache instances, whatever you wanna call it.
+
+03:53.190 --> 03:54.270
+All right, so we gotta wait for this thing
+
+03:54.270 --> 03:55.103
+to be created as well.
+
+03:55.103 --> 03:57.300
+So we'll take a quick pause and when we come back
+
+03:57.300 --> 03:59.700
+to the next section we're gonna do the last step,
+
+03:59.700 --> 04:01.920
+which is to wire all this stuff up
+
+04:01.920 --> 04:03.390
+with a common security group
+
+04:03.390 --> 04:05.640
+and apply that security group to the Elastic Beanstalk,
+
+04:05.640 --> 04:08.100
+RDS, and EC instances.
+
+04:08.100 --> 04:10.563
+So quick pause and I'll see you in just a minute.

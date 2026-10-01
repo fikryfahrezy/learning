@@ -1,0 +1,367 @@
+WEBVTT
+
+00:00.750 --> 00:01.583
+-: In the last section
+
+00:01.583 --> 00:03.990
+we created our new multi docker security group
+
+00:03.990 --> 00:06.570
+that's going to allow traffic from any other
+
+00:06.570 --> 00:10.650
+instance that has the same security group applied to it.
+
+00:10.650 --> 00:12.060
+Now, that's not the end of the story.
+
+00:12.060 --> 00:14.580
+We still have to go back over to each of these instances
+
+00:14.580 --> 00:17.190
+or each of these services and apply the security group
+
+00:17.190 --> 00:20.400
+to them so that they actually belong to the security group.
+
+00:20.400 --> 00:22.819
+So we'll start off first with Elastic cash and then rds
+
+00:22.819 --> 00:26.070
+and then update Elastic bean stock as well.
+
+00:26.070 --> 00:29.400
+So first one, first, let's open up the services tab up here.
+
+00:29.400 --> 00:31.110
+And on the left hand history tab
+
+00:31.110 --> 00:32.910
+you should see elastic cash.
+
+00:32.910 --> 00:34.080
+If you don't see it there for any reason
+
+00:34.080 --> 00:35.010
+you can always do a search
+
+00:35.010 --> 00:37.863
+for cash and find elastic cash up here.
+
+00:40.200 --> 00:41.760
+Once over here on the dashboard
+
+00:41.760 --> 00:44.700
+we'll select Redis on the left hand side.
+
+00:44.700 --> 00:47.100
+I'll then select this little check box right here
+
+00:47.100 --> 00:49.353
+and then click on modify at the top.
+
+00:51.150 --> 00:52.980
+This will open up a little window that's going to
+
+00:52.980 --> 00:55.500
+allow us to make changes to this cluster.
+
+00:55.500 --> 00:58.380
+We're going to change the VPC security groups.
+
+00:58.380 --> 01:00.300
+So I'll click on little pencil
+
+01:00.300 --> 01:01.650
+and then we'll put a check box next
+
+01:01.650 --> 01:04.500
+to the multi docker security group.
+
+01:04.500 --> 01:05.853
+And then finally, save.
+
+01:07.140 --> 01:08.850
+Now normally when we make a change
+
+01:08.850 --> 01:11.490
+to a elastic cash cluster, it's going to try to
+
+01:11.490 --> 01:14.760
+schedule that maintenance for some very specific time.
+
+01:14.760 --> 01:17.820
+Usually some overnight period where hopefully not a lot
+
+01:17.820 --> 01:19.920
+of people are using our service.
+
+01:19.920 --> 01:21.780
+But making changes to a security group doesn't
+
+01:21.780 --> 01:23.790
+actually require a maintenance window, even
+
+01:23.790 --> 01:25.650
+though this thing is gonna tell you that it does.
+
+01:25.650 --> 01:26.483
+So we can just click
+
+01:26.483 --> 01:29.730
+on modify and it will immediately start to
+
+01:29.730 --> 01:32.010
+change the security groups on there.
+
+01:32.010 --> 01:32.910
+That's pretty much it.
+
+01:32.910 --> 01:36.393
+So we'll now move on to our next service RDSs.
+
+01:37.470 --> 01:40.350
+So I'll again go up to the services tab.
+
+01:40.350 --> 01:43.923
+I'll do a search for RDS and find manage RDS.
+
+01:47.250 --> 01:50.230
+We can find the instances section on the left hand panel
+
+01:51.420 --> 01:54.240
+and then select the one database instance that we have
+
+01:54.240 --> 01:56.337
+the 'multi Docker Postgres'.
+
+01:58.230 --> 02:00.570
+Now finding the security groups on here
+
+02:00.570 --> 02:02.160
+it's a little bit more varied, so we're going to scroll
+
+02:02.160 --> 02:05.670
+on down, past all the different charts that we have on here.
+
+02:05.670 --> 02:07.203
+So scroll, scroll, scroll.
+
+02:09.690 --> 02:12.520
+Here's the details section under 'details', you'll
+
+02:13.407 --> 02:14.610
+see all the different security groups that are currently
+
+02:14.610 --> 02:16.410
+being applied to this instance.
+
+02:16.410 --> 02:17.940
+We can't change it from right here.
+
+02:17.940 --> 02:20.160
+We have to go back up to this details heading.
+
+02:20.160 --> 02:22.020
+And then look all the way over to the right hand side
+
+02:22.020 --> 02:23.880
+and you'll see the 'modify' button.
+
+02:23.880 --> 02:25.560
+So I'll click on 'modify',
+
+02:25.560 --> 02:27.629
+and then we go back into this kind
+
+02:27.629 --> 02:28.560
+of wizard screen.
+
+02:28.560 --> 02:32.550
+We'll scroll on down to 'network and security'
+
+02:32.550 --> 02:35.700
+and you'll see the 'security group' section inside of here.
+
+02:35.700 --> 02:38.580
+You can select this drop down, and then find multi dash
+
+02:38.580 --> 02:39.783
+docker right here.
+
+02:40.860 --> 02:43.080
+So there's multi dash docker being applied
+
+02:43.080 --> 02:44.700
+as a security group.
+
+02:44.700 --> 02:47.033
+And then we'll scroll on down to the very bottom.
+
+02:48.570 --> 02:50.070
+And at the very bottom you'll see the button
+
+02:50.070 --> 02:51.540
+that says 'continue'.
+
+02:51.540 --> 02:52.770
+So click that.
+
+02:52.770 --> 02:54.750
+Now again, it's going to tell you that it wants to
+
+02:54.750 --> 02:56.820
+schedule maintenance and it wants to make this change
+
+02:56.820 --> 02:58.050
+at some point in the future.
+
+02:58.050 --> 03:00.510
+That is not true of a security group change.
+
+03:00.510 --> 03:02.610
+You don't have to schedule any maintenance
+
+03:02.610 --> 03:05.250
+but if you feel like it, you can just hit apply immediately.
+
+03:05.250 --> 03:07.770
+Again, it's not going to actually restart the database
+
+03:07.770 --> 03:08.700
+or anything like that.
+
+03:08.700 --> 03:12.297
+So either one, just go ahead and click 'modify DB instance'.
+
+03:14.010 --> 03:15.930
+And then if you click on 'instances', again
+
+03:15.930 --> 03:17.850
+back on the left hand side, you may
+
+03:17.850 --> 03:20.460
+or may not see this thing flip over to something that says
+
+03:20.460 --> 03:23.310
+like 'updating' if I refresh your.
+
+03:23.310 --> 03:25.350
+Okay sometimes it does, sometimes it doesn't.
+
+03:25.350 --> 03:27.810
+But if you click on the database again and then scroll back
+
+03:27.810 --> 03:31.290
+down to that 'detail' section, you will see security
+
+03:31.290 --> 03:34.473
+groups adding the multi docker security group right there.
+
+03:35.670 --> 03:37.440
+All right, so that's it for RDS.
+
+03:37.440 --> 03:38.820
+So the last one we have to take care
+
+03:38.820 --> 03:41.040
+of is Elastic Bean stock.
+
+03:41.040 --> 03:43.590
+So I'm going to again, go up to services.
+
+03:43.590 --> 03:45.843
+I'll find Elastic Bean stock on history.
+
+03:47.700 --> 03:50.010
+Now as you can see, my environment is a little
+
+03:50.010 --> 03:51.600
+broken right now, which is totally fine.
+
+03:51.600 --> 03:53.100
+I made a little change to it.
+
+03:53.100 --> 03:54.570
+It's not actually broken
+
+03:54.570 --> 03:56.850
+it just thinks that it's very temporarily broken.
+
+03:56.850 --> 04:00.000
+So just ignore the fact that I have a severe environment
+
+04:00.000 --> 04:02.310
+for right now, no issue there.
+
+04:02.310 --> 04:03.143
+On the left hand side
+
+04:03.143 --> 04:05.570
+we'll find the section that says 'configuration'.
+
+04:06.690 --> 04:08.430
+Then in the very middle here
+
+04:08.430 --> 04:10.560
+I'll see the card that says 'instances'.
+
+04:10.560 --> 04:12.693
+We'll click on 'modify' on the bottom.
+
+04:14.070 --> 04:15.060
+And then we'll scroll on down
+
+04:15.060 --> 04:16.450
+to the very bottom here
+
+04:17.434 --> 04:19.140
+and we'll see ec2 security groups.
+
+04:19.140 --> 04:21.990
+So as you might guess, we're going to added check box next
+
+04:21.990 --> 04:25.617
+to multi docker, and then I'll click on 'apply'.
+
+04:27.180 --> 04:28.830
+We're gonna get a quick warning right here.
+
+04:28.830 --> 04:31.080
+This is just saying that it's going to create all of our
+
+04:31.080 --> 04:33.450
+or restart our ec2 instances
+
+04:33.450 --> 04:35.100
+which is no issue whatsoever
+
+04:35.100 --> 04:36.330
+because we're not doing anything
+
+04:36.330 --> 04:39.180
+with our elastic bean stock instance just yet.
+
+04:39.180 --> 04:42.080
+So on the bottom right hand side, I'll click on 'confirm'.
+
+04:43.530 --> 04:45.300
+Okay, so that's gonna update our environment
+
+04:45.300 --> 04:47.160
+which will take just a couple minutes.
+
+04:47.160 --> 04:48.690
+So let's take a quick pause right here.
+
+04:48.690 --> 04:50.040
+We'll come back to the next section
+
+04:50.040 --> 04:53.040
+and start working on a little last piece
+
+04:53.040 --> 04:56.490
+of setup of our environment on elastic bean stock.
+
+04:56.490 --> 04:58.913
+So quick break and I'll see you in just a moment.

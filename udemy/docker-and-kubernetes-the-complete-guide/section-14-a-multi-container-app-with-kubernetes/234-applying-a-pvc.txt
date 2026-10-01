@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00.750 --> 00:01.920
+-: In the last section we finished up
+
+00:01.920 --> 00:04.290
+all of our Postgres persistent volume claim stuff.
+
+00:04.290 --> 00:05.250
+So the last thing we have to do
+
+00:05.250 --> 00:07.380
+is apply it to our local cluster.
+
+00:07.380 --> 00:08.940
+I'm gonna flip over to my terminal.
+
+00:08.940 --> 00:10.140
+I'm gonna make sure I'm still inside
+
+00:10.140 --> 00:11.670
+of my complex directory,
+
+00:11.670 --> 00:15.540
+and then we'll do our kubectl apply -f.
+
+00:15.540 --> 00:17.850
+And as usual, we're just gonna throw everything
+
+00:17.850 --> 00:21.420
+inside of the K8s directory into the apply command.
+
+00:21.420 --> 00:23.430
+So I'm gonna run that and we're gonna very quickly see
+
+00:23.430 --> 00:25.170
+that we have created a new claim,
+
+00:25.170 --> 00:28.800
+and that we have reconfigured the Postgres deployment.
+
+00:28.800 --> 00:30.630
+So now we're going to get the status
+
+00:30.630 --> 00:32.580
+of our deployment and all of its pods,
+
+00:32.580 --> 00:33.660
+and just make sure that everything
+
+00:33.660 --> 00:35.910
+is still working the way we expect.
+
+00:35.910 --> 00:40.910
+So the first thing I'll do is a kubectl get pods.
+
+00:41.010 --> 00:43.020
+We're going to see Postgres inside of here
+
+00:43.020 --> 00:44.640
+and it looks like it just got restarted
+
+00:44.640 --> 00:47.340
+and is now running, so that's good.
+
+00:47.340 --> 00:50.760
+I'll do a kubectl get pv,
+
+00:50.760 --> 00:53.130
+which stands for persistent volumes.
+
+00:53.130 --> 00:54.090
+And this is gonna list out
+
+00:54.090 --> 00:55.350
+all the different persistent volumes
+
+00:55.350 --> 00:58.050
+that have been created inside of our application.
+
+00:58.050 --> 01:01.080
+And on here we can see that we have a persistent volume
+
+01:01.080 --> 01:03.690
+with the name of pvc, blah, blah, blah, blah, blah.
+
+01:03.690 --> 01:06.750
+It has two gigabytes, this is the access mode,
+
+01:06.750 --> 01:08.730
+and there's a couple other columns on here.
+
+01:08.730 --> 01:11.040
+I'll probably have to zoom out really far.
+
+01:11.040 --> 01:12.660
+Okay, on the very far right hand side,
+
+01:12.660 --> 01:14.670
+you can see that it has a claim,
+
+01:14.670 --> 01:17.430
+using our database persistent volume claim.
+
+01:17.430 --> 01:18.990
+And the status of it is bound,
+
+01:18.990 --> 01:21.870
+which means that it is currently in use.
+
+01:21.870 --> 01:23.080
+We can now also do
+
+01:25.020 --> 01:27.390
+a kubectl get pvc,
+
+01:27.390 --> 01:29.430
+and that will list out all the different claims
+
+01:29.430 --> 01:31.110
+that we have created as well.
+
+01:31.110 --> 01:34.470
+So remember, the claim right here is an advertisement,
+
+01:34.470 --> 01:37.710
+it is saying, "You can get this thing if you want to."
+
+01:37.710 --> 01:39.637
+The persistent volume right here is saying,
+
+01:39.637 --> 01:41.587
+"Here's an actual instance of storage
+
+01:41.587 --> 01:43.897
+"that meets all the requirements that were laid out
+
+01:43.897 --> 01:46.920
+"by the persistent volume claim that we made."
+
+01:46.920 --> 01:48.060
+Okay, so that's pretty much it.
+
+01:48.060 --> 01:51.600
+So hopefully now if we write any data to Postgres
+
+01:51.600 --> 01:53.760
+and then for some reason kill that pod,
+
+01:53.760 --> 01:56.550
+ideally it will not wipe out any of the data
+
+01:56.550 --> 01:58.380
+that have been stored inside the database.
+
+01:58.380 --> 02:00.030
+Now we're not gonna be able to test that yet,
+
+02:00.030 --> 02:02.460
+because we have not yet configured Express
+
+02:02.460 --> 02:06.390
+or our worker instances to actually save data into Postgres.
+
+02:06.390 --> 02:07.380
+So that's the last thing
+
+02:07.380 --> 02:08.850
+that we really need to take care of.
+
+02:08.850 --> 02:10.350
+Let's take a quick pause right here,
+
+02:10.350 --> 02:11.820
+and in the next section we're gonna figure out
+
+02:11.820 --> 02:14.010
+how to add in some environment variables
+
+02:14.010 --> 02:16.260
+to make sure that our server, and the worker,
+
+02:16.260 --> 02:18.450
+can both connect to Postgres and Redis
+
+02:18.450 --> 02:19.890
+to save some amount of data.
+
+02:19.890 --> 02:22.340
+So quick pause and I'll see you in just a minute.

@@ -1,0 +1,718 @@
+WEBVTT
+
+00:00.960 --> 00:01.793
+-: In the last section,
+
+00:01.793 --> 00:03.600
+we spoke about what a volume is,
+
+00:03.600 --> 00:05.790
+compared to a persistent volume.
+
+00:05.790 --> 00:07.290
+We're now going to pivot a little bit
+
+00:07.290 --> 00:09.450
+and talk about how a persistent volume claim
+
+00:09.450 --> 00:11.550
+compares to a persistent volume.
+
+00:11.550 --> 00:13.140
+Now, these two topics right here,
+
+00:13.140 --> 00:14.640
+and their relation with each other
+
+00:14.640 --> 00:17.370
+is kind of hard to understand at first glance.
+
+00:17.370 --> 00:19.680
+So I'm gonna give you a very quick analogy
+
+00:19.680 --> 00:20.880
+or a very quick story
+
+00:20.880 --> 00:22.290
+to help you understand what the difference
+
+00:22.290 --> 00:25.680
+is between a volume claim and a persistent volume.
+
+00:25.680 --> 00:27.240
+After I give you the analogy,
+
+00:27.240 --> 00:29.067
+we'll then kind of take this little short story
+
+00:29.067 --> 00:31.800
+and pivot it over to the world of Kubernetes
+
+00:31.800 --> 00:34.260
+and apply some real terminology to it.
+
+00:34.260 --> 00:35.820
+So in this section, let's get to it.
+
+00:35.820 --> 00:38.280
+We're gonna look at a very quick little short story
+
+00:38.280 --> 00:39.540
+to help you understand the difference
+
+00:39.540 --> 00:42.933
+between a persistent volume and a persistent volume claim.
+
+00:44.010 --> 00:45.570
+So here's my short story.
+
+00:45.570 --> 00:48.870
+I want you to imagine that you are walking down a sidewalk,
+
+00:48.870 --> 00:50.250
+and you are in the process
+
+00:50.250 --> 00:53.040
+of building out some custom computer.
+
+00:53.040 --> 00:55.080
+You are building a computer from scratch,
+
+00:55.080 --> 00:57.570
+and so maybe at this point in time you have a case,
+
+00:57.570 --> 01:00.720
+and a motherboard, and a processor, some RAM
+
+01:00.720 --> 01:01.980
+and a Graphics Cards.
+
+01:01.980 --> 01:03.360
+And the last thing that you need
+
+01:03.360 --> 01:05.700
+might be some type of hard drive.
+
+01:05.700 --> 01:08.250
+So you're walking along with your custom PC
+
+01:08.250 --> 01:10.657
+and you see a big billboard that says,
+
+01:10.657 --> 01:12.630
+"Come on down to the computer store,
+
+01:12.630 --> 01:15.810
+we have two really great hard drives that are available.
+
+01:15.810 --> 01:20.070
+We have a 500 GB option and a 1 TB option."
+
+01:20.070 --> 01:22.387
+So you look at this billboard right here and you say,
+
+01:22.387 --> 01:24.420
+"You know what, between these two options,
+
+01:24.420 --> 01:26.910
+I think that 500 GB hard drive
+
+01:26.910 --> 01:30.450
+would be perfect for my custom computer."
+
+01:30.450 --> 01:32.310
+So you take your custom computer,
+
+01:32.310 --> 01:34.500
+you continue walking down the sidewalk
+
+01:34.500 --> 01:36.573
+until you get to the computer store.
+
+01:38.190 --> 01:39.450
+Now at the computer store,
+
+01:39.450 --> 01:41.437
+you talk to a salesperson and you say,
+
+01:41.437 --> 01:43.350
+"Hey, you know I just saw that billboard
+
+01:43.350 --> 01:46.230
+where you were advertising the 500 GB option.
+
+01:46.230 --> 01:49.020
+I would love to have one of those hard drives."
+
+01:49.020 --> 01:51.000
+So the salesperson says, "Not a problem."
+
+01:51.000 --> 01:53.850
+And they turn around and they go to some store room
+
+01:53.850 --> 01:57.153
+or some like inventory store, inside the computer store,
+
+01:57.153 --> 01:59.550
+and they look through all the different pieces
+
+01:59.550 --> 02:02.061
+of hardware that they have available.
+
+02:02.061 --> 02:04.530
+Now, you had asked for a 500 GB hard drive,
+
+02:04.530 --> 02:07.500
+so the salesperson says, "Great, this is perfect.
+
+02:07.500 --> 02:09.582
+I can meet your request right now,
+
+02:09.582 --> 02:13.020
+I've got a 500 GB hard drive, ready to go."
+
+02:13.020 --> 02:15.210
+And so they throw that thing over to you
+
+02:15.210 --> 02:18.150
+and you now have a 500 GB hard drive
+
+02:18.150 --> 02:21.000
+that you can put into your computer.
+
+02:21.000 --> 02:23.100
+All right, so that's the entire short story.
+
+02:23.100 --> 02:25.020
+That's kind of scenario one.
+
+02:25.020 --> 02:26.100
+Now I wanna, very quickly,
+
+02:26.100 --> 02:27.780
+go through the same scenario again,
+
+02:27.780 --> 02:30.150
+but we're going to imagine that rather than asking
+
+02:30.150 --> 02:32.250
+for a 500 GB hard drive,
+
+02:32.250 --> 02:33.690
+maybe this time around you ask
+
+02:33.690 --> 02:36.630
+for a 1 TB hard drive instead.
+
+02:36.630 --> 02:38.430
+So we're gonna do a second flow
+
+02:38.430 --> 02:39.663
+through this diagram.
+
+02:40.830 --> 02:42.630
+And imagine that you instead decide
+
+02:42.630 --> 02:45.090
+you want the 1 TB drive.
+
+02:45.090 --> 02:45.923
+So in this case,
+
+02:45.923 --> 02:47.790
+you are, again, walking down the sidewalk.
+
+02:47.790 --> 02:48.930
+You see the billboard
+
+02:48.930 --> 02:49.763
+and you see that there
+
+02:49.763 --> 02:53.163
+is a 1 TB hard drive storage option.
+
+02:54.030 --> 02:55.320
+You say, "Oh, that's perfect.
+
+02:55.320 --> 02:58.470
+I would love to have a 1 TB hard drive."
+
+02:58.470 --> 03:01.320
+So you walk down to the computer store, a second time,
+
+03:01.320 --> 03:02.887
+and you say to the salesperson,
+
+03:02.887 --> 03:04.800
+"Hey, you know I would love to get one
+
+03:04.800 --> 03:06.600
+of those 1 TB hard drives."
+
+03:06.600 --> 03:07.897
+And the salesperson says,
+
+03:07.897 --> 03:08.730
+"Okay, sure.
+
+03:08.730 --> 03:11.250
+Let me just check the store room really quick."
+
+03:11.250 --> 03:13.560
+So the salesperson goes back to the store room
+
+03:13.560 --> 03:15.000
+and they look at all the hard drives
+
+03:15.000 --> 03:17.310
+that they already have in stock.
+
+03:17.310 --> 03:18.720
+So these hard drives right here,
+
+03:18.720 --> 03:20.820
+inside the store room are essentially hard drives
+
+03:20.820 --> 03:22.800
+that have already been created.
+
+03:22.800 --> 03:25.530
+They are in existence already.
+
+03:25.530 --> 03:27.690
+The salesperson looks through all the stock
+
+03:27.690 --> 03:29.700
+that they have and they very quickly realize,
+
+03:29.700 --> 03:34.350
+oh no, there is no 1 TB hard drive on stock, on hand,
+
+03:34.350 --> 03:36.150
+ready to be sold.
+
+03:36.150 --> 03:39.360
+But the salesperson is not going to give up very easily.
+
+03:39.360 --> 03:41.220
+The salesperson says, "You know what?
+
+03:41.220 --> 03:43.980
+I'm gonna make sure you get what you asked for,
+
+03:43.980 --> 03:47.040
+because we were advertising that as an option."
+
+03:47.040 --> 03:49.110
+So the salesperson picks up the phone
+
+03:49.110 --> 03:53.130
+and very quickly makes a call out to the hard drive factory.
+
+03:53.130 --> 03:54.510
+They call a factory and they say, "
+
+03:54.510 --> 03:56.010
+Hey, look I got someone right here,
+
+03:56.010 --> 03:57.690
+they want a 1 TB hard drive.
+
+03:57.690 --> 03:59.910
+I need you to create this thing right now
+
+03:59.910 --> 04:01.800
+and ship it on over."
+
+04:01.800 --> 04:04.830
+And so the factory puts that hard drive together,
+
+04:04.830 --> 04:07.263
+lickety-split, just as fast as you blink,
+
+04:08.460 --> 04:11.250
+and they ship it on over to the computer store.
+
+04:11.250 --> 04:14.190
+And so now the salesperson has your 1 TB hard drive
+
+04:14.190 --> 04:17.490
+that was fabricated, on the fly, just for you.
+
+04:17.490 --> 04:18.990
+And they hand the hard drive over,
+
+04:18.990 --> 04:21.090
+and you are now a happy little camper
+
+04:21.090 --> 04:23.370
+because you have the 1 TB hard drive
+
+04:23.370 --> 04:25.350
+that you were asking for.
+
+04:25.350 --> 04:28.470
+All right, so that's the entire story, two run throughs.
+
+04:28.470 --> 04:30.450
+Now, there's a couple of very quick,
+
+04:30.450 --> 04:32.850
+important points that I want to highlight here.
+
+04:32.850 --> 04:36.090
+The first important point, is that we had a billboard
+
+04:36.090 --> 04:39.060
+that was essentially advertising storage options
+
+04:39.060 --> 04:40.860
+that were available.
+
+04:40.860 --> 04:42.390
+The second important thing,
+
+04:42.390 --> 04:45.000
+is that for those two storage options,
+
+04:45.000 --> 04:48.330
+some of them were ready to go and preassembled.
+
+04:48.330 --> 04:51.660
+So there were some instances of 500 GB hard drives
+
+04:51.660 --> 04:53.160
+that had already been created
+
+04:53.160 --> 04:56.760
+and were ready to be handed off to you, the customer.
+
+04:56.760 --> 04:58.350
+There were also some storage options
+
+04:58.350 --> 05:00.480
+that had been advertised on that billboard
+
+05:00.480 --> 05:01.950
+that were not ready to go,
+
+05:01.950 --> 05:04.020
+and had to be essentially fabricated
+
+05:04.020 --> 05:09.020
+or created, on the fly, to meet your demand.
+
+05:09.210 --> 05:12.540
+So, whether it was a hard drive option that was ready to go,
+
+05:12.540 --> 05:15.000
+or one that had to be fabricated on the fly,
+
+05:15.000 --> 05:16.650
+no big difference to you, the customer,
+
+05:16.650 --> 05:19.590
+either way you got what you were asking for.
+
+05:19.590 --> 05:20.423
+All right.
+
+05:20.423 --> 05:22.170
+So that's the two big points I want you to understand.
+
+05:22.170 --> 05:24.660
+So we're not gonna look at another copy of this diagram
+
+05:24.660 --> 05:28.113
+that has some Kubernetes terminology applied to it.
+
+05:30.090 --> 05:31.170
+Okay.
+
+05:31.170 --> 05:34.440
+So here's the Kubernetes version of this diagram.
+
+05:34.440 --> 05:36.840
+So first off, you and the previous diagram
+
+05:36.840 --> 05:38.340
+were putting together a computer,
+
+05:38.340 --> 05:41.220
+and you had realized that you needed a hard drive.
+
+05:41.220 --> 05:43.620
+That's very similar to you and I, as developers,
+
+05:43.620 --> 05:46.170
+putting together a pod configuration.
+
+05:46.170 --> 05:47.820
+When you and I put together a pod
+
+05:47.820 --> 05:50.640
+that we know is going to need a persistent volume,
+
+05:50.640 --> 05:53.280
+we have to look at a billboard of sorts,
+
+05:53.280 --> 05:55.170
+that's going to advertise a couple
+
+05:55.170 --> 05:57.300
+of different storage options.
+
+05:57.300 --> 05:58.650
+So these different storage options
+
+05:58.650 --> 06:00.570
+that are being advertised are what we refer
+
+06:00.570 --> 06:03.420
+to as persistent volume claims.
+
+06:03.420 --> 06:06.570
+So a persistent volume claim is an advertisement.
+
+06:06.570 --> 06:08.430
+It is not an actual volume.
+
+06:08.430 --> 06:11.160
+It can't store anything, it's just an advertisement
+
+06:11.160 --> 06:13.560
+that says here are the different options
+
+06:13.560 --> 06:15.750
+that you have access to for storage
+
+06:15.750 --> 06:18.720
+inside of this particular cluster.
+
+06:18.720 --> 06:20.460
+You and I, as developers, are going
+
+06:20.460 --> 06:23.550
+to write out inside of some config files,
+
+06:23.550 --> 06:25.470
+the different persistent volume claims
+
+06:25.470 --> 06:28.170
+that are going to be available inside of our cluster.
+
+06:28.170 --> 06:30.960
+So you and I are going to write a config file that says
+
+06:30.960 --> 06:35.010
+there should be a 500 GB hard drive option available
+
+06:35.010 --> 06:37.710
+to all the different parts inside of our cluster.
+
+06:37.710 --> 06:40.020
+And we might also write out a config file
+
+06:40.020 --> 06:42.450
+that says there is a 1 TB option
+
+06:42.450 --> 06:44.100
+that is available as well.
+
+06:44.100 --> 06:46.110
+So again, a persistent volume claim
+
+06:46.110 --> 06:47.760
+is like an advertisement.
+
+06:47.760 --> 06:50.460
+It's saying here is something that you can purchase,
+
+06:50.460 --> 06:51.780
+here is something you can get
+
+06:51.780 --> 06:53.823
+for your pod when it is created.
+
+06:55.410 --> 06:58.830
+Now, when you chose one of those persistent volumes,
+
+06:58.830 --> 07:01.680
+you went off to Kubernetes with your pod config,
+
+07:01.680 --> 07:03.270
+and you said to Kubernetes,
+
+07:03.270 --> 07:05.347
+which was the salesperson, in reality,
+
+07:05.347 --> 07:08.940
+"Hey, I just saw that 500 GB hard drive option."
+
+07:08.940 --> 07:09.937
+And you said to Kubernetes,
+
+07:09.937 --> 07:13.890
+"Hey, I want that 500 GB option, give me one of those."
+
+07:13.890 --> 07:18.890
+And so Kubernetes had to go back into some imaginary store,
+
+07:19.020 --> 07:21.870
+and it had to look through some number of options
+
+07:21.870 --> 07:24.810
+of persistent volumes or storage options,
+
+07:24.810 --> 07:28.710
+instances of storage options that were readily available.
+
+07:28.710 --> 07:30.480
+And so inside of a Kubernetes cluster,
+
+07:30.480 --> 07:33.090
+we might have some number of persistent volumes
+
+07:33.090 --> 07:35.340
+that have been created ahead of time.
+
+07:35.340 --> 07:38.310
+These are actual instances of hard drives, essentially,
+
+07:38.310 --> 07:41.340
+that can be used right away for storage.
+
+07:41.340 --> 07:44.280
+Any persistent volume that is created ahead of time,
+
+07:44.280 --> 07:46.290
+inside of your cluster, is something that we refer
+
+07:46.290 --> 07:48.570
+to as statically provisioned.
+
+07:48.570 --> 07:50.550
+So a statically provisioned persistent volume,
+
+07:50.550 --> 07:52.770
+is something that we have, very specifically,
+
+07:52.770 --> 07:54.183
+created ahead of time.
+
+07:55.740 --> 07:56.573
+On the other hand,
+
+07:56.573 --> 08:00.120
+we also had a another option that could have been created
+
+08:00.120 --> 08:01.500
+on the fly.
+
+08:01.500 --> 08:02.700
+So this is where referred to you
+
+08:02.700 --> 08:06.240
+as a dynamically provisioned, persistent volume.
+
+08:06.240 --> 08:07.800
+It is another storage option
+
+08:07.800 --> 08:09.630
+that is not created ahead of time,
+
+08:09.630 --> 08:12.930
+it's only created when you putting together your pod,
+
+08:12.930 --> 08:14.010
+ask for it.
+
+08:14.010 --> 08:16.650
+So you can totally ask for this 1 TB hard drive.
+
+08:16.650 --> 08:17.737
+You know you can say it to Kubernetes,
+
+08:17.737 --> 08:19.770
+"Give me that 1 TB option,
+
+08:19.770 --> 08:21.780
+but that 1 TB hard drive was not going
+
+08:21.780 --> 08:25.290
+to be created until you went ahead and asked for it."
+
+08:25.290 --> 08:27.900
+So that's the difference between a dynamically provisioned
+
+08:27.900 --> 08:30.510
+and a statically provisioned, persistent volume.
+
+08:30.510 --> 08:32.010
+Is it created ahead of time,
+
+08:32.010 --> 08:36.000
+or is it created just when you immediately ask for it?
+
+08:36.000 --> 08:36.990
+All right, so that's it.
+
+08:36.990 --> 08:39.150
+That's the big difference between a persistent volume
+
+08:39.150 --> 08:42.300
+and a persistent volume claim.
+
+08:42.300 --> 08:45.900
+The persistent volume claim is a advertisement of options.
+
+08:45.900 --> 08:47.880
+You can ask for one of those options
+
+08:47.880 --> 08:49.200
+inside of your pod config.
+
+08:49.200 --> 08:50.730
+And when you do,
+
+08:50.730 --> 08:53.760
+Kubernetes is going to look at its existing stores
+
+08:53.760 --> 08:54.960
+of persistent volume,
+
+08:54.960 --> 08:56.940
+and it's either going to give you a volume
+
+08:56.940 --> 08:58.470
+that's been created ahead of time,
+
+08:58.470 --> 09:00.970
+or it's going to attempt to create one on the fly.
+
+09:02.670 --> 09:04.170
+So there's the entire example.
+
+09:04.170 --> 09:05.640
+Let's take a quick pause right here.
+
+09:05.640 --> 09:06.960
+When we come back to the next section,
+
+09:06.960 --> 09:09.600
+we're going to start to update our config files
+
+09:09.600 --> 09:12.180
+to create a new persistent volume claim
+
+09:12.180 --> 09:14.370
+that's going to create a storage option
+
+09:14.370 --> 09:18.150
+that can be claimed, essentially, by our Postgres pod
+
+09:18.150 --> 09:19.440
+that we had already created.
+
+09:19.440 --> 09:21.940
+So quick break, and I'll see you in just a minute.

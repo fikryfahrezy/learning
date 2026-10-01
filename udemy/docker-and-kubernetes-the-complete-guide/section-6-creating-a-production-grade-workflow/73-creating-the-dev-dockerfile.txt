@@ -1,0 +1,193 @@
+WEBVTT
+
+00:00.440 --> 00:04.220
+In the last section, we spoke about how it's probably going to make sense to have two different Docker
+
+00:04.220 --> 00:04.910
+files.
+
+00:04.910 --> 00:09.650
+One Docker file will be responsible for running our application development, the other in production.
+
+00:09.680 --> 00:13.820
+In this section we're going to start working on the Docker file that is going to run our application
+
+00:13.820 --> 00:14.630
+in development.
+
+00:14.630 --> 00:16.070
+So let's get to it.
+
+00:16.100 --> 00:17.990
+I'm going to flip back over to my terminal.
+
+00:17.990 --> 00:21.410
+And I'm going to open up my code editor inside of our project directory.
+
+00:22.490 --> 00:26.090
+Inside of this project folder I'm going to create a new Docker file.
+
+00:26.120 --> 00:30.140
+But I'm going to give it a name slightly different than the name that we've seen before.
+
+00:30.530 --> 00:34.610
+I'm going to create a file called Docker file.dev.
+
+00:35.390 --> 00:39.530
+The purpose of the.dev on the end right there is going to make sure that it's really clear that this
+
+00:39.530 --> 00:44.630
+Docker file is only used when we are trying to run our application in a development environment.
+
+00:44.630 --> 00:50.000
+In the future, we're going to put together a second Docker file for running this thing in production,
+
+00:50.000 --> 00:53.270
+and it's going to have a name of simply docker file.
+
+00:53.270 --> 00:58.310
+So that Docker file that is named simply Docker file will be the one that we use for production.
+
+00:58.340 --> 01:03.230
+Otherwise, if we're running locally and we're trying to actively develop our application, we'll build
+
+01:03.230 --> 01:08.210
+our image and we'll start up our container using the dockerfile.dev file instead.
+
+01:09.230 --> 01:14.390
+So inside of the dockerfile.dev file, we're going to write out a little bit of different configuration
+
+01:14.390 --> 01:18.140
+to create an image very similar to some that we've made use of before.
+
+01:18.170 --> 01:21.230
+We're going to first start with a base image.
+
+01:21.230 --> 01:24.650
+So I'll say from node colon alpine.
+
+01:24.770 --> 01:26.750
+We'll then set up a working directory.
+
+01:26.750 --> 01:29.720
+So I'll say Workdir of app.
+
+01:30.350 --> 01:33.380
+We'll then copy over our package.json.
+
+01:33.380 --> 01:39.800
+So I will copy package.json to the current working directory of slash app.
+
+01:39.980 --> 01:43.190
+And then we will run the command npm install.
+
+01:43.880 --> 01:50.240
+After we install all all of our dependencies we'll then copy over everything else from our project directory.
+
+01:50.240 --> 01:53.090
+So I'll say copy dot dot.
+
+01:53.420 --> 01:58.310
+And then finally we can run our command to start up our project with cmd.
+
+01:58.640 --> 02:05.630
+And then inside of our square braces we'll say npm run start like so.
+
+02:06.650 --> 02:06.980
+All right.
+
+02:06.980 --> 02:10.250
+So that's pretty much it for our development Docker file.
+
+02:10.280 --> 02:14.360
+We've ran exactly essentially exactly the same Docker file before.
+
+02:14.360 --> 02:15.740
+So not a lot of confusion here.
+
+02:15.740 --> 02:18.500
+I think that we've got a reasonable idea of what's going to happen.
+
+02:18.740 --> 02:20.630
+Let's try flipping over to our terminal.
+
+02:20.630 --> 02:24.980
+And we're going to figure out how we can run a Docker file with a custom file name.
+
+02:25.670 --> 02:28.050
+Now, the reason I say a custom name is.
+
+02:28.050 --> 02:32.940
+Remember, any time you run docker build, it's going to look for a file inside the current working
+
+02:32.940 --> 02:35.430
+directory called just docker file.
+
+02:35.460 --> 02:37.920
+Let's try running that right now and just see what happens.
+
+02:37.950 --> 02:42.870
+I'll say docker build dot and you'll notice that we get a little error message here.
+
+02:42.870 --> 02:46.350
+It says hey you don't have anything inside of here called Docker file.
+
+02:46.380 --> 02:54.510
+So in order to make sure that we build our project using the Docker file.dev file, we're going to make
+
+02:54.510 --> 02:57.750
+a little tweak to the docker build command.
+
+02:58.050 --> 03:01.740
+So we're going to run Docker build.
+
+03:01.740 --> 03:08.070
+And then we're going to add on a dash f f means we're trying to specify the file that's going to be
+
+03:08.070 --> 03:10.170
+used to build out the image.
+
+03:10.380 --> 03:13.320
+And we'll say docker file.dev.
+
+03:14.190 --> 03:15.540
+And that's it.
+
+03:15.570 --> 03:17.490
+We'll put the dot on there and that's it.
+
+03:19.170 --> 03:20.430
+And there we go.
+
+03:20.460 --> 03:20.730
+Okay.
+
+03:20.760 --> 03:22.920
+So it's going to now load up our image.
+
+03:22.920 --> 03:25.740
+It's going to create the Docker file and create the image.
+
+03:25.770 --> 03:29.070
+Now as we're building the image you might see a couple of warnings appear here.
+
+03:29.070 --> 03:29.820
+That's totally fine.
+
+03:29.820 --> 03:31.050
+You could ignore the warnings.
+
+03:31.050 --> 03:33.360
+If you see anything that specifically says error.
+
+03:33.390 --> 03:35.910
+That's when we want to start to get a little bit concerned.
+
+03:36.000 --> 03:36.450
+All right.
+
+03:36.450 --> 03:40.200
+So let's take a quick pause right here and we'll continue in the next section after we successfully
+
+03:40.200 --> 03:41.250
+built our image.

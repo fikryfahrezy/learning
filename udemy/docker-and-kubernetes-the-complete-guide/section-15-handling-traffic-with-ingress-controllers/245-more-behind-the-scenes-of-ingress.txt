@@ -1,0 +1,529 @@
+WEBVTT
+
+00:00.720 --> 00:02.520
+Instructor: In the last section, we spoke
+
+00:02.520 --> 00:03.795
+about the three separate pieces
+
+00:03.795 --> 00:05.400
+of setting up Ingress inside of Kubernetes.
+
+00:05.400 --> 00:07.140
+So we've got the Ingress config,
+
+00:07.140 --> 00:09.000
+we've got the thing that actually implements
+
+00:09.000 --> 00:10.710
+that configuration, and then we've got the thing
+
+00:10.710 --> 00:12.690
+that actually takes incoming traffic
+
+00:12.690 --> 00:15.060
+and sends it off to the appropriate service.
+
+00:15.060 --> 00:17.430
+So I now want to take this type of approach right here
+
+00:17.430 --> 00:19.080
+and apply it to the actual application
+
+00:19.080 --> 00:20.790
+that we are looking at.
+
+00:20.790 --> 00:22.890
+Now, there is gonna be one little twist here.
+
+00:22.890 --> 00:25.230
+Remember that I had told you just a little bit ago
+
+00:25.230 --> 00:27.480
+that the setup of all this Ingress stuff
+
+00:27.480 --> 00:30.090
+changes a little bit depending upon your environment.
+
+00:30.090 --> 00:31.560
+So we're gonna look at a diagram here
+
+00:31.560 --> 00:33.480
+that describes how all this stuff is set up
+
+00:33.480 --> 00:35.970
+specifically on Google Cloud.
+
+00:35.970 --> 00:38.640
+So the actual implementation when we set this up locally
+
+00:38.640 --> 00:40.440
+is gonna be just a little bit different,
+
+00:40.440 --> 00:42.060
+but the Google Cloud implementation
+
+00:42.060 --> 00:43.920
+is probably the easiest to understand
+
+00:43.920 --> 00:45.750
+and kinda wrap your head around.
+
+00:45.750 --> 00:47.250
+So here's what's gonna happen.
+
+00:48.720 --> 00:52.200
+Again, you and I are going to make an in Ingress config file
+
+00:52.200 --> 00:54.360
+and that's going to describe all the routing rules
+
+00:54.360 --> 00:56.940
+that should exist inside of our application.
+
+00:56.940 --> 00:59.700
+This config is going to be fed into a deployment
+
+00:59.700 --> 01:01.379
+that is running both our controller,
+
+01:01.379 --> 01:05.070
+the Ingress controller, and an NGINX pod.
+
+01:05.070 --> 01:05.970
+And that NGINX pod
+
+01:05.970 --> 01:08.010
+is what's going to actually take incoming traffic
+
+01:08.010 --> 01:10.380
+and route it off to the appropriate location.
+
+01:10.380 --> 01:12.300
+Now, specifically on Google Cloud,
+
+01:12.300 --> 01:14.100
+there's some other pieces in here
+
+01:14.100 --> 01:16.890
+that get created at the same time as well.
+
+01:16.890 --> 01:19.710
+So when we make an Ingress on Google Cloud,
+
+01:19.710 --> 01:22.800
+we are going to get a Google Cloud load balancer
+
+01:22.800 --> 01:24.120
+created for us.
+
+01:24.120 --> 01:26.580
+This is a cloud native load balancer,
+
+01:26.580 --> 01:28.988
+identical to the one that you would use
+
+01:28.988 --> 01:30.180
+with any other type of application
+
+01:30.180 --> 01:32.580
+that you might happen to create on Google Cloud.
+
+01:32.580 --> 01:35.220
+In fact, you can open up a new tab right now
+
+01:35.220 --> 01:39.720
+and search Google Cloud Load Balancer
+
+01:39.720 --> 01:41.760
+and you'll see some marketing page here
+
+01:41.760 --> 01:44.130
+for Google Cloud boad balancing.
+
+01:44.130 --> 01:46.440
+So this is the actual object behind the scenes
+
+01:46.440 --> 01:48.750
+that's going to be created by Google Cloud
+
+01:48.750 --> 01:51.273
+to somehow get traffic into our cluster.
+
+01:52.560 --> 01:54.750
+Once that load balancer is in effect
+
+01:54.750 --> 01:56.520
+inside the cluster itself,
+
+01:56.520 --> 01:57.870
+the deployment that gets created
+
+01:57.870 --> 02:01.470
+is going to get a load balancer service attached to it.
+
+02:01.470 --> 02:03.690
+Yes, the same load balancer service
+
+02:03.690 --> 02:06.090
+that we had discussed a little bit ago.
+
+02:06.090 --> 02:07.740
+So even though we had spoken about this thing
+
+02:07.740 --> 02:08.940
+and we had said oh yeah,
+
+02:08.940 --> 02:12.150
+load balancer service is kind of a little bit legacy
+
+02:12.150 --> 02:13.680
+and we don't really use it anymore
+
+02:13.680 --> 02:15.300
+and we prefer to use Ingress.
+
+02:15.300 --> 02:17.370
+Well, behind the scenes on Google Cloud,
+
+02:17.370 --> 02:20.130
+the load balancer service is still being used
+
+02:20.130 --> 02:21.420
+and you wouldn't quite know it
+
+02:21.420 --> 02:23.820
+unless you actually looked at some of the source code
+
+02:23.820 --> 02:26.043
+or config files that set all this stuff up.
+
+02:28.260 --> 02:29.820
+So incoming traffic will come
+
+02:29.820 --> 02:31.950
+to the Google Cloud Load Balancer.
+
+02:31.950 --> 02:34.140
+That load balancer is going to send that traffic
+
+02:34.140 --> 02:37.140
+to a load balancer service inside the cluster,
+
+02:37.140 --> 02:39.420
+which is going to eventually get that traffic
+
+02:39.420 --> 02:41.610
+into the NGINX pod that gets created
+
+02:41.610 --> 02:43.980
+by our Ingress controller.
+
+02:43.980 --> 02:45.810
+It's then up to that NGINX pod
+
+02:45.810 --> 02:47.640
+to eventually send that traffic off
+
+02:47.640 --> 02:50.610
+to the appropriate service inside of our application,
+
+02:50.610 --> 02:53.490
+either the multi-client or the multi-server.
+
+02:53.490 --> 02:55.470
+Now there's one last little piece of the puzzle here
+
+02:55.470 --> 02:56.970
+that I just want you to be aware of.
+
+02:56.970 --> 03:00.270
+By default when you set up all this NGINX and Ingress stuff
+
+03:00.270 --> 03:02.280
+there's going to be another deployment
+
+03:02.280 --> 03:03.930
+set up inside of your cluster,
+
+03:03.930 --> 03:06.600
+something called a default backend.
+
+03:06.600 --> 03:09.660
+The default backend is used for a series of health checks
+
+03:09.660 --> 03:10.710
+to essentially make sure
+
+03:10.710 --> 03:12.300
+that your cluster is working the way
+
+03:12.300 --> 03:13.980
+that it should be working.
+
+03:13.980 --> 03:15.150
+Now we're going to be making use
+
+03:15.150 --> 03:17.580
+of the default backend inside this course,
+
+03:17.580 --> 03:20.370
+but ideally, like in an ideal world,
+
+03:20.370 --> 03:21.870
+you would actually replace
+
+03:21.870 --> 03:23.640
+the default backend pod right here
+
+03:23.640 --> 03:26.070
+with your Express API server.
+
+03:26.070 --> 03:27.990
+And so anytime that the to next pod
+
+03:27.990 --> 03:30.810
+needs to check the health status of our application,
+
+03:30.810 --> 03:33.210
+it would be ideal to tell it to reach out
+
+03:33.210 --> 03:36.420
+to the multi-server as opposed to the default backend.
+
+03:36.420 --> 03:37.860
+And I'll show you very quickly
+
+03:37.860 --> 03:39.330
+how you could do that later on.
+
+03:39.330 --> 03:40.860
+But for right now, I just want you to be aware
+
+03:40.860 --> 03:42.810
+that there is going to be this additional deployment
+
+03:42.810 --> 03:44.110
+inside of our application.
+
+03:45.540 --> 03:46.373
+Okay, So that's it.
+
+03:46.373 --> 03:48.030
+That's what's happening behind the scenes.
+
+03:48.030 --> 03:49.500
+Now, one last quick thing here
+
+03:49.500 --> 03:51.780
+something that you might be a little bit curious about.
+
+03:51.780 --> 03:53.340
+So at this point we've said oh yeah,
+
+03:53.340 --> 03:56.070
+you know, we're actually using this load balancer service
+
+03:56.070 --> 03:58.440
+and the load balancer service is getting traffic
+
+03:58.440 --> 04:01.080
+eventually into an NGINX pod.
+
+04:01.080 --> 04:05.790
+So why, oh why would we not just do this stuff manually
+
+04:05.790 --> 04:06.623
+to a degree?
+
+04:06.623 --> 04:09.300
+You know, why are we gonna go through all this extra setup
+
+04:10.641 --> 04:12.920
+of this Ingress stuff and the Ingress config
+
+04:12.920 --> 04:14.400
+and a whole bunch of additional setup on top of that
+
+04:14.400 --> 04:17.190
+when we could take a much more straightforward
+
+04:17.190 --> 04:19.020
+and simplistic approach?
+
+04:19.020 --> 04:20.700
+Something like this right here.
+
+04:20.700 --> 04:22.290
+Why didn't we not just set up
+
+04:22.290 --> 04:24.870
+our own load balancer service manually
+
+04:24.870 --> 04:28.620
+that points to our own custom copy of NGINX?
+
+04:28.620 --> 04:30.600
+We've already made use of NGINX quite a bit
+
+04:30.600 --> 04:31.470
+throughout this course,
+
+04:31.470 --> 04:33.780
+so why do you and I not just make our own
+
+04:33.780 --> 04:36.477
+kind of custom NGINX server that sends traffic off
+
+04:36.477 --> 04:38.910
+to the appropriate set of pods?
+
+04:38.910 --> 04:41.100
+Well, the reason that we are still going to make use
+
+04:41.100 --> 04:43.230
+of Ingress NGINX as opposed
+
+04:43.230 --> 04:45.543
+to setting this stuff up manually,
+
+04:46.410 --> 04:50.490
+is that when you make use of the NGINX Ingress project,
+
+04:50.490 --> 04:53.040
+it actually has a bunch of code added into it
+
+04:53.040 --> 04:54.900
+that is very much aware of the fact
+
+04:54.900 --> 04:57.810
+that it's operating inside of a Kubernetes cluster.
+
+04:57.810 --> 05:01.230
+So as one little example, there's many examples of this,
+
+05:01.230 --> 05:03.600
+but I'm gonna give you one very quick example.
+
+05:03.600 --> 05:06.840
+When you make use of the NGINX Ingress project,
+
+05:06.840 --> 05:08.760
+rather than taking incoming traffic
+
+05:08.760 --> 05:11.250
+and sending it off to the cluster IP
+
+05:11.250 --> 05:14.130
+and allowing the cluster IP to load balance that request
+
+05:14.130 --> 05:16.590
+off to some random pod inside of here,
+
+05:16.590 --> 05:20.820
+the NGINX Ingress project is not actually gonna send traffic
+
+05:20.820 --> 05:22.710
+over to the cluster IP service
+
+05:22.710 --> 05:25.440
+and allow that to do some amount of load balancing.
+
+05:25.440 --> 05:29.760
+Instead, the cluster IP service does still exist
+
+05:29.760 --> 05:32.136
+and it still is working to essentially keep track
+
+05:32.136 --> 05:33.900
+of all these different pods.
+
+05:33.900 --> 05:35.880
+But anytime we get a incoming request
+
+05:35.880 --> 05:39.270
+to the NGINX pod right here, the NGINX pod
+
+05:39.270 --> 05:40.830
+is going to actually route the request
+
+05:40.830 --> 05:43.230
+directly to one of these different pods,
+
+05:43.230 --> 05:46.020
+completely bypassing that cluster IP service.
+
+05:46.020 --> 05:47.190
+The reason that this is done
+
+05:47.190 --> 05:50.280
+is to allow for features like say sticky sessions,
+
+05:50.280 --> 05:51.660
+which is a reference to the fact
+
+05:51.660 --> 05:52.920
+that we sometimes want to make sure
+
+05:52.920 --> 05:56.340
+that if one user sends two requests to our application,
+
+05:56.340 --> 05:57.990
+we want to make sure that both those requests
+
+05:57.990 --> 05:59.880
+go to the exact same server.
+
+05:59.880 --> 06:02.700
+And there's some cases where that feature is extremely handy
+
+06:02.700 --> 06:05.790
+and actually a hundred percent necessary to have.
+
+06:05.790 --> 06:09.197
+So that's just one example of why we are making use
+
+06:09.197 --> 06:10.710
+of this Ingress NGINX project
+
+06:10.710 --> 06:12.420
+as opposed to kind of doing our own
+
+06:12.420 --> 06:14.640
+build it yourself solution.
+
+06:14.640 --> 06:17.010
+So you certainly can do a build it yourself solution
+
+06:17.010 --> 06:18.180
+it's just going to lose out
+
+06:18.180 --> 06:20.880
+on a couple of these extra features that you get for free
+
+06:20.880 --> 06:24.060
+when you make use of the Ingress NGINX project.
+
+06:24.060 --> 06:25.980
+Okay, so enough on all all this.
+
+06:25.980 --> 06:28.410
+I think we've had enough discussion around the theory
+
+06:28.410 --> 06:29.550
+and all that's really left
+
+06:29.550 --> 06:31.350
+is going through the setup process.
+
+06:31.350 --> 06:33.030
+So let's take a quick pause right here.
+
+06:33.030 --> 06:33.863
+In the next section,
+
+06:33.863 --> 06:35.850
+we're gonna start setting up Ingress NGINX
+
+06:35.850 --> 06:37.323
+inside of our project.

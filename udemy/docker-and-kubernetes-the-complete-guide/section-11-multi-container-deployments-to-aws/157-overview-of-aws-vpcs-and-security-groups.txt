@@ -1,0 +1,679 @@
+WEBVTT
+
+00:01.029 --> 00:01.862
+-: In the last section
+
+00:01.862 --> 00:03.570
+we spoke about reasons that you might decide to use
+
+00:03.570 --> 00:06.540
+an outside elastic cache or RDS instance
+
+00:06.540 --> 00:08.610
+for data needs in your application.
+
+00:08.610 --> 00:09.930
+In this section, we're going to talk about
+
+00:09.930 --> 00:11.850
+how we set up these outside services
+
+00:11.850 --> 00:14.430
+and connect them to Elastic Beanstalk.
+
+00:14.430 --> 00:17.010
+So unfortunately, you have to do a little bit
+
+00:17.010 --> 00:18.510
+of behind the scenes work here.
+
+00:18.510 --> 00:20.520
+Fortunately, the amount of work we have to do is
+
+00:20.520 --> 00:22.260
+very, very small, like it's just going to be
+
+00:22.260 --> 00:25.200
+a handful of clicks, but the very few clicks
+
+00:25.200 --> 00:27.210
+or the very few actions that we're going to take
+
+00:27.210 --> 00:29.430
+require some kind of specialized knowledge.
+
+00:29.430 --> 00:31.890
+And so before we go and create the RDS instance
+
+00:31.890 --> 00:34.440
+or the EC instance I want to very quickly give you
+
+00:34.440 --> 00:36.903
+an overview of exactly what we're going to do.
+
+00:37.830 --> 00:39.003
+All right, so.
+
+00:40.830 --> 00:43.500
+You and I are going to have an Elastic Beanstalk instance,
+
+00:43.500 --> 00:44.730
+and inside of it are going to be
+
+00:44.730 --> 00:46.800
+our four different containers.
+
+00:46.800 --> 00:47.970
+And we're going to eventually want to
+
+00:47.970 --> 00:50.700
+connect those containers, or at least some number of them
+
+00:50.700 --> 00:52.110
+to RDS.
+
+00:52.110 --> 00:54.930
+The PostgreSQL instance we create and elastic cache
+
+00:54.930 --> 00:57.060
+or the Reddest instance that we create.
+
+00:57.060 --> 01:00.240
+Now, unfortunately, in the world of AWS, by default,
+
+01:00.240 --> 01:02.970
+these services do not get to talk to each other.
+
+01:02.970 --> 01:05.250
+In other words, once we create these other services
+
+01:05.250 --> 01:08.190
+we cannot just automatically say, "Oh hey, containers.
+
+01:08.190 --> 01:11.520
+Go out and find this RDS instance for me and connect to it
+
+01:11.520 --> 01:13.500
+and make use of PostgreSQL
+
+01:13.500 --> 01:15.540
+or whatever you might want to do."
+
+01:15.540 --> 01:16.920
+Instead, we have to form up
+
+01:16.920 --> 01:19.530
+a very distinct link between the two,
+
+01:19.530 --> 01:21.150
+and that's the kind of series of clicks
+
+01:21.150 --> 01:22.290
+we have to go through.
+
+01:22.290 --> 01:23.940
+Now when I use the word "link",
+
+01:23.940 --> 01:26.010
+I am not talking about the same kind of link
+
+01:26.010 --> 01:28.230
+that we put together inside of the Docker run file
+
+01:28.230 --> 01:29.850
+just a little bit ago.
+
+01:29.850 --> 01:33.120
+So the kind of connection between Elastic Beanstalk
+
+01:33.120 --> 01:35.670
+and RDS and EC that we're going to form up here
+
+01:35.670 --> 01:38.220
+has absolutely nothing to do with Docker.
+
+01:38.220 --> 01:41.430
+Docker is not involved one bit whatsoever.
+
+01:41.430 --> 01:44.130
+This is a completely unrelated aspect of
+
+01:44.130 --> 01:46.050
+wiring up these different services together,
+
+01:46.050 --> 01:48.033
+completely unconnected from Docker.
+
+01:49.110 --> 01:50.790
+All right, so here's the background.
+
+01:50.790 --> 01:52.240
+Here's what you need to know.
+
+01:53.130 --> 01:56.190
+Right now, when we created our Elastic Beanstalk instance
+
+01:56.190 --> 01:57.990
+over here called Multidocker,
+
+01:57.990 --> 02:01.740
+it was created in a very specific region of the world.
+
+02:01.740 --> 02:04.680
+So Amazon has a variety of different regions
+
+02:04.680 --> 02:06.420
+or essentially data centers
+
+02:06.420 --> 02:08.940
+where you can create these different services.
+
+02:08.940 --> 02:12.030
+Right now I'm using the Northern California region.
+
+02:12.030 --> 02:13.530
+You can find what region you're using
+
+02:13.530 --> 02:15.060
+on the top right hand side.
+
+02:15.060 --> 02:16.080
+And you can actually also
+
+02:16.080 --> 02:19.020
+just take a quick glance at the URL to get the actual
+
+02:19.020 --> 02:21.270
+kind of like, region code of where you are.
+
+02:21.270 --> 02:24.210
+So for me, I'm at US dash West dash one.
+
+02:24.210 --> 02:26.940
+That's the kind technical designation of
+
+02:26.940 --> 02:29.253
+US West or Northern California.
+
+02:30.450 --> 02:33.090
+Now, in each of these different regions, by default,
+
+02:33.090 --> 02:35.010
+you get something created that is called
+
+02:35.010 --> 02:39.030
+a virtual private cloud or VPC for short.
+
+02:39.030 --> 02:42.870
+A VPC essentially is kind of its own private little network
+
+02:42.870 --> 02:45.630
+so that any instance or any different service
+
+02:45.630 --> 02:49.380
+that you create is isolated to just your account
+
+02:49.380 --> 02:51.450
+and it doesn't get automatically shared with, like,
+
+02:51.450 --> 02:53.820
+someone else's AWS account.
+
+02:53.820 --> 02:54.990
+In other words, when you create
+
+02:54.990 --> 02:56.550
+an Elastic Beanstalk instance,
+
+02:56.550 --> 03:00.000
+only your account is going to have access to that instance
+
+03:00.000 --> 03:02.430
+and not like Bill, Joe, or Ted down the street.
+
+03:02.430 --> 03:03.990
+They're not going to magically see this
+
+03:03.990 --> 03:07.140
+Elastic Beanstalk instance appear in their account.
+
+03:07.140 --> 03:09.960
+Now, this VPC right here is also used to implement
+
+03:09.960 --> 03:11.790
+a lot of different security rules
+
+03:11.790 --> 03:13.230
+and a lot of different ways of
+
+03:13.230 --> 03:15.390
+connecting together these different instances,
+
+03:15.390 --> 03:18.690
+or these different services that you create on AWS.
+
+03:18.690 --> 03:19.530
+Now, before we move on,
+
+03:19.530 --> 03:21.540
+just one thing to make really clear here,
+
+03:21.540 --> 03:23.280
+in each of the different regions or
+
+03:23.280 --> 03:24.840
+data centers around the world
+
+03:24.840 --> 03:29.160
+you automatically get one default VPC created.
+
+03:29.160 --> 03:31.950
+And so when we created our Elastic Beanstalk instance,
+
+03:31.950 --> 03:35.490
+it was automatically assigned to that default VPC.
+
+03:35.490 --> 03:38.310
+Unless you are a total Elastic, oh excuse me,
+
+03:38.310 --> 03:41.670
+a total AWS wiz and you already decided to assign it to
+
+03:41.670 --> 03:44.340
+some other VPC for whatever reason.
+
+03:44.340 --> 03:46.470
+You get one of these default VPCs
+
+03:46.470 --> 03:48.600
+for every region around the world.
+
+03:48.600 --> 03:51.360
+Let's very quickly flip over to the AWS console
+
+03:51.360 --> 03:53.310
+and we'll take a look at the virtual
+
+03:53.310 --> 03:55.143
+VPC that was created for us.
+
+03:56.070 --> 04:00.390
+All right, so on services, I'll do a search for VPC
+
+04:00.390 --> 04:02.733
+and that will bring up the VPC dashboard.
+
+04:04.320 --> 04:06.870
+And then once over here, you can click on your VPCs
+
+04:06.870 --> 04:10.890
+on the left hand side, and it will show the default VPC.
+
+04:10.890 --> 04:13.080
+If you see multiple VPCs right here,
+
+04:13.080 --> 04:15.570
+it's probably because at some other point in time
+
+04:15.570 --> 04:19.320
+you went through the process of creating another VPC.
+
+04:19.320 --> 04:22.860
+I only have one right here, and this is my default VPC.
+
+04:22.860 --> 04:25.290
+I can tell by scrolling over to the right hand side
+
+04:25.290 --> 04:28.893
+and you'll see this default VPC column says "Yes" for me.
+
+04:29.910 --> 04:32.820
+Now, if I look at my ID right here
+
+04:32.820 --> 04:35.940
+you'll notice it's like 0 3 3 0, whatever.
+
+04:35.940 --> 04:39.270
+If I now flip over to some other region around the world,
+
+04:39.270 --> 04:41.523
+like, let's say Paris for example,
+
+04:42.660 --> 04:44.110
+I can flip over here
+
+04:46.560 --> 04:48.600
+and after a very long load time
+
+04:48.600 --> 04:51.900
+because this is on the other side of the world for me.
+
+04:51.900 --> 04:55.170
+So here are all the VPCs I have in the Paris region.
+
+04:55.170 --> 04:57.240
+You'll notice that the idea of this VPC
+
+04:57.240 --> 04:58.680
+is distinctly different.
+
+04:58.680 --> 05:00.810
+So I copy the idea of the other one.
+
+05:00.810 --> 05:03.510
+In Northern California, I had 0 3 3 0.
+
+05:03.510 --> 05:05.580
+Over here I have 0 4 3 F.
+
+05:05.580 --> 05:07.080
+So in other words, in every region
+
+05:07.080 --> 05:09.513
+you get a different default VPC.
+
+05:10.590 --> 05:13.710
+All right, so with that knowledge in mind
+
+05:13.710 --> 05:16.470
+we now are going to kind of take that idea of a VPC
+
+05:16.470 --> 05:19.170
+and figure out how we can get our
+
+05:19.170 --> 05:22.110
+different services to connect to each other.
+
+05:22.110 --> 05:24.600
+So to get these different services to connect to each other
+
+05:24.600 --> 05:27.600
+we have to create something called a security group.
+
+05:27.600 --> 05:32.310
+A security group is a really fancy term for firewall rule.
+
+05:32.310 --> 05:35.040
+It's a rule describing what different services
+
+05:35.040 --> 05:38.760
+or what different sources of internet traffic can connect
+
+05:38.760 --> 05:42.690
+to different services running inside of your VPC.
+
+05:42.690 --> 05:45.150
+When you created the Elastic Beanstalk instance
+
+05:45.150 --> 05:46.500
+just a couple of seconds ago,
+
+05:46.500 --> 05:48.450
+or a couple sections ago, excuse me,
+
+05:48.450 --> 05:51.120
+a security group was automatically created
+
+05:51.120 --> 05:54.780
+that allows any incoming traffic from anywhere in the world
+
+05:54.780 --> 05:59.220
+to connect to Port 80 on your Elastic Beanstalk instance.
+
+05:59.220 --> 06:01.350
+Each of the different security groups that you create
+
+06:01.350 --> 06:03.840
+are going to apply to some set number
+
+06:03.840 --> 06:06.990
+of different services that exist inside of your VPC.
+
+06:06.990 --> 06:08.790
+So the security group that was created
+
+06:08.790 --> 06:11.850
+for Elastic Beanstalk is already kind of attached,
+
+06:11.850 --> 06:15.690
+or kind of scoped to your Elastic Beanstalk instance
+
+06:15.690 --> 06:18.060
+and that's what allows someone else in the world
+
+06:18.060 --> 06:20.190
+to come into your virtual private cloud
+
+06:20.190 --> 06:24.180
+and connect specifically to your Elastic Beanstalk instance.
+
+06:24.180 --> 06:26.040
+Now, to look up this security group
+
+06:26.040 --> 06:28.533
+we'll go back over to the VPC dashboard,
+
+06:29.490 --> 06:30.990
+make sure that you're in the same region
+
+06:30.990 --> 06:34.470
+as where you just created the Elastic Beanstalk instance at.
+
+06:34.470 --> 06:35.850
+And then on the left hand column
+
+06:35.850 --> 06:38.430
+you can scroll down to security groups right here
+
+06:38.430 --> 06:40.320
+and you'll see that there is a security group
+
+06:40.320 --> 06:43.650
+at the name of Multidocker dash N.
+
+06:43.650 --> 06:46.410
+So again, this was a security group that was created for
+
+06:46.410 --> 06:48.780
+our Elastic Beanstalk environment.
+
+06:48.780 --> 06:49.710
+If you click on this thing,
+
+06:49.710 --> 06:52.020
+you can then see a little summary down at the bottom.
+
+06:52.020 --> 06:55.110
+And most interestingly, you can click on "Inbound Rules."
+
+06:55.110 --> 06:58.860
+So these are the kind of security rules, or firewall rules,
+
+06:58.860 --> 06:59.880
+that are going to be applied
+
+06:59.880 --> 07:02.070
+to your Elastic Beanstalk instance.
+
+07:02.070 --> 07:03.360
+And so this inbound rule says
+
+07:03.360 --> 07:06.270
+that we're going to allow all http traffic
+
+07:06.270 --> 07:09.690
+to come in on port 80, and that traffic can come from
+
+07:09.690 --> 07:11.823
+absolutely any source in the world.
+
+07:13.320 --> 07:15.060
+Security groups can also optionally have
+
+07:15.060 --> 07:16.320
+outbound rules as well.
+
+07:16.320 --> 07:18.727
+The current default outbound rule essentially says,
+
+07:18.727 --> 07:22.290
+"Yeah we're just going to allow all traffic, whatsoever,
+
+07:22.290 --> 07:24.360
+any traffic you can possibly imagine
+
+07:24.360 --> 07:26.400
+from that Elastic Beanstalk instance,
+
+07:26.400 --> 07:29.697
+to reach any possible destination across the globe."
+
+07:31.020 --> 07:33.030
+All right, now on this diagram right here
+
+07:33.030 --> 07:35.430
+I also reflected like an additional security group.
+
+07:35.430 --> 07:36.750
+This is just a random one.
+
+07:36.750 --> 07:39.270
+I just mean to say, you can create your own security groups
+
+07:39.270 --> 07:41.070
+that customize the way in which
+
+07:41.070 --> 07:43.020
+your different instances are allowed to receive
+
+07:43.020 --> 07:44.700
+or respond to traffic.
+
+07:44.700 --> 07:47.220
+So now that we understand what a VPC is
+
+07:47.220 --> 07:49.500
+and now that we understand what a security group is
+
+07:49.500 --> 07:52.230
+how are we going to form a connection
+
+07:52.230 --> 07:55.590
+between Elastic Beanstalk and RDS and EC?
+
+07:55.590 --> 07:57.330
+Well, here's what we're going to do.
+
+07:57.330 --> 07:59.910
+We're going to create a new security group,
+
+07:59.910 --> 08:02.040
+and the security group is going to say,
+
+08:02.040 --> 08:03.877
+essentially as a rule,
+
+08:03.877 --> 08:07.530
+"Let any traffic access this instance,
+
+08:07.530 --> 08:09.900
+if it belongs to the security group."
+
+08:09.900 --> 08:11.310
+So we're going to create the security group,
+
+08:11.310 --> 08:12.780
+and then we're going to attach it
+
+08:12.780 --> 08:16.050
+to all three of these different services.
+
+08:16.050 --> 08:17.760
+So they're all going to belong
+
+08:17.760 --> 08:20.160
+to this one common security group.
+
+08:20.160 --> 08:22.087
+And the security group essentially says,
+
+08:22.087 --> 08:26.130
+"If another AWS instance belongs to this thing right here,
+
+08:26.130 --> 08:28.620
+then let the traffic flow through and let them,
+
+08:28.620 --> 08:31.290
+these different services, talk to each other."
+
+08:31.290 --> 08:34.020
+So that's how we're going to get Elastic Beanstalk
+
+08:34.020 --> 08:38.580
+to talk to RDS and to EC, as well.
+
+08:38.580 --> 08:40.440
+Again, the big takeaway here
+
+08:40.440 --> 08:42.240
+is that by default when you create these services,
+
+08:42.240 --> 08:43.830
+they don't get to talk to each other,
+
+08:43.830 --> 08:46.650
+so we have to create the security group that specifically
+
+08:46.650 --> 08:48.720
+says, "Yeah, these different things can communicate
+
+08:48.720 --> 08:50.100
+with each other."
+
+08:50.100 --> 08:51.780
+All right, so that's pretty much it.
+
+08:51.780 --> 08:54.000
+I just wanted to give you a quick overview
+
+08:54.000 --> 08:55.980
+on the entire process before we go off
+
+08:55.980 --> 08:58.080
+and create the RDS and EC instances.
+
+08:58.080 --> 08:59.520
+Because once you create them
+
+08:59.520 --> 09:02.160
+it then gets a little bit confusing about, "Hey what do we,
+
+09:02.160 --> 09:03.810
+you know, what are we doing here?
+
+09:03.810 --> 09:06.060
+Why are we clicking around all over the place?"
+
+09:06.060 --> 09:07.917
+So let's take a quick pause right here.
+
+09:07.917 --> 09:08.850
+We're going to come back the next section.
+
+09:08.850 --> 09:09.930
+We're going to start to create
+
+09:09.930 --> 09:12.210
+the RDS instance and the EC instance,
+
+09:12.210 --> 09:13.650
+and then create a new security group
+
+09:13.650 --> 09:15.270
+and apply that security group to
+
+09:15.270 --> 09:18.930
+all three of these different services inside of our VPC.
+
+09:18.930 --> 09:21.383
+So quick break, and I'll see you in just a minute.

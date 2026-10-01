@@ -1,0 +1,259 @@
+WEBVTT
+
+00:00.934 --> 00:02.970
+-: In the last section, we got our application working
+
+00:02.970 --> 00:05.160
+but you might notice a little red error message
+
+00:05.160 --> 00:06.240
+in the Chrome console.
+
+00:06.240 --> 00:08.610
+Something about a web socket connection.
+
+00:08.610 --> 00:10.830
+So again, the issue here is that our browser
+
+00:10.830 --> 00:13.140
+and the running React app inside of it wants to
+
+00:13.140 --> 00:16.260
+get a active connection back to the Development React server
+
+00:16.260 --> 00:18.420
+so that it gets a notification anytime
+
+00:18.420 --> 00:19.890
+that our source code changes
+
+00:19.890 --> 00:23.100
+telling it that the browser needs to automatically reload.
+
+00:23.100 --> 00:24.810
+The problem is that we have not set up
+
+00:24.810 --> 00:26.970
+our Engine X server to successfully allow
+
+00:26.970 --> 00:29.130
+through web socket connections.
+
+00:29.130 --> 00:31.410
+And so in this section we're gonna make a little change
+
+00:31.410 --> 00:32.640
+to the configuration file
+
+00:32.640 --> 00:35.340
+of our Engine X server and solve that issue.
+
+00:35.340 --> 00:38.370
+So to get started, I'm gonna open up my code editor.
+
+00:38.370 --> 00:41.553
+I'll find the engine x default.com file.
+
+00:42.480 --> 00:44.040
+Inside of the server block,
+
+00:44.040 --> 00:47.640
+we're going to expose one routing layer or one route
+
+00:47.640 --> 00:49.920
+through the Engine X server that will allow a
+
+00:49.920 --> 00:51.570
+web socket connection to be made
+
+00:51.570 --> 00:54.510
+with the running React process.
+
+00:54.510 --> 00:57.300
+Now if you look at the web socket request very carefully,
+
+00:57.300 --> 00:59.100
+you'll notice that it says web socket
+
+00:59.100 --> 01:02.610
+on a path of socket JS dash node.
+
+01:02.610 --> 01:04.530
+So that's the route that we're going to look for
+
+01:04.530 --> 01:07.560
+and proxy it up to a backend.
+
+01:07.560 --> 01:12.560
+So I'll say location slash soc JS dash node.
+
+01:12.720 --> 01:17.720
+We'll do a proxy pass to http slash slash client semi colon,
+
+01:20.370 --> 01:23.850
+and then to specifically allow web socket connections,
+
+01:23.850 --> 01:28.850
+we'll add on a proxy http version of 1.1,
+
+01:29.490 --> 01:33.330
+a proxy set header of upgrade
+
+01:33.330 --> 01:37.230
+and then http upgrade with a dollar sign in front of it.
+
+01:37.230 --> 01:39.180
+Don't miss the dollar sign.
+
+01:39.180 --> 01:44.180
+And then finally, proxy set header connection upgrade.
+
+01:46.200 --> 01:47.856
+Oops, lemme get my spelling there.
+
+01:47.856 --> 01:49.323
+Upgrade. There we go.
+
+01:50.730 --> 01:52.260
+All right, so I'm gonna save this file.
+
+01:52.260 --> 01:54.780
+And now that we made a change to the engine X server
+
+01:54.780 --> 01:58.800
+we need to rebuild our engine X container.
+
+01:58.800 --> 01:59.700
+So to do so,
+
+01:59.700 --> 02:01.470
+I'll flip back over to my terminal again
+
+02:01.470 --> 02:04.320
+where I have my running Docker composed process.
+
+02:04.320 --> 02:07.740
+I'm gonna hit control C to stop all the running containers
+
+02:07.740 --> 02:12.330
+and then I'll run docker compose up dash dash build again.
+
+02:12.330 --> 02:13.800
+Now this build should be very quick
+
+02:13.800 --> 02:16.560
+because we don't have to redo all those NPM installs.
+
+02:16.560 --> 02:18.870
+And so almost instantly we should see everything
+
+02:18.870 --> 02:20.940
+start to open back up.
+
+02:20.940 --> 02:23.400
+Now again, if you see any error messages here
+
+02:23.400 --> 02:26.640
+I highly recommend that you hit control C
+
+02:26.640 --> 02:29.733
+and just restart everything with a Docker compose up.
+
+02:30.810 --> 02:33.330
+Like I said, at this point, there's a couple of kind of
+
+02:33.330 --> 02:35.970
+dependency issues where sometimes the API is gonna
+
+02:35.970 --> 02:37.560
+load up a little bit too quickly
+
+02:37.560 --> 02:39.990
+and it's going to come online before Redis
+
+02:39.990 --> 02:43.140
+or Pro Postgres are ready to receive connections.
+
+02:43.140 --> 02:44.700
+But when we eventually deploy this
+
+02:44.700 --> 02:47.190
+we're going to put a little fix in that's gonna make sure
+
+02:47.190 --> 02:50.580
+that that will not be an issue in a production environment.
+
+02:50.580 --> 02:52.870
+So, if I now start everything back up again
+
+02:54.030 --> 02:57.510
+and then go back to my browser at local Host 30 50,
+
+02:57.510 --> 02:58.773
+I'll refresh the page.
+
+02:59.760 --> 03:02.940
+It looks like I got the error message to go away
+
+03:02.940 --> 03:04.440
+and now you should still be able to enter
+
+03:04.440 --> 03:07.350
+in say an index of seven, submit it,
+
+03:07.350 --> 03:11.790
+refresh and see for index of seven, I calculated 21.
+
+03:11.790 --> 03:13.890
+Cool. So it looks like our application is doing
+
+03:13.890 --> 03:15.480
+pretty darn well.
+
+03:15.480 --> 03:17.610
+You might also notice that we've got the two
+
+03:17.610 --> 03:20.370
+somewhat hard to see links here but they do exist.
+
+03:20.370 --> 03:22.380
+You can click on other page.
+
+03:22.380 --> 03:25.260
+This is now a distinctly different route, you'll notice
+
+03:25.260 --> 03:26.520
+and if you refresh the page
+
+03:26.520 --> 03:29.490
+it does successfully still load up the React application
+
+03:29.490 --> 03:31.920
+which is exactly what we wanted.
+
+03:31.920 --> 03:34.800
+I can then click on home to go back to the home route,
+
+03:34.800 --> 03:38.610
+refresh again and again everything works as we would expect.
+
+03:38.610 --> 03:40.380
+So I think the application is in a great state.
+
+03:40.380 --> 03:41.730
+It definitely looks like it's working
+
+03:41.730 --> 03:43.110
+the way we would expect.
+
+03:43.110 --> 03:44.610
+So let's take a quick pause right here.
+
+03:44.610 --> 03:46.560
+We're gonna come back to the next section and start talking
+
+03:46.560 --> 03:49.800
+about deploying this off to Amazon Web Services.
+
+03:49.800 --> 03:51.450
+So I'll see you in just a moment.

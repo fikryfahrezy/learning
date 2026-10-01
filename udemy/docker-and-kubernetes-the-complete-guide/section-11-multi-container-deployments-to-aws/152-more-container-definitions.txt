@@ -1,0 +1,412 @@
+WEBVTT
+
+00:00.720 --> 00:01.553
+-: In the last section,
+
+00:01.553 --> 00:03.750
+we started putting together our container definitions
+
+00:03.750 --> 00:07.350
+inside of the Dockerrun.aws.json file.
+
+00:07.350 --> 00:08.280
+We're now going to continue
+
+00:08.280 --> 00:10.050
+with two other important parameters
+
+00:10.050 --> 00:12.300
+that are going to be added to our client container,
+
+00:12.300 --> 00:13.301
+right here.
+
+00:13.301 --> 00:15.300
+So the next one that we're going to put on
+
+00:15.300 --> 00:17.029
+is a flag called essential,
+
+00:17.029 --> 00:20.700
+and we're going to set it to false by default.
+
+00:20.700 --> 00:22.890
+The essential flag is something that we've not seen before
+
+00:22.890 --> 00:25.200
+in any other docker concept.
+
+00:25.200 --> 00:26.760
+The essential flag essentially means
+
+00:26.760 --> 00:29.970
+that this container right here is not considered to be,
+
+00:29.970 --> 00:32.250
+as you might guess, essential.
+
+00:32.250 --> 00:33.982
+So what would it mean
+
+00:33.982 --> 00:35.520
+if we marked this thing as essential true?
+
+00:35.520 --> 00:38.070
+If we marked a container as essential true,
+
+00:38.070 --> 00:41.430
+and this container ever crashes for any reason whatsoever,
+
+00:41.430 --> 00:44.070
+then all the other containers in this group
+
+00:44.070 --> 00:47.160
+of containers will be closed down at the same time.
+
+00:47.160 --> 00:48.060
+So in other words,
+
+00:49.036 --> 00:50.820
+if we end up with some other containers inside of here,
+
+00:50.820 --> 00:53.250
+like let's say container one,
+
+00:53.250 --> 00:55.050
+and notice this is not valid syntax,
+
+00:55.050 --> 00:55.950
+I just mean to say
+
+00:56.858 --> 00:58.890
+that there are some other containers in here.
+
+00:58.890 --> 01:00.960
+Now, if client was marked as essential,
+
+01:00.960 --> 01:03.030
+and this thing crashed for any reason,
+
+01:03.030 --> 01:04.710
+container one and container two
+
+01:04.710 --> 01:06.840
+would be automatically shut down as well,
+
+01:06.840 --> 01:09.750
+even if they are still running a-okay.
+
+01:09.750 --> 01:11.190
+Now, in the case of our client,
+
+01:11.190 --> 01:13.530
+if this thing crashes for any reason,
+
+01:13.530 --> 01:14.760
+that's kind of okay,
+
+01:14.760 --> 01:16.830
+and I would still want all the other containers,
+
+01:16.830 --> 01:17.940
+or the other services,
+
+01:17.940 --> 01:20.760
+in my group of containers to continue running.
+
+01:20.760 --> 01:23.130
+The only service that I have, or we have,
+
+01:23.130 --> 01:25.350
+inside this list of container definitions
+
+01:25.350 --> 01:26.970
+that you and I really care about
+
+01:26.970 --> 01:29.760
+is the NGINX routing server.
+
+01:29.760 --> 01:31.320
+Remember, that's the server that routes
+
+01:31.320 --> 01:34.320
+to either the client or the API,
+
+01:34.320 --> 01:36.180
+the express API that we have.
+
+01:36.180 --> 01:37.590
+So if that thing goes down,
+
+01:37.590 --> 01:39.660
+it means that no one can access
+
+01:39.660 --> 01:42.870
+any of the different services in our group of containers.
+
+01:42.870 --> 01:44.580
+And so we're probably gonna want to mark that one
+
+01:44.580 --> 01:46.800
+as our essential container to say,
+
+01:46.800 --> 01:48.660
+hey, if the engine X server crashes,
+
+01:48.660 --> 01:51.862
+well, we can't reach any of the other services
+
+01:51.862 --> 01:52.695
+in our grouping of containers,
+
+01:52.695 --> 01:54.360
+so we better just shut everything down.
+
+01:55.590 --> 01:57.990
+Now, the one little bit of trivia that I wanna share
+
+01:57.990 --> 01:59.670
+with you about essential right here
+
+01:59.670 --> 02:03.210
+is that at least one service in your listing
+
+02:03.210 --> 02:06.420
+of container definitions must be marked as essential.
+
+02:06.420 --> 02:09.540
+So at least one thing inside of here has to be essential.
+
+02:09.540 --> 02:10.620
+And like I just said,
+
+02:10.620 --> 02:12.540
+we're going to treat the NGINX container
+
+02:12.540 --> 02:14.760
+as our essential service.
+
+02:14.760 --> 02:17.550
+So I'm going to flip the client back over to false
+
+02:17.550 --> 02:19.560
+to say that, hey, if this thing crashes,
+
+02:19.560 --> 02:22.470
+that's kind of okay, we don't really care.
+
+02:22.470 --> 02:25.170
+Now, the last property that we're going to add on here.
+
+02:25.170 --> 02:26.820
+Oh actually, you know what I, excuse me,
+
+02:26.820 --> 02:28.830
+that was the last one.
+
+02:28.830 --> 02:31.200
+Okay, so that's it for our client definition.
+
+02:31.200 --> 02:33.360
+We're now going to skip over NGINX
+
+02:33.360 --> 02:35.446
+and take care of the server
+
+02:35.446 --> 02:37.440
+and the worker container definitions, as well.
+
+02:37.440 --> 02:39.900
+Those are both going to end up being very similar
+
+02:39.900 --> 02:42.960
+to the client definition that we just put together.
+
+02:42.960 --> 02:44.970
+The NGINX one is going to be a little bit different,
+
+02:44.970 --> 02:47.400
+that's why we're gonna save it for last.
+
+02:47.400 --> 02:50.040
+So after the client definition, I'll put in a comma,
+
+02:50.040 --> 02:52.170
+and then open up another record.
+
+02:52.170 --> 02:54.270
+Remember, every one of these objects right here
+
+02:54.270 --> 02:57.183
+represents a different container that we want to create.
+
+02:58.200 --> 03:00.803
+So the next one is going to have a name,
+
+03:00.803 --> 03:02.520
+and we'll do the server.
+
+03:02.520 --> 03:04.683
+So I'll call this server.
+
+03:05.880 --> 03:10.880
+The image that we're going to use is multi-server.
+
+03:12.210 --> 03:16.920
+So we'll say your Docker ID/multi-server,
+
+03:16.920 --> 03:18.690
+and then the host name this time around,
+
+03:18.690 --> 03:21.908
+remember that when we put together our host name
+
+03:21.908 --> 03:24.360
+inside of the NGINX default.com file right here,
+
+03:24.360 --> 03:25.290
+if you open that file up
+
+03:25.290 --> 03:28.718
+you'll recall that we actually renamed that endpoint
+
+03:28.718 --> 03:30.150
+or that host name to be API,
+
+03:30.150 --> 03:33.120
+because we have been calling that Express Project Server.
+
+03:33.120 --> 03:34.890
+But we very quickly realized that,
+
+03:34.890 --> 03:36.390
+you know, if we called everything server,
+
+03:36.390 --> 03:38.760
+stuff was gonna get really confusing, really quickly,
+
+03:38.760 --> 03:40.290
+and it just didn't make a lot of sense.
+
+03:40.290 --> 03:44.673
+And so we ended up renaming this host as API instead.
+
+03:45.570 --> 03:46.860
+So for the host name over here,
+
+03:46.860 --> 03:48.180
+rather than making use of server,
+
+03:48.180 --> 03:49.680
+we're going to use API,
+
+03:49.680 --> 03:52.590
+because that is what the NGINX is going to look for
+
+03:52.590 --> 03:55.173
+when it tries to redirect traffic upstream.
+
+03:56.700 --> 03:59.790
+And then finally, we'll add on an essential to this one
+
+03:59.790 --> 04:01.710
+and this will also be false because,
+
+04:01.710 --> 04:04.260
+yeah, it's not the best thing if our server crashes
+
+04:04.260 --> 04:06.540
+for any given reason, but if it does crash,
+
+04:06.540 --> 04:08.460
+well, there's not a good reason to shut down
+
+04:08.460 --> 04:10.023
+everything else as well.
+
+04:12.000 --> 04:14.250
+Okay, so now onto the next one,
+
+04:14.250 --> 04:17.040
+we'll move on to our worker container.
+
+04:17.040 --> 04:19.920
+So I'll do a name of worker,
+
+04:19.920 --> 04:24.287
+we'll do an image of your Docker ID/multi-worker.
+
+04:26.490 --> 04:29.700
+Our host name is going to be Worker,
+
+04:29.700 --> 04:31.830
+and essential, as you might guess, yep,
+
+04:31.830 --> 04:33.390
+this one's also false.
+
+04:33.390 --> 04:36.300
+So out of all the services that we have, without a doubt,
+
+04:36.300 --> 04:39.690
+the worker crashing is the least of our concerns.
+
+04:39.690 --> 04:41.070
+If the worker crashes,
+
+04:41.070 --> 04:44.250
+our application can still be visited by users.
+
+04:44.250 --> 04:47.010
+Users can still enter in indices to be calculated,
+
+04:47.010 --> 04:49.620
+and they can still see values that have already
+
+04:49.620 --> 04:52.380
+been calculated by the worker in the past.
+
+04:52.380 --> 04:53.670
+So if the worker crashes,
+
+04:53.670 --> 04:55.860
+that just means that we're not going to calculate any values
+
+04:55.860 --> 04:57.990
+in the future, and I'm totally okay with that.
+
+04:57.990 --> 05:00.270
+If that happens, no big deal.
+
+05:00.270 --> 05:01.770
+We could definitely do a little bit of debugging,
+
+05:01.770 --> 05:03.090
+figure out why the worker crash,
+
+05:03.090 --> 05:04.770
+and then figure out some way to start it back up
+
+05:04.770 --> 05:06.180
+in the future.
+
+05:06.180 --> 05:08.250
+Okay, so that's it for container definitions
+
+05:08.250 --> 05:10.080
+for the client server and worker.
+
+05:10.080 --> 05:12.300
+Now we have to do the NGINX one last here,
+
+05:12.300 --> 05:13.470
+so let's take another quick pause.
+
+05:13.470 --> 05:14.850
+We'll come back in the next section
+
+05:14.850 --> 05:17.574
+and we'll take care of that container definition.
+
+05:17.574 --> 05:18.683
+So I'll see you in just a minute.

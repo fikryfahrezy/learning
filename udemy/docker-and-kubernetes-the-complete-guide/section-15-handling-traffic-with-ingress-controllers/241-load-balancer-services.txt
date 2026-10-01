@@ -1,0 +1,355 @@
+WEBVTT
+
+00:00.660 --> 00:01.680
+-: All right my friends,
+
+00:01.680 --> 00:05.310
+we're almost done with doing our local setup of Kubernetes.
+
+00:05.310 --> 00:06.480
+We've set up our deployments,
+
+00:06.480 --> 00:08.220
+we've got the cluster IPs,
+
+00:08.220 --> 00:11.070
+our persistent volumes, secrets, environment variables,
+
+00:11.070 --> 00:12.300
+the whole shebang.
+
+00:12.300 --> 00:13.560
+The very last thing we have to do,
+
+00:13.560 --> 00:17.400
+is somehow allow traffic to get into our application.
+
+00:17.400 --> 00:19.080
+Now, you will recall that we have previously allowed
+
+00:19.080 --> 00:20.160
+people to connect directly
+
+00:20.160 --> 00:22.440
+to the multi-client pod over here,
+
+00:22.440 --> 00:24.210
+through the use of a node port.
+
+00:24.210 --> 00:26.670
+But a node port is only really good for use
+
+00:26.670 --> 00:29.490
+inside of a development environment,
+
+00:29.490 --> 00:30.900
+and we certainly want to eventually
+
+00:30.900 --> 00:32.970
+take this application into production.
+
+00:32.970 --> 00:34.950
+So, rather than using a node port,
+
+00:34.950 --> 00:37.440
+we're gonna start to wire up an ingress service
+
+00:37.440 --> 00:38.790
+to our application.
+
+00:38.790 --> 00:40.500
+Now, in this section in particular,
+
+00:40.500 --> 00:42.210
+we're gonna get a couple of words in
+
+00:42.210 --> 00:43.980
+on exactly what in ingress service is,
+
+00:43.980 --> 00:44.970
+but before we do,
+
+00:44.970 --> 00:48.360
+I want to tell you about the third type of service
+
+00:48.360 --> 00:50.370
+that we had very quickly mentioned exists,
+
+00:50.370 --> 00:52.440
+but didn't really go into a lot of detail on,
+
+00:52.440 --> 00:55.110
+and that's the service called a load-balancer.
+
+00:55.110 --> 00:57.780
+So, we're gonna very quickly give you a brief overview
+
+00:57.780 --> 00:59.910
+on a load-balancer type service,
+
+00:59.910 --> 01:01.620
+and talk about why we're not gonna use it,
+
+01:01.620 --> 01:04.020
+and then we'll move on to talking about ingresses
+
+01:04.020 --> 01:05.070
+and all that whatnot.
+
+01:06.360 --> 01:08.070
+All right, so for services, remember,
+
+01:08.070 --> 01:09.900
+these are objects that are meant to set up
+
+01:09.900 --> 01:12.510
+some type of networking inside of our cluster.
+
+01:12.510 --> 01:14.160
+We've made use of a cluster IP,
+
+01:14.160 --> 01:15.780
+which allows other pods
+
+01:15.780 --> 01:18.390
+to get access to a particular service,
+
+01:18.390 --> 01:20.220
+or a particular set of pods.
+
+01:20.220 --> 01:21.150
+We've got the node port,
+
+01:21.150 --> 01:22.770
+which we just discussed again,
+
+01:22.770 --> 01:24.480
+and the load-balancer.
+
+01:24.480 --> 01:25.830
+Now, this is a legacy way
+
+01:25.830 --> 01:29.310
+of getting some amount of traffic into your application.
+
+01:29.310 --> 01:31.860
+You're going to see a lot of documents, or blog posts,
+
+01:31.860 --> 01:33.600
+referred to load-balancers,
+
+01:33.600 --> 01:34.650
+but whenever you do,
+
+01:34.650 --> 01:35.910
+check the date on the blog post,
+
+01:35.910 --> 01:37.530
+it might be a little bit dated.
+
+01:37.530 --> 01:40.650
+An ingress is the newer, and supposedly better way
+
+01:40.650 --> 01:42.510
+of getting traffic into your cluster.
+
+01:42.510 --> 01:44.790
+But again, quick discussion on a load-balancer,
+
+01:44.790 --> 01:46.920
+and why we're not gonna use it.
+
+01:46.920 --> 01:49.200
+All right, so a load-balancer actually does
+
+01:49.200 --> 01:51.900
+two separate things inside of your cluster.
+
+01:51.900 --> 01:54.600
+First off, to create a load-balancer type service,
+
+01:54.600 --> 01:57.900
+we would make a configuration file of type service,
+
+01:57.900 --> 02:00.330
+and a sub-type of load-balancer.
+
+02:00.330 --> 02:01.500
+When you set that up,
+
+02:01.500 --> 02:03.600
+you're going to essentially allow access
+
+02:03.600 --> 02:08.070
+to one specific set of pods inside of your application.
+
+02:08.070 --> 02:11.370
+Remember, the goal of a service is to kind of manage access,
+
+02:11.370 --> 02:14.010
+or provide networking to reach a set of pods.
+
+02:14.010 --> 02:16.830
+And so, a load-balancer only is going to give you access
+
+02:16.830 --> 02:18.960
+to one set of pods.
+
+02:18.960 --> 02:21.213
+In our case, our application has two set of pods
+
+02:21.213 --> 02:23.370
+that we want to expose to the outside world,
+
+02:23.370 --> 02:25.590
+which is 100% common.
+
+02:25.590 --> 02:27.210
+Your application might need to have
+
+02:27.210 --> 02:29.130
+a very similar type of setup.
+
+02:29.130 --> 02:32.190
+So, a load-balancer would not be able to give us access
+
+02:32.190 --> 02:33.990
+to both the multi-server set
+
+02:33.990 --> 02:35.703
+and the multi-client as well.
+
+02:36.930 --> 02:38.760
+Now, when you make a load-balancer service,
+
+02:38.760 --> 02:42.840
+you are not only getting access to a specific set of pods.
+
+02:42.840 --> 02:44.910
+When you make a load-balancer service,
+
+02:44.910 --> 02:46.290
+Kubernetes is going to actually
+
+02:46.290 --> 02:49.050
+do something in the background for you, as well.
+
+02:49.050 --> 02:51.180
+It's going to reach out to your cloud provider,
+
+02:51.180 --> 02:54.000
+so be it AWS, or Google Cloud,
+
+02:54.000 --> 02:56.040
+or whoever else you might be using,
+
+02:56.040 --> 02:58.650
+and it's going to create a load-balancer
+
+02:58.650 --> 03:00.510
+using their configuration,
+
+03:00.510 --> 03:03.000
+or definition of what a load-balancer is.
+
+03:03.000 --> 03:04.560
+So, in the AWS world,
+
+03:04.560 --> 03:06.630
+you might get a classic load-balancer,
+
+03:06.630 --> 03:08.640
+or an application load-balancer.
+
+03:08.640 --> 03:10.440
+There's one of their third kind of load-balancer
+
+03:10.440 --> 03:13.170
+that escapes me off the top of my head, as well.
+
+03:13.170 --> 03:15.067
+Kubernetes is going to tell AWS,
+
+03:15.067 --> 03:17.790
+"Hey, I need like a application load-balancer,
+
+03:17.790 --> 03:19.680
+or a classic load-balancer."
+
+03:19.680 --> 03:21.780
+So, it's going to set up this external resource
+
+03:21.780 --> 03:23.040
+outside of your cluster,
+
+03:23.040 --> 03:24.930
+and then it's going to automatically configure
+
+03:24.930 --> 03:28.020
+that load-balancer to send traffic into your cluster
+
+03:28.020 --> 03:30.510
+and access the load-balancer service
+
+03:30.510 --> 03:32.220
+that has been set up to govern access
+
+03:32.220 --> 03:34.710
+to this very specific set of pods.
+
+03:34.710 --> 03:36.390
+So, that's what a load-balancer does.
+
+03:36.390 --> 03:39.510
+Again, kind of a more legacy thing.
+
+03:39.510 --> 03:41.610
+Supposedly, some people say it's deprecated,
+
+03:41.610 --> 03:42.960
+but it's really hard to look at
+
+03:42.960 --> 03:45.360
+the Kubernetes official documentation,
+
+03:45.360 --> 03:47.730
+and see something that specifically says deprecated.
+
+03:47.730 --> 03:50.010
+So, I'm not 100% sure if it is deprecated,
+
+03:50.010 --> 03:51.360
+but, certainly older way,
+
+03:51.360 --> 03:53.640
+and not really appropriate for us, because again,
+
+03:53.640 --> 03:55.110
+we've got these two different things
+
+03:55.110 --> 03:57.120
+that we want to expose to the outside world.
+
+03:57.120 --> 03:58.320
+So, with that in mind,
+
+03:58.320 --> 04:01.230
+we are going to be using an ingress service instead
+
+04:01.230 --> 04:04.230
+to get traffic into our cluster.
+
+04:04.230 --> 04:05.730
+So, let's take a quick pause right here,
+
+04:05.730 --> 04:06.563
+in the next section,
+
+04:06.563 --> 04:09.300
+I want to give you a couple quick notes on ingress,
+
+04:09.300 --> 04:11.880
+some high-level things that you just need to be aware of.
+
+04:11.880 --> 04:14.483
+So, a quick pause, and I'll see you in just a minute.

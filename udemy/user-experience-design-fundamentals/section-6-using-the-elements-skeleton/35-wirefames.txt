@@ -1,0 +1,1276 @@
+WEBVTT
+
+00:00.900 --> 00:06.030
+So now that we've made some decisions on appropriate organization and form, it's time to put all that
+
+00:06.030 --> 00:10.020
+into a visual format that starts to look like a layout.
+
+00:10.020 --> 00:12.760
+And what we call that is a wireframe.
+
+00:12.780 --> 00:15.770
+A wireframe is a skeleton of a screen.
+
+00:15.780 --> 00:21.390
+What it does is it shows the priority and the organization of things that are on the screen, right?
+
+00:21.420 --> 00:27.360
+It tells us how people are going to get to each specific part of the site or the app or the system.
+
+00:27.360 --> 00:32.310
+It represents the basic layout and organization of all the screens.
+
+00:32.310 --> 00:38.880
+The wayfinding mechanisms demonstrates how you're going to interact with what's being presented.
+
+00:38.910 --> 00:45.630
+Wireframes reflect the designer's ideas about placement of elements on the page, the labeling of those
+
+00:45.630 --> 00:51.270
+elements, navigation, how you're going to get from one element to the other, and functionality,
+
+00:51.270 --> 00:53.190
+behavior and feedback.
+
+00:53.190 --> 00:57.960
+When I interact with this piece, what does it do when I click this button?
+
+00:57.960 --> 01:00.940
+What happens when I pull down this menu?
+
+01:00.940 --> 01:02.520
+What choices do I have?
+
+01:02.530 --> 01:06.940
+Think of it as sort of a very finished looking rough sketch.
+
+01:06.970 --> 01:13.120
+A wireframe is a way to work through multiple concepts and multiple ideas about how things are organized
+
+01:13.120 --> 01:14.230
+and how they work.
+
+01:14.260 --> 01:19.990
+It's just like sketching in a sketchbook, except in this case, we're doing it in a bit of a more concrete
+
+01:19.990 --> 01:23.770
+form, usually using a piece of software on the screen.
+
+01:23.920 --> 01:26.980
+While wireframes vary in their level of detail.
+
+01:26.980 --> 01:32.800
+The important thing to remember is that at this point we're not making any true visual decisions about
+
+01:32.800 --> 01:34.960
+how the finished product is going to look.
+
+01:34.960 --> 01:36.610
+We don't care about fonts.
+
+01:36.640 --> 01:41.680
+We don't care about colors, we don't care about specific images.
+
+01:41.680 --> 01:44.280
+We don't care about the look and feel.
+
+01:44.290 --> 01:51.370
+All we care about is how much information do we have, how much of it is there, how is it organized
+
+01:51.370 --> 01:52.540
+from screen to screen?
+
+01:52.540 --> 01:54.520
+How is it organized on each screen?
+
+01:54.520 --> 01:57.190
+And how are we going to fit it all?
+
+01:57.220 --> 01:59.110
+On the surface of the screen?
+
+01:59.110 --> 02:03.820
+We're dealing with issues of form, arrangement and information volume.
+
+02:03.820 --> 02:09.640
+Some wireframes are nothing but literal rough sketches, like in this example that you see here.
+
+02:09.640 --> 02:11.770
+In this case, there's no actual content.
+
+02:11.770 --> 02:12.110
+Okay?
+
+02:12.160 --> 02:16.450
+We're sort of substituting some scribbles and lines for areas where there would be text.
+
+02:16.450 --> 02:17.170
+That's okay.
+
+02:17.170 --> 02:18.370
+It's a good place to start.
+
+02:18.370 --> 02:22.930
+You're just trying to figure out in general, how is the stuff organized?
+
+02:22.930 --> 02:27.790
+And it allows you to work really quickly because you don't have to be bogged down by the details.
+
+02:27.790 --> 02:29.550
+The goal is just to iterate, right?
+
+02:29.560 --> 02:31.530
+Create as many ideas as possible.
+
+02:31.540 --> 02:37.930
+I typically do this actually in a sketchbook, a notebook that I keep with me, and when I'm at this
+
+02:37.930 --> 02:44.920
+stage, I generally will create, you know, 25 to 30 of these for any given screen just because I'm
+
+02:44.920 --> 02:51.040
+trying to think at a high level about how much stuff do I have to deal with, how many different types
+
+02:51.040 --> 02:52.390
+of information do I have?
+
+02:52.390 --> 02:53.620
+I don't care about what they say.
+
+02:53.620 --> 02:54.940
+I don't care about what they look like.
+
+02:54.940 --> 02:57.700
+I don't care what the actual words or labels or buttons are.
+
+02:57.700 --> 03:04.240
+I'm just trying to figure out how much do I have to deal with this type of wireframe offers a higher
+
+03:04.240 --> 03:05.110
+level of detail.
+
+03:05.110 --> 03:05.290
+Okay.
+
+03:05.320 --> 03:09.850
+You can see that things are beginning to get more concrete, such as the fact that you can see that
+
+03:09.850 --> 03:12.520
+we're using tabs for navigation.
+
+03:12.520 --> 03:15.640
+We have an obvious title, hotel name rating.
+
+03:15.640 --> 03:17.560
+We've got navigation.
+
+03:17.560 --> 03:20.320
+Immediately below that, we've got a large image.
+
+03:20.320 --> 03:24.520
+That's our sort of core leading hero image, if you will.
+
+03:24.550 --> 03:28.750
+We've got boxes underneath that segregated for subsequent images.
+
+03:28.750 --> 03:32.500
+We've got a form that lives on the right hand side of the page.
+
+03:32.500 --> 03:39.430
+This particular approach is fleshing out some of the functional details of what the page or the site
+
+03:39.430 --> 03:41.230
+is actually going to do.
+
+03:41.260 --> 03:42.610
+How are we going to interact with it?
+
+03:42.640 --> 03:46.870
+What types of controls should be on the page and what do they do?
+
+03:46.870 --> 03:50.740
+But notice again, there are no specific fonts being used.
+
+03:50.740 --> 03:58.780
+There are no colors, there are no images, there are no decisions that pertain to, again, what I
+
+03:58.780 --> 04:05.830
+refer to as finished look and feel finished design and in most cases the finished design, even in terms
+
+04:05.830 --> 04:11.170
+of some of its its formal and structural decisions, tends to not look like the wireframe.
+
+04:11.170 --> 04:16.030
+Okay, the wireframe is a starting point, but a lot of times as you go through a final design process,
+
+04:16.030 --> 04:20.800
+you're continuously learning things, you're continuously getting some new information or you're continuously
+
+04:20.800 --> 04:23.290
+having ideas about how to make something work better.
+
+04:23.290 --> 04:30.850
+So it's perfectly normal and acceptable that the finished product does not exactly mimic the wireframe.
+
+04:30.970 --> 04:35.980
+Finally, I want to show you an example of a rather high fidelity wireframe.
+
+04:35.980 --> 04:41.110
+Now, this was for a financial organization, and just because of the sheer volume of information we
+
+04:41.110 --> 04:45.790
+were dealing with, we sort of had to get to this level in order to figure out how we were going to
+
+04:45.790 --> 04:51.250
+deal with all this information, because there was just so much of it and there was a ton of interactivity
+
+04:51.250 --> 04:56.830
+as to how you could filter and view a lot of information in a very small space.
+
+04:56.830 --> 05:00.430
+So in this case, we did have to have a very strong handle on.
+
+05:00.500 --> 05:00.800
+On.
+
+05:00.800 --> 05:01.880
+What's the content?
+
+05:01.910 --> 05:04.340
+How many characters are in each line?
+
+05:04.850 --> 05:09.680
+How many categories of information are going to appear in each one of these tables in the center?
+
+05:10.160 --> 05:18.350
+How are people going to view additional details if they need to without sacrificing the high level stuff
+
+05:18.350 --> 05:19.670
+that's already being shown?
+
+05:19.700 --> 05:20.750
+Issues like that.
+
+05:20.750 --> 05:21.010
+Okay.
+
+05:21.020 --> 05:25.490
+So at this point, we're definitely operating at a much higher level of detail.
+
+05:25.490 --> 05:32.270
+Things look a lot more real and we're using even going so far as to use some gray just to differentiate
+
+05:32.270 --> 05:36.560
+importance and hierarchy or different types of information segregation.
+
+05:36.560 --> 05:41.630
+But again, I have to stress the fact that even though we're using some grays and this is a lot more
+
+05:41.630 --> 05:48.380
+real, a lot more like what the finished screen may look like, we're still not making any visual design
+
+05:48.380 --> 05:49.100
+decisions.
+
+05:49.100 --> 05:54.290
+We're simply trying to figure out how much of this stuff is there, how are we going to look at it,
+
+05:54.320 --> 05:55.670
+how are we going to interact with it?
+
+05:55.700 --> 05:56.840
+How are we going to deal with it?
+
+05:56.840 --> 05:58.580
+How are we going to expose it?
+
+05:58.610 --> 06:04.560
+Wireframes are all about it, figuring out form, structure and function.
+
+06:04.680 --> 06:07.470
+So one more time because it bears repeating.
+
+06:08.490 --> 06:17.490
+Remember that wireframes don't show colors, typography, images or visual styling of any kind.
+
+06:17.520 --> 06:20.940
+You can do it in any of the styles and methods that I just showed you.
+
+06:20.940 --> 06:22.140
+It can be a rough sketch.
+
+06:22.140 --> 06:26.460
+You can do it on the computer, you can do it using wireframing software.
+
+06:26.460 --> 06:32.430
+But whatever the level of detail that you're comfortable working with, make sure that you are not venturing
+
+06:32.430 --> 06:36.060
+into the territory where you're saying, Well, I wonder what this would look like if it was red, or
+
+06:36.060 --> 06:41.010
+I wonder if I use this font or, you know, this would be a picture of this specific thing.
+
+06:41.280 --> 06:46.980
+Don't go there, don't go into the weeds, stay high level and focus solely on how much stuff you have
+
+06:46.980 --> 06:51.420
+to deal with, how you're going to organize it and what it's going to do on the screen.
+
+06:51.420 --> 06:53.370
+It's at least a dozen times a year.
+
+06:53.370 --> 06:56.280
+I get asked this question Why bother with wireframes?
+
+06:56.280 --> 06:57.330
+Why do we need to do that?
+
+06:57.330 --> 06:59.760
+Why can't we just go to visual design?
+
+06:59.760 --> 07:06.060
+And that's usually because clients in particular are excited to see what it's going to look like.
+
+07:06.090 --> 07:10.590
+And that's the big million dollar question that's on everybody's minds as well, right?
+
+07:10.590 --> 07:11.370
+What's it going to look like?
+
+07:11.370 --> 07:12.450
+What's it going to look like?
+
+07:12.450 --> 07:19.650
+But it is in your best interest and their best interest, more importantly, to back up the process,
+
+07:19.680 --> 07:20.580
+say time out.
+
+07:20.610 --> 07:25.380
+We have got to figure out how much stuff we have to deal with, how we're going to organize it and how
+
+07:25.380 --> 07:29.520
+we're going to get to all of it, how users are going to get to all of it, how we're going to expose
+
+07:29.520 --> 07:30.420
+it all to them.
+
+07:30.630 --> 07:36.570
+The reason we bother with wireframes is because design has to consider a bunch of different things.
+
+07:36.600 --> 07:41.780
+Number one, how does each screen fit in with the site or the app or the system as a whole?
+
+07:41.790 --> 07:48.480
+Number two, what content or links or interactions do we need to meet both user and business goals?
+
+07:48.480 --> 07:48.750
+Right.
+
+07:48.780 --> 07:54.100
+We've got two camps that we have to satisfy here and we need to make sure that we're addressing both.
+
+07:54.120 --> 07:58.590
+Next, we have to consider how all of these elements relate to each other.
+
+07:58.590 --> 08:01.110
+How do we make the experience consistent?
+
+08:01.140 --> 08:02.840
+How do we create context?
+
+08:02.850 --> 08:12.540
+How do we send the signal that item A is related to item D is related to item Q in larger systems and
+
+08:12.540 --> 08:16.650
+larger applications, that can be a very complex problem.
+
+08:16.650 --> 08:23.820
+And unless you take the proper time to create wireframes and really think about the sum total of all
+
+08:23.820 --> 08:28.860
+the stuff that you have to deal with, what's going to happen is you're going to get into actual visual
+
+08:28.860 --> 08:33.810
+design and then you're going to have to redo it not once, not twice, not three times, probably at
+
+08:33.810 --> 08:35.130
+least a dozen times.
+
+08:35.130 --> 08:41.220
+And if you're doing design and development at the same time, it's even worse because every single time
+
+08:41.220 --> 08:46.260
+you discover that you've missed a piece of information or you haven't accounted for something or the
+
+08:46.260 --> 08:50.640
+client surfaces a piece of information that you didn't know before, you're going to have to tear it
+
+08:50.640 --> 08:53.760
+all down and start again, tear it all down and start again.
+
+08:53.760 --> 08:57.690
+It's a really wasteful way to go about doing this work.
+
+08:57.720 --> 09:04.740
+The reason you want to wireframe, the reason you want to do multiple iterations of wireframe is because
+
+09:04.740 --> 09:09.120
+it's cheap essentially in a number of ways to change them.
+
+09:09.120 --> 09:13.400
+There's no high level of detail, okay, these are just shapes and text.
+
+09:13.410 --> 09:19.020
+So if you do miss a feature, if you do miss a function, if a client brings something up three months
+
+09:19.020 --> 09:22.800
+later that they forgot to tell you, it's easy to accommodate for it.
+
+09:22.800 --> 09:24.690
+You don't have to tear down a bunch of stuff.
+
+09:24.690 --> 09:28.380
+It's simple, it's quick, it's easy, and on their side it's cost effective.
+
+09:28.380 --> 09:31.260
+So here's an example of what I mean.
+
+09:31.380 --> 09:39.990
+This is a situation where incoming documentation gets scanned, processed and then shipped out to multiple
+
+09:39.990 --> 09:40.410
+parties.
+
+09:40.410 --> 09:46.350
+Okay, So I'm glossing over it, but it's a very complex, convoluted process and there's a lot of information
+
+09:46.350 --> 09:49.110
+that has to be captured at all stages.
+
+09:49.110 --> 09:54.570
+So we start with our main interface, which is sort of on the left, and we say, what choices does
+
+09:54.570 --> 09:56.280
+that person have available to them?
+
+09:56.280 --> 09:59.100
+Then when they choose something, what happens?
+
+09:59.100 --> 10:00.320
+And you can see that.
+
+10:00.400 --> 10:05.640
+Are sort of a series of offshoot windows and elements that happen in a sequence.
+
+10:05.640 --> 10:07.500
+That's an interaction sequence.
+
+10:07.500 --> 10:11.790
+I do this, then I get this option, then I execute that option.
+
+10:11.790 --> 10:14.940
+And now I have something else that comes up as a result of that.
+
+10:14.940 --> 10:17.580
+It's a complex process and it goes on and on and on.
+
+10:17.580 --> 10:23.370
+This particular wireframe, you can't see it, but it's about four times as long as what you see here.
+
+10:23.370 --> 10:25.170
+It just sort of keeps going to the right.
+
+10:25.170 --> 10:29.760
+Okay, we pasted this on a boardroom wall in order to see it all.
+
+10:30.060 --> 10:34.680
+Doing this allowed us to see every aspect of the process.
+
+10:34.680 --> 10:37.780
+It allowed us to clearly look at, okay, do we have everything?
+
+10:37.800 --> 10:38.850
+Have we accounted for everything?
+
+10:38.940 --> 10:41.990
+Are there any actions that people need to take that aren't accounted for here?
+
+10:42.000 --> 10:46.500
+So doing it this way saved us a tremendous amount of time and money.
+
+10:46.500 --> 10:48.690
+By the time we got to finish design.
+
+10:48.840 --> 10:52.950
+When we get to the visual part, it's just a matter of skinning all this stuff.
+
+10:53.800 --> 11:00.040
+So here's what wireframes tell us when you're looking over your new set of wireframes that you've just
+
+11:00.040 --> 11:00.570
+created.
+
+11:00.580 --> 11:05.710
+There are several things that you're looking for to make sure that they're represented, and those are
+
+11:05.740 --> 11:12.850
+what content will be included, how that content is organized, which parts of that content are most
+
+11:12.850 --> 11:20.830
+important, where a given screen's location is within an entire system where users can go and what they
+
+11:20.830 --> 11:22.360
+can do when they get there?
+
+11:22.360 --> 11:28.930
+And finally, you're trying to clearly establish how users will move around in the system.
+
+11:28.930 --> 11:32.470
+Remember, you're dealing with something that is the sum of all its parts.
+
+11:32.470 --> 11:38.680
+So not only are you dealing with separate screens, but you're also dealing with the way in which a
+
+11:38.680 --> 11:42.420
+person moves from screen to screen to screen to screen, right?
+
+11:42.430 --> 11:45.640
+Different types of interactions, different types of workflows.
+
+11:45.640 --> 11:51.880
+Those are all things that your wireframing should expose at this point.
+
+11:51.880 --> 11:55.970
+I want to give you sort of a crash course in the wireframing process.
+
+11:55.970 --> 12:01.760
+I'd like to give you some general idea of how it starts, how you work through it and sort of where
+
+12:01.760 --> 12:02.480
+it ends up.
+
+12:02.480 --> 12:09.260
+The place to start is by revisiting the needs and goals that were established way back in the strategy
+
+12:09.260 --> 12:11.060
+phase of the project.
+
+12:11.060 --> 12:11.390
+Okay.
+
+12:11.420 --> 12:15.140
+Things like why is this valuable to my intended user?
+
+12:15.140 --> 12:17.570
+What can it do to make their life better?
+
+12:17.570 --> 12:20.750
+How can I make it easier for them to take action?
+
+12:20.750 --> 12:27.560
+What actions are most valuable on each screen, not only on each screen but across the entire system?
+
+12:27.560 --> 12:31.490
+And finally, how can I measure the impact of this action?
+
+12:31.520 --> 12:38.150
+This is sort of a gut check against everything that you've done so far, everything that you've uncovered,
+
+12:38.150 --> 12:43.370
+everything that you've decided, everything that you've been exposed to up to this point.
+
+12:43.370 --> 12:43.610
+Right.
+
+12:43.610 --> 12:49.790
+All the decisions that have been made prior to now should be revisited to see if they still make sense.
+
+12:49.820 --> 12:55.010
+The second thing that we do is we establish what are called cause and paths.
+
+12:55.010 --> 13:01.190
+And I'll explain cause are the primary pieces of content and functionality that you want people to see
+
+13:01.190 --> 13:03.080
+and you want them to interact with.
+
+13:03.110 --> 13:08.690
+Those are the most important elements not only on each screen but in the app as a whole.
+
+13:08.720 --> 13:13.250
+Paths, on the other hand, are what users take to enter and leave each screen.
+
+13:13.280 --> 13:14.720
+Okay, pretty straightforward.
+
+13:14.720 --> 13:21.890
+Your goal here is to prioritize content on the screen, number one, and then delineate clear paths
+
+13:21.890 --> 13:25.130
+for people to get to and from those screens.
+
+13:25.130 --> 13:26.570
+How do I get there?
+
+13:26.570 --> 13:28.610
+What's there for me when I arrive?
+
+13:28.610 --> 13:30.050
+And then how do I leave?
+
+13:30.080 --> 13:32.510
+How do I go to the next adventure?
+
+13:34.160 --> 13:40.130
+So to delineate all these things, we use a form that looks like this At the very top.
+
+13:40.130 --> 13:44.420
+We're reiterating our core user needs and our core business goals.
+
+13:44.420 --> 13:47.810
+In the center of the page, you've got two main categories, right?
+
+13:47.810 --> 13:49.580
+Our core content and functionality.
+
+13:49.580 --> 13:49.790
+Okay.
+
+13:49.820 --> 13:51.290
+What's going to be exposed on this page?
+
+13:51.290 --> 13:53.930
+What content is there and what can people do with it?
+
+13:53.960 --> 13:57.800
+We also have supporting information, navigation, outgoing paths.
+
+13:57.830 --> 14:00.470
+Again, what has to be represented on the screen?
+
+14:00.500 --> 14:02.930
+On the left, these are incoming paths.
+
+14:02.930 --> 14:10.220
+These are all the places you can come from to get to this page, this screen on the right, you have
+
+14:10.220 --> 14:11.120
+outgoing paths.
+
+14:11.120 --> 14:13.460
+How many exit paths are there?
+
+14:13.460 --> 14:17.570
+There's probably, for instance, a piece of main navigation that takes me to another page.
+
+14:17.570 --> 14:23.930
+But there may also be a process that I start on this page, for instance, filling out a form that may
+
+14:23.960 --> 14:25.430
+take me somewhere else.
+
+14:25.430 --> 14:28.490
+So you're kind of creating an inventory, right?
+
+14:28.490 --> 14:30.530
+How many incoming paths do I have?
+
+14:30.530 --> 14:34.130
+How many ways are there to get here and how many ways are there to leave?
+
+14:34.130 --> 14:41.030
+Here at the bottom, you make more notes, things like trigger words, which are essentially suggestions
+
+14:41.030 --> 14:41.990
+to take action.
+
+14:41.990 --> 14:43.430
+What are the key labels?
+
+14:43.430 --> 14:45.500
+Key concepts that need to be expressed?
+
+14:45.530 --> 14:48.200
+Core elements is just a bucket list.
+
+14:48.200 --> 14:48.500
+Okay.
+
+14:48.500 --> 14:50.810
+What are all the core things that have to be included on this page?
+
+14:50.810 --> 14:53.540
+That's just to make sure that we don't miss anything.
+
+14:53.540 --> 14:56.480
+And on the far right, what are the calls to action?
+
+14:56.480 --> 15:01.850
+What are the primary things that we are asking the user to do once they're here?
+
+15:01.850 --> 15:08.270
+So all that stuff together gives you an idea of what your calls are and what your paths are.
+
+15:08.270 --> 15:09.380
+How do they get here?
+
+15:09.380 --> 15:10.820
+What do they do while they're here?
+
+15:10.820 --> 15:12.170
+And then how do they leave?
+
+15:12.470 --> 15:15.710
+What you need to do next is start sketching.
+
+15:15.860 --> 15:18.770
+Now you'll be tempted to skip this phase.
+
+15:18.800 --> 15:20.600
+Don't do it.
+
+15:20.780 --> 15:21.650
+Okay.
+
+15:21.650 --> 15:26.540
+In the computer age, everybody wants to go straight to the computer because, well, I work on my laptop.
+
+15:26.540 --> 15:27.800
+That's what I do, you know?
+
+15:27.800 --> 15:29.000
+And I totally get it right.
+
+15:29.000 --> 15:34.520
+You have all these awesome tools at your disposal, and it just seems easier to do it that way.
+
+15:34.730 --> 15:38.540
+I'm telling you, don't take the shortcut.
+
+15:38.570 --> 15:42.380
+There are no shortcuts going through this phase.
+
+15:42.380 --> 15:46.940
+If nothing else will help you get rid of all the garbage that's floating around in your head.
+
+15:46.940 --> 15:47.330
+Okay?
+
+15:47.330 --> 15:53.240
+It'll get things that you've already seen that are influencing you that probably aren't appropriate.
+
+15:53.270 --> 15:59.410
+Get out of your head onto the paper and will allow you to think more clearly as you move forward.
+
+15:59.410 --> 16:03.070
+So the goal here is to quickly generate what are called thumbnail sketches.
+
+16:03.070 --> 16:06.610
+The reason we call them thumbnail sketches is because they're really small.
+
+16:06.610 --> 16:12.160
+Some people actually do sketch little boxes that are about the size of your thumbnail.
+
+16:12.370 --> 16:16.930
+I generally work a little bigger than that, probably, you know, three inch boxes, let's say, that
+
+16:16.930 --> 16:18.330
+represent the screen to me.
+
+16:18.340 --> 16:23.620
+However you do it, your goal is to get down several decent ideas of what these screens should look
+
+16:23.620 --> 16:24.880
+like or could look like.
+
+16:24.910 --> 16:30.040
+You're just going sketch out an idea and the minute it starts to feel like you're over working it,
+
+16:30.040 --> 16:30.640
+move on.
+
+16:30.640 --> 16:36.580
+This is usually anywhere from 60s to two minutes at most per sketch.
+
+16:36.580 --> 16:38.050
+60s is a better rule.
+
+16:38.050 --> 16:38.620
+Just do it.
+
+16:38.620 --> 16:39.100
+Move on.
+
+16:39.100 --> 16:39.910
+Do it, move on.
+
+16:39.940 --> 16:41.470
+Do it, move on, do it, move on.
+
+16:41.470 --> 16:42.640
+Don't get hung up on things.
+
+16:42.640 --> 16:43.930
+Don't get attached to things.
+
+16:43.960 --> 16:45.700
+Don't fall in love with what you're doing.
+
+16:45.700 --> 16:46.270
+Okay.
+
+16:46.450 --> 16:48.280
+As a professor of mine used to put it.
+
+16:48.840 --> 16:50.610
+Don't think about usability.
+
+16:50.640 --> 16:52.800
+Don't think about information hierarchy.
+
+16:52.800 --> 16:57.120
+Just get as many different ideas out of your head as possible.
+
+16:57.150 --> 17:01.230
+What you produce in this step should look no more detailed than this.
+
+17:01.260 --> 17:03.990
+There are sophisticated scribbles at best.
+
+17:04.590 --> 17:05.370
+Okay.
+
+17:05.400 --> 17:06.300
+Just do it.
+
+17:06.330 --> 17:07.020
+Do a lot of them.
+
+17:07.050 --> 17:10.620
+Do as many as you possibly can and then evaluate them later.
+
+17:10.620 --> 17:13.590
+Take this step now and you will thank me later.
+
+17:13.590 --> 17:14.730
+I guarantee it.
+
+17:15.420 --> 17:20.070
+So now that you've got a bunch of sketches in your hand, you probably also have some pretty good ideas
+
+17:20.070 --> 17:22.320
+about how to start laying out the screen.
+
+17:22.320 --> 17:27.850
+And the next step that you want to take is to start prototyping rapidly.
+
+17:27.870 --> 17:32.670
+We use the word rapid because this is very similar to the method you use when you're sketching.
+
+17:32.670 --> 17:34.140
+You work very quickly.
+
+17:34.170 --> 17:40.530
+You put all your initial ideas down on the screen and you iterate, okay, You change things where they
+
+17:40.530 --> 17:41.310
+need to be changed.
+
+17:41.310 --> 17:48.030
+You operate a lot on instinct, but it's also very informed by all the work you've done up to this point,
+
+17:48.030 --> 17:48.350
+right?
+
+17:48.390 --> 17:53.310
+We've had a strategy, a scope and a structure phase, and we've done a lot of underlying work and a
+
+17:53.310 --> 17:56.940
+lot of underlying thinking about how things are supposed to work.
+
+17:56.940 --> 18:03.630
+And that should enable you to move quickly because you've got all this sort of backstory that's already
+
+18:03.630 --> 18:04.440
+in your head.
+
+18:04.560 --> 18:07.770
+So the first step is to find a tool that works for you.
+
+18:07.770 --> 18:07.980
+Okay?
+
+18:07.980 --> 18:13.500
+Some people use Visio, some people use its Mac counterpart, which is called OmniGraffle.
+
+18:13.500 --> 18:16.990
+Some people use a wireframing tool called Balsamic.
+
+18:17.020 --> 18:22.420
+I personally use something called Azure Actuary that I think is excellent.
+
+18:22.420 --> 18:28.330
+And the thing I especially like about it is that it's very easy to turn your flat wireframes into clickable
+
+18:28.570 --> 18:29.710
+HTML prototypes.
+
+18:29.710 --> 18:30.760
+It automates all that.
+
+18:30.760 --> 18:32.530
+So that's my recommendation.
+
+18:32.530 --> 18:34.210
+But you can use any of those tools.
+
+18:34.240 --> 18:39.520
+Do not, however, use PowerPoint or Illustrator or InDesign.
+
+18:39.520 --> 18:40.240
+ET cetera.
+
+18:40.270 --> 18:40.540
+Okay.
+
+18:40.540 --> 18:41.740
+And for two reasons.
+
+18:41.770 --> 18:48.910
+Number one, the types of tools that are built into those programs take more time to use and execute
+
+18:48.910 --> 18:50.740
+than the tools I just mentioned.
+
+18:50.740 --> 18:50.980
+All right.
+
+18:50.980 --> 18:55.210
+So number one, you're going to spend way too much time just creating the things.
+
+18:55.210 --> 19:04.330
+What took you 30 minutes in Balsamiq or Axure will take you three hours in PowerPoint or Illustrator
+
+19:04.330 --> 19:05.080
+or InDesign.
+
+19:05.080 --> 19:07.570
+Okay, so number one, there's a time suck.
+
+19:07.630 --> 19:16.780
+Number two, when you're using those tools, you will be tempted to select specific fonts and to play
+
+19:16.780 --> 19:22.360
+with line weight and to apply even color and, you know, all those types of things.
+
+19:22.360 --> 19:23.770
+You'll be tempted to start designing.
+
+19:23.770 --> 19:27.520
+So you want to use a tool that is sort of barebones by its very nature.
+
+19:27.550 --> 19:34.480
+Next, try not to use Lorem ipsum text, okay, which is placeholder text if at all possible.
+
+19:34.480 --> 19:39.820
+You want to be working with the actual content, the actual words, the actual labels, the actual fields,
+
+19:39.820 --> 19:43.540
+buttons, etcetera that are going to exist on the screen.
+
+19:43.540 --> 19:48.970
+Content is just as important to the design as your button placement and your navigation elements and
+
+19:48.970 --> 19:49.570
+all that stuff.
+
+19:49.570 --> 19:55.270
+So any time you're working with real words, real labels, that's the way you want to go.
+
+19:55.270 --> 19:59.350
+And finally, as you go through this, remember that you're iterating, okay?
+
+19:59.350 --> 20:04.150
+What you're creating is not final design and it's not anything close to it.
+
+20:04.180 --> 20:08.470
+You do not have to be married to any of the decisions that you make.
+
+20:08.500 --> 20:09.670
+They can change.
+
+20:09.670 --> 20:14.080
+They will change and they should change as you go through the process.
+
+20:14.080 --> 20:16.780
+Again, this is rapid prototyping.
+
+20:16.780 --> 20:22.540
+You're trying to get out concrete ideas of what's on the screen, how it works, how people interact
+
+20:22.540 --> 20:28.000
+with it, and you're trying to do as many variations as possible, build it quickly, refine it quickly,
+
+20:28.000 --> 20:28.870
+revise it.
+
+20:29.140 --> 20:34.240
+Once you've created a substantial set of wireframes, once you feel like you've accounted for at least
+
+20:34.240 --> 20:39.040
+all the core parts of whatever it is that you're building, it's time to review what you've got.
+
+20:39.040 --> 20:43.390
+And again, once you get to the point where you feel like, okay, this is a pretty good representation,
+
+20:43.390 --> 20:45.010
+it doesn't have to be perfect.
+
+20:45.040 --> 20:47.410
+It may be 70% of the way there.
+
+20:47.440 --> 20:48.580
+That's okay.
+
+20:48.610 --> 20:53.710
+Take a break, go back, review it and ask yourself some important questions.
+
+20:53.740 --> 20:56.320
+Number one, is anything important missing?
+
+20:56.320 --> 20:58.030
+Have I left anything out?
+
+20:58.060 --> 21:02.380
+Are there any things that we talked about prior to now that aren't represented?
+
+21:02.380 --> 21:05.260
+Here is the most important content noticed.
+
+21:05.260 --> 21:11.260
+First, have I done a good job organizing this stuff and prioritizing it in a way that the most important
+
+21:11.260 --> 21:16.330
+stuff is what the person sees immediately when they would come to this page.
+
+21:16.330 --> 21:19.840
+Next is there anything here that shouldn't be here?
+
+21:19.840 --> 21:25.810
+Is there anything on this screen right now or on any of these screens that, you know, made sense a
+
+21:25.810 --> 21:30.310
+month ago or two months ago when we were talking about it as a feature or a function or a piece of content.
+
+21:30.310 --> 21:34.030
+But now that I look at it, I don't think anybody's going to care about this.
+
+21:34.030 --> 21:35.650
+I don't think anybody's going to use this.
+
+21:35.650 --> 21:41.770
+Okay, whatever the case may be, or have I inadvertently added some things that maybe overcomplicate
+
+21:41.770 --> 21:42.640
+the process?
+
+21:42.640 --> 21:46.270
+So again, is there anything that's here that maybe shouldn't be here?
+
+21:46.270 --> 21:47.530
+Doesn't need to be here.
+
+21:47.560 --> 21:52.630
+What parts of content are related not only on a single screen but across multiple screens?
+
+21:52.630 --> 21:57.340
+What parts of this are related and how are they related?
+
+21:57.340 --> 22:00.820
+Is there a need for people to be able to navigate across them?
+
+22:00.820 --> 22:07.900
+Is there a need to have pieces of each bit of information in front of the user as they're executing
+
+22:07.900 --> 22:08.860
+some other task?
+
+22:08.860 --> 22:09.100
+Okay.
+
+22:09.100 --> 22:10.240
+You're looking for relationships.
+
+22:10.240 --> 22:14.050
+You're looking for things that sort of stand up and say, Hey, I'm related to that other thing over
+
+22:14.050 --> 22:14.470
+there.
+
+22:14.500 --> 22:14.890
+The.
+
+22:15.000 --> 22:20.190
+Final question is, can you get to all the major areas from where you are right now?
+
+22:20.190 --> 22:23.100
+And maybe a better question is, should you be able to do that?
+
+22:23.310 --> 22:27.900
+Just because you can doesn't necessarily mean that it's the right idea.
+
+22:27.930 --> 22:33.930
+Maybe there is a specific structured path to get to certain content or certain workflows, but either
+
+22:33.930 --> 22:39.330
+way, it's an important question to ask How can I get around and can I go everywhere that I need to
+
+22:39.330 --> 22:41.850
+be able to go from where I am right now?
+
+22:41.940 --> 22:43.980
+Do all the labels make sense?
+
+22:44.010 --> 22:49.830
+Do my labels use full words instead of cryptic acronyms or abbreviations?
+
+22:49.830 --> 22:53.940
+When someone looks at my navigation tabs, are they going to know what those words are and what they
+
+22:53.940 --> 22:59.940
+mean and what they're supposed to do when they look at buttons or menus or controls of some sort, or
+
+22:59.940 --> 23:06.120
+all those things labeled in a way that it's going to be clear and obvious to the user what that piece
+
+23:06.120 --> 23:09.570
+of functionality does or what it's intended to do.
+
+23:09.600 --> 23:13.380
+When someone comes to this page, do they know what all the elements are?
+
+23:13.410 --> 23:15.390
+Is it all going to be understandable?
+
+23:15.390 --> 23:20.310
+Recognizable instantly is the purpose of each one of those elements clear?
+
+23:20.310 --> 23:20.640
+Yeah.
+
+23:20.640 --> 23:23.280
+I have this stuff in front of me, but am I going to know what to do with it?
+
+23:23.280 --> 23:31.230
+As a user, you have to ask yourself if the flow of tasks or the flow of information matches the user's
+
+23:31.260 --> 23:32.610
+needs or expectation.
+
+23:32.610 --> 23:32.910
+Okay.
+
+23:32.910 --> 23:39.210
+Is this in line with what they're trying to accomplish and is it what they would expect to see in going
+
+23:39.210 --> 23:40.080
+through that process?
+
+23:40.080 --> 23:45.720
+Are there any parts of it that would sort of cause them to question it or say, well, why are you asking
+
+23:45.720 --> 23:46.650
+me for that information?
+
+23:46.650 --> 23:49.140
+That doesn't have anything to do with what I'm trying to do here.
+
+23:49.140 --> 23:55.560
+You're looking for situations like that where there's a disconnect between what's happening on the screen
+
+23:55.560 --> 24:02.040
+or what's shown on the screen and what that person would be thinking or would want to be doing.
+
+24:02.160 --> 24:07.080
+And finally, are there any additional features or functions that are necessary?
+
+24:07.080 --> 24:07.290
+Right.
+
+24:07.350 --> 24:10.190
+Are there other things that I need to be able to do here?
+
+24:10.200 --> 24:16.530
+A lot of times when you go down the first set of wireframes, you're designing what are called happy
+
+24:16.530 --> 24:20.040
+paths, and that means that everything works perfectly right.
+
+24:20.040 --> 24:25.200
+The person logs in and has no problem with the instructions and fills out the form perfectly with no
+
+24:25.200 --> 24:28.170
+errors and sends it off and all is happy.
+
+24:28.170 --> 24:29.700
+All is bright in the land.
+
+24:29.700 --> 24:35.100
+But you haven't accounted for errors and exceptions.
+
+24:35.100 --> 24:38.070
+What happens when they fill out a form incorrectly?
+
+24:38.070 --> 24:40.500
+What kind of feedback do they get on the screen?
+
+24:40.500 --> 24:45.210
+What kind of instruction to correct that action do they get on the screen?
+
+24:45.210 --> 24:48.990
+What happens when there's an exception in processing?
+
+24:48.990 --> 24:55.290
+They fill out everything correctly and hit send, but for some reason the system freezes or crashes
+
+24:55.290 --> 24:57.480
+or otherwise misbehaves.
+
+24:57.480 --> 24:58.380
+What happens?
+
+24:58.380 --> 24:58.790
+What happens?
+
+24:58.830 --> 25:00.180
+What do they see on the screen?
+
+25:00.180 --> 25:01.560
+What does it do as a result?
+
+25:01.560 --> 25:03.810
+What kind of feedback does it give them?
+
+25:03.810 --> 25:05.490
+Okay, those are errors and exceptions.
+
+25:05.490 --> 25:11.940
+Those are instances where you say, you know what, we probably need some additional things that we
+
+25:11.940 --> 25:13.020
+didn't account for.
+
+25:13.050 --> 25:20.760
+So I hope all this sheds light on the fact that wireframes are a critical, critical step of user experience
+
+25:20.760 --> 25:26.730
+design and interface design because there's a great deal of complexity that has to be accounted for
+
+25:26.730 --> 25:28.680
+and you can't do it all in one shot.
+
+25:28.680 --> 25:32.490
+You sort of have to work your way up to it improving as you go.

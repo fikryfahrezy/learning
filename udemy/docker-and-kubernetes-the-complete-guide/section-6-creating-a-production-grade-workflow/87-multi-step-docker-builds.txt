@@ -1,0 +1,517 @@
+WEBVTT
+
+00:00.690 --> 00:01.523
+-: In the last section,
+
+00:01.523 --> 00:03.780
+we spoke about how we're going to be making use of Nginx,
+
+00:03.780 --> 00:06.990
+to serve up our application in a production environment.
+
+00:06.990 --> 00:07.980
+Again, we're doing this,
+
+00:07.980 --> 00:09.660
+because that development server we're using,
+
+00:09.660 --> 00:11.430
+is not going to be used in production,
+
+00:11.430 --> 00:13.950
+it's just not a production appropriate server.
+
+00:13.950 --> 00:16.590
+So let's talk about how we're going to get Nginx in here,
+
+00:16.590 --> 00:18.810
+first by taking a look at a quick diagram.
+
+00:18.810 --> 00:20.340
+Now, as a quick reminder,
+
+00:20.340 --> 00:24.600
+remember we already created a file called dockerfile.dev.
+
+00:24.600 --> 00:26.850
+The purpose of this file was to create a image,
+
+00:26.850 --> 00:29.430
+that could be used in the development environment.
+
+00:29.430 --> 00:32.460
+We're now gonna start working on a second Docker file.
+
+00:32.460 --> 00:35.340
+The second docker file is going to make a second image,
+
+00:35.340 --> 00:36.810
+that's going to run our application,
+
+00:36.810 --> 00:38.906
+specifically in production.
+
+00:38.906 --> 00:41.040
+So the new Docker file that we're gonna make,
+
+00:41.040 --> 00:43.170
+is gonna have a slightly different purpose
+
+00:43.170 --> 00:45.330
+and some different configuration inside of it,
+
+00:45.330 --> 00:48.843
+than what we are currently doing inside of dockerfile.dev.
+
+00:49.860 --> 00:52.470
+All right, so I put together a diagram or two,
+
+00:52.470 --> 00:54.540
+that kind of outlines what I kind of think,
+
+00:54.540 --> 00:56.063
+we need to do here, all right?
+
+00:56.063 --> 00:58.440
+So I think that we probably need to use,
+
+00:58.440 --> 01:00.480
+Node Alpine as a base because again,
+
+01:00.480 --> 01:03.660
+we do have to run that NPM run build command.
+
+01:03.660 --> 01:05.670
+In order to run NPM run build,
+
+01:05.670 --> 01:07.800
+we're gonna have to install all of our dependencies,
+
+01:07.800 --> 01:09.660
+from the package.json file.
+
+01:09.660 --> 01:13.200
+It's just a hard requirement for building our application.
+
+01:13.200 --> 01:15.480
+So we'll copy where the package.json file,
+
+01:15.480 --> 01:17.130
+we'll install the dependencies
+
+01:17.130 --> 01:19.500
+and then once we have those dependencies installed,
+
+01:19.500 --> 01:21.753
+we'll be able to execute NPM Run Build.
+
+01:22.860 --> 01:24.660
+After running NPM Run Build
+
+01:24.660 --> 01:26.910
+and generating our production assets,
+
+01:26.910 --> 01:28.470
+remember we already did that one time
+
+01:28.470 --> 01:30.090
+and it generated that build directory.
+
+01:30.090 --> 01:30.990
+So these are all the,
+
+01:30.990 --> 01:33.197
+build production ready files right here.
+
+01:33.197 --> 01:35.850
+After we do all that, we'll then say,
+
+01:35.850 --> 01:37.830
+okay, time to start up the Nginx server
+
+01:37.830 --> 01:40.770
+and serve the result of that build directory.
+
+01:40.770 --> 01:42.293
+So that's the idea.
+
+01:42.293 --> 01:45.330
+But in this diagram, there's kind of two big issues,
+
+01:45.330 --> 01:47.220
+I wanna point out.
+
+01:47.220 --> 01:49.290
+Two big issues.
+
+01:49.290 --> 01:50.370
+The first big issue,
+
+01:50.370 --> 01:53.130
+is tied to this installed dependency step.
+
+01:53.130 --> 01:55.500
+The dependencies that we are installing,
+
+01:55.500 --> 01:56.790
+only have to be installed,
+
+01:56.790 --> 01:59.700
+because we are trying to build our application.
+
+01:59.700 --> 02:01.260
+If you recall a little bit ago,
+
+02:01.260 --> 02:03.690
+when we initially installed all those dependencies,
+
+02:03.690 --> 02:05.340
+when we first generated our app,
+
+02:05.340 --> 02:09.030
+that was 155 megabytes worth of dependencies.
+
+02:09.030 --> 02:11.040
+And those are only required,
+
+02:11.040 --> 02:13.260
+when we're trying to build the application.
+
+02:13.260 --> 02:15.060
+After we actually build the application,
+
+02:15.060 --> 02:17.223
+dependencies no longer required.
+
+02:18.270 --> 02:20.970
+It is solely that build directory.
+
+02:20.970 --> 02:23.460
+So this thing right here, the index study HTML file
+
+02:23.460 --> 02:26.820
+and eventually the main.js files in there as well,
+
+02:26.820 --> 02:29.310
+that is the only output from the build step,
+
+02:29.310 --> 02:30.720
+that we really care about.
+
+02:30.720 --> 02:34.200
+It's just that folder and everything else inside of here,
+
+02:34.200 --> 02:35.850
+everything else inside of our code base,
+
+02:35.850 --> 02:38.400
+is not required to run our application,
+
+02:38.400 --> 02:40.110
+in a production environment
+
+02:40.110 --> 02:41.460
+and so if we could avoid it,
+
+02:41.460 --> 02:43.410
+it would be really nice to avoid,
+
+02:43.410 --> 02:46.650
+carrying around that 150 something megabytes,
+
+02:46.650 --> 02:48.540
+worth of dependencies.
+
+02:48.540 --> 02:50.040
+The other big issue with this flow,
+
+02:50.040 --> 02:52.950
+is the start Nginx step down here.
+
+02:52.950 --> 02:56.130
+So I said start Nginx, but yeah, pretty much,
+
+02:56.130 --> 02:58.860
+what, where is Nginx coming from?
+
+02:58.860 --> 03:00.540
+What point in time did that get installed
+
+03:00.540 --> 03:04.170
+or configured or set up in any way, shape or form?
+
+03:04.170 --> 03:06.720
+So it's clear that we've got a little bit of an issue here,
+
+03:06.720 --> 03:08.280
+not only with our dependencies,
+
+03:08.280 --> 03:11.706
+but also with the Nginx server set up as well.
+
+03:11.706 --> 03:14.220
+Now I wanna do a quick aside here.
+
+03:14.220 --> 03:15.660
+I wanna open up Docker hub
+
+03:15.660 --> 03:19.590
+and I wanna look up a repository on Docker hub very quickly.
+
+03:19.590 --> 03:21.990
+So I'm gonna open up a new tab
+
+03:21.990 --> 03:25.413
+and I'm gonna navigate to hub.docker.com.
+
+03:26.340 --> 03:29.970
+And then once here, you can find the explore tab at the top
+
+03:29.970 --> 03:32.040
+and then you'll notice the second repository,
+
+03:32.040 --> 03:32.970
+it might change over time,
+
+03:32.970 --> 03:36.090
+so it might be higher or lower is Nginx,
+
+03:36.090 --> 03:38.580
+if you click on that, you'll then see all the documentation,
+
+03:38.580 --> 03:42.459
+for the Nginx repository and just the overall image.
+
+03:42.459 --> 03:44.640
+Now you can scroll down here just a little bit
+
+03:44.640 --> 03:47.250
+and see some documentation about what it is
+
+03:47.250 --> 03:49.440
+and you'll also see some stuff about hosting,
+
+03:49.440 --> 03:50.790
+simple content right here,
+
+03:50.790 --> 03:53.310
+which is essentially what you and I want to do.
+
+03:53.310 --> 03:56.760
+So it's clear that there is a Nginx image out there
+
+03:56.760 --> 03:58.860
+and it can be probably used to host,
+
+03:58.860 --> 04:00.990
+some simple static content.
+
+04:00.990 --> 04:02.973
+So it kind of seems like if you and I,
+
+04:03.810 --> 04:05.700
+want to kind of start up Nginx
+
+04:05.700 --> 04:07.500
+or use this to host our application,
+
+04:07.500 --> 04:10.470
+it would be really nice to use that image,
+
+04:10.470 --> 04:12.270
+inside of our Docker container.
+
+04:12.270 --> 04:15.480
+However, we already said we're using node alpine,
+
+04:15.480 --> 04:17.010
+inside of our container,
+
+04:17.010 --> 04:18.810
+because we have to get access to Node,
+
+04:18.810 --> 04:20.550
+to install our dependencies.
+
+04:20.550 --> 04:23.040
+So essentially it seems like we're in a situation right now,
+
+04:23.040 --> 04:25.260
+where it would be really nice to be able to have,
+
+04:25.260 --> 04:27.778
+two different base images
+
+04:27.778 --> 04:30.360
+and that's exactly what we're gonna do.
+
+04:30.360 --> 04:31.506
+So here's the plan.
+
+04:31.506 --> 04:33.679
+We're going to build a docker file,
+
+04:33.679 --> 04:38.040
+that has something called a multi-step build process.
+
+04:38.040 --> 04:39.210
+Inside this docker file,
+
+04:39.210 --> 04:43.560
+we're gonna have two different blocks of configuration.
+
+04:43.560 --> 04:45.780
+We're gonna have one block of configuration,
+
+04:45.780 --> 04:47.280
+to implement something that we're going to call,
+
+04:47.280 --> 04:49.530
+the build phase.
+
+04:49.530 --> 04:51.930
+This build phase is gonna have the sole purpose,
+
+04:51.930 --> 04:54.630
+of using the node alpine image as base,
+
+04:54.630 --> 04:57.690
+copying over the package.json file, installing dependencies
+
+04:57.690 --> 05:00.450
+and then executing NPM run build.
+
+05:00.450 --> 05:03.510
+And the result of all that is gonna be that index.html,
+
+05:03.510 --> 05:06.300
+the main.js file, and essentially everything else,
+
+05:06.300 --> 05:08.650
+inside this build directory right here,
+
+05:08.650 --> 05:10.980
+that we need to serve up our application,
+
+05:10.980 --> 05:13.056
+in a production environment.
+
+05:13.056 --> 05:14.700
+We're then going to also have,
+
+05:14.700 --> 05:18.420
+a second block of configuration inside of our Docker file.
+
+05:18.420 --> 05:21.000
+When we put in a second block of configuration,
+
+05:21.000 --> 05:25.620
+we get the ability to specify a second base image.
+
+05:25.620 --> 05:28.620
+And so in this kind of run phase of our Docker file,
+
+05:28.620 --> 05:31.563
+we're going to use Nginx as the base image.
+
+05:32.702 --> 05:36.450
+Then the next step, after we specify using Nginx,
+
+05:36.450 --> 05:40.410
+we're going to essentially reach over from the run phase,
+
+05:40.410 --> 05:42.870
+we're gonna reach over to the build phase and say,
+
+05:42.870 --> 05:44.040
+hey, out of everything,
+
+05:44.040 --> 05:45.750
+that occurred during that build phase,
+
+05:45.750 --> 05:48.600
+we want to get that build directory,
+
+05:48.600 --> 05:51.360
+that build folder that has the index HTML file
+
+05:51.360 --> 05:54.510
+and the main.js file and all that other stuff we care about.
+
+05:54.510 --> 05:56.580
+And we're gonna take the result of all that,
+
+05:56.580 --> 05:59.820
+just that build directory, and we're gonna copy it over,
+
+05:59.820 --> 06:01.920
+to our build run phase.
+
+06:01.920 --> 06:04.335
+Now when we copy it over to the run phase,
+
+06:04.335 --> 06:07.890
+everything else that occurred during that build phase,
+
+06:07.890 --> 06:09.840
+like the use of the node alpine image,
+
+06:09.840 --> 06:11.790
+the dependencies that we installed,
+
+06:11.790 --> 06:14.430
+all that additional stuff gets dropped,
+
+06:14.430 --> 06:17.096
+out of the final result of our container.
+
+06:17.096 --> 06:20.370
+So when we just copy over just that build directory,
+
+06:20.370 --> 06:22.500
+everything else essentially gets marooned,
+
+06:22.500 --> 06:24.810
+it gets left behind and we essentially are saying,
+
+06:24.810 --> 06:26.340
+we don't care about anything else,
+
+06:26.340 --> 06:28.593
+we just care about that build folder.
+
+06:30.180 --> 06:32.160
+So then after we copy that directory over,
+
+06:32.160 --> 06:33.930
+we essentially start Nginx
+
+06:33.930 --> 06:35.850
+and in this case, the startup is going to work,
+
+06:35.850 --> 06:39.150
+because we are using Nginx as the base.
+
+06:39.150 --> 06:40.830
+So that's it, that's how we're gonna solve this.
+
+06:40.830 --> 06:43.620
+We're gonna use a multi-step build process,
+
+06:43.620 --> 06:45.660
+for our Docker container.
+
+06:45.660 --> 06:47.250
+So let's take a quick pause right here
+
+06:47.250 --> 06:48.270
+and in the next section,
+
+06:48.270 --> 06:49.980
+we'll start writing out the Docker file,
+
+06:49.980 --> 06:51.450
+to make all this stuff happen.
+
+06:51.450 --> 06:53.873
+So quick break and I'll see you in just a minute.

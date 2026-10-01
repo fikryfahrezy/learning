@@ -1,0 +1,1540 @@
+WEBVTT
+
+00:01.030 --> 00:06.070
+At this point, it's time to dig into some basic principles of visual design.
+
+00:06.070 --> 00:11.230
+And while there are literally hundreds of those, I want to talk about what I call the big four.
+
+00:11.260 --> 00:18.400
+These are the four basic principles that we use to organize visual information, and they are alignment,
+
+00:18.550 --> 00:22.900
+proximity, repetition and contrast.
+
+00:22.930 --> 00:29.200
+If you absorb nothing else, understand that these principles are the underlying factors in every single
+
+00:29.200 --> 00:31.510
+thing that we see and interact with.
+
+00:31.510 --> 00:36.500
+And whether that's on screen or in print or on a billboard, it really doesn't matter.
+
+00:36.520 --> 00:42.580
+These four principles are the underlying core of just about everything that we see and interact with.
+
+00:42.610 --> 00:47.180
+It's also important to understand that these principles are intimately interconnected.
+
+00:47.200 --> 00:53.530
+Whenever you're designing, you will never only apply one of these principles, you will almost always
+
+00:53.560 --> 01:00.230
+be using some degree of all four to be honest, and at the very least you'll be using three of the four.
+
+01:00.250 --> 01:06.890
+So in anything that you do, even if you don't automatically recognize that it's happening, these four
+
+01:06.890 --> 01:09.260
+things absolutely come into play.
+
+01:09.260 --> 01:17.420
+And when a design is not working, to some degree, it usually means that one of these four things is
+
+01:17.420 --> 01:24.560
+not happening, is not present or is applied in a way contrary to the way it's supposed to work.
+
+01:25.100 --> 01:29.740
+We start with alignment because it's quite possibly the most important of the four principles.
+
+01:29.750 --> 01:37.060
+This is probably the rule that I see broken more often than any of the others.
+
+01:37.070 --> 01:45.080
+I'm here to tell you if you do nothing but use proper alignment, your designs will be infinitely more
+
+01:45.080 --> 01:49.970
+useful, more usable, more understandable, and therefore more valuable.
+
+01:50.240 --> 01:51.830
+Take a look at this text.
+
+01:51.830 --> 01:55.250
+It's very easy to read for one very important reason.
+
+01:55.250 --> 01:59.120
+It has everything to do with the way that we track text.
+
+01:59.120 --> 01:59.290
+Okay.
+
+01:59.300 --> 02:03.710
+It's kind of like the way old typewriters used to work where you would type and the carriage moves to
+
+02:03.710 --> 02:07.340
+the right, and then when it's done, it returns to the left and you start over.
+
+02:07.340 --> 02:08.690
+We read the same way.
+
+02:08.690 --> 02:15.050
+We all read from top to bottom, left to right, with the exception of folks who are from other countries
+
+02:15.050 --> 02:18.590
+who may read in a different language and read right to left.
+
+02:18.590 --> 02:22.220
+But in this case, we're talking about the English language.
+
+02:22.220 --> 02:25.590
+And the way that's written is that we read left to right.
+
+02:25.590 --> 02:27.660
+Okay, So we start at the left of the line.
+
+02:27.660 --> 02:32.310
+We go across and then we start again at the left on the next line.
+
+02:32.310 --> 02:34.440
+What enables us to do that?
+
+02:34.440 --> 02:40.320
+Is this the fact that there is a consistent point where we can track back to the left?
+
+02:40.320 --> 02:47.660
+Okay, That allows us to really extraordinarily quickly get through these words and read multiple paragraphs
+
+02:47.670 --> 02:50.580
+that tracking is what makes things easy to read.
+
+02:50.610 --> 02:52.590
+Now take a look at this text.
+
+02:52.620 --> 02:54.180
+Is it as easy to read?
+
+02:54.540 --> 02:55.740
+No, it isn't.
+
+02:55.740 --> 03:00.150
+And the reason it's not as easy to read is because take a look at where the tracking points are.
+
+03:00.180 --> 03:01.410
+They're all over the place.
+
+03:01.410 --> 03:02.730
+They're inconsistent.
+
+03:02.730 --> 03:08.730
+So it's very hard for us to automatically, unconsciously track back to the beginning of the line.
+
+03:08.730 --> 03:13.110
+We actually have to work to find the beginning of the next sentence.
+
+03:13.110 --> 03:14.910
+Because of that, a couple of things happen.
+
+03:14.910 --> 03:17.580
+Number one, comprehension doesn't happen as fast.
+
+03:17.580 --> 03:21.360
+And number two, our eyes actually fatigue faster.
+
+03:21.360 --> 03:26.970
+And that's one of those cases where someone will be dealing with content on a screen or even on a piece
+
+03:26.970 --> 03:28.230
+of paper, quite frankly.
+
+03:28.230 --> 03:35.460
+And they'll sort of get annoyed, aggravated, frustrated, and they'll want to stop reading.
+
+03:35.460 --> 03:38.010
+And they may not be able to tell you why.
+
+03:38.040 --> 03:41.820
+They may see things like, Oh, I just couldn't read anymore of that.
+
+03:41.820 --> 03:45.150
+And you'll say, Well, why not just say, Well, I don't know.
+
+03:45.150 --> 03:46.980
+I was just it was just frustrating me.
+
+03:47.190 --> 03:47.520
+All right.
+
+03:47.520 --> 03:54.090
+The reason is they're having to expend more energy than they should to have to read and comprehend that
+
+03:54.090 --> 03:56.850
+information because they can't easily track the lines.
+
+03:56.850 --> 04:00.960
+So centered text never works for reading.
+
+04:00.990 --> 04:03.690
+Don't center text ever.
+
+04:03.690 --> 04:05.310
+That's the best rule I can give you.
+
+04:05.310 --> 04:05.580
+Okay.
+
+04:05.580 --> 04:10.020
+Just don't do it any time you've got paragraphs, do not center.
+
+04:10.020 --> 04:11.130
+Align the text.
+
+04:11.130 --> 04:18.960
+I see this so often that if I had a nickel for every time I've seen this approach used, I would be
+
+04:18.960 --> 04:21.840
+retired, living on an island and I wouldn't be talking to you right now.
+
+04:23.070 --> 04:23.910
+Okay.
+
+04:23.910 --> 04:25.650
+It just doesn't work.
+
+04:25.680 --> 04:31.050
+You know, for a single headline, maybe for a single element, maybe.
+
+04:31.050 --> 04:41.100
+But when you've got multiple paragraphs like this, do not center text ever for any reason.
+
+04:41.580 --> 04:42.030
+Okay?
+
+04:42.030 --> 04:42.660
+I mean it.
+
+04:43.460 --> 04:48.970
+Here's another example of how alignment works even in a very busy layout.
+
+04:48.980 --> 04:51.140
+Okay, There are a lot of elements on this screen.
+
+04:51.140 --> 04:53.900
+There's a lot of information for people to have to deal with.
+
+04:53.900 --> 04:58.940
+Okay, this is a case where the client felt like they needed to be able to surface all these different
+
+04:58.940 --> 05:03.050
+parts, these different pieces of information, these different areas of what they do.
+
+05:03.140 --> 05:03.440
+Okay.
+
+05:03.440 --> 05:07.820
+But it becomes really challenging to, number one, just to fit it all on the screen.
+
+05:07.820 --> 05:15.050
+But number two, you've got to do it in a way where it's easy for people to move through it and alignment
+
+05:15.080 --> 05:22.610
+goes a really, really, really long way in making all that somewhat easier to deal with, easier to
+
+05:22.610 --> 05:28.670
+get through, easier to jump from one place to the next without sort of being distracted by other stuff
+
+05:28.670 --> 05:29.270
+on the screen.
+
+05:29.270 --> 05:29.540
+Okay.
+
+05:29.540 --> 05:30.640
+And here's why.
+
+05:30.650 --> 05:36.740
+If you take a look at these lines that are on the screen, there are multiple things here that essentially
+
+05:36.740 --> 05:38.960
+align with other things.
+
+05:38.960 --> 05:42.110
+And some of that alignment may seem very consequential.
+
+05:42.110 --> 05:42.350
+Okay.
+
+05:42.350 --> 05:48.150
+You'll notice that sometimes, for instance, some of these vertical lines are where, you know, an
+
+05:48.150 --> 05:53.220
+element of the left hand edge of a block of text lines up with another element.
+
+05:53.220 --> 06:00.120
+Okay, This main paragraph up here in the middle, lines up with the edge of the iPod graphic below
+
+06:00.120 --> 06:00.480
+it.
+
+06:00.480 --> 06:06.480
+If you look up even further, you'll see that the right edge of the A in the word nexidia lines up with
+
+06:06.480 --> 06:08.580
+the left edge of the text.
+
+06:08.580 --> 06:14.700
+If you look down in the middle, you'll see that the baseline meaning the bottom of the letters in call
+
+06:14.700 --> 06:18.480
+centers lines up with user needs, lines up with events.
+
+06:18.480 --> 06:23.130
+If you go below that, you'll see that rich media lines up with witness users.
+
+06:23.160 --> 06:31.140
+Notice down here that this left rule lines up with the top of this image, lines up with the top of
+
+06:31.140 --> 06:32.220
+this text.
+
+06:32.340 --> 06:38.430
+Okay, so while they're not all the same element aligning with the next same element, they're still
+
+06:38.430 --> 06:39.150
+aligned.
+
+06:39.180 --> 06:43.890
+There are still very clear visual paths for the eye to follow.
+
+06:43.890 --> 06:49.800
+So the bottom line is all I'm trying to do when I design something like this is I'm trying to align
+
+06:49.800 --> 06:52.800
+everything with everything else in some way.
+
+06:52.800 --> 06:55.770
+There has to be some relationship between the elements.
+
+06:55.800 --> 06:58.680
+It doesn't have to be ideal, it doesn't have to be perfect.
+
+06:58.680 --> 07:00.810
+In other words, it doesn't have to be.
+
+07:00.810 --> 07:03.210
+The bottom of this text aligns with the bottom of this text.
+
+07:03.240 --> 07:07.530
+It could be the bottom of this text aligns with the top of this image.
+
+07:07.620 --> 07:09.060
+Okay, two different things.
+
+07:09.060 --> 07:15.570
+But those relationships are what allow us to easily track through the stuff that we see.
+
+07:15.600 --> 07:21.120
+So what I'm getting at here is that alignment provides cognitive stability.
+
+07:21.120 --> 07:26.190
+It allows us to create visual relationships between the things that we see on the screen, and that
+
+07:26.190 --> 07:31.290
+allows us to track through those items much more quickly, much more easily.
+
+07:31.290 --> 07:36.750
+So every element in a design should be aligned with one or more other elements.
+
+07:36.750 --> 07:41.070
+Bottom line here, as I said, align everything.
+
+07:41.070 --> 07:42.870
+You can't go wrong, okay?
+
+07:42.870 --> 07:47.850
+Just look for relationships, even if it's, you know, something that's on the extreme left side of
+
+07:47.850 --> 07:53.400
+the screen to the extreme right side of the screen, look for a relationship, see if there's something
+
+07:53.400 --> 07:54.330
+that aligns.
+
+07:54.330 --> 07:59.970
+And if it does or if the two things are very close together, adjust both elements so that there is
+
+07:59.970 --> 08:00.990
+a relationship.
+
+08:00.990 --> 08:08.400
+It seems like a goofy thing to do, but it goes a long way in allowing someone to sort of quickly grasp
+
+08:08.400 --> 08:09.540
+what's happening.
+
+08:10.260 --> 08:13.560
+Here's another example of the importance of alignment.
+
+08:13.590 --> 08:17.150
+This is a presidential ballot from the year 2000.
+
+08:17.160 --> 08:24.450
+And for those of you who remember that election, there was a lot of confusion and a lot of consternation
+
+08:24.450 --> 08:28.740
+and debate and fury over who won the election.
+
+08:28.740 --> 08:34.450
+And one of the things that that a lot of people wonder is, did bad design decide the outcome?
+
+08:34.470 --> 08:39.690
+If you take a look at this ballot, you'll see that you have choices on two sides.
+
+08:39.690 --> 08:39.910
+Okay?
+
+08:39.930 --> 08:41.310
+On the left side, you have choices.
+
+08:41.310 --> 08:42.900
+On the right side, you have choices.
+
+08:42.930 --> 08:48.120
+All the holes that you're supposed to punch with this little tool that they give you are right down
+
+08:48.120 --> 08:48.810
+the center.
+
+08:48.810 --> 08:54.630
+And if you think about the principles that I just gave you of alignment, I think you'll see that it's
+
+08:54.630 --> 08:58.720
+not really clear which hole goes with which choice.
+
+08:58.740 --> 09:00.480
+This is extremely confusing.
+
+09:00.480 --> 09:08.670
+There's no totally obvious clear alignment between the candidate selection and the choice for that selection.
+
+09:08.670 --> 09:15.420
+And the other problem is that all the little dots, the little circles are too close together.
+
+09:15.430 --> 09:19.450
+It's very easy to sort of inadvertently punch one of the other ones.
+
+09:19.480 --> 09:24.850
+Now, as you look at this, consider a few things related to the outcome of this election.
+
+09:24.880 --> 09:30.520
+There were double votes for adjacent candidates, ones that were almost directly across from each other.
+
+09:30.550 --> 09:32.470
+A lot of those votes happened twice.
+
+09:32.500 --> 09:38.740
+There was an absolutely improbable number of votes for Pat Buchanan in Palm Beach County, which was
+
+09:38.740 --> 09:40.450
+extraordinarily liberal.
+
+09:40.480 --> 09:44.320
+Pat Buchanan is the most conservative of the conservative.
+
+09:44.320 --> 09:44.770
+All right.
+
+09:44.770 --> 09:50.080
+But he got an inordinate amount of votes from a county that has traditionally voted, you know, in
+
+09:50.080 --> 09:53.020
+the last 20 years very, very liberally.
+
+09:53.020 --> 09:54.600
+So that's sort of suspicious.
+
+09:54.610 --> 10:00.390
+And also, there were multiple instances where counts for candidates were wrong.
+
+10:00.400 --> 10:00.660
+Okay.
+
+10:00.670 --> 10:02.650
+And then they recounted and they were wrong again.
+
+10:02.650 --> 10:05.380
+And then they recounted the number still didn't match up.
+
+10:05.470 --> 10:05.620
+Okay.
+
+10:05.650 --> 10:09.500
+So there was all this confusion around tallying the results.
+
+10:09.520 --> 10:12.810
+Now, wouldn't this have been much easier?
+
+10:12.830 --> 10:13.810
+Take a look at that.
+
+10:13.840 --> 10:19.480
+Is there a clear relationship between the candidate that you are voting for and the area in which you
+
+10:19.480 --> 10:20.580
+make that selection?
+
+10:20.590 --> 10:22.270
+It's a 1 to 1 correlation.
+
+10:22.270 --> 10:23.560
+There's no confusion.
+
+10:23.560 --> 10:25.270
+This goes with this.
+
+10:25.270 --> 10:26.950
+This goes with this.
+
+10:26.980 --> 10:27.670
+Why?
+
+10:27.700 --> 10:32.320
+Because they are absolutely, unequivocally aligned perfectly.
+
+10:32.320 --> 10:36.700
+There is a clear visual relationship between the choice and the action.
+
+10:36.700 --> 10:42.490
+So not only do I think this is an excellent example of the power of alignment, I also think it's an
+
+10:42.490 --> 10:48.280
+excellent example of the potential consequence of not designing something properly.
+
+10:48.760 --> 10:51.280
+The second principle is proximity.
+
+10:51.310 --> 10:52.690
+Take a look at this layout.
+
+10:52.720 --> 10:55.210
+Does everything seem to be very well organized?
+
+10:55.210 --> 10:56.050
+Very clear.
+
+10:56.050 --> 10:57.130
+Very obvious.
+
+10:57.160 --> 10:57.940
+It does.
+
+10:57.970 --> 11:02.530
+And the reason it does has everything to do with proximity.
+
+11:02.560 --> 11:08.260
+The essential law of proximity is that elements that are visually close to each other are perceived
+
+11:08.260 --> 11:11.050
+as a single group related to each other.
+
+11:11.050 --> 11:15.610
+When we look at things that are close to each other, we say, okay, that's all part of the same thing.
+
+11:15.610 --> 11:17.430
+This goes with this.
+
+11:17.440 --> 11:23.380
+So for instance, if I look at this left area where it says design and dev, it's immediately obvious
+
+11:23.380 --> 11:28.890
+to us at a glance that all these things, these four items go together.
+
+11:28.900 --> 11:30.820
+They're all part of the same group.
+
+11:30.820 --> 11:36.150
+They all belong to the same categorization, and that is simply because of their proximity.
+
+11:36.160 --> 11:42.940
+If we look at the top menu item, we see these two arrow keys on the right, which are to go forward
+
+11:42.940 --> 11:43.720
+or backward.
+
+11:43.720 --> 11:45.190
+They're very close to each other.
+
+11:45.190 --> 11:48.530
+That's a single chunk of visual information.
+
+11:48.530 --> 11:49.460
+It's all very close.
+
+11:49.460 --> 11:52.100
+It almost forms one unit as you look at it.
+
+11:52.100 --> 11:52.410
+Right.
+
+11:52.430 --> 11:53.330
+So we get it.
+
+11:53.360 --> 11:54.650
+Those are controls.
+
+11:54.650 --> 11:55.550
+That's forward.
+
+11:55.550 --> 11:56.330
+That's backward.
+
+11:56.330 --> 11:57.310
+They're related.
+
+11:57.320 --> 12:02.660
+If we look at the three articles that are right below that, again, they're all treated the same and
+
+12:02.660 --> 12:04.280
+they all share a space.
+
+12:04.280 --> 12:08.810
+They are closer to each other than they are to other things on the screen.
+
+12:08.810 --> 12:10.760
+Therefore they're related.
+
+12:10.880 --> 12:14.960
+This black bar in the middle is very set apart from everything else.
+
+12:14.960 --> 12:15.300
+Okay?
+
+12:15.320 --> 12:17.900
+It does not have close proximity to other things.
+
+12:17.900 --> 12:20.120
+Therefore it sort of exists on its own.
+
+12:20.120 --> 12:20.420
+Okay.
+
+12:20.420 --> 12:22.160
+It's not related to anything else.
+
+12:22.190 --> 12:24.320
+It's its own element.
+
+12:24.320 --> 12:29.660
+And as you can see, if you look at the content, it's a link to some sort of voting mechanism.
+
+12:29.660 --> 12:35.060
+It almost almost like a banner ad, So because of its placement, because of the amount of space above
+
+12:35.060 --> 12:40.340
+it and below it because of the distance of other elements related to it, it stands on its own.
+
+12:40.430 --> 12:47.240
+By the same token, the headline discussion underneath it has an awful lot of space above it and below
+
+12:47.240 --> 12:47.390
+it.
+
+12:47.390 --> 12:53.960
+And quite frankly, there's too much space from the baseline of the font to the area below it because
+
+12:53.960 --> 12:56.840
+that headline belongs to all the snippets below it, right?
+
+12:56.840 --> 13:01.730
+These are the points of discussion, but it's treated in a way where it sort of stands on its own as
+
+13:01.730 --> 13:02.660
+its own element.
+
+13:02.690 --> 13:05.210
+It doesn't have close proximity to anything.
+
+13:05.210 --> 13:11.360
+Its distance from that black bar is absolutely equal to the distance between it and the text below.
+
+13:11.360 --> 13:18.260
+So really what should happen is it should be moved down so that it has a closer proximity to that text
+
+13:18.260 --> 13:18.920
+below it.
+
+13:18.920 --> 13:23.240
+And of course, when we look at all this text down here, it's automatically related.
+
+13:23.240 --> 13:25.400
+It's all treated visually the same way, number one.
+
+13:25.400 --> 13:28.310
+But number two, all these items are very close to each other.
+
+13:28.310 --> 13:28.530
+Okay?
+
+13:28.550 --> 13:30.320
+So that's how proximity works.
+
+13:30.350 --> 13:36.620
+We make an automatic assumption and it's unconscious about relationships between items based on how
+
+13:36.620 --> 13:37.730
+close they are together.
+
+13:37.730 --> 13:43.520
+So unrelated items that are separated by negative space have different alignment paths or they disrupt
+
+13:43.520 --> 13:44.330
+an existing path.
+
+13:44.330 --> 13:44.600
+Right.
+
+13:44.600 --> 13:49.760
+We were sort of headed down this page from those three articles and then we saw our black banner bar,
+
+13:49.760 --> 13:56.930
+then we saw discussion, okay, those exist as separate elements because they disrupt alignment paths
+
+13:56.960 --> 14:02.090
+and by grouping certain design elements together, like navigation, like featured content, resource
+
+14:02.090 --> 14:06.970
+links, items in the footer, etcetera, etcetera, Those things form a whole right?
+
+14:06.980 --> 14:11.480
+The navigation is the navigation, the header is the header, the footer is the footer, an article
+
+14:11.480 --> 14:14.840
+is an article because it's all grouped, it's all in tight proximity.
+
+14:14.840 --> 14:20.450
+That's one of the ways that you signal to a user that, hey, all this stuff right here, it's all related.
+
+14:20.960 --> 14:24.260
+Here's another example of why proximity is important.
+
+14:24.290 --> 14:26.090
+Take a look at this contact form.
+
+14:26.090 --> 14:32.270
+In usability testing sessions, we find that forms like this typically take people a lot longer to fill
+
+14:32.270 --> 14:34.670
+out, and they sort of struggle a little bit with them.
+
+14:34.670 --> 14:42.380
+And the reason is that there's a significant gap between proximity of the label and the field.
+
+14:42.500 --> 14:46.430
+When we look at this, again, this has everything to do with with perception.
+
+14:46.430 --> 14:47.300
+The way the brain works.
+
+14:47.300 --> 14:52.160
+When we look at this, we see all this stuff as a single element.
+
+14:52.160 --> 14:56.960
+And then because of the proximity of the fields, we see all this stuff as a single element.
+
+14:56.960 --> 15:02.120
+In other words, cognitively it's difficult to make a clear relationship between the label and the field
+
+15:02.120 --> 15:02.840
+that goes with it.
+
+15:02.840 --> 15:05.390
+That's because of the distance between the two.
+
+15:05.420 --> 15:07.130
+There's too much of a gap there.
+
+15:07.130 --> 15:09.470
+Not only that, but the gap isn't consistent.
+
+15:09.500 --> 15:15.530
+Notice the distance between the first line preferred contact number and that little home dropdown versus
+
+15:15.860 --> 15:18.800
+the distance between work and the field that goes with it.
+
+15:18.800 --> 15:21.320
+Okay, that's a football field between those two things.
+
+15:21.320 --> 15:25.270
+So a better way to present this form would be something like this.
+
+15:25.280 --> 15:29.330
+The label comes immediately before the element that goes with it.
+
+15:29.330 --> 15:35.360
+Notice that when they're a lot closer together, it's extremely easy to make an instant association
+
+15:35.360 --> 15:38.240
+between the label and the field that goes with it.
+
+15:38.240 --> 15:43.190
+If you go down, you'll also notice that everything is aligned right.
+
+15:43.190 --> 15:46.040
+Remember alignment, everything is aligned to the left.
+
+15:46.040 --> 15:48.350
+So I can sort of track down in a very straight line.
+
+15:48.760 --> 15:50.740
+And get through this form very quickly.
+
+15:50.740 --> 15:55.300
+I've also increased the proximity between the register and close buttons.
+
+15:55.390 --> 15:55.690
+Okay.
+
+15:55.720 --> 15:56.080
+Why?
+
+15:56.110 --> 15:57.040
+Because they're related.
+
+15:57.040 --> 16:01.870
+Those are the two actions you can take instead of them being disparate and set apart.
+
+16:01.870 --> 16:07.540
+And it's also worth mentioning that I changed the color of the close button because it's not as important
+
+16:07.540 --> 16:08.920
+as the register button.
+
+16:08.920 --> 16:10.390
+We'll save that for a later time.
+
+16:10.390 --> 16:11.290
+That's a whole other speech.
+
+16:11.290 --> 16:13.000
+But I did want you to make note of that.
+
+16:13.210 --> 16:19.630
+Another way to accomplish the same thing is to put the labels on top of the fields and in some cases
+
+16:19.630 --> 16:20.770
+with short forms.
+
+16:20.770 --> 16:26.860
+This is even easier because now notice that all the fields are aligned on the left as well.
+
+16:26.890 --> 16:33.730
+I can absolutely very quickly track straight down this form and in most cases, again, during usability
+
+16:33.730 --> 16:39.730
+testing, we find that for short forms, putting the label on top of the field actually results in people
+
+16:39.760 --> 16:44.190
+being able to complete it a lot faster and also with fewer errors.
+
+16:44.200 --> 16:49.190
+So in both of these cases, okay, whichever way we decide to treat it, moving the labels and the fields
+
+16:49.190 --> 16:52.750
+closer together emphasizes the horizontal pairs.
+
+16:52.760 --> 16:55.010
+The label goes with the field, label goes with the field.
+
+16:55.010 --> 16:56.360
+They're pairs of information.
+
+16:56.360 --> 16:58.730
+They're related because they're close together.
+
+16:59.120 --> 17:05.510
+The last thing about proximity that I want to impress upon you is the fact that negative space creates
+
+17:05.510 --> 17:10.580
+proximity, just like, you know, the physical elements can be moved together to create proximity.
+
+17:10.580 --> 17:15.650
+The space between them is very important to establishing a sense of proximity.
+
+17:15.650 --> 17:19.790
+It's usually, in most cases, what determines whether we feel like things are close together or not.
+
+17:19.790 --> 17:23.060
+Okay, so that negative space is incredibly important.
+
+17:23.090 --> 17:28.430
+Negative space is the space between graphics, margins, gutters, elements, etcetera.
+
+17:28.430 --> 17:33.280
+It's the space between columns, it's the space between lines of typography, okay?
+
+17:33.380 --> 17:34.540
+Or visuals.
+
+17:34.550 --> 17:37.010
+It's that gap, it's that distance.
+
+17:37.010 --> 17:38.240
+And it's important.
+
+17:38.240 --> 17:44.360
+You have to be just as conscious of those empty spaces as you do of the things that you fill them with.
+
+17:44.390 --> 17:47.540
+Negative space is what enables focus.
+
+17:47.570 --> 17:48.920
+It's not dead space.
+
+17:48.920 --> 17:50.420
+It's not blank space.
+
+17:50.420 --> 17:55.190
+It's a critical element of design, and it's something you have to pay attention to.
+
+17:55.220 --> 17:56.720
+Take a look at this layout.
+
+17:56.720 --> 18:02.210
+There's a lot of air or negative space around each element.
+
+18:02.240 --> 18:04.430
+There's a lot of air around the navigation.
+
+18:04.430 --> 18:09.080
+There's a lot of distance between the navigation and the image below it.
+
+18:09.080 --> 18:15.170
+But that's what allows us to easily focus on the navigation area than to easily focus on the product
+
+18:15.170 --> 18:19.190
+area and then easily focus on the elements that are underneath it.
+
+18:19.190 --> 18:24.350
+If you look at this, I think you'll find that it's very simple to sort of shift your focus to each
+
+18:24.350 --> 18:26.600
+part and quickly get what it is.
+
+18:26.630 --> 18:32.360
+Now that's partly because there isn't a whole lot of information on this page, but it's more because
+
+18:32.360 --> 18:38.780
+the amount of negative space around everything is allowing us to focus on the elements that are there.
+
+18:38.810 --> 18:44.120
+One of the things that I say to development teams when we're working on projects together, sometimes
+
+18:44.120 --> 18:49.520
+they're working with a with a very explicit layout and they have specifications where they know exactly
+
+18:49.550 --> 18:52.550
+what the pixel distance between elements is supposed to be.
+
+18:52.550 --> 18:57.080
+But other times when we're working in quick iterations and we're just trying to get stuff down, a lot
+
+18:57.080 --> 19:04.550
+of times what I'll say is, look, give me 20 pixels of padding between everything in between every
+
+19:04.550 --> 19:05.960
+single element, all right?
+
+19:05.960 --> 19:07.460
+And then I'll adjust from there.
+
+19:07.490 --> 19:13.370
+The point is, you want to establish some distance between things so that they're easy to read, easy
+
+19:13.370 --> 19:17.300
+to, to cognitively grasp, easy to get, easy to focus on.
+
+19:17.300 --> 19:24.440
+So a good way to start if you're developing something is just add ten pixels or 20 pixels of padding
+
+19:24.440 --> 19:26.300
+between every single element.
+
+19:26.300 --> 19:30.380
+Start there and then tighten up things maybe as you need to later.
+
+19:30.380 --> 19:36.050
+But always, always, always start with a decent degree of negative space.
+
+19:36.730 --> 19:39.580
+Next up, I want to talk about repetition.
+
+19:39.580 --> 19:42.610
+Repetition doesn't mean probably what it sounds like.
+
+19:42.640 --> 19:47.920
+It doesn't mean just sort of rubber stamping the same elements over and over and over and over again.
+
+19:47.920 --> 19:51.160
+It means something a little more subtle than that.
+
+19:51.160 --> 19:51.500
+Okay?
+
+19:51.520 --> 19:54.910
+And rather than trying to explain it to you, I'll give you a visual example.
+
+19:54.940 --> 19:56.320
+Take a look at this layout.
+
+19:56.320 --> 19:57.370
+Specifically.
+
+19:57.370 --> 20:04.450
+Let's focus on this main navigation area and two things the color use that's here and the font styling
+
+20:04.450 --> 20:05.290
+that's here.
+
+20:05.290 --> 20:09.190
+Those elements in and of themselves are repeated in different areas.
+
+20:09.220 --> 20:12.970
+Number one, it's repeated in the style of this Learn more button.
+
+20:12.970 --> 20:16.330
+We're using the same background color, we're using the same font.
+
+20:16.360 --> 20:21.340
+The font is in a different color, but that's enough to sort of repeat the same style.
+
+20:21.340 --> 20:24.190
+What that does is it creates a sense of cohesiveness.
+
+20:24.220 --> 20:28.120
+It creates a sense that those things are related in some way.
+
+20:28.120 --> 20:29.440
+They belong together.
+
+20:29.440 --> 20:36.800
+That style is also repeated down here in this sub nav bar, where the same background color is repeated,
+
+20:36.800 --> 20:39.290
+the same font style is used.
+
+20:39.290 --> 20:40.910
+Okay, that's the same font.
+
+20:40.910 --> 20:43.880
+It's used in different sizes, different configuration.
+
+20:43.880 --> 20:49.130
+Okay, we've got this large number off to the left and then we've got a smaller word, you know, e-commerce
+
+20:49.130 --> 20:54.050
+in white or light gray, and then we've got consulting below it, larger in orange.
+
+20:54.050 --> 21:00.110
+But the overall approach, the overall visual style is very much the same.
+
+21:00.110 --> 21:01.430
+That's repetition.
+
+21:01.430 --> 21:09.410
+That's what helps a design to feel cohesive, to feel like all the elements are as they should be.
+
+21:09.440 --> 21:14.930
+We don't notice that anything is sort of garishly different than anything else.
+
+21:15.050 --> 21:18.470
+Let's look at another example of repetition in this layout.
+
+21:18.500 --> 21:23.570
+Take a look at shopping cart development and pay attention particularly to the font style that's used
+
+21:23.570 --> 21:23.960
+there.
+
+21:23.960 --> 21:26.600
+That same style is repeated down here.
+
+21:26.630 --> 21:31.820
+The font is certainly a different size, but notice two things, okay, they're using the same font,
+
+21:31.850 --> 21:36.590
+number one, but number two, they're also echoing that color of the word cart.
+
+21:36.590 --> 21:41.900
+Same color, and they use the same style in both of those subsequent headlines.
+
+21:41.900 --> 21:45.920
+It's used again on the right side and request a quote.
+
+21:45.920 --> 21:49.880
+And again, the same colors are repeated there using the color that's used in Cart.
+
+21:49.880 --> 21:54.440
+And then they're also echoing that same orange color of the background.
+
+21:54.440 --> 21:57.020
+So in this case, it's not a direct relationship.
+
+21:57.020 --> 22:02.510
+That orange doesn't exist anywhere in shopping cart development, but it does exist in the background
+
+22:02.540 --> 22:03.290
+of that area.
+
+22:03.320 --> 22:05.090
+That's what I mean by repetition.
+
+22:05.090 --> 22:09.650
+We're not just taking the exact same elements and repeating them over and over and over again.
+
+22:09.650 --> 22:13.040
+We're echoing other parts of the layout.
+
+22:13.250 --> 22:15.980
+Repetition involves form as well.
+
+22:16.010 --> 22:19.400
+Take a look at these three icons up top that are in circles.
+
+22:19.400 --> 22:24.050
+Well, that motif is used again down here underneath these shopping bags.
+
+22:24.050 --> 22:26.930
+More circles there for a different purpose.
+
+22:26.960 --> 22:32.210
+They allow us to, in this case, look at different slides, so to speak, in the slide show.
+
+22:32.210 --> 22:34.100
+But the motif is repeated.
+
+22:34.100 --> 22:40.360
+That's part of what makes the design feel consistent, feel cohesive, feel well put together.
+
+22:40.360 --> 22:43.780
+And we also reuse color again in this top nav.
+
+22:43.810 --> 22:48.430
+This gray color is used in this sort of sub navigation that appears below it.
+
+22:48.430 --> 22:53.050
+The orange from the background color appears in the text below it here and there.
+
+22:53.050 --> 23:00.820
+So those are all ways to create repetition and repetition again, creates a sense of cohesiveness.
+
+23:01.540 --> 23:07.600
+One of the ways that repetition gets created and implemented is by setting up a series of design patterns.
+
+23:07.870 --> 23:12.460
+Once the sort of look and feel phase of the project is complete, right?
+
+23:12.460 --> 23:15.760
+Once you've settled on your graphic elements and what they're going to look like and what the style
+
+23:15.760 --> 23:22.750
+is going to be, you then take those styles and apply them to all the other graphic elements, controls,
+
+23:22.750 --> 23:25.660
+buttons, etcetera, etcetera that you're going to use.
+
+23:25.690 --> 23:26.920
+Here's an example.
+
+23:26.920 --> 23:33.780
+If you are an iPhone developer, you have probably seen some of these visual templates.
+
+23:33.790 --> 23:34.020
+Okay?
+
+23:34.030 --> 23:41.290
+And what this is, is it's a series of design patterns that get applied across every element of an application
+
+23:41.410 --> 23:42.130
+of an iPhone.
+
+23:42.130 --> 23:48.760
+Now, you don't necessarily use them all, but they're specific, recognizable, established patterns
+
+23:48.760 --> 23:50.230
+that all work together.
+
+23:50.230 --> 23:56.710
+There's repetition across font styles, there's repetition across color use, there's repetition across
+
+23:56.710 --> 23:58.000
+visual behavior.
+
+23:58.000 --> 24:04.550
+That level of consistency across everything gives you patterns that you can reuse as you create new
+
+24:04.550 --> 24:07.580
+features, new functionality and new apps altogether.
+
+24:07.580 --> 24:10.520
+It's no different on a Windows 8 device.
+
+24:10.520 --> 24:10.880
+Okay?
+
+24:10.880 --> 24:17.180
+There are very specific graphic design patterns that are reused.
+
+24:17.180 --> 24:22.760
+There are components that are all styled in a way where there's an element of repetition.
+
+24:22.760 --> 24:28.520
+They pull font styles, they pull colors, they pull icon style across different elements, just like
+
+24:28.520 --> 24:29.720
+the layout that we saw.
+
+24:29.750 --> 24:36.110
+We're taking certain elements and we're making sure that every subsequent element sort of ties back
+
+24:36.110 --> 24:38.540
+into it in some way, in some visual manner.
+
+24:38.540 --> 24:40.490
+Android phone no different.
+
+24:40.520 --> 24:47.720
+There is still an established set of design patterns, font styles, font use colors, highlighting
+
+24:47.720 --> 24:50.000
+button styles, fields and format.
+
+24:50.030 --> 24:57.200
+It's all drawing on the established visual conventions, the colors, the style, the sizes, and sort
+
+24:57.200 --> 24:58.100
+of repeating it.
+
+24:58.100 --> 25:00.050
+Okay, so that's repetition.
+
+25:00.050 --> 25:04.580
+You know, when you look across these elements, they don't all look exactly alike, obviously, but
+
+25:04.580 --> 25:09.170
+when you look at them as a whole, you certainly see consistency, right?
+
+25:09.170 --> 25:10.580
+Visual consistency.
+
+25:10.580 --> 25:12.920
+They all look like they belong together.
+
+25:12.920 --> 25:14.420
+That's repetition.
+
+25:14.720 --> 25:16.970
+Finally, let's talk about contrast.
+
+25:17.000 --> 25:24.110
+Much like alignment, Contrast is also one of the most misused principles that I see across systems,
+
+25:24.140 --> 25:26.300
+apps, sites, you name it.
+
+25:26.300 --> 25:33.590
+Contrast is one of the most important principles you can pay attention to to make things instantly recognizable,
+
+25:33.590 --> 25:35.630
+useful, and usable.
+
+25:35.630 --> 25:37.160
+Let's look at some examples.
+
+25:37.400 --> 25:42.170
+Text is easily readable when stark complementary colors are used black and white.
+
+25:42.170 --> 25:43.790
+You can't get more contrast than that.
+
+25:43.790 --> 25:45.140
+Okay, it's simply not possible.
+
+25:45.140 --> 25:50.900
+But the reason this text is so easy to read is because the difference between the background, which
+
+25:50.900 --> 25:56.420
+is the white and the foreground, which is the black text, is absolutely stark.
+
+25:56.420 --> 26:01.610
+One thing really jumps out from the other that black text leaps off the white background.
+
+26:01.610 --> 26:03.170
+And because of that contrast it.
+
+26:03.190 --> 26:06.520
+Our eyes do not have to work very hard at all to read that.
+
+26:06.520 --> 26:09.130
+There's almost no eyestrain whatsoever.
+
+26:09.130 --> 26:15.520
+By the same token, a design where text is the brightest element can reduce eye strain by focusing attention.
+
+26:15.520 --> 26:17.500
+This is white text on a black background.
+
+26:17.500 --> 26:20.650
+It's not any harder to read than the area above it.
+
+26:20.650 --> 26:25.120
+Okay, There's this sort of pervading myth that white text on a black background is hard to read.
+
+26:25.150 --> 26:26.740
+That's absolutely not true.
+
+26:26.770 --> 26:33.160
+What makes things hard to read is a lack of contrast like this, a lack of contrast between the text
+
+26:33.160 --> 26:33.940
+and the background.
+
+26:33.940 --> 26:38.590
+Strange your eyes, because physiologically your eyes don't know which color to focus on.
+
+26:38.590 --> 26:44.710
+They're too close together and the cones and rods in your eye literally can't focus.
+
+26:44.800 --> 26:50.380
+Have you ever pointed a camera at something where the autofocus keeps going in and out and it sort of
+
+26:50.380 --> 26:51.190
+won't stop?
+
+26:51.190 --> 26:56.650
+That's the same reason the eyes work the same way because it can't focus on one or the other.
+
+26:56.650 --> 27:01.120
+It sort of keeps shifting between the two and it can't make up its mind which one is more important.
+
+27:01.120 --> 27:01.720
+All right.
+
+27:01.930 --> 27:08.480
+Now, by the same token, just because colors are complementary doesn't mean the contrast is appropriate.
+
+27:08.480 --> 27:13.850
+If both colors are too bright, like in the example here, your eyes still have to strain to read them
+
+27:13.850 --> 27:15.170
+extremely bright colors.
+
+27:15.170 --> 27:19.730
+In this case, this bright extreme pink on a bright yellow background.
+
+27:19.760 --> 27:25.970
+They're both so saturated and so bright and so intense that the eye still has to work very hard to focus
+
+27:25.970 --> 27:27.080
+on one or the other.
+
+27:27.110 --> 27:29.120
+Okay, so this doesn't work either.
+
+27:29.300 --> 27:35.660
+Along with establishing readable text, contrast also draws the viewer's attention toward specific elements.
+
+27:35.660 --> 27:37.190
+And here's a quick example.
+
+27:37.190 --> 27:43.730
+If the background of my screen is this dark gray color and I introduce an element up top that's slightly
+
+27:43.730 --> 27:45.590
+lighter, where's your focus?
+
+27:45.620 --> 27:48.140
+It's automatically on the lighter element.
+
+27:48.170 --> 27:48.440
+Why?
+
+27:48.470 --> 27:52.490
+Because there's contrast between what is now the foreground and the background.
+
+27:52.490 --> 27:56.390
+If I introduce another element below that that is pure white.
+
+27:56.420 --> 27:58.090
+Now where's your focus?
+
+27:58.100 --> 27:59.690
+It's on the white area.
+
+27:59.690 --> 28:00.980
+So I just set up.
+
+28:01.120 --> 28:02.670
+Three stages of attention.
+
+28:02.680 --> 28:06.100
+Your eye first goes to the brightest area, which is the white.
+
+28:06.130 --> 28:09.340
+Your eye goes second to the bar that's on the top.
+
+28:09.340 --> 28:11.500
+And then I've sort of established as another focal point.
+
+28:11.500 --> 28:13.480
+And then finally we see the background.
+
+28:13.480 --> 28:18.830
+But it's the contrast between those three elements that allows us to discern between them.
+
+28:18.850 --> 28:20.830
+Now let's carry this a little bit further.
+
+28:20.980 --> 28:26.080
+If I add some text to my headline, the reason your attention is drawn to it, the reason it's sort
+
+28:26.080 --> 28:29.520
+of framing your view is because it's a shade of the background color.
+
+28:29.530 --> 28:31.510
+You see the relationship between the two things.
+
+28:31.510 --> 28:32.770
+That's why that works.
+
+28:32.770 --> 28:38.610
+There's also a certain degree of contrast between that headline and its immediate background.
+
+28:38.620 --> 28:44.230
+So now I've got information priority, I've got hierarchy, I've got a level of of importance that's
+
+28:44.230 --> 28:45.490
+attached to each element.
+
+28:45.520 --> 28:50.080
+Now if we add some text to the bottom, your eyes are drawn to that because of the contrast between
+
+28:50.080 --> 28:55.120
+the background, which is white and the screen's background, which is that gray color.
+
+28:55.150 --> 29:00.500
+Again, the areas that have the most contrast is where our eyes go first.
+
+29:00.500 --> 29:04.780
+And that middle ground, that middle area has the most contrast.
+
+29:04.790 --> 29:09.890
+As you look at this, your eyes will sort of keep being drawn back to that center no matter what else
+
+29:09.890 --> 29:10.880
+is on the screen.
+
+29:10.910 --> 29:14.200
+That's how contrast works and that's why it's so important.
+
+29:14.210 --> 29:18.800
+You have to be really cognizant, especially when you have multiple elements on the screen of which
+
+29:18.800 --> 29:24.650
+areas of the screen have the most contrast, because that's where the person's attention will continue
+
+29:24.650 --> 29:25.640
+to be drawn.
+
+29:25.640 --> 29:30.470
+So if you've got an element in the lower right hand corner that maybe is really important, but the
+
+29:30.470 --> 29:35.870
+area of most contrast is up in the left hand corner of the screen, That's a problem because you want
+
+29:35.870 --> 29:39.170
+the contrast to be where you want the person's focus to be.
+
+29:39.410 --> 29:42.420
+Here's an example of how contrast is used effectively.
+
+29:42.440 --> 29:44.240
+Let's take a look at the CNN website.
+
+29:44.240 --> 29:46.790
+They lead with a red banner all the way across the top.
+
+29:46.790 --> 29:52.250
+And the vibrancy of that banner against the white that's below it stimulates us, produces heightened
+
+29:52.280 --> 29:53.090
+emotions.
+
+29:53.090 --> 29:57.650
+It's an emergency color, but it's the contrast, really, that's doing that.
+
+29:57.650 --> 30:02.210
+It's the contrast between that red and everything else on the screen that's causing that.
+
+30:02.230 --> 30:06.100
+Also notice that there's black in a lot of areas down below it.
+
+30:06.100 --> 30:08.200
+In all these images, there's an element of black.
+
+30:08.230 --> 30:13.270
+The bottom line is that black, red and white is the ultimate contrast combination.
+
+30:13.270 --> 30:18.960
+You can't possibly get any more contrast than using those three colors together in any combination.
+
+30:18.970 --> 30:22.930
+I'm not saying that every design you you create should be red, white and black.
+
+30:22.930 --> 30:26.280
+Okay, But be aware of how those colors interact.
+
+30:26.320 --> 30:32.410
+In this case, the primary color scheme is red, white and black, and that reinforces the reaction
+
+30:32.410 --> 30:35.620
+that reinforces our sort of heightened sense of awareness.
+
+30:35.650 --> 30:40.960
+It also enables our ability to clearly focus on one thing versus the other.
+
+30:41.500 --> 30:44.140
+The good website uses a very different approach.
+
+30:44.140 --> 30:49.240
+It uses color very sparingly and the result is a much calmer visual approach.
+
+30:49.270 --> 30:55.540
+There's a very pronounced lack of color and the negative space is really exaggerated to create these
+
+30:55.540 --> 30:56.800
+sort of items of interest.
+
+30:57.070 --> 31:02.060
+It allows us to focus, but it allows us to do it in sort of a very calm way.
+
+31:02.080 --> 31:02.950
+It's calming.
+
+31:02.950 --> 31:07.600
+It decreases our sense of urgency and invites us to take our time.
+
+31:07.600 --> 31:13.900
+So in this way, contrast is still being used here, but it's being used in a very different manner.
+
+31:13.900 --> 31:19.120
+So there are no hard rules about right or wrong in terms of contrast, whether you use a lot of it or
+
+31:19.120 --> 31:19.750
+a little of it.
+
+31:19.750 --> 31:27.220
+Just be aware that the degree of contrast that you decide to use has a profound effect on how people
+
+31:27.220 --> 31:32.770
+interpret what they see and how well they're able to cognitively perceive what they see.

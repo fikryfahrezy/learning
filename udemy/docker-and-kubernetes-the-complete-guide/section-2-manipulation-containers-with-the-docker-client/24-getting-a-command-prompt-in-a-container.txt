@@ -1,0 +1,322 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+Narrator: In last section,
+
+00:01.643 --> 00:04.530
+we learned about the importance of the - IT flag.
+
+00:04.530 --> 00:05.363
+In this section,
+
+00:05.363 --> 00:06.930
+I wanna tell you about one last use
+
+00:06.930 --> 00:08.640
+of the docker exec command.
+
+00:08.640 --> 00:11.130
+And this use of it is probably going to be the most common
+
+00:11.130 --> 00:12.360
+that you're going to be making use of
+
+00:12.360 --> 00:14.580
+on your own personal projects.
+
+00:14.580 --> 00:16.830
+A very common thing that you're going to want to do
+
+00:16.830 --> 00:19.770
+when you are using docker, is to get shell access
+
+00:19.770 --> 00:22.219
+or terminal access to your running container.
+
+00:22.219 --> 00:25.770
+In other words, you are going to want to run commands inside
+
+00:25.770 --> 00:28.320
+of your container without having to rerun,
+
+00:28.320 --> 00:30.450
+docker exec, docker exec, docker exec
+
+00:30.450 --> 00:32.250
+again and again all day.
+
+00:32.250 --> 00:34.470
+So in this section, I'm gonna show you how you can open up
+
+00:34.470 --> 00:37.488
+a shell right terminal in the context of your
+
+00:37.488 --> 00:39.600
+running container.
+
+00:39.600 --> 00:41.220
+So, here's what we're gonna do.
+
+00:41.220 --> 00:44.220
+I'm gonna flip back over to my terminal.
+
+00:44.220 --> 00:45.930
+I'm gonna verify that I'm still running.
+
+00:45.930 --> 00:48.000
+That red is container.
+
+00:48.000 --> 00:50.335
+I'm gonna open up a second terminal window
+
+00:50.335 --> 00:51.990
+inside of here.
+
+00:51.990 --> 00:56.080
+I'm going to run docker PS and get my container ID
+
+00:57.690 --> 01:02.220
+and then I'm going to run docker exec - IT.
+
+01:02.220 --> 01:03.930
+I'll put the container ID in.
+
+01:03.930 --> 01:06.750
+And then here's the magic I'm gonna put in SH.
+
+01:06.750 --> 01:10.050
+And we'll talk about what SH is in just a second.
+
+01:10.050 --> 01:11.730
+I'm gonna run that command and you'll see that
+
+01:11.730 --> 01:13.890
+I get the little # over here.
+
+01:13.890 --> 01:14.760
+Once I'm in here,
+
+01:14.760 --> 01:17.190
+I can now start to type out typical commands
+
+01:17.190 --> 01:19.500
+that I would expect to be able to run in a
+
+01:19.500 --> 01:20.970
+Unix environment.
+
+01:20.970 --> 01:22.110
+So for example,
+
+01:22.110 --> 01:25.860
+I could change my directory to my home directory,
+
+01:25.860 --> 01:27.930
+I could list out the files and folders inside there,
+
+01:27.930 --> 01:29.040
+nothing there right now.
+
+01:29.040 --> 01:31.989
+Let's try going back to the root directory of \
+
+01:31.989 --> 01:33.990
+and then if I do an LS
+
+01:33.990 --> 01:38.310
+I'll see all the root files and folders of the container.
+
+01:38.310 --> 01:40.890
+I could execute commands like echo hi\\there.
+
+01:40.890 --> 01:42.835
+I can export variables,
+
+01:42.835 --> 01:44.250
+environment variables like
+
+01:44.250 --> 01:47.760
+export b = 5, and then echo that.
+
+01:47.760 --> 01:49.320
+So essentially when I make use
+
+01:49.320 --> 01:52.530
+of this docker exec command with SH over here
+
+01:52.530 --> 01:55.680
+I get full terminal access inside the context
+
+01:55.680 --> 01:56.513
+of the container,
+
+01:56.513 --> 01:59.340
+which is extremely powerful for debugging.
+
+01:59.340 --> 02:00.960
+I could even do things like, say,
+
+02:00.960 --> 02:02.910
+run the docker CLI directly or something,
+
+02:02.910 --> 02:05.850
+not docker CLI, but red as CLI
+
+02:05.850 --> 02:07.830
+and that starts up, the red as CLI.
+
+02:07.830 --> 02:09.210
+And then when I'm all done
+
+02:09.210 --> 02:10.390
+I can hit control C
+
+02:11.610 --> 02:13.500
+and it looks like nothing's happening.
+
+02:13.500 --> 02:14.730
+So quick shortcut here.
+
+02:14.730 --> 02:16.680
+If you ever are in a container
+
+02:16.680 --> 02:19.110
+and it feels like you can't hit control C to exit
+
+02:19.110 --> 02:20.793
+you can always try hitting command D, or excuse me
+
+02:20.793 --> 02:23.610
+control D to get out as well.
+
+02:23.610 --> 02:24.443
+All right, so we'll,
+
+02:24.443 --> 02:25.950
+let's talk about what just happened there.
+
+02:25.950 --> 02:27.270
+So we ran docker exec,
+
+02:27.270 --> 02:29.070
+which we've seen several times before,
+
+02:29.070 --> 02:31.260
+and then we did SH.
+
+02:31.260 --> 02:32.613
+So what is SH?
+
+02:33.450 --> 02:35.880
+Well, SH is the name of a program
+
+02:35.880 --> 02:38.550
+and it's a program that is being executed inside
+
+02:38.550 --> 02:39.960
+of that container.
+
+02:39.960 --> 02:43.260
+SH is a command processor or a shell.
+
+02:43.260 --> 02:45.930
+It's something that allows us to type commands in
+
+02:45.930 --> 02:49.080
+and have them be executed inside that container.
+
+02:49.080 --> 02:50.910
+You are already making use
+
+02:50.910 --> 02:54.570
+of a program very much like SH on your own computer.
+
+02:54.570 --> 02:56.100
+Chances are if you're on Mac OS
+
+02:56.100 --> 02:58.260
+you are probably using something like Bash.
+
+02:58.260 --> 02:59.093
+If you're on Windows,
+
+02:59.093 --> 03:00.210
+you're probably using something like
+
+03:00.210 --> 03:02.010
+Git Bash or PowerShell.
+
+03:02.010 --> 03:04.530
+Me personally, I'm making use of Z Shell.
+
+03:04.530 --> 03:06.983
+These are all programs that allow you to type commands
+
+03:06.983 --> 03:10.050
+into your terminal and have them be executed.
+
+03:10.050 --> 03:12.930
+And so when we start up SH inside of our container
+
+03:12.930 --> 03:15.660
+that's just another command shell
+
+03:15.660 --> 03:18.278
+that we can use to execute commands.
+
+03:18.278 --> 03:19.920
+Traditionally, a lot
+
+03:19.920 --> 03:21.660
+of the different containers that you're going to be working
+
+03:21.660 --> 03:25.080
+with are probably going to have the SH command
+
+03:25.080 --> 03:28.500
+or excuse me, or excuse me, the SH program already included.
+
+03:28.500 --> 03:30.060
+Some more complete versions
+
+03:30.060 --> 03:32.490
+of containers or images are going to also have
+
+03:32.490 --> 03:35.190
+the Bash command processor as well.
+
+03:35.190 --> 03:37.680
+So in some cases, you can make use of Bash directly.
+
+03:37.680 --> 03:39.840
+In vast majority, you're probably going to
+
+03:39.840 --> 03:41.700
+be able to run the shell inside there
+
+03:41.700 --> 03:44.673
+to start up a command prompt and type in some commands.
+
+03:45.840 --> 03:47.010
+Okay, So again, I think
+
+03:47.010 --> 03:50.940
+that you're probably going to be using docker exec - IT
+
+03:50.940 --> 03:54.060
+with SH as the command very, very often
+
+03:54.060 --> 03:56.820
+when you start doing your own docker development.
+
+03:56.820 --> 03:59.910
+All right, so we've spoken a whole bunch around Docker CLI.
+
+03:59.910 --> 04:01.290
+Let's take one more break here.
+
+04:01.290 --> 04:03.420
+There's just one or two quick topics I wanna talk
+
+04:03.420 --> 04:06.170
+about and we'll start to move on to our next big topic.

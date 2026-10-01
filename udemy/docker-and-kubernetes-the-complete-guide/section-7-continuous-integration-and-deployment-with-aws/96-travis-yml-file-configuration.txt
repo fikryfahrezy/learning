@@ -1,0 +1,574 @@
+WEBVTT
+
+00:00.750 --> 00:01.583
+Narrator: In the last section,
+
+00:01.583 --> 00:05.190
+we set up some integration between Travis CI and GitHub.
+
+00:05.190 --> 00:07.830
+Now, anytime that we push our code up to GitHub,
+
+00:07.830 --> 00:10.320
+Travis CI is gonna get a little tap on the shoulder
+
+00:10.320 --> 00:13.380
+and we're told, hey, this person just pushed some new code,
+
+00:13.380 --> 00:16.860
+download the code and do some amount of work on it.
+
+00:16.860 --> 00:18.210
+Now the real question is,
+
+00:18.210 --> 00:21.240
+what is Travis going to do with our code base?
+
+00:21.240 --> 00:24.150
+Well, Travis is not going to just automatically or
+
+00:24.150 --> 00:25.770
+magically figure out what to do,
+
+00:25.770 --> 00:28.620
+we have to be very explicit, very clear with Travis CI
+
+00:28.620 --> 00:31.710
+and say, here is exactly what we want you to do.
+
+00:31.710 --> 00:35.220
+We want you to test our code and then if all the tests pass,
+
+00:35.220 --> 00:38.880
+we want you to deploy our project over to AWS.
+
+00:38.880 --> 00:40.770
+For right now, we're just gonna focus
+
+00:40.770 --> 00:43.800
+on getting everything set up for running our tests.
+
+00:43.800 --> 00:47.163
+We're not gonna worry about the AWS deployment just yet.
+
+00:48.270 --> 00:49.860
+So even with running our tests
+
+00:49.860 --> 00:52.500
+we have to give Travis a little bit of direction,
+
+00:52.500 --> 00:53.820
+meaning we have to tell it how to
+
+00:53.820 --> 00:56.190
+essentially start up Docker, how to run our test suite
+
+00:56.190 --> 00:58.320
+and how to interpret the results.
+
+00:58.320 --> 01:01.560
+In order to do so we're gonna create a file called,
+
+01:01.560 --> 01:04.590
+the Travis-dot-YAML file, and we're going to put that
+
+01:04.590 --> 01:06.660
+into our route project directory.
+
+01:06.660 --> 01:08.280
+The Travis-dot-YAML file
+
+01:08.280 --> 01:09.990
+is gonna have the series of directions
+
+01:09.990 --> 01:12.633
+to tell Travis exactly what we want it to do.
+
+01:13.530 --> 01:15.450
+Now I put together a little diagram
+
+01:15.450 --> 01:17.040
+to outline the different steps
+
+01:17.040 --> 01:19.320
+that we're gonna put into that file.
+
+01:19.320 --> 01:20.310
+So here's what we need to do
+
+01:20.310 --> 01:22.560
+inside the Travis-dot-YAML file.
+
+01:22.560 --> 01:24.570
+First off, we're gonna tell Travis
+
+01:24.570 --> 01:27.540
+that we need to have a copy of Docker running.
+
+01:27.540 --> 01:29.910
+Our entire project relies upon Docker.
+
+01:29.910 --> 01:32.640
+We need the Docker CLI to build an image
+
+01:32.640 --> 01:34.830
+and to create a container out that image.
+
+01:34.830 --> 01:37.080
+And so definitely as soon as Travis pulls down
+
+01:37.080 --> 01:40.470
+our entire repository, we need to have a copy of Docker
+
+01:40.470 --> 01:42.630
+waiting to go or ready to go,
+
+01:42.630 --> 01:45.720
+ready for us to run a couple commands to build our image
+
+01:45.720 --> 01:47.523
+and then run our test suite.
+
+01:48.930 --> 01:50.478
+So after we tell Docker--
+
+01:50.478 --> 01:51.510
+Or excuse me, after we tell Travis
+
+01:51.510 --> 01:53.640
+that we need a copy of Docker,
+
+01:53.640 --> 01:55.830
+we'll then write a little bit of configuration
+
+01:55.830 --> 01:58.740
+to tell Travis to build our image
+
+01:58.740 --> 02:01.410
+using the docker-file-dot-dev file.
+
+02:01.410 --> 02:03.060
+Now, that might be a little bit surprising,
+
+02:03.060 --> 02:04.770
+the fact that I'm saying we're going to use
+
+02:04.770 --> 02:06.510
+docker-file-dot-dev.
+
+02:06.510 --> 02:07.710
+Well, quick reminder here,
+
+02:07.710 --> 02:12.180
+the entire purpose of Travis is to first run our test suite.
+
+02:12.180 --> 02:14.370
+We put together the Docker file
+
+02:14.370 --> 02:17.460
+like that production Docker file, just a moment ago.
+
+02:17.460 --> 02:19.680
+This one right here is specifically used
+
+02:19.680 --> 02:21.210
+when we want to create a container
+
+02:21.210 --> 02:23.100
+that is going to be used in production,
+
+02:23.100 --> 02:26.940
+running on some server ready for users to come and visit.
+
+02:26.940 --> 02:29.400
+The image that is created by this Docker file
+
+02:29.400 --> 02:32.490
+has no dependencies or any code inside of it
+
+02:32.490 --> 02:34.830
+meant for running our test suite.
+
+02:34.830 --> 02:36.330
+If we want to run our test suite,
+
+02:36.330 --> 02:39.543
+we have to use the docker-file-dot-dev file instead.
+
+02:41.310 --> 02:43.020
+So that's exactly what we're going to do.
+
+02:43.020 --> 02:45.030
+We're gonna make sure that we build an image
+
+02:45.030 --> 02:47.820
+using the docker-file-dot-dev file.
+
+02:47.820 --> 02:50.220
+After we build the image, we'll then tell Travis
+
+02:50.220 --> 02:51.990
+how to run our test suite.
+
+02:51.990 --> 02:53.220
+Essentially, we're gonna say,
+
+02:53.220 --> 02:56.160
+hey, to run our test suite execute Docker run,
+
+02:56.160 --> 02:58.230
+our image and pmrun test.
+
+02:58.230 --> 03:00.000
+That's pretty much it.
+
+03:00.000 --> 03:01.530
+Then at some point in time in the future,
+
+03:01.530 --> 03:02.363
+we're gonna come back
+
+03:02.363 --> 03:03.960
+and make sure that we also tell Travis
+
+03:03.960 --> 03:07.140
+how to deploy our project over to AWS.
+
+03:07.140 --> 03:09.690
+But again, we're not gonna do that just yet.
+
+03:09.690 --> 03:12.210
+Just to make sure that's clear, I'll put that in yellow.
+
+03:12.210 --> 03:14.130
+So for right now, we're just focused
+
+03:14.130 --> 03:16.920
+on getting our test to run on Travis.
+
+03:16.920 --> 03:17.943
+So let's get to it.
+
+03:19.050 --> 03:20.970
+I'm gonna flip back over to my code editor
+
+03:20.970 --> 03:22.440
+and in my route project directory,
+
+03:22.440 --> 03:24.330
+I'm gonna make a new file called,
+
+03:24.330 --> 03:29.100
+dot-travis-dot-yml, like so.
+
+03:29.100 --> 03:30.300
+Now really important here,
+
+03:30.300 --> 03:33.990
+please, please, please make sure you get that leading dot,
+
+03:33.990 --> 03:36.660
+it's dot-travis-dot-yaml.
+
+03:36.660 --> 03:38.910
+If you don't have that leading dot right there,
+
+03:38.910 --> 03:41.010
+we're gonna run into some issues later on.
+
+03:42.510 --> 03:43.740
+Okay, so now inside of here,
+
+03:43.740 --> 03:45.540
+we're gonna start writing out some configuration
+
+03:45.540 --> 03:47.250
+for these three steps.
+
+03:47.250 --> 03:49.110
+Now, the configuration that we're gonna put in here,
+
+03:49.110 --> 03:51.900
+we're gonna go over rather quickly, just because this is
+
+03:51.900 --> 03:54.180
+not quite so much a course about Travis,
+
+03:54.180 --> 03:55.920
+it's supposed to be about Docker, so
+
+03:55.920 --> 03:57.330
+I'll give you some brief explanation
+
+03:57.330 --> 03:58.593
+about each of the steps.
+
+03:59.580 --> 04:02.400
+The first thing we're gonna do is say pseudo required.
+
+04:02.400 --> 04:03.810
+Anytime that we're making use of Docker,
+
+04:03.810 --> 04:06.120
+we have to have superuser permissions.
+
+04:06.120 --> 04:07.590
+And so pseudo required says,
+
+04:07.590 --> 04:10.350
+hey Travis we need superuser level permissions
+
+04:10.350 --> 04:12.453
+in order to execute this build.
+
+04:13.500 --> 04:14.640
+The next thing we're gonna do
+
+04:14.640 --> 04:16.170
+is make sure that Travis CI
+
+04:16.170 --> 04:19.710
+understands that we need the Docker CLI pre-installed.
+
+04:19.710 --> 04:23.403
+So we'll say, services and then list out Docker, like so.
+
+04:24.240 --> 04:25.440
+By adding this in ,
+
+04:25.440 --> 04:29.400
+Travis CI is going to automatically install a copy of Docker
+
+04:29.400 --> 04:31.890
+into our little running container.
+
+04:31.890 --> 04:32.940
+Well, I don't really wanna get into
+
+04:32.940 --> 04:34.530
+what Travis does behind the scenes
+
+04:34.530 --> 04:35.850
+but essentially this is gonna say,
+
+04:35.850 --> 04:38.943
+hey Travis CI, we need a copy of Docker ready to go.
+
+04:40.920 --> 04:43.530
+After that, we'll define another section called,
+
+04:43.530 --> 04:45.543
+before install.
+
+04:47.400 --> 04:49.140
+Before install right here,
+
+04:49.140 --> 04:51.180
+is going to have a series of different commands
+
+04:51.180 --> 04:54.240
+that get executed before our tests are ran.
+
+04:54.240 --> 04:57.210
+And so you can imagine, anything that we list right here,
+
+04:57.210 --> 04:58.920
+as being some series of steps
+
+04:58.920 --> 05:01.260
+or some series of setup that needs to occur
+
+05:01.260 --> 05:03.960
+before we start to either deploy our project
+
+05:03.960 --> 05:06.150
+or before we start to run our tests.
+
+05:06.150 --> 05:08.550
+And so for you and I, we want to attempt to
+
+05:08.550 --> 05:12.060
+build our Docker image before the tests run.
+
+05:12.060 --> 05:13.650
+So I'm gonna put in a little dash
+
+05:13.650 --> 05:15.150
+and then we'll write out the command
+
+05:15.150 --> 05:18.930
+that should be executed to build our Docker image.
+
+05:18.930 --> 05:21.033
+So we'll say, Docker build.
+
+05:22.140 --> 05:23.670
+We're gonna make sure that we force this thing
+
+05:23.670 --> 05:26.370
+to use the docker-file-dot-dev file.
+
+05:26.370 --> 05:29.550
+So I'll say dash-f, docker-file-dot-dev.
+
+05:29.550 --> 05:32.550
+And then we'll set the build context by putting a dot in,
+
+05:32.550 --> 05:35.640
+which remember, essentially means use the current directory
+
+05:35.640 --> 05:37.090
+when figuring out what to do.
+
+05:37.950 --> 05:39.480
+Now, one last quick thing here.
+
+05:39.480 --> 05:41.730
+Remember, anytime that we run Docker file--
+
+05:41.730 --> 05:43.830
+Or excuse me, Docker build,
+
+05:43.830 --> 05:47.670
+we get back the ID of the image that is created.
+
+05:47.670 --> 05:49.590
+Throughout this course we've been copy pasting
+
+05:49.590 --> 05:51.540
+that idea around, but you can imagine
+
+05:51.540 --> 05:54.630
+that when we start doing this stuff with Travis CI,
+
+05:54.630 --> 05:57.420
+we don't really get the ability to easily copy paste
+
+05:57.420 --> 05:58.830
+those IDs around.
+
+05:58.830 --> 06:00.780
+We're not involved in this process one bit.
+
+06:00.780 --> 06:02.100
+These are all automated commands
+
+06:02.100 --> 06:04.710
+that are going to be executed on our behalf.
+
+06:04.710 --> 06:08.010
+So in order to avoid having to juggle that idea around
+
+06:08.010 --> 06:10.260
+and copy paste it to the next command,
+
+06:10.260 --> 06:14.190
+we'll instead just put a tag or a label of sorts
+
+06:14.190 --> 06:15.810
+on the image that is created.
+
+06:15.810 --> 06:18.660
+So we can refer to the image that is created by a name
+
+06:18.660 --> 06:21.600
+rather than a randomly generated ID.
+
+06:21.600 --> 06:24.303
+So to tag this thing, I'll say, dash-T.
+
+06:25.350 --> 06:29.700
+Then my Docker username, which is Steven Greider.
+
+06:29.700 --> 06:32.940
+Again, that's my Docker username.
+
+06:32.940 --> 06:34.560
+And I'll say, dash,
+
+06:34.560 --> 06:36.450
+and I'll put in the name other repository
+
+06:36.450 --> 06:39.543
+that we are building from here, docker-dash-react.
+
+06:40.410 --> 06:42.153
+So docker-dash-react.
+
+06:42.990 --> 06:43.890
+So now in the future,
+
+06:43.890 --> 06:46.020
+we could refer to the image that is created by saying,
+
+06:46.020 --> 06:48.060
+Steven Greider-slash-docker-slash-react
+
+06:48.060 --> 06:50.430
+or whatever your username is.
+
+06:50.430 --> 06:51.840
+Now, one thing to be aware of here,
+
+06:51.840 --> 06:55.110
+we do not have to tag this thing with this really long,
+
+06:55.110 --> 06:56.430
+very formal tag.
+
+06:56.430 --> 06:58.800
+We could just as easily say, my--
+
+06:58.800 --> 07:01.950
+Oops, we just as easily say, my image
+
+07:01.950 --> 07:04.740
+or test me or something like that.
+
+07:04.740 --> 07:06.750
+Because the tag that is being applied here
+
+07:06.750 --> 07:09.330
+is only going to be used inside of this,
+
+07:09.330 --> 07:11.760
+essentially Travis process.
+
+07:11.760 --> 07:13.260
+Not gonna be used anywhere else.
+
+07:13.260 --> 07:14.730
+So you can use any tag you want there,
+
+07:14.730 --> 07:18.420
+but it is good convention to use the real convention here,
+
+07:18.420 --> 07:19.770
+which is the Docker username
+
+07:19.770 --> 07:21.783
+and then the repository name after it.
+
+07:23.430 --> 07:24.870
+Okay, so this is looking pretty good.
+
+07:24.870 --> 07:26.280
+Let's take a quick pause right here.
+
+07:26.280 --> 07:27.750
+When we come back the next section,
+
+07:27.750 --> 07:30.660
+we're gonna start to tell Travis how to run our test suite
+
+07:30.660 --> 07:32.820
+and then we'll try doing a test deploy this
+
+07:32.820 --> 07:35.280
+and make sure that everything works as expected.
+
+07:35.280 --> 07:37.170
+So I'm gonna save this file and we'll do a quick break
+
+07:37.170 --> 07:38.870
+and I'll see you in just a minute.

@@ -1,0 +1,346 @@
+WEBVTT
+
+00:00.910 --> 00:07.090
+Whether you're developing a website and app or a system, you are essentially trying to scratch an itch
+
+00:07.090 --> 00:08.260
+that someone has.
+
+00:08.310 --> 00:08.680
+Okay.
+
+00:08.710 --> 00:12.580
+A customer, a user, a visitor, whatever you want to call them.
+
+00:12.580 --> 00:13.840
+They've got a need.
+
+00:13.840 --> 00:17.830
+And your job is to sort of find something that speaks to that need.
+
+00:17.830 --> 00:18.880
+So they recognize it.
+
+00:18.880 --> 00:19.900
+So they use it.
+
+00:19.930 --> 00:24.850
+Knowing exactly how to serve them is the key to getting visitors to take action.
+
+00:24.850 --> 00:32.140
+And you can use information gathered from web analytics or application analytics to maximize the performance
+
+00:32.140 --> 00:37.830
+and tangible bottom line results of the products that you put out there.
+
+00:37.900 --> 00:43.810
+In its most basic form, what analytics measures is traffic and flow?
+
+00:43.840 --> 00:44.470
+Okay.
+
+00:44.470 --> 00:45.980
+How many people come?
+
+00:46.000 --> 00:47.500
+How many people interact?
+
+00:47.530 --> 00:48.760
+What they do.
+
+00:48.790 --> 00:54.910
+Where they go from point A to point B to point C, how long they stuck around, where they took off,
+
+00:54.910 --> 00:55.870
+where they exited.
+
+00:55.900 --> 00:59.680
+The best analytics programs will tell you this and possibly more.
+
+00:59.980 --> 01:02.200
+So why should you be interested in this information?
+
+01:02.210 --> 01:07.310
+Well, basically because the only reason your site or your app exists is to prompt someone to take a
+
+01:07.310 --> 01:09.830
+particular action, whatever that action is.
+
+01:09.830 --> 01:14.570
+Making a purchase, clicking a link, reading an article, referring a friend, whatever it is, you
+
+01:14.570 --> 01:18.440
+have to know if what you're building is actually meeting that goal.
+
+01:18.560 --> 01:23.720
+You don't want to guess at these answers if you have to have to change your game plan to some degree
+
+01:23.750 --> 01:26.150
+to to improve.
+
+01:26.180 --> 01:27.980
+You don't want to guess at these answers.
+
+01:27.980 --> 01:29.120
+You want to know what they are.
+
+01:29.150 --> 01:36.800
+So web analytics and general analytics is what gives you the information you need to be able to make
+
+01:36.800 --> 01:38.000
+those decisions.
+
+01:38.030 --> 01:43.460
+Fortunately for you, there are many, many, many variations of analytics software, and I'm going
+
+01:43.460 --> 01:46.670
+to look at sort of what I consider to be the big three here.
+
+01:46.850 --> 01:52.430
+No matter which solution you decide to use, you want the ability to categorize the collected information
+
+01:52.430 --> 01:54.560
+in just about any way you see fit.
+
+01:54.590 --> 02:01.880
+You also want a high degree of abstraction so you can focus on the important stuff without having to
+
+02:01.880 --> 02:06.860
+fight through all this clutter, all these minute details that, you know, while they're interesting,
+
+02:06.860 --> 02:09.410
+they don't necessarily help you make any decisions.
+
+02:09.440 --> 02:14.300
+At the end of the day, you want information that's specifically tailored for what you're doing.
+
+02:14.300 --> 02:16.730
+Everything else is just a waste of time.
+
+02:16.730 --> 02:16.960
+Okay?
+
+02:16.970 --> 02:17.810
+It's garbage.
+
+02:17.810 --> 02:20.370
+It's stuff that you don't really need to pay attention to.
+
+02:20.390 --> 02:21.830
+So let's take a look at these.
+
+02:21.860 --> 02:28.520
+And as always, I encourage you to check all of them out and you'll figure out very quickly which which
+
+02:28.520 --> 02:30.380
+one will serve your needs best.
+
+02:31.290 --> 02:34.870
+The reigning heavyweight champion since 2006.
+
+02:34.890 --> 02:40.950
+Google Analytics is no doubt the preferred web analytics tool because of its price and because of its
+
+02:40.950 --> 02:41.760
+features.
+
+02:41.790 --> 02:47.250
+And even though it's free, Google Analytics is packed with many of the same reports you'll find in
+
+02:47.250 --> 02:48.690
+very high priced solutions.
+
+02:48.900 --> 02:55.590
+So it's very, very hard to argue with a free solution that gives you just about everything that you're
+
+02:55.590 --> 03:00.850
+getting in a paid solution and in most cases makes it a lot more obvious and easy to use.
+
+03:00.870 --> 03:06.630
+You have drill down reports on your content that identify high exit pages, for example, so you can
+
+03:06.630 --> 03:09.340
+repurpose content that's driving people away.
+
+03:09.360 --> 03:15.930
+It also very clearly shows you the traffic patterns of your newest content, things that you updated.
+
+03:16.230 --> 03:19.350
+It tells you how well those new things performed.
+
+03:19.380 --> 03:25.530
+It gives you very, very powerful insight on the topics that attract the most attention, which in turn
+
+03:25.530 --> 03:30.660
+enables you to take advantage of the high number of people who are essentially sitting on your site
+
+03:30.690 --> 03:32.270
+wanting more stuff.
+
+03:32.290 --> 03:36.040
+So Google Analytics no doubt provides the most bang for the buck.
+
+03:36.070 --> 03:43.240
+It gives you a tremendous amount of actionable, useful detail, and it does a really good job of letting
+
+03:43.240 --> 03:48.640
+you sort of slice and dice and view the level of detail that you really need in any given moment in
+
+03:48.640 --> 03:49.890
+any given category.
+
+03:49.900 --> 03:57.580
+So based on those features alone, Google Analytics is absolutely worth your time and is probably the
+
+03:57.580 --> 03:58.810
+best place to start.
+
+03:59.510 --> 04:03.410
+This little guy called Clicky is also very interesting.
+
+04:03.410 --> 04:09.280
+Now clicking Dashboard gives you a pretty comprehensive view of core data, right?
+
+04:09.290 --> 04:14.540
+The stuff that you care about most visitors meaning today versus yesterday or any other date range that
+
+04:14.540 --> 04:21.230
+you want to set, visitor actions and bounce rate, top content, top search terms and traffic sources.
+
+04:21.230 --> 04:25.940
+So at a glance, that's all the critical stuff that you really need to see.
+
+04:25.940 --> 04:30.380
+And they do a very good job of sort of bringing it up front and making it easy to get to.
+
+04:30.380 --> 04:36.320
+At the same time, it also allows you to dig down deeper and segment and filter the data that you have
+
+04:36.320 --> 04:37.610
+in a multiple ways.
+
+04:37.610 --> 04:42.320
+So it doesn't just show you some fancy graphs, it lets you get right down to the stuff that matters
+
+04:42.320 --> 04:42.980
+the most.
+
+04:43.010 --> 04:47.300
+You can figure out where your best converting traffic is coming from.
+
+04:47.300 --> 04:52.520
+You can see what pages are grabbing people's attention the most, which aren't right?
+
+04:52.520 --> 04:53.660
+What are they ignoring?
+
+04:53.660 --> 04:54.980
+And a heck of a lot more.
+
+04:54.980 --> 05:01.770
+So it's deceptively simple up front, and I think for the most part, that's the part that people will
+
+05:01.770 --> 05:05.040
+use the sort of upfront at a glance reporting.
+
+05:05.040 --> 05:11.340
+However, for people who need more data than that, who need more information than that, it also does
+
+05:11.340 --> 05:13.590
+a pretty good job of digging deeper.
+
+05:13.590 --> 05:20.310
+It's certainly got the power of a Google, but it actually does a little bit better job at using what
+
+05:20.310 --> 05:25.860
+we call progressive disclosure and that it gives you what you need right now and doesn't force you to
+
+05:25.860 --> 05:28.200
+deal with the rest of the stuff until you want to.
+
+05:28.260 --> 05:28.380
+Right.
+
+05:28.440 --> 05:30.660
+So clicky is definitely worth checking out.
+
+05:31.320 --> 05:39.210
+While the name is undoubtedly Goofy, Wooper is actually a pretty robust little piece of analytical
+
+05:39.210 --> 05:45.510
+software, Its defining feature is that it integrates site analytics and customer relation management.
+
+05:45.870 --> 05:52.140
+The goal is to track individual visitors as they use the site and services even across multiple devices.
+
+05:52.140 --> 05:58.680
+So it's a very holistic approach to what people are doing, no matter how they choose to access it.
+
+05:58.710 --> 05:59.640
+It's very attractive.
+
+05:59.640 --> 06:00.900
+It's very easy to look at.
+
+06:00.900 --> 06:06.540
+It's highly customizable and you can either use it online or you can download a desktop client or a
+
+06:06.540 --> 06:08.550
+mobile app to track what's going on as well.
+
+06:08.550 --> 06:11.400
+And they do a really good job of integrating those things.
+
+06:11.400 --> 06:17.580
+The customization options that it has are probably Woofer's strongest point to just about any set of
+
+06:17.580 --> 06:18.990
+data that you're looking at.
+
+06:18.990 --> 06:27.540
+You can add all kinds of custom filters, so you have huge, almost seemingly endless opportunities
+
+06:27.540 --> 06:31.180
+to slice and dice your data down to any level of detail.
+
+06:31.180 --> 06:35.860
+And again, for hardcore folks that need this information, that's really valuable.
+
+06:35.890 --> 06:40.660
+The other thing that it has that the others don't that's pretty interesting is it comes with a live
+
+06:40.660 --> 06:45.960
+chat feature which lets you invite visitors to chat when a certain set of criteria are met.
+
+06:45.970 --> 06:52.630
+In other words, when someone hits a certain point on your site, they get a little window that comes
+
+06:52.630 --> 06:57.190
+up that says, Would you like to chat and give us some feedback on the experience you just had?
+
+06:57.430 --> 07:02.770
+For instance, if they went through a checkout process, if they say yes, you essentially have a live
+
+07:02.770 --> 07:08.140
+chat session as opposed to them filling out some boring survey, which they're probably not going to
+
+07:08.140 --> 07:09.280
+want to do in the first place.
+
+07:09.280 --> 07:14.650
+There's a certain interest in eight interests that people have in knowing that they're talking to a
+
+07:14.650 --> 07:15.670
+live human being.
+
+07:15.670 --> 07:22.630
+So this is really interesting and I think it's a really great opportunity for additional feedback beyond
+
+07:22.630 --> 07:25.540
+what the analytics software is telling you.
+
+07:25.570 --> 07:30.580
+It's giving you some additional perspective, additional insight into all these facts and figures.
+
+07:30.580 --> 07:33.880
+So for that reason alone, I think this one is worth checking out as well.

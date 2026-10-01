@@ -1,0 +1,841 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+-: In the last section
+
+00:01.643 --> 00:03.930
+we created a new Elastic Beanstalk Environment
+
+00:03.930 --> 00:06.690
+for our multi container Docker application.
+
+00:06.690 --> 00:09.810
+It looks like my application has successfully been created
+
+00:09.810 --> 00:11.730
+but before we start working with this thing at all,
+
+00:11.730 --> 00:13.680
+I wanna have a quick discussion on something
+
+00:13.680 --> 00:15.870
+that it seems like we kind of left out
+
+00:15.870 --> 00:18.000
+in all of our Docker run file stuff,
+
+00:18.000 --> 00:21.330
+and all of our Travis stuff so far as well.
+
+00:21.330 --> 00:23.160
+So inside of our Docker run file,
+
+00:23.160 --> 00:24.780
+like I said at the end of last section,
+
+00:24.780 --> 00:27.510
+we appear to have no references to any containers
+
+00:27.510 --> 00:29.580
+that are running Postgres or Redis
+
+00:29.580 --> 00:30.900
+as we had previously set up
+
+00:30.900 --> 00:32.970
+inside of the Docker composed file.
+
+00:32.970 --> 00:34.893
+So let's talk about why that is.
+
+00:35.880 --> 00:38.040
+All right, so I'm gonna show you a couple diagrams.
+
+00:38.040 --> 00:40.009
+I wanna first remind you about the overall architecture
+
+00:40.009 --> 00:42.870
+of our development environment.
+
+00:42.870 --> 00:43.703
+We had said, yeah
+
+00:43.703 --> 00:46.440
+we got the Nginx, the Express, Worker, all that stuff.
+
+00:46.440 --> 00:49.290
+And then most notably we had the Reddest container
+
+00:49.290 --> 00:51.690
+and the Postgres container as well.
+
+00:51.690 --> 00:53.160
+So in the development environment
+
+00:53.160 --> 00:55.309
+we were running these two data services
+
+00:55.309 --> 00:57.510
+inside of containers.
+
+00:57.510 --> 01:00.060
+But as we move over to a production environment,
+
+01:00.060 --> 01:01.950
+we're going to change up this architecture
+
+01:01.950 --> 01:04.320
+in a pretty significant way.
+
+01:04.320 --> 01:06.620
+Now, we're gonna make this architecture change
+
+01:06.620 --> 01:08.400
+for a very good reason.
+
+01:08.400 --> 01:10.530
+So let me show you first a diagram
+
+01:10.530 --> 01:12.185
+that's gonna tell you a little bit about the architecture
+
+01:12.185 --> 01:14.520
+and then I'll tell you many reasons
+
+01:14.520 --> 01:16.800
+about why we're gonna take this alternate approach
+
+01:16.800 --> 01:18.390
+in production.
+
+01:18.390 --> 01:20.610
+Okay, so first off the diagram
+
+01:20.610 --> 01:22.710
+here's what our architecture is going to be
+
+01:22.710 --> 01:25.260
+in the production environment.
+
+01:25.260 --> 01:27.870
+So we're still gonna have the Nginx routing server,
+
+01:27.870 --> 01:29.997
+the Nginx file server, the Express API,
+
+01:29.997 --> 01:32.190
+and the worker and those are all going to be running
+
+01:32.190 --> 01:35.160
+inside of our Elastic Beanstalk instance.
+
+01:35.160 --> 01:36.378
+We've already wired up the definition
+
+01:36.378 --> 01:38.250
+for all four of these containers
+
+01:38.250 --> 01:41.733
+inside of that Docker run AWS.JSON file.
+
+01:43.470 --> 01:46.380
+The instance of Redis and the instance of Postgres,
+
+01:46.380 --> 01:48.360
+that are going to be serving data for our application,
+
+01:48.360 --> 01:49.193
+however,
+
+01:49.193 --> 01:51.870
+will not be inside of the Elastic Beanstalk instance.
+
+01:51.870 --> 01:56.550
+Instead, we are going to rely upon two external services
+
+01:56.550 --> 01:59.820
+to fulfill all of our data needs for our application.
+
+01:59.820 --> 02:01.560
+The two services that we're going to use are
+
+02:01.560 --> 02:04.470
+called AWS Relational Database Service,
+
+02:04.470 --> 02:08.160
+very frequently abbreviated as simply RDS,
+
+02:08.160 --> 02:10.620
+and Amazon ElastiCache.
+
+02:10.620 --> 02:14.190
+These are two services that are kind of general in nature.
+
+02:14.190 --> 02:15.450
+And when I say general in nature,
+
+02:15.450 --> 02:17.421
+I mean that they're not customized specifically
+
+02:17.421 --> 02:19.980
+for using with Elastic Beanstalk,
+
+02:19.980 --> 02:21.960
+they're not customized to be specifically used
+
+02:21.960 --> 02:22.793
+with containers.
+
+02:22.793 --> 02:24.480
+They can be used with just about
+
+02:24.480 --> 02:26.910
+any type of application out there you can think of,
+
+02:26.910 --> 02:29.280
+whether or not it uses Elastic Beanstalk,
+
+02:29.280 --> 02:31.680
+or whether or not it uses containers.
+
+02:31.680 --> 02:33.420
+So they are general data services
+
+02:33.420 --> 02:36.240
+that can used with just about any application.
+
+02:36.240 --> 02:38.610
+All right, so let's talk about why we're going to be using
+
+02:38.610 --> 02:41.040
+these services to host our copy of Redis
+
+02:41.040 --> 02:43.170
+and our copy of Postgres.
+
+02:43.170 --> 02:45.360
+So there's a couple of very good reasons
+
+02:45.360 --> 02:47.790
+that we might choose to use these outside services
+
+02:47.790 --> 02:50.340
+rather than creating our own containers manually
+
+02:50.340 --> 02:52.440
+and using our own containers for housing
+
+02:52.440 --> 02:55.920
+Redis or our Postgres instances.
+
+02:55.920 --> 02:57.840
+So in the case of ElastiCache,
+
+02:57.840 --> 03:00.200
+got a couple of very good reasons to use this service
+
+03:00.200 --> 03:03.060
+as opposed to making our own copy
+
+03:03.060 --> 03:06.330
+of Redis and hosting it inside of that instance.
+
+03:06.330 --> 03:07.320
+So first off,
+
+03:07.320 --> 03:08.940
+ElastiCache is going to automatically
+
+03:08.940 --> 03:11.550
+create an instance of Redis for you.
+
+03:11.550 --> 03:14.850
+This is a absolute professional grade Redis,
+
+03:14.850 --> 03:17.640
+so it's got all the settings, all the configuration,
+
+03:17.640 --> 03:19.110
+that you would ever expect to have
+
+03:19.110 --> 03:21.360
+in a production deployment of Redis.
+
+03:21.360 --> 03:23.460
+And the common theme here is going to be that
+
+03:23.460 --> 03:26.760
+there are many settings set up by default for you,
+
+03:26.760 --> 03:28.650
+that are probably going to be very beneficial
+
+03:28.650 --> 03:32.760
+for your application that you might not even know exist.
+
+03:32.760 --> 03:36.150
+In other words, you and I might not be Redis experts.
+
+03:36.150 --> 03:38.881
+We might not really know how to use Redis properly
+
+03:38.881 --> 03:41.100
+in a production environment
+
+03:41.100 --> 03:43.200
+but Amazon has a lot of engineers,
+
+03:43.200 --> 03:45.210
+like entire teams of engineers,
+
+03:45.210 --> 03:47.700
+who are absolute like doctorates,
+
+03:47.700 --> 03:50.400
+like they have their PhD essentially on Redis,
+
+03:50.400 --> 03:52.770
+and they know exactly how to set this thing up
+
+03:52.770 --> 03:55.920
+for a production deployment, or a production environment.
+
+03:55.920 --> 03:57.480
+And that's kind of the running theme
+
+03:57.480 --> 03:59.130
+around why we would choose to use
+
+03:59.130 --> 04:02.760
+these external services for managing all of our data.
+
+04:02.760 --> 04:05.777
+These teams at AWS, they know how to set this stuff up
+
+04:05.777 --> 04:09.390
+and they know how to manage it extremely well.
+
+04:09.390 --> 04:11.400
+Now, above that, with ElastiCache,
+
+04:11.400 --> 04:13.620
+it's extremely easy to scale.
+
+04:13.620 --> 04:14.670
+So as you might imagine,
+
+04:14.670 --> 04:17.490
+if our application one day got really really popular
+
+04:17.490 --> 04:20.580
+and we saw that for whatever reason our Redis instance
+
+04:20.580 --> 04:22.050
+was crashing all the time
+
+04:22.050 --> 04:23.280
+because our container,
+
+04:23.280 --> 04:25.650
+or the hardware allocated to our container,
+
+04:25.650 --> 04:26.880
+was insufficient,
+
+04:26.880 --> 04:28.650
+well that might be a little bit of a pain
+
+04:28.650 --> 04:29.910
+for you and I to scale.
+
+04:29.910 --> 04:31.830
+We would have to figure out some way to allocate
+
+04:31.830 --> 04:33.480
+more resources to the container,
+
+04:33.480 --> 04:34.500
+we would have to figure out some way
+
+04:34.500 --> 04:37.080
+to restart the container without losing any data.
+
+04:37.080 --> 04:39.180
+Definitely a little bit of a headache there.
+
+04:39.180 --> 04:41.880
+But with ElastiCache, we can essentially just say,
+
+04:41.880 --> 04:44.550
+hey, I think we need some more hardware here,
+
+04:44.550 --> 04:46.590
+I think that we need to upgrade the amount of memory
+
+04:46.590 --> 04:49.050
+or the processor or whatever it might be.
+
+04:49.050 --> 04:50.910
+And ElastiCache is going to automatically
+
+04:50.910 --> 04:52.620
+manage that upgrade path for you
+
+04:52.620 --> 04:53.670
+and you don't have to worry about
+
+04:53.670 --> 04:56.733
+doing a bunch of manual configuration or stuff like that.
+
+04:58.140 --> 05:00.420
+We get built in logging, built in maintenance,
+
+05:00.420 --> 05:02.547
+if there are security patches around Redis,
+
+05:02.547 --> 05:05.070
+AWS is going to automatically apply them for you.
+
+05:05.070 --> 05:07.320
+You're going to get automatic logs generated.
+
+05:07.320 --> 05:09.210
+You don't have to worry about getting logs
+
+05:09.210 --> 05:10.080
+out of your container
+
+05:10.080 --> 05:13.890
+and somehow reporting them to some outside service.
+
+05:13.890 --> 05:16.620
+In addition, very closely related to the first item up here
+
+05:16.620 --> 05:17.640
+that we spoke about,
+
+05:17.640 --> 05:20.760
+yeah, we're definitely concerned about security
+
+05:20.760 --> 05:21.840
+inside of our application,
+
+05:21.840 --> 05:23.100
+and we've done a couple of things
+
+05:23.100 --> 05:25.470
+to upgrade the security of our containers.
+
+05:25.470 --> 05:27.360
+However, with ElastiCache,
+
+05:27.360 --> 05:29.293
+chances are they probably have a better idea
+
+05:29.293 --> 05:31.530
+around security than we do.
+
+05:31.530 --> 05:33.930
+And so I kind of feel a little bit more comfortable,
+
+05:33.930 --> 05:37.530
+kinda delegating all these responsibilities off to AWS
+
+05:37.530 --> 05:39.211
+rather than trying to manage security on my own
+
+05:39.211 --> 05:41.460
+for this particular service.
+
+05:41.460 --> 05:42.630
+Now, this last one right here
+
+05:42.630 --> 05:44.361
+this is one of the real big ticket items,
+
+05:44.361 --> 05:46.200
+this is one of the big reasons
+
+05:46.200 --> 05:47.550
+that you might choose to use when these
+
+05:47.550 --> 05:49.290
+outside data services.
+
+05:49.290 --> 05:53.340
+We have a application architecture set up right now
+
+05:53.340 --> 05:56.250
+that is completely reliant upon Elastic Beanstalk,
+
+05:56.250 --> 05:59.010
+and totally reliant upon making use of containers.
+
+05:59.010 --> 06:01.560
+I don't know what our application life cycle is going to be.
+
+06:01.560 --> 06:04.380
+In other words, I don't know how long my application
+
+06:04.380 --> 06:06.900
+might need to be deployed and maintained.
+
+06:06.900 --> 06:09.300
+It's entirely feasible that at some point in time
+
+06:09.300 --> 06:11.610
+in the future, we might decide to migrate off
+
+06:11.610 --> 06:15.390
+Elastic Beanstalk and go off to some other service.
+
+06:15.390 --> 06:16.590
+And when we do that migration
+
+06:16.590 --> 06:19.590
+it's going to be a lot easier to migrate away.
+
+06:19.590 --> 06:21.690
+If we are making use of ElastiCache,
+
+06:21.690 --> 06:25.860
+because it's completely decoupled from Elastic Beanstalk.
+
+06:25.860 --> 06:28.890
+ElastiCache doesn't care where you're making a connection
+
+06:28.890 --> 06:29.723
+to it from.
+
+06:29.723 --> 06:31.770
+It could be from Elastic Beanstalk,
+
+06:31.770 --> 06:33.750
+it could be from some Kubernetes cluster
+
+06:33.750 --> 06:37.200
+it could be from some random EC2 instance.
+
+06:37.200 --> 06:38.880
+All ElastiCache cares about
+
+06:38.880 --> 06:41.100
+is that you are making a connection to it.
+
+06:41.100 --> 06:42.960
+And so it'll be much easier to make changes
+
+06:42.960 --> 06:44.070
+to our application in the future
+
+06:44.070 --> 06:45.900
+or entirely change the architecture
+
+06:45.900 --> 06:48.720
+if we're making use of this outside service.
+
+06:48.720 --> 06:51.510
+Now, essentially all the same points apply
+
+06:51.510 --> 06:53.801
+to the Relational Database Service as well.
+
+06:53.801 --> 06:56.040
+Everything totally related as well.
+
+06:56.040 --> 06:57.930
+Yeah, they got these teams who know
+
+06:57.930 --> 07:00.240
+really, really really well how to set up Postgres
+
+07:00.240 --> 07:01.560
+for production deployments.
+
+07:01.560 --> 07:04.200
+They make it really easy to scale, log, security.
+
+07:04.200 --> 07:06.930
+Now, the real big ticket item here, however,
+
+07:06.930 --> 07:08.943
+is this point right here.
+
+07:09.870 --> 07:12.240
+So something that does not get very frequently covered
+
+07:12.240 --> 07:14.940
+in a lot of courses, even courses that I make,
+
+07:14.940 --> 07:17.730
+is making backups of your database.
+
+07:17.730 --> 07:19.890
+In other words, making a backup of all the records
+
+07:19.890 --> 07:22.140
+in your database in case anything goes wrong
+
+07:22.140 --> 07:23.760
+at some point in the future.
+
+07:23.760 --> 07:25.170
+Setting up automated backups
+
+07:25.170 --> 07:28.200
+is not the easiest thing in the world, and in many cases,
+
+07:28.200 --> 07:30.690
+if you wanna get some easy service to do it for you,
+
+07:30.690 --> 07:33.870
+you actually have to pay a little bit extra for that.
+
+07:33.870 --> 07:34.980
+And I'm talking about if you're using
+
+07:34.980 --> 07:36.210
+like a third party add-on
+
+07:36.210 --> 07:37.710
+that's going to attach to your container
+
+07:37.710 --> 07:40.953
+and make automated backups or whatever might need to happen.
+
+07:42.535 --> 07:45.330
+AWS RDS, or Relational Database Services,
+
+07:45.330 --> 07:48.330
+has automated systems for taking backups for you.
+
+07:48.330 --> 07:49.650
+And if you ever decide,
+
+07:49.650 --> 07:51.150
+oh no, we've got some data corruption,
+
+07:51.150 --> 07:53.370
+or we did something really, really wrong
+
+07:53.370 --> 07:56.070
+inside of our application in the production environment,
+
+07:56.070 --> 07:57.870
+it's like one or two button clicks
+
+07:57.870 --> 08:01.410
+to roll back your database to one of those backups.
+
+08:01.410 --> 08:05.250
+And so with AWS RDS and makes life just incredibly
+
+08:05.250 --> 08:07.301
+easy when you start thinking about maintenance of data
+
+08:07.301 --> 08:09.360
+and data security.
+
+08:09.360 --> 08:10.830
+So that's kinda my spiel.
+
+08:10.830 --> 08:14.100
+It might sound like I'm a huge fan boy of AWS
+
+08:14.100 --> 08:14.970
+or something like that.
+
+08:14.970 --> 08:18.420
+In reality, no, I'm not a huge fan of AWS one bit,
+
+08:18.420 --> 08:19.253
+to be totally honest with you.
+
+08:19.253 --> 08:20.670
+I think that many aspects of it
+
+08:20.670 --> 08:22.290
+are rather challenging to work with,
+
+08:22.290 --> 08:23.550
+I'm not the biggest fan.
+
+08:23.550 --> 08:25.530
+However, I still do recommend making use
+
+08:25.530 --> 08:27.150
+of these outside services
+
+08:27.150 --> 08:30.379
+anytime that you're working with say Postgres or Redis
+
+08:30.379 --> 08:33.150
+or Memcache or any type of outside data service
+
+08:33.150 --> 08:35.490
+I do recommend that you try making use of these services
+
+08:35.490 --> 08:36.600
+wherever possible,
+
+08:36.600 --> 08:38.670
+'cause they're gonna do a lot of stuff for you
+
+08:38.670 --> 08:41.973
+that is by default kind of challenging to do on your own.
+
+08:43.410 --> 08:45.060
+Now, one last thing I wanna say here,
+
+08:45.060 --> 08:47.820
+yes, these services do cost a little bit of extra money,
+
+08:47.820 --> 08:50.850
+but to be honest, if you are making a serious application,
+
+08:50.850 --> 08:53.550
+we're talking about like dollars per month
+
+08:53.550 --> 08:55.050
+for running a Postgres instance,
+
+08:55.050 --> 08:57.900
+and dollars per month of running a Redis instance.
+
+08:57.900 --> 09:00.597
+As a software engineer your time is worth money,
+
+09:00.597 --> 09:03.450
+and it might take you an entire day or an entire week
+
+09:03.450 --> 09:05.730
+to set up and maintain Postgres and Redis
+
+09:05.730 --> 09:08.997
+in a very appropriate fashion inside of Elastic Beanstalk.
+
+09:08.997 --> 09:11.010
+And so that one day or that one week,
+
+09:11.010 --> 09:14.070
+well, that time that you're spending, that is money.
+
+09:14.070 --> 09:16.350
+Your time is worth money. And so at the end of the day,
+
+09:16.350 --> 09:18.134
+it kind of is worth justifying to say,
+
+09:18.134 --> 09:21.150
+yeah, we're gonna spend like 10 bucks or 20 bucks per month
+
+09:21.150 --> 09:24.330
+on a Postgres instance hosted through RDS,
+
+09:24.330 --> 09:27.120
+rather than trying to maintain it on our own.
+
+09:27.120 --> 09:28.830
+All right, now, very last thing I wanna say here,
+
+09:28.830 --> 09:30.303
+so having said all that,
+
+09:31.200 --> 09:33.150
+yeah, I'm kind of advocating making use
+
+09:33.150 --> 09:36.030
+of these automated services, but having said all that,
+
+09:36.030 --> 09:38.595
+this is a course about getting a application
+
+09:38.595 --> 09:41.250
+running using containers.
+
+09:41.250 --> 09:45.090
+So our next project is going to set up Redis and Postgres
+
+09:45.090 --> 09:47.160
+in a production environment from scratch.
+
+09:47.160 --> 09:49.860
+We're not gonna make use of any external service.
+
+09:49.860 --> 09:51.300
+So although I do recommend
+
+09:51.300 --> 09:53.400
+that you use the external services,
+
+09:53.400 --> 09:54.600
+I still want you to understand
+
+09:54.600 --> 09:55.980
+how we can set up an application
+
+09:55.980 --> 09:57.570
+that doesn't use them at all,
+
+09:57.570 --> 10:00.030
+if you want to essentially strike it out on your own.
+
+10:00.030 --> 10:01.920
+Or if you're ever hosting on an environment
+
+10:01.920 --> 10:05.100
+that doesn't provide these kind of managed solutions.
+
+10:05.100 --> 10:07.020
+For example, like let's say DigitalOcean.
+
+10:07.020 --> 10:10.254
+DigitalOcean doesn't have automatically managed copies
+
+10:10.254 --> 10:13.890
+of Redis or Postgres available
+
+10:13.890 --> 10:16.410
+and you would have to manage those instances yourself.
+
+10:16.410 --> 10:18.720
+So we are gonna go through an example
+
+10:18.720 --> 10:20.640
+of how you would set all this stuff up on your own
+
+10:20.640 --> 10:22.260
+in a production environment as well.
+
+10:22.260 --> 10:23.650
+But at the same time in this example,
+
+10:23.650 --> 10:25.800
+I just wanna show you both ways.
+
+10:25.800 --> 10:27.750
+That's pretty much what it comes down to.
+
+10:27.750 --> 10:29.323
+Okay, so enough of me rambling on about this.
+
+10:29.323 --> 10:31.170
+Let's take a quick pause right here.
+
+10:31.170 --> 10:32.490
+When we come back to the next section,
+
+10:32.490 --> 10:35.880
+we're gonna start setting up a instance of ElastiCache,
+
+10:35.880 --> 10:38.160
+instance with Relational Database Services,
+
+10:38.160 --> 10:39.960
+and then learn how to wire them up
+
+10:39.960 --> 10:41.700
+over to Elastic Beanstalk
+
+10:41.700 --> 10:44.150
+So quick break and I'll see you in just a minute.

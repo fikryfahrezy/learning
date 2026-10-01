@@ -1,0 +1,172 @@
+WEBVTT
+
+00:00.720 --> 00:03.240
+-: In the last section, we ran through the entire flow
+
+00:03.240 --> 00:04.740
+of making a change to our application
+
+00:04.740 --> 00:06.450
+and then redeploying it.
+
+00:06.450 --> 00:08.520
+We merged the polar request on GitHub.
+
+00:08.520 --> 00:10.470
+That triggered a change on Travis CI
+
+00:10.470 --> 00:12.420
+which redeployed our application,
+
+00:12.420 --> 00:15.570
+and that automatically updated Elastic Beanstalk.
+
+00:15.570 --> 00:17.910
+So now if I go back to my URL right here,
+
+00:17.910 --> 00:20.430
+I'll see I was changed on the feature branch.
+
+00:20.430 --> 00:22.260
+And that's pretty much it.
+
+00:22.260 --> 00:25.170
+So that's a pretty rock solid development workflow
+
+00:25.170 --> 00:27.270
+that you can use in your own team of engineers
+
+00:27.270 --> 00:29.070
+or even by yourself if you want to have
+
+00:29.070 --> 00:31.920
+your own kind of personal review process.
+
+00:31.920 --> 00:33.870
+Now, one quick thing I wanna mention here,
+
+00:33.870 --> 00:36.330
+and this is a diagram that we had looked at a while ago,
+
+00:36.330 --> 00:38.730
+we did not really have to use Docker
+
+00:38.730 --> 00:41.040
+for any of the stuff that we just went through.
+
+00:41.040 --> 00:43.440
+The entire process of hooking up Travis CI
+
+00:43.440 --> 00:46.950
+of running our tests, of deploying with Elastic Beanstalk,
+
+00:46.950 --> 00:48.840
+Docker was just not required.
+
+00:48.840 --> 00:50.070
+And we could have done all this
+
+00:50.070 --> 00:52.590
+by making use of Shells scripts and whatnot
+
+00:52.590 --> 00:55.110
+and we could have just completely ignored Docker.
+
+00:55.110 --> 00:57.270
+The difference here, and the reason that we used Docker,
+
+00:57.270 --> 01:00.420
+was that it significantly made setting up all this stuff
+
+01:00.420 --> 01:01.560
+a lot easier.
+
+01:01.560 --> 01:02.580
+If you really think about it,
+
+01:02.580 --> 01:05.463
+once we got our Docker file put together,
+
+01:06.330 --> 01:08.490
+so this right here, once we got that put together,
+
+01:08.490 --> 01:11.040
+the only kind of piece of complexity that there was
+
+01:11.040 --> 01:15.840
+during the deployment process was the .travis.yml file.
+
+01:15.840 --> 01:17.340
+And the vast majority of all this stuff
+
+01:17.340 --> 01:18.510
+was just understanding that,
+
+01:18.510 --> 01:20.400
+hey, we need to first build the image
+
+01:20.400 --> 01:23.550
+and then execute this command right here to run the tests.
+
+01:23.550 --> 01:25.110
+That was pretty much it.
+
+01:25.110 --> 01:27.270
+Just about everything that we just could put together
+
+01:27.270 --> 01:28.290
+could be reused
+
+01:28.290 --> 01:31.230
+with any other type of valid Docker container.
+
+01:31.230 --> 01:34.080
+So we could probably sub in a rails application
+
+01:34.080 --> 01:35.700
+with all the same infrastructure,
+
+01:35.700 --> 01:36.720
+and the only difference would be
+
+01:36.720 --> 01:38.670
+probably how we run the test right here.
+
+01:38.670 --> 01:40.170
+That would basically be it.
+
+01:40.170 --> 01:41.910
+So that's a benefit to using Docker.
+
+01:41.910 --> 01:43.590
+You set up this pipeline one time
+
+01:43.590 --> 01:45.450
+and then you can make small changes over time,
+
+01:45.450 --> 01:48.000
+but you probably don't have to re-architect
+
+01:48.000 --> 01:49.740
+your entire deployment pipeline
+
+01:49.740 --> 01:52.320
+if you decide to change some of your infrastructure
+
+01:52.320 --> 01:54.360
+or your actual project composition
+
+01:54.360 --> 01:56.040
+at some point in the future.
+
+01:56.040 --> 01:57.840
+So I hope this was pretty enjoyable,
+
+01:57.840 --> 01:59.220
+but we're not quite done yet.
+
+01:59.220 --> 02:00.660
+So let's take a quick break right here
+
+02:00.660 --> 02:02.433
+and continue in the next section.

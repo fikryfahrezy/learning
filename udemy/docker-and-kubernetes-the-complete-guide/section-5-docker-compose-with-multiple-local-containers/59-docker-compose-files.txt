@@ -1,0 +1,577 @@
+WEBVTT
+
+
+00:00.810 --> 00:02.040
+-: In the last section, we spoke about
+
+
+00:02.040 --> 00:03.690
+how we're going to use Docker Compose
+
+
+00:03.690 --> 00:05.130
+to automate some of the commands
+
+
+00:05.130 --> 00:08.280
+that we were previously writing our long form
+
+
+00:08.280 --> 00:10.350
+using Docker CLI.
+
+
+00:10.350 --> 00:11.910
+The big purpose of Docker Compose
+
+
+00:11.910 --> 00:14.610
+is not only to automate some of these long-winded commands,
+
+
+00:14.610 --> 00:16.650
+it's also to make sure that we have the ability
+
+
+00:16.650 --> 00:18.810
+to easily start up multiple Docker containers
+
+
+00:18.810 --> 00:19.643
+at the same time
+
+
+00:19.643 --> 00:22.563
+and connect them together in some automated fashion.
+
+
+00:23.400 --> 00:25.260
+Now to make use of Docker Compose,
+
+
+00:25.260 --> 00:27.570
+we're essentially gonna take the same commands
+
+
+00:27.570 --> 00:28.650
+that we were running before,
+
+
+00:28.650 --> 00:30.960
+like docker build and docker run,
+
+
+00:30.960 --> 00:34.170
+but we're going to kind of encode these commands
+
+
+00:34.170 --> 00:37.200
+into a very special file in our project directory
+
+
+00:37.200 --> 00:41.055
+called docker-compose.yml.
+
+
+00:41.055 --> 00:42.060
+Now, to be really clear,
+
+
+00:42.060 --> 00:45.420
+we're not just going to like copy-paste these into the file.
+
+
+00:45.420 --> 00:46.860
+We're going to write out these commands
+
+
+00:46.860 --> 00:51.360
+more or less in a special syntax inside the YAML file.
+
+
+00:51.360 --> 00:52.800
+Once we create that file,
+
+
+00:52.800 --> 00:55.350
+we'll then feed it into the Docker Compose CLI
+
+
+00:55.350 --> 00:57.990
+and it will be up to the CLI to parse that file
+
+
+00:57.990 --> 01:00.030
+and create all the different containers
+
+
+01:00.030 --> 01:02.613
+with the correct configuration that we specified.
+
+
+01:03.690 --> 01:04.890
+Now, the Docker Compose file
+
+
+01:04.890 --> 01:07.470
+can sometimes be a little bit complicated,
+
+
+01:07.470 --> 01:09.120
+so I'm gonna give you a quick preview
+
+
+01:09.120 --> 01:11.490
+of what we're going to do inside of it.
+
+
+01:11.490 --> 01:14.790
+So here's essentially what we're gonna write into that file.
+
+
+01:14.790 --> 01:16.807
+We're going to first start off by saying,
+
+
+01:16.807 --> 01:18.330
+"Hey, Docker Compose,
+
+
+01:18.330 --> 01:21.750
+we've got a couple containers that we want you to create.
+
+
+01:21.750 --> 01:25.290
+In total, there are going to be two separate containers.
+
+
+01:25.290 --> 01:28.740
+One container is going to be called redis-server,
+
+
+01:28.740 --> 01:30.690
+and we want you to create that container
+
+
+01:30.690 --> 01:32.490
+by using the Redis image
+
+
+01:32.490 --> 01:35.100
+which can be pulled down from Docker Hub.
+
+
+01:35.100 --> 01:37.440
+We want you to also create a second image,
+
+
+01:37.440 --> 01:40.680
+or a second container, called node-app,
+
+
+01:40.680 --> 01:43.110
+and we want that container to be created
+
+
+01:43.110 --> 01:45.840
+using the Dockerfile in the current directory.
+
+
+01:45.840 --> 01:46.920
+Remember, that's the Dockerfile
+
+
+01:46.920 --> 01:49.110
+that you and I just put together two seconds ago,
+
+
+01:49.110 --> 01:50.110
+this one right here.
+
+
+01:51.510 --> 01:54.420
+In addition, after making that container,
+
+
+01:54.420 --> 01:57.420
+we want you to map some ports from the container
+
+
+01:57.420 --> 01:58.560
+to our local machine
+
+
+01:58.560 --> 02:02.100
+so that we can access everything running inside of it."
+
+
+02:02.100 --> 02:03.690
+So that's just a quick little preview
+
+
+02:03.690 --> 02:05.670
+'cause, again, some of the syntax that's gonna go in here
+
+
+02:05.670 --> 02:08.430
+is gonna sometimes look just a little bit crazy.
+
+
+02:08.430 --> 02:10.320
+Let's now flip back over to our code editor
+
+
+02:10.320 --> 02:13.220
+and we're gonna start writing out our Docker Compose file.
+
+
+02:14.490 --> 02:17.820
+Okay, so back over here inside of my root project directory,
+
+
+02:17.820 --> 02:20.040
+I'm gonna make a new file called dacker...
+
+
+02:20.040 --> 02:24.093
+Excuse me, docker-compose.yml.
+
+
+02:26.337 --> 02:27.810
+And then inside of here, we're gonna write out
+
+
+02:27.810 --> 02:29.460
+all that configuration.
+
+
+02:29.460 --> 02:30.600
+The first thing we're going to do
+
+
+02:30.600 --> 02:33.240
+is add in one little required line,
+
+
+02:33.240 --> 02:35.730
+which is gonna be a version, a colon,
+
+
+02:35.730 --> 02:38.970
+and then inside of a set of single quotes, three.
+
+
+02:38.970 --> 02:42.000
+That specifies the version of Docker Compose
+
+
+02:42.000 --> 02:44.700
+that we're trying to use with this formatted file
+
+
+02:44.700 --> 02:46.553
+that we're putting together right now.
+
+
+02:47.490 --> 02:49.560
+After that, we'll then put together
+
+
+02:49.560 --> 02:51.600
+this big block right here.
+
+
+02:51.600 --> 02:53.040
+So we're first going to head it off
+
+
+02:53.040 --> 02:54.817
+with kind of a big section header that says,
+
+
+02:54.817 --> 02:58.380
+"Docker Compose, here's what we want you to do."
+
+
+02:58.380 --> 03:00.690
+So to tell it, "Here's what we want you to do,"
+
+
+03:00.690 --> 03:03.963
+we're gonna write out services and then put a colon down.
+
+
+03:05.010 --> 03:06.690
+Now you're gonna see the term services
+
+
+03:06.690 --> 03:09.180
+start to pop up a lot in the Docker world,
+
+
+03:09.180 --> 03:11.730
+especially as you start working with Docker Compose.
+
+
+03:11.730 --> 03:13.290
+Anytime you see the word service,
+
+
+03:13.290 --> 03:16.200
+it's essentially saying a container.
+
+
+03:16.200 --> 03:17.040
+Now to be precise,
+
+
+03:17.040 --> 03:20.130
+it's not quite saying, like, exactly a container,
+
+
+03:20.130 --> 03:23.100
+it's kind of saying, like, a type of container.
+
+
+03:23.100 --> 03:26.490
+So in this case, by putting down Redis server and Node app,
+
+
+03:26.490 --> 03:30.240
+we are saying that we are defining two services
+
+
+03:30.240 --> 03:32.040
+inside this Docker Compose file,
+
+
+03:32.040 --> 03:35.010
+and both these services take the form
+
+
+03:35.010 --> 03:37.323
+of these two different Docker containers.
+
+
+03:39.144 --> 03:41.070
+Now, the first service that we are going to create
+
+
+03:41.070 --> 03:46.070
+is going to be one that we're going to call redis-server.
+
+
+03:46.890 --> 03:49.470
+I'll then put down a colon after that,
+
+
+03:49.470 --> 03:52.050
+and then inside of here, we're gonna specify the image
+
+
+03:52.050 --> 03:54.300
+that we want Docker Compose to use
+
+
+03:54.300 --> 03:57.420
+to create this service or this container.
+
+
+03:57.420 --> 04:00.000
+So I'm gonna say, "Use the image Redis
+
+
+04:00.000 --> 04:03.000
+to create this service or create this container."
+
+
+04:03.000 --> 04:04.710
+So what you see right here
+
+
+04:04.710 --> 04:06.510
+is essentially accomplishing the same purpose
+
+
+04:06.510 --> 04:09.090
+as these three blocks right here.
+
+
+04:09.090 --> 04:12.000
+It's saying, "We want you to create a set of containers.
+
+
+04:12.000 --> 04:13.680
+This one is gonna be called Redis server
+
+
+04:13.680 --> 04:16.527
+and we want you to create it using the Redis image."
+
+
+04:17.570 --> 04:19.230
+So now we'll do something very similar
+
+
+04:19.230 --> 04:22.530
+for our other type of container that we're going to build.
+
+
+04:22.530 --> 04:25.470
+So notice I have indented a little bit right here,
+
+
+04:25.470 --> 04:28.050
+and we're going to create the Node app service,
+
+
+04:28.050 --> 04:29.973
+so I'll say node-app.
+
+
+04:31.080 --> 04:35.040
+We want this container to be built using the Dockerfile
+
+
+04:35.040 --> 04:36.570
+inside the current directory,
+
+
+04:36.570 --> 04:38.610
+So rather than just specifying an image
+
+
+04:38.610 --> 04:41.240
+like we did right there, I'm gonna say build: .
+
+
+04:42.840 --> 04:45.180
+and that means look in the current directory
+
+
+04:45.180 --> 04:46.680
+for a Dockerfile
+
+
+04:46.680 --> 04:48.930
+and use that to build this image
+
+
+04:48.930 --> 04:50.943
+that's gonna be used for this container.
+
+
+04:51.930 --> 04:53.670
+And then after that, we're gonna specify
+
+
+04:53.670 --> 04:54.870
+all the different ports
+
+
+04:54.870 --> 04:57.470
+that we want to have be opened up on this container.
+
+
+04:59.460 --> 05:02.040
+Now to specify the ports, we're gonna put a dash,
+
+
+05:02.040 --> 05:04.680
+excuse me, ports, like so, and then indent it.
+
+
+05:04.680 --> 05:06.750
+We're gonna put a dash, like so.
+
+
+05:06.750 --> 05:08.280
+Now the reason we're putting a dash right here
+
+
+05:08.280 --> 05:11.130
+is dash in a YAML file is how we specify an array,
+
+
+05:11.130 --> 05:13.590
+so we can technically map many different ports
+
+
+05:13.590 --> 05:15.540
+inside of a single Docker Compose file
+
+
+05:15.540 --> 05:17.690
+for a single service or a single container.
+
+
+05:19.140 --> 05:22.320
+But in our case, we only want to map one set of ports,
+
+
+05:22.320 --> 05:27.320
+so we're going to connect 80, 81 on our local machine
+
+
+05:27.660 --> 05:30.570
+to 8081 inside the container.
+
+
+05:30.570 --> 05:32.610
+Now, remember the syntax here?
+
+
+05:32.610 --> 05:35.490
+The first number is the port on your local machine,
+
+
+05:35.490 --> 05:37.920
+the second is the port inside the container.
+
+
+05:37.920 --> 05:39.540
+So if we wanna stick to the same convention
+
+
+05:39.540 --> 05:42.840
+that we used previously, we could do 4001, like so.
+
+
+05:42.840 --> 05:44.340
+You know what, let's just stick with 4001
+
+
+05:44.340 --> 05:47.820
+just to keep the distinction between these two numbers
+
+
+05:47.820 --> 05:49.830
+a little bit more clear.
+
+
+05:49.830 --> 05:51.540
+Okay, so that's pretty much it.
+
+
+05:51.540 --> 05:53.010
+Now let's take a quick pause right here.
+
+
+05:53.010 --> 05:54.510
+We're gonna come back to the next section
+
+
+05:54.510 --> 05:55.500
+and we're gonna talk a little bit
+
+
+05:55.500 --> 05:57.990
+about how we make use of this Docker Compose file
+
+
+05:57.990 --> 06:00.360
+to actually bring up these two containers.
+
+
+06:00.360 --> 06:02.753
+So, quick break and I'll see you in just a minute.

@@ -1,0 +1,277 @@
+WEBVTT
+
+00:00.840 --> 00:02.550
+-: In the last section, we made a quick change
+
+00:02.550 --> 00:05.310
+to our Docker file and then redeployed the application.
+
+00:05.310 --> 00:07.620
+After flowing through Travis CI,
+
+00:07.620 --> 00:09.810
+we then got our new Docker deployment
+
+00:09.810 --> 00:12.240
+on Amazon Elastic Beanstalk.
+
+00:12.240 --> 00:14.820
+You can see that I've now got a health of okay right here.
+
+00:14.820 --> 00:16.770
+And if I click on the URL at the top,
+
+00:16.770 --> 00:18.930
+I'll see the React application up here.
+
+00:18.930 --> 00:20.130
+Awesome. So that's pretty much it.
+
+00:20.130 --> 00:23.550
+That is our deployed application using Docker.
+
+00:23.550 --> 00:26.640
+Now the very last thing I wanna show you is the full flow
+
+00:26.640 --> 00:28.830
+of how you would work on this project,
+
+00:28.830 --> 00:31.320
+if you had a team of other engineers.
+
+00:31.320 --> 00:33.570
+If you had other engineers working on this project,
+
+00:33.570 --> 00:37.050
+you would probably push your changes up to a feature branch.
+
+00:37.050 --> 00:38.670
+It doesn't have to be called feature,
+
+00:38.670 --> 00:42.240
+it could be any other name of a branch besides Master.
+
+00:42.240 --> 00:44.610
+You would then push that up to GitHub.
+
+00:44.610 --> 00:46.560
+Create a pull request to merge it into Master
+
+00:46.560 --> 00:49.440
+and then once you merge that pull request,
+
+00:49.440 --> 00:52.140
+we would then take that code and deploy it off to AWS.
+
+00:53.010 --> 00:55.360
+So I wanna very quickly walk through that flow.
+
+00:56.310 --> 00:57.630
+We're going to, in this section
+
+00:57.630 --> 00:59.460
+make a quick change to our code base.
+
+00:59.460 --> 01:02.100
+We're gonna commit that on a feature branch.
+
+01:02.100 --> 01:04.680
+We'll push it up to GitHub, we'll make the pull request
+
+01:04.680 --> 01:06.510
+and then we'll merge that thing into Master.
+
+01:06.510 --> 01:08.160
+So let's get to it.
+
+01:08.160 --> 01:09.870
+The first thing I'm going to do is to checkout
+
+01:09.870 --> 01:12.960
+a new branch on git from my command-line.
+
+01:12.960 --> 01:16.920
+To do so I'll run git, checkout, dash b.
+
+01:16.920 --> 01:18.990
+Dash b is what's gonna create the new branch.
+
+01:18.990 --> 01:21.810
+And then we'll call this new branch feature.
+
+01:21.810 --> 01:24.180
+So now on a new branch.
+
+01:24.180 --> 01:27.120
+Now we can go and make our little change to our code base.
+
+01:27.120 --> 01:29.610
+So I'm gonna flip back over to my code editor
+
+01:29.610 --> 01:31.290
+inside of my SRC directory.
+
+01:31.290 --> 01:34.440
+I'll find the index dot js file or excuse me, app dot js.
+
+01:34.440 --> 01:35.760
+There it is.
+
+01:35.760 --> 01:38.520
+And then inside of here, again inside of this paragraph tag
+
+01:38.520 --> 01:40.410
+I'll change that to just be anything else.
+
+01:40.410 --> 01:45.410
+How about something like I was changed on the feature branch
+
+01:46.680 --> 01:48.130
+and then I'll save that file.
+
+01:49.050 --> 01:51.810
+We'll now go back over to our terminal.
+
+01:51.810 --> 01:55.740
+I will add that change. I'll commit the change.
+
+01:55.740 --> 01:59.580
+I'll say something like change app text.
+
+01:59.580 --> 02:01.770
+And then we're going to push this up to GitHub
+
+02:01.770 --> 02:04.530
+specifically to the feature branch.
+
+02:04.530 --> 02:08.523
+So I'll say get push origin feature, like so.
+
+02:11.790 --> 02:15.390
+So this creates a new branch up on GitHub called feature.
+
+02:15.390 --> 02:18.090
+And now to merge it into Master and get those changes
+
+02:18.090 --> 02:20.970
+deployed, we need to go create a pull request
+
+02:20.970 --> 02:22.623
+and then merge the pull request.
+
+02:23.460 --> 02:27.300
+To do so, I'll open up my browser again and I'm going to go
+
+02:27.300 --> 02:29.250
+to my GitHub repository.
+
+02:29.250 --> 02:30.840
+I had called that DACA React.
+
+02:30.840 --> 02:32.490
+You may have called it something different.
+
+02:32.490 --> 02:34.390
+Basically just go find the repository.
+
+02:35.250 --> 02:39.330
+I'll then refresh this page and once I do so,
+
+02:39.330 --> 02:41.550
+you'll hopefully see a little pop up or a little
+
+02:41.550 --> 02:44.070
+notification right here that says this branch was
+
+02:44.070 --> 02:46.320
+pulled just about a minute ago.
+
+02:46.320 --> 02:48.750
+So on the right hand side of that notification, we can click
+
+02:48.750 --> 02:51.303
+on compare and pull request.
+
+02:52.830 --> 02:55.950
+And then we get our open pull request form right here.
+
+02:55.950 --> 02:57.210
+You can see up here at the top,
+
+02:57.210 --> 02:59.190
+it's saying that we're going to take everything
+
+02:59.190 --> 03:01.770
+inside the feature branch and attempt to merge it
+
+03:01.770 --> 03:03.390
+into the master branch.
+
+03:03.390 --> 03:05.310
+And so if I was working with other engineers,
+
+03:05.310 --> 03:06.720
+I would describe some of the changes
+
+03:06.720 --> 03:07.770
+that I made inside of here.
+
+03:07.770 --> 03:11.250
+So I would say something like, in this change set
+
+03:11.250 --> 03:14.523
+I updated the text of app dot js.
+
+03:16.440 --> 03:18.150
+We could then mention other engineers to come
+
+03:18.150 --> 03:18.983
+and review our code
+
+03:18.983 --> 03:22.440
+or whatever you might wanna do for your particular team.
+
+03:22.440 --> 03:24.400
+Well then click on create pull request
+
+03:25.530 --> 03:27.540
+and then other engineers can come to this thing,
+
+03:27.540 --> 03:30.390
+leave comments, review the code and whatnot.
+
+03:30.390 --> 03:32.670
+Perhaps most interesting, you'll notice
+
+03:32.670 --> 03:34.863
+that on here we've got some pending checks.
+
+03:35.760 --> 03:38.880
+These pending checks are Travis CI booting up.
+
+03:38.880 --> 03:41.460
+Travis CI sees that we have issued a change
+
+03:41.460 --> 03:44.310
+or issued this pull request and it's going to pull down all
+
+03:44.310 --> 03:47.550
+of our changes, run tests on them, and then report back here
+
+03:47.550 --> 03:49.830
+and say, Hey, here's what happened.
+
+03:49.830 --> 03:52.380
+Let's take a quick pause right here and let these tests run.
+
+03:52.380 --> 03:53.310
+And then when we come back
+
+03:53.310 --> 03:55.320
+we'll attempt to merge this pull request
+
+03:55.320 --> 03:57.300
+and make sure that the deployment starts up.
+
+03:57.300 --> 03:59.750
+So quick break and I'll see you in just a minute.

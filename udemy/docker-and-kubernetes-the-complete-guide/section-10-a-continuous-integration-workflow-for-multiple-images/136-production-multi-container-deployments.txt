@@ -1,0 +1,391 @@
+WEBVTT
+
+00:01.170 --> 00:03.030
+-: In the last section, we were able to finally test
+
+00:03.030 --> 00:05.400
+out our application inside of a web browser.
+
+00:05.400 --> 00:06.600
+So this is awesome.
+
+00:06.600 --> 00:08.040
+We're now ready to start thinking
+
+00:08.040 --> 00:10.110
+about how we're going to deploy this application
+
+00:10.110 --> 00:13.200
+off to AWS Elastic Beanstalk.
+
+00:13.200 --> 00:14.594
+Let's first begin with a quick review
+
+00:14.594 --> 00:18.360
+of how we deployed our single container set up.
+
+00:18.360 --> 00:20.341
+So we were pushing our code to GitHub.
+
+00:20.341 --> 00:23.190
+We then set up Travis CI to automatically
+
+00:23.190 --> 00:25.200
+pull in our repository.
+
+00:25.200 --> 00:27.870
+Travis built an image out of all of our code,
+
+00:27.870 --> 00:31.050
+so it ran the actual Docker build command.
+
+00:31.050 --> 00:33.960
+It then used the built image to test out our code base,
+
+00:33.960 --> 00:37.113
+specifically by running that NPM run test command.
+
+00:38.302 --> 00:42.000
+Travis then pushed all of our code to Elastic Beanstalk
+
+00:42.000 --> 00:43.779
+through the use of that deployment script.
+
+00:43.779 --> 00:45.630
+And then finally, once the code showed
+
+00:45.630 --> 00:48.133
+up over on Elastic Beanstalk, Elastic Beanstalk
+
+00:48.133 --> 00:51.930
+took all of our code, built the image again
+
+00:51.930 --> 00:54.480
+and deployed it to a running web server.
+
+00:54.480 --> 00:55.860
+So as we said, at the start
+
+00:55.860 --> 00:57.990
+of all this multi-container stuff,
+
+00:57.990 --> 01:00.801
+having Elastic Beanstalk build our images was probably
+
+01:00.801 --> 01:03.210
+not a very good approach,
+
+01:03.210 --> 01:04.680
+because we were building everything
+
+01:04.680 --> 01:06.930
+out far more often than it had to be.
+
+01:06.930 --> 01:08.040
+And we were also relying
+
+01:08.040 --> 01:10.800
+upon a running web server to have to download a bunch
+
+01:10.800 --> 01:13.410
+of dependencies and build an image for us,
+
+01:13.410 --> 01:15.810
+which kind of kept it from doing its primary job
+
+01:15.810 --> 01:17.583
+of serving web requests.
+
+01:18.720 --> 01:20.490
+So this time around, we're gonna use a slightly
+
+01:20.490 --> 01:22.710
+different deployment flow, although in general
+
+01:22.710 --> 01:25.365
+most of these pieces are gonna look very similar.
+
+01:25.365 --> 01:27.060
+All right, so here's what we're gonna do
+
+01:27.060 --> 01:29.580
+for our multi container setup.
+
+01:29.580 --> 01:31.620
+We're still going to be using a primarily
+
+01:31.620 --> 01:34.020
+Travis CI driven deployment flow.
+
+01:34.020 --> 01:36.390
+So all you are gonna have to do is deploy your code
+
+01:36.390 --> 01:39.813
+to GitHub, then Travis CI will pull your code down
+
+01:39.813 --> 01:44.370
+and immediately start to run some build process on it.
+
+01:44.370 --> 01:47.538
+So we pushed a GitHub, Travis pulls down your repo.
+
+01:47.538 --> 01:51.270
+We're going to have Travis then build a test image,
+
+01:51.270 --> 01:53.037
+or in other words, it's going to build out that kind
+
+01:53.037 --> 01:55.670
+of React test image that we made just
+
+01:55.670 --> 01:59.010
+to test the React code inside of our project.
+
+01:59.010 --> 02:00.780
+As soon as that React test image is made,
+
+02:00.780 --> 02:02.460
+we're going to essentially throw away
+
+02:02.460 --> 02:04.530
+everything inside that image.
+
+02:04.530 --> 02:07.893
+So again, the image is only being made for testing purposes.
+
+02:09.180 --> 02:11.730
+After the tests successfully run, and we decide to go ahead
+
+02:11.730 --> 02:14.970
+and deploy our application, we're then going to make Travis
+
+02:14.970 --> 02:18.150
+in charge of building our production images.
+
+02:18.150 --> 02:21.720
+So Travis is going to run a production build script,
+
+02:21.720 --> 02:24.960
+or essentially build a production image using Docker files
+
+02:24.960 --> 02:26.814
+that we've placed inside of our project for each
+
+02:26.814 --> 02:29.760
+of our different services for the client,
+
+02:29.760 --> 02:31.773
+Nginx, server and worker.
+
+02:34.050 --> 02:36.150
+Once Travis has built those images,
+
+02:36.150 --> 02:37.800
+and remember, these are image files,
+
+02:37.800 --> 02:40.125
+so they are single files.
+
+02:40.125 --> 02:42.690
+We're then gonna have Travis push them off
+
+02:42.690 --> 02:45.180
+to the Docker Hub service.
+
+02:45.180 --> 02:46.950
+Let's take a quick pause right there.
+
+02:46.950 --> 02:48.960
+At this point, we've been making use of Docker Hub
+
+02:48.960 --> 02:50.610
+throughout this entire course.
+
+02:50.610 --> 02:53.853
+And remember, you can get there by going to hub.docker.com.
+
+02:54.690 --> 02:56.280
+Every time that we've come here, we've always
+
+02:56.280 --> 02:59.040
+looked at the dashboard or explore tab up here
+
+02:59.040 --> 03:01.890
+and looked at some official repositories.
+
+03:01.890 --> 03:04.020
+Again, these are public repositories
+
+03:04.020 --> 03:05.951
+that everyone has access to,
+
+03:05.951 --> 03:08.610
+but in addition to those public repositories,
+
+03:08.610 --> 03:12.330
+you can also have repos that belong specifically to you
+
+03:12.330 --> 03:16.830
+and only contain your code, your own personal projects.
+
+03:16.830 --> 03:19.560
+So Docker Hub is not only for hosting kind
+
+03:19.560 --> 03:22.680
+of common community packages or community images,
+
+03:22.680 --> 03:26.193
+it can also be used to host your personal projects as well.
+
+03:29.010 --> 03:31.230
+So we're gonna have Travis build these images
+
+03:31.230 --> 03:35.310
+and then push them up to your personal Docker Hub account.
+
+03:35.310 --> 03:37.530
+Docker Hub is kind of like a universal
+
+03:37.530 --> 03:39.330
+hub for Docker images.
+
+03:39.330 --> 03:42.240
+A tremendous number of deployment services out there,
+
+03:42.240 --> 03:44.520
+such as Amazon Elastic Beanstalk
+
+03:44.520 --> 03:48.120
+really all Amazon services and all Google Cloud services,
+
+03:48.120 --> 03:50.497
+are all wired up natively to automatically
+
+03:50.497 --> 03:54.360
+pull images that are stored on Docker Hub.
+
+03:54.360 --> 03:56.609
+So if you and I push our production images to Docker Hub,
+
+03:56.609 --> 03:59.910
+we can then easily get Elastic Beanstalk
+
+03:59.910 --> 04:01.800
+to download those images
+
+04:01.800 --> 04:04.683
+and use them as a basis for deploying our application.
+
+04:05.910 --> 04:07.530
+So in short, after pushing
+
+04:07.530 --> 04:10.560
+up the built production images to Docker Hub,
+
+04:10.560 --> 04:13.359
+Travis is then going to essentially push a little message
+
+04:13.359 --> 04:16.054
+over to Amazon Elastic Beanstalk
+
+04:16.054 --> 04:18.867
+rather than pushing over the entire project and saying,
+
+04:18.867 --> 04:21.810
+oh, hey, it's time to like build some images.
+
+04:21.810 --> 04:24.510
+Travis is just going to kind of tap Elastic Beanstalk
+
+04:24.510 --> 04:25.770
+on the shoulder and say,
+
+04:25.770 --> 04:29.130
+hey, I just deployed a new set of images up to Docker Hub.
+
+04:29.130 --> 04:30.840
+You should probably make use of them.
+
+04:30.840 --> 04:32.820
+And so at that point, Elastic Beanstalk
+
+04:32.820 --> 04:34.710
+is going to download those images.
+
+04:34.710 --> 04:37.260
+It doesn't have to build them, they've already been built.
+
+04:37.260 --> 04:39.330
+It'll download the images and only use them
+
+04:39.330 --> 04:42.900
+as the basis for a brand new deployment.
+
+04:42.900 --> 04:44.880
+So the benefit to this entire setup is
+
+04:44.880 --> 04:46.680
+that we are no longer going to be dependent
+
+04:46.680 --> 04:49.740
+upon Elastic Beanstalk to build our images.
+
+04:49.740 --> 04:51.712
+Everything is going to be done by Travis,
+
+04:51.712 --> 04:54.720
+and it's only going to be done one time.
+
+04:54.720 --> 04:57.270
+We then are gonna push these images up to Docker Hub
+
+04:57.270 --> 04:58.680
+and once they're on Docker Hub,
+
+04:58.680 --> 05:02.400
+we essentially can deploy anywhere you can possibly imagine.
+
+05:02.400 --> 05:05.970
+Like I said, Amazon Web Services and Google Cloud
+
+05:05.970 --> 05:07.830
+and many other providers are set up
+
+05:07.830 --> 05:10.505
+outta the box to automatically download images
+
+05:10.505 --> 05:13.200
+from Docker Hub specifically,
+
+05:13.200 --> 05:15.660
+without a whole bunch of additional configuration.
+
+05:15.660 --> 05:17.220
+And so we really consider Docker Hub
+
+05:17.220 --> 05:19.410
+to be like a central repository
+
+05:19.410 --> 05:22.560
+for everything in the Docker world.
+
+05:22.560 --> 05:24.390
+All right, so now that we've got the idea
+
+05:24.390 --> 05:26.670
+of what we're going to do here, let's take a quick pause,
+
+05:26.670 --> 05:28.200
+and we'll continue in the next section
+
+05:28.200 --> 05:31.080
+by starting to build out our Travis.yaml file.
+
+05:31.080 --> 05:33.600
+And we'll also start to make some production versions
+
+05:33.600 --> 05:37.320
+of our Docker files for each of our different services.
+
+05:37.320 --> 05:39.743
+So quick break and I'll see you in just a minute.

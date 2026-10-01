@@ -1,0 +1,892 @@
+WEBVTT
+
+00:00.870 --> 00:03.450
+-: In the last section, we updated our multi-line image
+
+00:03.450 --> 00:06.030
+and then we pushed the result off to Docker Hub.
+
+00:06.030 --> 00:07.770
+We're now going to move on to step three
+
+00:07.770 --> 00:10.680
+which is to somehow convince our deployment to recreate
+
+00:10.680 --> 00:12.630
+or otherwise update all of our pods
+
+00:12.630 --> 00:15.570
+with the latest version of that multi-client image.
+
+00:15.570 --> 00:17.550
+Now, unfortunately, step three right here
+
+00:17.550 --> 00:19.680
+is very challenging and there's not
+
+00:19.680 --> 00:21.660
+a very good solution around it.
+
+00:21.660 --> 00:23.130
+Now that might be very surprising,
+
+00:23.130 --> 00:24.600
+but I just wanna be very clear with you,
+
+00:24.600 --> 00:25.980
+in the world of Kubernetes,
+
+00:25.980 --> 00:28.285
+convincing a deployment to recreate our pods
+
+00:28.285 --> 00:30.420
+with the latest version of an image
+
+00:30.420 --> 00:33.420
+is not the easiest thing in the world to do.
+
+00:33.420 --> 00:35.370
+So inside this section, we're going to take a look
+
+00:35.370 --> 00:37.650
+at why this is challenging, and then we're going to look
+
+00:37.650 --> 00:40.830
+at a couple of different ways to solve this problem.
+
+00:40.830 --> 00:43.320
+Now, before we start talking about why this is challenging
+
+00:43.320 --> 00:45.790
+or any of the solutions, I wanna very quickly mention to you
+
+00:45.790 --> 00:49.885
+that on the GitHub page for the Kubernetes repo,
+
+00:49.885 --> 00:51.930
+you can go to the issues board
+
+00:51.930 --> 00:54.624
+and reference issue number 33664.
+
+00:54.624 --> 00:56.850
+To get to this issue in particular,
+
+00:56.850 --> 00:58.770
+you can just type that issue number directly
+
+00:58.770 --> 01:00.329
+into your address bar.
+
+01:00.329 --> 01:04.320
+This is a entire issue with a ton of different conversation
+
+01:04.320 --> 01:07.140
+going on here, talking about how challenging it is
+
+01:07.140 --> 01:09.420
+and suggesting different ways of convincing
+
+01:09.420 --> 01:12.990
+your deployment file to somehow update all the pods
+
+01:12.990 --> 01:15.210
+that it is managing.
+
+01:15.210 --> 01:17.910
+So I do recommend maybe taking a quick glance
+
+01:17.910 --> 01:20.070
+at this issue thread and getting a better idea
+
+01:20.070 --> 01:22.374
+of some of the root causes here
+
+01:22.374 --> 01:24.270
+and some of the different ways of solving the problem.
+
+01:24.270 --> 01:26.490
+All right, so let's take a look first
+
+01:26.490 --> 01:29.430
+at why this is so challenging to get a deployment
+
+01:29.430 --> 01:32.130
+to update the image that is being used by all the pods
+
+01:32.130 --> 01:33.810
+that it manages.
+
+01:33.810 --> 01:36.150
+I wanna first remind you that in order to update
+
+01:36.150 --> 01:38.520
+any object inside of our Kubernetes cluster,
+
+01:38.520 --> 01:40.950
+we make a change to our deployment file,
+
+01:40.950 --> 01:43.050
+and then we send the deployment file off
+
+01:43.050 --> 01:45.467
+to the Kubectl command line tool with something
+
+01:45.467 --> 01:47.310
+that looks like this right here, right?
+
+01:47.310 --> 01:49.689
+We do the Kubectl apply.
+
+01:49.689 --> 01:52.170
+Now, the issue that we have right now
+
+01:52.170 --> 01:54.360
+is that inside of our deployment file
+
+01:54.360 --> 01:56.790
+there's nothing inside of here that says,
+
+01:56.790 --> 01:59.183
+Hey, I want to use some particular version
+
+01:59.183 --> 02:01.620
+of our multi-client image.
+
+02:01.620 --> 02:05.760
+So when we send an update to multi-client off to Docker Hub,
+
+02:05.760 --> 02:07.510
+when we make our updated version
+
+02:08.393 --> 02:09.226
+of that image and we send it off,
+
+02:09.226 --> 02:11.250
+there's nothing that we can kind of turn back around
+
+02:11.250 --> 02:13.860
+to this file with and say, Hey, I want you to now use
+
+02:13.860 --> 02:15.840
+like the latest image.
+
+02:15.840 --> 02:17.280
+Now, the reason that's such a big deal
+
+02:17.280 --> 02:20.461
+is that if we try to take an unchanged configuration file
+
+02:20.461 --> 02:22.799
+and apply it with Kubectl
+
+02:22.799 --> 02:25.708
+if there's no changes in the configuration file
+
+02:25.708 --> 02:27.750
+then Kubectl apply is just
+
+02:27.750 --> 02:30.090
+going to flat out reject the file.
+
+02:30.090 --> 02:31.620
+Let's try that out right now.
+
+02:31.620 --> 02:33.510
+Remember, we've already applied this file
+
+02:33.510 --> 02:36.993
+and we've made no changes to it since we last authored it,
+
+02:38.033 --> 02:41.100
+or excuse me, since we last applied it.
+
+02:41.100 --> 02:43.058
+So back at my command line
+
+02:43.058 --> 02:45.108
+I'll do a Kubectl apply, dash-F,
+
+02:45.108 --> 02:47.940
+client deployment, dot-YAML.
+
+02:47.940 --> 02:49.020
+and then when I run this command
+
+02:49.020 --> 02:51.644
+it's gonna tell us that the file is unchanged.
+
+02:51.644 --> 02:55.080
+And so the entire file, the entire apply command
+
+02:55.080 --> 02:57.630
+is just flat out rejected because the config
+
+02:57.630 --> 02:59.490
+that we're trying to upload is identical
+
+02:59.490 --> 03:02.340
+to the last config we put in place.
+
+03:02.340 --> 03:04.770
+Now when you put this file up, it's unchanged.
+
+03:04.770 --> 03:06.390
+That means totally rejected.
+
+03:06.390 --> 03:09.540
+So there's nothing inside that process that says,
+
+03:09.540 --> 03:11.730
+Oh we should probably go and see if a new version
+
+03:11.730 --> 03:13.650
+of this image is available.
+
+03:13.650 --> 03:14.790
+That does not occur.
+
+03:14.790 --> 03:17.340
+At no point when you try to re-upload
+
+03:17.340 --> 03:20.730
+or reapply that config file, it does not try to see
+
+03:20.730 --> 03:22.647
+if a new version of this image is available.
+
+03:22.647 --> 03:26.430
+And so the entire apply command is just flat out rejected.
+
+03:26.430 --> 03:29.040
+That's why this is such a big issue.
+
+03:29.040 --> 03:32.070
+Okay, so with all that in mind, we're now gonna look
+
+03:32.070 --> 03:35.520
+at a diagram that's gonna lay out three possible solutions
+
+03:35.520 --> 03:38.160
+so we could use to get around this issue.
+
+03:38.160 --> 03:41.250
+So none of these solutions are really that great.
+
+03:41.250 --> 03:43.620
+I'll be honest with you, none of them are really that good.
+
+03:43.620 --> 03:46.149
+They're kind of the best of a bad situation.
+
+03:46.149 --> 03:48.330
+Okay, so here's the first option we can use
+
+03:48.330 --> 03:49.680
+to get our deployment to update
+
+03:49.680 --> 03:51.870
+with the latest version of that image.
+
+03:51.870 --> 03:54.513
+We could manually delete all the pods
+
+03:54.513 --> 03:56.730
+that are managed by that deployment.
+
+03:56.730 --> 03:58.710
+Now, when we manually delete a pod
+
+03:58.710 --> 04:00.330
+that is managed by a deployment,
+
+04:00.330 --> 04:02.381
+the deployment is going to very quickly notice
+
+04:02.381 --> 04:05.880
+that the pod is missing and it's going to attempt
+
+04:05.880 --> 04:08.340
+to recreate it automatically.
+
+04:08.340 --> 04:09.750
+So in other words, if we go over
+
+04:09.750 --> 04:14.370
+to our terminal right now and do a Kubectl get pods,
+
+04:14.370 --> 04:17.007
+and then attempt to delete this pod right here,
+
+04:17.007 --> 04:19.290
+the deployment will very quickly notice
+
+04:19.290 --> 04:21.240
+that it has a missing pod,
+
+04:21.240 --> 04:24.600
+and the deployment will recreate this thing automatically.
+
+04:24.600 --> 04:27.750
+So our hope there would be that when the pod gets recreated,
+
+04:27.750 --> 04:30.000
+hopefully it would pull down the latest version
+
+04:30.000 --> 04:32.130
+of that image, and so we could use that
+
+04:32.130 --> 04:35.310
+as a means to recreate our pods with the latest image,
+
+04:35.310 --> 04:38.130
+or excuse me, latest version of some particular image.
+
+04:38.130 --> 04:39.600
+Now, why would we not do this?
+
+04:39.600 --> 04:41.610
+Well, as you might guess, deleting pods seems
+
+04:41.610 --> 04:44.190
+like a really, really silly situation,
+
+04:44.190 --> 04:46.200
+or really silly solution.
+
+04:46.200 --> 04:47.880
+There's so many things that could go wrong
+
+04:47.880 --> 04:48.713
+with this approach.
+
+04:48.713 --> 04:50.070
+In a production environment,
+
+04:50.070 --> 04:53.370
+we could very easily accidentally delete the wrong set
+
+04:53.370 --> 04:54.578
+of pods, totally possible.
+
+04:54.578 --> 04:56.880
+So if we delete the wrong set of pods
+
+04:56.880 --> 04:59.296
+who knows what type of bad situation we would be in.
+
+04:59.296 --> 05:03.000
+In addition, if we manually delete all of our pods related
+
+05:03.000 --> 05:06.274
+to one very particular aspect of our application,
+
+05:06.274 --> 05:08.700
+let's imagine that maybe this is the pod
+
+05:08.700 --> 05:10.590
+that serves up all of our web traffic.
+
+05:10.590 --> 05:12.780
+And so if we delete all those pods,
+
+05:12.780 --> 05:14.399
+for a very brief period of time,
+
+05:14.399 --> 05:17.061
+any user trying to access our application
+
+05:17.061 --> 05:20.178
+would be trying to get at a pod or get at a container
+
+05:20.178 --> 05:23.130
+inside there that just doesn't exist,
+
+05:23.130 --> 05:26.580
+and for a very brief window our users would essentially
+
+05:26.580 --> 05:29.162
+not be able to access our application entirely.
+
+05:29.162 --> 05:31.530
+And so everything about deleting these pods
+
+05:31.530 --> 05:33.663
+just kind of seems like a bad idea.
+
+05:34.800 --> 05:37.402
+Okay, so let's take a look at the second possible solution.
+
+05:37.402 --> 05:40.020
+All right, so I wanna give you a quick reminder
+
+05:40.020 --> 05:42.319
+on tagging of Docker images.
+
+05:42.319 --> 05:45.519
+When we tag a image, we put down usually our Docker ID,
+
+05:45.519 --> 05:49.722
+a slash, and then the repository or project name.
+
+05:49.722 --> 05:51.780
+Now, one other thing that we can optionally put
+
+05:51.780 --> 05:56.070
+in here is a colon and then a version for this image.
+
+05:56.070 --> 05:58.479
+And so we could put in something like, you know, v1,
+
+05:58.479 --> 06:00.350
+and then maybe the next time we build the image,
+
+06:00.350 --> 06:03.960
+we would increment it to v2, or v3, or v4, or v5,
+
+06:03.960 --> 06:05.437
+or whatever it is.
+
+06:05.437 --> 06:08.460
+So as a possible solution to this problem,
+
+06:08.460 --> 06:11.976
+we could decide to tag our images with real version numbers
+
+06:11.976 --> 06:15.439
+and then specify that version inside the config file.
+
+06:15.439 --> 06:19.770
+So in other words when we build our image back over here
+
+06:19.770 --> 06:22.800
+inside of, you know run our Docker build command
+
+06:22.800 --> 06:25.740
+and tag the image, we could put on a version number,
+
+06:25.740 --> 06:29.183
+like v1, v2 v2, or v4, whatever it might be.
+
+06:29.183 --> 06:33.900
+We then push that tag up to Docker Hub
+
+06:33.900 --> 06:36.508
+and then inside of our config file,
+
+06:36.508 --> 06:38.958
+we could append on that v1, v2, v3, v4, or whatever it is.
+
+06:38.958 --> 06:42.540
+Now when we change the config file with a version number
+
+06:42.540 --> 06:47.162
+like this, this is an actionable change to our config file.
+
+06:47.162 --> 06:50.776
+So if I put on here v4 and then save the file
+
+06:50.776 --> 06:54.202
+and then rerun that Kubectl apply command
+
+06:54.202 --> 06:59.202
+that is detected as a very real change to our config file.
+
+06:59.328 --> 07:01.830
+And so the config file would be accepted
+
+07:01.830 --> 07:03.905
+by Kubectl apply because we are specifying
+
+07:03.905 --> 07:06.816
+a completely different image version.
+
+07:06.816 --> 07:11.482
+Our deployment would then use that new image version to
+
+07:11.482 --> 07:14.256
+recreate and update all of the pauses that it manages.
+
+07:14.256 --> 07:16.924
+So this would be one possible solution.
+
+07:16.924 --> 07:19.200
+Now, the downside to this approach is
+
+07:19.200 --> 07:22.410
+that it really adds in extra step to our deployment process
+
+07:22.410 --> 07:25.710
+and it's definitely not a very friendly step.
+
+07:25.710 --> 07:28.290
+Just think about what we would have to do.
+
+07:28.290 --> 07:31.320
+We would e essentially have to make sure that anytime
+
+07:31.320 --> 07:33.570
+that we build our images, we would have to append
+
+07:33.570 --> 07:35.700
+on some version number over here, like, you know
+
+07:35.700 --> 07:38.010
+1, 2, 3, 4, 5, whatever it is.
+
+07:38.010 --> 07:40.689
+And then we would have to go over to our configuration file
+
+07:40.689 --> 07:43.440
+and put the exact same version number
+
+07:43.440 --> 07:44.849
+inside of here as well.
+
+07:44.849 --> 07:46.920
+So we would have to remember the current version
+
+07:46.920 --> 07:49.860
+and somehow insert that number inside of here.
+
+07:49.860 --> 07:53.068
+And that's definitely a non-trivial step to add in here.
+
+07:53.068 --> 07:55.080
+Now, one quick workaround to that
+
+07:55.080 --> 07:56.910
+that you might imagine if you're, you know
+
+07:56.910 --> 07:58.685
+a little bit savvy, you might think, okay, well
+
+07:58.685 --> 08:01.080
+if it's such a pain to get the version number in here
+
+08:01.080 --> 08:04.666
+maybe we could get like an environment variable or something
+
+08:04.666 --> 08:07.500
+like that that would carry the version of that image,
+
+08:07.500 --> 08:08.850
+so when we build the image,
+
+08:08.850 --> 08:11.610
+we could store the version number in an environment variable
+
+08:11.610 --> 08:13.350
+and then reference that environment variable
+
+08:13.350 --> 08:14.280
+inside of our file.
+
+08:14.280 --> 08:17.580
+So we could do something like, you know, client version.
+
+08:17.580 --> 08:19.200
+Well, unfortunately, we are not allowed
+
+08:19.200 --> 08:23.160
+to use environment variables inside of these config files.
+
+08:23.160 --> 08:25.200
+So that solution kind of goes out the window
+
+08:25.200 --> 08:26.793
+as being an easy workaround.
+
+08:28.200 --> 08:30.177
+So specifying the version, it definitely would work,
+
+08:30.177 --> 08:32.493
+but it adds in that extra step of having
+
+08:32.493 --> 08:35.373
+to assign a version number when we build the image,
+
+08:35.373 --> 08:37.890
+and then we also have to make sure that we somehow
+
+08:37.890 --> 08:40.500
+inject that version number into the file.
+
+08:40.500 --> 08:43.350
+We literally would have to inject the version number
+
+08:43.350 --> 08:45.429
+through some type of like templating process.
+
+08:45.429 --> 08:47.130
+So that definitely doesn't seem like it's
+
+08:47.130 --> 08:49.893
+a very good version or very good solution as well.
+
+08:50.751 --> 08:53.497
+All right, so now the last thing that we could do
+
+08:53.497 --> 08:56.280
+is we could use an imperative command
+
+08:56.280 --> 08:59.814
+to update the image version that the deployment should use.
+
+08:59.814 --> 09:02.989
+So this is somewhat similar to the last step.
+
+09:02.989 --> 09:05.700
+It's saying that when we build our image
+
+09:05.700 --> 09:07.770
+we would still append on a version number
+
+09:07.770 --> 09:10.468
+so like you know, v1, v2, v3, whatever it is.
+
+09:10.468 --> 09:12.908
+But then rather than updating our config file
+
+09:12.908 --> 09:15.424
+we could immediately run a command
+
+09:15.424 --> 09:18.960
+after building our image that says to Kubernetes,
+
+09:18.960 --> 09:21.270
+essentially like, Hey, Kubernetes,
+
+09:21.270 --> 09:23.730
+like go find my client deployment
+
+09:23.730 --> 09:26.511
+and update the version number, like, you know,
+
+09:26.511 --> 09:28.470
+I don't know, I'm just making up this command here
+
+09:28.470 --> 09:31.954
+update version to v1, or something like that.
+
+09:31.954 --> 09:35.220
+Now, this is very similar to the previous step
+
+09:35.220 --> 09:36.397
+in that we are still going to tag
+
+09:36.397 --> 09:38.580
+our image with a version number,
+
+09:38.580 --> 09:39.747
+but the downside to this approach
+
+09:39.747 --> 09:42.330
+is that it's using an imperative command
+
+09:42.330 --> 09:44.607
+and it's essentially completely skipping over
+
+09:44.607 --> 09:47.550
+our config file and keeping our config file
+
+09:47.550 --> 09:50.104
+up to date with the state of our cluster.
+
+09:50.104 --> 09:52.470
+So all three of these steps seem like,
+
+09:52.470 --> 09:53.880
+you know, bad solutions.
+
+09:53.880 --> 09:55.590
+They don't really seem like they're the best things
+
+09:55.590 --> 09:57.540
+in the world to solve this problem.
+
+09:57.540 --> 09:58.410
+I think without a doubt,
+
+09:58.410 --> 10:01.805
+the first solution over here is definitely very, very bad.
+
+10:01.805 --> 10:05.280
+I think that this solution right here is definitely
+
+10:05.280 --> 10:07.500
+a pain in the rear because we are making a change
+
+10:07.500 --> 10:09.810
+to our config file and anytime that we're changing
+
+10:09.810 --> 10:11.228
+our config file we would probably want
+
+10:11.228 --> 10:13.530
+to do a git commit, right?
+
+10:13.530 --> 10:15.930
+We would probably want to commit that new version.
+
+10:15.930 --> 10:18.421
+Well, the downside to wanting to do that git commit
+
+10:18.421 --> 10:21.250
+is that, remember, we traditionally only build
+
+10:21.250 --> 10:25.229
+our versions with the, or build our images
+
+10:25.229 --> 10:27.600
+with the Docker build command right here
+
+10:27.600 --> 10:29.910
+when we are in a CI environment,
+
+10:29.910 --> 10:31.527
+like off on Travis CI.
+
+10:31.527 --> 10:34.140
+And so we're only on Travis CI when we've already
+
+10:34.140 --> 10:35.580
+made a get commit.
+
+10:35.580 --> 10:37.080
+So we're kind of talking about
+
+10:37.080 --> 10:39.581
+like making a get commit to update the image
+
+10:39.581 --> 10:41.940
+and then pushing this off to Travis,
+
+10:41.940 --> 10:44.040
+getting the image built right here,
+
+10:44.040 --> 10:46.623
+and then simultaneously taking that version number
+
+10:46.623 --> 10:49.542
+and updating this file, and then committing this file too
+
+10:49.542 --> 10:52.710
+at the same time while we're still on Travis.
+
+10:52.710 --> 10:55.230
+Now, if that doesn't make sense, that's totally fine.
+
+10:55.230 --> 10:57.180
+What I'm trying to say is that this step right here,
+
+10:57.180 --> 10:59.280
+it definitely sounds like it's a good solution,
+
+10:59.280 --> 11:01.950
+but in practice it ends up being a tremendous pain
+
+11:01.950 --> 11:02.880
+in the rear.
+
+11:02.880 --> 11:05.706
+So that kinda leaves us with solution three over here.
+
+11:05.706 --> 11:08.010
+We're going to use an imperative command.
+
+11:08.010 --> 11:10.980
+So after we rebuild an image, we are going to tag it
+
+11:10.980 --> 11:13.380
+with a version number, and then we're going
+
+11:13.380 --> 11:16.350
+to very specifically reach out to Kubectl
+
+11:16.350 --> 11:19.800
+and tell it to update our deployment with the latest version
+
+11:19.800 --> 11:23.100
+of the image that we just pushed up to Docker Hub.
+
+11:23.100 --> 11:25.200
+Now, I know this uses a imperative command
+
+11:25.200 --> 11:27.570
+and I just told you how we like to avoid these as much
+
+11:27.570 --> 11:29.190
+as possible, but again, this is kind of
+
+11:29.190 --> 11:31.950
+like the best of a bad situation
+
+11:31.950 --> 11:34.607
+and I think that you'll see when we eventually
+
+11:34.607 --> 11:36.120
+deploy our application to a production environment
+
+11:36.120 --> 11:39.990
+this ends up being like a pretty reasonable solution.
+
+11:39.990 --> 11:41.190
+It's not the best solution
+
+11:41.190 --> 11:44.781
+but it's pretty reasonable when it really comes down to it.
+
+11:44.781 --> 11:45.960
+Oh, okay.
+
+11:45.960 --> 11:47.940
+So this has been a very long section.
+
+11:47.940 --> 11:49.620
+I apologize for the length, but again,
+
+11:49.620 --> 11:50.880
+I wanted to make sure it's really clear
+
+11:50.880 --> 11:54.425
+that this is just a continuous not nice issue
+
+11:54.425 --> 11:56.730
+to have to deal with, and I wanted to go over some
+
+11:56.730 --> 11:59.400
+of these possible solutions because these three
+
+11:59.400 --> 12:02.130
+in particular get outlined in this issue thread over here
+
+12:02.130 --> 12:03.900
+if you decide to read this thing.
+
+12:03.900 --> 12:05.430
+All right, so with all that in mind
+
+12:05.430 --> 12:06.660
+let's take a quick pause right here.
+
+12:06.660 --> 12:09.117
+We're gonna come back to the next section.
+
+12:09.117 --> 12:10.680
+We're gonna learn how we can somehow tag our image
+
+12:10.680 --> 12:13.800
+with a unique version number when we build it
+
+12:13.800 --> 12:16.590
+and then make sure that we can run a command
+
+12:16.590 --> 12:19.050
+that's going to tell our deployment to update itself
+
+12:19.050 --> 12:21.720
+with the latest version number available.
+
+12:21.720 --> 12:24.470
+So quick pause and we'll come back in the next section.

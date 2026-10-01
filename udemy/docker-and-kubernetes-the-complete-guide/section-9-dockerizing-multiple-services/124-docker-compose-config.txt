@@ -1,0 +1,427 @@
+WEBVTT
+
+00:00.930 --> 00:03.120
+-: In the last section, we added in Postgres
+
+00:03.120 --> 00:05.580
+as a service to our Docker compose file.
+
+00:05.580 --> 00:08.160
+So now anytime we run Docker compose up,
+
+00:08.160 --> 00:09.960
+we'll get a copy of Postgres
+
+00:09.960 --> 00:12.300
+automatically made available to us.
+
+00:12.300 --> 00:14.820
+We're now gonna go through the same process,
+
+00:14.820 --> 00:16.380
+for Redis this time.
+
+00:16.380 --> 00:18.450
+And I think you have a good idea of what we're looking for
+
+00:18.450 --> 00:20.100
+when we look at these repositories.
+
+00:20.100 --> 00:22.560
+So I think that we can add in this image rather quickly,
+
+00:22.560 --> 00:23.850
+and then very quickly move on
+
+00:23.850 --> 00:26.850
+to the server configuration as well.
+
+00:26.850 --> 00:31.770
+So back on .hub.docker.com, I'm again on the explore tab,
+
+00:31.770 --> 00:32.970
+I'll scroll down a little bit
+
+00:32.970 --> 00:35.163
+and find the Redis image right here.
+
+00:36.180 --> 00:37.620
+Here's Redis.
+
+00:37.620 --> 00:39.510
+Again, we can look at the full description,
+
+00:39.510 --> 00:42.150
+and find the one marked as latest.
+
+00:42.150 --> 00:44.250
+So right now for me it's version four,
+
+00:44.250 --> 00:46.560
+if latest is associated with version five,
+
+00:46.560 --> 00:48.750
+or even version six at some point in the future,
+
+00:48.750 --> 00:50.160
+again, no big issue,
+
+00:50.160 --> 00:52.473
+it should work just fine with our application.
+
+00:53.520 --> 00:56.040
+Now again, you might want to scroll down a little bit,
+
+00:56.040 --> 00:59.430
+and take a look at how we can start up a copy of this thing,
+
+00:59.430 --> 01:02.580
+along with some of the optional commands associated with it,
+
+01:02.580 --> 01:05.130
+or additional options that you might want to add in.
+
+01:05.130 --> 01:06.570
+Now in this case, you and I don't really need
+
+01:06.570 --> 01:08.970
+to do any further configuration of Redis,
+
+01:08.970 --> 01:12.210
+unlike some further configuration that we'll do of Postgres.
+
+01:12.210 --> 01:14.640
+So if you want to, you can read over this documentation,
+
+01:14.640 --> 01:17.730
+otherwise we'll just flip back over to our code editor,
+
+01:17.730 --> 01:19.530
+inside of our Docker compose file,
+
+01:19.530 --> 01:22.770
+and add it as an additional service that we need
+
+01:22.770 --> 01:24.320
+to get our application running.
+
+01:25.170 --> 01:26.640
+So I'll give it a name of Redis,
+
+01:26.640 --> 01:28.440
+and I'll say the image that we want to use
+
+01:28.440 --> 01:31.803
+is Redis:latest, like so.
+
+01:32.970 --> 01:36.720
+Okay, so that's it for Postgres and Redis,
+
+01:36.720 --> 01:39.330
+all we had to do there was specify the images,
+
+01:39.330 --> 01:41.460
+a little bit later, we might come back and add in
+
+01:41.460 --> 01:44.210
+a couple more options to configure the way they behave.
+
+01:46.020 --> 01:48.180
+So now we're gonna move on to our server.
+
+01:48.180 --> 01:50.370
+So on the server we're gonna see a couple of options
+
+01:50.370 --> 01:52.230
+that are more like some of the options we've seen
+
+01:52.230 --> 01:54.420
+in compose files before.
+
+01:54.420 --> 01:56.760
+So we need to pass in some build options
+
+01:56.760 --> 01:59.460
+to tell Docker compose how to build an image
+
+01:59.460 --> 02:01.380
+out of our source code.
+
+02:01.380 --> 02:03.270
+We need to set up some volumes to make sure
+
+02:03.270 --> 02:05.370
+that anytime we change our source code,
+
+02:05.370 --> 02:07.410
+those changes automatically get reflected
+
+02:07.410 --> 02:09.090
+inside of the container.
+
+02:09.090 --> 02:11.070
+And then we're also going to have to eventually set up
+
+02:11.070 --> 02:12.840
+some environment variables.
+
+02:12.840 --> 02:14.910
+Because we want to customize the way
+
+02:14.910 --> 02:18.330
+in which our container behaves when it is started up.
+
+02:18.330 --> 02:20.310
+And in particular, we want to customize
+
+02:20.310 --> 02:23.340
+the way in which it finds the Redis host,
+
+02:23.340 --> 02:26.580
+and the database and all that other good stuff.
+
+02:26.580 --> 02:28.860
+So let's first begin with the stuff we know how to do.
+
+02:28.860 --> 02:30.720
+We're gonna add in some specification
+
+02:30.720 --> 02:32.433
+for the build and volumes.
+
+02:34.260 --> 02:36.090
+Back inside of my Docker compose file,
+
+02:36.090 --> 02:39.213
+I'm gonna add in a new service called server.
+
+02:40.740 --> 02:43.470
+And then we'll specify the build option.
+
+02:43.470 --> 02:46.590
+So for the build, I'm gonna first specify the Docker file
+
+02:46.590 --> 02:48.450
+that I want this thing to use.
+
+02:48.450 --> 02:52.320
+I want this to use the DockerFile.dev file,
+
+02:52.320 --> 02:55.380
+so I will say DockerFile.dev.
+
+02:55.380 --> 02:58.800
+You'll notice that I am not specifying any folder on here.
+
+02:58.800 --> 03:00.180
+So I'm not saying like, oh yeah,
+
+03:00.180 --> 03:02.880
+look in the server directory or something like that.
+
+03:02.880 --> 03:04.530
+When we specify the Docker file,
+
+03:04.530 --> 03:07.410
+we are just saying the name of the Docker file.
+
+03:07.410 --> 03:09.840
+That's it, nothing else.
+
+03:09.840 --> 03:12.900
+To specify that we want it to look in the server folder,
+
+03:12.900 --> 03:15.723
+that's what the context property is for.
+
+03:17.040 --> 03:19.650
+So every time that we've ever made use of context
+
+03:19.650 --> 03:22.980
+in the past, we've always done something like a simple dot,
+
+03:22.980 --> 03:26.910
+and the dot meant look in the current working directory.
+
+03:26.910 --> 03:29.070
+But in this case, we are going to be executing
+
+03:29.070 --> 03:33.030
+the Docker compose command from our root project folder.
+
+03:33.030 --> 03:37.650
+And inside of the root project folder is the server folder.
+
+03:37.650 --> 03:40.770
+So when we tell Docker compose to build an image
+
+03:40.770 --> 03:42.900
+for our project, we're gonna say,
+
+03:42.900 --> 03:46.230
+I want you to use a context where I want you to use
+
+03:46.230 --> 03:50.340
+the source code inside of the server directory.
+
+03:50.340 --> 03:54.510
+So I'm gonna provide a path to the server directory.
+
+03:54.510 --> 03:56.820
+This means look in the current working directory,
+
+03:56.820 --> 04:00.120
+find a folder called server, and inside of there,
+
+04:00.120 --> 04:03.240
+use all the files and all the folders inside there
+
+04:03.240 --> 04:07.530
+to build this image, and by the way, inside of this context
+
+04:07.530 --> 04:11.970
+is where you are going to also find our Docker file as well.
+
+04:11.970 --> 04:14.250
+So, that's why we are using build context here.
+
+04:14.250 --> 04:17.100
+We are trying to specify the exact directory
+
+04:17.100 --> 04:20.223
+that we want Docker to use to build our image out.
+
+04:22.410 --> 04:24.870
+Okay, so that's it for specifying the build,
+
+04:24.870 --> 04:27.990
+we'll now specify the volume to set up as well.
+
+04:27.990 --> 04:30.630
+And just like before on our React application,
+
+04:30.630 --> 04:33.510
+we're gonna do a very similar process.
+
+04:33.510 --> 04:36.240
+So for volumes, we're gonna say,
+
+04:36.240 --> 04:38.460
+a quick reminder here before we specify the volume,
+
+04:38.460 --> 04:41.130
+if you look in this server DockerFile.dev file,
+
+04:41.130 --> 04:45.330
+you'll remember that we specified a work directory of /app,
+
+04:45.330 --> 04:47.130
+so everything that's relevant to us
+
+04:47.130 --> 04:48.933
+is inside of that app folder.
+
+04:50.010 --> 04:51.660
+So for volumes the first thing we're gonna do,
+
+04:51.660 --> 04:54.780
+is essentially put a little bit of a block,
+
+04:54.780 --> 04:57.510
+or essentially kind of like a little hold, or a bookmark,
+
+04:57.510 --> 05:00.900
+on the app node modules folder.
+
+05:00.900 --> 05:02.790
+And we're gonna say, you know what?
+
+05:02.790 --> 05:06.480
+Inside the container, don't try to override this folder.
+
+05:06.480 --> 05:07.530
+Don't try to override it,
+
+05:07.530 --> 05:09.540
+don't try to redirect access to it,
+
+05:09.540 --> 05:12.480
+just leave that folder as is.
+
+05:12.480 --> 05:15.150
+And then in addition to that, we're gonna say,
+
+05:15.150 --> 05:17.220
+look at the server directory,
+
+05:17.220 --> 05:19.380
+and copy everything inside there
+
+05:19.380 --> 05:21.960
+into the app folder of the container.
+
+05:21.960 --> 05:26.913
+So for that I'll say ./server:app.
+
+05:28.890 --> 05:32.040
+So now anytime our application tries to access anything
+
+05:32.040 --> 05:35.010
+inside of the app directory inside the container,
+
+05:35.010 --> 05:37.320
+except for the node modules folder,
+
+05:37.320 --> 05:39.540
+it's going to essentially get redirected
+
+05:39.540 --> 05:41.640
+back to the server directory,
+
+05:41.640 --> 05:43.803
+inside of our current project folder.
+
+05:45.720 --> 05:47.100
+So now anytime we make any change
+
+05:47.100 --> 05:49.470
+to anything inside that server,
+
+05:49.470 --> 05:51.030
+it'll be automatically reflected
+
+05:51.030 --> 05:53.760
+inside of the app folder of our container,
+
+05:53.760 --> 05:54.600
+and that's gonna make sure
+
+05:54.600 --> 05:56.700
+that we don't have to rebuild our image,
+
+05:56.700 --> 05:59.130
+anytime that we make a little change to our source code.
+
+05:59.130 --> 06:01.320
+And again, we're gonna see a great example of that
+
+06:01.320 --> 06:03.660
+as soon as we start everything up.
+
+06:03.660 --> 06:05.490
+Okay, so let's take a quick pause right here,
+
+06:05.490 --> 06:07.950
+now that we've added in a little bit more configuration,
+
+06:07.950 --> 06:09.450
+we're gonna come back to the next section,
+
+06:09.450 --> 06:11.070
+and we're going to start to specify
+
+06:11.070 --> 06:14.370
+some of the environment variables inside of our container.
+
+06:14.370 --> 06:16.820
+So quick break and I'll see you in just a minute.

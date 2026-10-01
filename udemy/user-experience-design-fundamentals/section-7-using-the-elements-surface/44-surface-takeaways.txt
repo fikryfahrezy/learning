@@ -1,0 +1,88 @@
+WEBVTT
+
+00:00.930 --> 00:06.810
+So as we finish our tour of the surface plane, there are some takeaways and things to remember.
+
+00:06.810 --> 00:08.680
+I would like to leave you with.
+
+00:08.700 --> 00:14.670
+First and foremost, remember that the surface plane can be thought of as visual language.
+
+00:14.670 --> 00:21.090
+That visual language is created by techniques that we use to indicate context and convey information.
+
+00:21.090 --> 00:28.140
+And those things are layout, typography, color, imagery, sequencing and visual identity.
+
+00:28.140 --> 00:35.640
+They all work together to create our overall impression and understanding of what's in front of us.
+
+00:35.850 --> 00:43.110
+Remember that effective visual design serves three important purposes to organize, to economize and
+
+00:43.110 --> 00:44.310
+to communicate.
+
+00:44.610 --> 00:51.630
+Remember the four basic principles that we use to organize visual information, alignment, proximity,
+
+00:51.630 --> 00:54.240
+repetition, and contrast.
+
+00:54.270 --> 01:01.510
+These four elements are the core of everything that you will ever design in any way, shape or form.
+
+01:01.900 --> 01:08.770
+Keep in mind that good visual design leads the eye through the screen in a smooth flow that gives the
+
+01:08.770 --> 01:11.650
+user a guided tour of what's available.
+
+01:12.270 --> 01:18.450
+Consistency in visual design allows users to build an accurate mental model of the way the site or the
+
+01:18.450 --> 01:19.890
+app or the system works.
+
+01:19.890 --> 01:27.120
+So whatever visual treatments and styles you decide upon, use them and apply them consistently throughout
+
+01:27.120 --> 01:28.740
+the entire system.
+
+01:29.380 --> 01:35.020
+Always be aware of the fact that the right colors draw the eye to the most important area on the screen
+
+01:35.020 --> 01:42.880
+and influence emotional response so you can leverage color to draw attention and signify importance.
+
+01:43.240 --> 01:48.800
+The right colors maximize readability and minimize optical fatigue.
+
+01:48.820 --> 01:52.000
+The wrong colors do the exact opposite.
+
+01:52.030 --> 01:57.000
+They make things hard to read and they strain your eyes in terms of typography.
+
+01:57.010 --> 02:02.950
+If you're going to use more than one typeface style, remember that each one should be visually distinct
+
+02:02.950 --> 02:09.700
+from the other, and you use these different styles only to indicate differences in the information
+
+02:09.700 --> 02:10.660
+you're presenting.
+
+02:10.660 --> 02:11.150
+Okay.
+
+02:11.170 --> 02:15.650
+Don't use a myriad of fonts just because they happen to be at your disposal.
+
+02:15.670 --> 02:22.060
+Decide how many levels of information that you have on any given screen or throughout your entire system
+
+02:22.060 --> 02:27.400
+and designate a specific font treatment for each one of those levels.

@@ -1,0 +1,520 @@
+WEBVTT
+
+00:00.720 --> 00:01.553
+-: In the last section,
+
+00:01.553 --> 00:03.750
+we put together our Travis.yaml file
+
+00:03.750 --> 00:05.700
+and built out some production versions
+
+00:05.700 --> 00:07.590
+of each of our sub-projects.
+
+00:07.590 --> 00:09.810
+So now that we've built out these production versions,
+
+00:09.810 --> 00:12.780
+we now need to add in an additional step down here
+
+00:12.780 --> 00:17.730
+to take those images and push them to Docker Hub.
+
+00:17.730 --> 00:20.190
+Now, in order to push an image to Docker Hub,
+
+00:20.190 --> 00:23.610
+we need to first log into the Docker CLI.
+
+00:23.610 --> 00:27.120
+You and I actually logged into the Docker CLI in this course
+
+00:27.120 --> 00:30.420
+way, way long ago when we first installed Docker.
+
+00:30.420 --> 00:32.400
+You might recall that after installing Docker,
+
+00:32.400 --> 00:34.380
+we ran Docker login,
+
+00:34.380 --> 00:37.920
+and then we entered in our Docker ID and our password.
+
+00:37.920 --> 00:40.560
+That associated our Docker client right here
+
+00:40.560 --> 00:42.870
+with our Docker Hub account.
+
+00:42.870 --> 00:45.720
+And so if you and I pushed any images up to Docker Hub,
+
+00:45.720 --> 00:47.580
+they would be automatically associated
+
+00:47.580 --> 00:49.890
+with your account or my account.
+
+00:49.890 --> 00:52.140
+So we need to make sure that we do the exact same thing
+
+00:52.140 --> 00:54.480
+inside of our Travis.yaml script.
+
+00:54.480 --> 00:57.330
+Before we can attempt to push those off to Docker Hub,
+
+00:57.330 --> 01:01.410
+we need to first log into the Docker CLI.
+
+01:01.410 --> 01:02.243
+And so essentially,
+
+01:02.243 --> 01:04.920
+we need to run the Docker login command right here,
+
+01:04.920 --> 01:07.623
+and then enter in our username and our password.
+
+01:08.730 --> 01:09.563
+Now of course,
+
+01:09.563 --> 01:12.120
+we're not gonna put our password or the username
+
+01:12.120 --> 01:15.300
+as plain text inside of our Travis.yaml file
+
+01:15.300 --> 01:16.290
+because then other people
+
+01:16.290 --> 01:18.960
+could very easily see that information.
+
+01:18.960 --> 01:21.060
+So instead, very similar to what we did
+
+01:21.060 --> 01:23.040
+on our last Travis CI project,
+
+01:23.040 --> 01:25.980
+we're gonna set up some encrypted environment variables
+
+01:25.980 --> 01:28.830
+that are only accessible by Travis CI.
+
+01:28.830 --> 01:31.923
+And we'll add in our username and password over there.
+
+01:32.940 --> 01:34.320
+So to get started,
+
+01:34.320 --> 01:37.530
+I'm gonna flip back over to my Travis project.
+
+01:37.530 --> 01:40.110
+Make sure that you're looking at the new repository,
+
+01:40.110 --> 01:41.880
+or the new project that we just put together.
+
+01:41.880 --> 01:44.970
+So you should see Multi Docker right here as the repo name
+
+01:44.970 --> 01:47.580
+or whatever it is that you called it.
+
+01:47.580 --> 01:50.880
+Then to enter in our Docker ID and our password,
+
+01:50.880 --> 01:53.370
+we'll go to more options on the right-hand side
+
+01:53.370 --> 01:54.663
+and find settings.
+
+01:55.860 --> 01:57.900
+We'll then scroll down a little bit,
+
+01:57.900 --> 02:00.273
+and find the environment variables section.
+
+02:02.310 --> 02:04.080
+So for the environment variables,
+
+02:04.080 --> 02:06.330
+we're going to enter in our Docker ID
+
+02:06.330 --> 02:08.190
+and our Docker password.
+
+02:08.190 --> 02:11.090
+So I will set the first one up with the name of Docker_ID,
+
+02:12.600 --> 02:14.970
+and then I will enter in my Docker ID,
+
+02:14.970 --> 02:16.200
+which is Stephen Grider.
+
+02:16.200 --> 02:17.610
+Of course, you'll want to customize it
+
+02:17.610 --> 02:21.090
+for your Docker ID in particular.
+
+02:21.090 --> 02:22.773
+And I'll add that as a variable.
+
+02:23.970 --> 02:27.333
+I'll then set up a second of Docker_password,
+
+02:28.872 --> 02:30.720
+and then here I'm gonna enter in my password.
+
+02:30.720 --> 02:32.520
+Now, not that I don't trust you or anything,
+
+02:32.520 --> 02:35.430
+but I'm not gonna show you my Docker password.
+
+02:35.430 --> 02:39.030
+I'm gonna enter it in on a second screen very quickly,
+
+02:39.030 --> 02:41.220
+and add it as an additional variable.
+
+02:41.220 --> 02:42.630
+There we go.
+
+02:42.630 --> 02:44.490
+So I've now got my two environment variables
+
+02:44.490 --> 02:46.923
+for the Docker ID and the Docker password.
+
+02:49.314 --> 02:51.780
+So now we'll go back over to our Travis.yaml file,
+
+02:51.780 --> 02:53.970
+and we're gonna add in a script line right here
+
+02:53.970 --> 02:56.610
+that's going to log us into the Docker CLI.
+
+02:56.610 --> 02:58.170
+And then once we're logged in,
+
+02:58.170 --> 03:00.300
+we'll then be able to push all of our images off
+
+03:00.300 --> 03:01.143
+to Docker Hub.
+
+03:02.580 --> 03:04.590
+Now to log into the Docker CLI,
+
+03:04.590 --> 03:06.270
+we're going to execute a command here
+
+03:06.270 --> 03:09.360
+that's just a little bit more intense or complicated
+
+03:09.360 --> 03:12.270
+than the Docker login we executed over here.
+
+03:12.270 --> 03:15.780
+Remember inside of our terminal, we had ran Docker login,
+
+03:15.780 --> 03:18.030
+and then we got two little prompts that said,
+
+03:18.030 --> 03:20.850
+Hey, enter your ID and enter your password.
+
+03:20.850 --> 03:22.590
+Now, unfortunately on Travis,
+
+03:22.590 --> 03:25.560
+Travis doesn't really have support for a prompt like that
+
+03:25.560 --> 03:27.630
+or a wizard like that assorts.
+
+03:27.630 --> 03:28.590
+So we're gonna enter in
+
+03:28.590 --> 03:30.810
+a little bit more complicated version
+
+03:30.810 --> 03:33.120
+of the Docker login command.
+
+03:33.120 --> 03:35.520
+Let's just write out the code or the configuration,
+
+03:35.520 --> 03:37.200
+excuse me, the command that we'll need to log in,
+
+03:37.200 --> 03:39.600
+and we'll talk about what it's doing.
+
+03:39.600 --> 03:41.043
+So I'm gonna say Echo,
+
+03:42.447 --> 03:46.083
+double quotes, dollar sign, Docker password.
+
+03:47.640 --> 03:50.490
+Then after that I'll put in a pipe.
+
+03:50.490 --> 03:53.760
+So that is shift, and then the character to the right
+
+03:53.760 --> 03:57.240
+above the enter or return key on your keyboard.
+
+03:57.240 --> 04:01.830
+And then we'll say Docker login, dash U,
+
+04:01.830 --> 04:03.660
+and I'm going to collapse my sidebar
+
+04:03.660 --> 04:05.460
+so you can see everything here.
+
+04:05.460 --> 04:08.010
+We'll do another set of double quotes inside there.
+
+04:08.010 --> 04:09.933
+We'll do dollar sign, Docker_id.
+
+04:11.550 --> 04:12.383
+We're gonna make sure
+
+04:12.383 --> 04:14.763
+that's the actual variable name I used, yep, it was.
+
+04:16.020 --> 04:17.670
+We'll then close off the double quotes,
+
+04:17.670 --> 04:20.580
+and then put in dash dash password,
+
+04:20.580 --> 04:24.663
+dash standard in, or STDIN, like so.
+
+04:25.980 --> 04:26.940
+All right, so what's this do?
+
+04:26.940 --> 04:28.860
+Well essentially, again, we don't want to have to go through
+
+04:28.860 --> 04:31.410
+the kind of little multi-step wizard
+
+04:31.410 --> 04:33.810
+that Docker login usually presents you with.
+
+04:33.810 --> 04:37.560
+Instead, we want to just do the entire login step
+
+04:37.560 --> 04:39.690
+in one single command.
+
+04:39.690 --> 04:42.930
+So the first part of this, Echo Docker password,
+
+04:42.930 --> 04:45.360
+is going to retrieve your Docker password
+
+04:45.360 --> 04:46.620
+from the environment variable,
+
+04:46.620 --> 04:49.530
+and then essentially emit that over standard in
+
+04:49.530 --> 04:52.290
+as input to the next command.
+
+04:52.290 --> 04:53.250
+Or essentially the command
+
+04:53.250 --> 04:56.160
+on the other side of the pipe right here.
+
+04:56.160 --> 04:58.740
+So you can kind of imagine that your password is taken
+
+04:58.740 --> 05:01.440
+and added in to the standard in channel
+
+05:01.440 --> 05:02.840
+for this command right here.
+
+05:03.690 --> 05:06.030
+We then run the Docker login command,
+
+05:06.030 --> 05:09.630
+and add in your username as a dash U flag.
+
+05:09.630 --> 05:12.000
+And then we tell Docker login that it can expect
+
+05:12.000 --> 05:15.240
+to receive that password over standard in.
+
+05:15.240 --> 05:17.460
+Essentially, this is how we log into Docker
+
+05:17.460 --> 05:19.293
+in one single command.
+
+05:21.690 --> 05:22.523
+Okay, so that's it.
+
+05:22.523 --> 05:24.270
+Now that we've logged into the Docker CLI,
+
+05:24.270 --> 05:26.580
+we can now take all of our built images
+
+05:26.580 --> 05:29.010
+and push them off to Docker Hub.
+
+05:29.010 --> 05:34.010
+So to push the images off, I'll put in dash Docker push,
+
+05:34.230 --> 05:37.020
+and then all we do is list out the tag.
+
+05:37.020 --> 05:40.140
+So we'll list out four separate Docker push commands,
+
+05:40.140 --> 05:42.810
+one for each of these different tags that we have.
+
+05:42.810 --> 05:45.630
+So I want to push the image with the tag of
+
+05:45.630 --> 05:48.243
+Stephen Grider slash multi client.
+
+05:49.380 --> 05:53.043
+I want to push Stephen Grider multi Nginx.
+
+05:55.890 --> 05:58.240
+I bet you can guess the next one, multi server.
+
+05:59.460 --> 06:03.093
+And of course, multi dash worker, like so.
+
+06:04.500 --> 06:06.870
+All right, so that's all we gotta do.
+
+06:06.870 --> 06:08.910
+As you might imagine, running Docker push
+
+06:08.910 --> 06:10.290
+and pushing your image up right here
+
+06:10.290 --> 06:13.290
+is just as easy as pushing your code up to GitHub.
+
+06:13.290 --> 06:15.210
+Once you've done the kind of legwork
+
+06:15.210 --> 06:20.130
+of building the image and logging into Docker login,
+
+06:20.130 --> 06:21.840
+all you gotta say is Docker push,
+
+06:21.840 --> 06:22.980
+and then the name of the image
+
+06:22.980 --> 06:24.600
+that you want to push up to Docker Hub,
+
+06:24.600 --> 06:26.910
+and Docker takes it from there.
+
+06:26.910 --> 06:30.090
+So last thing we need to do is test out this entire script,
+
+06:30.090 --> 06:31.590
+and make sure that we can successfully
+
+06:31.590 --> 06:33.513
+push images off to Docker Hub.
+
+06:34.500 --> 06:37.110
+So I'm going to flip back over to my command line.
+
+06:37.110 --> 06:40.170
+We need to issue a new GitHub commit here
+
+06:40.170 --> 06:41.490
+and push it up to GitHub,
+
+06:41.490 --> 06:43.590
+or a new Git commit and issue it up to GitHub
+
+06:43.590 --> 06:45.660
+to get Travis to run our project
+
+06:45.660 --> 06:48.660
+and attempt to build these images for the very first time.
+
+06:48.660 --> 06:50.520
+So inside the complex directory,
+
+06:50.520 --> 06:52.920
+I'll do a Git status and verify that,
+
+06:52.920 --> 06:55.980
+yep, we made a change to the Travis.yaml file.
+
+06:55.980 --> 06:59.160
+I will add that change with Git add dot.
+
+06:59.160 --> 07:04.160
+I'll commit it with Git Commit dash in, change Travis yaml,
+
+07:06.150 --> 07:09.723
+and then I will push it up to Origin Master, like so.
+
+07:11.640 --> 07:13.560
+So now in a moment or two,
+
+07:13.560 --> 07:16.260
+we should see our Travis build come to life,
+
+07:16.260 --> 07:19.020
+and attempt to build and then push our images
+
+07:19.020 --> 07:20.520
+off to Docker Hub.
+
+07:20.520 --> 07:22.050
+So I'm gonna pause the video right now.
+
+07:22.050 --> 07:23.790
+I'm gonna wait about 5 or 10 minutes
+
+07:23.790 --> 07:25.680
+for that entire process to be completed,
+
+07:25.680 --> 07:27.570
+and then we'll come back together in the next section
+
+07:27.570 --> 07:29.460
+and make sure that all of our images
+
+07:29.460 --> 07:32.100
+were successfully saved to Docker Hub.
+
+07:32.100 --> 07:34.523
+So quick break and I'll see you in just a minute.

@@ -1,0 +1,274 @@
+WEBVTT
+
+00:00.990 --> 00:01.823
+-: In the last section,
+
+00:01.823 --> 00:04.470
+we finished putting together our travis.yml file.
+
+00:04.470 --> 00:06.720
+We're now ready to commit all the changes we've made,
+
+00:06.720 --> 00:08.340
+and push them up to GitHub.
+
+00:08.340 --> 00:09.780
+As soon as we push up these changes,
+
+00:09.780 --> 00:12.000
+Travis should kick into gear and attempt
+
+00:12.000 --> 00:14.850
+to pull down our code, build the image, test it,
+
+00:14.850 --> 00:16.410
+and then report back to us.
+
+00:16.410 --> 00:18.480
+So all we have to do is commit the changes
+
+00:18.480 --> 00:19.560
+that we made locally,
+
+00:19.560 --> 00:22.020
+push them up to GitHub and Travis should essentially
+
+00:22.020 --> 00:23.272
+take it from there.
+
+00:23.272 --> 00:25.322
+So I'm gonna flip on over to my terminal,
+
+00:26.430 --> 00:28.320
+and I'm gonna first commit all the changes
+
+00:28.320 --> 00:31.200
+I just made by running, get add.,
+
+00:31.200 --> 00:35.880
+and then git commit-m added travis file,
+
+00:35.880 --> 00:37.680
+inside of the double quotes like so.
+
+00:39.150 --> 00:41.550
+So that's gonna create a new git commit.
+
+00:41.550 --> 00:43.410
+We can now push that up to GitHub
+
+00:43.410 --> 00:46.893
+with git push origin master like so.
+
+00:49.740 --> 00:51.180
+So we'll run that.
+
+00:51.180 --> 00:53.820
+And as far as we are concerned, that is pretty much it.
+
+00:53.820 --> 00:56.160
+Now, Travis is going to take it from here.
+
+00:56.160 --> 01:00.600
+So we can flip on over to our browser and open up Travis CI,
+
+01:00.600 --> 01:03.900
+and find the project that you added on the left hand side.
+
+01:03.900 --> 01:05.520
+Again, at some point in the future,
+
+01:05.520 --> 01:08.340
+Travis CI is going to redesign their UI.
+
+01:08.340 --> 01:09.720
+So you might see something that looks
+
+01:09.720 --> 01:10.920
+a little bit different than I,
+
+01:10.920 --> 01:13.220
+essentially, you just wanna find a repository.
+
+01:14.436 --> 01:16.920
+So now, if you do not immediately see the build pop up,
+
+01:16.920 --> 01:18.030
+that is totally fine.
+
+01:18.030 --> 01:21.570
+You can try doing a quick refresh and hopefully something
+
+01:21.570 --> 01:25.230
+like this will appear if everything correctly got wired up.
+
+01:25.230 --> 01:28.320
+So inside of here you can see the output from our build.
+
+01:28.320 --> 01:29.340
+If you scroll down a little bit,
+
+01:29.340 --> 01:32.250
+you'll see job log and you'll get a printout right here
+
+01:32.250 --> 01:34.170
+of all the different logs that are coming
+
+01:34.170 --> 01:36.810
+from the build that we're trying to put together.
+
+01:36.810 --> 01:39.540
+So in a moment or two, oh, there's a good one right there.
+
+01:39.540 --> 01:42.090
+So pseudo service docker start,
+
+01:42.090 --> 01:46.140
+that is Travis adding support for Docker to our build.
+
+01:46.140 --> 01:48.570
+You'll then see our container being built.
+
+01:48.570 --> 01:50.313
+So right there, Docker build,
+
+01:51.270 --> 01:54.003
+we're building the image, there's the NPM install.
+
+01:55.320 --> 01:57.090
+If you see those NPM warnings, again,
+
+01:57.090 --> 01:58.200
+totally fine to ignore those.
+
+01:58.200 --> 01:59.073
+No big deal.
+
+02:02.760 --> 02:05.910
+And I think, I'm just gonna hold around for just a second.
+
+02:05.910 --> 02:07.290
+If you don't wanna watch this with me,
+
+02:07.290 --> 02:08.580
+feel free to pause to the next video,
+
+02:08.580 --> 02:10.410
+but I'm gonna show you what I see
+
+02:10.410 --> 02:12.480
+just so you can verify that your build
+
+02:12.480 --> 02:13.920
+is being done correctly.
+
+02:13.920 --> 02:16.120
+Again, if you wanna skip this, totally fine.
+
+02:21.000 --> 02:22.530
+Okay, I was hoping it would go a little bit faster
+
+02:22.530 --> 02:24.090
+than this. (laughs)
+
+02:24.090 --> 02:25.710
+I'll tell you what, let's take a quick pause,
+
+02:25.710 --> 02:27.300
+we'll come back to the next section and...
+
+02:27.300 --> 02:28.890
+Oh wait, oh, I dunno what to do.
+
+02:28.890 --> 02:29.760
+Okay, post install.
+
+02:29.760 --> 02:30.593
+Yeah, this is good.
+
+02:30.593 --> 02:31.950
+Okay, we'll just sit because that's pretty much it.
+
+02:31.950 --> 02:33.690
+That was the one big pause we got.
+
+02:33.690 --> 02:36.810
+So it's now done with the entire NPM install.
+
+02:36.810 --> 02:37.950
+So the next thing that's gonna happen
+
+02:37.950 --> 02:39.300
+is we're gonna do that copy.
+
+02:39.300 --> 02:41.280
+The copy happened, it was very quick there,
+
+02:41.280 --> 02:43.320
+and then it went onto the next series of actions,
+
+02:43.320 --> 02:45.510
+which was to run our test suite.
+
+02:45.510 --> 02:49.500
+Our one test passed, we printed out the coverage report,
+
+02:49.500 --> 02:51.870
+and then we got the output here,
+
+02:51.870 --> 02:54.120
+which is the command exited with zero,
+
+02:54.120 --> 02:56.280
+which we'll recall as status code of zero,
+
+02:56.280 --> 02:58.290
+means everything ran successfully.
+
+02:58.290 --> 03:00.360
+And so Travis CI is going to interpret this
+
+03:00.360 --> 03:01.620
+as a successful build.
+
+03:01.620 --> 03:03.030
+And in fact, if you scroll back up,
+
+03:03.030 --> 03:05.490
+you should see everything in green like so.
+
+03:05.490 --> 03:06.840
+If this stuff is not green,
+
+03:06.840 --> 03:09.180
+you should be able to just refresh the page,
+
+03:09.180 --> 03:11.880
+and it should be green once you come back to it.
+
+03:11.880 --> 03:12.930
+Okay, so that's pretty much it.
+
+03:12.930 --> 03:16.018
+We now have a pipeline in place to automatically
+
+03:16.018 --> 03:18.690
+watch our GitHub repository for changes,
+
+03:18.690 --> 03:21.090
+pull down our source code, run those tests,
+
+03:21.090 --> 03:23.190
+and then report back to us and tell us whether,
+
+03:23.190 --> 03:24.690
+or not everything went A-okay.
+
+03:25.590 --> 03:26.880
+So this is looking pretty sweet.
+
+03:26.880 --> 03:28.170
+Let's take a quick pause right here,
+
+03:28.170 --> 03:30.120
+and we'll continue in the next section.

@@ -1,0 +1,640 @@
+WEBVTT
+
+00:00.940 --> 00:06.670
+So let's kind of dig into each plane and talk a little bit about what each one means.
+
+00:06.790 --> 00:09.040
+We start again with strategy.
+
+00:09.040 --> 00:14.980
+And the reason we start with strategy is because the foundation of any successful user experience is
+
+00:14.980 --> 00:16.510
+a clear strategy, right?
+
+00:16.540 --> 00:23.410
+A clearly well designed strategy, a clearly communicated strategy that essentially means that we know
+
+00:23.560 --> 00:29.860
+or we have a solid understanding at least, of what users want to accomplish with what we're building.
+
+00:29.860 --> 00:34.020
+And we know what we want to accomplish with what we're building, Right?
+
+00:34.030 --> 00:39.920
+Both of these things inform the decisions we have to make about all the things we do going forward.
+
+00:39.940 --> 00:45.040
+The biggest reason the strategy plane is important is because the most common reason something fails.
+
+00:45.040 --> 00:45.250
+Okay?
+
+00:45.280 --> 00:47.380
+A software product, a website or whatever.
+
+00:47.530 --> 00:50.290
+The reason for failure is almost never technology.
+
+00:50.290 --> 00:54.680
+And to be honest with you, it's not always user experience either.
+
+00:54.700 --> 01:02.120
+What really causes most things to fail is because nobody bothered to answer the two questions that I
+
+01:02.120 --> 01:03.170
+just put to you.
+
+01:03.200 --> 01:08.210
+What do we want users to get out of this site and what do we want to get out of it?
+
+01:08.760 --> 01:11.250
+They seem like two very obvious, two very simple questions.
+
+01:11.250 --> 01:17.610
+But I can count on both fingers and toes and probably a stadium full of people's fingers and toes.
+
+01:17.610 --> 01:25.080
+How many times projects have gone off sort of half cocked without answering answering those questions?
+
+01:25.760 --> 01:29.210
+So user needs come from the people who are going to use the product.
+
+01:29.240 --> 01:30.260
+Who are they?
+
+01:30.290 --> 01:34.160
+What are they typically doing when they're interacting with our product?
+
+01:34.370 --> 01:35.870
+Where do they live?
+
+01:35.900 --> 01:36.860
+What do they like?
+
+01:36.860 --> 01:37.880
+What do they hate?
+
+01:37.910 --> 01:39.710
+What are their cultural references?
+
+01:39.710 --> 01:41.270
+What are their social references?
+
+01:41.270 --> 01:43.100
+What's their work environment like?
+
+01:43.430 --> 01:51.770
+All those things impose certain constraints and provide a certain amount of direction as to how we go
+
+01:51.770 --> 01:53.450
+about creating something.
+
+01:53.450 --> 01:56.380
+There are essential questions that we have to answer.
+
+01:56.390 --> 01:58.810
+First of all, what do they want from us?
+
+01:58.820 --> 02:04.460
+Number one, what's their core need that we are here to satisfy?
+
+02:04.550 --> 02:10.310
+How does that fit in with their other goals, what their other needs in context of this activity?
+
+02:10.310 --> 02:10.550
+Right.
+
+02:10.550 --> 02:16.760
+If you're using a website or a piece of software at work, chances are that all the other things you
+
+02:16.760 --> 02:22.280
+do in your job during the day play some role in affecting this piece.
+
+02:22.280 --> 02:27.660
+If you use a piece of time and attendance software, all the other things that you have that are filling
+
+02:27.660 --> 02:34.200
+up your day and your calendar affect the amount of time you have to deal with your timesheet, right?
+
+02:34.200 --> 02:35.850
+So it had better be easy.
+
+02:35.850 --> 02:37.320
+It's not something we enjoy doing.
+
+02:37.320 --> 02:39.000
+We don't have a lot of time to do it.
+
+02:39.450 --> 02:45.750
+So my overall point is that you have to consider the context of the person's experience.
+
+02:45.750 --> 02:47.400
+What else are they dealing with?
+
+02:47.430 --> 02:48.840
+Okay, what else is on their plate?
+
+02:48.840 --> 02:50.670
+What else is stressing them out?
+
+02:50.850 --> 02:58.530
+In terms of business objectives, we're typically talking about what defines success and in most cases,
+
+02:58.530 --> 03:04.080
+right from a business standpoint, we're talking about either making money, saving money or both.
+
+03:04.230 --> 03:11.670
+We're looking for some degree of return on an investment, an investment in time and investment in money,
+
+03:11.670 --> 03:14.460
+an investment in effort, whatever it may be.
+
+03:14.550 --> 03:19.790
+And the biggest question that has to be asked is how will we know when we've succeeded?
+
+03:19.800 --> 03:21.570
+What does success look like?
+
+03:21.600 --> 03:29.060
+Does that mean attracting some huge number of visitors to the site within the next three months?
+
+03:29.070 --> 03:31.980
+Does it mean monetizing every one of those visits?
+
+03:31.980 --> 03:38.520
+Does it mean everyone that's coming buys something, or at least a significant percentage of the audience
+
+03:38.520 --> 03:40.500
+buys something before they leave?
+
+03:41.280 --> 03:45.000
+Does it mean just attracting traffic for the sake of traffic?
+
+03:45.000 --> 03:52.620
+Because we have advertising or in-app advertising and we're just looking for residuals on that, or
+
+03:52.620 --> 03:58.050
+we just want to be popular and we want people to like our game, right, that we've put out for the
+
+03:58.050 --> 04:05.850
+iPhone or for Android or whatever, whatever success is, whatever that looks like to you and to the
+
+04:05.850 --> 04:10.560
+people that are going to use the stuff you put out there, whatever that success looks like, it's really
+
+04:10.560 --> 04:17.460
+important to define it up front and then decide how you're going to measure it so that you'll know when
+
+04:17.460 --> 04:18.390
+you get there.
+
+04:19.070 --> 04:22.160
+The next plane is scope and with scope.
+
+04:22.160 --> 04:24.850
+Again, we have two areas of concern.
+
+04:24.860 --> 04:30.860
+Number one, functional specification, which is essentially asking what is our feature set and content
+
+04:30.860 --> 04:31.850
+requirements?
+
+04:31.970 --> 04:32.220
+Okay.
+
+04:32.270 --> 04:37.190
+What's the information, the data, the content that's going to be presented?
+
+04:37.610 --> 04:39.140
+Where is it going to come from?
+
+04:39.140 --> 04:40.880
+How much of it is there?
+
+04:40.880 --> 04:43.670
+How are we going to identify it?
+
+04:43.670 --> 04:45.380
+How are we going to serve it up?
+
+04:45.580 --> 04:45.780
+Right.
+
+04:45.920 --> 04:48.620
+All those questions are part of the deal here.
+
+04:48.920 --> 04:57.050
+There's an old joke that's been expressed multiple ways about how disconnects happen between a project
+
+04:57.050 --> 05:03.860
+team, and the joke really focuses on the idea that that if everyone isn't on the same page about what
+
+05:03.860 --> 05:07.430
+the scope of the project is, disasters happen.
+
+05:07.430 --> 05:12.350
+So I'm going to walk you through that real quick in the hopes that this will sort of visually explain
+
+05:13.010 --> 05:15.860
+the importance of the scope part of this.
+
+05:16.250 --> 05:16.550
+All right.
+
+05:16.550 --> 05:20.100
+So this is how the customer explained it.
+
+05:20.100 --> 05:22.010
+This is what they explained they wanted.
+
+05:22.630 --> 05:25.510
+This is how the project manager heard it.
+
+05:26.960 --> 05:30.050
+This is how the designer designed it.
+
+05:30.850 --> 05:34.510
+This is how the engineer and developer built it.
+
+05:35.330 --> 05:38.480
+And this is how the customer really wanted it.
+
+05:38.630 --> 05:46.610
+So you can see from step one to step five, we've got some massively different ideas about what the
+
+05:46.610 --> 05:48.290
+end result was supposed to be.
+
+05:48.650 --> 05:54.860
+Now, this is a rather extreme way of representing the idea that everybody heard something different.
+
+05:55.490 --> 06:00.020
+But I got to tell you that it's not really that uncommon.
+
+06:00.020 --> 06:06.720
+And it's also not very hard for people to have different understandings of what's being said.
+
+06:06.740 --> 06:08.900
+We all have our own language, right?
+
+06:08.900 --> 06:14.810
+We all have our own sort of mental models about the way things work as we as we discussed briefly.
+
+06:15.140 --> 06:22.340
+And it's just not uncommon for everyone to walk away from the table thinking slightly differently about
+
+06:22.340 --> 06:23.690
+what the end result could be.
+
+06:23.690 --> 06:30.290
+But the bottom line is this strategy becomes a scope when those things that we talked about earlier,
+
+06:30.290 --> 06:35.750
+user needs, business objectives are turned into requirements for content and functionality.
+
+06:35.760 --> 06:36.020
+Okay?
+
+06:36.060 --> 06:43.620
+Things that say very explicitly, here's what we're building, here's what it's going to contain, here's
+
+06:43.620 --> 06:50.640
+how it's going to function that provides a benchmark for every single person involved so that hopefully
+
+06:50.640 --> 06:52.500
+everybody is on the same page.
+
+06:52.500 --> 06:54.480
+Okay, You start with functional specs.
+
+06:54.480 --> 06:56.550
+You say, here's the feature set.
+
+06:56.580 --> 07:03.240
+This is what we're creating, this is what it's going to do from a content standpoint, what information
+
+07:03.240 --> 07:06.150
+do we need in order to provide value to people?
+
+07:06.150 --> 07:07.530
+Is it photographs?
+
+07:07.530 --> 07:09.330
+Is it audio, is it video?
+
+07:09.480 --> 07:17.130
+Is it, you know, statistical research data where they can plug in questions or search for data and
+
+07:17.130 --> 07:25.440
+statistics, whatever it is, Content has to be defined because without content you have no idea the
+
+07:25.440 --> 07:32.430
+size or depth or length or time and effort required to complete the project.
+
+07:32.730 --> 07:39.330
+Then we move to the structure plane, which again has two components It's interaction design, meaning
+
+07:39.330 --> 07:42.780
+how do people interact with the things on the screen?
+
+07:42.780 --> 07:45.090
+What happens, What behaviors occur?
+
+07:45.090 --> 07:48.000
+How does the system react when somebody does something?
+
+07:48.390 --> 07:54.570
+Information architecture, which goes back to how much stuff is there for us to look at, interpret,
+
+07:54.570 --> 07:56.400
+read, interact with?
+
+07:56.430 --> 07:56.910
+Okay.
+
+07:56.910 --> 07:58.860
+And how is it organized?
+
+07:59.040 --> 08:03.390
+Scope, which we talked about previously, is given structure.
+
+08:03.390 --> 08:08.340
+When we define how the system responds to things that the user does, okay.
+
+08:08.340 --> 08:15.690
+If the user clicks a button, if the user pulls down a menu, what happens if the user submits a form?
+
+08:15.690 --> 08:19.140
+What happens if they go through a checkout process?
+
+08:19.140 --> 08:20.430
+What happens?
+
+08:20.430 --> 08:26.100
+All those responses think of it in terms of user action system response.
+
+08:26.100 --> 08:29.520
+All those responses help us define structure.
+
+08:29.550 --> 08:37.190
+The interaction design part of that structure is essentially a series of patterns of sequences, okay?
+
+08:37.230 --> 08:41.540
+Things that happen that give the user options at any given stage.
+
+08:41.550 --> 08:44.700
+Think of it as sort of a call and response.
+
+08:44.700 --> 08:48.930
+I do this and then I get that it's a sequence of options.
+
+08:48.930 --> 08:51.960
+It's a sequence of feedback, of response.
+
+08:52.050 --> 08:56.370
+The information architecture part again, is dealing with the volume of content.
+
+08:56.370 --> 08:58.680
+How is it arranged, how is it organized?
+
+08:58.680 --> 09:03.180
+And not just within each screen, but across the entire product?
+
+09:03.180 --> 09:10.860
+If you have a large application that has hundreds of screens or if you have an enterprise level website
+
+09:10.860 --> 09:18.360
+that has hundreds of screens, you have some very serious information architecture challenges and the
+
+09:18.360 --> 09:26.250
+ways in which you solve those challenges is kind of the meat and the bones that make up the structure
+
+09:26.250 --> 09:27.930
+part of user experience.
+
+09:28.740 --> 09:36.150
+The skeleton plane is made up of interface design, which is what are the elements on screen that people
+
+09:36.150 --> 09:42.150
+can interact with and navigation design, which is essentially how do they move through all those things,
+
+09:42.150 --> 09:42.310
+right?
+
+09:42.360 --> 09:44.070
+What controls are available to them?
+
+09:44.070 --> 09:50.670
+What means of transportation, for lack of a better term, are available to them to get from point A
+
+09:50.670 --> 09:53.250
+to point B to point C and back again?
+
+09:54.000 --> 09:54.930
+On the skeleton plane.
+
+09:54.930 --> 09:58.800
+We're starting to figure out what is going to appear on the screen.
+
+09:58.800 --> 09:59.100
+Okay.
+
+09:59.160 --> 10:00.570
+How much of it is there?
+
+10:00.570 --> 10:02.190
+How are we going to segregate it?
+
+10:02.220 --> 10:04.320
+How are we going to organize it?
+
+10:04.350 --> 10:09.210
+How are we going to clearly communicate all the options that are available?
+
+10:09.210 --> 10:13.980
+And quite frankly, how are we going to fit them all on something that, you know, feels like the equivalent
+
+10:13.980 --> 10:15.690
+of the surface of a cup of coffee?
+
+10:16.650 --> 10:17.340
+Right?
+
+10:17.370 --> 10:18.840
+It's a tall task.
+
+10:18.840 --> 10:27.510
+So the structure part that we talked about informs this piece structure, tells us what it could possibly
+
+10:27.510 --> 10:34.290
+look like and how people are going to move through those available tasks and how they're going to absorb
+
+10:34.290 --> 10:36.900
+and utilize the information that's presented.
+
+10:36.900 --> 10:42.120
+So the interface design part is all about figuring out how to arrange that and how to present it.
+
+10:42.120 --> 10:45.450
+It's all about the visual elements that people interact with on the screen.
+
+10:46.070 --> 10:47.240
+The navigation design.
+
+10:47.240 --> 10:53.540
+Part of that, as we said, provides elements on screen elements, navigation items that allow the user
+
+10:53.540 --> 10:57.230
+to move through tasks and information in a way that that makes sense to them.
+
+10:57.230 --> 11:01.730
+It's obvious, it's clear, it's simple, it's intuitive.
+
+11:01.910 --> 11:07.820
+And what intuitive really means is that it's obvious to some degree.
+
+11:07.850 --> 11:08.510
+Number one.
+
+11:08.510 --> 11:15.440
+And number two, it fits with that person's expectation of how to move through that information.
+
+11:15.440 --> 11:17.650
+In other words, it matches their mental model.
+
+11:17.660 --> 11:18.350
+Okay.
+
+11:19.080 --> 11:23.790
+They have an idea of how they could possibly get around and do things.
+
+11:23.790 --> 11:30.990
+And your goal is to provide something that's in line with that idea, with that expectation.
+
+11:31.730 --> 11:37.070
+Again, the most concrete expression of user experience design is the surface plane.
+
+11:37.100 --> 11:37.610
+Why?
+
+11:37.640 --> 11:44.300
+Because on the surface plane, that's where we have visual design commonly referred to as look and feel.
+
+11:44.600 --> 11:51.890
+Although I was never really sure what the feel part meant, but for better or worse, that's what it
+
+11:51.890 --> 11:52.340
+is.
+
+11:52.370 --> 11:52.730
+Okay.
+
+11:52.730 --> 11:54.590
+It's what does it actually look like?
+
+11:54.620 --> 11:54.860
+Okay.
+
+11:54.860 --> 11:56.390
+What are people actually going to see?
+
+11:56.420 --> 11:57.500
+What colors are we using?
+
+11:57.500 --> 11:58.700
+What fonts are we using?
+
+11:58.700 --> 12:02.180
+What kinds of images are we showing?
+
+12:02.600 --> 12:05.540
+How does all this stuff really manifest itself visually?
+
+12:05.570 --> 12:11.870
+So visual design is made up of colors, images, typography and effects, and all those things come
+
+12:11.870 --> 12:14.060
+together in a very specific way.
+
+12:14.060 --> 12:14.300
+Okay.
+
+12:14.330 --> 12:17.030
+Visual decisions should never be arbitrary.
+
+12:17.060 --> 12:22.250
+The choices you make in terms of what colors you use, what fonts you pick, what types of photography
+
+12:22.250 --> 12:24.860
+that you use, should be very specific.
+
+12:24.890 --> 12:31.160
+They should serve specific goals such as to support and reinforce the meaning of the content that's
+
+12:31.160 --> 12:32.160
+being presented.
+
+12:32.190 --> 12:38.970
+There has to be some level of understanding of effective communication taking place, and that is enabled
+
+12:38.970 --> 12:46.170
+not only by words but by images, but by colors, by interactions.
+
+12:46.470 --> 12:52.890
+So all those things are specifically chosen to help guide the user where it's applicable, to do so
+
+12:52.890 --> 12:56.070
+through data, through tasks or through information.
+
+12:56.070 --> 13:03.510
+There's wayfinding that happens just like, you know, a good map would serve you well in a large city.
+
+13:03.510 --> 13:04.800
+This is really no different.
+
+13:05.040 --> 13:11.040
+Good visual design also reduces cognitive load, recognize more, remember less.
+
+13:11.040 --> 13:14.760
+So we're enabling recognition, which enables intuitive learning.
+
+13:14.760 --> 13:17.880
+If we can recognize something, then we can understand it.
+
+13:17.880 --> 13:20.640
+And if we understand it, then we can use it.
+
+13:20.790 --> 13:27.870
+And finally, the visual design choice is made on the screen, have to be culturally and socially appropriate.
+
+13:27.870 --> 13:34.020
+And when I say culture, I don't just mean, you know, whether you're from the United States or from
+
+13:34.020 --> 13:40.920
+Africa or from Italy or from Spain or whatever, it's not just a matter of being from a different ethnic
+
+13:40.920 --> 13:42.450
+background or a different country.
+
+13:42.810 --> 13:44.670
+Culturally specific means.
+
+13:44.910 --> 13:52.620
+If you're designing something for investment bankers, then you probably wouldn't take the same type
+
+13:52.620 --> 13:59.280
+of visual approach that you would for a hard rock or heavy metal record label.
+
+13:59.640 --> 14:04.470
+Okay, Those are two very different audiences, two very different cultures.
+
+14:04.470 --> 14:08.730
+So the look and feel should be appropriate to the type of audience.
+
+14:09.090 --> 14:15.930
+A lot of times when design fails, it's because the designers or the developers or the creators don't
+
+14:15.930 --> 14:17.760
+understand the user's culture.

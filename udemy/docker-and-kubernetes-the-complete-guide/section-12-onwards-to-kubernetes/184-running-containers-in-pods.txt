@@ -1,0 +1,694 @@
+WEBVTT
+
+00:00.750 --> 00:03.240
+-: In the last section, we expanded upon the API version
+
+00:03.240 --> 00:06.540
+and kind properties inside of both our config files.
+
+00:06.540 --> 00:09.210
+We're now going to start to talk about what a pod is
+
+00:09.210 --> 00:10.170
+and then we'll very quickly
+
+00:10.170 --> 00:12.960
+talk about what a service is as well.
+
+00:12.960 --> 00:14.790
+Okay, so a pod.
+
+00:14.790 --> 00:16.920
+All right, quick diagram.
+
+00:16.920 --> 00:19.140
+Let's find it here, here we go.
+
+00:19.140 --> 00:20.610
+All right, so just a moment ago
+
+00:20.610 --> 00:22.170
+when we went through that setup process
+
+00:22.170 --> 00:26.040
+to install Minikube and kubectl on your local machine.
+
+00:26.040 --> 00:28.110
+Remember we installed Minikube
+
+00:28.110 --> 00:31.470
+and then we ran that command Minikube, start.
+
+00:31.470 --> 00:32.670
+When we ran that command
+
+00:32.670 --> 00:36.420
+it created a new virtual machine on your computer.
+
+00:36.420 --> 00:37.950
+We referred to that virtual machine
+
+00:37.950 --> 00:41.820
+that is now running on your computer as a node,
+
+00:41.820 --> 00:44.310
+that node is going to be used by Kubernetes
+
+00:44.310 --> 00:47.760
+to run some number of different objects.
+
+00:47.760 --> 00:50.040
+Now, one of the most basic objects that you and I
+
+00:50.040 --> 00:51.720
+are going to create throughout this course
+
+00:51.720 --> 00:54.780
+is something that we're refer to as a pod.
+
+00:54.780 --> 00:56.970
+And so when we start to load up
+
+00:56.970 --> 01:00.090
+this configuration file right here into kubectl,
+
+01:00.090 --> 01:02.430
+we're going to push into kubectl
+
+01:02.430 --> 01:04.410
+and it's going to create a pod
+
+01:04.410 --> 01:07.200
+inside of that virtual machine
+
+01:07.200 --> 01:08.730
+that is running on your computer
+
+01:08.730 --> 01:12.960
+and remember, we, we refer to that thing as a node.
+
+01:12.960 --> 01:16.830
+Now the pod itself is essentially a grouping of containers
+
+01:16.830 --> 01:19.200
+with a very common purpose.
+
+01:19.200 --> 01:21.720
+Now, you might be wondering why we're making a pod
+
+01:21.720 --> 01:24.030
+that has a grouping of containers
+
+01:24.030 --> 01:25.927
+when just a moment ago I had told you,
+
+01:25.927 --> 01:29.400
+"Oh yeah, we want to get something running as a container."
+
+01:29.400 --> 01:30.870
+Well, in the Kubernetes world
+
+01:30.870 --> 01:32.400
+there is no such thing
+
+01:32.400 --> 01:36.270
+as just creating a container on a cluster.
+
+01:36.270 --> 01:39.570
+Back with Elastic Beanstalk, back with Docker Compose,
+
+01:39.570 --> 01:42.210
+we were creating containers willy nilly all day,
+
+01:42.210 --> 01:44.103
+no issue what's whatsoever,
+
+01:44.940 --> 01:46.350
+but in the world of Kubernetes,
+
+01:46.350 --> 01:48.720
+we do not have the ability to just run
+
+01:48.720 --> 01:52.260
+one naked single container by itself
+
+01:52.260 --> 01:55.020
+with no associated overhead.
+
+01:55.020 --> 01:59.280
+The smallest thing that you and I can deploy is a pod.
+
+01:59.280 --> 02:01.560
+So we're always going to be declaring, or excuse me,
+
+02:01.560 --> 02:05.310
+we're always going to be deploying containers within a pod.
+
+02:05.310 --> 02:07.560
+That's the smallest thing that we can deploy
+
+02:07.560 --> 02:09.363
+to run a single container.
+
+02:10.890 --> 02:12.540
+Now, you might be wondering why is that?
+
+02:12.540 --> 02:14.610
+Why would we make a pod at all?
+
+02:14.610 --> 02:16.920
+Well, let's talk about why we would make a pod.
+
+02:16.920 --> 02:18.150
+So the requirement of a pod
+
+02:18.150 --> 02:21.810
+is that we must run one or more containers inside of it.
+
+02:21.810 --> 02:23.850
+Now, when I say one or more containers
+
+02:23.850 --> 02:25.320
+you might very quickly think back
+
+02:25.320 --> 02:28.950
+to the multi-container application that we put together.
+
+02:28.950 --> 02:30.930
+As a, let's pull up a quick diagram of that thing,
+
+02:30.930 --> 02:33.900
+I've got one around here somewhere, here we go.
+
+02:33.900 --> 02:36.870
+So back on the multi-container application we put together
+
+02:36.870 --> 02:38.730
+we had our Elastic Beanstalk
+
+02:38.730 --> 02:40.890
+and it was running multiple different containers
+
+02:40.890 --> 02:43.530
+all in this single little grouping.
+
+02:43.530 --> 02:45.780
+And so when I tell you that inside of a pod
+
+02:45.780 --> 02:47.790
+we will run one or more containers,
+
+02:47.790 --> 02:48.727
+you might be thinking,
+
+02:48.727 --> 02:50.940
+"Oh, okay, that's it, like game over.
+
+02:50.940 --> 02:53.400
+We're gonna take our four containers or four images
+
+02:53.400 --> 02:55.800
+right here and create four of these containers
+
+02:55.800 --> 02:58.140
+inside of this one single pod."
+
+02:58.140 --> 03:00.510
+Well, that would definitely be an option,
+
+03:00.510 --> 03:03.930
+but it's not what a pod is meant to do.
+
+03:03.930 --> 03:07.020
+The purpose of a pod is meant to group, it is, excuse me,
+
+03:07.020 --> 03:10.080
+the purpose of a pod is to allow the grouping of containers
+
+03:10.080 --> 03:12.930
+with a very similar purpose,
+
+03:12.930 --> 03:14.760
+where containers that absolutely,
+
+03:14.760 --> 03:17.430
+positively must be deployed together
+
+03:17.430 --> 03:20.280
+and must be running together in order for our application
+
+03:20.280 --> 03:21.630
+to work correctly.
+
+03:21.630 --> 03:23.947
+Now, even when I say that you might be thinking,
+
+03:23.947 --> 03:26.550
+"Well, Steven, back here on this application,
+
+03:26.550 --> 03:29.700
+we had to have the express server deployed with NGINX
+
+03:29.700 --> 03:31.380
+up here to serve the React application
+
+03:31.380 --> 03:33.960
+or respond to API calls."
+
+03:33.960 --> 03:34.793
+So you might be thinking,
+
+03:34.793 --> 03:36.450
+"Yeah, you know, this thing had to have
+
+03:36.450 --> 03:37.920
+all these different containers put together
+
+03:37.920 --> 03:39.390
+to work correctly."
+
+03:39.390 --> 03:42.420
+Well, actually, that's not a hundred percent accurate.
+
+03:42.420 --> 03:44.100
+You see, back on this application,
+
+03:44.100 --> 03:48.330
+if our worker container over here crashed for any reason
+
+03:48.330 --> 03:51.243
+the rest of the application would still function A-okay.
+
+03:52.320 --> 03:55.680
+If the NGINX React server right here failed,
+
+03:55.680 --> 03:58.860
+well everything would still pretty much work correctly.
+
+03:58.860 --> 04:01.500
+If the express API closed down,
+
+04:01.500 --> 04:04.650
+well everything else would at least kind of still function.
+
+04:04.650 --> 04:05.483
+In other words,
+
+04:05.483 --> 04:08.040
+if we take away the vast majority of these containers,
+
+04:08.040 --> 04:09.810
+the rest of the containers inside the group
+
+04:09.810 --> 04:13.080
+are still going to generally function the way we expect.
+
+04:13.080 --> 04:14.400
+It's definitely not ideal,
+
+04:14.400 --> 04:17.040
+but they would definitely continue to work.
+
+04:17.040 --> 04:18.540
+Now, in the world of a pod
+
+04:18.540 --> 04:20.430
+when we start to group together containers,
+
+04:20.430 --> 04:22.170
+we are grouping together containers
+
+04:22.170 --> 04:24.450
+that have a very discreet,
+
+04:24.450 --> 04:26.820
+very tightly coupled relationship.
+
+04:26.820 --> 04:28.140
+In other words, these are containers
+
+04:28.140 --> 04:30.930
+that absolutely have a tight integration
+
+04:30.930 --> 04:33.600
+and must be executed with each other.
+
+04:33.600 --> 04:35.490
+So as an example,
+
+04:35.490 --> 04:39.030
+let's imagine a pod that is running three containers
+
+04:39.030 --> 04:40.260
+that you see right here.
+
+04:40.260 --> 04:43.560
+This would be a good example of when we would use a pod
+
+04:43.560 --> 04:45.333
+with multiple containers.
+
+04:46.200 --> 04:49.620
+So in this example, I've got a Postgres container,
+
+04:49.620 --> 04:51.660
+so that's running the Postgres database.
+
+04:51.660 --> 04:55.050
+And then in addition to that we've got two other containers.
+
+04:55.050 --> 04:57.960
+Now, these are imaginary images that I've listed here,
+
+04:57.960 --> 05:01.380
+so there is no image called logger that I know of,
+
+05:01.380 --> 05:04.110
+there probably is, but, yeah I'm just making this thing up
+
+05:04.110 --> 05:07.170
+and I don't really know of any image called backup manager.
+
+05:07.170 --> 05:09.180
+So again, these are two imaginary containers
+
+05:09.180 --> 05:11.610
+that we're just kind of pretending exist.
+
+05:11.610 --> 05:13.620
+You could pretend that the logger container
+
+05:13.620 --> 05:15.510
+might need to connect over to Postgres
+
+05:15.510 --> 05:17.340
+and store some database logs
+
+05:17.340 --> 05:19.980
+and maybe this backup manager needs to connect
+
+05:19.980 --> 05:22.740
+to the Postgres container and do a sequel dump
+
+05:22.740 --> 05:25.050
+or something like that and make a backup of all the data
+
+05:25.050 --> 05:26.880
+inside that database.
+
+05:26.880 --> 05:28.770
+And so again, this would be a very good example
+
+05:28.770 --> 05:32.580
+of why we would want to use a pod with multiple containers.
+
+05:32.580 --> 05:34.260
+A logger like this right here
+
+05:34.260 --> 05:37.440
+is a hundred percent intended to connect
+
+05:37.440 --> 05:39.090
+to this Postgres container
+
+05:39.090 --> 05:41.520
+and pull some information out of it.
+
+05:41.520 --> 05:43.440
+If the Postgres container goes away,
+
+05:43.440 --> 05:46.170
+the logger a hundred percent worthless.
+
+05:46.170 --> 05:49.350
+No two ways about it, the logger is completely useless
+
+05:49.350 --> 05:50.970
+at that point in time
+
+05:50.970 --> 05:53.280
+and it's the same thing with the backup manager as well.
+
+05:53.280 --> 05:54.270
+The backup manager
+
+05:54.270 --> 05:56.760
+might need to reach into this Postgres container
+
+05:56.760 --> 06:00.570
+and pull out some information to make a database backup.
+
+06:00.570 --> 06:03.030
+And so the backup manager a hundred percent
+
+06:03.030 --> 06:05.010
+has a very tight integration,
+
+06:05.010 --> 06:07.950
+very close relationship with the Postgres container
+
+06:07.950 --> 06:09.810
+and again, if that container goes away,
+
+06:09.810 --> 06:12.180
+the backup manager no two ways about it,
+
+06:12.180 --> 06:14.403
+a hundred percent worthless.
+
+06:15.360 --> 06:17.850
+So again, in the world of Kubernetes,
+
+06:17.850 --> 06:21.420
+we make use of pods as the smallest thing
+
+06:21.420 --> 06:22.740
+that we can deploy.
+
+06:22.740 --> 06:25.830
+We cannot deploy individual containers by themselves
+
+06:25.830 --> 06:30.030
+as we could with Docker Compose or Elastic Beanstalk.
+
+06:30.030 --> 06:31.800
+Anytime we want to deploy a container
+
+06:31.800 --> 06:35.340
+in the world of Kubernetes, we have to make use of a pod.
+
+06:35.340 --> 06:38.490
+A pod can run one or more containers inside of it.
+
+06:38.490 --> 06:41.130
+Inside this course, you and I are only going to be running
+
+06:41.130 --> 06:43.380
+one container inside of any given pod,
+
+06:43.380 --> 06:45.780
+but reasons that you might want to add in more containers
+
+06:45.780 --> 06:47.430
+is if you have some other containers
+
+06:47.430 --> 06:50.580
+that have a very, very tight integration
+
+06:50.580 --> 06:53.013
+with other containers that exist inside the pod.
+
+06:53.940 --> 06:55.350
+So with all that in mind,
+
+06:55.350 --> 06:58.680
+if we flip back over to our client pod dot yaml file,
+
+06:58.680 --> 07:02.310
+again we're specifying a object type of pod inside of here
+
+07:02.310 --> 07:03.143
+and hopefully now
+
+07:03.143 --> 07:04.710
+some of the other configurations inside of here
+
+07:04.710 --> 07:06.543
+might make a little bit more sense.
+
+07:07.560 --> 07:09.750
+We are creating a pod that's going to run
+
+07:09.750 --> 07:11.970
+one container inside of it.
+
+07:11.970 --> 07:13.590
+We're going to give that container
+
+07:13.590 --> 07:15.900
+an arbitrary name of client.
+
+07:15.900 --> 07:18.690
+The name of client right here is for our purposes,
+
+07:18.690 --> 07:20.640
+largely going to be related to logging
+
+07:20.640 --> 07:22.800
+and giving us the ability to reference
+
+07:22.800 --> 07:24.270
+this running container,
+
+07:24.270 --> 07:25.890
+but if we were running other containers
+
+07:25.890 --> 07:29.070
+inside of here as well, we could also use this name property
+
+07:29.070 --> 07:31.380
+to get some networking or connections
+
+07:31.380 --> 07:32.970
+between these different containers
+
+07:32.970 --> 07:35.340
+that are running inside the single pod.
+
+07:35.340 --> 07:36.960
+The image property, well, I get,
+
+07:36.960 --> 07:38.430
+bet you can guess what that is.
+
+07:38.430 --> 07:41.010
+That's the name of the image or the repository
+
+07:41.010 --> 07:43.440
+off on Docker Hub that this container
+
+07:43.440 --> 07:45.300
+is going to be made out of.
+
+07:45.300 --> 07:48.930
+And then finally, the ports entry on here is, eh, you know,
+
+07:48.930 --> 07:51.450
+it's kind of like that port, excuse me,
+
+07:51.450 --> 07:53.610
+that port mapping stuff that we were doing before.
+
+07:53.610 --> 07:55.620
+The ports of container port right here
+
+07:55.620 --> 07:58.470
+is essentially saying that on this container
+
+07:58.470 --> 08:01.680
+that we're going to create, we want to expose Port 3000
+
+08:01.680 --> 08:03.030
+to the outside world.
+
+08:03.030 --> 08:03.863
+And you might be curious,
+
+08:03.863 --> 08:06.360
+why are we exposing Port 3000 in particular
+
+08:06.360 --> 08:07.650
+to the outside world?
+
+08:07.650 --> 08:11.760
+Well, if you recall, back to our multi-client project
+
+08:11.760 --> 08:14.310
+here's the source code for multi-client right here.
+
+08:14.310 --> 08:16.080
+There's the client directory.
+
+08:16.080 --> 08:17.940
+We had created a NGINX server
+
+08:17.940 --> 08:20.430
+that runs inside of that container
+
+08:20.430 --> 08:22.770
+and it listens on Port 3000.
+
+08:22.770 --> 08:26.190
+So we set up that container Port 3000 right here,
+
+08:26.190 --> 08:28.320
+because we're going to eventually want to expose
+
+08:28.320 --> 08:30.600
+Port 3000 to the outside world.
+
+08:30.600 --> 08:32.130
+So this line, at least right here,
+
+08:32.130 --> 08:33.690
+is very similar to some of the stuff
+
+08:33.690 --> 08:35.430
+that we did back inside of our
+
+08:35.430 --> 08:39.000
+docker run dot AWS dot JSON file with Elastic Beanstalk
+
+08:39.000 --> 08:40.920
+and it's also similar to some of the stuff that we did
+
+08:40.920 --> 08:43.230
+inside of our docker compose file as well.
+
+08:43.230 --> 08:45.300
+This is setting up our port mapping.
+
+08:45.300 --> 08:47.760
+Now, one thing I wanna be really really clear about
+
+08:47.760 --> 08:51.300
+is that this is not the full story of port mapping
+
+08:51.300 --> 08:53.190
+inside the world of Kubernetes.
+
+08:53.190 --> 08:54.900
+This line of code right here alone,
+
+08:54.900 --> 08:57.870
+is not going to give us access to Port 3000
+
+08:57.870 --> 08:59.670
+inside of our running container.
+
+08:59.670 --> 09:01.680
+In order to get that networking set up,
+
+09:01.680 --> 09:04.290
+that was the entire job of the second configuration file
+
+09:04.290 --> 09:05.430
+we put together
+
+09:05.430 --> 09:07.650
+and so that's gonna serve as a nice segue.
+
+09:07.650 --> 09:09.060
+Let's take a quick break right here,
+
+09:09.060 --> 09:11.010
+when we come back, we're going to start talking about
+
+09:11.010 --> 09:13.770
+the purpose of this service object
+
+09:13.770 --> 09:16.320
+that we put together inside the second file as well.
+
+09:16.320 --> 09:18.770
+So quick pause and I'll see you in just a minute.

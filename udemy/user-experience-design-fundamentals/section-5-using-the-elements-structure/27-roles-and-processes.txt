@@ -1,0 +1,259 @@
+WEBVTT
+
+00:00.910 --> 00:05.050
+Let's talk about the rules and processes involved in creating structure.
+
+00:05.100 --> 00:05.290
+Okay.
+
+00:05.320 --> 00:07.570
+And the first question is who does what?
+
+00:07.600 --> 00:13.870
+It's still pretty common for web development teams to have no one who's explicitly responsible for creating
+
+00:13.870 --> 00:14.550
+structure.
+
+00:14.560 --> 00:20.410
+So what happens is that it typically lands in a lap of the developer unless you happen to have a designer
+
+00:20.410 --> 00:21.950
+involved as well.
+
+00:21.970 --> 00:28.390
+In an ideal situation, you have an information architect on the team whose job it is to deal specifically
+
+00:28.390 --> 00:33.010
+with issues related to information, organization and related interaction design.
+
+00:33.010 --> 00:39.550
+But as time goes by, what I'm seeing a lot of is that the information architect role is slowly being
+
+00:39.580 --> 00:46.060
+folded into either design or development, which may or may not be a bad thing depending on your perspective.
+
+00:46.090 --> 00:49.360
+But whether or not you have a specialist to address.
+
+00:49.360 --> 00:51.460
+Structure isn't really that important.
+
+00:51.460 --> 00:54.340
+What's important is that somebody needs to do it.
+
+00:54.370 --> 00:55.780
+Someone needs to own it.
+
+00:55.780 --> 01:02.740
+Someone needs to be responsible for it and it has to be addressed as a specific, unique concern.
+
+01:03.070 --> 01:09.250
+There are multiple ways to communicate structure, and those methods vary based on the complexity of
+
+01:09.250 --> 01:16.360
+what's being produced for projects that have a very high volume of content and are using a strict hierarchy
+
+01:16.360 --> 01:17.640
+in terms of structure.
+
+01:17.650 --> 01:21.790
+Text outlines are a lot of times enough to document architecture.
+
+01:21.790 --> 01:28.330
+Okay, it's nothing more than a basic outline like what you see here, where major categories, sub
+
+01:28.330 --> 01:34.600
+categories and subcategories of those sub categories are shown in a basic outline list.
+
+01:34.600 --> 01:40.300
+So in a lot of cases, if your hierarchy is very simple and straightforward, this is all you need.
+
+01:40.510 --> 01:45.940
+You can also use what's called a visual vocabulary, a term that was coined by Jesse James Garrett,
+
+01:45.970 --> 01:49.140
+who is the author of the book Elements of User Experience.
+
+01:49.150 --> 01:52.950
+His system for Diagramming Structures looks like this.
+
+01:52.960 --> 01:59.680
+This is an example of a very simple structure where under a main screen home screen, we have three
+
+01:59.680 --> 02:05.090
+categories media products, support, and under each one there are varying types of content.
+
+02:05.120 --> 02:08.130
+It's very simple, it's very straightforward, but it's visual, okay?
+
+02:08.150 --> 02:14.030
+And it gives us a sense of how things are related to one another and how things are prioritized.
+
+02:14.030 --> 02:20.270
+And it also is very clear what is a subcategory of a main category.
+
+02:20.450 --> 02:25.610
+Visual vocabulary can also be used to diagram interaction variables.
+
+02:25.610 --> 02:26.900
+And here's what we mean by that.
+
+02:26.900 --> 02:33.440
+In this case, this version of visual vocabulary, I am coming from a different location.
+
+02:33.440 --> 02:35.990
+In this case, I'm continuing from a home screen.
+
+02:35.990 --> 02:39.560
+I hit a login page where one of two things happen.
+
+02:39.560 --> 02:44.210
+Either I log in successfully, which means I go through the regular login flow and I wind up at, let's
+
+02:44.210 --> 02:50.150
+say, latest news, or if my login information is incorrect and the system says Nope, wrong username,
+
+02:50.150 --> 02:51.050
+wrong password.
+
+02:51.050 --> 02:53.750
+It sends me back to the login page to try again.
+
+02:53.750 --> 02:55.940
+That's a condition, that's a variable.
+
+02:55.940 --> 03:00.950
+It's an interaction that either is completed successfully or unsuccessfully.
+
+03:00.950 --> 03:04.760
+If I go on to latest news now, I have some additional options.
+
+03:04.760 --> 03:09.110
+If you look at one A, that's called a conditional selector, which essentially means I have options
+
+03:09.110 --> 03:14.900
+available to me that are a result of me landing on this particular section of the app or the site.
+
+03:14.900 --> 03:20.810
+So one of those options may be, okay, once I get there, I have technical papers available to me.
+
+03:20.810 --> 03:25.100
+That's one of the things I can choose, or maybe I can just go somewhere else.
+
+03:25.100 --> 03:27.680
+I can continue on to a member list.
+
+03:27.680 --> 03:27.920
+Okay.
+
+03:27.920 --> 03:33.200
+So it's very visual in the sense that it helps you visualize what the process is, but it shows the
+
+03:33.200 --> 03:33.950
+variables.
+
+03:33.950 --> 03:39.440
+We're not only documenting artifacts and pieces of information, we're also documenting the flows and
+
+03:39.440 --> 03:46.580
+processes that allow us to access those pieces of information in a case where we have a very high volume
+
+03:46.580 --> 03:53.210
+of content in a hub and spoke type situation where we start from a central hub, we move out to a spoke
+
+03:53.240 --> 03:59.870
+to read, absorb, manipulate, act on things, and then we return back to the hub For that type of
+
+03:59.870 --> 04:00.710
+project.
+
+04:00.740 --> 04:07.550
+We typically use diagrams that look like this that show us the central hub, which in this case is producers
+
+04:07.550 --> 04:08.750
+and the related spokes.
+
+04:08.750 --> 04:15.410
+And in some cases, as you can see in this larger version, some of those spokes have multiple areas
+
+04:15.410 --> 04:18.530
+and multiple choices and multiple pieces of information as well.
+
+04:18.530 --> 04:22.970
+Sometimes the spokes have sub spokes where you can venture out and come back.
+
+04:23.000 --> 04:26.360
+So this is just another way of visually representing.
+
+04:26.360 --> 04:31.430
+What happens here is yet another example of a visual diagram.
+
+04:31.430 --> 04:34.060
+This one is called a decision path, okay?
+
+04:34.070 --> 04:37.550
+Which from left to right, it starts with who the audience is.
+
+04:37.580 --> 04:40.010
+In this case, this is a prospective insurance agent.
+
+04:40.010 --> 04:46.010
+And when that person hits the first screen of the site or the app or the system, you ask yourself,
+
+04:46.010 --> 04:47.360
+what are the questions that they have?
+
+04:47.360 --> 04:49.010
+What are the things that they need to be able to do?
+
+04:49.010 --> 04:51.080
+In this case, it's how do I get contracted?
+
+04:51.080 --> 04:54.290
+What products can I sell, What are the ratings for these products?
+
+04:54.290 --> 05:00.140
+And as you move from left to right, you expose what choices exist in each.
+
+05:00.170 --> 05:02.330
+One of the options that the person may choose.
+
+05:02.330 --> 05:03.590
+So it's a decision path.
+
+05:03.590 --> 05:08.090
+What do I need to see and how does that motivate me to act?
+
+05:08.120 --> 05:09.980
+What might I do next?
+
+05:10.010 --> 05:16.550
+The point is that diagrams, no matter what kind they are, should always focus on relationships between
+
+05:16.550 --> 05:17.330
+content.
+
+05:17.360 --> 05:18.980
+What categories go together?
+
+05:18.980 --> 05:20.030
+Which ones don't?
+
+05:20.060 --> 05:23.150
+How do the steps in an interaction sequence fit together?
+
+05:23.180 --> 05:25.340
+How do people move through this information?
+
+05:25.340 --> 05:28.100
+How do we expect them to move through the information?
+
+05:28.100 --> 05:32.720
+And quite frankly, how do they expect to step through this information?
+
+05:32.750 --> 05:38.900
+All those things are very important, but it's critical that in whatever format you choose, you document
+
+05:38.900 --> 05:42.290
+this in some way so that you can think through the process.

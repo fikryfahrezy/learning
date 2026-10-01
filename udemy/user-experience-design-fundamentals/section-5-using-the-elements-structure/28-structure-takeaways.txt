@@ -1,0 +1,64 @@
+WEBVTT
+
+00:01.010 --> 00:05.510
+So here are some important takeaways to remember when you're thinking about structure.
+
+00:05.540 --> 00:11.210
+Good structure organizes information in a way that provides intuitive access to content.
+
+00:11.210 --> 00:17.480
+And because it bears repeating, remember what we said about the meaning of the word intuitive?
+
+00:17.510 --> 00:20.390
+It means single trial learning.
+
+00:20.420 --> 00:21.500
+Do it once.
+
+00:21.500 --> 00:22.850
+Remember it forever.
+
+00:22.880 --> 00:28.310
+Structure is created by interaction design, which means presenting information in a way people can
+
+00:28.310 --> 00:30.470
+understand and interact with it.
+
+00:30.590 --> 00:37.940
+Structure is also created by information architecture, which is the combination of organization, labeling,
+
+00:37.940 --> 00:42.590
+search and navigation systems within any digital product.
+
+00:43.360 --> 00:49.660
+Structure should always be appropriate for the audience and flexible to accommodate change, which is
+
+00:49.660 --> 00:50.580
+inevitable.
+
+00:50.590 --> 00:54.250
+Whether you have a specialist to address structure or not is an important.
+
+00:54.250 --> 00:56.890
+But remember that somebody needs to do it.
+
+00:56.890 --> 01:04.040
+Somebody needs to be responsible for it and above all else, focus on the relationships between content.
+
+01:04.060 --> 01:07.330
+Think about which categories go together and which don't.
+
+01:07.360 --> 01:11.770
+Think about the ways in which the steps in an interaction sequence fit together.
+
+01:11.770 --> 01:13.240
+What makes sense?
+
+01:13.240 --> 01:18.400
+What makes sense in order to complete the task at hand, and what is going to make sense to the user
+
+01:18.400 --> 01:23.860
+based on their expectation, based on their prior experience, how can you leverage that to create a
+
+01:23.860 --> 01:28.120
+structure that responds appropriately to user needs and expectations?

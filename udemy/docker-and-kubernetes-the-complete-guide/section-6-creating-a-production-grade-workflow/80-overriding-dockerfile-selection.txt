@@ -1,0 +1,154 @@
+WEBVTT
+
+00:00.690 --> 00:01.523
+Narrator: In the last section
+
+00:01.523 --> 00:03.300
+we created a docker compose file
+
+00:03.300 --> 00:06.870
+to avoid having to run that really long docker run command.
+
+00:06.870 --> 00:10.110
+However, when we tried to test out that docker compose file,
+
+00:10.110 --> 00:11.580
+we ran into a little bit of an issue
+
+00:11.580 --> 00:14.370
+because our docker file is not called docker file
+
+00:14.370 --> 00:16.170
+which is the convention.
+
+00:16.170 --> 00:17.340
+So in order to fix this,
+
+00:17.340 --> 00:19.830
+we're gonna make a slight tweak to the build option
+
+00:19.830 --> 00:21.810
+inside of our compose file.
+
+00:21.810 --> 00:23.370
+Rather than saying, oh yeah I just look
+
+00:23.370 --> 00:27.480
+into the current working directory for that docker file,
+
+00:27.480 --> 00:31.113
+we're going to replace that dot with two additional options.
+
+00:32.070 --> 00:35.460
+So the first thing we're going to do, is add a context.
+
+00:35.460 --> 00:38.130
+This context option is essentially specifying
+
+00:38.130 --> 00:40.620
+where we want all the files and folders
+
+00:40.620 --> 00:42.690
+for this image to be pulled from.
+
+00:42.690 --> 00:44.280
+So in this case, we definitely want
+
+00:44.280 --> 00:45.930
+all the files and folders for our project
+
+00:45.930 --> 00:48.750
+to come from the same directory as docker compose
+
+00:48.750 --> 00:51.330
+or essentially the current working directory.
+
+00:51.330 --> 00:54.750
+So to indicate that, we'll add a simple dot.
+
+00:54.750 --> 00:57.690
+If we had nested our react project right here.
+
+00:57.690 --> 01:00.060
+If we had nested it inside of some folder
+
+01:00.060 --> 01:01.890
+then we would have specified that folder.
+
+01:01.890 --> 01:03.330
+So we could have said something like
+
+01:03.330 --> 01:06.180
+look into my react project folder
+
+01:06.180 --> 01:08.580
+inside this directory to find all the files
+
+01:08.580 --> 01:09.843
+for our project.
+
+01:11.850 --> 01:13.800
+We're going to pass in a second option as well.
+
+01:13.800 --> 01:15.900
+This one's gonna be a little bit more obvious
+
+01:15.900 --> 01:17.760
+we'll say docker file.
+
+01:17.760 --> 01:19.380
+So this is just gonna be the location
+
+01:19.380 --> 01:21.240
+of the docker file that's gonna be used
+
+01:21.240 --> 01:25.170
+to construct the image for this web service.
+
+01:25.170 --> 01:28.893
+So for this, we'll say docker file.dev, like so.
+
+01:29.820 --> 01:30.750
+And as you might guess,
+
+01:30.750 --> 01:33.750
+this is indicating look in the current working directory
+
+01:33.750 --> 01:37.230
+find a file with that name, use it to build the image.
+
+01:37.230 --> 01:38.430
+All right, so let's save this
+
+01:38.430 --> 01:41.073
+and then we'll try running docker compose up again.
+
+01:43.050 --> 01:44.040
+So back in my terminal,
+
+01:44.040 --> 01:45.783
+I'll do docker compose up,
+
+01:47.310 --> 01:48.390
+and there we go.
+
+01:48.390 --> 01:49.940
+Now it's successfully building.
+
+01:51.540 --> 01:53.130
+So we're going to take a minute or two
+
+01:53.130 --> 01:54.750
+to run the end view install.
+
+01:54.750 --> 01:56.820
+Let's take a quick pause right here and just let that go.
+
+01:56.820 --> 01:58.020
+And then in the next section,
+
+01:58.020 --> 02:00.090
+we'll be able to test everything out again.
+
+02:00.090 --> 02:02.483
+So quick break and I'll see you in just a minute.

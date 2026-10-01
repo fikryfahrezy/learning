@@ -1,0 +1,127 @@
+WEBVTT
+
+00:00.570 --> 00:01.403
+Instructor: In the last section,
+
+00:01.403 --> 00:04.860
+we were able to successfully run our tests on Travis CI.
+
+00:04.860 --> 00:06.810
+So now in theory, our application will be ready
+
+00:06.810 --> 00:09.240
+to be deployed to some outside hosting provider
+
+00:09.240 --> 00:13.050
+such as AWS or Windows Azure or DigitalOcean,
+
+00:13.050 --> 00:14.490
+whatever it might be.
+
+00:14.490 --> 00:15.323
+Now, in our case,
+
+00:15.323 --> 00:19.290
+we're going to set up some automatic deployment over to AWS.
+
+00:19.290 --> 00:20.820
+This is a point at which I'm hoping
+
+00:20.820 --> 00:23.190
+you've got a AWS account already created.
+
+00:23.190 --> 00:25.830
+Again, recall that in order to sign up for AWS,
+
+00:25.830 --> 00:28.350
+you do need to have a credit card.
+
+00:28.350 --> 00:29.880
+You won't be billed anything,
+
+00:29.880 --> 00:32.670
+but you do have to enter some credit card details.
+
+00:32.670 --> 00:34.530
+Now, if you don't have a credit card, that's totally fine.
+
+00:34.530 --> 00:35.880
+You can always follow along,
+
+00:35.880 --> 00:39.060
+just you won't go through the AWS part in particular.
+
+00:39.060 --> 00:40.170
+So let's get to it.
+
+00:40.170 --> 00:41.370
+The first thing that we're going to do
+
+00:41.370 --> 00:44.670
+is to log onto AWS and create a new application
+
+00:44.670 --> 00:48.000
+that is going to be used as the target for our deployment.
+
+00:48.000 --> 00:49.680
+So I'm going to open up a new browser tab,
+
+00:49.680 --> 00:53.463
+and I'll navigate to aws.amazon.com.
+
+00:55.290 --> 00:56.160
+And then once here,
+
+00:56.160 --> 00:58.410
+I'll sign in by going up to my account
+
+00:58.410 --> 01:01.263
+and opening up the AWS Management console.
+
+01:02.280 --> 01:03.243
+I'll then sign in,
+
+01:05.040 --> 01:08.070
+and then I get redirected to the AWS dashboard.
+
+01:08.070 --> 01:09.300
+And at this point, I'm going to scroll in
+
+01:09.300 --> 01:12.480
+a pretty good amount just so you can see everything a-okay.
+
+01:12.480 --> 01:14.190
+Now, to deploy our project,
+
+01:14.190 --> 01:16.920
+we're going to be making use of Elastic Beanstalk,
+
+01:16.920 --> 01:18.000
+which you can find
+
+01:18.000 --> 01:21.000
+by searching for Elastic Beanstalk, like so.
+
+01:21.000 --> 01:23.490
+Elastic Beanstalk, I'm going to tell you right now,
+
+01:23.490 --> 01:26.070
+by far easiest way to get started
+
+01:26.070 --> 01:28.770
+with production Docker instances.
+
+01:28.770 --> 01:31.500
+Now, to be clear, Elastic Beanstalk is most appropriate
+
+01:31.500 --> 01:35.100
+when you're running exactly one container at a time.
+
+01:35.100 --> 01:38.130
+We can start up multiple copies of the same container,
+
+01:38.130 --> 01:39.120
+but at the end of the day,
+
+01:39.120 --> 01:41.553
+easiest way to run one single container.

@@ -1,0 +1,268 @@
+WEBVTT
+
+00:00.890 --> 00:07.850
+Now, if we're going directly to consumers, okay, just people in their houses or people anywhere,
+
+00:08.090 --> 00:15.950
+then we're probably talking about business to consumer or B to C, which essentially means that a business
+
+00:15.950 --> 00:22.490
+who is, you know, you or the person that you're doing the work for is selling directly to consumers.
+
+00:22.490 --> 00:29.390
+Anything that gets sold via Amazon is A, B to C product, okay, because it goes directly to consumers.
+
+00:29.420 --> 00:35.510
+iTunes, the App store apps, those are all B to C products.
+
+00:35.750 --> 00:37.160
+So that's a, B to C user.
+
+00:37.160 --> 00:42.710
+And the questions for them are a little different because in this case, we're not asking them about
+
+00:42.710 --> 00:44.510
+their sort of daily work habits.
+
+00:44.510 --> 00:50.270
+We're not asking them about the company that they're a part of because those factors have a lot less
+
+00:50.270 --> 00:53.990
+influence on their buying decision or their use decision.
+
+00:53.990 --> 01:00.230
+So you start by saying, tell me what makes a good experience in terms of shopping, in terms of watching,
+
+01:00.230 --> 01:05.880
+in terms of using, playing a game, whatever it is, what do you define as good, right?
+
+01:05.940 --> 01:06.960
+What makes you happy?
+
+01:06.960 --> 01:12.050
+What things would you usually do first in a case like this and why?
+
+01:12.060 --> 01:19.020
+If your application is meant to help them figure out what their shoe size is, whatever it could be,
+
+01:19.020 --> 01:20.250
+anything you ask them.
+
+01:20.250 --> 01:22.110
+So what would you expect to do first?
+
+01:22.110 --> 01:23.010
+And you don't lead them.
+
+01:23.010 --> 01:26.340
+You let them answer the question and don't give them advice.
+
+01:26.340 --> 01:29.220
+Don't try to push them one way or the other.
+
+01:29.220 --> 01:30.060
+Just listen.
+
+01:30.060 --> 01:34.290
+Give them a very open ended question and let them walk you through it.
+
+01:34.290 --> 01:38.160
+And in that situation that you're talking to them about, you also want to say, what would you put
+
+01:38.160 --> 01:40.710
+off as long as you can in this instance?
+
+01:40.710 --> 01:46.200
+What thing is part of this process that you know, you have to deal with, but you really don't want
+
+01:46.200 --> 01:48.960
+to do it until like the very last step?
+
+01:48.960 --> 01:50.630
+And that could be a lot of things.
+
+01:50.640 --> 01:57.210
+For instance, people often complain when they have to enter in any sort of core information that they
+
+01:57.210 --> 01:59.700
+expect you to have already more than once.
+
+01:59.700 --> 02:05.400
+So they may say why do I have to give you my username again when I start the checkout process, when
+
+02:05.400 --> 02:07.380
+I already gave it to you when I logged in?
+
+02:07.380 --> 02:13.710
+Or why can't you save my address and my credit card information from the last order I placed?
+
+02:13.740 --> 02:16.080
+You know, how come it doesn't just know that already?
+
+02:16.080 --> 02:19.680
+Those are the kinds of things that you'll hear when you ask that question.
+
+02:19.680 --> 02:21.600
+What things Here waste your time?
+
+02:21.600 --> 02:22.500
+What frustrates you?
+
+02:22.530 --> 02:25.080
+What makes you think, Why do I even have to do this?
+
+02:25.080 --> 02:26.520
+That's what you're looking for.
+
+02:26.850 --> 02:28.740
+How often do you use this product?
+
+02:28.740 --> 02:32.460
+Or if it's not an existing product, how often do you use this kind of product?
+
+02:32.490 --> 02:34.050
+How often do you come to this site?
+
+02:34.050 --> 02:36.150
+How often do you open this app?
+
+02:36.180 --> 02:36.720
+ET cetera.
+
+02:36.720 --> 02:37.350
+ET cetera.
+
+02:37.350 --> 02:42.120
+Because you're looking for you're looking to learn something about frequency of use, and that tells
+
+02:42.120 --> 02:44.460
+you something about how valuable it is.
+
+02:44.490 --> 02:49.650
+If it's used often, it's probably a core part of that person's, you know, daily reality.
+
+02:49.650 --> 02:51.660
+So you want to find that out.
+
+02:51.690 --> 02:53.780
+What do you use it for Most often?
+
+02:53.780 --> 03:00.900
+Oftentimes a site or an app is designed for one specific purpose, and you'll find that someone is using
+
+03:00.900 --> 03:04.860
+it in a way that's slightly different than what was intended, you know.
+
+03:05.340 --> 03:08.580
+Google, for example, is a search engine.
+
+03:08.610 --> 03:11.070
+You go there and you search and you find something.
+
+03:11.070 --> 03:16.830
+But there are a lot of people to whom Google is the Internet.
+
+03:16.860 --> 03:23.580
+They will go to the the search bar on the Google main screen and type in a full URL.
+
+03:23.610 --> 03:25.110
+W-w-w.
+
+03:25.140 --> 03:27.390
+My cool stuff.com.
+
+03:27.600 --> 03:31.710
+Instead of typing it in the address bar in the browser.
+
+03:32.100 --> 03:36.120
+So to them, google is the way you find websites.
+
+03:36.920 --> 03:41.810
+So it's really important to ask somebody this question What do you use it for?
+
+03:41.990 --> 03:45.320
+Most often because it may not be what you expect.
+
+03:45.350 --> 03:47.000
+Here's another great question.
+
+03:47.000 --> 03:52.610
+Anytime somebody explains something to you or I do this and then I do this, and then I do this, ask
+
+03:52.610 --> 03:54.920
+them, Can you show me how you do that?
+
+03:54.920 --> 03:56.060
+And here's why.
+
+03:56.090 --> 04:01.820
+What people say they do isn't always a perfect match for what they exactly do.
+
+04:01.820 --> 04:08.630
+And by seeing and observing the actual action, you may also pick up some things that they're not verbalizing.
+
+04:08.930 --> 04:15.140
+You may watch them struggle to press a key combination, or you may watch them wander around the screen
+
+04:15.140 --> 04:17.990
+before they can find the link that they're supposed to click on.
+
+04:18.140 --> 04:22.340
+Those little things will tell you an awful lot in addition to what you're hearing.
+
+04:22.730 --> 04:26.840
+What things do you use before, during or after this product?
+
+04:26.870 --> 04:33.920
+Nothing is used in a vacuum, so a lot of times there will be something that they're doing before they
+
+04:33.920 --> 04:34.970
+come to your site.
+
+04:35.270 --> 04:41.040
+And then there may also be some consistent thing that they do after they visit your site.
+
+04:41.040 --> 04:46.950
+If there is, you want to know what those things are because they may be things that contain features
+
+04:46.950 --> 04:50.550
+and functions that they wish you would provide, but you don't.
+
+04:50.550 --> 04:52.120
+So they have to go somewhere else.
+
+04:52.140 --> 04:54.900
+These are critical points of identification.
+
+04:55.070 --> 04:58.710
+You can really gain some valuable knowledge by asking that question.
+
+04:59.220 --> 05:02.390
+How would you compare this product to others that you've used?
+
+05:02.400 --> 05:06.030
+You're just asking for a review on the spot in your travels.
+
+05:06.030 --> 05:10.920
+How does this stack up against other things that do similar things or the same thing?
+
+05:10.920 --> 05:17.220
+Or if there's no direct comparison, you could say, What are the top three things, top three sites,
+
+05:17.220 --> 05:21.840
+top three apps, whatever it is that you use on a regular basis, what are the things that you return
+
+05:21.840 --> 05:23.910
+to time and time and time and time again?
+
+05:23.910 --> 05:27.180
+And could this become one of those things?
+
+05:27.180 --> 05:33.240
+Can you see this becoming part of your daily or some sort of regular routine?
+
+05:33.270 --> 05:40.770
+You're trying to determine what recurring useful role your particular product or service could play
+
+05:40.770 --> 05:44.640
+in their lives in context of all the other things that they're doing.

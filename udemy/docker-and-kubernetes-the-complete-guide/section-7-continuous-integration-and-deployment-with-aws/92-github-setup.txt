@@ -1,0 +1,313 @@
+WEBVTT
+
+00:00.930 --> 00:02.730
+-: In this section we're gonna walk through a little bit
+
+00:02.730 --> 00:04.950
+of initial work with GitHub.
+
+00:04.950 --> 00:07.260
+We're gonna set up first a GitHub repository,
+
+00:07.260 --> 00:09.270
+that's going to house all of our code.
+
+00:09.270 --> 00:12.000
+We're then gonna set up a local Git repository.
+
+00:12.000 --> 00:14.610
+We're gonna connect the local Git repository
+
+00:14.610 --> 00:16.980
+on your computer to the GitHub remote
+
+00:16.980 --> 00:17.850
+that we're gonna set up.
+
+00:17.850 --> 00:19.680
+And then we're gonna take all of our local work
+
+00:19.680 --> 00:21.330
+and push it up to GitHub.
+
+00:21.330 --> 00:23.490
+Now again, just like I said in the last section,
+
+00:23.490 --> 00:25.620
+I'm going to assume that you've got working knowledge
+
+00:25.620 --> 00:27.210
+of Git and GitHub here.
+
+00:27.210 --> 00:28.140
+So if you don't,
+
+00:28.140 --> 00:29.580
+well do your best to follow along,
+
+00:29.580 --> 00:32.670
+honestly, you do have to do a little bit of additional setup
+
+00:32.670 --> 00:34.200
+in addition to what I'm gonna show you,
+
+00:34.200 --> 00:36.150
+if you've never used Git before.
+
+00:36.150 --> 00:37.980
+If you are completely lost on Git,
+
+00:37.980 --> 00:39.780
+I would encourage you to still watch anyways
+
+00:39.780 --> 00:41.880
+and you'll probably absorb just a little bit of stuff.
+
+00:41.880 --> 00:43.530
+So let's get to it.
+
+00:43.530 --> 00:47.400
+So step one is going to be to create a new GitHub repository
+
+00:47.400 --> 00:49.743
+so I'm gonna first navigate to GitHub.
+
+00:50.940 --> 00:52.440
+I'm gonna make sure that I'm signed in.
+
+00:52.440 --> 00:54.240
+And then on the top right hand side,
+
+00:54.240 --> 00:56.610
+I'm going to click the little plus button,
+
+00:56.610 --> 00:58.653
+and create a new repository.
+
+01:00.420 --> 01:02.670
+I then get prompted for the name of my repo,
+
+01:02.670 --> 01:06.510
+I'm going to name this docker-react.
+
+01:06.510 --> 01:09.030
+So feel free to name the repository whatever you want,
+
+01:09.030 --> 01:11.160
+just keep in mind that if you use a different name,
+
+01:11.160 --> 01:13.290
+you're gonna have to change a couple of different commands
+
+01:13.290 --> 01:15.180
+that we're going to run.
+
+01:15.180 --> 01:16.830
+After you put in the repository name,
+
+01:16.830 --> 01:19.950
+do be sure to mark the repository as public.
+
+01:19.950 --> 01:22.590
+A ton of stuff that we're going to do is not going to work
+
+01:22.590 --> 01:26.100
+the way you expect it to work if you set it up as private.
+
+01:26.100 --> 01:27.870
+Now, on your own personal projects,
+
+01:27.870 --> 01:30.720
+if you eventually want to use a private repository,
+
+01:30.720 --> 01:31.830
+that is totally fine.
+
+01:31.830 --> 01:33.930
+You're still going to be able to use the same flow
+
+01:33.930 --> 01:35.160
+that I'm going to show you.
+
+01:35.160 --> 01:37.260
+You're just going to have to add in some credentials
+
+01:37.260 --> 01:39.450
+at some key steps along the way.
+
+01:39.450 --> 01:40.800
+But for this first go through,
+
+01:40.800 --> 01:42.363
+definitely stick with public.
+
+01:44.190 --> 01:45.900
+After verifying both those settings,
+
+01:45.900 --> 01:48.000
+I'll click on "create repository,"
+
+01:48.000 --> 01:50.670
+and then I get prompted right here with a link
+
+01:50.670 --> 01:53.580
+to the GitHub repository that was just created.
+
+01:53.580 --> 01:55.290
+So I'm gonna copy this link,
+
+01:55.290 --> 01:57.600
+and then I'm gonna go back over to my command line,
+
+01:57.600 --> 02:00.180
+and we're going to set up a Git repository.
+
+02:00.180 --> 02:02.070
+If you're following along with Git on your own,
+
+02:02.070 --> 02:04.020
+and you kind of want to go through these steps yourselves,
+
+02:04.020 --> 02:06.180
+we're essentially going to do what it says right here,
+
+02:06.180 --> 02:08.010
+more or less.
+
+02:08.010 --> 02:10.140
+All right, So I'm gonna flip back onto my terminal,
+
+02:10.140 --> 02:11.700
+and I'm going to make sure that I'm inside of
+
+02:11.700 --> 02:13.830
+my front end directory.
+
+02:13.830 --> 02:14.820
+And then inside of here,
+
+02:14.820 --> 02:17.430
+I'm gonna create a new Git repository by running
+
+02:17.430 --> 02:20.643
+Git in it, like so.
+
+02:21.510 --> 02:24.840
+I'll then add all the work that we've done so far,
+
+02:24.840 --> 02:26.133
+by writing git/add.
+
+02:27.480 --> 02:30.300
+and then I'll commit all that work with gitcommit/in
+
+02:30.300 --> 02:32.220
+and then a set of double quotes,
+
+02:32.220 --> 02:34.780
+and inside of there I'll say "initial
+
+02:38.130 --> 02:39.300
+commit."
+
+02:39.300 --> 02:40.800
+and I'll close the quotes off.
+
+02:42.840 --> 02:44.880
+Okay, so that's gonna commit all of our work.
+
+02:44.880 --> 02:46.860
+Now we're gonna set up the remote,
+
+02:46.860 --> 02:49.500
+and this is what's going to tie this local Git repository
+
+02:49.500 --> 02:50.700
+that we just created,
+
+02:50.700 --> 02:54.270
+to the GitHub repository that we made a second ago.
+
+02:54.270 --> 02:58.830
+So I'll write out, "git remote add origin",
+
+02:58.830 --> 03:02.250
+so essentially adding a remote that is called origin,
+
+03:02.250 --> 03:05.610
+and then we're going to provide the link to that remote.
+
+03:05.610 --> 03:06.660
+And the link to that remote
+
+03:06.660 --> 03:09.570
+is the one that we just copied right here.
+
+03:09.570 --> 03:11.160
+So I'm gonna paste that link in,
+
+03:11.160 --> 03:11.993
+hit enter,
+
+03:11.993 --> 03:13.620
+and we're good to go.
+
+03:13.620 --> 03:15.780
+Now the last thing to do is push all of our work
+
+03:15.780 --> 03:16.650
+up to that remote.
+
+03:16.650 --> 03:20.757
+So I'll say "git push origin master".
+
+03:22.950 --> 03:25.290
+Okay, so that's gonna push all of our work up.
+
+03:25.290 --> 03:27.420
+I should then be able to flip back over to GitHub
+
+03:27.420 --> 03:30.060
+on my new docker react repo.
+
+03:30.060 --> 03:31.260
+I'll hit refresh,
+
+03:31.260 --> 03:33.600
+and then I'll see all of my work up here and here.
+
+03:33.600 --> 03:34.560
+And so most notably,
+
+03:34.560 --> 03:36.960
+I really wanna make sure that I've got my docker file
+
+03:36.960 --> 03:38.520
+inside of here.
+
+03:38.520 --> 03:41.580
+All right, so that's pretty much it for GitHub set up.
+
+03:41.580 --> 03:43.350
+Now we are going to come back to GitHub
+
+03:43.350 --> 03:45.090
+at a couple of different times,
+
+03:45.090 --> 03:46.650
+to kinda walk through this whole big flow
+
+03:46.650 --> 03:48.420
+that we're gonna go through with pull requests
+
+03:48.420 --> 03:50.190
+and feature branches and whatnot.
+
+03:50.190 --> 03:51.780
+But for right now we're gonna start to pivot
+
+03:51.780 --> 03:54.780
+and focus on a little bit of setting up travis CI.
+
+03:54.780 --> 03:57.230
+So quick break and I'll see you in just a minute.

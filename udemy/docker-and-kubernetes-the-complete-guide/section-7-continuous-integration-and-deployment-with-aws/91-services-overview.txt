@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00.750 --> 00:02.970
+-: We've now got Docker containers to solve issues
+
+00:02.970 --> 00:05.523
+with running npm run start in development.
+
+00:05.523 --> 00:07.680
+run test in development
+
+00:07.680 --> 00:11.220
+and run build any production environment as well.
+
+00:11.220 --> 00:13.440
+So, we've now essentially set up everything that we need
+
+00:13.440 --> 00:15.810
+on the Docker side of this equation.
+
+00:15.810 --> 00:17.370
+Now we're gonna figure out how to
+
+00:17.370 --> 00:19.290
+use these containers that we put together
+
+00:19.290 --> 00:21.930
+to really implement this flow that we spoke about earlier
+
+00:21.930 --> 00:24.060
+where we're going to have a GitHub repo
+
+00:24.060 --> 00:25.260
+with some feature branch
+
+00:25.260 --> 00:27.240
+that you and I are going to develop on
+
+00:27.240 --> 00:30.030
+with a master branch that we're going to deploy from
+
+00:30.030 --> 00:33.960
+and an integration with Travis CI and AWS as well.
+
+00:33.960 --> 00:36.060
+Now, before we start to implement this process right here
+
+00:36.060 --> 00:39.420
+with the containers we put together, one quick note.
+
+00:39.420 --> 00:40.440
+So, we're going to be using
+
+00:40.440 --> 00:42.060
+a couple of different services here
+
+00:42.060 --> 00:45.691
+like we just said, GitHub, Travis CI, and AWS.
+
+00:45.691 --> 00:48.600
+Now, GitHub is a completely free service, and if you're here
+
+00:48.600 --> 00:51.690
+in a course about Docker, I'm going to kind of assume
+
+00:51.690 --> 00:54.390
+that you understand the basics of Git.
+
+00:54.390 --> 00:58.050
+Most notably commits, pushing branches, creating branches
+
+00:58.050 --> 00:59.400
+all that kind of good stuff.
+
+00:59.400 --> 01:00.390
+I'm also going to assume
+
+01:00.390 --> 01:02.610
+that you already have a GitHub account
+
+01:02.610 --> 01:04.170
+so if you don't have a GitHub account
+
+01:04.170 --> 01:06.840
+or if you have no experience with Git whatsoever
+
+01:06.840 --> 01:08.970
+well you know, do your best to come through with this.
+
+01:08.970 --> 01:10.470
+I'll be as clear as I can
+
+01:10.470 --> 01:12.990
+on why we are running some of our different commands
+
+01:12.990 --> 01:13.830
+when working with Git
+
+01:13.830 --> 01:15.240
+but again, I'm gonna kind of assume
+
+01:15.240 --> 01:17.490
+you've got a reasonable understanding of Git.
+
+01:18.660 --> 01:20.760
+Now, Travis CI is another free service
+
+01:20.760 --> 01:22.020
+that we're going to making use of.
+
+01:22.020 --> 01:25.500
+They are the CI or continuous integration provider.
+
+01:25.500 --> 01:26.400
+This is the service
+
+01:26.400 --> 01:28.770
+that's going to be running our test for us automatically
+
+01:28.770 --> 01:30.930
+and then eventually deploying our application
+
+01:30.930 --> 01:33.330
+over to AWS for us as well.
+
+01:33.330 --> 01:34.950
+Now, I'm not going to assume
+
+01:34.950 --> 01:36.390
+that you have experience with Travis
+
+01:36.390 --> 01:38.400
+so if you have not worked with it before
+
+01:38.400 --> 01:39.690
+no problem whatsoever.
+
+01:39.690 --> 01:41.880
+We're gonna walk through it step by step together.
+
+01:41.880 --> 01:43.560
+But again, I kind of hope that, you know
+
+01:43.560 --> 01:46.170
+you got some knowledge of Git and GitHub.
+
+01:46.170 --> 01:47.910
+Travis CI is a free service
+
+01:47.910 --> 01:51.450
+no credit card required or anything like that.
+
+01:51.450 --> 01:54.360
+The last service that we're going to be making use of is AWS
+
+01:54.360 --> 01:56.490
+They're going to be hosting our application
+
+01:56.490 --> 01:57.822
+once we deploy it.
+
+01:57.822 --> 01:59.700
+AWS is free to sign up for
+
+01:59.700 --> 02:02.670
+but I do believe that they require a credit card
+
+02:02.670 --> 02:04.200
+if you're going to sign up.
+
+02:04.200 --> 02:06.630
+Now, if you don't have a credit card to use with AWS
+
+02:06.630 --> 02:09.144
+or if for some reason you don't want to create an account
+
+02:09.144 --> 02:11.250
+that's okay, you know, for the most part
+
+02:11.250 --> 02:13.200
+we're going to be just doing a handful
+
+02:13.200 --> 02:15.900
+of videos that are going to be focused around AWS.
+
+02:15.900 --> 02:17.550
+So, no big issue.
+
+02:17.550 --> 02:19.161
+If you're not familiar with AWS
+
+02:19.161 --> 02:20.790
+or if you don't have an account with them
+
+02:20.790 --> 02:22.110
+and don't want to make one
+
+02:22.110 --> 02:24.120
+I will be running through all the commands
+
+02:24.120 --> 02:25.500
+and set up that you're going to need to know.
+
+02:25.500 --> 02:28.260
+So even if you don't wanna work with AWS
+
+02:28.260 --> 02:30.540
+I still recommend you watch this next series of videos
+
+02:30.540 --> 02:32.850
+and just kind of get a sense of what's going on.
+
+02:32.850 --> 02:34.950
+At the end of the day, once you put your application
+
+02:34.950 --> 02:36.360
+into a Docker container
+
+02:36.360 --> 02:38.640
+deployment to all these different providers
+
+02:38.640 --> 02:41.763
+like AWS or Google Cloud or Digital Ocean
+
+02:41.763 --> 02:44.370
+really, it's all pretty darn similar.
+
+02:44.370 --> 02:46.986
+We are just using AWS here because they're one of the
+
+02:46.986 --> 02:49.396
+you know, more popular providers out there for hosting.
+
+02:49.396 --> 02:53.280
+So, with all that in mind, let's take a quick break.
+
+02:53.280 --> 02:54.510
+In the next section, we're going to
+
+02:54.510 --> 02:58.170
+start implementing our big development flow here.
+
+02:58.170 --> 03:01.230
+Starting off first with a little bit of GitHub work.
+
+03:01.230 --> 03:03.680
+So quick break and I'll see you in just a minute.

@@ -1,0 +1,1690 @@
+WEBVTT
+
+00:00.930 --> 00:06.480
+So the first half of the structure plan is concerned with interaction design and interaction.
+
+00:06.480 --> 00:12.120
+Design, as we said, is concerned with describing possible user behavior and figuring out how the system
+
+00:12.120 --> 00:15.420
+is going to accommodate and respond to that behavior.
+
+00:15.450 --> 00:20.700
+Basically, any time you're working on a digital device of any kind, whether it's a laptop or a phone
+
+00:20.700 --> 00:26.130
+or a tablet, there's sort of a dance that goes on between the user and the system.
+
+00:26.130 --> 00:31.410
+And in a good user experience, what happens is that the two are dancing in step, okay?
+
+00:31.440 --> 00:38.310
+The user and the system are sort of moving along the same path because the user's mental models and
+
+00:38.310 --> 00:44.790
+expectations are being met by what the system does, how it responds to interaction.
+
+00:44.790 --> 00:50.160
+So interaction design defines the structure and behavior of interactive systems.
+
+00:50.160 --> 00:55.800
+The idea is to create a meaningful relationship between the people and the things that they use.
+
+00:55.830 --> 00:58.020
+Meaningful is the important term there.
+
+00:58.020 --> 00:59.700
+It has to matter to them.
+
+00:59.700 --> 01:02.830
+It has to help them do something that they care about.
+
+01:02.830 --> 01:05.500
+It has to help them accomplish a goal.
+
+01:05.500 --> 01:05.790
+Okay?
+
+01:05.800 --> 01:07.570
+It fulfills a need of some sort.
+
+01:07.600 --> 01:13.060
+Interaction design effectively communicates interactivity, which is okay.
+
+01:13.060 --> 01:17.160
+The system is responding to something that I did and functionality.
+
+01:17.170 --> 01:18.430
+Okay, what can I do?
+
+01:18.460 --> 01:20.040
+What's available to me?
+
+01:20.050 --> 01:26.800
+Its job is to reveal simple workflows and complex workflows and it needs to make both of those things
+
+01:26.800 --> 01:28.240
+readily apparent.
+
+01:28.270 --> 01:32.860
+It has to inform the person as they act about state changes.
+
+01:32.860 --> 01:35.410
+I did a B happens.
+
+01:35.410 --> 01:37.410
+I saved the file.
+
+01:37.420 --> 01:39.700
+The work that I did has been saved.
+
+01:39.700 --> 01:41.430
+I don't have to worry about it.
+
+01:41.440 --> 01:44.050
+You've completed six out of seven steps.
+
+01:44.050 --> 01:49.090
+Whatever it is, there's a certain degree of feedback that has to happen to keep the person informed
+
+01:49.090 --> 01:52.360
+of where they are and what they've done and what they've accomplished.
+
+01:52.450 --> 01:58.090
+Finally, good interaction design goes a long way in preventing user error.
+
+01:58.120 --> 02:04.240
+There's an element of forgiveness that happens if I'm going to do something that's potentially destructive,
+
+02:04.240 --> 02:06.730
+I expect the system to tell me about it.
+
+02:06.730 --> 02:08.490
+Are you sure you want to do this?
+
+02:08.500 --> 02:08.890
+Okay.
+
+02:08.890 --> 02:12.220
+It makes me confirm potentially destructive actions.
+
+02:12.220 --> 02:13.480
+You've all seen this.
+
+02:13.480 --> 02:19.450
+When you open something that you downloaded from the Internet and newer operating systems will warn
+
+02:19.450 --> 02:21.970
+you and say, hey, this is something you downloaded from the Internet.
+
+02:22.000 --> 02:23.410
+We don't know if we can trust this.
+
+02:23.410 --> 02:29.980
+Are you sure you want to open it knowing that it could contain a virus or it could contain spyware or
+
+02:29.980 --> 02:30.760
+anything else?
+
+02:30.760 --> 02:34.540
+So that's how a system prevents user error.
+
+02:34.570 --> 02:39.130
+You try to, whenever possible, prevent the user from making a mistake.
+
+02:39.130 --> 02:44.980
+And if they do make a mistake, hopefully the system provides a message that explains what happened,
+
+02:44.980 --> 02:51.490
+why it happened and what to do about it, or what to do to keep it from happening again.
+
+02:51.760 --> 02:59.350
+There are a host of principles that dictate good interaction, design, okay, or best practices.
+
+02:59.350 --> 03:04.480
+But essentially there are five we want to focus on Good interaction.
+
+03:04.480 --> 03:12.850
+Design is consistent, it's predictable, it's learnable, it's visible, and it provides feedback.
+
+03:12.880 --> 03:18.250
+Again, there are any number of things, as you can see on the screen, that sort of dictate what's
+
+03:18.250 --> 03:22.180
+really solid, really good, really valuable interaction design.
+
+03:22.180 --> 03:29.290
+But if you do nothing but focus on these five things, I can promise you everything you do is going
+
+03:29.290 --> 03:33.370
+to be automatically a cut above most of what's out there.
+
+03:33.370 --> 03:42.340
+And I guarantee you that these five principles are the absolute roadmap to making things useful to people
+
+03:42.340 --> 03:44.350
+usable, valuable.
+
+03:44.350 --> 03:50.830
+So you don't have to know everything, but you do absolutely, positively have to remember these five.
+
+03:51.090 --> 03:54.900
+First and foremost, good interaction design is consistent.
+
+03:54.930 --> 03:56.280
+What do we mean by consistent?
+
+03:56.280 --> 04:02.580
+Well, it means that when we create a layout such as this example of a web page, we create certain
+
+04:02.580 --> 04:03.300
+conventions.
+
+04:03.300 --> 04:07.950
+And by doing so, we set expectations in the users mind of how things work.
+
+04:07.980 --> 04:08.250
+All right.
+
+04:08.250 --> 04:13.470
+For example, we have this long purple bar at the very top, which is your main navigation.
+
+04:13.470 --> 04:18.510
+You have another area in the top right that is secondary navigation.
+
+04:18.510 --> 04:24.210
+So the things that people care about most are front and center in the big colored NAV and secondary
+
+04:24.210 --> 04:27.780
+considerations are sort of segregated up in the top right corner.
+
+04:27.810 --> 04:35.340
+Notice that we also have a search area up there, so we've just set three expectations where your primary
+
+04:35.340 --> 04:39.810
+actions are, where your secondary actions are, the things that you care about next, and how you can
+
+04:39.810 --> 04:40.800
+search for content.
+
+04:40.800 --> 04:45.450
+When we get to an inner page, those things remain consistent.
+
+04:45.480 --> 04:46.830
+They're in the same place.
+
+04:46.830 --> 04:51.880
+They're visually represented the same way, and they act exactly the same.
+
+04:51.880 --> 04:56.860
+Now, at the same time, the content below changes.
+
+04:56.860 --> 04:57.520
+Why?
+
+04:57.550 --> 05:01.360
+Because we are now on a different page of the site.
+
+05:01.360 --> 05:05.950
+So if it looked exactly like the home page, we would be sending the signal that you're still where
+
+05:05.950 --> 05:08.710
+you started from, which could be confusing, right?
+
+05:08.710 --> 05:10.690
+So it has to change.
+
+05:10.690 --> 05:15.550
+It does have to become different to represent the context that we're operating in.
+
+05:15.550 --> 05:21.940
+But the conventions that we set, the expectations for how to move around, how to get to things have
+
+05:21.940 --> 05:23.350
+to remain consistent.
+
+05:23.350 --> 05:30.040
+If you set an example of how links behave on the very first page of the site, you've got to carry that
+
+05:30.040 --> 05:31.690
+through inside.
+
+05:31.690 --> 05:38.350
+So the lesson here is don't be different, just to be different, be different when it's better, be
+
+05:38.350 --> 05:45.880
+different when it serves a purpose, be different when it serves to keep the user interested but doesn't
+
+05:45.880 --> 05:51.850
+confuse them or frustrate them or scare them in terms of, you know, having the navigation disappear.
+
+05:51.850 --> 05:54.610
+Well, wait, how do I get back those kinds of things?
+
+05:54.610 --> 05:58.030
+So being different is part of any interactive experience.
+
+05:58.030 --> 06:02.590
+But you have to be very careful about what you change and why you change it.
+
+06:02.740 --> 06:09.910
+Consistency is also a matter of treating components, objects, controls throughout an experience.
+
+06:09.910 --> 06:10.170
+Okay.
+
+06:10.180 --> 06:16.660
+Again, from the time that we start using an app on the very first screen to the time when we're sort
+
+06:16.660 --> 06:22.150
+of knee deep in it, going through experiences, doing things, experiencing things, whatever.
+
+06:22.150 --> 06:25.960
+Things that have similar behavior should have a similar appearance.
+
+06:25.960 --> 06:31.150
+Here's a sample set of control patterns for an operating system.
+
+06:31.150 --> 06:36.670
+Notice that they're sort of grouped in terms of similar appearance and similar function.
+
+06:36.700 --> 06:42.250
+The things at the top left are all done the same way Your basic pagination controls previous page.
+
+06:42.250 --> 06:45.760
+Next page actions like edit cart continue to checkout.
+
+06:45.760 --> 06:46.030
+Okay.
+
+06:46.030 --> 06:52.420
+Notice that there are similarities depending on when you experience these things in your journey as
+
+06:52.420 --> 06:53.050
+it were.
+
+06:53.470 --> 06:59.440
+Down at the bottom left, we have a set of conventions for what happens when something is loading.
+
+06:59.440 --> 07:07.210
+We either see the progress bar for long transactions or we see these little sort of sprite icons for
+
+07:07.210 --> 07:08.230
+short transactions.
+
+07:08.230 --> 07:09.820
+Those are feedback mechanisms.
+
+07:09.820 --> 07:12.640
+They let us know that the system is doing something.
+
+07:12.640 --> 07:18.760
+But again, we've set conventions and they happen the same way every time In the center right above
+
+07:18.760 --> 07:21.820
+the video area, you see an error message.
+
+07:21.820 --> 07:24.160
+Email address is a required field.
+
+07:24.160 --> 07:28.480
+What happens when somebody skips a field in the form?
+
+07:28.540 --> 07:32.230
+Okay, what's the error message look like when it gets popped up?
+
+07:32.230 --> 07:37.180
+And that visual convention is used every single time there's an error.
+
+07:37.180 --> 07:43.660
+If you look to the far right, you'll see a series of those messages, each one color coded in terms
+
+07:43.660 --> 07:44.590
+of severity.
+
+07:44.590 --> 07:51.850
+So the point is we've made a lot of decisions up front as to how we're going to expose things, components
+
+07:51.850 --> 07:55.390
+with similar behavior all have a similar appearance.
+
+07:55.390 --> 07:57.760
+That's a big part of consistency.
+
+07:58.290 --> 08:01.890
+For the most part, consistency happens in two main ways.
+
+08:01.920 --> 08:03.390
+First is through behavior.
+
+08:03.390 --> 08:09.570
+And what I mean by that is that transitions, rollovers, tooltips, things like that should all behave
+
+08:09.570 --> 08:10.440
+consistently.
+
+08:10.440 --> 08:16.450
+When I see one instance, every single instance afterward should behave the same way.
+
+08:16.470 --> 08:20.550
+By doing that, you're leveraging the visitor's prior experience.
+
+08:20.550 --> 08:26.310
+You showed them how it works, and now it's going to work the same way over and over and over and over
+
+08:26.310 --> 08:26.820
+again.
+
+08:26.820 --> 08:31.700
+Remember what I said about intuitive being single trial learning?
+
+08:31.710 --> 08:37.380
+Okay, That's how you create an intuitive app by leveraging the visitor's prior experience and keeping
+
+08:37.380 --> 08:38.790
+the behavior consistent.
+
+08:38.910 --> 08:43.320
+The second way to create consistency in interaction design is in voice.
+
+08:43.320 --> 08:49.080
+And what we mean by voice is that labels and terms language should be the same throughout.
+
+08:49.080 --> 08:53.040
+Different labels mean different information and they mean different outcomes.
+
+08:53.070 --> 08:59.660
+Again, we've set an expectation and we're clear this means this this other thing means something else.
+
+08:59.680 --> 09:04.090
+Voice is also made consistent through content and imagery.
+
+09:04.210 --> 09:07.330
+That means photos, illustrations, icons.
+
+09:07.330 --> 09:12.070
+All of those things should have a very stable, very consistent style.
+
+09:12.170 --> 09:12.460
+All right.
+
+09:12.460 --> 09:18.910
+For instance, if you're using a bunch of icons that have a very specific style visually or use very
+
+09:18.910 --> 09:22.570
+representational icons, you don't want to deviate from that.
+
+09:22.570 --> 09:26.700
+Every other icon that appears should appear to be in the same style.
+
+09:26.710 --> 09:32.560
+All those things should appear to be related in terms of voice, consistency and interaction.
+
+09:32.560 --> 09:39.790
+Design also comes from design patterns, and by using the same design patterns throughout the experience,
+
+09:39.820 --> 09:45.130
+a design pattern is essentially a reusable solution to a recurring problem.
+
+09:45.130 --> 09:48.610
+Dropdown menus login fields like you see here.
+
+09:48.640 --> 09:50.370
+Those are patterns.
+
+09:50.380 --> 09:51.760
+Okay, think of that as a pattern.
+
+09:51.760 --> 09:57.610
+Every time I see a login field that looks like that username password submit, that's a pattern.
+
+09:57.700 --> 09:59.140
+It gets used everywhere.
+
+09:59.140 --> 09:59.370
+Here.
+
+09:59.370 --> 10:04.560
+We don't deviate from that sort of mix because we all know what it is.
+
+10:04.590 --> 10:05.550
+We accept it.
+
+10:05.550 --> 10:08.430
+It's consistent with our past experience.
+
+10:08.430 --> 10:14.190
+If someone invented some sort of new design for login field that didn't match this, we'd be confused
+
+10:14.190 --> 10:15.960
+no matter how obvious the labels were.
+
+10:15.960 --> 10:20.940
+If it said use this to log in, it wouldn't matter because it's unfamiliar.
+
+10:20.940 --> 10:23.730
+It doesn't jive with our previous experience.
+
+10:23.730 --> 10:30.660
+So using similar patterns that people understand and accept goes a long way in creating consistency.
+
+10:30.840 --> 10:37.530
+So while the content may change the basic interaction, the processes that we go through stay exactly
+
+10:37.530 --> 10:38.130
+the same.
+
+10:38.160 --> 10:43.950
+Doing that makes actions and results consistent and more importantly, predictable.
+
+10:43.950 --> 10:49.980
+We know, or we can at least accurately predict what the outcome is going to be because, hey, we've
+
+10:49.980 --> 10:51.020
+done this before.
+
+10:51.030 --> 10:56.670
+Design patterns are another way to create consistency and there are a number of websites that do an
+
+10:56.670 --> 11:00.310
+amazing job of showcasing all kinds of different design patterns.
+
+11:00.310 --> 11:05.890
+So if you want to dig into this, go to Google, type in design patterns and you'll find a wealth of
+
+11:05.890 --> 11:06.730
+information.
+
+11:06.730 --> 11:08.080
+Check that stuff out.
+
+11:08.080 --> 11:13.930
+And keep in mind that in a lot of cases there's just no reason to reinvent the wheel.
+
+11:14.350 --> 11:19.570
+Good interaction design also means that opportunities to interact are visible.
+
+11:19.570 --> 11:21.640
+We can see what's possible.
+
+11:21.640 --> 11:23.800
+We can see what's available to us.
+
+11:24.070 --> 11:25.780
+Here's a quick example of that.
+
+11:25.810 --> 11:31.450
+A designer designs a website and he thinks hard about, okay, there's this main area of content that's
+
+11:31.450 --> 11:32.980
+going to be most important to people.
+
+11:32.980 --> 11:37.290
+And then there's these other two options down at the bottom that are secondary.
+
+11:37.300 --> 11:41.710
+We want to make sure that it's available to people, but it's not as important as the stuff up front.
+
+11:41.710 --> 11:48.490
+Well, if he's not careful, he designs it in such a way that in most browsers that bottom content is
+
+11:48.490 --> 11:52.990
+hidden and there is no indication that there is anything down there.
+
+11:53.020 --> 11:55.330
+This has a lot to do with human behavior.
+
+11:55.330 --> 12:00.940
+We will generally expend the least amount of effort possible in doing just about anything.
+
+12:00.940 --> 12:02.440
+It's not because there's something wrong with us.
+
+12:02.440 --> 12:04.060
+It's not because we're lazy.
+
+12:04.060 --> 12:06.370
+It's because that's the way we're programmed.
+
+12:06.370 --> 12:06.600
+Okay?
+
+12:06.610 --> 12:11.200
+That's the way the brain is wired to conserve energy, to conserve effort.
+
+12:11.200 --> 12:17.380
+So what happens is that we typically will not scroll unless we have a good reason to do so, or unless
+
+12:17.380 --> 12:21.850
+we have some visual evidence that tells us, hey, there's something down there.
+
+12:22.060 --> 12:22.330
+All right.
+
+12:22.330 --> 12:28.900
+If you've ever watched people I've often seen people in a grocery store staring down at a stack of newspapers
+
+12:28.900 --> 12:33.730
+that are folded in half so they can only see half of the content that's on that front page.
+
+12:33.730 --> 12:36.790
+But they sort of stare at it and go, do I care?
+
+12:36.820 --> 12:37.330
+Do I care?
+
+12:37.360 --> 12:37.840
+Do I care?
+
+12:37.870 --> 12:38.740
+Do I care?
+
+12:38.920 --> 12:40.180
+And it's either a yes or a no.
+
+12:40.210 --> 12:43.960
+They either bend down and pick up and buy the paper or they just ignore it.
+
+12:43.960 --> 12:49.570
+But you will not see someone pick up the paper and sort of look through it very carefully and then make
+
+12:49.570 --> 12:50.560
+a decision to buy.
+
+12:50.590 --> 12:53.190
+That's conserving energy and effort.
+
+12:53.200 --> 12:54.520
+This is no different.
+
+12:54.940 --> 12:57.250
+So discoverability should involve luck.
+
+12:57.330 --> 12:58.990
+And it shouldn't involve chance.
+
+12:59.010 --> 13:04.170
+People should be able to tell at a glance that an opportunity to interact is available.
+
+13:04.170 --> 13:07.160
+If there are things on the screen, they have to be made visible.
+
+13:07.170 --> 13:10.350
+One way to do that is to use what we call content hinting.
+
+13:10.380 --> 13:13.480
+Avoid false bottoms, which is what you see right here.
+
+13:13.500 --> 13:18.420
+More content and interactivity does exist below the fold, right or beyond the visible space in this
+
+13:18.420 --> 13:19.080
+case.
+
+13:19.080 --> 13:20.230
+But it's hidden.
+
+13:20.250 --> 13:25.530
+The bottom of the browser window cuts it off nicely and cleanly, so there's no reason for us to think
+
+13:25.530 --> 13:26.970
+there's anything more down there.
+
+13:27.150 --> 13:33.300
+A better way to design this would be to do it in such a way where more content exists above the fold.
+
+13:33.540 --> 13:35.910
+You see how the bottom photos are cut in half.
+
+13:35.910 --> 13:40.170
+That's all it takes to give us a signal that there's more down there.
+
+13:40.200 --> 13:46.200
+Very subtle design decisions make a huge difference in making interactivity visible.
+
+13:46.780 --> 13:49.990
+There are essentially two ways to interact with digital products.
+
+13:50.050 --> 13:50.270
+Okay.
+
+13:50.290 --> 13:52.590
+We've sort of been taught that this is how we do things.
+
+13:52.600 --> 13:54.700
+We either click or we tap.
+
+13:54.700 --> 14:00.520
+The thing to know about that is that we will generally attempt interaction with anything that we think
+
+14:00.520 --> 14:02.670
+could possibly be clickable or touchable.
+
+14:02.680 --> 14:02.880
+Okay.
+
+14:02.890 --> 14:08.260
+If we're on a tablet specifically because there's no hover state in a tablet, there's nothing that
+
+14:08.260 --> 14:09.910
+sort of responds to our touch.
+
+14:09.910 --> 14:14.740
+We're tapping all over the place, particularly if we can't tell what's clickable and what's not.
+
+14:14.740 --> 14:15.370
+Okay.
+
+14:15.370 --> 14:19.420
+So when we see a button that looks like a button, we know to click it.
+
+14:19.420 --> 14:23.290
+When we see a tab at the very top of a menu, we get it.
+
+14:23.320 --> 14:25.180
+We say, okay, that's a point of navigation.
+
+14:25.180 --> 14:26.320
+That's someplace I can go.
+
+14:26.350 --> 14:29.440
+When we see an underlined link, we get that right.
+
+14:29.440 --> 14:30.490
+We know what that is.
+
+14:30.490 --> 14:36.010
+Different Text colors, three dimensional objects and icons all invite interaction.
+
+14:36.040 --> 14:37.900
+Take a look at this example.
+
+14:37.900 --> 14:42.820
+There are some automatic assumptions based on past behavior that we make when we see something like
+
+14:42.820 --> 14:43.300
+this.
+
+14:43.300 --> 14:50.180
+The first is that when I click one of these boxes to the left where the little arrows are, something
+
+14:50.180 --> 14:50.960
+happens.
+
+14:50.960 --> 14:52.190
+And that's partly true.
+
+14:52.220 --> 14:57.950
+What happens is when I touch one of those, I get a new image and some text on the right hand side where
+
+14:57.950 --> 15:04.520
+it doesn't jive with my current mental model is that when I touch it, I sort of expect to be taken
+
+15:04.520 --> 15:06.140
+somewhere and I'm not.
+
+15:06.140 --> 15:08.780
+The only thing that happens is the picture changes.
+
+15:08.810 --> 15:14.390
+Okay, so the icon and the color set it up as this is a piece of navigation.
+
+15:14.390 --> 15:17.120
+This is a wayfinding device and it isn't.
+
+15:17.120 --> 15:23.690
+So there's a situation where interactivity is not obvious and it's not really visible.
+
+15:23.860 --> 15:25.640
+That's what we mean by visibility.
+
+15:25.640 --> 15:28.400
+It doesn't do what we expect it to do.
+
+15:28.430 --> 15:34.820
+So you've got to be very conscious of the choices you make along with how people will perceive those
+
+15:34.820 --> 15:35.540
+things.
+
+15:35.810 --> 15:41.840
+And in terms of smartphones and tablets, touch and gesture become extremely important.
+
+15:41.840 --> 15:42.110
+Okay.
+
+15:42.110 --> 15:47.810
+There are very specific constraints that you have to be aware of when you're designing something that's
+
+15:47.810 --> 15:50.720
+explicitly meant to be used on a touch screen.
+
+15:50.720 --> 15:55.010
+And first and foremost, as I said a second ago, there's no hover for touch screens.
+
+15:55.010 --> 15:59.990
+It's not like hovering your mouse over a navigation item and you get a dropdown menu that says, Hey,
+
+15:59.990 --> 16:01.280
+there's more behind this.
+
+16:01.280 --> 16:02.840
+You can do something with it, you know?
+
+16:02.870 --> 16:07.700
+Or when a button highlights when you mouse over it, those indications that something is interactive
+
+16:07.730 --> 16:14.450
+don't exist, so you have to work a little bit harder to make things obvious to say you can interact
+
+16:14.450 --> 16:17.960
+with this object or this control or this element.
+
+16:18.140 --> 16:23.330
+Another thing that you have to consider on a touch screen is whether a person is left or right handed.
+
+16:23.360 --> 16:29.930
+There are a growing number of interfaces that are reversible to consider people who are left handed
+
+16:29.930 --> 16:32.960
+because they don't use everything with their right hand.
+
+16:32.960 --> 16:34.580
+So it's a matter of proximity.
+
+16:34.580 --> 16:34.910
+Okay.
+
+16:34.910 --> 16:39.980
+In a lot of cases where all the interactive buttons are on the right side, that doesn't make sense
+
+16:39.980 --> 16:44.810
+for someone who's left handed, because what happens is they would have to reach over the interface,
+
+16:44.810 --> 16:49.790
+which is essentially obstructing their view because the bulk of their hand is going to be in the way.
+
+16:49.790 --> 16:53.870
+And whether a person is left or right handed, you don't want to make them reach over the interface
+
+16:53.870 --> 16:54.710
+and obstruct their view.
+
+16:54.710 --> 17:00.620
+There are certainly a lot of interfaces that I've used both on my phone and my tablet, where even though
+
+17:00.620 --> 17:07.040
+I'm right handed, I find myself covering 20% of the screen with my hands in order to reach something.
+
+17:07.040 --> 17:08.090
+Okay, that's bad design.
+
+17:08.090 --> 17:12.320
+You're not thinking about where the person's hand is on the screen.
+
+17:12.320 --> 17:17.510
+That's a really, really important consideration because anything I can't see, I can't interact with
+
+17:17.810 --> 17:18.830
+good interaction.
+
+17:18.830 --> 17:21.290
+Design is also learnable.
+
+17:21.290 --> 17:26.690
+Remember what I said about the word intuitive, really meaning single trial learning.
+
+17:26.690 --> 17:26.950
+Okay.
+
+17:26.960 --> 17:31.640
+What that means is that interaction should be easy to learn and easy to remember.
+
+17:31.760 --> 17:36.980
+Ideally, you use it once you learn it very quickly and you remember it forever.
+
+17:36.980 --> 17:41.810
+However, that level, that degree of intuitive learning isn't always possible.
+
+17:41.810 --> 17:47.510
+So you also have to keep it in your mind that with whatever you design, people will use it a few times,
+
+17:47.510 --> 17:52.190
+they will learn it, but they'll also sort of be hoping that they remember it next time.
+
+17:52.220 --> 17:52.820
+That's okay.
+
+17:52.820 --> 17:58.400
+But you just want to make it as simple as humanly possible, especially across different experiences.
+
+17:58.400 --> 17:59.420
+Here's an example.
+
+17:59.420 --> 18:04.640
+This is a screenshot of an Android operating system, mobile operating system.
+
+18:04.640 --> 18:06.530
+Now, does it remind you of anything?
+
+18:06.650 --> 18:07.520
+Of course it does.
+
+18:07.520 --> 18:11.420
+It looks an awful lot like the icon based screen of the iPhone.
+
+18:11.420 --> 18:16.970
+And if you look at any mobile smart screen right now, they all pretty much mimic this model that was
+
+18:16.970 --> 18:18.500
+started by the iPhone.
+
+18:18.500 --> 18:23.990
+Now, I'm not saying this to be like Apple is the greatest and and we should all buy iPhones.
+
+18:23.990 --> 18:25.220
+It's not what I'm saying at all.
+
+18:25.220 --> 18:27.980
+I'm saying that Apple set the precedent.
+
+18:27.980 --> 18:29.660
+That device came out first.
+
+18:29.660 --> 18:37.730
+So people became accustomed to a very specific way of doing things icon based screen rows and columns
+
+18:37.730 --> 18:38.870
+of icons.
+
+18:38.900 --> 18:40.490
+That's expectation.
+
+18:40.490 --> 18:45.830
+So it would not make sense for Android or any other company.
+
+18:45.910 --> 18:51.760
+Any any other operating system to deviate from that experience because it's what people recognize.
+
+18:51.760 --> 18:56.280
+So what they're doing is they're building on what's been done before.
+
+18:56.290 --> 18:59.530
+They're creating an intuitive learning situation.
+
+18:59.530 --> 19:01.960
+They're leveraging what people already know.
+
+19:02.230 --> 19:10.870
+So because it bears repeating, I'm going to say it again, intuitive really means single trial learning.
+
+19:10.870 --> 19:13.870
+Yes, it's that important to repeat it four times.
+
+19:13.870 --> 19:17.410
+Even interfaces that are easy to use still require learning.
+
+19:17.410 --> 19:23.620
+What happens is that the more we use it, the easier it seems We learn those behaviors from our experiences
+
+19:23.620 --> 19:28.150
+everywhere across the web devices, real world places and objects.
+
+19:28.150 --> 19:32.380
+Okay, We take everything that we experience into every other experience.
+
+19:32.380 --> 19:36.360
+There aren't clear dividing lines in terms of human behavior.
+
+19:36.370 --> 19:41.520
+We leverage everything that we know at just about any time when we take action.
+
+19:41.530 --> 19:47.080
+Here's a great example of a very learnable interaction, very learnable interface.
+
+19:47.080 --> 19:52.720
+This is an app called Songza, and what it does is it offers playlists for just about any activity or
+
+19:52.720 --> 19:54.400
+any mood that you happen to be in.
+
+19:54.400 --> 19:58.480
+Instead of generating playlists based on songs or artists.
+
+19:58.480 --> 20:05.830
+This app acts a little more contextually in that it asks you what specific activities you're engaged
+
+20:05.830 --> 20:10.870
+in right now, and then it presents options based on that information.
+
+20:10.870 --> 20:17.200
+So let's say you're looking for some mellow music to help you unwind or you're looking for some high
+
+20:17.200 --> 20:22.450
+octane drums, you know, for powerlifting at the gym, essentially all you have to do is choose the
+
+20:22.450 --> 20:25.540
+activity you're engaged in and the system recommends things.
+
+20:25.540 --> 20:31.990
+So it's very learnable in the sense that all I really have to do is make a choice, okay, I'm either
+
+20:31.990 --> 20:38.320
+doing this or this or this or this, and my options are a direct result of that choice.
+
+20:38.320 --> 20:40.060
+You only have to learn how to do this once.
+
+20:40.060 --> 20:41.050
+It's very simple.
+
+20:41.260 --> 20:48.860
+One of the biggest challenges in creating intuitive interactivity is with touchscreens, in that gestures
+
+20:48.860 --> 20:50.030
+can be arbitrary.
+
+20:50.030 --> 20:55.610
+And because I think we're at the beginning of figuring out how people interact with touchscreens, we've
+
+20:55.610 --> 20:59.150
+got sort of an endless slew of arbitrary gestures.
+
+20:59.180 --> 21:04.250
+Okay, we've got tap and release, tap and hold, tap and hold long double tap, multi finger tap,
+
+21:04.280 --> 21:09.320
+tap, hold and drag, single finger drag multi-finger drag pinch stretch, etcetera, etcetera, etcetera,
+
+21:09.320 --> 21:09.650
+etcetera.
+
+21:09.680 --> 21:11.990
+Okay, this goes on and on and on.
+
+21:11.990 --> 21:17.630
+And the problem with that is if it's not constrained, all right, if we're not careful about only using
+
+21:17.630 --> 21:22.700
+some of those instead of just automatically incorporating all of them, which I think a lot of designers
+
+21:22.700 --> 21:26.360
+and developers are tending to do these days, you confuse people.
+
+21:26.360 --> 21:31.580
+For instance, you know, why can I swipe to move an image inside a window, but I can't move the whole
+
+21:31.580 --> 21:32.090
+page?
+
+21:32.090 --> 21:39.950
+I've seen instances like that where the application of those things isn't consistent and there are too
+
+21:39.950 --> 21:40.880
+many options.
+
+21:40.880 --> 21:44.270
+There are too many ways to control a single object.
+
+21:44.270 --> 21:50.540
+And as such, it's hard for me as a user to figure out which one I'm supposed to use, especially when
+
+21:50.540 --> 21:55.490
+there's no hint on screen that that sort of gives me a clue as to what I'm supposed to do.
+
+21:55.490 --> 21:55.760
+Okay.
+
+21:55.760 --> 22:01.730
+So be very, very careful with gestures and which ones you decide to assign.
+
+22:01.730 --> 22:04.430
+Stick with the ones that are most common.
+
+22:04.430 --> 22:10.970
+Start there and only add others if it's absolutely, positively necessary to do so.
+
+22:10.970 --> 22:11.230
+Okay.
+
+22:11.270 --> 22:16.850
+Otherwise there are just too many choices and too many unknowns and too many things that we're really
+
+22:16.850 --> 22:18.770
+not that familiar with yet.
+
+22:18.770 --> 22:19.730
+That'll change.
+
+22:19.730 --> 22:24.770
+But for right now, we are still very much in the infancy of touchscreen use.
+
+22:24.800 --> 22:26.030
+Okay, believe it or not.
+
+22:26.030 --> 22:31.880
+So it's going to take a while until people are really intimately familiar with all these options.
+
+22:32.090 --> 22:38.870
+Good interaction design is predictable and what that means is that at any given moment, okay, whether
+
+22:38.870 --> 22:46.400
+they're on the very first screen or on the third screen, four levels down, users can answer the following
+
+22:46.430 --> 22:47.210
+questions.
+
+22:47.210 --> 22:48.470
+Where are you?
+
+22:48.500 --> 22:50.330
+How did you arrive here?
+
+22:50.360 --> 22:54.500
+What can you do here and where can you go from here?
+
+22:54.500 --> 23:00.080
+If the answer to all those questions are yes, then that means that your interaction design has provided
+
+23:00.080 --> 23:01.580
+a strong sense of place.
+
+23:01.580 --> 23:08.120
+It's set the correct expectations, and you've made it possible for people to accurately predict the
+
+23:08.120 --> 23:10.280
+outcomes of their interactions.
+
+23:10.280 --> 23:17.390
+So any time you are making a decision as to what happens when a user goes from point A to point B and
+
+23:17.390 --> 23:23.330
+lands somewhere, ask yourself these four questions from the perspective of the user.
+
+23:23.330 --> 23:30.290
+Ideally, what you're striving for is yes, answers to all four questions, not two, not three.
+
+23:30.290 --> 23:36.890
+All for one of the easiest ways to make things predictable is an approach that I'm seeing more and more
+
+23:36.920 --> 23:45.290
+of, particularly online and also with apps on devices, and that is to use previews to set expectations.
+
+23:45.400 --> 23:48.500
+For new interactions or in some cases, things that are complex.
+
+23:48.520 --> 23:52.510
+You show what can be done while the interface is still loading.
+
+23:52.580 --> 23:53.020
+All right.
+
+23:53.020 --> 23:57.230
+You show a very high level view of the structure to provide context.
+
+23:57.260 --> 23:57.550
+Okay.
+
+23:57.610 --> 23:59.500
+In a way, it's like showing a map.
+
+23:59.500 --> 24:00.760
+Here's where you are.
+
+24:00.790 --> 24:02.590
+Here are all the things you can do.
+
+24:02.620 --> 24:07.480
+If you take a look at this image it's showing us, here's what the interface looks like, but it's also
+
+24:07.480 --> 24:10.510
+giving us very obvious clues as to what we're supposed to do.
+
+24:10.540 --> 24:12.400
+Tap this to manage your sources.
+
+24:12.400 --> 24:14.690
+Tap this to access other pages.
+
+24:14.710 --> 24:17.870
+This row of content is news and analysis.
+
+24:17.890 --> 24:20.560
+This row of content is business.
+
+24:20.590 --> 24:21.010
+ET cetera.
+
+24:21.010 --> 24:21.490
+ET cetera.
+
+24:21.490 --> 24:25.840
+So what you're doing is at a glance, you're giving people a very quick lay of the land.
+
+24:25.870 --> 24:26.910
+Here's what it is.
+
+24:26.920 --> 24:27.880
+Here's what it means.
+
+24:27.880 --> 24:29.280
+Here's how you use it.
+
+24:29.290 --> 24:32.650
+Very, very simple, but extremely effective.
+
+24:32.680 --> 24:39.610
+And these kinds of previews make really great use of labels, instructions, icons and images, things
+
+24:39.610 --> 24:41.740
+that can be used to set expectations.
+
+24:41.740 --> 24:45.560
+When you look at these examples, they tell you what to do.
+
+24:45.560 --> 24:46.760
+Touch this here.
+
+24:46.760 --> 24:48.290
+What will happen?
+
+24:48.290 --> 24:51.760
+Open this, drag this over here where you can go.
+
+24:51.770 --> 24:51.980
+All right.
+
+24:51.980 --> 24:53.360
+You're giving them a sense of place.
+
+24:53.360 --> 24:54.590
+I'm right here now.
+
+24:54.590 --> 24:57.800
+But here are all the other places that I can go to check out.
+
+24:57.800 --> 24:58.250
+ET cetera.
+
+24:58.250 --> 24:58.940
+ET cetera.
+
+24:58.940 --> 25:00.950
+And how the screen is going to respond, right?
+
+25:00.950 --> 25:03.380
+If I do this, this will happen.
+
+25:03.410 --> 25:05.990
+Here's another example of a preview.
+
+25:06.020 --> 25:06.380
+Right.
+
+25:06.380 --> 25:08.840
+And sense of humor goes a long way, right?
+
+25:08.840 --> 25:10.850
+They're saying whatever you do, don't push this button.
+
+25:10.850 --> 25:12.980
+And that's to to set a meeting.
+
+25:12.980 --> 25:18.080
+And the little chuckle you get from self recognition is just testament to the fact that we all think
+
+25:18.080 --> 25:19.040
+meetings suck.
+
+25:19.040 --> 25:20.510
+But again, it's predictable.
+
+25:20.510 --> 25:21.410
+We understand it.
+
+25:21.440 --> 25:22.520
+We know what it does.
+
+25:22.550 --> 25:31.070
+It sets expectation as to what's possible and allows you to sort of predict what's going to happen if
+
+25:31.070 --> 25:32.960
+you tap or click on something.
+
+25:33.380 --> 25:37.310
+Another important component of good interaction design is feedback.
+
+25:37.340 --> 25:43.510
+Feedback gives the user some very important information in terms of where he is or what he's doing.
+
+25:43.520 --> 25:49.790
+It answers what we consider to be burning questions in the person's mind at any point in their experience.
+
+25:49.820 --> 25:52.400
+Okay, the first of those is location.
+
+25:52.400 --> 25:55.280
+Where am I right now in the grand scheme of things?
+
+25:55.790 --> 25:56.960
+What's my status?
+
+25:56.990 --> 25:58.580
+Okay, what's happening right now?
+
+25:58.580 --> 26:00.590
+And is it still happening?
+
+26:00.590 --> 26:02.600
+Some sense of the future.
+
+26:02.600 --> 26:02.990
+All right.
+
+26:02.990 --> 26:03.980
+Via previews.
+
+26:03.980 --> 26:07.400
+You know, like we talked about a minute ago, what's going to happen?
+
+26:07.400 --> 26:09.710
+What will happen next if I do this?
+
+26:09.710 --> 26:10.910
+What's the result?
+
+26:10.910 --> 26:14.720
+And then finally, there are outcomes and results.
+
+26:14.720 --> 26:16.730
+Something has happened.
+
+26:16.730 --> 26:16.970
+Okay.
+
+26:16.970 --> 26:19.940
+The system is telling you, hey, this is done.
+
+26:19.940 --> 26:22.220
+It's ready, whatever the case may be.
+
+26:22.220 --> 26:24.980
+If you take a look at this example.
+
+26:24.980 --> 26:26.420
+All right, This is from you.
+
+26:26.420 --> 26:26.930
+Send it.
+
+26:26.930 --> 26:32.000
+The minute you hit the submit button, you get a window that tells you exactly what's happening.
+
+26:32.000 --> 26:33.980
+Your file is being sent.
+
+26:34.010 --> 26:38.480
+It gives you an obvious status, 36% completed.
+
+26:38.480 --> 26:43.100
+It shows you a progress bar that explains how far along it is.
+
+26:43.100 --> 26:44.960
+It also gives you some instruction.
+
+26:44.960 --> 26:49.010
+Okay, please don't close this page or click the back button until the file has been sent.
+
+26:49.010 --> 26:53.840
+And when it finishes, it confirms and says your file has been sent.
+
+26:53.840 --> 27:00.710
+So all those things, location, status, future outcomes and results are addressed in this one Small
+
+27:00.710 --> 27:01.370
+screen.
+
+27:01.760 --> 27:07.880
+Good interaction design provides feedback in that every single action a person takes should produce
+
+27:07.880 --> 27:11.300
+a visible, understandable and immediate reaction.
+
+27:11.300 --> 27:13.370
+You acknowledge an interaction.
+
+27:13.370 --> 27:16.670
+You let people know that they have been heard or felt or seen.
+
+27:16.670 --> 27:19.100
+If they click something, you stand up.
+
+27:19.100 --> 27:22.280
+Some visible evidence of the fact that that action took place.
+
+27:22.310 --> 27:28.040
+If you fail to acknowledge an interaction, it typically leads to an unnecessary repetition of actions,
+
+27:28.280 --> 27:30.770
+which a lot of times results in errors.
+
+27:30.770 --> 27:35.220
+It encourages mistakes, it encourages negative outcomes.
+
+27:35.240 --> 27:36.380
+Here's an example.
+
+27:36.380 --> 27:41.840
+If you click the Buy Now button on a website and nothing happens, so then you click it three times
+
+27:41.840 --> 27:44.810
+in a row because you're pretty sure that the system is ignoring you.
+
+27:44.810 --> 27:49.940
+You get many more pairs of fuzzy bunny slippers than you will ever be able to use.
+
+27:49.970 --> 27:56.720
+You get a three year supply of bunny slippers and you don't even like bunny slippers in the first place.
+
+27:57.020 --> 27:59.720
+That's an unintended consequence of an action.
+
+27:59.720 --> 28:05.300
+And the reason you took the action in the first place is because you had no idea that the system received
+
+28:05.300 --> 28:07.040
+your input, received your command.
+
+28:07.040 --> 28:07.340
+Okay.
+
+28:07.340 --> 28:08.240
+Did that work?
+
+28:08.270 --> 28:08.960
+Did it work?
+
+28:08.960 --> 28:09.680
+Did it not work?
+
+28:09.680 --> 28:10.580
+Did I buy that?
+
+28:10.610 --> 28:11.510
+Was the order placed?
+
+28:11.510 --> 28:12.500
+Was it not placed?
+
+28:12.530 --> 28:13.910
+It's a common problem.
+
+28:13.910 --> 28:19.460
+So that's why, you know, the first time that button is clicked, the system has to say, okay, chill
+
+28:19.460 --> 28:20.450
+out, we got it.
+
+28:20.480 --> 28:24.980
+There can certainly be a temporary message that says, Got your order.
+
+28:24.980 --> 28:25.760
+We're working on it.
+
+28:25.790 --> 28:26.360
+Hang tight.
+
+28:26.390 --> 28:27.500
+Don't touch anything.
+
+28:27.530 --> 28:27.740
+Okay.
+
+28:27.740 --> 28:28.730
+Which a lot of websites do.
+
+28:28.760 --> 28:29.750
+You'll see that a lot.
+
+28:29.780 --> 28:36.170
+So again, the main reason you provide feedback is to avoid unintended consequence, like 40,000 pairs
+
+28:36.170 --> 28:37.100
+of bunny slippers.
+
+28:37.630 --> 28:40.510
+Good feedback also prevents errors.
+
+28:40.540 --> 28:46.810
+Error prevention is the best way to handle errors and in your messages or in your instruction or in
+
+28:46.810 --> 28:50.380
+your guidance, you want to complement, don't complicate.
+
+28:50.380 --> 28:51.760
+And here's what I mean by that.
+
+28:51.790 --> 28:55.000
+Error messages should describe what happened.
+
+28:55.000 --> 28:57.100
+Explain why it happened.
+
+28:57.100 --> 28:59.980
+Suggest a fix if at all possible.
+
+28:59.980 --> 29:04.210
+And absolutely, positively never blame the person.
+
+29:04.210 --> 29:04.540
+Okay.
+
+29:04.570 --> 29:10.090
+A lot of error messages inadvertently cause the user to feel like they've done something wrong.
+
+29:10.090 --> 29:16.480
+And that happens either because the language is a little harsh and abrupt and very technical and complex,
+
+29:16.480 --> 29:19.990
+which essentially makes the person feel like, well, I don't understand any of that.
+
+29:19.990 --> 29:24.250
+So their automatic assumption is that maybe they screwed something up that's human.
+
+29:24.250 --> 29:26.320
+And again, that's sort of the way that we're wired.
+
+29:26.350 --> 29:31.120
+If they can't understand what happened, they will typically not know what to do about it.
+
+29:31.120 --> 29:35.710
+They'll think it's their fault and they'll probably repeat the action 3 or 4 times and get the same
+
+29:35.710 --> 29:39.050
+result and get frustrated and then they'll probably never come back.
+
+29:39.050 --> 29:41.750
+So here are some really good examples.
+
+29:42.230 --> 29:47.330
+You know what I think of as really great error messages that do these four things that I'm suggesting
+
+29:47.330 --> 29:47.950
+right here.
+
+29:47.960 --> 29:51.200
+Here's an example of dealing with an error with humor.
+
+29:51.200 --> 29:53.240
+Says, Hey, we'll be back shortly.
+
+29:53.240 --> 29:55.940
+And they sort of, you know, have some fun with it.
+
+29:55.940 --> 30:01.190
+And they say, we may have forgotten to feed the wild tumble beasts roaming inside our data center.
+
+30:01.640 --> 30:02.090
+Okay.
+
+30:02.120 --> 30:03.920
+Animal control has been alerted.
+
+30:03.920 --> 30:07.820
+But what it does is it lets you know that like, look, this is our problem.
+
+30:07.820 --> 30:08.660
+It's our fault.
+
+30:08.690 --> 30:11.360
+We're dealing with it and we know what's going on.
+
+30:11.360 --> 30:15.260
+We're aware of the situation, and we'll be back as soon as possible.
+
+30:15.260 --> 30:15.500
+Okay.
+
+30:15.500 --> 30:17.570
+That's that's a really good error message.
+
+30:17.570 --> 30:18.680
+Here's another one.
+
+30:18.680 --> 30:19.370
+It says down.
+
+30:19.370 --> 30:20.210
+Bear with us.
+
+30:20.210 --> 30:26.300
+And the very first line says, We made a mistake and now we're dealing with it's uncanny server destroying
+
+30:26.300 --> 30:26.930
+nature.
+
+30:26.960 --> 30:27.380
+All right.
+
+30:27.380 --> 30:33.830
+So again, they have some fun with it, but they clearly explain that what's happening is not a result
+
+30:33.830 --> 30:34.820
+of what you did.
+
+30:34.850 --> 30:40.940
+Twitter has always done a great job of providing error messages, again, in a very friendly, very
+
+30:40.940 --> 30:42.410
+calming, very inviting way.
+
+30:42.410 --> 30:45.020
+It says, look, we're over capacity right now.
+
+30:45.020 --> 30:45.920
+It's not your fault.
+
+30:45.950 --> 30:48.500
+It's just we're having a mechanical problem.
+
+30:48.500 --> 30:49.760
+We're dealing with it.
+
+30:49.760 --> 30:52.280
+And, you know, hang on a second.
+
+30:52.310 --> 30:53.210
+Take a deep breath.
+
+30:53.210 --> 30:54.050
+Try again.
+
+30:54.230 --> 30:56.630
+That's good error handling.
+
+30:56.900 --> 31:03.530
+These five principles are intimately interrelated in the following way, starting with consistency,
+
+31:03.530 --> 31:06.710
+which helps people use what they already know.
+
+31:06.950 --> 31:09.860
+The visibility of those opportunities.
+
+31:09.860 --> 31:14.900
+If you're showing them the things that they already know and understand, that can invite interaction,
+
+31:15.200 --> 31:20.960
+Learning how those interactions work is much easier when you're able to predict what the outcome of
+
+31:20.990 --> 31:22.250
+that interaction will be.
+
+31:22.250 --> 31:26.600
+And finally, feedback facilitates that learning.
+
+31:26.600 --> 31:32.210
+If you're getting constant feedback on your actions, you're learning what does what.
+
+31:32.240 --> 31:33.620
+It's really that simple.
+
+31:33.620 --> 31:39.950
+So again, there are any number of things to know about good interaction design, but these five principles
+
+31:39.950 --> 31:45.440
+and the ways in which they affect one another is probably the most important thing that I could get
+
+31:45.440 --> 31:46.640
+across to you right now.
+
+31:46.820 --> 31:51.710
+So now that you know all there is to know about interaction design, or at least the core five things
+
+31:51.710 --> 31:56.390
+you Need to Know about interaction design, you have some marching orders if you're going to design
+
+31:56.390 --> 32:00.080
+or develop anything or build anything, create anything.
+
+32:00.080 --> 32:02.900
+There are some things you absolutely have to remember.
+
+32:03.020 --> 32:07.640
+First and foremost, remember that you are not designing for yourself.
+
+32:07.670 --> 32:12.410
+Next, understand the goals and the needs that you're designing for.
+
+32:12.590 --> 32:17.840
+Think very, very hard about the design and about the experience.
+
+32:17.960 --> 32:21.590
+Set the users expectations for that experience.
+
+32:21.620 --> 32:27.740
+Don't hinder, obstruct or interfere with the experience and try to break your designs.
+
+32:27.740 --> 32:29.840
+Act as your own worst visitor.
+
+32:29.870 --> 32:32.330
+Do things that are unexpected.
+
+32:32.480 --> 32:38.780
+And finally, because it bears repeating, you are not designing for yourself what you think makes sense
+
+32:38.780 --> 32:39.980
+and what you think is obvious.
+
+32:39.980 --> 32:46.970
+What you think is visible is not the same as what your users will think is obvious.
+
+32:46.970 --> 32:48.740
+Visible, learnable.
+
+32:48.770 --> 32:50.120
+It's not about you.
+
+32:50.120 --> 32:51.110
+It's about them.

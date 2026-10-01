@@ -1,0 +1,217 @@
+WEBVTT
+
+00:01.170 --> 00:02.003
+Instructor: In the last section,
+
+00:02.003 --> 00:03.900
+we put together our deployment file
+
+00:03.900 --> 00:06.120
+for the multi-server set of pods,
+
+00:06.120 --> 00:08.670
+and we made sure that we specified that port 5,000
+
+00:08.670 --> 00:11.910
+should be accessible on the image
+
+00:11.910 --> 00:14.820
+that gets created inside of each of those pods.
+
+00:14.820 --> 00:17.460
+So we're now gonna create a second configuration file
+
+00:17.460 --> 00:19.590
+that's going to serve as what's going to create
+
+00:19.590 --> 00:22.740
+and maintain the cluster IP service.
+
+00:22.740 --> 00:25.470
+So I'm going to again, flip back over to my code editor
+
+00:25.470 --> 00:27.660
+and inside of my K8s directory,
+
+00:27.660 --> 00:29.250
+I'm going to put together a new file
+
+00:29.250 --> 00:34.250
+that I will call server cluster IP service dot YAML.
+
+00:37.290 --> 00:39.090
+All right, and I'm gonna, or actually I don't need to,
+
+00:39.090 --> 00:40.800
+I was gonna say, I was gonna type out the name of the file
+
+00:40.800 --> 00:42.480
+right here just so you can see the whole thing
+
+00:42.480 --> 00:43.710
+but you can actually see the whole name
+
+00:43.710 --> 00:45.780
+right here on the tab inside of my code editor,
+
+00:45.780 --> 00:48.030
+just in case you want to reference the exact name
+
+00:48.030 --> 00:49.680
+that I'm using.
+
+00:49.680 --> 00:50.670
+All right, so inside of here,
+
+00:50.670 --> 00:52.860
+we're going to put together another config file
+
+00:52.860 --> 00:56.520
+for a service of type cluster IP.
+
+00:56.520 --> 00:59.100
+This is again, going to be just about identical
+
+00:59.100 --> 01:02.070
+to the previous cluster IP service we put together
+
+01:02.070 --> 01:03.810
+but let's go through typing it all out again
+
+01:03.810 --> 01:05.760
+just to kinda commit this stuff to memory.
+
+01:05.760 --> 01:07.410
+It'll be pretty quick.
+
+01:07.410 --> 01:10.590
+So I'm going to provide an API version of V1.
+
+01:10.590 --> 01:14.970
+I'll provide a kind of service or our metadata.
+
+01:14.970 --> 01:16.500
+We're going to specify the name
+
+01:16.500 --> 01:18.450
+of this service or this object.
+
+01:18.450 --> 01:19.530
+And I'm going to use a name
+
+01:19.530 --> 01:23.613
+of server cluster IP service, like so.
+
+01:25.230 --> 01:26.670
+And then we will provide a spec
+
+01:26.670 --> 01:29.130
+that's going to customize exactly how this server behave
+
+01:29.130 --> 01:31.380
+or (indistinct) how this service behaves.
+
+01:31.380 --> 01:35.110
+So we're going to specify a type of service of cluster IP
+
+01:36.090 --> 01:37.920
+and then we need to provide a selector
+
+01:37.920 --> 01:41.040
+that's going to tell this service exactly what set of pods
+
+01:41.040 --> 01:43.110
+it's supposed to provide access to.
+
+01:43.110 --> 01:44.550
+And so of course the cluster IP
+
+01:44.550 --> 01:45.750
+that we're putting together right now
+
+01:45.750 --> 01:49.653
+is supposed to provide access to all the multi-server pods.
+
+01:51.060 --> 01:52.950
+In just the last section, when we put together
+
+01:52.950 --> 01:55.650
+the server deployment file, we had assigned
+
+01:55.650 --> 01:59.580
+each of those pods a label of component server.
+
+01:59.580 --> 02:02.580
+And so inside of our server cluster IP service,
+
+02:02.580 --> 02:04.950
+we're going to want to specify a selector
+
+02:04.950 --> 02:06.693
+of component server.
+
+02:07.860 --> 02:08.693
+So back over here,
+
+02:08.693 --> 02:11.583
+I'll provide a selector of component server.
+
+02:14.010 --> 02:16.230
+And then finally, very similar to what we did last time,
+
+02:16.230 --> 02:18.750
+we're going to make sure that we specify the ports
+
+02:18.750 --> 02:21.840
+that this service is going to kind of mitigate control over
+
+02:21.840 --> 02:23.250
+or managed control over.
+
+02:23.250 --> 02:24.270
+So just as before,
+
+02:24.270 --> 02:26.340
+we're going to just send everything through.
+
+02:26.340 --> 02:27.660
+And as a reminder,
+
+02:27.660 --> 02:31.800
+the multi-server image listens for traffic on port 5,000.
+
+02:31.800 --> 02:36.720
+So we're going to provide our ports
+
+02:36.720 --> 02:41.720
+with a port of 5,000 and a target port of 5,000 as well,
+
+02:42.210 --> 02:44.913
+just as we did inside of our previous service.
+
+02:46.110 --> 02:47.190
+Okay. So that's it.
+
+02:47.190 --> 02:48.750
+That's all we have to do to put together
+
+02:48.750 --> 02:51.000
+our cluster IP service that's going to govern
+
+02:51.000 --> 02:54.450
+or manage access to our running express API.
+
+02:54.450 --> 02:56.430
+So let's take a quick pause right here.
+
+02:56.430 --> 02:58.710
+I want to address one little side topic
+
+02:58.710 --> 03:02.070
+and then we'll continue with a couple more config files
+
+03:02.070 --> 03:05.670
+or the rest of all the objects inside of our application.
+
+03:05.670 --> 03:08.120
+So quick pause and I'll see you in just a minute.

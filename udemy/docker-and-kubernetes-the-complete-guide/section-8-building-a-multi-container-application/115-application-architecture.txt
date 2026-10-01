@@ -1,0 +1,385 @@
+WEBVTT
+
+00:00.900 --> 00:01.733
+-: In the last section,
+
+00:01.733 --> 00:03.270
+we started talking about the application
+
+00:03.270 --> 00:04.980
+that we're going to build to learn more about
+
+00:04.980 --> 00:06.630
+multi-container deployments.
+
+00:06.630 --> 00:08.970
+In this section, we'll continue by talking about
+
+00:08.970 --> 00:11.580
+the backend architecture that we're going to use
+
+00:11.580 --> 00:13.113
+to implement this application.
+
+00:14.010 --> 00:16.320
+All right, so here we go, here's the backend.
+
+00:16.320 --> 00:18.720
+Now, like I said, this is just over the top,
+
+00:18.720 --> 00:21.780
+complicated, way more complicated than it needs to be
+
+00:21.780 --> 00:23.730
+by like a factor of 20,
+
+00:23.730 --> 00:26.370
+but I'm showing you this much more complicated backend
+
+00:26.370 --> 00:28.650
+just to give you an idea of how we can take
+
+00:28.650 --> 00:31.290
+these multiple containers, or multiple components,
+
+00:31.290 --> 00:34.530
+and fit them together into one application.
+
+00:34.530 --> 00:37.290
+Now this right here is a diagram of the development flow,
+
+00:37.290 --> 00:40.110
+or the development architecture of our application.
+
+00:40.110 --> 00:41.670
+So when we eventually push this
+
+00:41.670 --> 00:43.440
+into a production deployment,
+
+00:43.440 --> 00:45.510
+some of these pieces in here are gonna change
+
+00:45.510 --> 00:46.350
+just a little bit
+
+00:46.350 --> 00:47.940
+but I'll be sure to tell you exactly
+
+00:47.940 --> 00:50.403
+about exactly how they are going to change.
+
+00:51.870 --> 00:53.910
+So when a user boots up their browser
+
+00:53.910 --> 00:55.740
+and tries to visit our application,
+
+00:55.740 --> 00:59.010
+they're gonna first visit an Nginx web server
+
+00:59.010 --> 01:01.380
+very similar to the one we had previously.
+
+01:01.380 --> 01:05.340
+The Nginx server is going to essentially do some routing.
+
+01:05.340 --> 01:07.860
+This server is going to decide whether the browser
+
+01:07.860 --> 01:10.920
+is trying to access a React application,
+
+01:10.920 --> 01:14.670
+to get some front end assets like the HTML file,
+
+01:14.670 --> 01:16.110
+or some JavaScript file,
+
+01:16.110 --> 01:18.930
+that will be used to build this application.
+
+01:18.930 --> 01:21.930
+If the browser is trying to access some front end assets
+
+01:21.930 --> 01:24.120
+like an HTML file or a JavaScript file
+
+01:24.120 --> 01:26.730
+it will automatically route the incoming request
+
+01:26.730 --> 01:28.593
+to a running React server.
+
+01:30.270 --> 01:32.580
+If the incoming request is instead trying
+
+01:32.580 --> 01:34.770
+to access some backend API,
+
+01:34.770 --> 01:37.440
+that we are going to use for submitting numbers
+
+01:37.440 --> 01:40.350
+and reading numbers and retrieving values,
+
+01:40.350 --> 01:41.640
+all that kind of good stuff,
+
+01:41.640 --> 01:44.160
+then the Nginx server right here will instead route
+
+01:44.160 --> 01:46.890
+the request to a Express server.
+
+01:46.890 --> 01:48.750
+So this Express server here is gonna function
+
+01:48.750 --> 01:52.020
+as our API that's gonna serve up information
+
+01:52.020 --> 01:55.413
+or calculated values up to the front end application.
+
+01:56.520 --> 01:58.260
+Now let me show you a couple more diagrams
+
+01:58.260 --> 02:01.010
+that's going to better explain this process right here.
+
+02:02.700 --> 02:04.320
+So you might have noticed that on the last diagram,
+
+02:04.320 --> 02:07.680
+we had these worker, Redis and Postgres things over here.
+
+02:07.680 --> 02:10.800
+Remember that Redis is an in-memory data store,
+
+02:10.800 --> 02:13.380
+and it's very commonly used for housing temporary
+
+02:13.380 --> 02:16.800
+or kind of cached values of sorts.
+
+02:16.800 --> 02:18.420
+I've also got Postgres right here,
+
+02:18.420 --> 02:21.843
+which is a database very similar to say MySQL.
+
+02:23.550 --> 02:24.540
+So you might have noticed
+
+02:24.540 --> 02:26.308
+that in our web application mockup,
+
+02:26.308 --> 02:29.010
+we had kind of these two sets of values right here.
+
+02:29.010 --> 02:31.710
+We had first values that the application has seen,
+
+02:31.710 --> 02:33.660
+or essentially values that have been submitted
+
+02:33.660 --> 02:35.160
+to the application.
+
+02:35.160 --> 02:37.740
+All of the information for this values I have seen
+
+02:37.740 --> 02:40.980
+is going to be stored in a Postgres database.
+
+02:40.980 --> 02:42.180
+And so you can kind of imagine
+
+02:42.180 --> 02:43.710
+that values I have seen right here,
+
+02:43.710 --> 02:45.930
+or really indices I've seen,
+
+02:45.930 --> 02:49.080
+is a very permanent stored set of data,
+
+02:49.080 --> 02:51.150
+all coming from Postgres.
+
+02:51.150 --> 02:52.110
+On the other hand,
+
+02:52.110 --> 02:54.180
+the calculated values that are going to be displayed
+
+02:54.180 --> 02:55.013
+right here
+
+02:55.013 --> 02:57.630
+all this information is going to be displayed
+
+02:57.630 --> 03:00.870
+in a separate Redis database instead.
+
+03:00.870 --> 03:03.960
+So again, we're just making this over the top complicated,
+
+03:03.960 --> 03:06.300
+way more complicated than it has to be.
+
+03:06.300 --> 03:09.210
+We have essentially identical data on the screen right here,
+
+03:09.210 --> 03:11.040
+but we're just going to arbitrarily say that,
+
+03:11.040 --> 03:13.590
+oh yeah, this source of data is coming from Postgres,
+
+03:13.590 --> 03:15.930
+this source of data is coming from Redis over here.
+
+03:15.930 --> 03:17.610
+Again, we're just doing that to make this
+
+03:17.610 --> 03:19.080
+a little bit more complicated
+
+03:19.080 --> 03:20.760
+and show you how you would work with these
+
+03:20.760 --> 03:23.553
+different sources of data in a single application.
+
+03:24.420 --> 03:27.120
+Now, lemme show you a flow of how our application
+
+03:27.120 --> 03:29.640
+is really going to behave behind the scenes.
+
+03:29.640 --> 03:32.190
+So let's imagine that a user submits a number
+
+03:32.190 --> 03:33.510
+to the React application.
+
+03:33.510 --> 03:36.660
+Like let's say they put a number into the form right here
+
+03:36.660 --> 03:38.310
+and then click the submit button.
+
+03:39.690 --> 03:41.610
+So when a user clicks on that submit button,
+
+03:41.610 --> 03:44.790
+the React app is going to make a API request, or excuse me,
+
+03:44.790 --> 03:48.750
+an Ajax request to the backend Express server.
+
+03:48.750 --> 03:51.030
+The Express server, when it receives this number,
+
+03:51.030 --> 03:53.970
+that it needs to calculate a Fibonacci number for,
+
+03:53.970 --> 03:55.500
+it's gonna first take that number,
+
+03:55.500 --> 03:58.170
+and store it inside of our Postgres database.
+
+03:58.170 --> 04:00.240
+'Cause remember, that's gonna have a permanent list
+
+04:00.240 --> 04:02.730
+of all the indices that have ever been submitted
+
+04:02.730 --> 04:04.380
+to our application.
+
+04:04.380 --> 04:05.310
+At the same time,
+
+04:05.310 --> 04:07.740
+the Express server is also gonna take that index,
+
+04:07.740 --> 04:11.220
+and put it into the Redis database as well.
+
+04:11.220 --> 04:14.280
+When a new number shows up inside of our Redis database,
+
+04:14.280 --> 04:18.930
+it's gonna wake up a separate backend Node.js process,
+
+04:18.930 --> 04:21.840
+that we're going to refer to as the worker.
+
+04:21.840 --> 04:24.690
+The only job this worker right here is to watch Redis
+
+04:24.690 --> 04:27.240
+for new indices that show up.
+
+04:27.240 --> 04:30.240
+Anytime a new index shows up inside of Redis,
+
+04:30.240 --> 04:32.670
+the worker is going to pull that value out,
+
+04:32.670 --> 04:36.030
+it will calculate the appropriate Fibonacci value for it,
+
+04:36.030 --> 04:37.620
+it'll take that calculated value,
+
+04:37.620 --> 04:39.660
+and then put it back into Redis,
+
+04:39.660 --> 04:42.600
+so that it can then be requested by the React application
+
+04:42.600 --> 04:44.493
+and eventually show up on the screen.
+
+04:45.600 --> 04:48.810
+So again, over the top complicated, I can't say it enough,
+
+04:48.810 --> 04:51.960
+I don't think you would end up building a Redis,
+
+04:51.960 --> 04:54.038
+or excuse me, a Fibonacci calculator application
+
+04:54.038 --> 04:55.770
+with this type of flow right here,
+
+04:55.770 --> 04:57.030
+this type of architecture.
+
+04:57.030 --> 04:58.350
+But again, I just wanted to show you
+
+04:58.350 --> 05:00.660
+a multi-container deployment.
+
+05:00.660 --> 05:03.390
+So now that we've got a better idea of how all this works,
+
+05:03.390 --> 05:04.500
+let's take a quick pause.
+
+05:04.500 --> 05:05.730
+We're gonna come back the next section
+
+05:05.730 --> 05:07.650
+and we'll start putting this application together
+
+05:07.650 --> 05:08.670
+from scratch.
+
+05:08.670 --> 05:11.093
+So a quick break, and I'll see you in just a minute.

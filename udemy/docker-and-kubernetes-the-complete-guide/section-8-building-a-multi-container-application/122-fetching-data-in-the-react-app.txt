@@ -1,0 +1,418 @@
+WEBVTT
+
+00:00.750 --> 00:03.570
+-: In the last section, we generated a brand new project
+
+00:03.570 --> 00:05.010
+using Create React App.
+
+00:05.010 --> 00:07.350
+We're now gonna open up our code editor
+
+00:07.350 --> 00:10.350
+and find the newly generated client directory.
+
+00:10.350 --> 00:13.050
+So inside the SRC folder of the client directory,
+
+00:13.050 --> 00:15.498
+we're gonna start working on one or two new files
+
+00:15.498 --> 00:17.366
+that's going to represent the different screens
+
+00:17.366 --> 00:20.433
+that we're able to navigate to inside of our application.
+
+00:21.450 --> 00:23.550
+Now when we previously looked at some of our mock-ups,
+
+00:23.550 --> 00:25.860
+we saw this kind of Fib calculator that you see
+
+00:25.860 --> 00:27.570
+on the left hand side over here.
+
+00:27.570 --> 00:29.130
+In reality, we're going to actually make
+
+00:29.130 --> 00:32.310
+two separate pages that a user can visit,
+
+00:32.310 --> 00:34.380
+both a Fib calculator on the left hand side,
+
+00:34.380 --> 00:36.675
+and then we're gonna have some other kind of dummy page
+
+00:36.675 --> 00:38.580
+on the right hand side.
+
+00:38.580 --> 00:41.310
+The only reason that we are doing this other page over here,
+
+00:41.310 --> 00:44.190
+which we're going to literally call "other page,"
+
+00:44.190 --> 00:49.020
+is to show you an example of HTML5 pushState routing.
+
+00:49.020 --> 00:52.650
+So if you don't have a background in React or React Router,
+
+00:52.650 --> 00:53.820
+don't worry about it too much.
+
+00:53.820 --> 00:54.852
+Essentially, I just wanna make sure
+
+00:54.852 --> 00:58.050
+that you have a very complete front end example
+
+00:58.050 --> 00:59.430
+that shows you how you can navigate
+
+00:59.430 --> 01:02.097
+to different nested pages in a single application
+
+01:02.097 --> 01:03.873
+while still using Docker.
+
+01:04.830 --> 01:06.930
+So to get started, we're gonna first put together
+
+01:06.930 --> 01:08.880
+a very little bit of code
+
+01:08.880 --> 01:10.980
+to represent this other page over here.
+
+01:10.980 --> 01:12.852
+We'll then start to work on the Fib calculator,
+
+01:12.852 --> 01:15.570
+this screen over here on the left hand side.
+
+01:15.570 --> 01:17.370
+So for the screen on the right hand side,
+
+01:17.370 --> 01:19.410
+I'm gonna open up my code editor.
+
+01:19.410 --> 01:22.102
+I'll find the client, SRC folder.
+
+01:22.102 --> 01:24.750
+And then inside there, I'm gonna create a new file
+
+01:24.750 --> 01:27.783
+called otherpage.js.
+
+01:28.860 --> 01:33.780
+Inside of here, we will import React from React.
+
+01:33.780 --> 01:38.607
+I will import link from React Router DOM,
+
+01:38.607 --> 01:40.551
+and then I will export default
+
+01:40.551 --> 01:43.203
+a functional component like so.
+
+01:44.610 --> 01:45.990
+And then inside there, I'm gonna return
+
+01:45.990 --> 01:48.398
+just a tiny bit of JSX.
+
+01:48.398 --> 01:50.820
+So it's gonna have a div.
+
+01:50.820 --> 01:54.810
+The div will have some text like "I'm some other page,"
+
+01:54.810 --> 01:58.413
+and it'll also have a link back to our main page.
+
+01:59.946 --> 02:02.397
+And we'll give it the text of "Go back home."
+
+02:03.270 --> 02:05.220
+Okay, so again, we're just doing this right here,
+
+02:05.220 --> 02:08.115
+so I can give you a complete navigational example
+
+02:08.115 --> 02:10.440
+on the front end of our application.
+
+02:10.440 --> 02:12.420
+And if you're not coming from the world of React
+
+02:12.420 --> 02:14.820
+or React Router DOM or anything like that, don't sweat it.
+
+02:14.820 --> 02:15.985
+Essentially, it's just another page
+
+02:15.985 --> 02:18.600
+that we want to be able to navigate to.
+
+02:18.600 --> 02:20.430
+So now that we've got that all put together,
+
+02:20.430 --> 02:22.440
+we're gonna start working on the main page.
+
+02:22.440 --> 02:24.990
+So the actual Fibonacci calculator.
+
+02:24.990 --> 02:27.150
+So on this thing, we wanna have a form
+
+02:27.150 --> 02:29.971
+where user can enter in some index and submit it,
+
+02:29.971 --> 02:32.190
+and then see a list of all the indexes
+
+02:32.190 --> 02:34.200
+that have ever been submitted, and see a list
+
+02:34.200 --> 02:36.930
+of all the different values that have been calculated.
+
+02:36.930 --> 02:39.420
+So for that, I'm gonna create another new file
+
+02:39.420 --> 02:41.253
+inside my SRC directory,
+
+02:42.150 --> 02:46.503
+and I'm going to call this one fib.js like so.
+
+02:49.193 --> 02:50.631
+Then inside of here, we'll start off
+
+02:50.631 --> 02:52.923
+with a little import statement at the top.
+
+02:54.030 --> 02:59.030
+I will import React and component from React.
+
+02:59.160 --> 03:01.800
+I will import Axios from Axios,
+
+03:01.800 --> 03:03.300
+which is a module that we're going to use
+
+03:03.300 --> 03:06.783
+for making requests to that backend express server.
+
+03:07.890 --> 03:11.070
+And then we'll create a new class called Fib,
+
+03:11.070 --> 03:15.570
+which is going to be extending the component base class.
+
+03:15.570 --> 03:16.500
+At the very top of this,
+
+03:16.500 --> 03:19.410
+we're going to initialize some default state.
+
+03:19.410 --> 03:23.040
+So we'll say, state equals an object.
+
+03:23.040 --> 03:26.160
+It'll have a couple of different properties inside of it.
+
+03:26.160 --> 03:29.643
+I'll say scene indexes is in array.
+
+03:30.660 --> 03:33.420
+Values is going to be in empty object,
+
+03:33.420 --> 03:36.063
+and index will be in empty string like so.
+
+03:37.500 --> 03:39.360
+Now we're going through this code pretty quickly.
+
+03:39.360 --> 03:41.310
+As a reminder, I'm just kind of giving you
+
+03:41.310 --> 03:43.710
+a very high-level description of what's going on.
+
+03:43.710 --> 03:45.885
+This is all stuff that is super unrelated
+
+03:45.885 --> 03:47.490
+from the world of Docker.
+
+03:47.490 --> 03:49.622
+And if you don't care to learn any of this JavaScript stuff
+
+03:49.622 --> 03:51.630
+or you just don't care about it one bit,
+
+03:51.630 --> 03:54.136
+you can always continue on to that future section
+
+03:54.136 --> 03:56.730
+that has all this code for download.
+
+03:56.730 --> 03:58.080
+I'm just putting these videos in here
+
+03:58.080 --> 04:00.210
+in case you're kinda curious about the inner workings
+
+04:00.210 --> 04:01.233
+of the application.
+
+04:02.430 --> 04:04.285
+All right, so now the instant that this component
+
+04:04.285 --> 04:06.675
+is rendered on the screen, we're going to want to attempt
+
+04:06.675 --> 04:09.363
+to fetch some data from our backend API.
+
+04:10.530 --> 04:14.490
+So I will define a component DidMount lifecycle method
+
+04:14.490 --> 04:16.710
+that will call two helper methods.
+
+04:16.710 --> 04:19.545
+One will be this .fetch values,
+
+04:19.545 --> 04:23.073
+and the other will be this .fetch indexes.
+
+04:26.340 --> 04:29.220
+And then I will define both those helper methods.
+
+04:29.220 --> 04:31.143
+So first off, fetch values.
+
+04:32.820 --> 04:34.980
+This is going to be an asynchronous method,
+
+04:34.980 --> 04:36.810
+so I will mark it with the async keyword,
+
+04:36.810 --> 04:38.370
+because we're going to do a little bit
+
+04:38.370 --> 04:40.500
+of data fetching in here.
+
+04:40.500 --> 04:41.980
+So I will make a request
+
+04:42.900 --> 04:44.646
+to get a list of all the different values
+
+04:44.646 --> 04:47.220
+that have been stored on our API.
+
+04:47.220 --> 04:52.220
+I'll say await axios.get/api/values/current
+
+04:54.480 --> 04:55.313
+like so.
+
+04:58.530 --> 05:00.660
+And then I will set my state on this component
+
+05:00.660 --> 05:04.350
+by calling this .setState and passing in an object
+
+05:04.350 --> 05:08.673
+with values, is values.data like so.
+
+05:10.626 --> 05:13.470
+Then we'll also set up the fetch indexes.
+
+05:13.470 --> 05:16.410
+So this is the list of indexes that have been requested
+
+05:16.410 --> 05:18.840
+and stored inside of our Postgres server.
+
+05:18.840 --> 05:20.580
+It's kind of the hard coded copy,
+
+05:20.580 --> 05:22.620
+just saying, "Hey, here's a list of all the indexes
+
+05:22.620 --> 05:25.800
+that have been ever submitted to the application."
+
+05:25.800 --> 05:26.633
+And so for that,
+
+05:27.570 --> 05:32.553
+we'll define another async method called fetch indexes.
+
+05:33.736 --> 05:35.490
+And this is gonna look very similar
+
+05:35.490 --> 05:38.098
+to the helper function that we just put together.
+
+05:38.098 --> 05:41.148
+So we'll say const seen indexes.
+
+05:41.148 --> 05:44.640
+Again, this is a list of all the indexes we've ever seen,
+
+05:44.640 --> 05:49.640
+will be await axios.get/API/values/all.
+
+05:51.780 --> 05:53.973
+Oop, all without a V.
+
+05:56.250 --> 05:59.703
+And we will again update our state by calling setState,
+
+06:00.600 --> 06:04.740
+and I'll pass in a key value pair of seen indexes,
+
+06:04.740 --> 06:08.913
+is seen indexes.data like so.
+
+06:09.900 --> 06:11.340
+Now I'm just gonna double check to make sure
+
+06:11.340 --> 06:13.110
+that all my state lines up here.
+
+06:13.110 --> 06:15.900
+Yep, I got seen indexes and values,
+
+06:15.900 --> 06:18.630
+values and seen indexes.
+
+06:18.630 --> 06:20.430
+All right, so let's take a quick pause right here.
+
+06:20.430 --> 06:21.900
+When we come back the next section,
+
+06:21.900 --> 06:23.970
+we're gonna take this data that we are fetching
+
+06:23.970 --> 06:26.340
+from the backend API and attempt to render it
+
+06:26.340 --> 06:29.010
+on the screen after this component is rendered.
+
+06:29.010 --> 06:31.403
+So a quick break and I'll see you in just a minute.

@@ -1,0 +1,370 @@
+WEBVTT
+
+00:00.930 --> 00:02.130
+-: In the last section, we spoke about
+
+00:02.130 --> 00:04.440
+how we're going to take our multi container project
+
+00:04.440 --> 00:06.360
+and update it to use Kubernetes
+
+00:06.360 --> 00:08.400
+as opposed to the Docker Compose
+
+00:08.400 --> 00:11.700
+or Elastic Beanstalk setup that it currently has.
+
+00:11.700 --> 00:13.860
+Now you will notice that in the last lecture
+
+00:13.860 --> 00:17.430
+I posted the zip file for the complex project.
+
+00:17.430 --> 00:18.263
+I put it there
+
+00:18.263 --> 00:20.910
+just in case you made any changes to the project.
+
+00:20.910 --> 00:25.140
+That is a backup of my exact files as they stand right now.
+
+00:25.140 --> 00:28.350
+So I took my exact complex folder directory
+
+00:28.350 --> 00:30.690
+with the server, the client, the worker
+
+00:30.690 --> 00:33.540
+the whole nine yards, and I put it into that zip file.
+
+00:33.540 --> 00:36.510
+So again, if you made any changes to the project whatsoever
+
+00:36.510 --> 00:37.680
+between the last video
+
+00:37.680 --> 00:38.513
+that we were working
+
+00:38.513 --> 00:39.390
+on it and right now,
+
+00:39.390 --> 00:40.800
+I highly encourage you to
+
+00:40.800 --> 00:42.660
+download that zip file and use that
+
+00:42.660 --> 00:45.960
+as the starting point for all this Kubernetes stuff.
+
+00:45.960 --> 00:48.840
+Now in this section we're going to take the complex project
+
+00:48.840 --> 00:50.460
+or the multi container project
+
+00:50.460 --> 00:53.190
+and we're going to start it up with Docker Compose.
+
+00:53.190 --> 00:55.890
+The reason that we're going to do this is to just make sure
+
+00:55.890 --> 00:58.920
+that everything is still working the way we expect.
+
+00:58.920 --> 01:01.500
+Because if we start building out all this Kubernetes stuff,
+
+01:01.500 --> 01:04.020
+but some of the underlying project code got changed
+
+01:04.020 --> 01:06.750
+by you at some point in time, or it's in a broken state,
+
+01:06.750 --> 01:07.800
+doing the Kubernetes stuff
+
+01:07.800 --> 01:12.030
+is going to be basically impossible, completely impossible.
+
+01:12.030 --> 01:14.550
+So we just need to make sure that the code that you're using
+
+01:14.550 --> 01:16.200
+and the code that I'm using is still working
+
+01:16.200 --> 01:18.390
+and a hundred percent up to date.
+
+01:18.390 --> 01:19.223
+All right, so you'll notice
+
+01:19.223 --> 01:22.470
+that I'm inside of my complex project folder right here.
+
+01:22.470 --> 01:25.410
+The other thing that I want you to triple, triple check
+
+01:25.410 --> 01:29.100
+make sure that you are not using a copy
+
+01:29.100 --> 01:32.220
+of Docker that has been configured to run inside of our
+
+01:32.220 --> 01:35.130
+or to access the Docker server inside of your node.
+
+01:35.130 --> 01:38.100
+So you can very easily do that by doing a Docker PS
+
+01:38.100 --> 01:40.530
+and you should see that you have very few
+
+01:40.530 --> 01:43.350
+or absolutely no containers running whatsoever.
+
+01:43.350 --> 01:45.210
+If you see a ton of printout,
+
+01:45.210 --> 01:47.190
+that means that your Docker client
+
+01:47.190 --> 01:48.210
+is still configured to
+
+01:48.210 --> 01:50.970
+access the Docker server inside the node.
+
+01:50.970 --> 01:52.980
+We do not want to start up Docker Compose
+
+01:52.980 --> 01:54.693
+inside the node, whatsoever.
+
+01:55.590 --> 01:58.260
+If you ha are still using the updated copy
+
+01:58.260 --> 02:00.060
+of Docker or the reconfigured version,
+
+02:00.060 --> 02:01.740
+remember, all you have to do to get back
+
+02:01.740 --> 02:03.330
+to the non configured version is
+
+02:03.330 --> 02:05.370
+open up a new terminal window.
+
+02:05.370 --> 02:06.203
+That's pretty much it.
+
+02:06.203 --> 02:09.330
+Just open a new terminal window and do a Docker PS again
+
+02:09.330 --> 02:10.500
+and you'll be back to using
+
+02:10.500 --> 02:13.470
+your local copy of Docker server.
+
+02:13.470 --> 02:14.770
+Okay, so again, I'm inside
+
+02:16.556 --> 02:17.910
+of my multi container project directory.
+
+02:17.910 --> 02:20.790
+I see the Docker Compose .YAML file right here.
+
+02:20.790 --> 02:22.950
+I'm going to run Docker Compose up
+
+02:22.950 --> 02:24.660
+and rebuild all these images.
+
+02:24.660 --> 02:26.400
+And again, we're just doing this to make sure
+
+02:26.400 --> 02:29.850
+that all the existing code works as we expect.
+
+02:29.850 --> 02:33.090
+So I'm gonna do a Docker Compose up --build,
+
+02:33.090 --> 02:35.490
+because I want to explicitly rebuild everything.
+
+02:36.390 --> 02:37.650
+And I'm gonna let that run.
+
+02:37.650 --> 02:39.840
+It's gonna take a couple minutes to rebuild everything
+
+02:39.840 --> 02:41.040
+and launch it all.
+
+02:41.040 --> 02:42.120
+Now you'll notice in my case,
+
+02:42.120 --> 02:43.560
+I kind of just very recently
+
+02:43.560 --> 02:44.490
+rebuilt all this stuff,
+
+02:44.490 --> 02:46.230
+so it launches very quickly.
+
+02:46.230 --> 02:47.400
+I do want to remind you
+
+02:47.400 --> 02:50.340
+that the very first time you launch all these containers,
+
+02:50.340 --> 02:52.650
+if you cleared out all the cached version
+
+02:52.650 --> 02:54.060
+of the containers and whatnot,
+
+02:54.060 --> 02:55.620
+it might crash a little bit
+
+02:55.620 --> 02:57.000
+the very first time you launch it.
+
+02:57.000 --> 02:58.950
+So I do encourage you to
+
+02:58.950 --> 03:01.710
+stop Docker Compose immediately after it starts
+
+03:01.710 --> 03:05.520
+up and do a Docker Compose up a second time.
+
+03:05.520 --> 03:06.353
+And the second time
+
+03:06.353 --> 03:08.673
+you don't need to add on the --build flag.
+
+03:09.690 --> 03:11.580
+All right, So I'm gonna launch that.
+
+03:11.580 --> 03:12.480
+I'm gonna wait just a second
+
+03:12.480 --> 03:14.430
+for the development server to start up.
+
+03:15.360 --> 03:16.388
+And then you'll recall
+
+03:16.388 --> 03:21.120
+that we can access all this stuff on local host port 3050.
+
+03:21.120 --> 03:22.560
+I already opened up my code editor
+
+03:22.560 --> 03:24.150
+inside that complex directory.
+
+03:24.150 --> 03:26.100
+Here's the Docker Composed file.
+
+03:26.100 --> 03:27.360
+Here's the Nginx server
+
+03:27.360 --> 03:30.300
+that we are using for routing inside of our application.
+
+03:30.300 --> 03:33.060
+And you'll recall that we had set up local host 3050
+
+03:33.060 --> 03:35.220
+as being the central point to access everything
+
+03:35.220 --> 03:36.450
+inside of here.
+
+03:36.450 --> 03:38.910
+So I'm just gonna very quickly test this out
+
+03:38.910 --> 03:41.670
+by opening up my browser and going to local host 3050.
+
+03:41.670 --> 03:45.000
+And again, I should still see all of my numbers here
+
+03:45.000 --> 03:46.800
+Any previous values that I had entered
+
+03:46.800 --> 03:49.710
+unless you had of course deleted or completely stopped
+
+03:49.710 --> 03:53.040
+and deleted the Redis in the Postgres containers.
+
+03:53.040 --> 03:53.873
+And just to make sure
+
+03:53.873 --> 03:55.470
+that everything's working the way I expect,
+
+03:55.470 --> 03:58.350
+I'm gonna enter in a new index here of 12.
+
+03:58.350 --> 03:59.880
+I'm gonna submit it,
+
+03:59.880 --> 04:03.540
+I'll then refresh and I'll see 12 added here
+
+04:03.540 --> 04:07.200
+and I'll see a calculated value for 12 down there as well.
+
+04:07.200 --> 04:09.030
+Okay, so hopefully you see something like this.
+
+04:09.030 --> 04:11.310
+Again, if you don't see everything updated
+
+04:11.310 --> 04:13.080
+and still working like so,
+
+04:13.080 --> 04:14.820
+then I really encourage you to go back
+
+04:14.820 --> 04:17.490
+to the previous lecture, download that zip file
+
+04:17.490 --> 04:19.080
+and use that as the starting point
+
+04:19.080 --> 04:20.700
+for all this Kubernetes stuff,
+
+04:20.700 --> 04:22.350
+just to make sure that you and I are on
+
+04:22.350 --> 04:24.360
+a 100% equal footing.
+
+04:24.360 --> 04:25.770
+Okay, So let's take a pause right here.
+
+04:25.770 --> 04:27.000
+When we come back in the next section,
+
+04:27.000 --> 04:30.240
+we'll get started with taking all of our existing images
+
+04:30.240 --> 04:33.240
+and migrating them into the world of Kubernetes.
+
+04:33.240 --> 04:35.690
+So quick break and I'll see you in just a minute.

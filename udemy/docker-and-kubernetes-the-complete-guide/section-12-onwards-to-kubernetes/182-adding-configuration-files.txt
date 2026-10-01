@@ -1,0 +1,493 @@
+WEBVTT
+
+00:00.780 --> 00:02.580
+Narrator: In the last section, we spoke about the series
+
+00:02.580 --> 00:03.960
+of steps that we're going to go through to
+
+00:03.960 --> 00:06.638
+get our first container up and running on Kubernetes.
+
+00:06.638 --> 00:08.460
+So the first thing we're going to do is double
+
+00:08.460 --> 00:09.930
+check docker hub and just make sure
+
+00:09.930 --> 00:14.930
+that our image is up there for the multi-client image.
+
+00:15.181 --> 00:17.130
+All right, so to get started, I'm gonna open
+
+00:17.130 --> 00:22.113
+up a new browser tab and I'll navigate to hub.docker.com.
+
+00:23.220 --> 00:24.900
+And once over here, I'll look
+
+00:24.900 --> 00:27.090
+at my list of repositories and just verify,
+
+00:27.090 --> 00:28.500
+yep, my image is up here.
+
+00:28.500 --> 00:30.990
+Stephen Grider \ multi-client.
+
+00:30.990 --> 00:33.570
+This is the repository that contains the image
+
+00:33.570 --> 00:35.280
+that we want to create a new container
+
+00:35.280 --> 00:38.430
+out of on our local Kubernetes cluster.
+
+00:38.430 --> 00:39.960
+Okay, that was easy enough.
+
+00:39.960 --> 00:41.730
+So I'm gonna close that tab
+
+00:41.730 --> 00:43.680
+and we're now gonna move on to our second task
+
+00:43.680 --> 00:48.240
+which is to make a 1config file to create our container.
+
+00:48.240 --> 00:49.560
+Now, to make this config file
+
+00:49.560 --> 00:52.170
+we're going to create a new project directory,
+
+00:52.170 --> 00:53.940
+we're going to open up our code editor
+
+00:53.940 --> 00:55.440
+inside that project directory,
+
+00:55.440 --> 00:56.820
+and then we're gonna start writing a little bit
+
+00:56.820 --> 00:58.473
+of configuration into it.
+
+00:59.310 --> 01:02.820
+All right, so I'm going to flip on over to my terminal.
+
+01:02.820 --> 01:04.410
+You'll notice that I'm back inside of a
+
+01:04.410 --> 01:06.000
+workspace directory of sorts.
+
+01:06.000 --> 01:08.250
+So, I'm no longer inside of that complex folder
+
+01:08.250 --> 01:10.680
+that we had been working in previously.
+
+01:10.680 --> 01:12.870
+Out here, I'm gonna make a new folder called
+
+01:12.870 --> 01:15.377
+Simple K8s.
+
+01:15.377 --> 01:18.240
+The term K8s is a little abbreviation
+
+01:18.240 --> 01:19.650
+for the word Kubernetes
+
+01:19.650 --> 01:21.720
+and you'll very frequently see the word K8s
+
+01:21.720 --> 01:25.170
+in place of Kubernetes in a lot, a lot of documentation.
+
+01:25.170 --> 01:27.870
+The 8 in there is meant to represent the 8 letters
+
+01:27.870 --> 01:31.599
+between K and S in the word Kubernetes.
+
+01:31.599 --> 01:33.603
+Okay, so I'm gonna make that directory.
+
+01:34.740 --> 01:37.830
+I'll then change into it
+
+01:37.830 --> 01:38.663
+eventually.
+
+01:38.663 --> 01:39.496
+There we go.
+
+01:39.496 --> 01:40.560
+And then I'm gonna start up my code editor
+
+01:40.560 --> 01:42.472
+inside that directory.
+
+01:42.472 --> 01:44.550
+All right, there we go.
+
+01:44.550 --> 01:45.510
+So, now inside of here
+
+01:45.510 --> 01:47.670
+we're going to make a configuration file.
+
+01:47.670 --> 01:49.050
+And remember, the ultimate goal
+
+01:49.050 --> 01:51.600
+of this file is to create our container
+
+01:51.600 --> 01:54.930
+inside of our local Kubernetes cluster.
+
+01:54.930 --> 01:56.130
+So inside my code editor
+
+01:56.130 --> 02:00.697
+I'm gonna make a new file called client-pod.yml.
+
+02:04.800 --> 02:06.300
+And then inside of here, we're going to list
+
+02:06.300 --> 02:10.230
+out a little bit of configuration to create our container.
+
+02:10.230 --> 02:12.120
+Now, I'll be completely honest with you,
+
+02:12.120 --> 02:15.187
+I wanna be like as transparent as I possibly can,
+
+02:15.187 --> 02:18.570
+these first dozen or half dozen videos
+
+02:18.570 --> 02:20.010
+on the topic of Kubernetes,
+
+02:20.010 --> 02:22.740
+this is the fifth time that I've gone through
+
+02:22.740 --> 02:24.630
+and recorded all this stuff.
+
+02:24.630 --> 02:26.220
+So I've recorded four times already
+
+02:26.220 --> 02:29.130
+and deleted everything cause I just wasn't happy with it.
+
+02:29.130 --> 02:32.880
+So in this try or this run through of recording this stuff
+
+02:32.880 --> 02:34.420
+we're gonna do things just a little bit differently.
+
+02:34.420 --> 02:37.980
+We're gonna write out all the configuration inside this file
+
+02:37.980 --> 02:39.750
+and we're going to write out all the configuration
+
+02:39.750 --> 02:42.690
+inside that second configuration file as well.
+
+02:42.690 --> 02:44.580
+And then once you see all this configuration
+
+02:44.580 --> 02:45.413
+in front of you
+
+02:45.413 --> 02:47.940
+we're then going to do a real big discussion and talk
+
+02:47.940 --> 02:51.369
+about exactly what every line of this configuration means.
+
+02:51.369 --> 02:54.120
+Now, like I said, kind of gone and recorded this stuff
+
+02:54.120 --> 02:55.114
+like four times and I'm convinced that
+
+02:55.114 --> 02:58.260
+writing stuff out is probably the best way
+
+02:58.260 --> 02:59.550
+to you expose to this.
+
+02:59.550 --> 03:01.322
+So, the good news is
+
+03:01.322 --> 03:03.210
+we're gonna learn exactly what's going on
+
+03:03.210 --> 03:05.070
+inside these two configuration files.
+
+03:05.070 --> 03:05.903
+The bad news is
+
+03:05.903 --> 03:06.900
+that you and I are gonna do
+
+03:06.900 --> 03:09.210
+a pretty good amount of typing right now.
+
+03:09.210 --> 03:10.788
+So as usual, I gotta ask you
+
+03:10.788 --> 03:13.650
+please, triple check your spacing.
+
+03:13.650 --> 03:14.760
+Triple check your spelling.
+
+03:14.760 --> 03:18.150
+Make sure you got everything dead accurate, the same as I.
+
+03:18.150 --> 03:20.300
+Otherwise you're gonna run into a a little bit of issues
+
+03:20.300 --> 03:21.750
+down the road.
+
+03:21.750 --> 03:23.730
+Okay, so let's get to it.
+
+03:23.730 --> 03:25.530
+Inside of here, I'm gonna first type out
+
+03:25.530 --> 03:29.250
+API version:v1
+
+03:29.250 --> 03:31.033
+I'll do kind pod,
+
+03:31.033 --> 03:33.140
+I'll do metadata,
+
+03:33.140 --> 03:35.160
+and then I'll do an indent
+
+03:35.160 --> 03:38.370
+and say name is client-pod.
+
+03:38.370 --> 03:40.770
+I'll say labels,
+
+03:40.770 --> 03:42.150
+and then I'll indent another line
+
+03:42.150 --> 03:44.793
+and do component:web.
+
+03:46.140 --> 03:48.240
+Then now I'm going to go all the way back out.
+
+03:48.240 --> 03:49.980
+So, no more indentation.
+
+03:49.980 --> 03:52.713
+I'll say spec containers.
+
+03:53.735 --> 03:57.420
+And then I'll do a - to indicate an entry inside
+
+03:57.420 --> 03:59.040
+env and array.
+
+03:59.040 --> 04:01.230
+I'll say name client
+
+04:01.230 --> 04:03.390
+image of your docker ID.
+
+04:03.390 --> 04:07.440
+So Stephen Grider for me, \ multi-client, like so.
+
+04:07.440 --> 04:10.140
+Now remember when we put in this image name right here
+
+04:10.140 --> 04:13.890
+that is assuming that our image is up on docker hub.
+
+04:13.890 --> 04:15.570
+If your image, for whatever reason,
+
+04:15.570 --> 04:17.970
+for multi-client is not on docker hub
+
+04:17.970 --> 04:20.880
+you can always make use of my image name, which is
+
+04:20.880 --> 04:23.480
+or excuse me, my docker ID, which is Stephen Grider.
+
+04:25.050 --> 04:27.780
+I'll then list off my ports that I want to open up
+
+04:27.780 --> 04:30.660
+for connecting to from the outside world, just
+
+04:30.660 --> 04:34.470
+as we did before over inside of our docker composed file.
+
+04:34.470 --> 04:36.150
+I'm gonna have a single entry here
+
+04:36.150 --> 04:40.443
+and I'll say, container port is 3000, like so.
+
+04:42.300 --> 04:44.460
+Okay, so that's our first configuration file.
+
+04:44.460 --> 04:45.720
+Now, again, I gotta ask you,
+
+04:45.720 --> 04:47.830
+please, just, I'm begging you,
+
+04:47.830 --> 04:49.920
+triple check your indentation.
+
+04:49.920 --> 04:52.800
+Triple check your spelling on what you have.
+
+04:52.800 --> 04:53.633
+And once you're happy,
+
+04:53.633 --> 04:56.010
+we're going to create one other configuration file.
+
+04:56.010 --> 04:58.950
+That's gonna do a little bit of networking setup for us
+
+04:58.950 --> 05:01.170
+and make sure that the container that we're creating
+
+05:01.170 --> 05:02.970
+with the first configuration file
+
+05:02.970 --> 05:06.300
+will be exposed or available to the outside world.
+
+05:06.300 --> 05:09.933
+So inside my code editor, I'm gonna make another file.
+
+05:11.190 --> 05:15.813
+I'm gonna call this one client-node-port.yml.
+
+05:21.090 --> 05:22.620
+Okay. And then inside of here, we're just gonna do
+
+05:22.620 --> 05:24.360
+a little bit more typing and then we'll talk
+
+05:24.360 --> 05:26.367
+about what all this stuff is doing in
+
+05:26.367 --> 05:29.640
+more detail than you could ever possibly imagine.
+
+05:29.640 --> 05:30.690
+It will be great.
+
+05:30.690 --> 05:35.070
+Okay, so inside the new file, we'll say API version is v1.
+
+05:35.070 --> 05:38.550
+I'll say kind is service.
+
+05:38.550 --> 05:39.843
+We'll do metadata.
+
+05:40.680 --> 05:44.343
+I'll give a name of client-node-port.
+
+05:45.480 --> 05:47.010
+Then I'm going to un-indent.
+
+05:47.010 --> 05:48.960
+So I'm all the way back out to the left hand side
+
+05:48.960 --> 05:52.383
+and I'll say spec with a type of node port.
+
+05:53.610 --> 05:55.680
+We'll do a port's array.
+
+05:55.680 --> 05:57.870
+So I'll do an entry in the array
+
+05:57.870 --> 06:00.240
+indicated by this little - right here.
+
+06:00.240 --> 06:03.630
+And I'll say Port is 30, 50.
+
+06:03.630 --> 06:06.900
+I'll do a target port of 3000
+
+06:06.900 --> 06:11.253
+and I'll say node port of 31, 515, like so.
+
+06:13.230 --> 06:15.420
+And then finally I'm going to un-indent.
+
+06:15.420 --> 06:19.170
+So I'm back online with type and ports.
+
+06:19.170 --> 06:23.973
+And then I'll say selector is component:web.
+
+06:24.930 --> 06:26.460
+And I'll save the file.
+
+06:26.460 --> 06:28.710
+Now again, I gotta ask you, please, please, please,
+
+06:28.710 --> 06:30.120
+triple check your spelling inside of here,
+
+06:30.120 --> 06:31.980
+triple check the indentation.
+
+06:31.980 --> 06:33.780
+Remember inside of a .yml file
+
+06:33.780 --> 06:35.304
+if your indentation is not perfect
+
+06:35.304 --> 06:37.620
+the file will be misinterpreted
+
+06:37.620 --> 06:40.620
+and nothing is gonna work the way you expect.
+
+06:40.620 --> 06:42.270
+Okay, so that's all the typing we gotta do.
+
+06:42.270 --> 06:43.950
+Now we're gonna take a quick pause right here.
+
+06:43.950 --> 06:45.129
+We're gonna come back the next section and we're
+
+06:45.129 --> 06:47.880
+gonna go over both these files in just
+
+06:47.880 --> 06:49.200
+tremendous detail.
+
+06:49.200 --> 06:51.700
+So, quick pause and I'll see you in just a minute.

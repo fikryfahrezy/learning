@@ -1,0 +1,307 @@
+WEBVTT
+
+00:00.240 --> 00:02.730
+-: We've now finished up our first little application
+
+00:02.730 --> 00:03.563
+using Docker.
+
+00:03.563 --> 00:05.580
+We're now gonna start working on our second application,
+
+00:05.580 --> 00:08.430
+which is gonna be a little bit more complicated in nature
+
+00:08.430 --> 00:09.780
+and it's going to require us to learn
+
+00:09.780 --> 00:11.880
+some more advanced features around Docker.
+
+00:11.880 --> 00:13.560
+Let's first take a look at a mock-up
+
+00:13.560 --> 00:15.010
+of what we're going to build.
+
+00:16.050 --> 00:17.190
+All right, so here it is.
+
+00:17.190 --> 00:20.580
+This is really a classic example of Docker in action.
+
+00:20.580 --> 00:22.680
+You're gonna find a lot of other applications out there
+
+00:22.680 --> 00:24.540
+that are very similar in nature.
+
+00:24.540 --> 00:26.370
+So the purpose of this tiny little application
+
+00:26.370 --> 00:28.560
+is to make a Docker container that contains
+
+00:28.560 --> 00:32.310
+a web application that simply displays inside the browser
+
+00:32.310 --> 00:34.920
+the number of times that someone essentially
+
+00:34.920 --> 00:36.540
+has visited this server.
+
+00:36.540 --> 00:38.167
+And so you can see right now it says,
+
+00:38.167 --> 00:40.560
+"Number of visits, 10," that indicates that this page
+
+00:40.560 --> 00:43.140
+has been visited 10 times.
+
+00:43.140 --> 00:44.370
+Now, in order to build this,
+
+00:44.370 --> 00:46.713
+we're gonna need two separate components.
+
+00:48.120 --> 00:50.430
+First off, we're gonna need some type of web server,
+
+00:50.430 --> 00:53.280
+something to actually respond to HTTP requests
+
+00:53.280 --> 00:56.310
+and generate some HTML to show inside the browser.
+
+00:56.310 --> 00:58.350
+To actually store the number of times
+
+00:58.350 --> 00:59.850
+that this thing has been visited,
+
+00:59.850 --> 01:03.390
+we're going to also make use of a little Redis server.
+
+01:03.390 --> 01:05.700
+Remember, Redis is an in-memory data store.
+
+01:05.700 --> 01:08.850
+You can essentially think of it as a tiny little database
+
+01:08.850 --> 01:10.650
+that sits entirely inside of memory.
+
+01:11.610 --> 01:13.770
+The only purpose of the Redis server is going to be
+
+01:13.770 --> 01:15.540
+to contain the number of times
+
+01:15.540 --> 01:17.340
+that the page has been visited.
+
+01:17.340 --> 01:19.020
+Now, something to be aware of here,
+
+01:19.020 --> 01:21.750
+yes, we absolutely could store this number of visits
+
+01:21.750 --> 01:23.820
+inside the Node application itself.
+
+01:23.820 --> 01:25.230
+That's totally an option.
+
+01:25.230 --> 01:26.880
+However, just to make this thing a little bit more,
+
+01:26.880 --> 01:28.500
+kind of, sufficiently complicated,
+
+01:28.500 --> 01:30.450
+we are going to be making use of Redis.
+
+01:31.410 --> 01:32.460
+Now, I wanna think a little bit
+
+01:32.460 --> 01:34.320
+about how we're going to generally architecture
+
+01:34.320 --> 01:35.763
+this app using Docker.
+
+01:37.350 --> 01:40.050
+And your first impression here, maybe your first guess,
+
+01:40.050 --> 01:42.570
+might be that we're going to make a single container
+
+01:42.570 --> 01:44.190
+and inside that single container
+
+01:44.190 --> 01:48.150
+we could run both our Node application and a Redis server.
+
+01:48.150 --> 01:50.730
+Now, don't get me wrong, this is totally possible,
+
+01:50.730 --> 01:53.040
+you could take this approach right here.
+
+01:53.040 --> 01:56.460
+However, if this application ever got popular to any degree,
+
+01:56.460 --> 01:58.380
+it would start to have some issues.
+
+01:58.380 --> 02:00.810
+Let tell you what the issue would be.
+
+02:00.810 --> 02:02.940
+Let's imagine that you start getting a lot of traffic
+
+02:02.940 --> 02:05.460
+to this little, somewhat useless website
+
+02:05.460 --> 02:06.840
+that you've put together.
+
+02:06.840 --> 02:08.430
+As you start to get more and more traffic,
+
+02:08.430 --> 02:10.290
+you're probably going to want to introduce
+
+02:10.290 --> 02:13.080
+more web application servers
+
+02:13.080 --> 02:16.020
+to respond to incoming HTTP requests,
+
+02:16.020 --> 02:18.090
+and so in order to make additional servers,
+
+02:18.090 --> 02:19.980
+you might create additional instances
+
+02:19.980 --> 02:21.180
+of your Docker container
+
+02:21.180 --> 02:23.430
+that contains both the Node application
+
+02:23.430 --> 02:25.860
+and an instance of Redis.
+
+02:25.860 --> 02:27.240
+The issue with this approach
+
+02:27.240 --> 02:30.090
+is that every one of these different Redis servers
+
+02:30.090 --> 02:33.630
+would be completely disconnected from each other.
+
+02:33.630 --> 02:36.450
+And so one server, one Redis instance over here
+
+02:36.450 --> 02:38.220
+inside this Docker container,
+
+02:38.220 --> 02:41.910
+might think that the page has been visited 99 times,
+
+02:41.910 --> 02:44.940
+but then some other Redis instance in another container
+
+02:44.940 --> 02:48.270
+might think that it's only been visited three times.
+
+02:48.270 --> 02:50.520
+So in general, we would definitely not want
+
+02:50.520 --> 02:53.310
+to create multiple instances of a Redis instance
+
+02:53.310 --> 02:54.660
+for a single app.
+
+02:54.660 --> 02:57.300
+Instead, we would want to have one single instance,
+
+02:57.300 --> 03:00.030
+and then if we need to scale up the web application itself,
+
+03:00.030 --> 03:01.920
+we could just scale the Node server
+
+03:01.920 --> 03:05.250
+and make additional instances of the Node server.
+
+03:05.250 --> 03:06.660
+So essentially what we're going to do
+
+03:06.660 --> 03:07.500
+is gonna be something that looks
+
+03:07.500 --> 03:09.510
+a little bit more like this.
+
+03:09.510 --> 03:12.330
+We are gonna have separate Docker containers
+
+03:12.330 --> 03:15.870
+for both the Node application and the Redis server.
+
+03:15.870 --> 03:18.450
+Each of the Docker containers that holds the Node app
+
+03:18.450 --> 03:21.840
+will connect somehow over to the Redis instance
+
+03:21.840 --> 03:23.430
+in this separate container,
+
+03:23.430 --> 03:27.960
+and store the current count or current visit variable
+
+03:27.960 --> 03:29.883
+inside of that Redis server instead.
+
+03:31.080 --> 03:33.120
+Now, for the first iteration of this project,
+
+03:33.120 --> 03:35.370
+we're not gonna worry about scaling just yet,
+
+03:35.370 --> 03:37.290
+so we're really going to be setting up something
+
+03:37.290 --> 03:40.290
+that looks like this right here.
+
+03:40.290 --> 03:43.350
+We've got one Docker container that contains our Node app
+
+03:43.350 --> 03:45.060
+and then a second container that has just
+
+03:45.060 --> 03:47.040
+the Redis server inside of it.
+
+03:47.040 --> 03:49.560
+So, with that in mind, let's take a quick break right here.
+
+03:49.560 --> 03:50.790
+We're gonna come back the next section
+
+03:50.790 --> 03:52.530
+and we're gonna start writing out the code
+
+03:52.530 --> 03:54.330
+for our Node application.
+
+03:54.330 --> 03:56.633
+So quick break, and I'll see you in just a minute.

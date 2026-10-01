@@ -1,0 +1,274 @@
+WEBVTT
+
+00:00.497 --> 00:01.500
+-: In the last section
+
+00:01.500 --> 00:04.410
+we started investigating the life cycle of a container
+
+00:04.410 --> 00:07.740
+by using the docker create and docker start commands.
+
+00:07.740 --> 00:09.660
+We're now gonna start to investigate the status
+
+00:09.660 --> 00:11.181
+of some of those containers that we've already
+
+00:11.181 --> 00:13.080
+started up on our machine,
+
+00:13.080 --> 00:15.690
+but have closed down for some particular reason.
+
+00:15.690 --> 00:19.590
+So we can print those all out with dockerps--all.
+
+00:19.590 --> 00:21.690
+You'll notice that I have just one container
+
+00:21.690 --> 00:23.520
+listed as exited now,
+
+00:23.520 --> 00:25.590
+whereas before I had like 30.
+
+00:25.590 --> 00:27.270
+The reason for that is that I ran a command
+
+00:27.270 --> 00:28.680
+between the last video and this one
+
+00:28.680 --> 00:30.180
+to kind of par down that list.
+
+00:30.180 --> 00:31.860
+And of course I will show you that command
+
+00:31.860 --> 00:33.690
+in just a second as well.
+
+00:33.690 --> 00:36.840
+So at this point, the only stopped or exited container
+
+00:36.840 --> 00:40.140
+that I have on my machine, is this one right here.
+
+00:40.140 --> 00:42.480
+Let's try creating and running and then stopping
+
+00:42.480 --> 00:44.130
+one more container just to make sure
+
+00:44.130 --> 00:46.200
+that we're kind of on level footing.
+
+00:46.200 --> 00:51.200
+So I'm going to execute docker run BusyBox echo hi there.
+
+00:53.250 --> 00:55.773
+If I then do dockerps--all again,
+
+00:55.773 --> 00:58.830
+and then zoom out so I can see this a little bit better,
+
+00:58.830 --> 00:59.663
+there we go,
+
+00:59.663 --> 01:01.328
+I'll see the ID of that container.
+
+01:01.328 --> 01:04.710
+I'll see the echo hi there, and I can definitely verify
+
+01:04.710 --> 01:07.680
+that its status is definitely exited right now.
+
+01:07.680 --> 01:11.400
+When a container is exited, we can still start it back up.
+
+01:11.400 --> 01:12.930
+So just because a container's stopped,
+
+01:12.930 --> 01:16.050
+doesn't mean that it's like dead or cannot be used again.
+
+01:16.050 --> 01:19.020
+We can very easily stop and then start containers again
+
+01:19.020 --> 01:21.120
+at some point in the future.
+
+01:21.120 --> 01:22.740
+To start a container back up,
+
+01:22.740 --> 01:26.500
+we can take its ID and then execute docker start
+
+01:27.450 --> 01:28.983
+and paste that ID in.
+
+01:30.360 --> 01:33.510
+Remember that if we use docker start without the -a flag,
+
+01:33.510 --> 01:35.700
+however, we won't see any output from it.
+
+01:35.700 --> 01:37.320
+And so it might be a little bit more useful
+
+01:37.320 --> 01:41.024
+to do docker start -a and then the ID.
+
+01:41.024 --> 01:42.900
+And when I do that, you'll notice that it
+
+01:42.900 --> 01:44.820
+printed out hi there again,
+
+01:44.820 --> 01:46.200
+which is kind of interesting.
+
+01:46.200 --> 01:48.060
+Let's take a look at a diagram to really understand
+
+01:48.060 --> 01:50.733
+this entire series of commands that we just issued.
+
+01:51.711 --> 01:53.073
+All right, here we go.
+
+01:53.910 --> 01:56.730
+So we've got our BusyBox image, and at some point in time
+
+01:56.730 --> 01:59.901
+we definitely ran docker create or docker run,
+
+01:59.901 --> 02:02.250
+that took our file system snapshot
+
+02:02.250 --> 02:05.550
+and essentially got a reference to it inside the container.
+
+02:05.550 --> 02:10.550
+We then provided that override command of echo hi there.
+
+02:11.640 --> 02:13.890
+So that was the primary running command
+
+02:13.890 --> 02:15.089
+inside the container.
+
+02:15.089 --> 02:17.311
+That command ran, it then completed,
+
+02:17.311 --> 02:19.769
+the container exited it naturally,
+
+02:19.769 --> 02:24.090
+and we then ran the docker start command a second time.
+
+02:24.090 --> 02:26.370
+What happened was the running process
+
+02:26.370 --> 02:27.660
+or this primary command,
+
+02:27.660 --> 02:31.455
+was issued a second time inside the container.
+
+02:31.455 --> 02:34.680
+When you have a container that's already been created,
+
+02:34.680 --> 02:37.470
+we cannot replace that default command.
+
+02:37.470 --> 02:39.510
+As soon as you start it up with the default command,
+
+02:39.510 --> 02:42.600
+that's it, the default command is then in place.
+
+02:42.600 --> 02:47.400
+So we cannot do something like say docker start -a the ID,
+
+02:47.400 --> 02:50.460
+and then try to replace the default command.
+
+02:50.460 --> 02:53.730
+I can't do something like echo bye there.
+
+02:53.730 --> 02:55.830
+So in theory, this would be us trying to replace
+
+02:55.830 --> 02:56.700
+the default command.
+
+02:56.700 --> 02:57.780
+Again, can't do that.
+
+02:57.780 --> 02:58.980
+And if we try to run it,
+
+02:58.980 --> 03:01.650
+it's going to misinterpret the command that we just issued.
+
+03:01.650 --> 03:03.090
+It's thinking that we're trying to start up
+
+03:03.090 --> 03:05.013
+multiple containers at the same time.
+
+03:05.940 --> 03:09.390
+So, once we have started up a container, and let it exit,
+
+03:09.390 --> 03:11.160
+we can start it back up again,
+
+03:11.160 --> 03:14.280
+which is going to reissue the default command
+
+03:14.280 --> 03:16.983
+that was used when the container was first created.
+
+03:17.940 --> 03:19.110
+All right, now it might seem like
+
+03:19.110 --> 03:22.110
+going over all this life cycle stuff is kind of unimportant.
+
+03:22.110 --> 03:23.100
+It might seem like I'm going
+
+03:23.100 --> 03:24.750
+really far into the weeds with it,
+
+03:24.750 --> 03:27.360
+but trust me, having a solid understanding
+
+03:27.360 --> 03:28.740
+of the life cycle of a container
+
+03:28.740 --> 03:31.350
+is gonna be so incredibly useful later on,
+
+03:31.350 --> 03:33.240
+when it really comes down to figuring out
+
+03:33.240 --> 03:34.470
+how to troubleshoot these things
+
+03:34.470 --> 03:36.420
+and debug a running container.
+
+03:36.420 --> 03:37.950
+So I think we got a better idea
+
+03:37.950 --> 03:39.720
+on the the life cycle of a container.
+
+03:39.720 --> 03:40.950
+So let's take another quick break,
+
+03:40.950 --> 03:42.693
+and continue in the next section.

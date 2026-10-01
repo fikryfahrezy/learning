@@ -1,0 +1,514 @@
+WEBVTT
+
+00:00.840 --> 00:01.673
+-: In the last section,
+
+00:01.673 --> 00:03.840
+we started putting together our server implementation
+
+00:03.840 --> 00:05.700
+by defining the package.js on file
+
+00:05.700 --> 00:07.860
+and a couple of keys that are going to be used
+
+00:07.860 --> 00:09.900
+to connect to our running Redis instance
+
+00:09.900 --> 00:12.870
+and the running PostgreSQL instance, as well.
+
+00:12.870 --> 00:14.850
+I'll now continue by creating a new file
+
+00:14.850 --> 00:17.220
+inside of the server directory.
+
+00:17.220 --> 00:19.950
+I'm going to call this 'index.js.'
+
+00:19.950 --> 00:20.910
+And this single file
+
+00:20.910 --> 00:23.370
+is going to house all the logic that we need
+
+00:23.370 --> 00:26.730
+to connect to Redis, connect to PostgreSQL,
+
+00:26.730 --> 00:28.890
+and eventually kind of broker information
+
+00:28.890 --> 00:31.890
+between the two of them and the running React application.
+
+00:31.890 --> 00:33.540
+So we're going to do a lot of typing in here.
+
+00:33.540 --> 00:36.360
+Again, please make sure that you are paying close attention
+
+00:36.360 --> 00:38.670
+to all this spelling and all that kind of good stuff.
+
+00:38.670 --> 00:40.080
+Because like I've said previously,
+
+00:40.080 --> 00:41.850
+it's going to be a little bit of a pain
+
+00:41.850 --> 00:43.850
+to trouble to shoot this stuff later on.
+
+00:44.940 --> 00:46.650
+All right, so let's get through this.
+
+00:46.650 --> 00:47.940
+At the very top of this file,
+
+00:47.940 --> 00:50.010
+we're going to first require in all the keys
+
+00:50.010 --> 00:52.743
+that we just defined inside the keys.js file.
+
+00:55.740 --> 00:56.880
+And then we're going to define
+
+00:56.880 --> 00:59.190
+a couple of different sections inside of here
+
+00:59.190 --> 01:00.023
+as we're going to have
+
+01:00.023 --> 01:02.910
+several different things that are going on inside this file.
+
+01:02.910 --> 01:04.620
+The first section that we're going to make is going to be
+
+01:04.620 --> 01:07.830
+dedicated to Express app setup.
+
+01:07.830 --> 01:09.810
+So this is where we're going to define and set up
+
+01:09.810 --> 01:12.840
+the Express side of the application.
+
+01:12.840 --> 01:16.023
+So I'm going to first require in the Express library.
+
+01:18.600 --> 01:21.993
+I'm going to also require in something called body-parser.
+
+01:25.770 --> 01:28.110
+And we're also going to require in CORS.
+
+01:33.519 --> 01:36.852
+I'll then make a new Express application
+
+01:38.280 --> 01:40.360
+and I'll tell the app to use
+
+01:41.370 --> 01:46.370
+CORS and app.use (bodyParser.json ()), as well.
+
+01:46.890 --> 01:48.600
+And notice that on both these lines right here
+
+01:48.600 --> 01:52.020
+I say CORS, and I've got a set of double parenthesis
+
+01:52.020 --> 01:55.050
+and bodyParser.json, and then double parenthesis
+
+01:55.050 --> 01:56.370
+there, as well.
+
+01:56.370 --> 01:58.620
+Very quickly, let's talk about what's going on right here.
+
+01:58.620 --> 02:01.020
+We first require in the Express library.
+
+02:01.020 --> 02:02.760
+We require in the body-parser library
+
+02:02.760 --> 02:05.310
+and the CORS library, as well.
+
+02:05.310 --> 02:07.890
+We then create a new Express application.
+
+02:07.890 --> 02:10.200
+So this app right here is essentially the object
+
+02:10.200 --> 02:13.860
+that's going to receive and respond to any HTTP requests
+
+02:13.860 --> 02:17.610
+that are coming or going back to the React server,
+
+02:17.610 --> 02:19.980
+or excuse me, the React application.
+
+02:19.980 --> 02:22.410
+We then wire up something called CORS.
+
+02:22.410 --> 02:25.290
+CORS is short for Cross Origin Resource Sharing,
+
+02:25.290 --> 02:27.720
+and it's essentially going to allow us to make requests
+
+02:27.720 --> 02:30.000
+from one domain that the React application
+
+02:30.000 --> 02:31.080
+is going to be running on
+
+02:31.080 --> 02:32.640
+to a completely different domain,
+
+02:32.640 --> 02:34.170
+or different port, in this case,
+
+02:34.170 --> 02:36.303
+that the Express API is hosted on.
+
+02:37.560 --> 02:40.530
+The body.parser library right here is going to parse
+
+02:40.530 --> 02:43.080
+incoming requests from the React application
+
+02:43.080 --> 02:45.660
+and turn the body of the post request
+
+02:45.660 --> 02:48.540
+into a 'json' value that our Express API
+
+02:48.540 --> 02:50.670
+can then very easily work with.
+
+02:50.670 --> 02:53.250
+Now very quickly, I think that we might have missed
+
+02:53.250 --> 02:55.230
+the dependency body.parser
+
+02:55.230 --> 02:57.600
+inside of our package dot json file.
+
+02:57.600 --> 02:58.590
+You know, I'm looking at this
+
+02:58.590 --> 03:00.000
+and I think that we did miss that.
+
+03:00.000 --> 03:02.340
+Let's add on that dependency here very quickly.
+
+03:02.340 --> 03:04.500
+So inside of the package.json file
+
+03:04.500 --> 03:06.700
+I'm going to add on body-parser
+
+03:08.010 --> 03:10.562
+and I'll just specify the version as "Star," like so.
+
+03:10.562 --> 03:12.713
+And we'll just get the latest version of it.
+
+03:13.860 --> 03:16.863
+Okay, so quick change inside the package.json file.
+
+03:18.090 --> 03:20.490
+Now back over inside of index.js.
+
+03:20.490 --> 03:22.860
+After doing the Express app setup,
+
+03:22.860 --> 03:25.530
+we'll then do some setup to create and connect to
+
+03:25.530 --> 03:27.990
+our running PostgreSQL server.
+
+03:27.990 --> 03:29.520
+So this will be a new section that we'll call
+
+03:29.520 --> 03:31.833
+PostgreSQL client Setup.
+
+03:33.600 --> 03:35.340
+So this is going to be all the logic required
+
+03:35.340 --> 03:37.650
+to get the Express application to communicate
+
+03:37.650 --> 03:39.780
+with the running PostgreSQL server.
+
+03:39.780 --> 03:42.480
+Remember, PostgreSQL is a SQL type database
+
+03:42.480 --> 03:45.753
+very similar to say MySQL, My SQL.
+
+03:48.240 --> 03:51.000
+So right here we're going to require in
+
+03:51.000 --> 03:54.930
+the pool module from the PG library.
+
+03:54.930 --> 03:57.240
+Notice that I've got the early braces
+
+03:57.240 --> 03:58.713
+around pool right here.
+
+03:59.760 --> 04:01.860
+And then we're going to create a new PG client
+
+04:01.860 --> 04:05.520
+or PostgreSQL client, out of this pool object.
+
+04:05.520 --> 04:08.130
+So I'll say 'New Pool' and to this thing
+
+04:08.130 --> 04:11.160
+we're going to pass in some of the different
+
+04:11.160 --> 04:14.550
+keys that we had defined inside of the keys.js file.
+
+04:14.550 --> 04:16.740
+And remember we already required in that keys file
+
+04:16.740 --> 04:17.793
+at the very top.
+
+04:18.660 --> 04:23.580
+So we're going to pass in 'user' as keys.pg user,
+
+04:23.580 --> 04:26.673
+pass in 'host' as keys.pg host,
+
+04:28.170 --> 04:31.533
+database as keys.pg database,
+
+04:33.120 --> 04:36.093
+password as keys.pg password,
+
+04:36.960 --> 04:40.173
+and port as keys.pg port.
+
+04:41.160 --> 04:42.390
+Now again, can't say it enough
+
+04:42.390 --> 04:45.120
+please double check all the keys on the left hand side
+
+04:45.120 --> 04:47.610
+and double check your spelling on PG user,
+
+04:47.610 --> 04:50.073
+host, database, password, and port.
+
+04:52.890 --> 04:55.020
+Then after all that, we're going to add on
+
+04:55.020 --> 04:57.300
+a little air listener down here.
+
+04:57.300 --> 05:00.213
+We're going to say PG client.on error.
+
+05:01.230 --> 05:03.660
+Anytime that an error with a connection occurs
+
+05:03.660 --> 05:05.737
+we'll console log out a little message that says,
+
+05:05.737 --> 05:07.767
+"lost PG connection."
+
+05:10.080 --> 05:10.913
+Like so.
+
+05:16.320 --> 05:18.660
+Okay, so that's it for doing the initial setup
+
+05:18.660 --> 05:20.100
+of the PostgreSQL client.
+
+05:20.100 --> 05:20.970
+But unfortunately we have to do
+
+05:20.970 --> 05:23.100
+one other quick piece here.
+
+05:23.100 --> 05:25.920
+Anytime that we connect to a SQL type database,
+
+05:25.920 --> 05:29.010
+we have to initially create at least one time
+
+05:29.010 --> 05:32.040
+a table that's going to store all of the values.
+
+05:32.040 --> 05:35.520
+So in our particular case, we're going to create a table
+
+05:35.520 --> 05:38.940
+that's going to store all of the values that have ever been,
+
+05:38.940 --> 05:41.520
+or all the indices, to be precise, that have been submitted
+
+05:41.520 --> 05:43.350
+to our Fib calculator.
+
+05:43.350 --> 05:45.960
+Remember, that's the only job of PostgreSQL here.
+
+05:45.960 --> 05:48.000
+PostgreSQL is just going to store the indices
+
+05:48.000 --> 05:49.260
+of any submitted value.
+
+05:49.260 --> 05:52.080
+It's not going to actually store the calculated values
+
+05:52.080 --> 05:52.913
+or anything like that.
+
+05:52.913 --> 05:56.340
+It's just saying, "Hey this index of 10, this index of five,
+
+05:56.340 --> 05:58.680
+they have both been submitted."
+
+05:58.680 --> 06:01.380
+So we're going to create a table inside the database
+
+06:01.380 --> 06:03.540
+to house that information.
+
+06:03.540 --> 06:05.280
+Now the syntax that we're going to use for that right here
+
+06:05.280 --> 06:07.470
+is going to be just a little bit complicated.
+
+06:07.470 --> 06:11.910
+We're going to say PG client.query,
+
+06:11.910 --> 06:13.267
+and then inside of a string, we'll say,
+
+06:13.267 --> 06:14.670
+"create
+
+06:14.670 --> 06:15.600
+table
+
+06:15.600 --> 06:17.757
+if not exists."
+
+06:19.110 --> 06:20.730
+So this is going to create a table
+
+06:20.730 --> 06:23.490
+if it has not already been created.
+
+06:23.490 --> 06:25.740
+And we'll say values.
+
+06:25.740 --> 06:27.607
+And then in a set of parenthesis we'll say
+
+06:27.607 --> 06:31.230
+"number hint," like so.
+
+06:31.230 --> 06:34.200
+So the name of the table is going to be "values"
+
+06:34.200 --> 06:37.110
+and it's going to store a single column of information
+
+06:37.110 --> 06:38.700
+that we'll refer to as "number."
+
+06:38.700 --> 06:40.410
+And so number right here is essentially going to be
+
+06:40.410 --> 06:43.683
+the index of the submitted value from the React application.
+
+06:48.120 --> 06:49.890
+Now to this thing, I'm going to go to
+
+06:49.890 --> 06:51.990
+leave off the semicolon on the very end
+
+06:51.990 --> 06:54.540
+and I'm going to add on a catch statement.
+
+06:54.540 --> 06:55.900
+So if anything goes wrong
+
+06:57.060 --> 06:58.980
+with creating that table
+
+06:58.980 --> 07:02.010
+we'll console log an error.
+
+07:02.010 --> 07:03.630
+So that we know, "Hey we were not able to
+
+07:03.630 --> 07:05.367
+successfully make the table."
+
+07:07.200 --> 07:09.360
+All right, so that's it for the PostgreSQL setup.
+
+07:09.360 --> 07:11.520
+We've got all the connection logic right here
+
+07:11.520 --> 07:13.530
+and we've got a single line of code right here
+
+07:13.530 --> 07:15.510
+that's going to make sure that we've got a table
+
+07:15.510 --> 07:18.690
+inside that database that can hold the indices
+
+07:18.690 --> 07:20.910
+of all the submitted values that have been entered
+
+07:20.910 --> 07:22.500
+into the application.
+
+07:22.500 --> 07:24.000
+Let's do another quick break right now.
+
+07:24.000 --> 07:26.280
+When come back to the next section, we're going to add on
+
+07:26.280 --> 07:28.710
+another little block of configuration down here
+
+07:28.710 --> 07:31.230
+that's going to make sure that we can connect to our
+
+07:31.230 --> 07:33.810
+Redis instance from the Express API.
+
+07:33.810 --> 07:36.503
+So another quick break, and I'll see you in just a minute.

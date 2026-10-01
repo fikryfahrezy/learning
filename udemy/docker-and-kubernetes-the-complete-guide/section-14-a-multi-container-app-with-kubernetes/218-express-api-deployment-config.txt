@@ -1,0 +1,403 @@
+WEBVTT
+
+00:00.720 --> 00:01.860
+-: In the last couple of sections
+
+00:01.860 --> 00:04.350
+we finished up our deployment configuration file
+
+00:04.350 --> 00:07.710
+and the new cluster IP service to go along with it.
+
+00:07.710 --> 00:09.570
+We're now going to continue by putting together
+
+00:09.570 --> 00:12.870
+two more almost identical configuration files.
+
+00:12.870 --> 00:13.980
+This time all centered
+
+00:13.980 --> 00:18.177
+around our express API or the multi-server image.
+
+00:18.177 --> 00:20.160
+Now we're going to make sure that we do a very
+
+00:20.160 --> 00:22.710
+similar cluster IP service this time around
+
+00:22.710 --> 00:24.870
+because we do not want the express API to
+
+00:24.870 --> 00:27.690
+be directly accessible from the outside world
+
+00:27.690 --> 00:31.020
+as would normally be the case with a node port service.
+
+00:31.020 --> 00:33.180
+Remember, we use the cluster IP anytime
+
+00:33.180 --> 00:34.530
+that we want to make a set
+
+00:34.530 --> 00:39.240
+of pods only accessible to other things inside of our node.
+
+00:39.240 --> 00:40.980
+The ingress service that we're going to eventually
+
+00:40.980 --> 00:45.600
+put together qualifies as another thing inside of our node.
+
+00:45.600 --> 00:48.150
+All right, so one quick thing I want to remind you
+
+00:48.150 --> 00:48.990
+about here is
+
+00:48.990 --> 00:52.500
+that our multi-server image is always going to be listening
+
+00:52.500 --> 00:55.380
+for incoming requests on Port 5,000.
+
+00:55.380 --> 00:57.360
+And that was something that we had really hard coded
+
+00:57.360 --> 00:58.650
+into the image itself
+
+00:58.650 --> 01:01.770
+and the actual server that's running inside there.
+
+01:01.770 --> 01:03.870
+So when we create our cluster IP service
+
+01:03.870 --> 01:05.638
+we're going to make sure that it's going to forward traffic
+
+01:05.638 --> 01:09.060
+onto port 5,000 on each of those different pods.
+
+01:09.060 --> 01:12.810
+And again, just to keep each port the same on both side
+
+01:12.810 --> 01:15.270
+we're going to say that you can access the cluster IP
+
+01:15.270 --> 01:17.580
+by accessing 5,000 as well.
+
+01:17.580 --> 01:20.580
+Just as I said previously, there's really not a great reason
+
+01:20.580 --> 01:23.700
+at first glance to like for some reason change
+
+01:23.700 --> 01:26.880
+the port that the cluster IP accepts traffic on.
+
+01:26.880 --> 01:30.420
+So we're going to make sure that it's 5,000 in both cases.
+
+01:30.420 --> 01:32.426
+All right, so let's get to it.
+
+01:32.426 --> 01:33.510
+I'm gonna flip back over
+
+01:33.510 --> 01:36.300
+to my code editor inside of my K eight's directory.
+
+01:36.300 --> 01:37.589
+I'm going to make a new file
+
+01:37.589 --> 01:42.589
+and I'm going to call this server dash deployment dot yamo.
+
+01:43.530 --> 01:45.720
+And then inside of here, we're going to put together
+
+01:45.720 --> 01:48.690
+some configuration that's going to look very, very similar
+
+01:48.690 --> 01:52.170
+to what we did in our client deployment just a moment ago.
+
+01:52.170 --> 01:57.000
+So we're again going to say API version apps v1.
+
+01:57.000 --> 02:02.000
+We're going to have a type of deployment for our metadata.
+
+02:02.010 --> 02:06.220
+We will provide a name of server deployment
+
+02:08.400 --> 02:11.397
+and then we'll start to add on the spec That's going to
+
+02:11.397 --> 02:13.530
+customize exactly how this deployment behaves.
+
+02:13.530 --> 02:17.250
+So for my replicas, replicas, let's make sure we
+
+02:17.250 --> 02:18.540
+got the spelling correct.
+
+02:18.540 --> 02:20.370
+Again, this is the number of different pods that
+
+02:20.370 --> 02:21.300
+we're going to set up.
+
+02:21.300 --> 02:23.580
+We're just going to arbitrarily say that we want three
+
+02:23.580 --> 02:26.880
+pods running the multi-server image.
+
+02:26.880 --> 02:29.490
+We don't really know a whole lot about how to most
+
+02:29.490 --> 02:31.558
+appropriately scale these sets of pods yet.
+
+02:31.558 --> 02:33.667
+So maybe three is a good place to start.
+
+02:33.667 --> 02:35.280
+Maybe it's not, I don't know.
+
+02:35.280 --> 02:37.110
+We'll find it out when we actually deploy this thing
+
+02:37.110 --> 02:40.770
+and start to test our cluster with a little bit of traffic.
+
+02:40.770 --> 02:43.440
+Next up, we're going to specify the selector
+
+02:43.440 --> 02:47.040
+that the deployment is going to use to find the set of pods
+
+02:47.040 --> 02:48.900
+that it's supposed to control.
+
+02:48.900 --> 02:51.840
+So we're going to say that we want to match a set of labels
+
+02:51.840 --> 02:54.570
+and then again, we'll do a component, but this time, rather
+
+02:54.570 --> 02:58.770
+than doing web as the value for the component key, I'll
+
+02:58.770 --> 03:01.500
+Do server like so.
+
+03:01.500 --> 03:03.480
+And so, this is very clearly indicating
+
+03:03.480 --> 03:05.966
+that the component inside of our application
+
+03:05.966 --> 03:09.060
+that we are working on right here is the server.
+
+03:09.060 --> 03:11.340
+I want to remind you that the labels we put together
+
+03:11.340 --> 03:13.620
+can be anything you can possibly imagine.
+
+03:13.620 --> 03:15.390
+So we could just as easily do something
+
+03:15.390 --> 03:20.040
+like part of app API or something like that.
+
+03:20.040 --> 03:22.620
+But I personally enjoy this kind of component.
+
+03:22.620 --> 03:25.650
+And then piece of the application terminology, I think that
+
+03:25.650 --> 03:29.313
+it's rather clear what this key value pair is indicating.
+
+03:30.990 --> 03:33.199
+Okay, so now that we got that put together
+
+03:33.199 --> 03:36.030
+we're gonna go back out in indentation to be
+
+03:36.030 --> 03:40.260
+on the same indentation layer as the selector and replicas
+
+03:40.260 --> 03:42.933
+and then we will put together our pod template.
+
+03:43.890 --> 03:47.520
+So we'll first begin with our metadata, excuse me, metadata.
+
+03:47.520 --> 03:49.890
+That's going to specify our set of labels.
+
+03:49.890 --> 03:52.770
+And again, the labels that we apply to the thing must
+
+03:52.770 --> 03:55.620
+at least match up with whatever we put inside
+
+03:55.620 --> 03:57.783
+of the spec for the deployment itself.
+
+03:58.710 --> 04:02.433
+So for labels, I'll say component server like so.
+
+04:05.580 --> 04:07.980
+All right, I'm going to indent back out a little bit more.
+
+04:07.980 --> 04:11.760
+So now I am on the same indentation level as metadata
+
+04:11.760 --> 04:14.370
+and we're going to provide the spec that's going to
+
+04:14.370 --> 04:16.560
+customize the exact behavior of each
+
+04:16.560 --> 04:18.450
+of the pods that gets created.
+
+04:18.450 --> 04:20.430
+Now we're going to again, provide a list
+
+04:20.430 --> 04:22.803
+of containers that this pod is supposed to run.
+
+04:23.760 --> 04:25.628
+Just as before
+
+04:25.628 --> 04:27.510
+we are only going to have one single container
+
+04:27.510 --> 04:28.830
+inside of this pod.
+
+04:28.830 --> 04:31.380
+We don't have any other containers that need to run
+
+04:31.380 --> 04:34.410
+along with the multi-server image.
+
+04:34.410 --> 04:36.543
+So I'll give a name of server.
+
+04:38.100 --> 04:42.483
+The image is going to be my docker ID slash multi-server.
+
+04:43.620 --> 04:45.660
+And then the last thing that we're going to do
+
+04:45.660 --> 04:47.040
+for right now is to add
+
+04:47.040 --> 04:50.130
+on the list of ports that we want to make available.
+
+04:50.130 --> 04:52.230
+So for ports, I'm gonna say that we want to
+
+04:52.230 --> 04:56.433
+have a container port accessible of 5,000 like so.
+
+04:57.720 --> 04:58.553
+All right.
+
+04:58.553 --> 05:00.210
+Now I wanna give you a quick reminder.
+
+05:00.210 --> 05:02.460
+The multi-server image that we put together
+
+05:02.460 --> 05:05.850
+does expect to get a handful of key value pairs along
+
+05:05.850 --> 05:09.960
+with it or environment variables that tells the multi-server
+
+05:09.960 --> 05:12.234
+or the express API exactly how to connect
+
+05:12.234 --> 05:16.650
+to our Postgres instance and the Redis instance as well.
+
+05:16.650 --> 05:18.180
+So everything that we've put in together
+
+05:18.180 --> 05:19.440
+inside this file at this point
+
+05:19.440 --> 05:22.470
+in time is definitely stuff we have to add in here.
+
+05:22.470 --> 05:24.210
+But we are going to eventually come back
+
+05:24.210 --> 05:26.354
+and add on a series of environment variables
+
+05:26.354 --> 05:28.500
+that we want to make sure get injected
+
+05:28.500 --> 05:31.560
+into the container that is created with this image.
+
+05:31.560 --> 05:33.240
+And remember the entire goal that is that we're
+
+05:33.240 --> 05:35.550
+gonna tell the express API how to connect
+
+05:35.550 --> 05:38.250
+to Postgres and Redis.
+
+05:38.250 --> 05:40.050
+All right, so we are going to come back to this file
+
+05:40.050 --> 05:41.490
+but for right now I want to just focus
+
+05:41.490 --> 05:45.600
+on finishing up this very specific piece
+
+05:45.600 --> 05:47.760
+of our application set up for right now.
+
+05:47.760 --> 05:49.230
+And I don't wanna think just yet
+
+05:49.230 --> 05:50.480
+about how we're going to involve Redis
+
+05:50.480 --> 05:52.950
+in Postgres in here just yet.
+
+05:52.950 --> 05:54.660
+Okay, so let's take a quick pause right here.
+
+05:54.660 --> 05:55.890
+When we come back to the next section
+
+05:55.890 --> 05:57.900
+we're going to put together our configuration file
+
+05:57.900 --> 05:59.820
+for the cluster IP service.
+
+05:59.820 --> 06:02.270
+So quick pause and I'll see you in just a minute.

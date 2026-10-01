@@ -1,0 +1,385 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+-: In the last section,
+
+00:01.763 --> 00:03.570
+we finally applied our first deployment
+
+00:03.570 --> 00:05.220
+to our local cluster.
+
+00:05.220 --> 00:06.053
+Now just to make sure
+
+00:06.053 --> 00:08.100
+that everything is working the way we expect,
+
+00:08.100 --> 00:11.340
+I want to try to connect to the container
+
+00:11.340 --> 00:15.060
+inside of that pod, running the multi-client image.
+
+00:15.060 --> 00:16.050
+And when we connect to it
+
+00:16.050 --> 00:18.600
+we should see that little react application here
+
+00:18.600 --> 00:19.920
+on the screen.
+
+00:19.920 --> 00:21.570
+So I want you very quickly to remember
+
+00:21.570 --> 00:24.630
+how we connect to our local cluster.
+
+00:24.630 --> 00:26.340
+We do not use local host,
+
+00:26.340 --> 00:31.340
+we have to run that mini cube IP command.
+
+00:31.350 --> 00:33.150
+Remember that mini cube virtual machine
+
+00:33.150 --> 00:36.300
+that is our local node has its own IP,
+
+00:36.300 --> 00:38.700
+completely different from local host.
+
+00:38.700 --> 00:41.520
+So we need to first run mini cube IP.
+
+00:41.520 --> 00:43.920
+Once we get the IP address, we'll then make sure
+
+00:43.920 --> 00:46.050
+that we connect to the port that was associated
+
+00:46.050 --> 00:47.760
+with that service that we created,
+
+00:47.760 --> 00:51.003
+which was hard coded to be 31515.
+
+00:52.410 --> 00:56.010
+So back at my terminal, I'll do mini cube IP,
+
+00:56.010 --> 00:57.810
+there's the IP of my virtual machine.
+
+00:57.810 --> 00:59.280
+I'll copy it.
+
+00:59.280 --> 01:01.260
+I'll make a new tab inside my browser
+
+01:01.260 --> 01:05.730
+and then I'll put on colon 31,515
+
+01:05.730 --> 01:09.540
+because again that is the hard coded port of our service.
+
+01:09.540 --> 01:11.310
+And when I do so, I do in fact
+
+01:11.310 --> 01:14.610
+successfully see my application appear on the screen.
+
+01:14.610 --> 01:16.080
+Awesome.
+
+01:16.080 --> 01:17.910
+Now this is actually going to be a really good time
+
+01:17.910 --> 01:21.270
+to start to understand why we use these service things.
+
+01:21.270 --> 01:23.730
+Like why do we have to create that service object?
+
+01:23.730 --> 01:26.760
+Why were we not able before to just directly connect
+
+01:26.760 --> 01:29.040
+to one of our pods that was running the container
+
+01:29.040 --> 01:30.510
+that we care about?
+
+01:30.510 --> 01:33.360
+Well, now that we understand the idea behind deployments,
+
+01:33.360 --> 01:35.520
+understanding why we have to have these service things
+
+01:35.520 --> 01:37.980
+is going to make a lot more sense.
+
+01:37.980 --> 01:39.960
+So one thing I wanna show you very quickly,
+
+01:39.960 --> 01:41.310
+back over at your terminal,
+
+01:42.330 --> 01:45.090
+try running the the command cube ctl,
+
+01:45.090 --> 01:48.000
+get pods, and then we're gonna add on an argument here
+
+01:48.000 --> 01:50.703
+of dash O wide, like so.
+
+01:51.750 --> 01:53.550
+That's going to still get our list of pods
+
+01:53.550 --> 01:54.750
+but it's going to append on
+
+01:54.750 --> 01:57.030
+a little bit of additional information.
+
+01:57.030 --> 01:58.770
+Now I'm gonna zoom out here really quickly
+
+01:58.770 --> 02:00.960
+just so I can see this thing on a single line.
+
+02:00.960 --> 02:02.550
+There we go.
+
+02:02.550 --> 02:04.890
+Now I want you to notice how we now have these IP
+
+02:04.890 --> 02:07.650
+and note columns over on the right hand side.
+
+02:07.650 --> 02:09.000
+Now the really important column
+
+02:09.000 --> 02:12.630
+to take notice of here is the IP column.
+
+02:12.630 --> 02:14.820
+Every single pod that we create
+
+02:14.820 --> 02:18.240
+gets its own IP address assigned to it.
+
+02:18.240 --> 02:21.120
+So when we just deployed our deployment just two seconds ago
+
+02:21.120 --> 02:23.940
+and that created a pod, it was randomly assigned
+
+02:23.940 --> 02:25.923
+an IP address of 172- 1706.
+
+02:27.840 --> 02:30.450
+This is an IP address that is internal
+
+02:30.450 --> 02:32.760
+to our virtual machine.
+
+02:32.760 --> 02:34.770
+So you and I cannot visit that IP,
+
+02:34.770 --> 02:37.470
+or at least we cannot visit it very easily.
+
+02:37.470 --> 02:39.870
+It is an IP address that has been assigned
+
+02:39.870 --> 02:42.603
+to the pod inside of our node right here.
+
+02:43.800 --> 02:45.960
+Now the interesting thing about that is that
+
+02:45.960 --> 02:48.270
+if this pod ever gets deleted
+
+02:48.270 --> 02:50.220
+or if an additional one is created,
+
+02:50.220 --> 02:53.640
+or if for any reason the pod gets updated or changed
+
+02:53.640 --> 02:55.530
+in any way, shape or form whatsoever,
+
+02:55.530 --> 02:57.840
+it's entirely possible that the pod
+
+02:57.840 --> 03:01.380
+might suddenly get a brand new IP address.
+
+03:01.380 --> 03:03.270
+So let's imagine that this pod right here
+
+03:03.270 --> 03:07.270
+has that IP address of something like, I dunno, the 172.001.
+
+03:09.090 --> 03:12.090
+We'll just kind of make up an IP address like so.
+
+03:12.090 --> 03:14.700
+So I want you to imagine if we figured out some way
+
+03:14.700 --> 03:16.980
+to connect our browser to a pod
+
+03:16.980 --> 03:19.830
+running directly inside of our node,
+
+03:19.830 --> 03:20.880
+then inside of our browser,
+
+03:20.880 --> 03:23.073
+we would type in something like 172001,
+
+03:24.810 --> 03:26.970
+and then we would probably want to connect to port 3000.
+
+03:26.970 --> 03:30.870
+So we'd probably put on colon 3000 or something like that.
+
+03:30.870 --> 03:32.880
+Now the problem starts to arise
+
+03:32.880 --> 03:35.820
+if we start to recreate this pod right here
+
+03:35.820 --> 03:37.890
+because maybe we have to remake it
+
+03:37.890 --> 03:40.590
+because our configuration has changed on the deployment
+
+03:40.590 --> 03:42.210
+or maybe the original pod crashed
+
+03:42.210 --> 03:45.120
+or whatever reason it might be.
+
+03:45.120 --> 03:46.230
+And so we can imagine
+
+03:46.230 --> 03:48.933
+that maybe we have to create a second pod,
+
+03:50.190 --> 03:52.410
+and this one would get a randomly generated IP
+
+03:52.410 --> 03:54.513
+of something like 002,
+
+03:55.350 --> 03:58.770
+and then maybe this original pod gets deleted.
+
+03:58.770 --> 04:02.910
+Well now we originally had that IP address of 172001.
+
+04:02.910 --> 04:05.340
+That IP address is not going to work anymore
+
+04:05.340 --> 04:08.760
+because the object or the pod associated with it,
+
+04:08.760 --> 04:11.130
+just plain no longer exists.
+
+04:11.130 --> 04:13.770
+And so in order to access this pod right here,
+
+04:13.770 --> 04:16.800
+we would in theory now have to manually type in,
+
+04:16.800 --> 04:19.350
+that 002 like so.
+
+04:19.350 --> 04:20.430
+Now as you might guess,
+
+04:20.430 --> 04:22.740
+having to update the IP address all the time
+
+04:22.740 --> 04:24.990
+inside your browser in a development environment
+
+04:24.990 --> 04:27.510
+would definitely be a big pain.
+
+04:27.510 --> 04:30.660
+And that's why we make use of these service objects.
+
+04:30.660 --> 04:32.520
+This service is going to watch
+
+04:32.520 --> 04:35.520
+for every pod that matches its selector.
+
+04:35.520 --> 04:38.310
+'Cause remember, that service has a selector.
+
+04:38.310 --> 04:40.470
+If we look at client node port.eml
+
+04:40.470 --> 04:42.693
+it has the selector of component web.
+
+04:43.710 --> 04:45.510
+So the service is going to look for
+
+04:45.510 --> 04:47.220
+every pod with that selector
+
+04:47.220 --> 04:51.570
+and then automatically route traffic directly over to it.
+
+04:51.570 --> 04:53.580
+So that's why we make use of the service.
+
+04:53.580 --> 04:56.100
+These pods are coming and going all the time.
+
+04:56.100 --> 04:58.140
+They're getting deleted, they're getting recreated,
+
+04:58.140 --> 05:01.350
+and every time they potentially might get assigned
+
+05:01.350 --> 05:03.570
+a brand new IP address.
+
+05:03.570 --> 05:04.860
+This service is going to kind of
+
+05:04.860 --> 05:06.480
+abstract out that difficulty.
+
+05:06.480 --> 05:08.550
+And that's why we make use of these services
+
+05:08.550 --> 05:10.140
+anytime that we want to connect to
+
+05:10.140 --> 05:12.330
+one of our different pods.
+
+05:12.330 --> 05:13.920
+Okay, so hopefully that gives you a better idea
+
+05:13.920 --> 05:15.660
+of why we care about these service things.
+
+05:15.660 --> 05:17.220
+So let's take a quick pause right here,
+
+05:17.220 --> 05:19.170
+and we'll continue in the next section.

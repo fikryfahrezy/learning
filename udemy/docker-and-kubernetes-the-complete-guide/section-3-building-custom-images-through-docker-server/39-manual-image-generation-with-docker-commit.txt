@@ -1,0 +1,238 @@
+WEBVTT
+
+00:00.840 --> 00:01.640
+Before we move on.
+
+00:01.640 --> 00:06.320
+There's just one last little quick thing that I want to show you around this entire image building process.
+
+00:06.440 --> 00:10.360
+Now, what I'm going to show you inside this section is not something that you're probably going to
+
+00:10.360 --> 00:15.480
+do very often or ever, really, but it's something I thought you might find a little bit interesting
+
+00:15.480 --> 00:20.440
+and help you get a little bit of a better handle on the relationship between an image and a container.
+
+00:21.000 --> 00:25.400
+When we were going over the flow of actions that occurred while we were building the image, we spoke
+
+00:25.400 --> 00:27.960
+about how we take an image from the previous step.
+
+00:27.960 --> 00:33.240
+We create a container out of it, we do something with that container, and we then essentially create
+
+00:33.240 --> 00:38.640
+an image out of that running container or that kind of very temporary, temporary container that was
+
+00:38.640 --> 00:39.280
+created.
+
+00:39.880 --> 00:45.400
+So at this point, you and I know very well that we use images to create containers, but based on everything
+
+00:45.400 --> 00:50.240
+that we've been talking about in this section, it sure seems like the opposite is kind of true as well.
+
+00:50.240 --> 00:54.880
+It seems like we can kind of take a container and generate an image out of it as well.
+
+00:55.160 --> 00:56.880
+And that actually is correct.
+
+00:56.920 --> 01:02.830
+You and I can manually create a container, run some commands inside of it, or change its file system
+
+01:03.030 --> 01:07.590
+and then generate a usable image that we can then use at some point in the future.
+
+01:07.870 --> 01:13.430
+In other words, we can kind of very manually do the same thing that our Docker file does.
+
+01:13.830 --> 01:20.590
+We can create a container, run a command like say apk, add this right here and then generate an image
+
+01:20.590 --> 01:21.310
+out of that.
+
+01:21.350 --> 01:23.150
+I want to very quickly show you how that would look.
+
+01:23.150 --> 01:26.270
+But again, I really don't expect you to do this on your own personal project.
+
+01:26.270 --> 01:29.750
+I'm just showing you this as kind of something you might find interesting.
+
+01:30.670 --> 01:34.510
+So let's try to kind of emulate the Docker file that we just put together.
+
+01:34.510 --> 01:38.150
+We're going to create a new container manually out of the alpine image.
+
+01:38.270 --> 01:40.510
+We're then going to install Redisai on it.
+
+01:40.550 --> 01:45.830
+We're then going to set up a default command and generate a usable image that can be used in the future.
+
+01:45.830 --> 01:48.470
+Essentially everything that our Docker file just did.
+
+01:49.030 --> 01:51.830
+So at my terminal I'm going to execute docker run.
+
+01:51.830 --> 01:56.150
+And we're going to start up a shell inside of here so that we can run a couple of commands inside of
+
+01:56.150 --> 01:56.630
+it.
+
+01:56.630 --> 02:02.330
+So I'm going to put on the IT flag I'll put on alpine as our image.
+
+02:02.330 --> 02:06.850
+And then the command that I want to execute inside there is sh to start up a shell.
+
+02:07.730 --> 02:13.170
+So then I get presented with a command prompt right here that is inside of that running container now.
+
+02:13.210 --> 02:20.490
+And so inside that container I'm going to manually install Redice by running APK add dash dash update
+
+02:20.610 --> 02:22.050
+redice like so.
+
+02:22.730 --> 02:27.450
+So we now have a running container where we have modified its file system.
+
+02:27.450 --> 02:31.490
+And the file system has now seen the installation of Redice.
+
+02:32.170 --> 02:33.690
+So we've got the running container.
+
+02:33.930 --> 02:36.370
+I'm now going to open up a second terminal window.
+
+02:36.730 --> 02:41.170
+And inside of here I'm going to run a command using the Docker CLI.
+
+02:41.330 --> 02:47.570
+That's going to essentially take a snapshot of that running container and assign a default command to
+
+02:47.610 --> 02:50.530
+it and generate an image out of the entire thing.
+
+02:51.050 --> 02:56.410
+So to do so I'll say first docker PS to get the ID of that running container.
+
+02:56.930 --> 02:59.730
+And then we'll do docker commit.
+
+03:00.170 --> 03:05.840
+I'm going to add on a dash C right here, which is going to allow us to specify the default command.
+
+03:06.200 --> 03:07.560
+So I'm going to say dash C.
+
+03:07.800 --> 03:14.800
+And then I'll put in cmd double quotes inside of the square brace Redice dash server.
+
+03:15.080 --> 03:16.560
+I'll close the double quotes.
+
+03:16.600 --> 03:19.240
+I'll close the square brace and I'll close the single quotes.
+
+03:19.240 --> 03:23.600
+So notice how we have a single quote, single quote, and double quotes around it.
+
+03:24.160 --> 03:28.320
+And then after all that, I'll paste the ID of that running container.
+
+03:28.800 --> 03:30.480
+So I'm going to paste it in like so.
+
+03:31.520 --> 03:37.200
+And the output is the ID of a new image that we just customized for our own uses.
+
+03:37.520 --> 03:40.040
+Now you'll notice that this is a really long ID right here.
+
+03:40.080 --> 03:42.400
+One shortcut that I haven't quite mentioned so far.
+
+03:42.560 --> 03:47.880
+Whenever you're making use of IDs or hashes in the Docker world, you don't have to copy the entire
+
+03:47.880 --> 03:48.280
+thing.
+
+03:48.400 --> 03:53.120
+You can just copy a segment of the start, and it's kind of assumed that this is going to be unique
+
+03:53.120 --> 03:56.880
+enough that Docker is going to take this and realize that, oh, you're probably talking about this
+
+03:56.880 --> 03:58.280
+very long ID right here.
+
+03:58.640 --> 04:02.420
+So I'm going to copy just an arbitrary number of leading characters here.
+
+04:02.740 --> 04:08.460
+And then we'll do a Docker run that, and that's going to start up a new container out of the image
+
+04:08.460 --> 04:09.780
+that we just created.
+
+04:10.180 --> 04:14.140
+And inside that running container we already have this installed.
+
+04:14.180 --> 04:17.420
+And the default starting command will be to run Redisai server.
+
+04:17.900 --> 04:23.260
+So let's run that and we'll very quickly see all the typical output that we see from a running Redisai
+
+04:23.300 --> 04:23.980
+instance.
+
+04:24.500 --> 04:24.860
+All right.
+
+04:24.860 --> 04:30.940
+So like I said, we basically just very manually created a container, added a dependency to the container,
+
+04:31.900 --> 04:35.740
+set up the default command, and then generated an image out of all that.
+
+04:36.100 --> 04:38.580
+Again you really don't want to use that practice.
+
+04:38.580 --> 04:39.060
+In general.
+
+04:39.100 --> 04:41.540
+You don't use Docker commit in general.
+
+04:41.540 --> 04:46.860
+You really want to use the Docker file approach, because it allows you to very easily rerun that series
+
+04:46.860 --> 04:48.140
+of steps again in the future.
+
+04:48.140 --> 04:52.940
+But again, I just thought you might find it interesting how yes, there really is a very kind of fluid
+
+04:52.940 --> 04:55.620
+relationship between containers and images.
+
+04:56.100 --> 04:56.540
+All right.
+
+04:56.540 --> 05:00.140
+So let's take another quick pause right here and we'll move on to the next section.

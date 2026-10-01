@@ -1,0 +1,166 @@
+WEBVTT
+
+00:01.200 --> 00:02.460
+-: In the last section, we spoke about
+
+00:02.460 --> 00:04.260
+how we could open up a shell inside
+
+00:04.260 --> 00:07.890
+of a running container by using docker exec -it,
+
+00:07.890 --> 00:09.450
+and then passing in shell
+
+00:09.450 --> 00:13.380
+or just simply sh as the command that we want to execute.
+
+00:13.380 --> 00:14.460
+We've been talking about all this
+
+00:14.460 --> 00:16.500
+in the context of the exec command
+
+00:16.500 --> 00:19.260
+which we can use to execute an additional command
+
+00:19.260 --> 00:20.790
+inside of a container.
+
+00:20.790 --> 00:24.150
+But if we wanted to, we could also run docker run,
+
+00:24.150 --> 00:26.100
+the original docker run command right here
+
+00:26.100 --> 00:28.080
+along with that it flag
+
+00:28.080 --> 00:30.210
+and start up a shell immediately
+
+00:30.210 --> 00:32.490
+when a container first starts up.
+
+00:32.490 --> 00:34.560
+Now, of course, if we start up a shell
+
+00:34.560 --> 00:35.940
+right when the container first starts
+
+00:35.940 --> 00:37.230
+that's going to displace
+
+00:37.230 --> 00:40.710
+or keep any other typical or default command from running.
+
+00:40.710 --> 00:44.490
+But sometimes, it is quite useful to get a empty container
+
+00:44.490 --> 00:46.590
+with a shell inside of it and just being able to poke
+
+00:46.590 --> 00:49.500
+around and not have any other process running.
+
+00:49.500 --> 00:52.260
+So let's try that out right now at our command line.
+
+00:52.260 --> 00:54.210
+I'm gonna flip back over to my terminal.
+
+00:54.210 --> 00:56.070
+I'm gonna run at docker run.
+
+00:56.070 --> 00:58.470
+I'm gonna put on the it, so that we can attach
+
+00:58.470 --> 01:01.653
+to standard in on the process that we're about to start up.
+
+01:02.520 --> 01:04.830
+I will run the busy box image
+
+01:04.830 --> 01:07.590
+and then the program or the primary command
+
+01:07.590 --> 01:11.190
+that we're gonna execute inside the container will be sh.
+
+01:11.190 --> 01:13.020
+So this means start up a new container
+
+01:13.020 --> 01:15.000
+out of the busy box image,
+
+01:15.000 --> 01:17.560
+run the sh program, which is a shell
+
+01:18.420 --> 01:21.510
+and attach to standard in of that program.
+
+01:21.510 --> 01:25.230
+So when I run this, I'll be presented with a command prompt
+
+01:25.230 --> 01:29.010
+and just like we saw a moment ago, I can run the LS command
+
+01:29.010 --> 01:33.270
+I can ping google.com and hit control C to stop it.
+
+01:33.270 --> 01:36.660
+I can echo a message, whatever I wanna do.
+
+01:36.660 --> 01:38.850
+Again, this is a command that you might be using
+
+01:38.850 --> 01:40.050
+somewhat frequently anytime
+
+01:40.050 --> 01:42.210
+that you want to poke around a container.
+
+01:42.210 --> 01:45.840
+The downside to using docker run with it and sh
+
+01:45.840 --> 01:47.400
+is that chances are you're not going
+
+01:47.400 --> 01:49.410
+to be running any other process.
+
+01:49.410 --> 01:50.880
+It's a little bit more common
+
+01:50.880 --> 01:53.010
+that you're going to want to start up your container
+
+01:53.010 --> 01:56.160
+with a primary process of like maybe your web server
+
+01:56.160 --> 01:57.240
+or whatever it might be
+
+01:57.240 --> 02:00.000
+and then attached to it a running shell
+
+02:00.000 --> 02:02.580
+by using the docker exec command,
+
+02:02.580 --> 02:03.880
+wherever it is right here.
+
+02:05.160 --> 02:06.450
+But I just wanted you to be aware
+
+02:06.450 --> 02:08.730
+of this alternate use of docker run.
+
+02:08.730 --> 02:10.380
+All right, now one last thing I wanna cover
+
+02:10.380 --> 02:12.150
+in the next section, so quick break
+
+02:12.150 --> 02:13.850
+and I'll see you in just a minute.

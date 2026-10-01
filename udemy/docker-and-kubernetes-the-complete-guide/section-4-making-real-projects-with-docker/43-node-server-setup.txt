@@ -1,0 +1,358 @@
+WEBVTT
+
+00:00.750 --> 00:01.583
+Instructor: In this section,
+
+00:01.583 --> 00:04.500
+we're gonna start working on the Node JS web application.
+
+00:04.500 --> 00:06.360
+If you are not familiar with Node JS
+
+00:06.360 --> 00:07.800
+or you don't know any JavaScript
+
+00:07.800 --> 00:09.780
+and you don't want to know any JavaScript,
+
+00:09.780 --> 00:10.770
+that is totally fine.
+
+00:10.770 --> 00:12.180
+You can pause the video right now.
+
+00:12.180 --> 00:15.240
+Skip to the next section where I will have a text link
+
+00:15.240 --> 00:18.180
+for you to download the two files that you're going to need.
+
+00:18.180 --> 00:19.650
+So totally fine if you don't wanna write
+
+00:19.650 --> 00:21.106
+any JavaScript at all.
+
+00:21.106 --> 00:23.520
+Otherwise, stick around and we'll get started on this
+
+00:23.520 --> 00:25.650
+tiny web application.
+
+00:25.650 --> 00:27.570
+So to get started, I'm gonna first flip
+
+00:27.570 --> 00:28.860
+back over to my terminal.
+
+00:28.860 --> 00:30.450
+You'll notice that I'm still inside of
+
+00:30.450 --> 00:32.253
+that Redis image directory.
+
+00:32.253 --> 00:34.710
+I'm gonna go up one directory
+
+00:34.710 --> 00:36.870
+and then I'll make a new project folder
+
+00:36.870 --> 00:40.260
+and we will call this how about Simple Web?
+
+00:40.260 --> 00:42.090
+Because it's going to be a rather simple,
+
+00:42.090 --> 00:44.083
+straightforward web application.
+
+00:44.083 --> 00:46.292
+I'll then change into that directory
+
+00:46.292 --> 00:48.780
+and then I'm going to again start up my code
+
+00:48.780 --> 00:50.013
+editor inside there.
+
+00:51.780 --> 00:53.400
+Now a quick reminder, I was able
+
+00:53.400 --> 00:55.710
+to use the code command right here
+
+00:55.710 --> 00:57.690
+because I've set up Visual Studio Code
+
+00:57.690 --> 00:59.310
+to be executed from my command line.
+
+00:59.310 --> 01:01.440
+So if you don't have that set up, totally fine.
+
+01:01.440 --> 01:04.080
+All you really need to do right now is open up your code
+
+01:04.080 --> 01:06.600
+editor based on that simple web directory
+
+01:06.600 --> 01:07.713
+that we just created.
+
+01:08.640 --> 01:12.360
+Then inside of here, we're gonna create first a file called
+
+01:12.360 --> 01:16.170
+Package.JSON.
+
+01:16.170 --> 01:18.450
+Inside this file we're gonna put together a little bit
+
+01:18.450 --> 01:20.130
+of configuration to describe
+
+01:20.130 --> 01:23.777
+how our node application is going to work exactly.
+
+01:23.777 --> 01:27.100
+I'm gonna first begin by placing a set of curly braces
+
+01:28.920 --> 01:31.650
+and then inside there I'm gonna place a key
+
+01:31.650 --> 01:33.093
+wrapped in double quotes.
+
+01:34.320 --> 01:35.490
+And the first section we're going
+
+01:35.490 --> 01:37.200
+to put together is gonna list out all
+
+01:37.200 --> 01:38.668
+of the different dependencies
+
+01:38.668 --> 01:41.858
+that our application needs to run correctly.
+
+01:41.858 --> 01:45.030
+Notice how I'm wrapping the word dependencies inside
+
+01:45.030 --> 01:46.680
+of a set of double quotes.
+
+01:46.680 --> 01:48.150
+I've got a colon afterwards
+
+01:48.150 --> 01:50.853
+and then I open up a curly brace object.
+
+01:51.990 --> 01:54.459
+Then inside that set of curly braces,
+
+01:54.459 --> 01:57.554
+I will put down another set of double quotes.
+
+01:57.554 --> 01:59.820
+And I'm gonna say that in order for our application
+
+01:59.820 --> 02:03.210
+to work correctly, we need a copy of express.
+
+02:03.210 --> 02:04.830
+I'll then put down a colon
+
+02:04.830 --> 02:07.170
+and then for the version, I'm just gonna put a star
+
+02:07.170 --> 02:10.200
+to say we can use any version of express out there.
+
+02:10.200 --> 02:11.033
+We don't care.
+
+02:12.900 --> 02:15.810
+After that, I'm then gonna put a comma on this line
+
+02:15.810 --> 02:16.643
+right here.
+
+02:16.643 --> 02:18.660
+And then I'll add in one more section.
+
+02:18.660 --> 02:21.480
+This is going to be a section that we will call scripts
+
+02:21.480 --> 02:23.400
+and this will contain some of the different scripts
+
+02:23.400 --> 02:26.580
+that you can run to get our application up and running.
+
+02:26.580 --> 02:27.690
+I'm gonna open up another set
+
+02:27.690 --> 02:30.420
+of curly braces just like we did a second ago.
+
+02:30.420 --> 02:32.160
+I'll put a set of double quotes
+
+02:32.160 --> 02:34.950
+and we're gonna create a script called Start.
+
+02:34.950 --> 02:37.350
+Anytime that someone runs the start script,
+
+02:37.350 --> 02:42.350
+we are going to execute node index.JS, like so.
+
+02:42.390 --> 02:43.470
+This right here is going to be
+
+02:43.470 --> 02:46.413
+what ultimately starts up our server and gets it running.
+
+02:47.250 --> 02:49.980
+Alright, so that's it inside of the package.JSON file.
+
+02:49.980 --> 02:52.110
+So we have specified dependency
+
+02:52.110 --> 02:54.660
+and we have created a single script.
+
+02:54.660 --> 02:56.860
+I'm now gonna make sure that I save the file
+
+02:58.350 --> 02:59.820
+and then I'm going to close it
+
+02:59.820 --> 03:03.570
+and create a second file inside the same directory.
+
+03:03.570 --> 03:07.023
+And the second file I will call index.JS.
+
+03:08.790 --> 03:12.690
+So inside of here, we're gonna first begin by requiring in
+
+03:12.690 --> 03:15.783
+the express library that we just marked as a dependency,
+
+03:19.890 --> 03:21.510
+I will then use the express library
+
+03:21.510 --> 03:24.513
+to create a new app like so.
+
+03:25.650 --> 03:29.130
+And then we are going to set up one single route handler.
+
+03:29.130 --> 03:31.503
+We're gonna say app.get.
+
+03:32.430 --> 03:35.430
+I'll pass in a string with a forward slash.
+
+03:35.430 --> 03:38.700
+As a second argument, I'll pass in an arrow function
+
+03:38.700 --> 03:42.060
+that gets called with a request and response object
+
+03:42.060 --> 03:45.633
+and open up a function body after placing a function arrow.
+
+03:46.470 --> 03:48.840
+Then inside of here we'll do res.send
+
+03:48.840 --> 03:52.920
+and we're gonna send back a message of 'Hi there'.
+
+03:52.920 --> 03:55.560
+So now anytime someone visits the root route
+
+03:55.560 --> 03:57.030
+of our application, we are going
+
+03:57.030 --> 03:59.460
+to immediately send back a string that says simply
+
+03:59.460 --> 04:00.330
+'Hi there'.
+
+04:00.330 --> 04:03.150
+And so ultimately when we run our application,
+
+04:03.150 --> 04:05.640
+my expectation is that in the browser we should be able
+
+04:05.640 --> 04:07.410
+to visit this running web application
+
+04:07.410 --> 04:09.753
+and see, 'Hi there' up here on the screen.
+
+04:11.340 --> 04:13.830
+Now the last thing we have to do is set up our application
+
+04:13.830 --> 04:15.810
+to listen on a port.
+
+04:15.810 --> 04:19.307
+So down at the bottom of the file, I'll say app listen
+
+04:19.307 --> 04:22.410
+and I'll specify the port that we are going to be listening
+
+04:22.410 --> 04:24.183
+to as 8080.
+
+04:25.350 --> 04:28.350
+As a second argument, I'll pass in an arrow function
+
+04:28.350 --> 04:29.700
+like so.
+
+04:29.700 --> 04:32.010
+And then finally, after the app starts listening
+
+04:32.010 --> 04:35.250
+to this port correctly, we will print out a little message
+
+04:35.250 --> 04:40.250
+that says listening on port 8080 like so.
+
+04:40.472 --> 04:44.100
+And then I'm going to make sure that I save this file.
+
+04:44.100 --> 04:45.240
+Alright, so that's pretty much it.
+
+04:45.240 --> 04:47.220
+We've got our package.JSON file
+
+04:47.220 --> 04:50.460
+that defines some configuration around our project.
+
+04:50.460 --> 04:52.170
+And then we've got the index.JS file
+
+04:52.170 --> 04:54.450
+that contains the actual server logic.
+
+04:54.450 --> 04:56.220
+So we're gonna take a quick pause right here.
+
+04:56.220 --> 04:57.480
+When we come back the next section,
+
+04:57.480 --> 04:59.040
+we're gonna start talking about how we're going
+
+04:59.040 --> 05:00.960
+to put together our docker file.
+
+05:00.960 --> 05:03.410
+So quick break and I'll see you in just a minute.

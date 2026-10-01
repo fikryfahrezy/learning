@@ -1,0 +1,283 @@
+WEBVTT
+
+00:00.750 --> 00:01.890
+Instructor: In the last section, we spoke about
+
+00:01.890 --> 00:04.320
+the purpose of a cluster IP service.
+
+00:04.320 --> 00:06.570
+So we're now going to flip over to our code editor
+
+00:06.570 --> 00:10.080
+and create a new config file that's going to expose access
+
+00:10.080 --> 00:12.240
+to our set of multi client pods
+
+00:12.240 --> 00:15.300
+to every other object inside of our cluster.
+
+00:15.300 --> 00:17.100
+So, over inside of my code editor,
+
+00:17.100 --> 00:19.140
+I'm gonna find my k8s directory
+
+00:19.140 --> 00:21.450
+and I'm going to make a new file called
+
+00:21.450 --> 00:25.803
+client cluster IP service.emo.
+
+00:28.740 --> 00:29.573
+Then inside of here,
+
+00:29.573 --> 00:31.530
+we'll put together a little bit of configuration
+
+00:31.530 --> 00:34.470
+that's gonna look very similar to the config file
+
+00:34.470 --> 00:37.140
+for the previous service we had created.
+
+00:37.140 --> 00:38.580
+One was the node port,
+
+00:38.580 --> 00:40.140
+this one is a cluster IP.
+
+00:40.140 --> 00:40.973
+At the end of the day,
+
+00:40.973 --> 00:43.410
+their config files look awfully similar.
+
+00:43.410 --> 00:44.610
+All right. So inside of here,
+
+00:44.610 --> 00:47.313
+we'll first start off with an API version of v1.
+
+00:48.150 --> 00:49.380
+We're going to create an object
+
+00:49.380 --> 00:52.860
+with a type of service for our metadata.
+
+00:52.860 --> 00:57.153
+We're going to provide a name of client cluster IP service.
+
+00:58.170 --> 00:59.400
+And then for our spec,
+
+00:59.400 --> 01:02.160
+that's going to configure the way that this service behaves,
+
+01:02.160 --> 01:06.360
+we're going to specify a type of service of cluster IP
+
+01:06.360 --> 01:08.190
+and take note of the capitalization here,
+
+01:08.190 --> 01:11.103
+we got capital C and capital IP on the end.
+
+01:12.810 --> 01:14.790
+Next, we need to provide a selector
+
+01:14.790 --> 01:16.620
+so that this service that we are creating
+
+01:16.620 --> 01:18.480
+knows what set of pods
+
+01:18.480 --> 01:21.480
+it is supposed to be providing access to.
+
+01:21.480 --> 01:22.350
+So in our case,
+
+01:22.350 --> 01:24.480
+the cluster IP that we are working on right now
+
+01:24.480 --> 01:29.220
+is going to provide access to our multi-client set of pods.
+
+01:29.220 --> 01:32.340
+So I need to make sure that we provide a selector,
+
+01:32.340 --> 01:35.550
+so a selector that's going to properly select
+
+01:35.550 --> 01:37.530
+our client deployment.
+
+01:37.530 --> 01:39.150
+If you look inside of our client deployment,
+
+01:39.150 --> 01:41.220
+you will recall that all of those pods
+
+01:41.220 --> 01:44.880
+have a label applied to them of component web.
+
+01:44.880 --> 01:48.693
+So the selector inside of our service will be component web.
+
+01:51.030 --> 01:53.580
+Finally, we're going to configure the different ports
+
+01:53.580 --> 01:56.310
+that the cluster IP service are going to expose
+
+01:56.310 --> 01:58.080
+and be available on.
+
+01:58.080 --> 01:59.610
+Now, the ports ruled down here
+
+01:59.610 --> 02:02.970
+is going to follow the exact same nomenclature
+
+02:02.970 --> 02:05.640
+as the node port,
+
+02:05.640 --> 02:07.290
+stuff that we had worked on previously.
+
+02:07.290 --> 02:08.940
+So you remember looking at this diagram?
+
+02:08.940 --> 02:10.710
+This was the nomenclature that we had
+
+02:10.710 --> 02:12.450
+for the node port service.
+
+02:12.450 --> 02:14.970
+So at the node port, we had to provide a port,
+
+02:14.970 --> 02:16.830
+a target port, and a node port,
+
+02:16.830 --> 02:18.120
+and each of those different properties
+
+02:18.120 --> 02:19.980
+had a slightly different purpose.
+
+02:19.980 --> 02:24.480
+Now in the case of a cluster IP,
+
+02:24.480 --> 02:25.950
+which is what we're making here,
+
+02:25.950 --> 02:28.170
+there is no node port property.
+
+02:28.170 --> 02:31.950
+Because this cluster IP is not addressable or accessible
+
+02:31.950 --> 02:33.540
+from the outside world.
+
+02:33.540 --> 02:36.840
+We are only going to have a port and a target port.
+
+02:36.840 --> 02:39.540
+The port property is going to be how other pods
+
+02:39.540 --> 02:41.370
+or other objects inside of our cluster
+
+02:41.370 --> 02:43.110
+are going to access the pod
+
+02:43.110 --> 02:45.540
+that we are kind of governing access to.
+
+02:45.540 --> 02:46.500
+And the target port
+
+02:46.500 --> 02:49.350
+is going to be the port on the target pod
+
+02:49.350 --> 02:51.393
+that we are providing access to.
+
+02:52.260 --> 02:56.670
+So, for us, we're going to provide a port of 3000
+
+02:56.670 --> 02:59.343
+and a target port of 3000.
+
+03:00.270 --> 03:01.103
+Now you'll notice that
+
+03:01.103 --> 03:02.820
+I just left these things here the same.
+
+03:02.820 --> 03:04.440
+If we wanted to, we could say that
+
+03:04.440 --> 03:08.430
+you can get access to port 3000 inside that container
+
+03:08.430 --> 03:09.750
+by trying to access something like,
+
+03:09.750 --> 03:12.240
+I dunno, 30 50 if we wanted to.
+
+03:12.240 --> 03:15.570
+So now, if any outside object wanted to access
+
+03:15.570 --> 03:17.460
+the multi client pods,
+
+03:17.460 --> 03:20.730
+they would have to try to go through port 30 50.
+
+03:20.730 --> 03:23.400
+But honestly, I can't think of any good reason
+
+03:23.400 --> 03:24.930
+in this particular case
+
+03:24.930 --> 03:28.080
+that I would want to like do some mismatching of ports here.
+
+03:28.080 --> 03:29.910
+So I'm just gonna leave them as the same
+
+03:29.910 --> 03:33.270
+and say that to get at port 3000 inside the container,
+
+03:33.270 --> 03:36.570
+you are going to get at port 3000 on the service.
+
+03:36.570 --> 03:38.430
+So if you want to, you can kind of
+
+03:38.430 --> 03:40.230
+do some redirecting of ports here,
+
+03:40.230 --> 03:42.270
+but again, I don't really see a good reason to
+
+03:42.270 --> 03:44.460
+in this particular case.
+
+03:44.460 --> 03:47.160
+All right. So that's it for our cluster IP service.
+
+03:47.160 --> 03:48.810
+So let's take a quick pause right here
+
+03:48.810 --> 03:51.210
+and we'll continue with our next deployment
+
+03:51.210 --> 03:52.210
+in the next section.

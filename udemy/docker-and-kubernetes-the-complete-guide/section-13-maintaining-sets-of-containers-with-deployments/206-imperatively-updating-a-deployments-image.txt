@@ -1,0 +1,571 @@
+WEBVTT
+
+00:00.000 --> 00:02.490
+-: In this section, we're going to walk through
+
+00:02.490 --> 00:04.230
+the update process we described
+
+00:04.230 --> 00:05.760
+at the end of the last section.
+
+00:05.760 --> 00:07.740
+So here's what we need to do.
+
+00:07.740 --> 00:09.510
+We're going to first tag our image
+
+00:09.510 --> 00:11.280
+with a distinct version number,
+
+00:11.280 --> 00:14.670
+and then we're gonna push that new version up to Docker Hub.
+
+00:14.670 --> 00:15.840
+After that, we're going to run
+
+00:15.840 --> 00:18.180
+a rather long kubectl command
+
+00:18.180 --> 00:20.580
+that's going to forcibly update our deployment
+
+00:20.580 --> 00:23.160
+and tell it to use this new version of the image
+
+00:23.160 --> 00:25.740
+that we've have pushed off to Docker Hub.
+
+00:25.740 --> 00:26.610
+So let's get to it.
+
+00:26.610 --> 00:29.820
+Step number one is going to be to tag our image.
+
+00:29.820 --> 00:32.070
+So to get started, I'm gonna open up my terminal,
+
+00:32.070 --> 00:34.320
+and I'm gonna create a second terminal window
+
+00:34.320 --> 00:38.163
+and then change on over to that complex client directory.
+
+00:39.270 --> 00:41.670
+So I'll go into complex,
+
+00:41.670 --> 00:43.833
+and I'll change into the client folder.
+
+00:44.910 --> 00:46.890
+So here's my client project.
+
+00:46.890 --> 00:49.770
+We have already built an image out of this folder,
+
+00:49.770 --> 00:52.920
+and we have not made any changes to our project since then.
+
+00:52.920 --> 00:55.530
+So we could technically do a Docker tag here
+
+00:55.530 --> 00:58.050
+and tag the existing image that we already built.
+
+00:58.050 --> 01:00.030
+But instead, just to show you the entire flow,
+
+01:00.030 --> 01:03.030
+I'm gonna build the entire image from scratch again.
+
+01:03.030 --> 01:06.750
+So I'll run docker build and I'll tag this thing
+
+01:06.750 --> 01:10.080
+with my Docker ID slash multi-client,
+
+01:10.080 --> 01:11.970
+and I'll make sure I get a colon on there.
+
+01:11.970 --> 01:14.310
+And then we have to put some unique token
+
+01:14.310 --> 01:16.650
+on the other side of the colon.
+
+01:16.650 --> 01:18.150
+And so for me, as a version number,
+
+01:18.150 --> 01:19.750
+I'll just do like, I don't know,
+
+01:20.700 --> 01:21.990
+version five or something,
+
+01:21.990 --> 01:23.700
+anything you wanna do.
+
+01:23.700 --> 01:25.410
+And then after that I'll put down a period
+
+01:25.410 --> 01:27.663
+to specify the build context.
+
+01:29.220 --> 01:30.780
+Okay, so I'll run that command.
+
+01:30.780 --> 01:33.630
+The image is rebuilt and it's now tagged
+
+01:33.630 --> 01:38.250
+with your Docker ID slash multi-client colon V5.
+
+01:38.250 --> 01:39.390
+So now we need to make sure
+
+01:39.390 --> 01:42.960
+that we push this updated image over to Docker Hub.
+
+01:42.960 --> 01:45.570
+So I'll copy the entire tag right there,
+
+01:45.570 --> 01:48.513
+and I'll do a docker push and copy the tag in.
+
+01:52.500 --> 01:53.580
+All right, so just like that,
+
+01:53.580 --> 01:57.120
+we now have a new tagged image over on Docker Hub.
+
+01:57.120 --> 01:59.760
+So now we need to run a kubectl command,
+
+01:59.760 --> 02:01.200
+that's going to force our deployment
+
+02:01.200 --> 02:02.853
+to use that new image version.
+
+02:04.140 --> 02:05.310
+Back inside my terminal,
+
+02:05.310 --> 02:08.070
+I'm gonna delete the second terminal window that I opened,
+
+02:08.070 --> 02:10.200
+and so I'm left just with the original window
+
+02:10.200 --> 02:12.753
+that's based on the simple K8s directory.
+
+02:13.770 --> 02:17.130
+So inside of here, we're gonna run a rather long command.
+
+02:17.130 --> 02:19.260
+I got a quick diagram to tell you a little bit about
+
+02:19.260 --> 02:20.850
+what we're going to be writing out.
+
+02:20.850 --> 02:21.930
+All right, so here it is.
+
+02:21.930 --> 02:23.700
+Yes, it's rather long.
+
+02:23.700 --> 02:25.410
+So we're going to use kubectl,
+
+02:25.410 --> 02:27.840
+and we're going to use the set command.
+
+02:27.840 --> 02:30.180
+We use the set command to update a property
+
+02:30.180 --> 02:34.200
+on one of our objects that exist inside of our cluster.
+
+02:34.200 --> 02:36.270
+The specific property that you and I want to update
+
+02:36.270 --> 02:37.860
+is the image property.
+
+02:37.860 --> 02:40.170
+So the image property that is tied
+
+02:40.170 --> 02:43.443
+to our single container right here.
+
+02:44.940 --> 02:47.310
+After that, we'll specify the type of the object
+
+02:47.310 --> 02:48.480
+that we want to update.
+
+02:48.480 --> 02:51.090
+So in our case, we are not updating a container,
+
+02:51.090 --> 02:52.410
+we're not updating a pod,
+
+02:52.410 --> 02:54.240
+we are updating a deployment.
+
+02:54.240 --> 02:55.950
+That's what we're updating.
+
+02:55.950 --> 02:57.120
+So we're gonna specify
+
+02:57.120 --> 03:00.810
+a deployment slash the name of our deployment,
+
+03:00.810 --> 03:01.650
+which for you and me
+
+03:01.650 --> 03:04.503
+is client dash deployment, right there.
+
+03:06.360 --> 03:09.210
+After that, we'll then specify the container name.
+
+03:09.210 --> 03:12.390
+So remember, a deployment creates pods,
+
+03:12.390 --> 03:15.870
+and inside of a pod we can have many different containers.
+
+03:15.870 --> 03:18.180
+Our specific pod template right here,
+
+03:18.180 --> 03:19.560
+only has one container,
+
+03:19.560 --> 03:21.540
+but we could very easily have other containers
+
+03:21.540 --> 03:22.650
+inside of here as well.
+
+03:22.650 --> 03:23.940
+And all those other containers
+
+03:23.940 --> 03:25.890
+would have their own image property.
+
+03:25.890 --> 03:27.450
+So we need to make sure that we specify
+
+03:27.450 --> 03:29.940
+which of all of our containers we want to update.
+
+03:29.940 --> 03:32.190
+And we specify the container that we want to update
+
+03:32.190 --> 03:34.230
+by specifying the name.
+
+03:34.230 --> 03:36.450
+So we're going to say the container name,
+
+03:36.450 --> 03:38.703
+and for us the container name is client.
+
+03:40.740 --> 03:42.210
+We'll then do an equal sign,
+
+03:42.210 --> 03:45.060
+and then the full image that we want to use.
+
+03:45.060 --> 03:48.330
+So it'll be your Docker ID slash multi-client,
+
+03:48.330 --> 03:50.760
+and then a colon, and then the version number
+
+03:50.760 --> 03:53.250
+that you use to tag the image with.
+
+03:53.250 --> 03:54.480
+So that's the entire command.
+
+03:54.480 --> 03:56.100
+Let's give it a shot.
+
+03:56.100 --> 03:57.450
+Back inside my terminal,
+
+03:57.450 --> 04:00.603
+I'm gonna run kubectl, set image,
+
+04:01.500 --> 04:03.300
+then we're gonna do our object type,
+
+04:05.730 --> 04:09.480
+which is a deployment slash the object name
+
+04:09.480 --> 04:11.763
+which is client dash deployment,
+
+04:13.612 --> 04:15.540
+and we'll put in a space.
+
+04:15.540 --> 04:16.440
+so there is a space there.
+
+04:16.440 --> 04:17.940
+Notice how it wrapped the line for me
+
+04:17.940 --> 04:20.520
+but there definitely without a doubt, is a space there.
+
+04:20.520 --> 04:23.160
+And I'll specify the container that I care about,
+
+04:23.160 --> 04:24.240
+which is client.
+
+04:24.240 --> 04:25.920
+And then the update that we're going to make,
+
+04:25.920 --> 04:27.540
+is to say that we now want to use
+
+04:27.540 --> 04:31.680
+our Docker ID slash multi-client.
+
+04:31.680 --> 04:33.150
+And then the version that we want to use
+
+04:33.150 --> 04:35.730
+is whatever version you just used a second ago
+
+04:35.730 --> 04:37.410
+when we rebuilt our image.
+
+04:37.410 --> 04:39.273
+And so for me it is V5.
+
+04:40.410 --> 04:41.243
+All right, so that's it.
+
+04:41.243 --> 04:42.770
+So we're gonna run this command
+
+04:43.890 --> 04:46.710
+and we get that our image has been updated.
+
+04:46.710 --> 04:50.880
+So now we can do a kubectl get pods,
+
+04:50.880 --> 04:52.740
+and you'll notice how we have a single pod here.
+
+04:52.740 --> 04:55.950
+And most importantly, it has an age of around 5, 6, 7
+
+04:55.950 --> 04:57.630
+or however many seconds,
+
+04:57.630 --> 04:58.980
+which definitely means without a doubt,
+
+04:58.980 --> 05:02.520
+that our pod was just recreated by our deployment.
+
+05:02.520 --> 05:04.440
+So now we get to test this out inside of our browser
+
+05:04.440 --> 05:06.840
+to make sure that the update actually went live.
+
+05:07.830 --> 05:10.410
+So remember, to access our running container,
+
+05:10.410 --> 05:12.720
+we need our minikube IP.
+
+05:12.720 --> 05:14.640
+So there's the IP address.
+
+05:14.640 --> 05:17.130
+And then remember, the port for our application
+
+05:17.130 --> 05:20.610
+or for this particular pod is 31515,
+
+05:20.610 --> 05:24.063
+as specified inside of our client node port service file.
+
+05:25.380 --> 05:27.750
+So inside my browser, I'll open up a new tab,
+
+05:27.750 --> 05:30.393
+I'll put in my IP address, and I'll go to 31515.
+
+05:32.580 --> 05:35.460
+And then once here, I should see Fib calculator version two.
+
+05:35.460 --> 05:37.740
+Now really quick, if you don't see version two,
+
+05:37.740 --> 05:39.450
+do not panic.
+
+05:39.450 --> 05:40.920
+The react application we put together
+
+05:40.920 --> 05:42.870
+has some caching built into it.
+
+05:42.870 --> 05:45.450
+So if you do not see version two over here,
+
+05:45.450 --> 05:46.830
+then the first thing I want you to do,
+
+05:46.830 --> 05:50.550
+is give it a couple seconds and then do a quick refresh.
+
+05:50.550 --> 05:53.763
+Failing that, try opening up your Chrome console,
+
+05:54.840 --> 05:57.270
+expand this tab on network, right here.
+
+05:57.270 --> 05:59.100
+You can select disabled cache
+
+05:59.100 --> 06:01.080
+and then try refreshing again.
+
+06:01.080 --> 06:02.340
+And then if even that doesn't work,
+
+06:02.340 --> 06:05.310
+you can always run the set,
+
+06:05.310 --> 06:06.143
+where's that command?
+
+06:06.143 --> 06:08.220
+The big set image command here again.
+
+06:08.220 --> 06:10.050
+Try running that a second time.
+
+06:10.050 --> 06:11.130
+And then after all that,
+
+06:11.130 --> 06:12.990
+you should be able to eventually refresh this thing
+
+06:12.990 --> 06:15.030
+and se version two appear.
+
+06:15.030 --> 06:16.787
+Like I said, sometimes it does take a second or two
+
+06:16.787 --> 06:19.470
+for it to actually pop up the update inside of here,
+
+06:19.470 --> 06:21.990
+but you should eventually see it go live.
+
+06:21.990 --> 06:23.070
+All right, so that's it.
+
+06:23.070 --> 06:24.060
+That's how we update
+
+06:24.060 --> 06:25.380
+or how we tell a deployment
+
+06:25.380 --> 06:28.710
+that we wanted to use the newer version of an image.
+
+06:28.710 --> 06:29.760
+Now, I think you'll agree with me
+
+06:29.760 --> 06:30.870
+that this entire process
+
+06:30.870 --> 06:33.030
+is definitely a little bit of a pain
+
+06:33.030 --> 06:35.070
+because we have to rebuild the image,
+
+06:35.070 --> 06:37.680
+we have to apply a unique tag version on it,
+
+06:37.680 --> 06:39.870
+and then we have to run that command.
+
+06:39.870 --> 06:42.690
+But when we eventually set up our entire cluster
+
+06:42.690 --> 06:43.710
+to be deployed off
+
+06:43.710 --> 06:46.680
+to either Amazon Web Services or Google Cloud,
+
+06:46.680 --> 06:50.190
+you and I are gonna write out a big long script
+
+06:50.190 --> 06:52.110
+to facilitate our deployment.
+
+06:52.110 --> 06:53.280
+And inside that script,
+
+06:53.280 --> 06:56.160
+we're going to put all of this tagging logic,
+
+06:56.160 --> 06:58.140
+and all the version tagging,
+
+06:58.140 --> 07:02.310
+and all the kubectl set image command stuff as well.
+
+07:02.310 --> 07:03.750
+And so when we eventually move over
+
+07:03.750 --> 07:05.070
+to a production environment,
+
+07:05.070 --> 07:06.450
+all this versioning stuff
+
+07:06.450 --> 07:08.490
+is going to be completely automated for us
+
+07:08.490 --> 07:10.890
+and we're not gonna have to do any additional work.
+
+07:10.890 --> 07:12.360
+So it's really just kind of understanding
+
+07:12.360 --> 07:13.890
+what's going on behind the scenes.
+
+07:13.890 --> 07:15.120
+That's the challenging part.
+
+07:15.120 --> 07:17.280
+Once you understand what's happening from then on out,
+
+07:17.280 --> 07:18.693
+life gets pretty darn easy.
+
+07:20.010 --> 07:21.210
+Okay, so that's pretty much it.
+
+07:21.210 --> 07:22.260
+Let's take a pause right here
+
+07:22.260 --> 07:24.210
+and we'll continue in the next section.

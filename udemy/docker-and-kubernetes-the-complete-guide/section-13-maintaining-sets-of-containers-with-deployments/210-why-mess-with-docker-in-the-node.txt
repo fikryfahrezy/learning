@@ -1,0 +1,403 @@
+WEBVTT
+
+00:00.570 --> 00:02.640
+-: In the last section, we learned how to temporarily
+
+00:02.640 --> 00:05.310
+reconfigure a single terminal window
+
+00:05.310 --> 00:07.050
+to access our Docker server
+
+00:07.050 --> 00:09.060
+running inside the virtual machine.
+
+00:09.060 --> 00:10.590
+I want to remind you again,
+
+00:10.590 --> 00:12.960
+you have to rerun that command every single time
+
+00:12.960 --> 00:14.910
+that you open up a new terminal window.
+
+00:15.750 --> 00:17.910
+All right, so I'm gonna very quickly paste this
+
+00:17.910 --> 00:19.800
+inside of here just to make sure it's really clear
+
+00:19.800 --> 00:21.060
+that I'm going to reconfigure
+
+00:21.060 --> 00:22.950
+my current terminal window right here.
+
+00:22.950 --> 00:24.450
+Now I wanna talk to you a little bit about
+
+00:24.450 --> 00:26.190
+why we would want to do this at all.
+
+00:26.190 --> 00:28.051
+Why would we want to reach into the virtual machine
+
+00:28.051 --> 00:30.750
+and take a look at the Docker server
+
+00:30.750 --> 00:33.240
+and all the containers that are running inside there?
+
+00:33.240 --> 00:35.473
+Well, I put together a couple of reasons that I think
+
+00:35.473 --> 00:36.780
+you might want to do this,
+
+00:36.780 --> 00:39.630
+this is not an exhaustive list by any means.
+
+00:39.630 --> 00:41.730
+So I just want you to have an additional tool
+
+00:41.730 --> 00:44.130
+in your little toolkit for working with Kubernetes
+
+00:44.130 --> 00:46.920
+so that you can understand how to kind of get a better idea
+
+00:46.920 --> 00:49.290
+of how to play around with all this stuff.
+
+00:49.290 --> 00:50.880
+All right, so a couple of reasons that you might want to
+
+00:50.880 --> 00:53.460
+mess around with Docker inside of our node.
+
+00:53.460 --> 00:55.320
+The first reason is that you can use
+
+00:55.320 --> 00:57.060
+all the same debugging techniques
+
+00:57.060 --> 00:58.950
+that we had learned much earlier in this course
+
+00:58.950 --> 01:01.823
+to inspect containers and get logs from them
+
+01:01.823 --> 01:04.230
+and do all that kind of stuff
+
+01:04.230 --> 01:05.940
+when you connect to the copy of Docker
+
+01:05.940 --> 01:07.470
+running inside the node.
+
+01:07.470 --> 01:10.530
+So for example, remember right here again
+
+01:10.530 --> 01:12.210
+I just reconfigured my shell
+
+01:12.210 --> 01:14.190
+so I'm gonna do a docker ps,
+
+01:14.190 --> 01:17.190
+and when I do so I can scroll all the way back up to the top
+
+01:17.190 --> 01:21.240
+and get the ID of my multi-client container right here.
+
+01:21.240 --> 01:23.430
+So I'm gonna copy that ID.
+
+01:23.430 --> 01:25.320
+Now, I can get logs outta that container
+
+01:25.320 --> 01:28.080
+by doing a very classic docker logs,
+
+01:28.080 --> 01:29.850
+and then the ID of the container.
+
+01:29.850 --> 01:32.250
+Remember, this is something we covered way long ago
+
+01:32.250 --> 01:34.110
+at the very start of the course.
+
+01:34.110 --> 01:36.930
+Now in this case, our container has not emitted any logs,
+
+01:36.930 --> 01:38.760
+so I get nothing back here
+
+01:38.760 --> 01:40.380
+but I could do other commands as well,
+
+01:40.380 --> 01:43.040
+such as, say, executing an arbitrary program,
+
+01:43.040 --> 01:45.630
+or a secondary program inside the container.
+
+01:45.630 --> 01:47.850
+So for example, if I want to start up a shell
+
+01:47.850 --> 01:49.230
+inside of that container,
+
+01:49.230 --> 01:54.230
+I could do a docker exec -it, then the container id,
+
+01:54.300 --> 01:56.790
+and then I'll start up shell inside there.
+
+01:56.790 --> 01:59.670
+And so when I do that, I can very simply get a shell
+
+01:59.670 --> 02:02.160
+and I can start to poke around and get a better idea
+
+02:02.160 --> 02:04.323
+of the state of my container if I want to.
+
+02:05.310 --> 02:07.080
+Now, the one kind of caveat to this,
+
+02:07.080 --> 02:08.790
+the one thing I want to mention,
+
+02:08.790 --> 02:11.310
+is that a lot of these different debugging commands
+
+02:11.310 --> 02:14.640
+are actually available through kubectl as well.
+
+02:14.640 --> 02:18.420
+So for example, I can still pull logs using kubectl
+
+02:18.420 --> 02:20.280
+from a very specific container,
+
+02:20.280 --> 02:22.950
+and I can start up a shell and slide of a specific container
+
+02:22.950 --> 02:24.720
+using kubectl as well.
+
+02:24.720 --> 02:26.433
+As a very quick example of that,
+
+02:27.540 --> 02:29.910
+I'll do a kubectl get pods.
+
+02:29.910 --> 02:32.610
+I'm gonna copy the name of my pod right here,
+
+02:32.610 --> 02:35.460
+and then I'll do a kubectl logs,
+
+02:35.460 --> 02:38.250
+and I'll paste the name of the pod.
+
+02:38.250 --> 02:39.570
+And again, I don't get anything back
+
+02:39.570 --> 02:41.760
+because the container has not emitted any logs
+
+02:41.760 --> 02:43.710
+but it definitely would retrieve logs
+
+02:43.710 --> 02:45.840
+if any had been emitted.
+
+02:45.840 --> 02:49.920
+I can also do a kubectl exec -it,
+
+02:49.920 --> 02:51.330
+and then the pod name,
+
+02:51.330 --> 02:54.240
+and then -sh on the very end to start up a shell.
+
+02:54.240 --> 02:55.500
+And so the same thing right here,
+
+02:55.500 --> 02:59.010
+yeah, I'm starting at a shell using kubectl as well.
+
+02:59.010 --> 03:01.110
+So again, you can use all the knowledge
+
+03:01.110 --> 03:04.020
+that you have of Docker to do a lot of debugging.
+
+03:04.020 --> 03:06.090
+However, a lot of that stuff is already available
+
+03:06.090 --> 03:07.050
+with kubectl.
+
+03:07.050 --> 03:08.400
+So I'm gonna kind of leave it up to you
+
+03:08.400 --> 03:10.560
+if you want to figure out how to do this stuff
+
+03:10.560 --> 03:11.850
+through kubectl,
+
+03:11.850 --> 03:13.443
+or if you want you to stick with your knowledge
+
+03:13.443 --> 03:15.690
+that you've already gained of Docker,
+
+03:15.690 --> 03:18.210
+and use those same techniques as well.
+
+03:18.210 --> 03:20.190
+Now, the next reason that we might want to mess around
+
+03:20.190 --> 03:21.690
+with Docker inside of our node
+
+03:21.690 --> 03:24.300
+is so that we can do exactly what I did a little bit ago
+
+03:24.300 --> 03:25.320
+inside the course,
+
+03:25.320 --> 03:27.570
+where I manually deleted a container
+
+03:27.570 --> 03:28.980
+and then we were able to observe that,
+
+03:28.980 --> 03:31.440
+oh, hey it was restarted automatically.
+
+03:31.440 --> 03:33.510
+So essentially, you can test Kubernetes' ability
+
+03:33.510 --> 03:36.720
+to self-heal or restart crashed containers
+
+03:36.720 --> 03:38.070
+or whatever it might be,
+
+03:38.070 --> 03:42.330
+by reaching into there and deleting a container manually.
+
+03:42.330 --> 03:44.100
+Now, that's not a great reason to do this,
+
+03:44.100 --> 03:45.210
+but I just wanna say it's something
+
+03:45.210 --> 03:48.210
+that you could possibly do if you felt like it.
+
+03:48.210 --> 03:49.620
+Now, the other reason you might do this
+
+03:49.620 --> 03:52.680
+is that if you're for some reason having a really tough time
+
+03:52.680 --> 03:54.930
+figuring out why images are being cached
+
+03:54.930 --> 03:57.570
+inside of your node, talking about Docker images here,
+
+03:57.570 --> 03:59.100
+and if for some reason it feels like
+
+03:59.100 --> 04:01.290
+you're not able to update the image
+
+04:01.290 --> 04:04.620
+that a particular container is using,
+
+04:04.620 --> 04:07.230
+you can always reach into the container,
+
+04:07.230 --> 04:09.060
+access the copy of Docker inside there,
+
+04:09.060 --> 04:11.160
+and say, hey, delete your image cache
+
+04:11.160 --> 04:14.760
+and just blow away all the cached images that you have.
+
+04:14.760 --> 04:17.040
+And so to do that, we could run the same command
+
+04:17.040 --> 04:18.963
+that we had learned way long ago.
+
+04:19.800 --> 04:22.980
+We can do a Docker system prune -a
+
+04:22.980 --> 04:25.650
+and this will remove all stopped containers,
+
+04:25.650 --> 04:28.530
+all unused networks, and all build cache,
+
+04:28.530 --> 04:31.110
+and all images that are not being used at this point.
+
+04:31.110 --> 04:33.270
+So I could just blow away everything inside there
+
+04:33.270 --> 04:37.110
+if for some reason I felt like there was a big caching issue
+
+04:37.110 --> 04:39.333
+with what was going on inside of my node.
+
+04:40.410 --> 04:41.940
+Okay, so that's it, that's a couple of reasons
+
+04:41.940 --> 04:43.650
+on why you would want to mess around with Docker
+
+04:43.650 --> 04:44.483
+in the node.
+
+04:44.483 --> 04:47.220
+Now, I just give these to you as like possibilities.
+
+04:47.220 --> 04:49.440
+Again, I'm rather convinced that you can think of
+
+04:49.440 --> 04:51.810
+some better reasons than what I've listed here
+
+04:51.810 --> 04:53.580
+of messing around with Docker inside the node.
+
+04:53.580 --> 04:56.280
+But again, I just wanted to give you a couple examples
+
+04:56.280 --> 04:58.050
+to kind of get your brain going
+
+04:58.050 --> 05:00.780
+and give you a reason to look into this feature
+
+05:00.780 --> 05:02.010
+a little bit more.
+
+05:02.010 --> 05:03.300
+All right, so let's take a pause right here,
+
+05:03.300 --> 05:05.250
+and we'll continue in the next section.

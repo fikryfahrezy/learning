@@ -1,0 +1,1402 @@
+WEBVTT
+
+00:00.920 --> 00:05.530
+Information design is one of those things where it's there, but you can't really see it.
+
+00:05.540 --> 00:09.630
+It sort of lives in between everything else, tying everything together.
+
+00:09.650 --> 00:13.040
+When information design is good, we typically don't notice it.
+
+00:13.040 --> 00:17.210
+But when it's bad, it's really, really, really obvious.
+
+00:17.240 --> 00:22.490
+For instance, when a form is difficult to complete, that usually results in errors on the part of
+
+00:22.490 --> 00:24.080
+the person completing the form.
+
+00:24.080 --> 00:29.900
+And because of that, it's usually costly to process on the business end.
+
+00:29.990 --> 00:36.770
+Poor information design in terms of instruction causes frustration and even danger that could possibly
+
+00:36.770 --> 00:38.750
+damage the reputation of the provider.
+
+00:38.930 --> 00:42.920
+In education, it results in materials that don't promote learning.
+
+00:42.950 --> 00:48.320
+Bad information design results in scientific and technical data that's open to misinterpretation.
+
+00:48.590 --> 00:49.580
+Misreading.
+
+00:49.880 --> 00:51.500
+It's misunderstood.
+
+00:51.530 --> 00:57.440
+It's also present in command and control displays in manufacturing, where an operator isn't alerted
+
+00:57.440 --> 00:59.500
+to something that's potentially dangerous.
+
+00:59.510 --> 01:05.760
+And of course, it also is present in websites that are difficult to navigate and unpleasant to look
+
+01:05.760 --> 01:11.730
+at instances where we're confronted with a lot of information, but none of it seems very relevant.
+
+01:11.760 --> 01:16.560
+None of it seems to speak to the purpose or the reason that we came there in the first place.
+
+01:16.620 --> 01:20.850
+When information design fails, there's a very obvious consequence.
+
+01:21.060 --> 01:27.040
+So think of information design, like the glue that holds all the other elements together.
+
+01:27.060 --> 01:32.880
+While it's easy to focus on the interface or the navigation, it's really the information that holds
+
+01:32.880 --> 01:33.570
+everything together.
+
+01:33.600 --> 01:35.280
+Okay, I'll give you a great analogy.
+
+01:35.290 --> 01:41.130
+I grew up doing carpentry because my father was a carpenter, and one of the first things that he taught
+
+01:41.130 --> 01:46.440
+me is that contrary to popular belief, nails don't hold anything together.
+
+01:46.470 --> 01:48.690
+Glue holds things together.
+
+01:48.690 --> 01:52.620
+When you put two pieces of wood together, you put glue in between the joints.
+
+01:52.650 --> 01:58.200
+The only purpose the nail serves is to hold the wood together until the glue dries.
+
+01:58.230 --> 02:02.970
+The glue is what keeps that joint from shaking and wiggling later on in life.
+
+02:02.970 --> 02:06.800
+The glue is what makes it strong and solid as a rock.
+
+02:06.810 --> 02:13.290
+So in the same way, good information design is what makes good user experience work.
+
+02:13.440 --> 02:19.470
+Its primary purpose is to present information so that people can understand things easily and simply
+
+02:19.470 --> 02:20.430
+and quickly.
+
+02:20.430 --> 02:26.520
+And while information design is visual, that does not mean that we're focused on the finished look
+
+02:26.520 --> 02:27.290
+and feel.
+
+02:27.300 --> 02:32.310
+Instead, what we're concerned about is the effectiveness of the form itself.
+
+02:32.310 --> 02:33.930
+Does it communicate?
+
+02:33.960 --> 02:35.670
+Is it understandable?
+
+02:35.670 --> 02:37.530
+Is it appropriate?
+
+02:37.560 --> 02:39.450
+Think of it as sense making.
+
+02:39.450 --> 02:43.530
+When you look at something, when you absorb something, when you interact with something, you can
+
+02:43.530 --> 02:46.200
+either make sense of what's happening or you can't.
+
+02:46.200 --> 02:52.080
+And if you can't, that makes the thing hard to use, unpleasant to use and frustrating.
+
+02:52.080 --> 02:55.350
+And chances are you'll you'll stop doing it and do something else.
+
+02:55.380 --> 03:02.010
+It also speaks to our basic need for a certain level of control, because when we have control over
+
+03:02.010 --> 03:07.650
+our surroundings, when we can make sense of our environment, right, when we understand what's going
+
+03:07.650 --> 03:12.030
+on around us, when we understand how to affect it, how to interact with it, how to change it, how
+
+03:12.030 --> 03:14.400
+to manipulate it, we feel comfortable.
+
+03:14.400 --> 03:19.650
+And when we feel comfortable, we're more likely to continue on whatever path we may be on.
+
+03:19.650 --> 03:24.570
+And in the case of something that's put out there for human consumption, the creator of whatever it
+
+03:24.570 --> 03:29.940
+is that we're interacting with obviously has a vested interest in us continuing to use that product.
+
+03:29.940 --> 03:36.690
+So good information design in that way supports the goals of both the user, okay, the people that
+
+03:36.690 --> 03:41.070
+are interacting with it and the creator, the person that created it in the first place.
+
+03:41.100 --> 03:45.070
+Good information design starts with appropriate organization.
+
+03:45.090 --> 03:47.060
+In other words, context.
+
+03:47.070 --> 03:49.890
+I'm very fond of saying to anyone who will listen.
+
+03:50.430 --> 03:53.220
+Context is everything.
+
+03:53.220 --> 04:02.310
+All of the things that we look at interact with, touch, taste, see, feel, whatever are only valuable
+
+04:02.310 --> 04:06.930
+to us in the context of what we're doing when we're interacting with it.
+
+04:06.930 --> 04:09.320
+And context involves a lot of things, okay?
+
+04:09.330 --> 04:14.880
+It involves habit, it involves memory, and it demands a high degree of relevance.
+
+04:14.880 --> 04:21.480
+If what we're doing doesn't support the task we're trying to achieve or the end goal, it's not contextual.
+
+04:21.480 --> 04:25.710
+It doesn't match our state of being, our understanding of the world.
+
+04:25.710 --> 04:29.070
+It doesn't match the flow of work we're trying to accomplish.
+
+04:29.070 --> 04:32.220
+And because of that, it's not easily understood.
+
+04:32.220 --> 04:38.550
+So sometimes information design is a matter of grouping or arranging pieces of information, and that's
+
+04:38.550 --> 04:42.900
+something that we kind of take for granted because we're used to seeing common information grouped in
+
+04:42.900 --> 04:44.040
+very certain ways.
+
+04:44.040 --> 04:50.190
+And if that organization resonates with us in some way, it's because it reflects how we think, it
+
+04:50.190 --> 04:55.770
+matches what we expect and it directly supports our tasks and goals.
+
+04:55.770 --> 04:59.040
+It's directly in line with what we're trying to achieve.
+
+04:59.040 --> 05:00.060
+It assists us.
+
+05:00.090 --> 05:05.130
+In some way in getting from point A to B to C to D, etcetera.
+
+05:05.280 --> 05:10.800
+Now, as I said a minute ago, it's really easy to take this for granted, and that's because we're
+
+05:10.800 --> 05:15.960
+so conditioned to seeing things presented in a certain way that we almost don't even notice it.
+
+05:15.990 --> 05:17.310
+I'll give you a quick example.
+
+05:17.340 --> 05:19.050
+Take a look at this list of items.
+
+05:19.080 --> 05:20.670
+Does it seem confusing to you?
+
+05:21.500 --> 05:22.580
+It does, doesn't it?
+
+05:23.180 --> 05:24.560
+Why do you think that is?
+
+05:25.290 --> 05:29.580
+Well, the reason it seems confusing is because it usually looks like this.
+
+05:29.610 --> 05:30.920
+Much easier, isn't it?
+
+05:30.930 --> 05:31.260
+Right.
+
+05:31.260 --> 05:33.510
+This is because it's what we're used to seeing.
+
+05:33.540 --> 05:41.790
+The contextual arrangement of these elements is more in line with what our natural ingrained, automatic,
+
+05:41.790 --> 05:44.130
+reflexive expectation is.
+
+05:44.160 --> 05:45.670
+Name and job title go together.
+
+05:45.690 --> 05:47.470
+Job title and company Go together.
+
+05:47.490 --> 05:51.270
+Street address is always followed by city, state and zip code.
+
+05:51.270 --> 05:51.900
+Right.
+
+05:51.900 --> 05:53.580
+And phone number and email address.
+
+05:53.580 --> 05:56.880
+Contact mechanisms are almost always separated from everything else.
+
+05:56.910 --> 06:03.360
+Now, this is not something we consciously think of when we look at a form, but it's what enables us
+
+06:03.360 --> 06:10.740
+to zip through and complete stuff because the items, the fields are in an order that matches our expectation.
+
+06:10.740 --> 06:15.960
+They're organized in a way that matches our context of use.
+
+06:16.230 --> 06:19.890
+There are five essential ways to organize information.
+
+06:20.070 --> 06:23.280
+I want to give you a brief overview of each one of those.
+
+06:23.310 --> 06:25.810
+The first is alphabetical.
+
+06:25.840 --> 06:31.780
+You use alphabetical organization when information is referential, when you're looking for sources
+
+06:31.780 --> 06:35.150
+in a dictionary or you're doing research using an encyclopedia.
+
+06:35.180 --> 06:37.160
+Okay, That's referential information.
+
+06:37.180 --> 06:44.400
+You also use alphabetical organization when you need efficient nonlinear access to specific items.
+
+06:44.410 --> 06:48.330
+The contact list on your phone is a beautiful example of this.
+
+06:48.340 --> 06:54.000
+Most contact lists not only on on mobile phones, but on desktop software as well.
+
+06:54.010 --> 06:59.890
+The set defaults for how your contacts are displayed are usually either by first name or by last name.
+
+06:59.890 --> 07:00.230
+Right?
+
+07:00.280 --> 07:01.180
+It's alphabetical.
+
+07:01.180 --> 07:06.940
+If you're looking for Joe Natoli and your contacts are organized alphabetically, you're going to go
+
+07:06.940 --> 07:13.270
+right to N Again, I'm saying things that are very painfully obvious, but this is unconscious habit,
+
+07:13.270 --> 07:13.460
+okay?
+
+07:13.510 --> 07:19.330
+You have to realize that that alphabetical organization is the smartest way to do that because that's
+
+07:19.330 --> 07:21.230
+what we're conditioned to expect.
+
+07:21.250 --> 07:27.520
+You also use alphabetical organization when no other organizing strategy seems appropriate, because
+
+07:27.520 --> 07:32.260
+one of the things that people will always default to is alphabetical organization.
+
+07:32.530 --> 07:39.100
+For instance, on a lot of auto parts sites, there are multiple ways that you can filter the information.
+
+07:39.100 --> 07:43.560
+You know, you can get specific and say, well, it's this year, it's this make, it's this model.
+
+07:43.570 --> 07:51.340
+But a lot of times if you go into a general parts category, everything is alphabetically organized
+
+07:51.340 --> 07:56.140
+because it's the simplest, most easily recognized form of organization.
+
+07:56.140 --> 07:57.790
+We go there automatically.
+
+07:57.790 --> 08:03.880
+So if you're struggling trying to figure out how to organize a certain information set, you can always
+
+08:03.880 --> 08:05.200
+default to alphabetical.
+
+08:05.200 --> 08:07.900
+It almost always makes sense.
+
+08:08.320 --> 08:12.160
+The second way to organize information is categorical.
+
+08:12.160 --> 08:19.420
+We take a categorical approach when there are clusters of similarity inside the information that we're
+
+08:19.420 --> 08:25.810
+dealing with in a college catalog, in a statistical report, in instances where there's a common thread
+
+08:25.810 --> 08:32.230
+running through all the information, we also use it when people will naturally seek out information
+
+08:32.230 --> 08:33.340
+by category.
+
+08:33.370 --> 08:35.890
+Department stores are a perfect example of this.
+
+08:35.890 --> 08:40.510
+You know, you walk into Target and you know that there are multiple departments.
+
+08:40.510 --> 08:43.450
+Men's clothing is over there, women's clothing is over there.
+
+08:43.450 --> 08:46.600
+Kids clothing, sporting goods, electronics.
+
+08:46.600 --> 08:47.050
+ET cetera.
+
+08:47.050 --> 08:47.530
+ET cetera.
+
+08:47.530 --> 08:47.860
+Right.
+
+08:47.860 --> 08:52.060
+We know where to go and we know what's contained within that category.
+
+08:52.090 --> 08:55.060
+E-commerce sites are exactly the same way.
+
+08:55.060 --> 09:01.180
+If you look at the example on your left, which comes from Home Depot, you'll see that they have core
+
+09:01.180 --> 09:03.490
+categories of information in their navigation.
+
+09:03.490 --> 09:03.790
+Right?
+
+09:03.790 --> 09:06.070
+Winter essentials, emergency supplies.
+
+09:06.070 --> 09:12.490
+And then there are sub categories under each one of those areas that helps us instantly identify what
+
+09:12.490 --> 09:15.310
+we might expect to find inside those categories.
+
+09:15.310 --> 09:21.310
+So categorical organization is something that's used a lot across the board and it makes a lot of sense
+
+09:21.310 --> 09:27.310
+when you have a large volume of information to organize because it's very difficult to comb through
+
+09:27.310 --> 09:28.240
+it all individually.
+
+09:28.240 --> 09:33.430
+So it's smarter to break it up into general categories that are going to make sense to people.
+
+09:33.460 --> 09:39.250
+The third way to organize information is by using a continuum organization by magnitude.
+
+09:39.250 --> 09:44.920
+When you're showing something from lowest to highest, worst to best, smallest to largest.
+
+09:44.920 --> 09:45.280
+ET cetera.
+
+09:45.280 --> 09:45.850
+ET cetera.
+
+09:45.880 --> 09:48.820
+Things like search engine results are organized this way.
+
+09:48.820 --> 09:51.730
+Baseball statistics are organized this way.
+
+09:51.730 --> 09:57.880
+If you take a look at the image on the left, here's a chart that shows America's top ten wealthiest
+
+09:57.880 --> 09:58.450
+people.
+
+09:58.450 --> 10:00.880
+And the continuum works both by size.
+
+10:00.880 --> 10:07.870
+You notice this guy in the bottom left is real small and also by shape, you notice it sort of curves
+
+10:07.870 --> 10:08.680
+around to the left.
+
+10:08.680 --> 10:09.610
+It gets larger.
+
+10:09.610 --> 10:16.750
+So the guy up at the top who's the king of the mountain here is the largest, and he's also at the apex
+
+10:16.750 --> 10:17.650
+of the shape.
+
+10:17.860 --> 10:24.450
+So both visually and contextually, we have a very strong sense of how this works, Right?
+
+10:24.460 --> 10:24.790
+Highest.
+
+10:24.820 --> 10:25.180
+Lowest.
+
+10:25.300 --> 10:32.050
+We also use continuum when we're comparing things that use a common measure, such as comparing processor
+
+10:32.050 --> 10:37.900
+speeds across different laptops or comparing hard drive space across portable hard drives.
+
+10:38.020 --> 10:43.820
+The common measure being the size of the drive or the common measure being the speed of the processor.
+
+10:43.840 --> 10:46.120
+If we're buying an iPhone, we have some choices.
+
+10:46.120 --> 10:49.860
+We can get the 16 gigabyte model or the 32 gigabyte model, right?
+
+10:49.870 --> 10:51.940
+How much storage space do I need?
+
+10:51.940 --> 10:57.820
+So whenever there's a common measure that can be applied across multiple items, multiple products,
+
+10:57.820 --> 11:02.170
+multiple instances, then you organize by using a continuum.
+
+11:02.200 --> 11:09.730
+The fourth way to organize information is by location, and you use location when orientation and wayfinding
+
+11:09.730 --> 11:10.510
+are important.
+
+11:10.540 --> 11:11.830
+Emergency exit maps.
+
+11:11.830 --> 11:12.730
+Travel guides.
+
+11:12.730 --> 11:17.110
+The map on your phone is essentially organized by location.
+
+11:17.380 --> 11:23.530
+The essential way that we make sense of what we're trying to do is by where we are and where other things
+
+11:23.530 --> 11:24.070
+are.
+
+11:24.070 --> 11:28.010
+And how long it's going to take us to get from where we are to where those things are.
+
+11:28.040 --> 11:29.030
+That's orientation.
+
+11:29.030 --> 11:29.900
+That's wayfinding.
+
+11:29.900 --> 11:31.670
+How do I get from here to there?
+
+11:31.700 --> 11:38.780
+We also use location to organize things when the information at hand is contextually related to geography.
+
+11:38.780 --> 11:45.290
+If you're touring a historic site, you typically have a map in your hand that tells you where all these
+
+11:45.290 --> 11:46.850
+important things happened.
+
+11:46.880 --> 11:53.930
+You walk up to this pile of stones and, Hey, this used to be a settler's cabin in the early 1800s.
+
+11:54.050 --> 11:55.130
+It's a pile of stones right now.
+
+11:55.130 --> 11:55.930
+But no, no, no.
+
+11:55.940 --> 11:57.290
+It used to be a settler's cabin.
+
+11:57.290 --> 11:57.890
+Trust me.
+
+11:58.670 --> 12:02.810
+The point is that you make sense of what you're seeing.
+
+12:02.810 --> 12:10.160
+You make sense of the things around you in context of geography, in context of location, in terms
+
+12:10.160 --> 12:13.460
+of where you are in the grand scheme of things.
+
+12:13.640 --> 12:20.840
+The fifth and final way to organize information is by time, and we do that when we're presenting and
+
+12:20.840 --> 12:23.510
+comparing events over fixed durations.
+
+12:23.540 --> 12:28.850
+A historical timeline of some sort uses a time based organization, right?
+
+12:28.880 --> 12:31.760
+This event happened, then this event happened, then this event happened.
+
+12:31.760 --> 12:34.070
+And as those events happen, time is passing.
+
+12:34.860 --> 12:41.400
+Whether you have Direct TV or Time Warner Cable or use Hulu or some other Web based service.
+
+12:41.400 --> 12:47.430
+When you look at a channel guide, when you look at a listing of what's coming on right now, you're
+
+12:47.430 --> 12:53.400
+looking at a time based organization of information because it shows you what's happening over a duration
+
+12:53.400 --> 12:54.090
+of time.
+
+12:54.300 --> 13:01.660
+The other instance where we use a time based organization is when a time based sequence is involved.
+
+13:01.680 --> 13:08.280
+When you go to Ikea and buy furniture that comes packed flat in a box that is so impossibly small,
+
+13:08.280 --> 13:10.710
+you can't imagine that your stuff is actually in there.
+
+13:10.950 --> 13:18.040
+You get out the manual and you look at it and you put the thing together step by step, by step by step.
+
+13:18.060 --> 13:20.110
+That's a time based sequence.
+
+13:20.130 --> 13:23.760
+That's information organized over time.
+
+13:23.760 --> 13:31.080
+So the next time you are tasked with organizing an information set of any kind, remember these five
+
+13:31.080 --> 13:33.600
+ways that you can categorize things.
+
+13:33.630 --> 13:40.090
+Alphabetical or categorical continuum, location and time.
+
+13:40.590 --> 13:43.260
+In addition to appropriate organization.
+
+13:43.290 --> 13:46.740
+Good information design is also about appropriate form.
+
+13:46.740 --> 13:51.210
+What's the best visual representation of what we're trying to get across here?
+
+13:51.210 --> 13:56.580
+At a glance, when people see this, what's the best way for them to make sense of it?
+
+13:56.580 --> 14:03.930
+And the easiest example to show you is that of traditional business charts and graphs, which are quite
+
+14:03.960 --> 14:05.730
+honestly grossly overused.
+
+14:05.730 --> 14:11.700
+But the reason they're successful in general is because they display information visually.
+
+14:11.700 --> 14:15.180
+Okay, we can get complex information at a glance.
+
+14:15.180 --> 14:21.870
+So if we're talking about fourth quarter sales across multiple retail channels, in this case department
+
+14:21.870 --> 14:28.950
+stores, discount stores, specialty stores and other types, what's the best way to display this information
+
+14:28.950 --> 14:35.580
+where it's going to be the most obvious, the easiest to digest and the easiest to comprehend and understand?
+
+14:35.610 --> 14:38.160
+Is it a bar chart that looks like this?
+
+14:39.130 --> 14:41.830
+Is it a line plot that looks like this?
+
+14:43.180 --> 14:45.670
+Or is it a bar chart on the side?
+
+14:45.700 --> 14:47.440
+Is this easier to understand?
+
+14:48.360 --> 14:54.180
+Or does a pie chart allow us to get a quicker handle on what our overall sales were per channel?
+
+14:54.180 --> 14:59.340
+In all those instances, we're looking at the same information, but the question is which of those
+
+14:59.340 --> 15:07.950
+formats most efficiently, coherently and quickly explains the data that we're looking at, which format
+
+15:07.950 --> 15:15.590
+makes it instantly understandable, makes it instantly recognizable, makes it instantly useful.
+
+15:15.600 --> 15:18.320
+It's not just a question of being able to read it.
+
+15:18.330 --> 15:24.780
+It's a matter of being able to comprehend it, know what it means, and then be able to apply that information
+
+15:24.780 --> 15:25.440
+somehow.
+
+15:25.440 --> 15:28.200
+Usually in terms of decision making.
+
+15:28.200 --> 15:32.160
+How did what I see allow me to take action?
+
+15:32.490 --> 15:38.940
+Another aspect of appropriate form is the structural form of the content in terms of the way it's presented,
+
+15:38.940 --> 15:43.830
+in terms of any kind of visual design on an interactive device, on a laptop, on a computer, on a
+
+15:43.830 --> 15:50.550
+phone, on a tablet, the traditional way of presenting content, of presenting written information
+
+15:50.550 --> 15:52.470
+doesn't really hold water.
+
+15:52.470 --> 15:56.730
+Traditionally, if you were writing a five part essay, you would do it in this way.
+
+15:56.730 --> 16:01.980
+You would start with an introduction, then you would have some narration that explains the premise
+
+16:01.980 --> 16:03.270
+of what you're talking about.
+
+16:03.270 --> 16:08.730
+Then you would have an affirmation that affirms the premise that you're talking about.
+
+16:08.730 --> 16:10.860
+Then you might have negation, right?
+
+16:10.860 --> 16:15.390
+Which is a counterargument or something additional to think about.
+
+16:15.390 --> 16:19.260
+And then finally, after you did all those machinations, you would have a conclusion.
+
+16:19.260 --> 16:23.760
+That's a standard way of writing an essay, a paper.
+
+16:23.760 --> 16:27.660
+It's a situation where the person's engagement is sort of captured.
+
+16:27.660 --> 16:29.700
+Okay, you're there for a period of time.
+
+16:29.700 --> 16:34.890
+You've already made a commitment to being there for a period of time because the article is 45 pages
+
+16:34.890 --> 16:40.980
+or the book is 100 pages, or the essay is the size of an encyclopedia.
+
+16:41.010 --> 16:44.670
+The point is, you've made a commitment to sort of sit there and read through it.
+
+16:44.670 --> 16:51.520
+Okay, that's a very different mode of operation than most people who are using something on a laptop
+
+16:51.520 --> 16:53.050
+or on a tablet or on a phone.
+
+16:53.050 --> 16:58.630
+It's a very different style of interaction, the form you use instead, whenever you're designing something
+
+16:58.630 --> 17:01.060
+that's digital is the same form that journalists use.
+
+17:01.060 --> 17:03.850
+Okay, we call it the inverted pyramid style of writing.
+
+17:03.850 --> 17:09.210
+And the purpose of it is to quickly convey the most important information of the story to readers.
+
+17:09.220 --> 17:14.500
+The reason it works is because no matter how far into an article someone reads, the most important
+
+17:14.500 --> 17:16.510
+information has already gotten through.
+
+17:16.510 --> 17:19.360
+The more you read, the more detailed information you get.
+
+17:19.360 --> 17:23.680
+But no matter where you stop reading, the main message has already been conveyed.
+
+17:23.680 --> 17:25.420
+So we don't care.
+
+17:25.420 --> 17:28.540
+If you read the whole thing, you've already got what we wanted you to get.
+
+17:28.540 --> 17:33.820
+So for our purposes, we start with the conclusion we lead with the most critical information, which
+
+17:33.820 --> 17:36.580
+is usually the who, the what, the where, the when, the how.
+
+17:36.580 --> 17:41.170
+It's the information that has to be conveyed in order to make communication successful.
+
+17:41.290 --> 17:47.470
+From there, we provide helpful information, not necessarily critical information, but it does contain
+
+17:47.470 --> 17:51.790
+additional facts and details that are revealed in the order of importance.
+
+17:51.820 --> 17:58.000
+Information here is useful to understanding the whole story, but even if you left it out, the message
+
+17:58.000 --> 17:59.350
+would still be communicated.
+
+17:59.350 --> 18:05.440
+Finally, when we get down into the weeds, into the details, we've got good information, but it's
+
+18:05.440 --> 18:06.840
+essentially unnecessary.
+
+18:06.850 --> 18:13.890
+These are details for the people who are most interested, who really wants that level of detail.
+
+18:13.900 --> 18:21.400
+Now, that journalistic inverted pyramid also relates to an inverted pyramid of visual design.
+
+18:21.400 --> 18:26.710
+And it works like this Your most dominant elements on the screen should be seen first.
+
+18:26.710 --> 18:31.690
+And most often, those are the things that communicate your primary messages for the page.
+
+18:31.690 --> 18:38.260
+Next, through a hierarchy of focal points, items of equal importance are grouped on a layer of equal
+
+18:38.260 --> 18:39.280
+visual weight.
+
+18:39.310 --> 18:43.690
+Each thing, each layer communicates its own message or messages.
+
+18:43.720 --> 18:48.070
+Layers of greater visual weight contain more important information.
+
+18:48.070 --> 18:53.290
+Visual organization is the same thing as informational organization.
+
+18:53.290 --> 18:55.810
+The most important things stand out.
+
+18:55.840 --> 19:01.770
+The next most important things also stand out, but they don't compete with the things that are dominant.
+
+19:01.780 --> 19:07.810
+Finally, when we get past those two levels of hierarchy, we have details for those who have expressed
+
+19:07.810 --> 19:09.000
+interest in knowing more.
+
+19:09.010 --> 19:13.840
+So, for instance, when you go to a blog, the first thing that you see is usually a snippet of information,
+
+19:13.840 --> 19:19.930
+very large headline, a quick description of what that particular piece is about, and then a Read more
+
+19:19.930 --> 19:22.900
+button or a continue button, whatever the case may be.
+
+19:22.900 --> 19:29.320
+The point is you've been introduced to both the dominant elements and the core focal points.
+
+19:29.320 --> 19:34.090
+If you want to go beyond that, you can, but you're not forced to deal with them.
+
+19:34.090 --> 19:37.900
+So that's how the inverted pyramid relates to visual design as well.
+
+19:37.900 --> 19:39.520
+That's how it relates to form.
+
+19:40.150 --> 19:43.930
+Next, I'd like to introduce you to the principle of Occam's Razor.
+
+19:43.960 --> 19:51.130
+This comes from science, and it's a theory that says the simplest answer to any problem or the simplest
+
+19:51.130 --> 19:57.550
+explanation to any phenomenon is usually the correct one in terms of user experience and design.
+
+19:57.580 --> 20:01.420
+It means that the simplest solution is usually the best.
+
+20:01.450 --> 20:09.010
+It means that simple is always better than the opposite, which is complicated, complex.
+
+20:09.010 --> 20:10.120
+Difficult.
+
+20:10.150 --> 20:11.290
+Here's an example.
+
+20:11.290 --> 20:17.110
+This particular company started with a home page on their website that looked like this, and then they
+
+20:17.110 --> 20:19.600
+did some user testing to see what people thought of it.
+
+20:19.600 --> 20:25.150
+Well, the thing that they heard constantly was you have too many things on the home page, and they
+
+20:25.150 --> 20:29.110
+didn't agree with that at first, but they said, you know what, we're happy to test it out.
+
+20:29.140 --> 20:30.130
+We could be wrong.
+
+20:30.130 --> 20:30.820
+You never know.
+
+20:30.820 --> 20:36.340
+So they did some testing where they showed different versions of the site to different user groups.
+
+20:36.340 --> 20:37.780
+Got a lot of really good feedback.
+
+20:37.780 --> 20:41.110
+And it turned out that they had been wrong.
+
+20:41.110 --> 20:45.940
+They did have way too many things on their website, so they redesigned it to look like this, which
+
+20:45.940 --> 20:48.760
+essentially means that they removed 80% of the content.
+
+20:48.790 --> 20:55.990
+They left one sign up button and one learn more link conversion, which means people clicked and got
+
+20:55.990 --> 21:03.070
+to the sign up link and actually completed the form and signed up for the service increased by 300%.
+
+21:03.370 --> 21:04.600
+300.
+
+21:04.630 --> 21:05.890
+That's huge.
+
+21:05.890 --> 21:12.310
+So this is certainly an example of an instance where the simplest solution was absolutely the best solution.
+
+21:12.310 --> 21:13.450
+Here's another example.
+
+21:13.450 --> 21:16.360
+These are two different kinds of project management software.
+
+21:16.390 --> 21:22.300
+On the left, you see something called Basecamp, which is made by a company called 37 Signals.
+
+21:22.330 --> 21:26.710
+On the right, you see Microsoft Project, which is made by Microsoft.
+
+21:26.740 --> 21:33.910
+Now, just at a glance, you can get a sense of the complexity of each one, and you probably also get
+
+21:33.910 --> 21:39.280
+an idea of how hard each one might be to use or to learn how to use for that matter.
+
+21:39.280 --> 21:45.770
+So you probably assume that base camp is much simpler, much more straightforward, cleaner, less clutter,
+
+21:45.770 --> 21:47.210
+more organized.
+
+21:47.210 --> 21:49.850
+And you would be absolutely right about that.
+
+21:49.850 --> 21:50.600
+Okay.
+
+21:50.750 --> 21:57.080
+Now, what it sacrifices to be that way is it sacrifices a certain degree of functionality.
+
+21:57.080 --> 21:57.350
+Okay.
+
+21:57.350 --> 22:02.030
+Microsoft Project does 101 things that base camp does not.
+
+22:02.060 --> 22:10.610
+However, I will tell you that in 22 years of working in corporate industry, I have yet to meet an
+
+22:10.610 --> 22:17.810
+instance where all the members of a project team efficiently, effectively used Microsoft Project.
+
+22:17.810 --> 22:21.380
+And that's simply because there's just too many things to contend with.
+
+22:21.410 --> 22:23.480
+So communication suffers as a result.
+
+22:23.480 --> 22:25.340
+Things don't get posted in time.
+
+22:25.340 --> 22:29.540
+Things don't get tracked properly, things don't get reported when they should.
+
+22:29.570 --> 22:33.380
+There's constant, constant, constant touching of the interface.
+
+22:33.380 --> 22:34.370
+You've got to go back and do this.
+
+22:34.370 --> 22:35.120
+Then you have to do this.
+
+22:35.120 --> 22:37.190
+Then you have to do this other thing and then you have to do this other thing.
+
+22:37.190 --> 22:40.160
+And there's, you know, everything has multiple steps.
+
+22:40.310 --> 22:46.340
+By contrast, I've used base camp and base camp is dead simple because it does one thing and it does
+
+22:46.340 --> 22:47.210
+it really well.
+
+22:47.210 --> 22:52.010
+It enables communication between all members of the team in a common place.
+
+22:52.040 --> 22:58.010
+It allows you to store all your documentation in a common place, and it easily quickly alerts everybody
+
+22:58.010 --> 22:59.570
+when something happens.
+
+22:59.570 --> 23:00.560
+That's it.
+
+23:00.590 --> 23:01.790
+No bells and whistles.
+
+23:01.790 --> 23:06.470
+The feature list is about, you know, ten items long and that's all it does.
+
+23:06.500 --> 23:12.350
+And 37 Signals made a decision from the beginning to say, this is what we're doing and we're not doing
+
+23:12.350 --> 23:13.630
+anything but this.
+
+23:13.640 --> 23:19.190
+So they pretty much ignored all the additional feature requests that they did get every once in a while.
+
+23:19.190 --> 23:24.770
+And that's because anyone who's looking for those features and functions, this wasn't the right product
+
+23:24.770 --> 23:25.280
+for them.
+
+23:25.280 --> 23:28.220
+They'd be better suited with something like Microsoft Project.
+
+23:28.220 --> 23:34.100
+So what I'm trying to get to is part of appropriate form is making sure that what you're putting out
+
+23:34.100 --> 23:40.940
+there directly answers the needs of the people using it, meet their core needs and forget about everything
+
+23:40.940 --> 23:41.600
+else.
+
+23:41.600 --> 23:46.760
+Always remember that the simplest solution is usually the right solution.
+
+23:47.090 --> 23:54.500
+Appropriate form also comes from applying the most critical of design principles, and that is progressive
+
+23:54.500 --> 23:55.340
+disclosure.
+
+23:55.340 --> 24:00.830
+Start with the fact that information presented to a person who isn't interested in it or isn't ready
+
+24:00.830 --> 24:02.930
+to process it is noise.
+
+24:02.930 --> 24:09.230
+If I don't want it, if I don't need it, if I can't use it right now, it's noise from a design perspective,
+
+24:09.230 --> 24:14.420
+only necessary or requested information should be displayed at any given time.
+
+24:14.480 --> 24:14.770
+All right.
+
+24:14.810 --> 24:16.690
+This helps us manage complexity.
+
+24:16.700 --> 24:18.500
+It allows us to keep our focus.
+
+24:18.500 --> 24:23.480
+It allows us to make sure that we complete whatever task that's directly in front of us right now,
+
+24:23.480 --> 24:26.650
+accurately, appropriately, expediently.
+
+24:26.660 --> 24:27.920
+Here's a great example of that.
+
+24:27.920 --> 24:31.010
+This is an app for blood drives.
+
+24:31.010 --> 24:32.060
+This is a mobile app.
+
+24:32.060 --> 24:34.580
+And the example you're seeing here is on a Windows phone.
+
+24:34.580 --> 24:39.440
+When I first look at the screen, I've only got three major choices and in this case, those happen
+
+24:39.440 --> 24:39.700
+to be a.
+
+24:40.180 --> 24:42.430
+We have an urgent need for a B plus.
+
+24:42.460 --> 24:46.810
+We've got a shortage of a B plus and this other location and there's a general blood drive.
+
+24:46.840 --> 24:50.140
+If I want any more than that, there's a little more button down there.
+
+24:50.140 --> 24:51.700
+I can access it if I want it.
+
+24:51.700 --> 24:53.440
+But take a look at how this works.
+
+24:53.440 --> 24:58.840
+Everything scrolls from side to side, while what I'm only confronted with up front is alerts.
+
+24:58.840 --> 25:04.510
+I also have bookings, I have news, I have a profile information, I have settings, etcetera, etcetera.
+
+25:04.510 --> 25:08.920
+So there's all this other stuff that exists behind that first screen.
+
+25:08.920 --> 25:10.990
+If I swipe, it all comes into my view.
+
+25:11.020 --> 25:14.890
+The point is I only have to deal with one thing at a time.
+
+25:14.890 --> 25:19.090
+Whatever I happen to be concerned with at the moment, that's what I see.
+
+25:19.090 --> 25:23.710
+I don't see everything all at once That allows me to keep focused.
+
+25:23.710 --> 25:30.130
+It allows me to stay on task and it allows me to be efficient with my time and my activity.
+
+25:30.490 --> 25:34.240
+On the heels of progressive disclosure comes Hick's law.
+
+25:34.240 --> 25:40.340
+And what Hick's law says is that every additional choice we have to make increases the time required
+
+25:40.340 --> 25:41.210
+to make a decision.
+
+25:41.210 --> 25:46.670
+Put another way, the more choice we give people, the easier it is for them to choose nothing.
+
+25:46.670 --> 25:46.920
+Okay?
+
+25:46.970 --> 25:50.420
+When we're confronted with too much, we typically don't want to deal with it.
+
+25:50.450 --> 25:51.680
+We shut down.
+
+25:52.220 --> 25:53.900
+We say that's too difficult.
+
+25:53.900 --> 25:57.860
+If I have to go through all this stuff to understand what's going on, forget it.
+
+25:57.860 --> 25:59.210
+I'm just not doing it, okay?
+
+25:59.210 --> 26:00.380
+That's that's human nature.
+
+26:00.380 --> 26:01.430
+It's not because we're lazy.
+
+26:01.430 --> 26:03.080
+It's not because we procrastinate.
+
+26:03.110 --> 26:06.740
+It's because we're wired essentially for efficiency.
+
+26:06.770 --> 26:14.150
+Our physiology is wired to be productive, to be efficient, to maximize its resources.
+
+26:14.150 --> 26:14.750
+Okay.
+
+26:14.750 --> 26:18.680
+In an age where we have an almost infinite set of choices, okay.
+
+26:18.740 --> 26:23.330
+On any given website, there's this sea of information out there.
+
+26:23.330 --> 26:27.440
+You know, when you get on Google and do a search, you get millions and millions and millions of results.
+
+26:27.440 --> 26:30.920
+That's a massive volume of information.
+
+26:30.920 --> 26:37.340
+So when we have that much choice, we need filters, we need better filters, more filters to help us
+
+26:37.340 --> 26:38.840
+sort of dig through all that.
+
+26:38.840 --> 26:40.520
+And here's a simple example.
+
+26:40.520 --> 26:45.920
+This is a wine website which carries an enormous inventory.
+
+26:45.920 --> 26:46.190
+Okay?
+
+26:46.190 --> 26:53.690
+They carry hundreds of thousands of styles and types, you know, from a million different countries.
+
+26:53.690 --> 26:58.880
+We have red, white, green, blue, purple, you name it, they've got it.
+
+26:58.880 --> 27:04.040
+The point is, when you carry such a large inventory, if you expect people to be able to buy from you,
+
+27:04.040 --> 27:07.610
+that means they have to find what they're looking for very quickly.
+
+27:07.610 --> 27:07.820
+Okay.
+
+27:07.820 --> 27:12.380
+They're not going to casually browse 100,000 bottles of wine to find the one that they're looking for.
+
+27:12.380 --> 27:13.880
+No one has that kind of patience.
+
+27:13.880 --> 27:19.280
+So what they do is they enable a really good set of filters here on the left hand side where you can
+
+27:19.280 --> 27:26.960
+pick your features, your region, what type of wine you're looking at from what country, from what
+
+27:26.990 --> 27:31.490
+year for what type is it, a Cabernet Merlot, a chardonnay, what is it?
+
+27:31.490 --> 27:33.650
+And the list goes on and on and on and on and on.
+
+27:33.650 --> 27:40.040
+For wine connoisseurs, there's an infinite list of characteristics and attributes that they attribute
+
+27:40.040 --> 27:43.970
+to wine and these filters list all of those things.
+
+27:44.000 --> 27:49.430
+Okay, So the point is you can filter your way through this enormous list of stuff.
+
+27:49.430 --> 27:52.100
+Very simply, it maximizes your time.
+
+27:52.100 --> 27:56.810
+It allows you to pinpoint the stuff that you do care about and ignore everything else.
+
+27:56.810 --> 27:58.190
+That's Hick's law.
+
+27:58.190 --> 28:02.980
+In effect, we can make a decision faster if we have to make less choices.
+
+28:02.990 --> 28:04.640
+Here's another quick example.
+
+28:04.640 --> 28:07.910
+When Twitter first came out, the homepage looked like this.
+
+28:07.910 --> 28:09.920
+There were all these different choices.
+
+28:09.920 --> 28:12.050
+Okay, if you're new to Twitter, read this box here.
+
+28:12.050 --> 28:13.790
+You can see who's here right now.
+
+28:13.790 --> 28:15.200
+You can look at top tweets.
+
+28:15.200 --> 28:20.420
+You have all these categories that are sort of trending, topics that are scrolling by.
+
+28:20.570 --> 28:20.900
+All right.
+
+28:20.900 --> 28:22.580
+Then there's navigation at the bottom.
+
+28:22.580 --> 28:24.500
+There's multiple things on this page.
+
+28:24.500 --> 28:30.260
+Well, what Twitter figured out over time is that nobody was using any of that stuff.
+
+28:30.980 --> 28:37.820
+And because either nobody cared about it or there were just simply too many choices that prevented people
+
+28:37.820 --> 28:38.930
+from making a decision.
+
+28:38.930 --> 28:44.600
+So if you look at Twitter today, it looks like this pretty simple Choose your language.
+
+28:44.600 --> 28:46.430
+Either log in or sign up.
+
+28:46.430 --> 28:47.120
+That's it.
+
+28:47.120 --> 28:53.480
+That's simply because they learned that those are the only two things people were using that page for.
+
+28:53.480 --> 29:02.210
+So all that other stuff is noise, maximize signal, minimize noise, make it easy for people to make
+
+29:02.210 --> 29:03.230
+a choice.
+
+29:03.470 --> 29:04.880
+Take a look at Pinterest.
+
+29:04.880 --> 29:08.570
+Pinterest is organized essentially by images.
+
+29:08.570 --> 29:14.990
+The images that you see, the pictures are the core pieces of information that sort of bring you there
+
+29:14.990 --> 29:15.650
+in the first place.
+
+29:15.650 --> 29:17.990
+They're the core things that you care about.
+
+29:17.990 --> 29:22.610
+They are what enables the context of what you're looking at.
+
+29:22.610 --> 29:26.180
+Now, What happens if we remove the images?
+
+29:26.800 --> 29:30.310
+Well, it automatically becomes a lot less interesting first and foremost.
+
+29:30.310 --> 29:32.890
+But second of all, it's a lot less useful.
+
+29:32.890 --> 29:35.800
+And that's because our context of use is now gone.
+
+29:35.830 --> 29:40.110
+Our reason for being there in the first place, which is the images, has disappeared.
+
+29:40.120 --> 29:43.440
+So the context of our experience no longer makes any sense.
+
+29:43.450 --> 29:47.830
+The form that you choose is what dictates how people will use it.
+
+29:47.830 --> 29:52.080
+It's what enables them to make a choice or not make a choice.
+
+29:52.090 --> 29:56.140
+It has a huge impact on people's decision making ability.
+
+29:56.140 --> 30:02.760
+And because of that, the glue that you use to tie everything together absolutely has to be appropriate.
+
+30:02.770 --> 30:08.200
+It has to be appropriately organized and it has to be presented in the appropriate form.

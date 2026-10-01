@@ -1,0 +1,124 @@
+WEBVTT
+
+00:00.880 --> 00:06.970
+So that's all a really good overview of what happens during the strategy, part of a user experience
+
+00:06.970 --> 00:08.380
+design process.
+
+00:08.380 --> 00:12.640
+And there are some important takeaways that I want to leave you with.
+
+00:12.670 --> 00:18.640
+First and foremost, you must absolutely must have a very clear roadmap to how you're going to create
+
+00:18.640 --> 00:22.190
+value again for both the users and for the business.
+
+00:22.210 --> 00:27.730
+Remember, we got to solve both problems if we're to have value come back to us.
+
+00:27.730 --> 00:30.640
+If value doesn't go out, it will not come back.
+
+00:30.850 --> 00:38.320
+Successful user experience design comes from clear strategy, and that clear strategy is what determines
+
+00:38.320 --> 00:40.810
+is what informs the customer experience.
+
+00:40.810 --> 00:43.900
+It's what informs the technology decisions we make.
+
+00:43.930 --> 00:48.580
+It informs what the screen looks like, it informs how it's arranged.
+
+00:48.580 --> 00:55.620
+All the strategic stuff that we just talked about is what determines functionality, is what determines,
+
+00:55.630 --> 00:56.350
+look and feel.
+
+00:56.380 --> 01:02.420
+Because if it doesn't, the chances are very high that we've built something people don't want, won't
+
+01:02.420 --> 01:04.840
+be able to use or don't understand.
+
+01:04.850 --> 01:09.800
+So all the strategic answers that we got, we have to apply to the things that we do next.
+
+01:10.540 --> 01:15.700
+Overall experience has to be driven by business goals and customer needs.
+
+01:15.730 --> 01:16.240
+Okay.
+
+01:16.240 --> 01:19.990
+You've got to constantly be thinking about all these things that you learned.
+
+01:20.020 --> 01:27.400
+Even if you're well deep into coding, does that fit the sort of value proposition that we established
+
+01:27.400 --> 01:28.570
+in the strategy part?
+
+01:28.600 --> 01:33.730
+Is it still something that's going to make people feel like it's a valuable use of their time?
+
+01:33.730 --> 01:35.860
+Is it still easy to use?
+
+01:35.890 --> 01:39.640
+Is it still meeting those needs that we talked about?
+
+01:39.640 --> 01:45.670
+You have to constantly, constantly, constantly go back and weigh what you're doing against those things
+
+01:45.670 --> 01:49.210
+that you talked about and uncovered and learned in the strategy phase.
+
+01:49.930 --> 01:56.500
+And finally, the bottom line is you've got to know your users and you have to always, always, always
+
+01:56.500 --> 01:58.750
+remember that they're not you.
+
+01:58.780 --> 02:01.240
+You're designing for them, not for you.
+
+02:01.270 --> 02:03.070
+You're developing for them.
+
+02:03.070 --> 02:04.390
+Not for you.
+
+02:04.420 --> 02:08.220
+You're organizing information for them, not for you.
+
+02:08.230 --> 02:13.480
+Because while you certainly may understand it, there's no guarantee that they will.
+
+02:13.550 --> 02:18.730
+You know, you can't assume that their frame of reference is the same as yours.
+
+02:18.760 --> 02:24.700
+You can't assume that they have the same level of understanding of all those things that you do.
+
+02:24.730 --> 02:32.380
+You really have to constantly put yourself in the place of the people who will be tasked with using
+
+02:32.380 --> 02:33.940
+what you create, what you provide.
+
+02:33.940 --> 02:40.030
+And as long as you continue to do that, as long as you continue to look back at strategy.
+
+02:40.150 --> 02:40.780
+Right.
+
+02:40.780 --> 02:46.960
+And gauge what you're doing according to that strategy, chances are really good that you're going to
+
+02:46.960 --> 02:47.680
+succeed.

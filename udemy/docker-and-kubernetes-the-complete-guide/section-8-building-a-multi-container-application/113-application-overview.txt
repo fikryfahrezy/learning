@@ -1,0 +1,334 @@
+WEBVTT
+
+00:01.020 --> 00:01.853
+-: In the last section,
+
+00:01.853 --> 00:03.180
+we spoke about some big issues
+
+00:03.180 --> 00:04.620
+that kind of came up as we were going
+
+00:04.620 --> 00:07.200
+through a single container deployment.
+
+00:07.200 --> 00:08.790
+In this section, we're gonna start talking about
+
+00:08.790 --> 00:10.380
+the application that we're gonna make,
+
+00:10.380 --> 00:11.850
+to give you more experience
+
+00:11.850 --> 00:14.580
+on building a multi-container application.
+
+00:14.580 --> 00:17.490
+So, one application that uses many different containers
+
+00:17.490 --> 00:19.230
+or many different services,
+
+00:19.230 --> 00:22.410
+to achieve whatever its goal is.
+
+00:22.410 --> 00:24.240
+Now, to show you what we're gonna build,
+
+00:24.240 --> 00:26.610
+I wanna first give you a very quick overview
+
+00:26.610 --> 00:28.320
+on a side topic.
+
+00:28.320 --> 00:29.640
+So, this right here is a diagram
+
+00:29.640 --> 00:32.010
+of the Fibonacci sequence.
+
+00:32.010 --> 00:35.280
+The Fibonacci sequence is a sort of, computer science topic.
+
+00:35.280 --> 00:38.370
+You'll see this very commonly come up in computer science
+
+00:38.370 --> 00:40.320
+or programming interviews.
+
+00:40.320 --> 00:43.260
+The Fibonacci sequence is a series of numbers.
+
+00:43.260 --> 00:48.260
+So, the sequence goes 1, 1, 2, 3, 5, 8, 13, 21, and so on.
+
+00:49.170 --> 00:52.380
+So, it continues on much further than this.
+
+00:52.380 --> 00:55.680
+Any value, or any index inside the Fibonacci sequence
+
+00:55.680 --> 00:58.920
+can be calculated by taking the previous two values
+
+00:58.920 --> 01:00.540
+and adding them together.
+
+01:00.540 --> 01:03.120
+So, for example, to calculate this value right here,
+
+01:03.120 --> 01:07.200
+we will look at the previous two values of, 1 and 2.
+
+01:07.200 --> 01:09.720
+If you add together 1 and 2, that gives you 3.
+
+01:09.720 --> 01:12.480
+And so, that gives us the next value in the sequence.
+
+01:12.480 --> 01:14.700
+Then to calculate the next value,
+
+01:14.700 --> 01:16.710
+we would do, 2 plus 3,
+
+01:16.710 --> 01:19.260
+add those together and you get 5.
+
+01:19.260 --> 01:22.380
+The next value would be 3 plus 5, that gives you 8.
+
+01:22.380 --> 01:27.003
+5 plus 8 gives you 13, 8 plus 13 gives you 21, and so on.
+
+01:28.170 --> 01:30.540
+In a computer science or a programming interview,
+
+01:30.540 --> 01:32.910
+a very common question that you might get is,
+
+01:32.910 --> 01:36.240
+write a function that calculates the Fibonacci value
+
+01:36.240 --> 01:38.100
+at a particular index.
+
+01:38.100 --> 01:42.750
+So, for example, if I asked you to give me the value
+
+01:42.750 --> 01:45.900
+of the Fibonacci sequence at index 7,
+
+01:45.900 --> 01:48.630
+you would have to calculate the number 21.
+
+01:48.630 --> 01:51.600
+And if I asked you to give me the value at index 5,
+
+01:51.600 --> 01:54.630
+you would need to calculate 8, and so on.
+
+01:54.630 --> 01:57.090
+So, the application that you and I are going to be making
+
+01:57.090 --> 01:58.320
+is essentially going to be a
+
+01:58.320 --> 02:01.470
+fancy Fibonacci sequence calculator.
+
+02:01.470 --> 02:03.750
+And we're going to build this, in a just,
+
+02:03.750 --> 02:08.010
+absolutely over-the-top complicated fashion.
+
+02:08.010 --> 02:10.530
+You could absolutely build a function, like,
+
+02:10.530 --> 02:12.600
+just three or four lines of code
+
+02:12.600 --> 02:15.810
+that will calculate any number in the Fibonacci sequence.
+
+02:15.810 --> 02:18.150
+But again, to give you an example of a
+
+02:18.150 --> 02:19.560
+multi-container deployment,
+
+02:19.560 --> 02:24.000
+we're going to make a crazy, crazy, over-the-top,
+
+02:24.000 --> 02:27.960
+way overcomplicated version of a Fibonacci calculator.
+
+02:27.960 --> 02:29.550
+Just to give you more experience
+
+02:29.550 --> 02:32.190
+with a multi-container deployment.
+
+02:32.190 --> 02:33.023
+All right.
+
+02:33.023 --> 02:35.370
+So, let's take a look at the mock-up for our application.
+
+02:36.390 --> 02:38.910
+All right. So, here's the app right here.
+
+02:38.910 --> 02:40.080
+We're going to present the user
+
+02:40.080 --> 02:43.140
+with a little form at the top, that's gonna ask them
+
+02:43.140 --> 02:46.080
+what index they want us to calculate.
+
+02:46.080 --> 02:46.913
+So, for example,
+
+02:46.913 --> 02:49.500
+a user might enter in right here 7,
+
+02:49.500 --> 02:51.930
+and then they would click on submit.
+
+02:51.930 --> 02:53.370
+When the user clicks on submit,
+
+02:53.370 --> 02:54.690
+we're gonna take that index
+
+02:54.690 --> 02:55.860
+and then we're gonna have some,
+
+02:55.860 --> 02:58.260
+back-end processes or some servers
+
+02:58.260 --> 02:59.340
+that's going to calculate
+
+02:59.340 --> 03:02.670
+the Fibonacci value at index 7.
+
+03:02.670 --> 03:06.240
+And so eventually, our application for index 7,
+
+03:06.240 --> 03:08.853
+will need to calculate out the value 21.
+
+03:10.110 --> 03:12.630
+After the user submits that number right there,
+
+03:12.630 --> 03:16.050
+we would add the number 7 onto this list of indices
+
+03:16.050 --> 03:17.730
+that our application has seen.
+
+03:17.730 --> 03:20.280
+So, I would expect to see 7 added on there,
+
+03:20.280 --> 03:22.050
+and then we should eventually also
+
+03:22.050 --> 03:26.160
+calculate the appropriate value for index 7.
+
+03:26.160 --> 03:26.993
+And so eventually,
+
+03:26.993 --> 03:29.490
+I should see some line entry here of,
+
+03:29.490 --> 03:33.123
+for index 7, I calculated 21, like so.
+
+03:34.230 --> 03:35.460
+All right. So, that's the application,
+
+03:35.460 --> 03:38.430
+essentially a fancy Fibonacci calculator.
+
+03:38.430 --> 03:39.960
+And again, we're gonna make this just,
+
+03:39.960 --> 03:42.000
+over-the-top complicated,
+
+03:42.000 --> 03:44.220
+way more complicated than it needs to be,
+
+03:44.220 --> 03:47.580
+to give you a good example of a multi-container deployment.
+
+03:47.580 --> 03:48.810
+Now, the reason that we're doing a
+
+03:48.810 --> 03:51.330
+Fibonacci calculator here, as opposed to like,
+
+03:51.330 --> 03:53.970
+a blog, or like a Twitter application,
+
+03:53.970 --> 03:54.900
+or something like that,
+
+03:54.900 --> 03:57.600
+is that I didn't want you to have to focus on
+
+03:57.600 --> 04:00.630
+the actual application implementation details.
+
+04:00.630 --> 04:02.040
+I didn't want you to have to worry about
+
+04:02.040 --> 04:04.620
+learning JavaScript, or learning authentication,
+
+04:04.620 --> 04:05.730
+or any of that stuff.
+
+04:05.730 --> 04:07.470
+And I just wanted you to be able to focus
+
+04:07.470 --> 04:08.700
+a hundred percent on the
+
+04:08.700 --> 04:10.830
+docker and deployment side of things.
+
+04:10.830 --> 04:14.010
+And so, that's why we are using a rather, kind of,
+
+04:14.010 --> 04:17.910
+simplistic topic here as a subject of our application.
+
+04:17.910 --> 04:19.590
+Now, let's take a quick pause right here.
+
+04:19.590 --> 04:20.790
+Now that we've got a better idea
+
+04:20.790 --> 04:22.260
+of the application that we're gonna make,
+
+04:22.260 --> 04:23.370
+we'll come back to the next section,
+
+04:23.370 --> 04:26.070
+and we'll start talking about the overall architecture
+
+04:26.070 --> 04:27.390
+of this application.
+
+04:27.390 --> 04:28.290
+So, another quick break,
+
+04:28.290 --> 04:29.990
+and I'll see you in just a moment.

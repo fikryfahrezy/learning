@@ -1,0 +1,952 @@
+WEBVTT
+
+00:00.900 --> 00:07.560
+Good interface design is a lot like a balancing act in that its success is determined largely by the
+
+00:07.560 --> 00:11.760
+degree of balance that occurs between visual form and technical function.
+
+00:11.790 --> 00:18.820
+That's partly because the interface serves as both a boundary and a bridge at the same time, right?
+
+00:18.840 --> 00:22.900
+Because it's the midway point between the user and the system.
+
+00:22.920 --> 00:26.700
+It's what allows the person to come in and do things.
+
+00:26.700 --> 00:30.720
+It's what gives them a hint at what lies behind that first screen.
+
+00:30.990 --> 00:34.050
+So it has to be useful and it has to be reliable.
+
+00:34.050 --> 00:40.620
+And for it to be both of those things, it means that first and foremost, we have to give people the
+
+00:40.620 --> 00:42.900
+things that they want or the things that they need.
+
+00:42.930 --> 00:49.590
+We also have to give it to them when and where they want it, at what step in their process.
+
+00:49.620 --> 00:52.170
+Is it appropriate to surface certain things?
+
+00:52.170 --> 00:55.530
+At what points do they need to be able to take certain actions?
+
+00:55.530 --> 01:02.620
+We have to address issues of context and finally, we have to deliver it in a visual format that ensures
+
+01:02.620 --> 01:05.680
+that they can and want to access all of it.
+
+01:05.680 --> 01:11.350
+Because if they don't take action, then they don't achieve any intended goal and they don't reap any
+
+01:11.350 --> 01:14.500
+of the potential benefit that comes with the achievement of that goal.
+
+01:14.500 --> 01:16.060
+So there's a lot to consider here.
+
+01:16.060 --> 01:20.170
+There's a lot that has to be surfaced and made available at any given time.
+
+01:20.170 --> 01:24.340
+And essentially you're trying to fit it all on something that amounts to, you know, the surface of
+
+01:24.340 --> 01:25.360
+a cup of coffee.
+
+01:25.390 --> 01:26.980
+Not a small task.
+
+01:27.640 --> 01:31.750
+When it comes to what people see on the screen, every element counts.
+
+01:31.780 --> 01:37.120
+Although the functionality of an application or a site is certainly important, the form that's used
+
+01:37.120 --> 01:41.020
+to deliver that functionality is equally, if not more important.
+
+01:41.260 --> 01:47.860
+And that's things like how the content is organized, how the screen is laid out, how we use things
+
+01:47.860 --> 01:54.730
+like audio or video to enhance the experience or enhance understanding how people actually use their
+
+01:54.730 --> 01:58.540
+hands and fingers to move through data right on touch screens.
+
+01:58.540 --> 02:04.720
+This is even more important because we've got all these new gestures and new ways to control things.
+
+02:04.720 --> 02:10.060
+And the reason all of that is so incredibly important is because no matter how technically superior
+
+02:10.060 --> 02:16.480
+the code may be or how deep its functionality may be, the bottom line is this an application or site
+
+02:16.510 --> 02:20.310
+whose interface is difficult to use will not be used.
+
+02:20.320 --> 02:21.370
+We won't do it.
+
+02:21.400 --> 02:23.260
+We won't stick around and suffer through it.
+
+02:23.290 --> 02:24.610
+We won't muddle through it.
+
+02:24.640 --> 02:29.330
+We'll quit and we'll call support or we'll say, the heck with this.
+
+02:29.330 --> 02:32.480
+There are 8 million other products out there that do the same thing.
+
+02:32.480 --> 02:34.090
+I'm going to check out one of those.
+
+02:34.100 --> 02:39.830
+We are living in an age where there are an infinite number of choices available to us.
+
+02:39.860 --> 02:46.430
+Because of that, the bar is much, much, much higher for good interface design.
+
+02:46.430 --> 02:52.370
+We have no tolerance for things that don't allow us to do what we need to do.
+
+02:52.370 --> 02:59.390
+And again, the reason we have such little tolerance is because we know there are other options available
+
+02:59.390 --> 03:02.390
+so we don't have to stick around and suffer through it.
+
+03:02.420 --> 03:04.100
+We can go check out something else.
+
+03:04.100 --> 03:05.840
+We can find another solution.
+
+03:05.840 --> 03:08.970
+And because we can, we absolutely will.
+
+03:08.990 --> 03:14.030
+So you cannot afford poor interface design on multiple levels.
+
+03:14.760 --> 03:19.590
+So as we get into the nuts and bolts of interface design, let's set a few ground rules first.
+
+03:19.590 --> 03:24.570
+First and foremost, to most people, the user interface is the system.
+
+03:24.570 --> 03:26.450
+The two are one and the same.
+
+03:26.460 --> 03:32.940
+For instance, have you ever watched somebody open up Google and type a full URL into the search field
+
+03:32.940 --> 03:37.290
+as opposed to typing that full URL in the address bar at the top of the browser?
+
+03:37.290 --> 03:38.190
+Why do they do that?
+
+03:38.190 --> 03:41.280
+Well, they do that because to them, Google is the Internet.
+
+03:41.280 --> 03:44.430
+That's the way you use the Internet much like that.
+
+03:44.460 --> 03:48.960
+What they see on the screen is the sum total of their understanding of the system.
+
+03:48.960 --> 03:57.030
+So no matter what things it may do beyond that first screen, some sense of what's possible has to be
+
+03:57.030 --> 03:58.230
+made apparent.
+
+03:58.260 --> 04:02.550
+A well designed interface allows someone to start using something immediately.
+
+04:02.550 --> 04:06.210
+No training, no manuals, no tools, no tips, no nothing.
+
+04:06.210 --> 04:07.650
+Get in, get going.
+
+04:07.800 --> 04:10.530
+Interface design has to be audience appropriate.
+
+04:10.530 --> 04:14.470
+Just because you understand it doesn't mean someone else will.
+
+04:14.470 --> 04:19.750
+One of my cardinal rules always has been to remember that you're not designing for yourself.
+
+04:19.750 --> 04:20.020
+Okay?
+
+04:20.020 --> 04:23.620
+We're subjective human beings by nature, you know?
+
+04:23.620 --> 04:26.080
+And we know ourselves better than we know anything else.
+
+04:26.080 --> 04:31.410
+So it's very easy to think inside the box of our own experience.
+
+04:31.420 --> 04:34.570
+It's very easy to come up with things that make sense to us.
+
+04:34.570 --> 04:40.150
+But for every decision you make, you have to think to yourself, Would this person that I'm intending
+
+04:40.150 --> 04:42.190
+this for understand this?
+
+04:42.220 --> 04:43.930
+Would this label make sense to them?
+
+04:43.930 --> 04:46.060
+Will they know how to use this control?
+
+04:46.060 --> 04:47.650
+Should it be a button or a link?
+
+04:47.650 --> 04:49.450
+Which one will they know how to use?
+
+04:49.480 --> 04:56.290
+Inappropriate interface design is the number one killer of great product ideas, things that make perfect
+
+04:56.290 --> 05:04.090
+sense on paper die painful, horrible deaths because their interfaces are so bad and so confusing and
+
+05:04.090 --> 05:09.850
+so full of options that no one really wants or needs that no one can see the value.
+
+05:09.850 --> 05:11.410
+Okay, It's obfuscated.
+
+05:11.530 --> 05:18.670
+The bottom line rule behind great interface design is this It's infinitely better to perfectly meet
+
+05:18.670 --> 05:22.960
+the needs of the critical few than to poorly meet the needs of many.
+
+05:22.960 --> 05:23.350
+Okay.
+
+05:23.350 --> 05:30.100
+And I'm going to explain that from the very beginnings of software development programming, the essential
+
+05:30.130 --> 05:33.040
+goal was to create flawless software.
+
+05:33.040 --> 05:38.110
+No matter what the use condition is, no matter who the person is, no matter what they do, the idea
+
+05:38.110 --> 05:41.320
+is to bulletproof the system so it does not fail.
+
+05:41.320 --> 05:41.560
+Okay.
+
+05:41.560 --> 05:48.130
+That means you're trying to account for every possible use case, every possible scenario, every possible
+
+05:48.130 --> 05:49.150
+exception.
+
+05:49.150 --> 05:55.810
+That quickly became a very standardized way of thinking, and it's carried through this industry for
+
+05:55.810 --> 05:57.010
+a very long time.
+
+05:57.010 --> 06:01.870
+However, user experience, good user experience, takes a bit of a different tack.
+
+06:01.870 --> 06:02.890
+It says, You know what?
+
+06:02.890 --> 06:10.090
+It's not possible to account for every single case, so figure out what the majority of people need
+
+06:10.090 --> 06:11.170
+to be able to do.
+
+06:11.170 --> 06:17.590
+Make sure that that critical part of your audience can do exactly what they need to do, do it well,
+
+06:17.590 --> 06:23.680
+do it in a way that they totally understand what's happening, that they completely see the value of
+
+06:23.680 --> 06:28.570
+the outcome and that all the conventions and metaphors and everything else that you present make sense
+
+06:28.570 --> 06:29.170
+to them.
+
+06:29.170 --> 06:34.060
+Those people that critical few, those are your target users.
+
+06:34.060 --> 06:36.070
+Those are the people who will buy your product.
+
+06:36.070 --> 06:38.440
+Those are the people who will recommend your product.
+
+06:38.470 --> 06:42.970
+Those are the people who stand to gain the most from using your product.
+
+06:43.000 --> 06:45.220
+Those are the people you have to focus on.
+
+06:45.250 --> 06:47.530
+You cannot be everything to everyone.
+
+06:47.530 --> 06:52.330
+It's simply not possible, especially in an age of complexity like the one that we live in now.
+
+06:52.330 --> 06:58.240
+So focus on meeting the core needs of the people who are most important to you.
+
+06:58.240 --> 07:03.220
+The people who stand to gain the most from using your product.
+
+07:03.310 --> 07:03.480
+Okay.
+
+07:03.580 --> 07:11.230
+Because it's those people who will also provide the most benefit back to you in terms of increased use,
+
+07:11.230 --> 07:14.320
+in terms of product sales, whatever it may be.
+
+07:14.720 --> 07:16.040
+Focus on them.
+
+07:16.040 --> 07:17.570
+Forget everything else.
+
+07:18.450 --> 07:22.300
+Let's talk about some core principles of good user interface design.
+
+07:22.320 --> 07:25.290
+First and foremost is predictability.
+
+07:25.290 --> 07:31.440
+And that essentially means that labels, instructions, icons, images are all things that we can use
+
+07:31.440 --> 07:32.980
+to set expectations.
+
+07:33.000 --> 07:35.730
+They're things that tell us what to do.
+
+07:35.760 --> 07:37.550
+Touch this button right here.
+
+07:37.560 --> 07:38.760
+Click this link.
+
+07:38.790 --> 07:40.590
+They tell us what will happen.
+
+07:40.590 --> 07:43.170
+Open this file, drag this over here.
+
+07:43.200 --> 07:44.490
+Do something else.
+
+07:44.700 --> 07:46.890
+They tell us where we can go.
+
+07:46.920 --> 07:48.240
+They give us a sense of place.
+
+07:48.240 --> 07:50.260
+Where are we in the grand scheme of things?
+
+07:50.280 --> 07:53.610
+They also tell us how the screen will respond.
+
+07:53.610 --> 07:56.490
+If we do this, this other thing will happen.
+
+07:56.520 --> 08:02.790
+Predictability means that we can accurately predict the outcome of an interaction with something.
+
+08:02.790 --> 08:08.190
+And when we can do that, we have a much higher degree of confidence in our ability to actually use
+
+08:08.190 --> 08:09.330
+what's in front of us.
+
+08:09.360 --> 08:15.030
+That's important because if we're confident, if we're comfortable, if we feel safe and secure, then
+
+08:15.030 --> 08:17.070
+we're more likely to keep using something.
+
+08:17.070 --> 08:18.910
+If there's an intended benefit.
+
+08:18.910 --> 08:24.640
+And you need people to derive that benefit in order to drive value back to you, then giving people
+
+08:24.640 --> 08:27.730
+a sense of predictability is a very good place to start.
+
+08:28.200 --> 08:30.810
+The second core principle is consistency.
+
+08:30.840 --> 08:37.050
+Usefulness and usability is improved when similar parts of an interface are expressed in similar ways.
+
+08:37.050 --> 08:42.990
+And that largely means functional consistency, which leverages the things that we already know about
+
+08:42.990 --> 08:44.350
+how something works.
+
+08:44.370 --> 08:50.140
+It builds on our prior experiences and presents us with things we already know how to do.
+
+08:50.160 --> 08:54.850
+It means that the things that we see have familiar meanings and familiar actions.
+
+08:54.870 --> 09:01.140
+It means that we have navigational reference points that tell us what we can do, where we can go.
+
+09:01.170 --> 09:08.760
+Having that simplifies usability and increases intuitive learning, which, as I always say, really
+
+09:08.760 --> 09:11.200
+means single trial learning.
+
+09:11.220 --> 09:12.350
+Use it once.
+
+09:12.360 --> 09:13.740
+Remember it forever.
+
+09:13.830 --> 09:20.190
+The example that I'm using here is the Mac OS, and almost any operating system pretty much operates
+
+09:20.190 --> 09:20.580
+the same way.
+
+09:20.580 --> 09:26.610
+If you look at an Android system or a Windows system, they all pretty much operate consistently across
+
+09:26.610 --> 09:28.180
+multiple devices, right?
+
+09:28.210 --> 09:33.760
+In this case, you look at the Mac interface and you see certain things, the window controls that allow
+
+09:33.760 --> 09:40.810
+you to close or hide or expand a window, the style of buttons and menu components, those are pretty
+
+09:40.810 --> 09:46.930
+much consistent, whether you're working on a desktop machine, a laptop, an iPhone or a tablet.
+
+09:46.960 --> 09:53.020
+Same icons, same visual style, same meaning, same action, same effect.
+
+09:53.050 --> 09:55.840
+We know how to use those things because we've done it before.
+
+09:56.140 --> 09:57.820
+That's functional consistency.
+
+09:57.820 --> 10:03.460
+If you have ever used an Android tablet and you also happen to have an Android phone, you're going
+
+10:03.460 --> 10:04.640
+to see the same thing.
+
+10:04.660 --> 10:10.510
+Consistency that leverages the things that you already know about how the things in front of you work.
+
+10:11.060 --> 10:14.500
+The next principle is absolutely one of the most important.
+
+10:14.510 --> 10:16.520
+It's called progressive disclosure.
+
+10:16.520 --> 10:23.270
+And what that means is that everything should progress naturally from simple to complex.
+
+10:23.300 --> 10:28.100
+Think of it as wading into the shallow end before you dive into the deep end.
+
+10:28.200 --> 10:32.710
+Okay, We want to sort of get adjusted first, get our bearings, and then we want to move further.
+
+10:32.720 --> 10:35.720
+That's sort of our natural way of experiencing things.
+
+10:35.720 --> 10:37.760
+It's the natural way that the brain works.
+
+10:37.760 --> 10:40.730
+We build upon each step of learning.
+
+10:40.730 --> 10:46.190
+So everything that we're confronted with in an interface should build from simple to complex.
+
+10:46.190 --> 10:54.110
+What that means is that only the necessary or requested information is displayed at any given time.
+
+10:54.110 --> 11:00.440
+I only want what I need right now to accomplish what I'm trying to do.
+
+11:00.440 --> 11:03.740
+I only need what I've asked for.
+
+11:03.770 --> 11:06.110
+I don't want anything other than that.
+
+11:06.110 --> 11:09.890
+I don't want anything that interferes with what I'm trying to accomplish.
+
+11:09.890 --> 11:16.410
+So progressive disclosure helps people manage complexity without becoming confused or frustrated or
+
+11:16.410 --> 11:17.310
+disoriented.
+
+11:17.310 --> 11:21.000
+That disorientation comes from noise.
+
+11:21.000 --> 11:27.600
+Some of you have probably heard of the phrase signal to noise, which actually comes from radio, broadcast
+
+11:27.600 --> 11:29.580
+and satellite signal broadcast.
+
+11:29.610 --> 11:35.430
+What it means is that signal, the important part that we care about is what's coming through loud and
+
+11:35.430 --> 11:38.790
+clear and noise or static is minimized.
+
+11:38.790 --> 11:41.490
+So the signal is loud, it's clear, it's obvious.
+
+11:41.490 --> 11:46.980
+So information that's presented to somebody who isn't interested in it or isn't ready to process it
+
+11:46.980 --> 11:48.990
+is noise, background stuff.
+
+11:48.990 --> 11:50.250
+It's not what we want.
+
+11:50.250 --> 11:52.800
+It's in the way it's distracting us.
+
+11:52.950 --> 11:54.030
+Here's an example.
+
+11:54.030 --> 11:58.020
+Let's say we're looking at a blog on our phone about kittens.
+
+11:59.010 --> 12:01.380
+I have a new kitten and I need to know how to take care of it.
+
+12:01.380 --> 12:07.440
+So the first thing that I see, for example, is, okay, I've got two articles I can look at the three
+
+12:07.440 --> 12:11.850
+reasons my new kitten keeps meowing or care and feeding of my new kitten.
+
+12:11.850 --> 12:17.160
+If I make a choice, I choose the three reasons my new kitten keeps meowing.
+
+12:17.160 --> 12:18.750
+And oh, guess what?
+
+12:18.750 --> 12:19.710
+It drops down.
+
+12:19.710 --> 12:23.040
+I get a small sampling of the content that's contained in the article.
+
+12:23.040 --> 12:23.310
+Right?
+
+12:23.310 --> 12:27.480
+That helps me make a decision as to whether that's what I'm looking for or not.
+
+12:27.480 --> 12:33.960
+At the same time, notice that the other article hasn't gone away, so my choices are still there.
+
+12:33.960 --> 12:39.570
+What just happened there is I got enough information to allow me to make a choice and then when I make
+
+12:39.570 --> 12:41.910
+a choice, I got a little more information.
+
+12:41.910 --> 12:44.040
+If I care about it, I move on.
+
+12:44.040 --> 12:45.900
+If I don't, I go back.
+
+12:45.930 --> 12:52.830
+That's progressive disclosure, and you can apply this in numerous ways in anything that you are designing.
+
+12:53.410 --> 12:55.810
+Good interface design is intuitive.
+
+12:55.810 --> 13:00.470
+And as I said a minute ago, intuitive really means single trial learning.
+
+13:00.490 --> 13:05.920
+We learn behaviors from experiences all across the web, from different devices, from different real
+
+13:05.920 --> 13:08.680
+world places and objects from all over the place.
+
+13:08.680 --> 13:08.900
+Okay.
+
+13:08.920 --> 13:16.140
+Everything that we do is imprinted in our brains and it gets called upon in similar situations.
+
+13:16.150 --> 13:16.380
+All right.
+
+13:16.390 --> 13:22.840
+So that means that interactions should be easy to learn and easy to remember in ideal situations.
+
+13:22.840 --> 13:27.100
+We use it once we learn it rapidly and we remember it forever.
+
+13:27.100 --> 13:32.170
+But in reality, what happens a lot is that we use it a few times and we figure it out.
+
+13:32.170 --> 13:35.830
+But we're also sort of hoping that we can remember how to do it the next time.
+
+13:36.520 --> 13:39.670
+So that's why things need to need to be intuitive.
+
+13:39.700 --> 13:43.860
+That's why interface design needs to enable single trial learning, right?
+
+13:43.870 --> 13:51.100
+The process needs to be straightforward and simple and uncluttered so that when we have the experience,
+
+13:51.100 --> 13:52.270
+we absorb it.
+
+13:52.300 --> 13:59.450
+We remember it, we file it away in a clear, concise manner because there isn't too much to remember.
+
+13:59.480 --> 14:04.880
+There's a good reason that most mobile devices use the type of layout that you see here, okay, which
+
+14:04.880 --> 14:08.450
+is essentially icon driven rows and columns, okay?
+
+14:08.450 --> 14:15.170
+Whether it's an iPhone or an Android device or, you know, even some of the early Windows phones all
+
+14:15.170 --> 14:17.630
+used an icon driven screen.
+
+14:17.710 --> 14:17.800
+Right.
+
+14:17.840 --> 14:22.010
+But there's a reason that's continued well into 2013.
+
+14:22.010 --> 14:24.320
+We've been doing this for ten years now at least.
+
+14:24.320 --> 14:29.870
+And the reason that basic layout hasn't changed too much, aside from the specific visual style of the
+
+14:29.870 --> 14:35.150
+icons, Okay, or how many get exposed on a screen, the reason it hasn't changed is because that's
+
+14:35.150 --> 14:37.640
+something that we automatically know and remember, right?
+
+14:37.640 --> 14:39.890
+There's reflex there, There's habit there.
+
+14:39.890 --> 14:40.580
+We get it.
+
+14:40.610 --> 14:41.510
+We know how to use it.
+
+14:41.540 --> 14:42.770
+We don't have to think about it.
+
+14:42.770 --> 14:44.150
+It's a no brainer.
+
+14:44.150 --> 14:46.970
+So that's why that design still makes sense.
+
+14:46.970 --> 14:54.650
+And until something comes along that leverages an even greater memory, which is unlikely by the way,
+
+14:54.650 --> 14:58.370
+it's going to remain this way for a while because we get it.
+
+14:58.370 --> 15:01.970
+We know exactly how to use it, and it requires no thought whatsoever.
+
+15:01.970 --> 15:03.050
+It's expected.
+
+15:03.050 --> 15:05.540
+It's predictable and it's intuitive.
+
+15:05.990 --> 15:13.100
+Good information design presents components and information in context and in a very clear hierarchy.
+
+15:13.130 --> 15:17.900
+That means that the things that we see on the screen are all related to each other somehow.
+
+15:17.930 --> 15:25.130
+They all have similar contexts and they're organized, prioritized in such a way where that relationship
+
+15:25.130 --> 15:26.150
+is made clear.
+
+15:26.150 --> 15:31.460
+When you're designing the things that you have to ask yourself to make sure that you are providing proper
+
+15:31.460 --> 15:34.490
+context and proper hierarchy are as follows.
+
+15:34.490 --> 15:40.070
+First and foremost are items that are functionally connected or logically connected, grouped together
+
+15:40.070 --> 15:40.790
+visually.
+
+15:40.790 --> 15:47.870
+When objects, elements or information on the screen is close together in terms of proximity or visually
+
+15:47.870 --> 15:54.560
+styled the same way or physically constrained inside a box, people naturally assume that those things
+
+15:54.560 --> 15:56.350
+are connected in some way.
+
+15:56.360 --> 16:01.220
+So if you do any of those things, if you treat things visually the same way, if you put two elements
+
+16:01.220 --> 16:05.000
+inside a box together, then they absolutely should be connected.
+
+16:05.000 --> 16:10.350
+And if not, it make sure there's clear separation or segregation between those elements.
+
+16:10.500 --> 16:15.840
+Is the information on the screen presented in the order of importance to the user are the things that
+
+16:15.840 --> 16:17.190
+they care about most.
+
+16:17.220 --> 16:19.920
+Taking up prominent positions on the screen?
+
+16:19.950 --> 16:23.310
+Do they call attention to themselves in some way?
+
+16:23.350 --> 16:30.780
+Are they prioritized in terms of being higher up on the screen or above the fold going along with that?
+
+16:30.780 --> 16:36.150
+Does the visual hierarchy on the screen and the functional behavior of those things match what that
+
+16:36.150 --> 16:39.590
+person expects to do first or second or third?
+
+16:39.600 --> 16:45.300
+Finally, is the overall visual layout consistent with the mental model of the person using it?
+
+16:45.300 --> 16:47.820
+And is that approach used consistently?
+
+16:47.910 --> 16:48.150
+Okay.
+
+16:48.240 --> 16:50.610
+Does it match their expectation?
+
+16:50.610 --> 16:54.900
+Does it match the way they expect to be able to see things or do things?
+
+16:54.900 --> 16:57.180
+And does that continue?
+
+16:57.210 --> 17:02.820
+If you take a look at this example from a health insurance website, you'll see a very strong sense
+
+17:02.820 --> 17:04.470
+of context and hierarchy.
+
+17:04.470 --> 17:04.680
+Okay?
+
+17:04.680 --> 17:06.540
+There's very clear organization of things.
+
+17:06.540 --> 17:07.740
+At the very top.
+
+17:07.740 --> 17:12.120
+You can see that prescription drugs are covered in this section.
+
+17:12.120 --> 17:18.330
+Then you have this very clear, very obvious dividing line, this big blue bar that says hospital services.
+
+17:18.330 --> 17:21.330
+Everything under there is hospital service coverage.
+
+17:21.330 --> 17:28.980
+And notice that underneath there, each one of these things is consistently spaced and aligned and located
+
+17:28.980 --> 17:34.470
+in a certain proximity with the other items go down again, another blue bar number of physicians in
+
+17:34.470 --> 17:34.950
+your area.
+
+17:34.950 --> 17:37.440
+That's a signal this is a new heading.
+
+17:37.440 --> 17:43.770
+And as opposed to just making that headline bold or something like that, this is very clear segregation,
+
+17:43.770 --> 17:44.010
+okay?
+
+17:44.010 --> 17:48.270
+That blue bar immediately signals this is something new.
+
+17:48.300 --> 17:50.670
+This is a new set of information.
+
+17:50.670 --> 17:58.680
+So this is a really good example of how good interface design can make context and hierarchy very clear.
+
+17:59.350 --> 18:03.100
+The final principle I want to leave you with is called Hick's Law.
+
+18:03.280 --> 18:09.100
+Hick's law says that every additional choice increases the time required to make a decision.
+
+18:09.100 --> 18:09.700
+Okay.
+
+18:09.730 --> 18:11.110
+Put that another way.
+
+18:11.110 --> 18:15.040
+The more choice you give people, the easier it is for them to choose nothing.
+
+18:15.070 --> 18:19.300
+There are lots of physiological and psychological reasons for that.
+
+18:19.300 --> 18:22.810
+But what you need to remember is that that's kind of the way it works, okay?
+
+18:22.810 --> 18:27.130
+In general, the more we're confronted with, the less likely we are to do something.
+
+18:27.220 --> 18:34.180
+Clay Shirky, who is a widely regarded consultant on all things related to Internet technology, was
+
+18:34.180 --> 18:38.980
+quoted as saying It's not information overload, it's filter failure.
+
+18:39.010 --> 18:47.290
+What that means is that as technology increases, as information becomes more complex, we do have a
+
+18:47.290 --> 18:49.060
+need to have access to it.
+
+18:49.060 --> 18:54.550
+And as designers, we have a certain responsibility to make sure that we stand up all that stuff that
+
+18:54.550 --> 18:55.900
+people need access to.
+
+18:55.930 --> 19:02.750
+However, the more of it there is, the more it necessitates that we think really hard about how we
+
+19:02.750 --> 19:08.690
+can allow people to filter what they see, to narrow what they see based on their preferences.
+
+19:08.840 --> 19:12.610
+Okay, so in the era of infinite Choice, we need better filters.
+
+19:12.620 --> 19:15.890
+What you see here is a great example of filter use.
+
+19:15.890 --> 19:18.050
+This comes from a wine website.
+
+19:18.050 --> 19:24.650
+And what you see on the left is that there are multiple ways to sort of personalize and tailor and filter
+
+19:24.650 --> 19:26.330
+the amount of information on a screen.
+
+19:26.330 --> 19:32.810
+This site carries an incredibly large inventory, so it's really important that people be able to narrow
+
+19:32.810 --> 19:34.760
+their choices to see what they're interested in.
+
+19:34.790 --> 19:38.210
+Okay, you have vintage, you have color, you have closure.
+
+19:38.210 --> 19:41.090
+And this list is kind of a mile long.
+
+19:41.090 --> 19:45.200
+There's there's probably 20 different filters on the website.
+
+19:45.200 --> 19:52.040
+But for somebody who is really specific and wine connoisseurs are very specific about what they want
+
+19:52.040 --> 19:57.080
+and the characteristics of what they want, every single one of those things is very important.
+
+19:57.080 --> 19:59.780
+So that level of control is appropriate.
+
+19:59.780 --> 20:05.420
+That's a great example of providing appropriate filters for a large information set.
+
+20:05.600 --> 20:12.800
+So even if your data set is large, you can still minimize the time required for a person to act or
+
+20:12.800 --> 20:18.590
+the time required for a person to be able to absorb what they see and make a decision by giving them
+
+20:18.590 --> 20:24.440
+more filters, more ways to control what they see, you're actually giving them fewer choices, which
+
+20:24.440 --> 20:26.150
+means fewer decisions to make.

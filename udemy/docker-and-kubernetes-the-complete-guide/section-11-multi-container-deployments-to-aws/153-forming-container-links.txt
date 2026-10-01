@@ -1,0 +1,574 @@
+WEBVTT
+
+00:01.440 --> 00:02.700
+-: In this section we're gonna take care
+
+00:02.700 --> 00:04.770
+of our very last container definition,
+
+00:04.770 --> 00:06.960
+the definition for NGINX container.
+
+00:06.960 --> 00:08.370
+And remember, this is the container
+
+00:08.370 --> 00:11.130
+that's going to do some routing of incoming requests
+
+00:11.130 --> 00:15.120
+to either the client or the backend API server.
+
+00:15.120 --> 00:18.240
+So, inside my Dockerrun.aws.json file,
+
+00:18.240 --> 00:22.560
+I'll add a comma, put in our last configuration object.
+
+00:22.560 --> 00:25.720
+So, we're gonna give this a name of NGINX
+
+00:26.910 --> 00:28.110
+or image will make use
+
+00:28.110 --> 00:32.493
+of your Docker ID/multi-NGINX, like so.
+
+00:34.410 --> 00:37.140
+Now this time around, we're not going to add in a host name
+
+00:37.140 --> 00:39.990
+because no other service in everything that we have here
+
+00:39.990 --> 00:42.510
+needs to directly access NGINX.
+
+00:42.510 --> 00:44.760
+The host name is actually an optional field.
+
+00:44.760 --> 00:46.650
+And because nothing needs to kind of reach out
+
+00:46.650 --> 00:48.420
+to NGINX and get a handle on it,
+
+00:48.420 --> 00:50.850
+we are not required to add in a hostname.
+
+00:50.850 --> 00:52.110
+Now, you definitely can if you want to.
+
+00:52.110 --> 00:54.060
+So, if you want to be 100% complete,
+
+00:54.060 --> 00:56.760
+we could add in a hostname of NGINX
+
+00:56.760 --> 00:58.620
+or whatever you might wanna do
+
+00:58.620 --> 01:00.900
+but it's not strictly required in this case.
+
+01:00.900 --> 01:01.860
+You know, now that I think about it,
+
+01:01.860 --> 01:05.040
+the worker hostname here is actually not required as well
+
+01:05.040 --> 01:06.630
+because nothing is actually reaching out
+
+01:06.630 --> 01:07.560
+to the worker as well.
+
+01:07.560 --> 01:09.060
+So, you could probably get away with deleting that
+
+01:09.060 --> 01:11.220
+if you wanna be a little bit adventurous,
+
+01:11.220 --> 01:12.520
+but I'm gonna leave it in.
+
+01:13.560 --> 01:16.590
+Okay, so now we're gonna add in our essential flag
+
+01:16.590 --> 01:18.510
+to the NGINX definition,
+
+01:18.510 --> 01:20.340
+and we're gonna add in two additional flags
+
+01:20.340 --> 01:21.900
+on top of that as well.
+
+01:21.900 --> 01:25.050
+So, we'll say essential is true.
+
+01:25.050 --> 01:26.190
+So, like, I said previously,
+
+01:26.190 --> 01:29.550
+at least one container must be marked as essential.
+
+01:29.550 --> 01:32.460
+If this container crashes for any reason,
+
+01:32.460 --> 01:34.440
+everything else, all these other containers
+
+01:34.440 --> 01:36.900
+will be automatically shutdown at the same time.
+
+01:36.900 --> 01:38.310
+And that definitely makes a lot of sense
+
+01:38.310 --> 01:39.570
+with our current architecture,
+
+01:39.570 --> 01:41.040
+'cause like we said just a moment ago
+
+01:41.040 --> 01:44.010
+if the NGINX server crashes, well that's pretty much it.
+
+01:44.010 --> 01:47.550
+Users cannot access the API, they can't access the client,
+
+01:47.550 --> 01:49.260
+and the worker can technically still run
+
+01:49.260 --> 01:52.050
+but essentially this group of containers is now kinda dead,
+
+01:52.050 --> 01:53.580
+and we should shut everything down
+
+01:53.580 --> 01:55.830
+and try to fix it up at some point in the future.
+
+01:55.830 --> 01:59.133
+So, that's why we are going to mark NGINX as essential true.
+
+02:00.090 --> 02:02.040
+Okay, now we're gonna put in two other flags,
+
+02:02.040 --> 02:04.680
+so we did not add into any of the previous ones.
+
+02:04.680 --> 02:08.670
+Very quickly I wanna open up the docker-compose.eml file.
+
+02:08.670 --> 02:10.590
+You'll recall that to expose traffic
+
+02:10.590 --> 02:11.790
+to our group of containers,
+
+02:11.790 --> 02:15.390
+we had opened up a port for the NGINX service right here.
+
+02:15.390 --> 02:17.280
+And so, we had said that if you ever try to visit
+
+02:17.280 --> 02:20.670
+our group of containers at localhost 3050,
+
+02:20.670 --> 02:23.580
+that would map up to port 80 inside the container,
+
+02:23.580 --> 02:27.240
+because NGINX by default is going to listen on port 80.
+
+02:27.240 --> 02:30.570
+And so we need to do that exact same port mapping process
+
+02:30.570 --> 02:35.400
+inside of our NGINX server configuration right here as well.
+
+02:35.400 --> 02:37.200
+So, we're going to do a port mapping
+
+02:37.200 --> 02:39.243
+by saying, port mappings.
+
+02:40.860 --> 02:42.180
+This is going to be an array
+
+02:42.180 --> 02:43.470
+because we could technically have
+
+02:43.470 --> 02:45.780
+several different port mappings.
+
+02:45.780 --> 02:48.550
+I'm gonna put in a single record inside of here
+
+02:49.710 --> 02:53.140
+that will have a host port of 80
+
+02:54.420 --> 02:58.743
+and a container port of 80 as well.
+
+02:59.970 --> 03:04.710
+So, this means open up a port on the host or on the machine
+
+03:04.710 --> 03:07.590
+that is hosting all of our containers,
+
+03:07.590 --> 03:10.350
+and map that to port 80 inside of the container
+
+03:10.350 --> 03:11.820
+which again is the default port
+
+03:11.820 --> 03:14.910
+that NGINX listens to inside the container.
+
+03:14.910 --> 03:16.980
+So, as you can see, setting up a port mapping
+
+03:16.980 --> 03:19.050
+is a little bit more typing than it was
+
+03:19.050 --> 03:21.960
+back inside of the Docker Compose file.
+
+03:21.960 --> 03:24.023
+Back inside a Docker Compose, we got away with just saying,
+
+03:24.023 --> 03:27.120
+"Ports is, oh, yeah, 30, 50, colon 80."
+
+03:27.120 --> 03:30.060
+And the docker run file, a lot more syntax goes into it
+
+03:30.060 --> 03:32.790
+but at the end of the day, it does the exact same thing.
+
+03:32.790 --> 03:34.890
+It maps the port inside the container
+
+03:34.890 --> 03:36.150
+to a port on the host
+
+03:36.150 --> 03:38.900
+where the machine that is running all these containers.
+
+03:40.200 --> 03:42.270
+Now, one last flag that we're going to add on
+
+03:42.270 --> 03:44.100
+to the NGINX configuration.
+
+03:44.100 --> 03:47.520
+So, after the closing square bracket for the port mappings,
+
+03:47.520 --> 03:49.500
+I'll make sure I get a comma in there,
+
+03:49.500 --> 03:51.960
+and then I'm going to add on links.
+
+03:51.960 --> 03:53.790
+We'll talk about what links is in just a second
+
+03:53.790 --> 03:56.310
+but first let's fill out the definition for it.
+
+03:56.310 --> 03:58.080
+This is going to be an array
+
+03:58.080 --> 03:59.520
+and it's going to have a string
+
+03:59.520 --> 04:04.080
+that refers to our server and our client.
+
+04:04.080 --> 04:06.213
+So, here's the links array.
+
+04:07.200 --> 04:10.290
+We'll say client and server like so
+
+04:10.290 --> 04:13.770
+in two separate strings separated by a comma.
+
+04:13.770 --> 04:15.750
+So, let's talk about what this is doing.
+
+04:15.750 --> 04:18.960
+As a quick reminder back inside of our Docker Compose file,
+
+04:18.960 --> 04:21.870
+we were very easily able to kind of communicate
+
+04:21.870 --> 04:23.100
+between different containers
+
+04:23.100 --> 04:25.620
+by making use of the different hostnames.
+
+04:25.620 --> 04:28.620
+So, for example, when the API had to connect to Redis,
+
+04:28.620 --> 04:29.453
+we simply said,
+
+04:29.453 --> 04:32.670
+"Oh, yeah, connect to the hostname of simply Redis."
+
+04:32.670 --> 04:34.440
+Anytime that the API made a request
+
+04:34.440 --> 04:37.200
+out to a hostname of Redis, it automatically got routed
+
+04:37.200 --> 04:39.210
+over to this other running service
+
+04:39.210 --> 04:41.610
+or this other running container.
+
+04:41.610 --> 04:42.870
+When you start deploying containers
+
+04:42.870 --> 04:45.270
+over to Amazon Elastic Beanstalk, however,
+
+04:45.270 --> 04:49.020
+or as we've said behind the scenes, technically ECS,
+
+04:49.020 --> 04:51.930
+we have to do a little bit more explicit mapping
+
+04:51.930 --> 04:55.260
+or kind of more explicitly form up links or connections
+
+04:55.260 --> 04:57.420
+between these different containers.
+
+04:57.420 --> 04:59.250
+So, in the world of Docker Compose,
+
+04:59.250 --> 05:00.660
+everything was easy as pie.
+
+05:00.660 --> 05:02.287
+We just said, "Oh, yeah, try to access
+
+05:02.287 --> 05:04.080
+"this other running service over here,"
+
+05:04.080 --> 05:07.260
+or "Try to access this other running service over here,"
+
+05:07.260 --> 05:10.410
+and Docker Compose kind of took care of everything for us
+
+05:10.410 --> 05:12.540
+or all that networking for us.
+
+05:12.540 --> 05:15.270
+So, in the world of ECS,
+
+05:15.270 --> 05:18.750
+you and I have to form a little bit more distinct links
+
+05:18.750 --> 05:21.090
+between each of these running containers.
+
+05:21.090 --> 05:22.620
+So, in our case, we know that
+
+05:22.620 --> 05:25.440
+NGINX needs to eventually send some traffic
+
+05:25.440 --> 05:28.200
+or redirect a request from the NGINX server
+
+05:28.200 --> 05:30.633
+to either the client or the API.
+
+05:31.650 --> 05:35.190
+So, in our case, we want to make sure that NGINX knows
+
+05:35.190 --> 05:37.350
+that these other two containers exist,
+
+05:37.350 --> 05:40.800
+and we're going to do so by forming up a link between them.
+
+05:40.800 --> 05:43.710
+Now, notice that links are kind of unidirectional.
+
+05:43.710 --> 05:45.510
+In other words, NGINX right here
+
+05:45.510 --> 05:48.090
+only has to kind of point over to client,
+
+05:48.090 --> 05:49.290
+but we don't have to form
+
+05:49.290 --> 05:52.050
+a opposite direction connection, like so,
+
+05:52.050 --> 05:53.280
+it's just unidirectional.
+
+05:53.280 --> 05:54.877
+We just say, "Oh, yeah, form a connection
+
+05:54.877 --> 05:57.387
+"from NGINX over to the client."
+
+05:58.350 --> 06:00.097
+And so, in our case right here, we're saying,
+
+06:00.097 --> 06:05.047
+"Yep, form a link from NGINX over to the client container
+
+06:05.047 --> 06:06.990
+"and the server container."
+
+06:06.990 --> 06:08.490
+And one thing I wanna mention here is that
+
+06:08.490 --> 06:11.310
+the name to links that we're providing
+
+06:11.310 --> 06:12.840
+maps up to the name property
+
+06:12.840 --> 06:14.880
+of the other container definition.
+
+06:14.880 --> 06:17.010
+So, for example, this gets really important
+
+06:17.010 --> 06:18.810
+with the server definition right here
+
+06:18.810 --> 06:20.700
+because we used a name of server,
+
+06:20.700 --> 06:23.040
+but we used a hostname of API.
+
+06:23.040 --> 06:24.720
+So, for hostname we did not...
+
+06:24.720 --> 06:25.553
+Oh, excuse me.
+
+06:25.553 --> 06:28.680
+For the link definition, we did not say API right here
+
+06:28.680 --> 06:31.470
+instead we just provided the name to that other container,
+
+06:31.470 --> 06:33.870
+that's how we form out the link.
+
+06:33.870 --> 06:34.980
+All right, so that's pretty much it
+
+06:34.980 --> 06:37.740
+for our container definition file.
+
+06:37.740 --> 06:40.590
+Now the last thing that I kind of recommend you do
+
+06:40.590 --> 06:42.480
+just because this is a JSON file,
+
+06:42.480 --> 06:44.820
+and it's really easy to make typos in here
+
+06:44.820 --> 06:46.110
+without realizing it.
+
+06:46.110 --> 06:48.780
+One thing that you might do is open up a new tab
+
+06:48.780 --> 06:51.270
+and do a search for like JSON Validator
+
+06:51.270 --> 06:52.500
+or something like that,
+
+06:52.500 --> 06:55.470
+and then find any random service in here.
+
+06:55.470 --> 06:58.860
+And then take all the JSON that we just put together,
+
+06:58.860 --> 07:01.983
+copy it and throw it into the validator.
+
+07:03.030 --> 07:04.320
+And then somewhere on here...
+
+07:04.320 --> 07:06.330
+Oh, there we go, Validate JSON.
+
+07:06.330 --> 07:08.550
+And that's gonna say, "Okay, you have valid JSON."
+
+07:08.550 --> 07:11.010
+So, if you made any typo, this will very quickly tell you
+
+07:11.010 --> 07:12.540
+and give you a little bit of feedback
+
+07:12.540 --> 07:14.610
+before you try deploying the application
+
+07:14.610 --> 07:18.390
+because Elastic Beanstalk is gonna be a little bit brutal
+
+07:18.390 --> 07:20.190
+when it comes to validating the JSON here.
+
+07:20.190 --> 07:22.560
+It's gonna be a lot more challenging to figure out exactly
+
+07:22.560 --> 07:23.820
+where the typo was.
+
+07:23.820 --> 07:25.200
+So, again, I do recommend that you do
+
+07:25.200 --> 07:26.970
+just a quick validation to make sure
+
+07:26.970 --> 07:29.310
+that you don't have any missed commas,
+
+07:29.310 --> 07:30.720
+or missed curly braces,
+
+07:30.720 --> 07:33.990
+or didn't use single quotes instead of double quotes
+
+07:33.990 --> 07:35.970
+or whatever it might be.
+
+07:35.970 --> 07:37.410
+All right, so that's pretty much it
+
+07:37.410 --> 07:39.870
+for our Dockerrun.aws.json file.
+
+07:39.870 --> 07:41.550
+So let's take a quick pause right here.
+
+07:41.550 --> 07:42.780
+We're gonna come back to the next section
+
+07:42.780 --> 07:44.700
+and start setting up our environment
+
+07:44.700 --> 07:46.983
+on Elastic Beanstalk in the next section.

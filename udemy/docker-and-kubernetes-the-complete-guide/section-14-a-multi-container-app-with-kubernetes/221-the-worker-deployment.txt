@@ -1,0 +1,352 @@
+WEBVTT
+
+00:00.900 --> 00:01.733
+-: In this section,
+
+00:01.733 --> 00:04.050
+we're going to very quickly put the configuration together
+
+00:04.050 --> 00:06.390
+for our multi worker deployment.
+
+00:06.390 --> 00:08.340
+After that, we're going to make sure
+
+00:08.340 --> 00:10.260
+that we take all of our different config files
+
+00:10.260 --> 00:11.093
+that we've put together,
+
+00:11.093 --> 00:13.560
+and throw them all back into Cube CTL,
+
+00:13.560 --> 00:14.760
+through that Apply command,
+
+00:14.760 --> 00:16.380
+and just get kind of a general idea
+
+00:16.380 --> 00:18.300
+of where all of our work is at.
+
+00:18.300 --> 00:19.860
+So, let's put the configuration together
+
+00:19.860 --> 00:21.690
+for the multi worker pod.
+
+00:21.690 --> 00:24.690
+As you might guess, this file is gonna look very similar
+
+00:24.690 --> 00:26.130
+to the config that we put together
+
+00:26.130 --> 00:27.977
+for the other two deployments.
+
+00:27.977 --> 00:30.210
+So inside my K8's directory,
+
+00:30.210 --> 00:31.590
+I'm going to make a new file
+
+00:31.590 --> 00:33.427
+called WorkerDeployment.eml.
+
+00:38.864 --> 00:41.130
+Then inside of here, we'll put together config very similar
+
+00:41.130 --> 00:42.480
+to the other deployments.
+
+00:42.480 --> 00:46.500
+We'll say API version is going to be apps view one.
+
+00:46.500 --> 00:50.130
+The kind of object that we are creating is a deployment.
+
+00:50.130 --> 00:51.660
+We'll give a metadata section
+
+00:51.660 --> 00:55.533
+to this thing with a name of worker-deployment,
+
+00:56.910 --> 00:59.700
+and then we'll provide a spec to this thing, as well.
+
+00:59.700 --> 01:00.870
+So for replicas,
+
+01:00.870 --> 01:03.120
+we're gonna start off with just as single replica,
+
+01:03.120 --> 01:06.690
+or a single pod running the multi worker image.
+
+01:06.690 --> 01:08.550
+Remember that if there's anything inside
+
+01:08.550 --> 01:10.710
+of our application that really needs to scale out
+
+01:10.710 --> 01:11.985
+and have multiple instances,
+
+01:11.985 --> 01:13.769
+it probably is the multi worker
+
+01:13.769 --> 01:16.650
+because that was the image or the container inside
+
+01:16.650 --> 01:19.740
+of our application that was doing that fibonacci calculation
+
+01:19.740 --> 01:22.110
+and that was the absolutely slowest part
+
+01:22.110 --> 01:23.790
+of our entire application.
+
+01:23.790 --> 01:25.950
+And so at one point in time, or at some point in time,
+
+01:25.950 --> 01:28.440
+we might want to come back and put a little bit more work
+
+01:28.440 --> 01:31.050
+into that thing to make sure that it is scaled properly.
+
+01:31.050 --> 01:32.610
+But for right now, we're gonna start off with just
+
+01:32.610 --> 01:35.670
+a single replica, so that we can eventually see that,
+
+01:35.670 --> 01:37.980
+yeah, this thing needs to be scaled and we can figure
+
+01:37.980 --> 01:40.030
+out how to do that at that point in time.
+
+01:41.430 --> 01:44.080
+All right, so after that, we'll provide our selector.
+
+01:45.180 --> 01:47.680
+We'll say that we want to attempt to match a label
+
+01:49.455 --> 01:50.363
+on some other object inside of our cluster.
+
+01:53.183 --> 01:54.283
+And for this one, we'll give a component of worker
+
+01:54.283 --> 01:56.152
+because that's really its job.
+
+01:56.152 --> 01:58.470
+It is a worker container inside of our application.
+
+01:58.470 --> 02:00.390
+After that, we'll put together our template
+
+02:00.390 --> 02:01.680
+for the pods that are created.
+
+02:01.680 --> 02:03.360
+Remember that the template property goes
+
+02:03.360 --> 02:05.823
+on the same indentation layer as selector.
+
+02:07.560 --> 02:09.336
+We'll provide a metadata to the template,
+
+02:09.336 --> 02:11.640
+where we'll provide the different labels
+
+02:11.640 --> 02:14.850
+that need to be applied to every pod that gets created.
+
+02:14.850 --> 02:16.650
+And of course, we're going to provide a label
+
+02:16.650 --> 02:18.750
+that matches the selector
+
+02:18.750 --> 02:20.610
+that we had specified just a second ago.
+
+02:20.610 --> 02:24.093
+So under labels, I'll say component worker.
+
+02:27.060 --> 02:30.420
+After that, I'll un-indent back out to the metadata section
+
+02:30.420 --> 02:33.600
+or metadata kinda indentation layer, I suppose,
+
+02:33.600 --> 02:36.360
+and will provide a spec that's going to configure exactly
+
+02:36.360 --> 02:38.460
+what this pod is running.
+
+02:38.460 --> 02:39.510
+So we're going to say
+
+02:40.637 --> 02:41.970
+that we want to run a single container,
+
+02:41.970 --> 02:45.180
+but remember it is plural containers, like so.
+
+02:45.180 --> 02:47.905
+And then the single container that we want to run
+
+02:47.905 --> 02:50.220
+is going to have a name of worker.
+
+02:50.220 --> 02:55.187
+It's going to use the image of your Docker ID, multi worker,
+
+02:55.187 --> 02:57.240
+and then just as before,
+
+02:57.240 --> 02:59.760
+we are going to eventually need to stuff in
+
+02:59.760 --> 03:01.800
+some environment variables into this thing
+
+03:01.800 --> 03:03.780
+to tell it how to connect to Redis.
+
+03:03.780 --> 03:04.620
+But for right now,
+
+03:04.620 --> 03:06.930
+we're just going to kind of ignore that for a second.
+
+03:06.930 --> 03:08.220
+We're going to first set up Redis
+
+03:08.220 --> 03:09.720
+and make sure that's working correctly.
+
+03:09.720 --> 03:10.890
+And then we're going to come back
+
+03:10.890 --> 03:14.280
+to both our worker and express API deployments
+
+03:14.280 --> 03:17.220
+and add in the environment variables at that point in time.
+
+03:17.220 --> 03:19.200
+Now, the other thing I wanna mention here is,
+
+03:19.200 --> 03:21.242
+if you look at this diagram,
+
+03:21.242 --> 03:23.850
+remember there is nothing inside of our worker image
+
+03:23.850 --> 03:26.100
+or the worker container that's running here
+
+03:26.100 --> 03:27.330
+that needs to be accessible
+
+03:27.330 --> 03:30.270
+from anything else inside of our cluster.
+
+03:30.270 --> 03:33.510
+In other words, there's no other object whatsoever,
+
+03:33.510 --> 03:36.750
+no other service, no other image, no container, no nothing,
+
+03:36.750 --> 03:39.480
+that needs to directly connect to the multi worker
+
+03:39.480 --> 03:41.940
+and try to get some information out of it.
+
+03:41.940 --> 03:44.477
+The multi worker is going to connect
+
+03:44.477 --> 03:45.810
+to something else inside of our application,
+
+03:45.810 --> 03:48.420
+but nothing is going to make a unprompted request
+
+03:48.420 --> 03:50.400
+into the multi worker.
+
+03:50.400 --> 03:52.800
+And as such, the multi worker does not need
+
+03:52.800 --> 03:54.660
+to have any port assigned to it,
+
+03:54.660 --> 03:55.800
+and it does not need to have
+
+03:55.800 --> 03:58.140
+any service assigned to it either.
+
+03:58.140 --> 03:59.850
+We only make use of services
+
+03:59.850 --> 04:01.890
+when we want to have requests going
+
+04:01.890 --> 04:05.940
+into a set of pods or into a single pod for that matter.
+
+04:05.940 --> 04:08.670
+And because that's not the case here, no need for a service,
+
+04:08.670 --> 04:10.533
+no need to worry about any ports.
+
+04:11.940 --> 04:13.092
+Okay.
+
+04:13.092 --> 04:14.238
+So with that in mind,
+
+04:14.238 --> 04:15.647
+that's pretty much it for this file.
+
+04:15.647 --> 04:16.480
+No ports required.
+
+04:16.480 --> 04:18.030
+So we're just going to finish it off like so.
+
+04:18.030 --> 04:22.380
+And we do not need to create a associated service file.
+
+04:22.380 --> 04:24.060
+So let's save this as is,
+
+04:24.060 --> 04:25.350
+we'll take a quick pause right here,
+
+04:25.350 --> 04:26.790
+and when we come back to the next section,
+
+04:26.790 --> 04:29.190
+we're going to take the three config files
+
+04:29.190 --> 04:30.900
+that we just put together in the last couple videos,
+
+04:30.900 --> 04:35.116
+and throw them into Cube CTL through the Apply command.
+
+04:35.116 --> 04:36.623
+So quick break and I'll see you in just a minute.

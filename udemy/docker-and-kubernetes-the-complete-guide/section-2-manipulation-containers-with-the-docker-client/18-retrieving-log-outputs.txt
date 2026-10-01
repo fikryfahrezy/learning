@@ -1,0 +1,196 @@
+WEBVTT
+
+00:00.840 --> 00:02.370
+-: We were just talking about the differences
+
+00:02.370 --> 00:05.640
+between starting and creating a container.
+
+00:05.640 --> 00:08.280
+Along the way, we ran the command, docker create
+
+00:08.280 --> 00:12.120
+and then something like Busy Box echo Hi there.
+
+00:12.120 --> 00:14.610
+We then got this printout of the container ID
+
+00:14.610 --> 00:15.750
+that was created.
+
+00:15.750 --> 00:17.820
+And then we found that we could start up the container
+
+00:17.820 --> 00:21.630
+by running Docker start and then pasting the ID in.
+
+00:21.630 --> 00:24.240
+However, there is a real little catch to that.
+
+00:24.240 --> 00:26.880
+We found that in order to actually see information
+
+00:26.880 --> 00:28.770
+being printed out from the container,
+
+00:28.770 --> 00:31.740
+we had to add in that dash A flag right there.
+
+00:31.740 --> 00:33.810
+So what would happen if you wanted to get
+
+00:33.810 --> 00:35.370
+all the output from the container
+
+00:35.370 --> 00:38.010
+without having to add in that dash A flag?
+
+00:38.010 --> 00:39.390
+For example, let's imagine
+
+00:39.390 --> 00:41.160
+that running Docker start like this
+
+00:41.160 --> 00:43.260
+was a really expensive process
+
+00:43.260 --> 00:45.270
+and we started up a process inside there
+
+00:45.270 --> 00:47.554
+that would take many minutes to run.
+
+00:47.554 --> 00:51.060
+Chances are if we forgot to add on the dash A flag
+
+00:51.060 --> 00:52.140
+to see the output from that,
+
+00:52.140 --> 00:54.150
+we might be a little bit frustrated with ourselves
+
+00:54.150 --> 00:55.556
+because then we would have to rerun
+
+00:55.556 --> 00:58.410
+docker start dash A a second time
+
+00:58.410 --> 01:00.550
+and wait another couple minutes.
+
+01:00.550 --> 01:02.910
+In order to get around that,
+
+01:02.910 --> 01:07.230
+we can make use of an additional command of docker logs.
+
+01:07.230 --> 01:08.970
+And then the ID of the container
+
+01:08.970 --> 01:11.100
+that we want to get output from.
+
+01:11.100 --> 01:13.290
+The logs command can be used to look at a container
+
+01:13.290 --> 01:14.970
+and retrieve all the information
+
+01:14.970 --> 01:17.010
+that has been emitted from it.
+
+01:17.010 --> 01:19.410
+Let's try using that docker, create,
+
+01:19.410 --> 01:23.640
+start and then logs command again and seeing what happens.
+
+01:23.640 --> 01:28.260
+So I will do Docker create, BusyBox,
+
+01:28.260 --> 01:30.930
+and I will echo hi there.
+
+01:30.930 --> 01:34.740
+I'll then take that ID and run Docker start
+
+01:34.740 --> 01:36.818
+and paste the ID.
+
+01:36.818 --> 01:39.120
+That starts up the container.
+
+01:39.120 --> 01:41.940
+It executes echo hi there inside of it
+
+01:41.940 --> 01:43.560
+and then it immediately exits.
+
+01:43.560 --> 01:44.610
+And so now at this point,
+
+01:44.610 --> 01:47.100
+I want to go back to that stopped container
+
+01:47.100 --> 01:50.190
+and get all the logs that have been emitted inside of it.
+
+01:50.190 --> 01:52.950
+So to do so I can run Docker logs
+
+01:52.950 --> 01:54.543
+and then paste that ID in.
+
+01:55.468 --> 01:58.440
+And I'll see that when the container had been running
+
+01:58.440 --> 02:01.326
+it had printed out the string hi there.
+
+02:01.326 --> 02:03.060
+One thing to be really clear about
+
+02:03.060 --> 02:04.860
+is that by running Docker logs,
+
+02:04.860 --> 02:08.100
+I'm not rerunning or restarting the container
+
+02:08.100 --> 02:09.840
+in any way, shape or form.
+
+02:09.840 --> 02:12.120
+I'm just getting a record of all the logs
+
+02:12.120 --> 02:15.338
+that have been emitted from that container.
+
+02:15.338 --> 02:16.830
+The docker logs command
+
+02:16.830 --> 02:18.780
+is something that we're going to be using quite a bit
+
+02:18.780 --> 02:21.960
+as we are trying to debug or set up new containers
+
+02:21.960 --> 02:24.060
+because as you can see it's a really good way
+
+02:24.060 --> 02:25.560
+to kind of inspect a container
+
+02:25.560 --> 02:28.080
+and see what's going on inside of it.
+
+02:28.080 --> 02:28.913
+All right.
+
+02:28.913 --> 02:30.090
+Still a couple more commands to get through
+
+02:30.090 --> 02:31.530
+so let's take another quick pause right here
+
+02:31.530 --> 02:33.333
+and continue in the next section.

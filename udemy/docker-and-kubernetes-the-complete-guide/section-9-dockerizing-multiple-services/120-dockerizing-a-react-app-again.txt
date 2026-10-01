@@ -1,0 +1,316 @@
+WEBVTT
+
+00:00.710 --> 00:03.740
+In the last section we did a little bit of reconciliation.
+
+00:03.740 --> 00:09.440
+So if you skipped over all the source code files, hopefully you now have a complex directory.
+
+00:09.440 --> 00:13.160
+And inside there is the client server and worker folders.
+
+00:13.160 --> 00:19.940
+And each of those folders represent the react server, the express API and the worker process as well.
+
+00:19.970 --> 00:25.430
+We're now going to start the process of adding Docker containers to each of these applications, so
+
+00:25.610 --> 00:29.270
+that we can start each of them up inside of a development environment.
+
+00:29.330 --> 00:33.470
+So we're going to take the react project, the express API and the worker as well.
+
+00:33.470 --> 00:36.740
+And we're going to make dev Docker files for each one.
+
+00:36.770 --> 00:41.600
+Now the key thing here that I want to make sure is really clear at this point we are focusing on development
+
+00:41.600 --> 00:43.850
+versions of Docker containers for each one.
+
+00:43.850 --> 00:47.120
+So I want to make sure that we have a smooth development process.
+
+00:47.120 --> 00:51.410
+We're not just going to skip all the way to the end here of deploying everything out to production.
+
+00:51.410 --> 00:53.390
+That would make life a little bit too easy.
+
+00:53.420 --> 00:58.310
+So we're going to first make kind of development versions of containers for each of these applications,
+
+00:58.310 --> 01:01.370
+and make sure that there is a very smooth workflow.
+
+01:01.400 --> 01:06.740
+So in other words, I want to make sure that if I make some change to some code inside of, say, the
+
+01:06.740 --> 01:08.890
+client project or the server project.
+
+01:08.890 --> 01:14.350
+I want to make sure that I don't have to rebuild my entire image to get those changes into effect,
+
+01:14.350 --> 01:17.320
+because that's a really slow development workflow.
+
+01:17.350 --> 01:21.610
+We don't want to have to rebuild an image every time that we make one little change to the source code
+
+01:21.610 --> 01:22.720
+of a project.
+
+01:23.470 --> 01:25.570
+So in practice, what does that mean?
+
+01:25.600 --> 01:30.460
+Well, it means that we need to look at the project files inside of each of those directories.
+
+01:30.490 --> 01:35.710
+And inside of each of them, we're going to set up a pretty similar Docker file workflow.
+
+01:36.160 --> 01:40.750
+Remember that each one of these projects is probably going to have a package.json file that records
+
+01:40.750 --> 01:43.240
+all of the dependencies of our project.
+
+01:43.240 --> 01:47.890
+So we're going to copy over that package.json file as step number one.
+
+01:48.370 --> 01:53.560
+We're then going to run an npm install and then we'll copy over everything else.
+
+01:54.280 --> 01:58.300
+The last thing to keep in mind is that we're going to set up a Docker compose file.
+
+01:58.300 --> 02:04.090
+And that docker compose is going to set up volumes for each of these projects, so that we kind of share
+
+02:04.090 --> 02:06.670
+all of the source code inside of each project.
+
+02:06.670 --> 02:11.830
+And that's what's going to make sure that we don't have to rebuild our image entirely from scratch every
+
+02:11.860 --> 02:14.380
+time that we make one tiny little change.
+
+02:14.830 --> 02:18.340
+Okay, so with all that in mind, let's get started right now.
+
+02:19.330 --> 02:25.060
+I'm going to find my terminal and I'm going to start up my code editor based on that complex directory.
+
+02:25.090 --> 02:26.680
+Now again quick reminder here.
+
+02:26.680 --> 02:30.850
+I've set up the code command line tool so that I can use it directly from my command line.
+
+02:30.850 --> 02:32.440
+If you don't have that set up.
+
+02:32.440 --> 02:37.000
+Basically at this point you just want to open up your code editor based on that complex directory.
+
+02:37.030 --> 02:40.030
+So you should see client server and worker.
+
+02:41.350 --> 02:46.210
+Now, I think a good place to get started would be on a Docker file or a development docker file for
+
+02:46.210 --> 02:51.760
+our client directory, because this project right here, we've already set up a Docker file kind of
+
+02:51.790 --> 02:56.260
+in the last section, when we went through the deployment of the first application we put together.
+
+02:56.860 --> 03:04.780
+So inside of my client directory I'll get started by making a new file called Docker file.dev.
+
+03:05.980 --> 03:11.200
+Again we're making use of this added extension right here to indicate that this is a Docker file only
+
+03:11.200 --> 03:14.050
+for use during development of our application.
+
+03:14.830 --> 03:19.150
+Then inside of here we're going to add essentially the same exact stuff that we had before.
+
+03:19.150 --> 03:28.530
+We're going to specify a base image of node Alpine, I'm going to set up a working directory of app.
+
+03:29.250 --> 03:33.720
+I'm going to copy the package.json file over.
+
+03:34.380 --> 03:37.140
+I'll run npm install.
+
+03:37.500 --> 03:40.380
+I'll copy over everything else.
+
+03:41.100 --> 03:48.630
+And then finally I'll run a command of npm run start like so.
+
+03:49.290 --> 03:52.500
+So this is the same Dockerfile that we put together just a moment ago.
+
+03:52.500 --> 03:56.970
+And we're probably going to end up using a very similar one in our other two projects as well, with
+
+03:56.970 --> 04:00.720
+maybe just 1 or 2, 1 or 2 small little tweaks.
+
+04:01.560 --> 04:04.230
+Now, to test this out, I'm going to flip back over to my terminal.
+
+04:04.260 --> 04:08.160
+I'm going to run the docker build command inside of the client directory.
+
+04:08.160 --> 04:14.190
+And I'm going to make sure that I specify the dockerfile.dev file as the Dockerfile of choice.
+
+04:14.250 --> 04:20.850
+So back at my terminal I'll change into the client directory and I'll execute docker build.
+
+04:21.090 --> 04:25.440
+I'm going to specify the Dockerfile to use for this by adding on the dash f flag.
+
+04:25.920 --> 04:28.250
+I'll say docker Docker file.dev.
+
+04:28.280 --> 04:32.390
+And then I'll put a period on to specify the build context.
+
+04:32.390 --> 04:35.990
+And remember I'm specifying the build context right here of period.
+
+04:35.990 --> 04:39.800
+That means use the current directory in order for everything to work the way we expect.
+
+04:39.800 --> 04:41.810
+I have to be inside the client directory.
+
+04:41.810 --> 04:47.210
+So this is where that whole idea of build context is going is excuse me, is going to start getting
+
+04:47.210 --> 04:47.990
+really important.
+
+04:47.990 --> 04:52.820
+And we'll talk in great detail about this build context stuff in just a moment as well.
+
+04:53.930 --> 04:54.140
+Okay.
+
+04:54.170 --> 04:55.250
+So I'm going to run that.
+
+04:55.370 --> 04:58.160
+We'll very quickly see pulling the node alpine image.
+
+04:58.160 --> 05:00.230
+It's then going to do the npm install.
+
+05:00.260 --> 05:05.660
+During the npm install process you might see a warning or three warnings are totally fine, so don't
+
+05:05.660 --> 05:06.860
+worry if you see a warning.
+
+05:06.860 --> 05:08.450
+No issue with that whatsoever.
+
+05:08.450 --> 05:11.480
+If you don't see any warnings, that's also totally okay.
+
+05:11.480 --> 05:12.890
+No problem with that as well.
+
+05:13.250 --> 05:15.200
+Now the npm install is going to take just a moment.
+
+05:15.200 --> 05:19.430
+After that runs, it's going to execute the copy instruction and pull over all the rest of the project
+
+05:19.430 --> 05:24.650
+files, and then start up everything inside there by setting the default command of npm run start,
+
+05:24.650 --> 05:28.550
+which is how you start up an application that has been created with Create React app.
+
+05:28.940 --> 05:30.830
+Now this might take a moment or two.
+
+05:30.950 --> 05:32.210
+Okay, well it's just about done.
+
+05:32.210 --> 05:34.200
+So let's just hold on for just a second here.
+
+05:34.200 --> 05:35.910
+It's all done with the npm install.
+
+05:36.570 --> 05:41.280
+So it's now going to do the copy step in just a second to pull over all the other source code files
+
+05:41.280 --> 05:45.690
+we have inside of our project, like say the src folder and the public directory.
+
+05:46.230 --> 05:48.750
+And then once that's all done, it'll set the default command.
+
+05:48.750 --> 05:49.800
+And that's pretty much it.
+
+05:49.800 --> 05:51.720
+There's our container right there.
+
+05:51.750 --> 05:56.610
+So let's now try starting this up by running Docker run with the container ID.
+
+05:56.970 --> 05:59.970
+So I'll do docker run and I'll paste that ID in.
+
+06:00.900 --> 06:02.850
+We'll then see the react script start up.
+
+06:02.850 --> 06:05.070
+We should see it starting the development server.
+
+06:05.070 --> 06:08.880
+And then eventually the application should start up something like this right here.
+
+06:08.940 --> 06:13.830
+Now if you see any message that says something about like an unused variable or anything like that,
+
+06:13.830 --> 06:18.660
+anything that seems to indicate an error, that means that you very likely made a typo when we were
+
+06:18.660 --> 06:20.190
+putting the application together.
+
+06:20.220 --> 06:25.320
+And so you will want to go back to the last section where we downloaded that checkpoint zip file and
+
+06:25.320 --> 06:30.030
+overwrite your files with everything from that zip file, just to make sure that you're using the exact
+
+06:30.060 --> 06:31.380
+same code that I am.
+
+06:32.040 --> 06:32.280
+All right.
+
+06:32.280 --> 06:33.750
+So that's one Docker file done.
+
+06:33.750 --> 06:38.340
+Let's take care of the other two for the server and worker projects in the next section.
+
+06:38.340 --> 06:40.020
+So I'll see you in just a minute.

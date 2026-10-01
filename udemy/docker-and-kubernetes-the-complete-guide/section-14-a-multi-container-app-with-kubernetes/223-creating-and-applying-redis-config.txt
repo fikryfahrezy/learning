@@ -1,0 +1,544 @@
+WEBVTT
+
+00:00.840 --> 00:01.673
+-: In this section
+
+00:01.673 --> 00:04.590
+I've got some really good news and some bad news.
+
+00:04.590 --> 00:06.390
+So the good news is that we get to put together
+
+00:06.390 --> 00:09.090
+our configuration for the Redis deployment
+
+00:09.090 --> 00:11.670
+that's going to manage a single Redis pod.
+
+00:11.670 --> 00:13.530
+The bad news is that that means
+
+00:13.530 --> 00:16.140
+we have to write out two more configuration files
+
+00:16.140 --> 00:18.480
+very similar to the ones we've already put together.
+
+00:18.480 --> 00:20.550
+So I know writing out all these configuration files
+
+00:20.550 --> 00:21.960
+is getting very tedious,
+
+00:21.960 --> 00:23.610
+but we're almost at the end here.
+
+00:23.610 --> 00:25.800
+We just have to do the Redis deployment,
+
+00:25.800 --> 00:27.180
+its cluster IP service,
+
+00:27.180 --> 00:28.950
+and then the same thing for Postgres
+
+00:28.950 --> 00:30.510
+and its service as well.
+
+00:30.510 --> 00:31.343
+And then after that,
+
+00:31.343 --> 00:34.230
+we're done with these very repetitive config files,
+
+00:34.230 --> 00:37.350
+and we get to look at some more interesting config files
+
+00:37.350 --> 00:39.060
+that are going to do some more interesting things
+
+00:39.060 --> 00:40.140
+inside of our cluster.
+
+00:40.140 --> 00:41.190
+So let's get to it.
+
+00:41.190 --> 00:44.220
+We're gonna create our deployment config file for Redis
+
+00:44.220 --> 00:46.743
+and its associated cluster IP service.
+
+00:48.000 --> 00:49.320
+All right, inside of my code editor
+
+00:49.320 --> 00:51.180
+I'll find my K8s directory.
+
+00:51.180 --> 00:53.230
+And inside there, I'll make a new file
+
+00:54.570 --> 00:57.930
+called redisdeployment.yaml.
+
+00:57.930 --> 01:00.330
+So we're gonna start off first with the deployment.
+
+01:00.330 --> 01:01.920
+Now the deployment that we're going to put together
+
+01:01.920 --> 01:03.990
+is going to look essentially identical
+
+01:03.990 --> 01:06.420
+to the other ones that we've already written so far.
+
+01:06.420 --> 01:08.430
+So let's get through it as quickly as we can,
+
+01:08.430 --> 01:10.680
+but do make sure that you type out everything correctly
+
+01:10.680 --> 01:11.970
+because any little typo
+
+01:11.970 --> 01:14.550
+is going to eventually result in some error message
+
+01:14.550 --> 01:15.960
+down the line.
+
+01:15.960 --> 01:20.070
+All right, so I'll do an API version of apps V1.
+
+01:20.070 --> 01:22.743
+I'll give this object a type of deployment.
+
+01:24.060 --> 01:25.713
+I'll set up a metadata.
+
+01:27.510 --> 01:31.860
+That's going to provide a name of Redis deployment.
+
+01:31.860 --> 01:33.900
+And then we'll start putting together some configuration
+
+01:33.900 --> 01:35.880
+that's going to exactly configure
+
+01:35.880 --> 01:39.360
+how the deployment is created and how it behaves.
+
+01:39.360 --> 01:42.480
+So for my spec, I'm going to give a replicas of one.
+
+01:42.480 --> 01:44.970
+We only want to have one single copy of Redis
+
+01:44.970 --> 01:46.350
+at any given time.
+
+01:46.350 --> 01:47.940
+Now Redis is very interesting,
+
+01:47.940 --> 01:50.430
+in that we can set it up in a sort of cluster mode
+
+01:50.430 --> 01:52.530
+where there will be multiple copies of Redis
+
+01:52.530 --> 01:54.180
+that kind of communicate with each other
+
+01:54.180 --> 01:55.830
+and enhance the overall stability
+
+01:55.830 --> 01:57.600
+and throughput of our application,
+
+01:57.600 --> 01:59.820
+but this is a course much more about Kubernetes
+
+01:59.820 --> 02:01.260
+than it is about Redis.
+
+02:01.260 --> 02:03.630
+So we're not gonna worry about setting up Redis
+
+02:03.630 --> 02:06.660
+in any sort of like cluster mode or anything like that.
+
+02:06.660 --> 02:09.453
+So we're just gonna have one standalone copy of Redis.
+
+02:10.470 --> 02:14.460
+All right, We'll also give it a selector.
+
+02:14.460 --> 02:16.950
+It's going to look for any set of pods out there
+
+02:16.950 --> 02:20.883
+that has a label of component Redis.
+
+02:22.530 --> 02:23.910
+I'll then unindent back out
+
+02:23.910 --> 02:26.280
+to be on the same indentation level as selector,
+
+02:26.280 --> 02:28.710
+and we'll provide our pod template.
+
+02:28.710 --> 02:29.880
+So for the pod template,
+
+02:29.880 --> 02:32.190
+we wanna give it some metadata.
+
+02:32.190 --> 02:34.980
+Notably, we want it to have a set of labels
+
+02:34.980 --> 02:37.263
+of component Redis like so.
+
+02:39.690 --> 02:41.340
+I'm then going to unindent again
+
+02:41.340 --> 02:45.150
+so that I'm on the same indentation level as metadata.
+
+02:45.150 --> 02:48.030
+And we'll provide the pod a spec.
+
+02:48.030 --> 02:49.620
+So it's gonna have a single container,
+
+02:49.620 --> 02:52.740
+but remember the keyword right here is containers, plural,
+
+02:52.740 --> 02:54.840
+even though we only have one.
+
+02:54.840 --> 02:57.630
+So we'll give this thing a name of Redis.
+
+02:57.630 --> 02:59.730
+It's going to use the image Redis
+
+02:59.730 --> 03:02.220
+with no Docker ID required this time,
+
+03:02.220 --> 03:04.170
+like your DockerID/
+
+03:04.170 --> 03:06.780
+because we don't have our own custom version of Redis,
+
+03:06.780 --> 03:08.880
+we are using the copy that is included
+
+03:08.880 --> 03:11.763
+in the public repository over on Docker Hub.
+
+03:14.370 --> 03:15.990
+We'll then set up the different ports
+
+03:15.990 --> 03:18.150
+that need to be mapped to the container.
+
+03:18.150 --> 03:18.983
+In the case of Redis,
+
+03:18.983 --> 03:22.350
+the default port that it uses is 6379.
+
+03:22.350 --> 03:23.610
+And there's really no good reason
+
+03:23.610 --> 03:25.230
+for us to try to change that.
+
+03:25.230 --> 03:27.540
+Totally fine to use the default port.
+
+03:27.540 --> 03:31.653
+So I'll set up a container port of 6379 like so.
+
+03:34.140 --> 03:35.610
+All right, again, I gotta ask you,
+
+03:35.610 --> 03:38.070
+please double check all the indentation
+
+03:38.070 --> 03:40.050
+and all the spelling inside this file,
+
+03:40.050 --> 03:42.180
+because if anything inside of here is wrong,
+
+03:42.180 --> 03:44.280
+like any little typo whatsoever
+
+03:44.280 --> 03:47.430
+is going to eventually result in an error message.
+
+03:47.430 --> 03:49.260
+Like literally, if I change anything inside of here,
+
+03:49.260 --> 03:52.440
+like if I delete a P in component or something like that,
+
+03:52.440 --> 03:55.110
+something down the line is not going to work as expected.
+
+03:55.110 --> 03:58.500
+So please double check your spelling inside this file.
+
+03:58.500 --> 04:00.120
+All right, so that's the deployment.
+
+04:00.120 --> 04:02.340
+So we're now going to create a cluster IP
+
+04:02.340 --> 04:06.150
+so that our server pods and the multi worker pod
+
+04:06.150 --> 04:08.490
+can eventually connect to this Redis instance
+
+04:08.490 --> 04:12.153
+that's running inside of a container inside of the pod.
+
+04:13.891 --> 04:15.270
+So back inside of my code editor
+
+04:15.270 --> 04:17.010
+I'll find my K8s directory.
+
+04:17.010 --> 04:18.960
+I'm gonna make a new file called
+
+04:18.960 --> 04:20.463
+redisclusteripservice.yaml.
+
+04:25.470 --> 04:26.370
+And then inside of here,
+
+04:26.370 --> 04:27.960
+we'll put together the config
+
+04:27.960 --> 04:29.670
+to make a new cluster IP service.
+
+04:29.670 --> 04:31.500
+And again, it's gonna be identical
+
+04:31.500 --> 04:33.300
+to the other ones we've already put together.
+
+04:33.300 --> 04:35.430
+So let's get through this quickly as well.
+
+04:35.430 --> 04:38.250
+We'll do our API version of V1.
+
+04:38.250 --> 04:40.860
+We are making a service.
+
+04:40.860 --> 04:45.150
+It's gonna have metadata with a name of Redis service.
+
+04:45.150 --> 04:46.350
+Actually I think that,
+
+04:46.350 --> 04:48.120
+what was the terminology we've been using?
+
+04:48.120 --> 04:49.200
+Cluster IP service.
+
+04:49.200 --> 04:51.300
+So let's make sure that we stay very consistent here.
+
+04:51.300 --> 04:54.393
+So I'll do Redis cluster IP service like so.
+
+04:55.620 --> 04:59.133
+I'll then give it a spec with a type of cluster IP.
+
+05:00.390 --> 05:01.770
+We'll make sure that we provide the selector
+
+05:01.770 --> 05:04.140
+so that this service knows what set of pods
+
+05:04.140 --> 05:06.600
+it is managing access to.
+
+05:06.600 --> 05:09.810
+So it's going to be component Redis.
+
+05:09.810 --> 05:12.540
+And then finally, we need to designate what set of ports
+
+05:12.540 --> 05:14.610
+this service is going to manage.
+
+05:14.610 --> 05:15.723
+So I'll say ports.
+
+05:17.190 --> 05:21.330
+Any outside object that is trying to get at our Redis pod
+
+05:21.330 --> 05:25.530
+is going to access this thing on port 6379.
+
+05:25.530 --> 05:27.270
+And then after it goes through the service,
+
+05:27.270 --> 05:29.880
+we're just going to let it stick with 6379
+
+05:29.880 --> 05:31.560
+and have that port be what it connects to
+
+05:31.560 --> 05:32.580
+inside of our container.
+
+05:32.580 --> 05:37.580
+So I'll do a target port of 6379 as well like so.
+
+05:37.740 --> 05:42.090
+Again, no good reason to try to redirect the ports here.
+
+05:42.090 --> 05:44.280
+There are situations where you would want to do that.
+
+05:44.280 --> 05:46.470
+For example, if we have an Nginx server
+
+05:46.470 --> 05:48.630
+that is supposed to be serving up web traffic
+
+05:48.630 --> 05:51.210
+on like port 80 or something like that,
+
+05:51.210 --> 05:52.140
+but for whatever reason,
+
+05:52.140 --> 05:54.960
+we have configured Nginx to listen on port 3000,
+
+05:54.960 --> 05:56.520
+which is actually something we kind of did
+
+05:56.520 --> 05:58.110
+on the React application,
+
+05:58.110 --> 06:01.770
+but the React application is not directly receiving traffic.
+
+06:01.770 --> 06:04.080
+It's kind of backed behind that Ingress thing
+
+06:04.080 --> 06:06.090
+that we're going to eventually set up as well.
+
+06:06.090 --> 06:06.930
+But if that were the case,
+
+06:06.930 --> 06:09.300
+then we could do that little bit of port redirection
+
+06:09.300 --> 06:13.200
+and not have to reconfigure our image or anything like that.
+
+06:13.200 --> 06:14.973
+Okay, so this looks pretty good.
+
+06:15.810 --> 06:16.830
+Now the last thing I wanna do
+
+06:16.830 --> 06:20.610
+is load this up into kubectl as well with the apply command.
+
+06:20.610 --> 06:23.250
+So I'll flip back over to my terminal.
+
+06:23.250 --> 06:25.020
+There's the K8s directory.
+
+06:25.020 --> 06:29.040
+I'll do a kubectl apply-FK8s,
+
+06:29.040 --> 06:31.770
+where it's gonna throw everything inside there.
+
+06:31.770 --> 06:33.840
+We should probably see a bunch of different objects
+
+06:33.840 --> 06:36.840
+that are going to end up unchanged like so.
+
+06:36.840 --> 06:39.420
+But then the two new config files that we just made
+
+06:39.420 --> 06:43.440
+will be reflected as objects created inside this log.
+
+06:43.440 --> 06:44.400
+And so just as before,
+
+06:44.400 --> 06:46.570
+we can do a quick get pods
+
+06:48.000 --> 06:49.170
+and verify that yep,
+
+06:49.170 --> 06:51.990
+we've got a single copy of Redis up and running.
+
+06:51.990 --> 06:55.020
+And we can also do a get services
+
+06:55.020 --> 06:57.900
+and verify that our Redis cluster IP service
+
+06:57.900 --> 07:01.710
+is up and running as well on port 6379.
+
+07:01.710 --> 07:03.060
+Okay, so this looks good.
+
+07:03.060 --> 07:05.880
+Now we've only got one last set of config files
+
+07:05.880 --> 07:09.630
+for Postgres along with this associated cluster IP.
+
+07:09.630 --> 07:11.400
+So let's get through that in last section.
+
+07:11.400 --> 07:12.990
+I know this stuff is so tedious
+
+07:12.990 --> 07:14.970
+with all this writing of identical files,
+
+07:14.970 --> 07:16.290
+but we're almost done with that.
+
+07:16.290 --> 07:18.060
+So let's finish up these last two config files
+
+07:18.060 --> 07:18.930
+in the next section,
+
+07:18.930 --> 07:22.020
+and then we get to get back to some more interesting topics
+
+07:22.020 --> 07:23.430
+in the world of Kubernetes.
+
+07:23.430 --> 07:25.880
+So quick pause and I'll see you in just a minute.

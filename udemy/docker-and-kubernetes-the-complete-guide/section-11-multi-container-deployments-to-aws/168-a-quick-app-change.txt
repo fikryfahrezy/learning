@@ -1,0 +1,118 @@
+WEBVTT
+
+00:00.840 --> 00:02.550
+-: The last thing that I want to do with our application
+
+00:02.550 --> 00:03.990
+is a very quick change
+
+00:03.990 --> 00:05.880
+to some of the source code inside of it.
+
+00:05.880 --> 00:07.800
+I then want to redeploy the application
+
+00:07.800 --> 00:09.390
+and just make sure that we can get changes
+
+00:09.390 --> 00:10.980
+to appear on the screen.
+
+00:10.980 --> 00:12.690
+So inside of my client directory,
+
+00:12.690 --> 00:16.410
+I'll find the source folder and then the app.js file.
+
+00:16.410 --> 00:18.720
+Inside of here, we've got the H1 title
+
+00:18.720 --> 00:20.280
+of "Welcome to React".
+
+00:20.280 --> 00:21.780
+Let's just change that text in there
+
+00:21.780 --> 00:25.530
+to something like "BIB Calculator".
+
+00:25.530 --> 00:27.090
+I'll then save the file.
+
+00:27.090 --> 00:29.190
+We'll then flip back over to our terminal.
+
+00:30.600 --> 00:34.110
+I'll do a git status and verify that the change is there.
+
+00:34.110 --> 00:35.370
+Yep, it is.
+
+00:35.370 --> 00:37.653
+We'll do a add, a commit,
+
+00:38.910 --> 00:43.083
+and then, of course, a push origin master.
+
+00:44.280 --> 00:46.410
+And that'll push those changes up to GitHub.
+
+00:46.410 --> 00:50.310
+Now, the entire flow of making changes on a branch
+
+00:50.310 --> 00:52.020
+and then merging a pull request
+
+00:52.020 --> 00:53.610
+and then only deploying those changes
+
+00:53.610 --> 00:54.840
+can absolutely still be used
+
+00:54.840 --> 00:57.000
+with this multi-container deployment.
+
+00:57.000 --> 00:59.160
+In other words, that entire kind of development workflow
+
+00:59.160 --> 01:01.980
+that we went through with that single-container deployment,
+
+01:01.980 --> 01:03.660
+totally applicable here as well.
+
+01:03.660 --> 01:05.670
+But I think that we've seen enough examples of that,
+
+01:05.670 --> 01:08.310
+so we're just kind of short-circuiting the process,
+
+01:08.310 --> 01:11.040
+more or less, and doing a deployment directly to master,
+
+01:11.040 --> 01:12.750
+where it will then be built and deployed
+
+01:12.750 --> 01:15.090
+off to Elastic Beanstalk.
+
+01:15.090 --> 01:16.530
+So let's take another quick pause.
+
+01:16.530 --> 01:18.120
+I'll let the deployment go through.
+
+01:18.120 --> 01:19.860
+And then we'll catch up in the next section
+
+01:19.860 --> 01:21.750
+and just make sure that all those changes
+
+01:21.750 --> 01:23.670
+or, I guess, that one change that we made
+
+01:23.670 --> 01:26.460
+shows up on the title of our application.
+
+01:26.460 --> 01:28.960
+So quick pause, and I'll see you in just a second.

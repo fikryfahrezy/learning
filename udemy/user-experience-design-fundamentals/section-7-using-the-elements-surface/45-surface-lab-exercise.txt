@@ -1,0 +1,103 @@
+WEBVTT
+
+00:00.910 --> 00:04.240
+Because the surface plane deals with things that you see.
+
+00:04.390 --> 00:09.600
+I'd like you to try performing a user interface audit on a couple of different websites.
+
+00:09.610 --> 00:14.110
+So I want you to take a look at the following sites, and I want you to ask a series of questions of
+
+00:14.110 --> 00:14.860
+each one.
+
+00:14.890 --> 00:20.080
+Take the time to write down your answers and consider everything that we've discussed up to this point
+
+00:20.080 --> 00:21.490
+about the surface plane.
+
+00:22.450 --> 00:27.940
+First, does the user interface reflect the perspectives and behaviors of the intended users?
+
+00:28.060 --> 00:34.120
+Our images, icons, etcetera that are used, are they appropriate for the intended users or are they
+
+00:34.120 --> 00:36.130
+going to make sense to those people?
+
+00:36.130 --> 00:41.440
+When they look at those things, do they automatically know what they are and what they're for are items
+
+00:41.440 --> 00:45.790
+that are functionally and or logically connected, grouped together visually?
+
+00:45.790 --> 00:51.670
+Is it easy to make clear relationships between groups of information or groups of functionality?
+
+00:51.820 --> 00:56.430
+Is the information on the screen presented in the order of importance to the user?
+
+00:56.440 --> 01:01.910
+In other words, are the things that concern them the most presented first?
+
+01:01.940 --> 01:02.200
+Okay.
+
+01:02.350 --> 01:05.230
+Those are the things that come to their attention before anything else.
+
+01:05.560 --> 01:06.420
+Color use.
+
+01:06.430 --> 01:10.750
+Do colors reinforce hierarchy and content, or do they interfere with it?
+
+01:10.780 --> 01:14.050
+Does the color help you understand what's going on or is it distracting?
+
+01:14.200 --> 01:17.850
+Is the color use functional or is it merely decorative?
+
+01:18.130 --> 01:19.100
+Does it do something?
+
+01:19.120 --> 01:21.520
+Does it aid you in moving through information?
+
+01:21.550 --> 01:24.380
+Does it aid you in understanding what you see?
+
+01:24.560 --> 01:27.350
+Are the fonts used easy to read on the screen?
+
+01:27.380 --> 01:33.620
+Do you have difficulty focusing on certain areas of text or reading long lines of text?
+
+01:33.860 --> 01:39.680
+And does font use reinforce hierarchy and content, or does it interfere with it much like color?
+
+01:39.680 --> 01:46.310
+Is it helping you to understand and move through the content or is it distracting, interfering, hampering
+
+01:46.310 --> 01:48.840
+your ability to comprehend the information?
+
+01:48.860 --> 01:54.210
+So as you look at these three sites, go ahead and open a browser and visit them, okay?
+
+01:54.230 --> 01:56.420
+Spend some time looking at the screen.
+
+01:56.420 --> 02:00.050
+Okay, just the home screen and think about those questions.
+
+02:00.050 --> 02:05.260
+And again, take the time to write down your answers and then go through it and see what you learned.
+
+02:05.270 --> 02:10.070
+If you approach this in a very critical manner, I think you'll be surprised at some of what you come
+
+02:10.070 --> 02:10.700
+up with.

@@ -1,0 +1,475 @@
+WEBVTT
+
+00:00.630 --> 00:01.463
+-: In the last section,
+
+00:01.463 --> 00:04.080
+we finished up our client deployment configuration file,
+
+00:04.080 --> 00:07.050
+and we're now ready to toss this thing off to kubectl,
+
+00:07.050 --> 00:09.720
+and see it running on our local cluster.
+
+00:09.720 --> 00:12.660
+Now, before we do, I wanna give you a very quick reminder.
+
+00:12.660 --> 00:14.010
+If you flip over to your terminal,
+
+00:14.010 --> 00:16.530
+and do a kubectl get pods,
+
+00:16.530 --> 00:17.700
+you'll recall that we still have
+
+00:17.700 --> 00:19.530
+the original pod that we had created
+
+00:19.530 --> 00:23.340
+with our client-pod.yaml configuration file.
+
+00:23.340 --> 00:26.280
+I think that would be really nice if we got rid of this pod
+
+00:26.280 --> 00:30.330
+or somehow deleted it before we sent out our deployment.
+
+00:30.330 --> 00:33.090
+That way when we get our pods in the future,
+
+00:33.090 --> 00:34.950
+we will only see the one pod
+
+00:34.950 --> 00:36.750
+that was created by the deployment
+
+00:36.750 --> 00:38.790
+as opposed to the one pod from the deployment
+
+00:38.790 --> 00:40.950
+and this one pod from the original
+
+00:40.950 --> 00:43.830
+client pod configuration file we had created.
+
+00:43.830 --> 00:47.280
+So I wanna figure out how we can delete this existing pod.
+
+00:47.280 --> 00:49.500
+Now to remove an existing object,
+
+00:49.500 --> 00:51.960
+we're going to be making use of the configuration file
+
+00:51.960 --> 00:53.940
+that was used to create it.
+
+00:53.940 --> 00:55.950
+So in order to remove an existing object,
+
+00:55.950 --> 00:59.340
+we're going to run kubectl delete -f,
+
+00:59.340 --> 01:00.990
+and it will pass in the config file
+
+01:00.990 --> 01:03.903
+that was used to create that object.
+
+01:05.850 --> 01:07.710
+When we pass in that configuration file,
+
+01:07.710 --> 01:10.263
+kubectl is going to look at the file.
+
+01:11.100 --> 01:12.570
+So here's the client pod file,
+
+01:12.570 --> 01:14.711
+it's gonna look at this file,
+
+01:14.711 --> 01:16.350
+it's going to look at the kind property right here,
+
+01:16.350 --> 01:18.810
+and the name specified as well.
+
+01:18.810 --> 01:21.510
+Kubectl is then going to try to find an object
+
+01:21.510 --> 01:24.090
+with the same type that has the same name.
+
+01:24.090 --> 01:27.390
+And when it finds it, it's going to delete it.
+
+01:27.390 --> 01:29.400
+Now, one thing I want to mention very quickly here
+
+01:29.400 --> 01:32.610
+is that this delete command seems an awful lot
+
+01:32.610 --> 01:35.640
+like an imperative update to our cluster.
+
+01:35.640 --> 01:37.620
+And in fact, it really is.
+
+01:37.620 --> 01:39.270
+This is an imperative update.
+
+01:39.270 --> 01:41.917
+We are issuing a very direct command that says,
+
+01:41.917 --> 01:42.930
+"Hey Kubernetes,
+
+01:42.930 --> 01:45.570
+I want you to make this very discrete change
+
+01:45.570 --> 01:48.120
+to the state of our cluster."
+
+01:48.120 --> 01:48.953
+Now unfortunately,
+
+01:48.953 --> 01:52.020
+this is something that we really just can't quite get over.
+
+01:52.020 --> 01:54.060
+When we want to delete, create a resource,
+
+01:54.060 --> 01:55.740
+or change an existing resource,
+
+01:55.740 --> 01:58.260
+we pass in an updated configuration file.
+
+01:58.260 --> 02:00.180
+And so we're kind of leaving it up to Kubernetes
+
+02:00.180 --> 02:02.250
+to make the appropriate changes.
+
+02:02.250 --> 02:04.860
+But when we want to delete our resource, unfortunately,
+
+02:04.860 --> 02:08.070
+if we wanted to delete some object inside of our cluster,
+
+02:08.070 --> 02:10.470
+we would have to kind of take the entire state
+
+02:10.470 --> 02:11.550
+of our entire cluster,
+
+02:11.550 --> 02:14.670
+and then like subtract out that one object.
+
+02:14.670 --> 02:15.503
+In other words,
+
+02:15.503 --> 02:17.070
+it's just kind of hard to picture a way
+
+02:17.070 --> 02:19.050
+to make a declarative update
+
+02:19.050 --> 02:21.270
+that will delete an existing object.
+
+02:21.270 --> 02:24.030
+And so this is going to be the one kind of location
+
+02:24.030 --> 02:25.800
+where we kind of fall back to the idea
+
+02:25.800 --> 02:28.590
+of an imperative update to the state of our cluster.
+
+02:28.590 --> 02:30.870
+Okay, let's give this a shot.
+
+02:30.870 --> 02:32.250
+So back at my command line,
+
+02:32.250 --> 02:36.030
+I'll do kubectl delete -f,
+
+02:36.030 --> 02:40.323
+and then I'll specify the client-pod.yaml file.
+
+02:41.250 --> 02:42.510
+And then we'll see that the pod
+
+02:42.510 --> 02:44.703
+with a name of client pod was deleted.
+
+02:45.540 --> 02:48.510
+Now if it appears that this command just seems to hang,
+
+02:48.510 --> 02:52.020
+it will eventually resolve after about 10 seconds or so.
+
+02:52.020 --> 02:53.310
+When the pod gets deleted,
+
+02:53.310 --> 02:55.830
+it's going through the same process in the background
+
+02:55.830 --> 02:57.150
+that usually gets applied
+
+02:57.150 --> 03:00.420
+to deleting a container with the Docker CLI.
+
+03:00.420 --> 03:02.160
+Remember, when you delete a container,
+
+03:02.160 --> 03:04.080
+or stop a container I should say,
+
+03:04.080 --> 03:06.210
+the container is given 10 seconds to resolve,
+
+03:06.210 --> 03:08.070
+and then eventually it just gets killed.
+
+03:08.070 --> 03:10.020
+That's what happens in the Docker world.
+
+03:10.020 --> 03:11.220
+And the same thing is what happens
+
+03:11.220 --> 03:13.230
+when we delete a running pod.
+
+03:13.230 --> 03:14.940
+It gets 10 seconds to resolve
+
+03:14.940 --> 03:16.620
+and eventually turn itself off,
+
+03:16.620 --> 03:17.910
+and then after those 10 seconds,
+
+03:17.910 --> 03:20.733
+the thing automatically just gets axed entirely.
+
+03:21.600 --> 03:24.450
+If we now do a kubectl get pods,
+
+03:24.450 --> 03:27.123
+we'll see that we no longer have any running pods.
+
+03:28.470 --> 03:30.480
+Okay, so now that we've cleaned things up a little bit.
+
+03:30.480 --> 03:33.090
+Let's try applying our configuration file
+
+03:33.090 --> 03:36.330
+of client-deployment.yaml to our cluster.
+
+03:36.330 --> 03:37.620
+After we apply this thing,
+
+03:37.620 --> 03:40.500
+we should see a new single running pod
+
+03:40.500 --> 03:43.080
+using the multi-client image.
+
+03:43.080 --> 03:45.000
+So I'm gonna flip over to my terminal,
+
+03:45.000 --> 03:50.000
+and I'll do a kubectl apply -f client-deployment.yaml.
+
+03:53.820 --> 03:54.930
+And then we very quickly see
+
+03:54.930 --> 03:57.030
+that the deployment was created.
+
+03:57.030 --> 03:58.950
+So we can now print out the status
+
+03:58.950 --> 04:02.400
+of all of our pods with kubectl get pods, and we'll see
+
+04:02.400 --> 04:05.250
+that there is exactly one pod running right now,
+
+04:05.250 --> 04:07.800
+and it has a randomly generated name
+
+04:07.800 --> 04:10.320
+very clearly tied to the client deployment
+
+04:10.320 --> 04:11.970
+that we just created.
+
+04:11.970 --> 04:15.630
+We can also print out the status of that deployment itself
+
+04:15.630 --> 04:19.110
+using the command kubectl get deployments.
+
+04:19.110 --> 04:21.000
+So we're still using the get command,
+
+04:21.000 --> 04:22.590
+the same one we were using before,
+
+04:22.590 --> 04:24.660
+but we're changing the type of object
+
+04:24.660 --> 04:26.100
+that we are looking for.
+
+04:26.100 --> 04:28.290
+So now as opposed to looking for pods,
+
+04:28.290 --> 04:30.780
+we're looking for deployments.
+
+04:30.780 --> 04:32.370
+So I'll run that,
+
+04:32.370 --> 04:34.200
+and we'll see that we have one deployment
+
+04:34.200 --> 04:35.883
+called client deployment.
+
+04:37.440 --> 04:40.350
+You'll also notice a couple of interesting columns on here.
+
+04:40.350 --> 04:42.000
+We have ones across the board
+
+04:42.000 --> 04:45.030
+for desired, current, up to date, and available.
+
+04:45.030 --> 04:47.760
+Desired is a reference to the number of replicas
+
+04:47.760 --> 04:50.910
+or the number of pods that this deployment
+
+04:50.910 --> 04:52.980
+wants to eventually have.
+
+04:52.980 --> 04:55.260
+So at present inside of our configuration file,
+
+04:55.260 --> 04:58.170
+we said that we want exactly one replica running,
+
+04:58.170 --> 05:01.200
+and so we have desired of one.
+
+05:01.200 --> 05:02.730
+We then see current, so that's the number,
+
+05:02.730 --> 05:04.830
+of pods that are up and running.
+
+05:04.830 --> 05:07.350
+We have up to date, which is also one.
+
+05:07.350 --> 05:08.400
+So at any point in time
+
+05:08.400 --> 05:12.510
+that you make a configuration change to your deployment,
+
+05:12.510 --> 05:14.550
+specifically a configuration change
+
+05:14.550 --> 05:16.500
+to the template down here,
+
+05:16.500 --> 05:17.910
+the deployment would automatically
+
+05:17.910 --> 05:21.810
+mark all the existing pods as being out of date.
+
+05:21.810 --> 05:24.540
+And so we might see up to date go down to zero.
+
+05:24.540 --> 05:27.780
+And then as the existing pods get updated or recreated
+
+05:27.780 --> 05:29.550
+with that new configuration state,
+
+05:29.550 --> 05:33.240
+they'll eventually restore this up to date field.
+
+05:33.240 --> 05:34.650
+And then finally available right here
+
+05:34.650 --> 05:36.930
+is the number of pods controlled by this deployment
+
+05:36.930 --> 05:38.400
+that are ready and available
+
+05:38.400 --> 05:40.320
+to accept incoming client traffic,
+
+05:40.320 --> 05:43.410
+or essentially just successfully running their containers
+
+05:43.410 --> 05:45.873
+with the appropriate configuration for each one.
+
+05:47.400 --> 05:48.840
+Okay, so that's it.
+
+05:48.840 --> 05:51.120
+So we've now seen how we can use a deployment
+
+05:51.120 --> 05:53.250
+to create a set of pods,
+
+05:53.250 --> 05:55.890
+or in this case just one single pod.
+
+05:55.890 --> 05:58.470
+Now the last thing I wanna do is still make sure
+
+05:58.470 --> 06:01.080
+that we are able to visit our running application
+
+06:01.080 --> 06:02.880
+inside of the browser.
+
+06:02.880 --> 06:05.040
+So we want to make sure that this pod right here
+
+06:05.040 --> 06:09.360
+is in fact successfully running the multi-client image,
+
+06:09.360 --> 06:11.193
+and I wanna make sure
+
+06:11.193 --> 06:13.350
+that we can still access our React project files.
+
+06:13.350 --> 06:14.700
+So let's take a quick pause right here.
+
+06:14.700 --> 06:16.630
+we'll come back to the next section,
+
+06:16.630 --> 06:18.660
+And we'll make sure that we can still access this pod
+
+06:18.660 --> 06:21.310
+or this container in our browser in the next section.

@@ -1,0 +1,115 @@
+WEBVTT
+
+00:01.080 --> 00:03.600
+-: In the last section, we built out our Docker image
+
+00:03.600 --> 00:06.750
+using the development Docker file that we just put together.
+
+00:06.750 --> 00:07.680
+When we built that image,
+
+00:07.680 --> 00:09.420
+you might have noticed that we got a little line here
+
+00:09.420 --> 00:10.890
+that we did not see previously.
+
+00:10.890 --> 00:13.050
+It says "sending build context to Docker daemon,"
+
+00:13.050 --> 00:15.870
+and then it printed out 155 megabytes.
+
+00:15.870 --> 00:17.580
+So why are we seeing that here now
+
+00:17.580 --> 00:19.590
+when we definitely did not see it previously?
+
+00:19.590 --> 00:20.760
+Well, here's the issue.
+
+00:20.760 --> 00:24.090
+When we just installed the Create React App tool
+
+00:24.090 --> 00:26.310
+and used it to generate a new project,
+
+00:26.310 --> 00:29.520
+that tool automatically installed all of our dependencies
+
+00:29.520 --> 00:31.530
+into our project directory.
+
+00:31.530 --> 00:33.510
+So our node modules folder right here
+
+00:33.510 --> 00:36.420
+has a ton of different dependencies inside of it,
+
+00:36.420 --> 00:39.090
+155 megabytes worth.
+
+00:39.090 --> 00:41.010
+Now, in the past, we did not install
+
+00:41.010 --> 00:43.590
+any of our dependencies into our working folder.
+
+00:43.590 --> 00:46.740
+Instead, we have relied upon our Docker image
+
+00:46.740 --> 00:48.900
+to install those dependencies
+
+00:48.900 --> 00:51.210
+when the image was initially created.
+
+00:51.210 --> 00:52.740
+So at present, we essentially have
+
+00:52.740 --> 00:55.980
+two copies of dependencies, and we really do not need two.
+
+00:55.980 --> 00:57.690
+The easiest solution here is to delete
+
+00:57.690 --> 01:00.630
+the node modules folder inside of our working directory
+
+01:00.630 --> 01:02.610
+which I'm gonna do right now.
+
+01:02.610 --> 01:06.030
+So I'll delete that entire folder by moving it to trash.
+
+01:06.030 --> 01:09.300
+If I now go and try to build my image a second time
+
+01:09.300 --> 01:10.860
+using Docker build
+
+01:10.860 --> 01:13.863
+and then force any Docker file.dev file to be used,
+
+01:14.760 --> 01:16.740
+you'll notice that it goes much faster,
+
+01:16.740 --> 01:18.480
+much faster like it was previously
+
+01:18.480 --> 01:22.980
+when we were putting together our node server using Docker.
+
+01:22.980 --> 01:24.330
+All right, so that's a good little fix.
+
+01:24.330 --> 01:25.470
+Let's take another quick pause
+
+01:25.470 --> 01:27.930
+and then try starting up a container out of this image
+
+01:27.930 --> 01:28.930
+in the next section.

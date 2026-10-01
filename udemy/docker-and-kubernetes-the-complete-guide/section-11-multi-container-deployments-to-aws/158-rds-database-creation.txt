@@ -1,0 +1,463 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+-: In the last section
+
+00:01.763 --> 00:04.170
+we had a very long discussion about the existence
+
+00:04.170 --> 00:07.980
+of VPCs and how security groups are used with them.
+
+00:07.980 --> 00:10.260
+So we're now going to start to create our RDS
+
+00:10.260 --> 00:12.780
+service that's going to be essentially a managed version
+
+00:12.780 --> 00:14.850
+of Postgres and then if we have enough time,
+
+00:14.850 --> 00:19.320
+we'll do our Redis instance inside of Elastic Cache as well.
+
+00:19.320 --> 00:23.010
+So to get started, I'll flip back over to my AWS dashboard.
+
+00:23.010 --> 00:25.200
+I'm gonna make sure that I'm still inside the same region
+
+00:25.200 --> 00:28.710
+as my Elastic Beanstalk instance that I already created.
+
+00:28.710 --> 00:30.120
+And then on the services drop down
+
+00:30.120 --> 00:32.880
+at the top I'll do a search for RDS.
+
+00:32.880 --> 00:36.033
+Again, that stands for Relational Database Service.
+
+00:38.550 --> 00:40.590
+All right, so once over here you'll see
+
+00:40.590 --> 00:42.090
+like a ton of different popups
+
+00:42.090 --> 00:44.370
+a whole bunch of different stuff going on.
+
+00:44.370 --> 00:45.900
+If you see this kind of notification
+
+00:45.900 --> 00:47.190
+or anything like that you can just close it
+
+00:47.190 --> 00:49.740
+at the top and then we'll scroll down a little bit
+
+00:49.740 --> 00:52.230
+and find a section marked as Create Database
+
+00:52.230 --> 00:54.630
+which is of course what we definitely want to do.
+
+00:54.630 --> 00:57.360
+So I'm gonna click on Create Database.
+
+00:57.360 --> 00:58.650
+We then have to select the type
+
+00:58.650 --> 01:00.570
+of database that we want to create.
+
+01:00.570 --> 01:04.980
+So we can make a MySQL, Oracle, Microsoft SQL Server.
+
+01:04.980 --> 01:08.220
+You could do Amazon Aura, which is a fork I believe
+
+01:08.220 --> 01:10.980
+of my SQL, specifically customized for AWS.
+
+01:10.980 --> 01:11.910
+But of course, for you
+
+01:11.910 --> 01:14.610
+and me we wanna make a Postgres instance.
+
+01:14.610 --> 01:16.830
+So I'll select Postgres over here.
+
+01:16.830 --> 01:19.983
+And then you get your little marketing spiel down here.
+
+01:20.850 --> 01:23.040
+I do recommend that you check this box down here
+
+01:23.040 --> 01:26.400
+to enable only options for free tier usage.
+
+01:26.400 --> 01:30.480
+Now again, if your AWS account is over one year old
+
+01:30.480 --> 01:33.720
+you do not qualify for free usage tier.
+
+01:33.720 --> 01:35.160
+You will see this option right here
+
+01:35.160 --> 01:37.710
+even if you do not qualify for free usage.
+
+01:37.710 --> 01:40.860
+So my AWS account is many years old.
+
+01:40.860 --> 01:43.380
+I do not qualify for the free usage tier
+
+01:43.380 --> 01:45.453
+but I still see the checkbox right here.
+
+01:46.710 --> 01:49.110
+I'll click next on the bottom right.
+
+01:49.110 --> 01:52.110
+And then we get asked to enter in a couple of details.
+
+01:52.110 --> 01:54.210
+So if you wanted to change the default version used
+
+01:54.210 --> 01:55.050
+you could do it right here
+
+01:55.050 --> 01:59.010
+but the default version is totally appropriate for us.
+
+01:59.010 --> 02:02.183
+And then go a little bit lower and find DB instance class.
+
+02:02.183 --> 02:05.250
+Because we checked the only enable options eligible
+
+02:05.250 --> 02:06.690
+for free usage tier.
+
+02:06.690 --> 02:09.600
+The only class that we get is this T2 Micro
+
+02:09.600 --> 02:13.020
+which is essentially a very tiny virtual machine.
+
+02:13.020 --> 02:14.520
+Not a lot of power behind it.
+
+02:14.520 --> 02:16.650
+Maybe not the best instance to use
+
+02:16.650 --> 02:17.550
+if you expect a lot
+
+02:17.550 --> 02:21.313
+of traffic to come today to your database.
+
+02:21.313 --> 02:23.100
+Well then scroll down a little bit more.
+
+02:23.100 --> 02:25.470
+You can see allocated storaged right here.
+
+02:25.470 --> 02:27.330
+We definitely do not need 20 gigabytes
+
+02:27.330 --> 02:29.250
+for our application but it is the minimum.
+
+02:29.250 --> 02:31.320
+So we'll leave it as that.
+
+02:31.320 --> 02:34.140
+We can then specify a couple of different settings in here.
+
+02:34.140 --> 02:37.080
+So stuff like DB instance, identifier, blah
+
+02:37.080 --> 02:38.220
+all this other stuff.
+
+02:38.220 --> 02:39.240
+The only thing that we really care
+
+02:39.240 --> 02:43.080
+about is the master username and the master password.
+
+02:43.080 --> 02:46.650
+The username and the password right here maps up against
+
+02:46.650 --> 02:47.940
+you might recall, inside
+
+02:47.940 --> 02:51.960
+of our Docker composed file at our API right here
+
+02:51.960 --> 02:54.450
+you'll recall we had the Postgres username,
+
+02:54.450 --> 02:56.370
+the database, and password.
+
+02:56.370 --> 02:57.750
+So those entries that we're gonna enter
+
+02:57.750 --> 03:00.510
+in over there map up these environment variables
+
+03:00.510 --> 03:01.620
+that we're going to eventually have
+
+03:01.620 --> 03:05.730
+to get into the API container at some point in time.
+
+03:05.730 --> 03:07.770
+So these are very meaningful pieces
+
+03:07.770 --> 03:10.110
+of information over here.
+
+03:10.110 --> 03:12.000
+Let's fill in the instance identifier first.
+
+03:12.000 --> 03:15.780
+I'll call this about just multi docker RDS.
+
+03:15.780 --> 03:18.173
+Or how about multi Docker Postgres?
+
+03:18.173 --> 03:19.980
+We'll do a username here.
+
+03:19.980 --> 03:22.440
+You can do any username and any password you want.
+
+03:22.440 --> 03:23.730
+Just keep in mind you have
+
+03:23.730 --> 03:26.400
+to remember these because we need to pass them off
+
+03:26.400 --> 03:28.980
+to the API service when it gets created
+
+03:28.980 --> 03:32.220
+on Elastic Beanstalk and at some point in the future.
+
+03:32.220 --> 03:34.410
+So I'm going to use a username
+
+03:34.410 --> 03:38.370
+of Postgres and I'm going to use a master password
+
+03:38.370 --> 03:43.370
+of Postgres password, Postgres password.
+
+03:45.540 --> 03:46.613
+And then I'm gonna flip on over
+
+03:46.613 --> 03:48.660
+and just create a new temporary document
+
+03:48.660 --> 03:51.780
+over here just to remind myself about those values.
+
+03:51.780 --> 03:54.210
+So my username is Postgres
+
+03:54.210 --> 03:56.940
+and my password is Postgres password.
+
+03:56.940 --> 03:58.500
+Again, you're going to need these pieces
+
+03:58.500 --> 04:00.300
+of information in just a little bit.
+
+04:01.560 --> 04:03.423
+So then we'll click on next.
+
+04:06.480 --> 04:08.700
+Now, you might get some other options on here.
+
+04:08.700 --> 04:12.810
+We want to put this new database inside of our default VPC
+
+04:12.810 --> 04:16.200
+cuz we want it to talk to every other service out there.
+
+04:16.200 --> 04:18.390
+Ideally, we would assign a subnet group
+
+04:18.390 --> 04:19.950
+but that's just a little bit outside
+
+04:19.950 --> 04:21.450
+of this scope of what we're doing in this course.
+
+04:21.450 --> 04:23.340
+So we'll leave it on default.
+
+04:23.340 --> 04:26.033
+And for public accessibility, we're going
+
+04:26.033 --> 04:29.340
+to be very a hundred percent sure that no is selected
+
+04:29.340 --> 04:32.130
+because we do not want this thing to be publicly accessible
+
+04:32.130 --> 04:33.900
+by any other service
+
+04:33.900 --> 04:36.330
+beyond the ones that we assigned to our security group
+
+04:36.330 --> 04:38.970
+which we discussed just a little bit ago.
+
+04:38.970 --> 04:42.420
+And then finally down here you'll see VPC Security groups.
+
+04:42.420 --> 04:44.850
+Now we are going to eventually make our own custom
+
+04:44.850 --> 04:46.080
+VPC security group
+
+04:46.080 --> 04:48.030
+and allocate everything to it, but you can just
+
+04:48.030 --> 04:50.610
+select create new VPC security group for now.
+
+04:50.610 --> 04:52.020
+But we're going to essentially override
+
+04:52.020 --> 04:54.070
+that thing, or at least change its rules.
+
+04:54.930 --> 04:56.880
+Now, just a little bit more settings on here.
+
+04:56.880 --> 04:58.950
+We have to specify a database name.
+
+04:58.950 --> 05:02.640
+This is the same database name that we had to specify over
+
+05:02.640 --> 05:05.490
+inside of our Docker composed file that was just talking
+
+05:05.490 --> 05:06.450
+about a moment ago.
+
+05:06.450 --> 05:08.913
+So this is the PG database right here.
+
+05:09.960 --> 05:13.500
+So for my database name, I'll do something like
+
+05:13.500 --> 05:16.440
+I don't know Fib values.
+
+05:16.440 --> 05:19.170
+I think that's reasonable and I'm gonna make sure
+
+05:19.170 --> 05:23.520
+that I record that is Fib values
+
+05:23.520 --> 05:25.560
+because again we're going to need all this information
+
+05:25.560 --> 05:27.240
+in just a little bit.
+
+05:27.240 --> 05:29.460
+I'm gonna make sure that I leave the default port
+
+05:29.460 --> 05:31.620
+on here no reason to change it.
+
+05:31.620 --> 05:34.380
+And then we don't have to do anything with encryption.
+
+05:34.380 --> 05:36.630
+If you wanna set up backups, this is where you would do it.
+
+05:36.630 --> 05:39.300
+Remember I had said that with these managed solutions
+
+05:39.300 --> 05:41.190
+they will automatically make backups for you
+
+05:41.190 --> 05:44.070
+so that you can easily re roll back information
+
+05:44.070 --> 05:46.710
+if anything really goes wrong in your application.
+
+05:46.710 --> 05:48.390
+The default is seven days.
+
+05:48.390 --> 05:51.060
+You can go all the way down to like, oh, not zero days.
+
+05:51.060 --> 05:54.210
+One day, I suppose, you can actually do even more
+
+05:54.210 --> 05:56.670
+fine grain details than that, I believe if you are
+
+05:56.670 --> 05:57.820
+willing pay some money
+
+05:59.130 --> 06:01.653
+we'll leave it as the default of seven days.
+
+06:02.580 --> 06:04.170
+And that's pretty much all we have to do here.
+
+06:04.170 --> 06:06.850
+So I'll click on create database at the very bottom
+
+06:08.190 --> 06:10.080
+and then it's going to say, Hey, it's gonna take a couple
+
+06:10.080 --> 06:12.330
+of minutes to do this, which is totally fine.
+
+06:13.170 --> 06:15.210
+I can then click on all database instances
+
+06:15.210 --> 06:17.910
+and we'll see the new database we just created right here
+
+06:17.910 --> 06:20.400
+and it has a status of creating.
+
+06:20.400 --> 06:22.410
+Okay, so that's it for RDS.
+
+06:22.410 --> 06:24.390
+We're gonna let this thing do its bit
+
+06:24.390 --> 06:25.800
+Let's take a quick pause right here.
+
+06:25.800 --> 06:26.940
+We'll come back to the next section
+
+06:26.940 --> 06:30.330
+and do our Elastic Cache setup for Redis as well.
+
+06:30.330 --> 06:31.980
+So I'll see you in just a minute.

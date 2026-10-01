@@ -1,0 +1,403 @@
+WEBVTT
+
+00:00.920 --> 00:05.990
+Think of structure like the sign you see at the mall with the big red dot that says you are here.
+
+00:06.020 --> 00:12.680
+It essentially defines how we get to a given place and where we can go once we're done there.
+
+00:12.710 --> 00:17.270
+We go to a specific screen, we do a few things, and then we say, okay, what's next?
+
+00:17.600 --> 00:18.680
+Where do we want to go next?
+
+00:18.710 --> 00:20.150
+What do we need to go next?
+
+00:20.180 --> 00:26.120
+Structure also defines categories of information contained within that site or the app or the system
+
+00:26.120 --> 00:27.290
+or whatever it may be.
+
+00:27.320 --> 00:33.350
+Structure is created, as we said, by interaction design, which means we're presenting information
+
+00:33.350 --> 00:38.540
+in a way that people can understand it or interact with it in a way that matches their mental model,
+
+00:38.540 --> 00:43.760
+that matches their expectation, and that enables them to reach certain goals.
+
+00:43.790 --> 00:50.000
+Structure is also created by information architecture, which is essentially a combination of organization,
+
+00:50.000 --> 00:56.390
+labeling, search, navigation, all the things that exist within a digital product that allow you to
+
+00:56.390 --> 01:01.710
+move through content, understand it and in some cases manipulate or apply it.
+
+01:01.740 --> 01:08.880
+Good structure organizes information in a way that provides intuitive access to content, and this bears
+
+01:08.880 --> 01:09.650
+repeating.
+
+01:09.660 --> 01:17.580
+Intuitive is a term that often gets misunderstood, but what intuitive really means is single trial
+
+01:17.580 --> 01:18.330
+learning.
+
+01:18.380 --> 01:21.120
+Okay, I want you to remember that because it's very, very important.
+
+01:21.120 --> 01:26.880
+It doesn't mean that we automatically recognize and know how to use everything that we see on the screen.
+
+01:26.880 --> 01:31.860
+What it really means is that we do it once and we remember it forever.
+
+01:31.860 --> 01:37.830
+It's easy enough that we can do it one time and it's not something we're going to have to work to remember
+
+01:37.830 --> 01:39.560
+how to do the next time.
+
+01:39.570 --> 01:41.610
+That's really what intuitive means.
+
+01:41.640 --> 01:43.900
+Single Trial Learning.
+
+01:43.920 --> 01:47.620
+Let's talk about how we determine appropriate structure.
+
+01:47.640 --> 01:50.010
+Think of an axis on one end.
+
+01:50.040 --> 01:53.960
+On the left end of the axis, we have things that are very complex, okay?
+
+01:54.000 --> 02:00.060
+Things that are for more educated audiences who already have a deep understanding of the content or
+
+02:00.060 --> 02:06.620
+the tasks or actions that are going to take place that have a certain degree of familiarity with what's
+
+02:06.650 --> 02:07.640
+being presented.
+
+02:07.910 --> 02:11.770
+At the bottom of this scale, you have things that are very simple, okay, this is basic content.
+
+02:11.780 --> 02:14.450
+Think of things like training sites.
+
+02:14.450 --> 02:19.550
+You're going to teach somebody how to do something that they haven't done before, or you're introducing
+
+02:19.550 --> 02:23.000
+content that's unfamiliar to them in some way.
+
+02:23.300 --> 02:27.320
+Moving down, we have things like linear narrative.
+
+02:27.350 --> 02:29.660
+Think of it like the experience of reading a book.
+
+02:29.690 --> 02:33.830
+You go from page one to page two to page three to page four to page five.
+
+02:33.860 --> 02:36.880
+That's a very linear, predictable structure.
+
+02:36.890 --> 02:42.130
+You start at point A, you go to B to C, to D to E to F, okay.
+
+02:42.140 --> 02:44.990
+It flows in a very predictive manner.
+
+02:45.080 --> 02:51.800
+At the far end of that scale, you have non linear or hyperlinked structures which are very flexible
+
+02:51.800 --> 02:53.390
+but can also be confusing.
+
+02:53.390 --> 02:59.570
+And the reason for that is that unlike a linear narrative, you don't go from 1 to 2 to 3 to 4, from
+
+02:59.570 --> 03:12.210
+A to B to C to D to E, you go from 1 to 6 to 12 to 24 to okay, you bounce around A to D to F to H,
+
+03:12.240 --> 03:14.340
+to K to M, All right.
+
+03:14.340 --> 03:15.780
+It's very different.
+
+03:15.780 --> 03:19.350
+And because of that, again, it has potential to be confusing.
+
+03:19.350 --> 03:27.090
+So linear structures like this that proceed in a very orderly, logical pattern or for instances where
+
+03:27.090 --> 03:31.710
+your content is very simple and your narrative needs to be predictable.
+
+03:31.710 --> 03:33.690
+Again, you're going to teach somebody how to do something.
+
+03:33.690 --> 03:36.590
+Step one, step two, step three, step four.
+
+03:36.600 --> 03:41.160
+So linear narratives are appropriate in those kinds of situations.
+
+03:41.160 --> 03:48.030
+Sort of in the middle, we have something that's both linear because it can proceed in an orderly fashion,
+
+03:48.030 --> 03:55.860
+but it's also somewhat non-linear in that we can bounce around from the very top page to something on
+
+03:55.860 --> 03:59.780
+the second tier to back to the first tier, back to the home page.
+
+03:59.790 --> 04:07.470
+Most websites fall into this category and notice that as we go up, content is starting to get a little
+
+04:07.470 --> 04:08.520
+more complex.
+
+04:08.520 --> 04:12.390
+So this is sort of this type of structure sort of sits in the middle of all things.
+
+04:12.390 --> 04:17.160
+It's between simple and complex and it's between linear and non-linear.
+
+04:17.680 --> 04:24.430
+Finally, if we go all the way to the top, right, we have structures that are very complex and that
+
+04:24.430 --> 04:28.480
+are very non-linear in terms of their structure.
+
+04:28.510 --> 04:28.810
+All right.
+
+04:28.810 --> 04:29.770
+They're very flexible.
+
+04:29.770 --> 04:37.240
+You have a lot of choice as to how you can move through the information, but that flexibility assumes
+
+04:37.240 --> 04:42.520
+that you have a very high degree of understanding already of what the content is, what you're supposed
+
+04:42.520 --> 04:44.140
+to do and what you can do.
+
+04:44.170 --> 04:51.400
+So that type of organization is very appropriate for complex content for audiences who are very educated
+
+04:51.400 --> 04:58.450
+on the subject matter and for situations where it is imperative that you be able to bounce around without
+
+04:58.450 --> 05:00.640
+being forced into a particular pattern.
+
+05:00.850 --> 05:01.150
+Okay.
+
+05:01.150 --> 05:06.550
+So in terms of determining structure, you have to think about who the audience is, what their aptitude
+
+05:06.580 --> 05:13.510
+is, what their level of understanding is and what the content is as well, and whether it demands a
+
+05:13.510 --> 05:16.600
+very linear process or a very flexible process.
+
+05:17.180 --> 05:23.450
+Now, the trick of this is that structure in any case, okay, whether the content is simple or complex
+
+05:23.480 --> 05:25.220
+does have to be flexible.
+
+05:25.220 --> 05:33.000
+Even if it's a very linear sort of process, it still has to be flexible to accommodate change.
+
+05:33.020 --> 05:34.930
+Think of it like building a house.
+
+05:34.940 --> 05:39.410
+You want to structure things in such a way that if you decide three years down the road, you want to
+
+05:39.410 --> 05:44.750
+add another room, you want to try to make it easy to do so even if you're not convinced that you'll
+
+05:44.750 --> 05:45.710
+have to do that.
+
+05:45.950 --> 05:48.200
+Let's use the example of a website.
+
+05:48.230 --> 05:54.260
+Let's say that in March we launch our website and we've got eight pages, including the home page.
+
+05:54.260 --> 05:56.540
+It's a nice sort of orderly structure.
+
+05:56.540 --> 05:58.840
+It's right in between simple and complex.
+
+05:58.850 --> 06:01.430
+It's orderly, but it's still flexible.
+
+06:01.430 --> 06:01.730
+Okay?
+
+06:01.730 --> 06:04.580
+You can still get around, you can still move around to different places.
+
+06:04.580 --> 06:08.480
+But our belief at the time is we need a fairly orderly structure.
+
+06:08.510 --> 06:08.750
+All right.
+
+06:08.750 --> 06:11.270
+Right now, this is what our audience needs from us.
+
+06:11.480 --> 06:15.500
+A month later, in April, somebody says, Oh, you know what?
+
+06:15.500 --> 06:21.480
+We need these three pages of content that we totally forgot about in March, but it's only April, so,
+
+06:21.480 --> 06:22.520
+you know, no big deal.
+
+06:22.530 --> 06:25.590
+Let's add these pages at the bottom level.
+
+06:25.590 --> 06:26.280
+That's fine.
+
+06:26.280 --> 06:27.270
+It's still we haven't screwed up.
+
+06:27.270 --> 06:29.010
+Our structure still makes sense.
+
+06:29.010 --> 06:29.880
+We're good.
+
+06:29.880 --> 06:36.180
+Small change, but we could deal with it Then in June, Project Stakeholder gives you a call and says,
+
+06:36.780 --> 06:38.040
+okay, we got this change.
+
+06:38.040 --> 06:40.410
+We rolled out a new product and a new service.
+
+06:40.440 --> 06:47.160
+It sort of fits in with one of our existing categories, so we can probably put it under here.
+
+06:47.160 --> 06:54.030
+And oh yeah, there's another new page that has to go in that category that you guys stood up last month.
+
+06:54.030 --> 06:56.070
+So let's put that there.
+
+06:56.070 --> 06:57.630
+Notice what's starting to happen.
+
+06:57.630 --> 07:03.810
+We're sort of adding things in and the site is growing deeper, which doesn't necessarily lend itself
+
+07:03.810 --> 07:06.360
+to very simple wayfinding.
+
+07:06.360 --> 07:06.590
+Okay?
+
+07:06.600 --> 07:10.590
+The deeper this gets, the harder people have to work to find content.
+
+07:10.890 --> 07:16.980
+Then in September, wholesale change, you get another call that says, okay, we need to change the
+
+07:16.980 --> 07:21.180
+organization of some things on the top tier and we've got these new products and services and we're
+
+07:21.180 --> 07:23.550
+not going to sell these other products anymore.
+
+07:23.550 --> 07:30.690
+And I know that organization we had before made sense, but we're restructuring the way we offer products
+
+07:30.690 --> 07:34.560
+and their support options tied to this new product.
+
+07:34.560 --> 07:38.190
+And people are going to get confused if it's not in the right place, blah, blah, blah, blah, blah.
+
+07:38.190 --> 07:39.870
+So what happens now?
+
+07:39.870 --> 07:46.080
+You've got this massive, unwieldy structure and you're having to rebuild a lot of the stuff that you
+
+07:46.080 --> 07:47.310
+did previously.
+
+07:47.310 --> 07:51.660
+If the structure is not flexible, it can't properly accommodate this change.
+
+07:51.660 --> 07:57.150
+And again, now we're at the point where we're just jamming stuff in wherever it fits because we've
+
+07:57.150 --> 08:02.760
+got technical constraints, we've got design constraints in place and we're trying like hell not to
+
+08:02.760 --> 08:04.710
+rebuild everything that we did.
+
+08:04.740 --> 08:08.790
+This is typically what happens to a lot of websites.
+
+08:08.790 --> 08:15.920
+They grow over time, and growth is a necessary function of any business, any organization, any service.
+
+08:15.930 --> 08:17.220
+You can't avoid it.
+
+08:17.220 --> 08:23.880
+But if you don't plan for that expansion up front in the structure phase, you wind up in this situation
+
+08:23.880 --> 08:25.830
+where pretty soon you're running out of room.
+
+08:25.830 --> 08:27.450
+Where are we going to put all this stuff?
+
+08:27.450 --> 08:30.770
+And not only where are we going to put it, but how are people going to find it?
+
+08:30.780 --> 08:34.950
+It can become a very, very difficult problem to solve.
+
+08:34.950 --> 08:39.570
+If you don't plan for it up front, it doesn't mean you have to know everything you're ever going to
+
+08:39.570 --> 08:39.990
+do.
+
+08:39.990 --> 08:47.580
+But consider what's going to happen technically design wise, content wise, structurally navigation
+
+08:47.580 --> 08:51.000
+wise, if you do have to deal with these things later.

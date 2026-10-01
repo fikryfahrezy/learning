@@ -1,0 +1,250 @@
+WEBVTT
+
+00:00.750 --> 00:01.890
+-: In the last section, we started
+
+00:01.890 --> 00:04.920
+up our Docker Compose process for the first time.
+
+00:04.920 --> 00:06.480
+And the first time you start everything up
+
+00:06.480 --> 00:10.140
+it is incredibly likely that there might be some error.
+
+00:10.140 --> 00:12.390
+The first way that you might troubleshoot this error
+
+00:12.390 --> 00:15.360
+is to restart the Docker Compose up process.
+
+00:15.360 --> 00:18.690
+So I'm gonna hit control C on my keyboard to stop every...
+
+00:18.690 --> 00:20.040
+All those different containers,
+
+00:20.040 --> 00:22.560
+and then I will immediately start them all back up again
+
+00:22.560 --> 00:24.273
+with Docker Compose up.
+
+00:26.040 --> 00:28.890
+That's gonna start everything back up a second time.
+
+00:28.890 --> 00:31.410
+Now you want to see it starting the development server,
+
+00:31.410 --> 00:34.470
+and then eventually a compiled successfully message.
+
+00:34.470 --> 00:35.760
+If you don't see this right here,
+
+00:35.760 --> 00:38.160
+if you see something from the client one process that says
+
+00:38.160 --> 00:39.810
+that there was a typo somewhere,
+
+00:39.810 --> 00:42.120
+or that there is a invalid syntax error,
+
+00:42.120 --> 00:44.910
+then I highly recommend that you go back about 10 lectures
+
+00:44.910 --> 00:47.700
+or so and find that zip file that I posted
+
+00:47.700 --> 00:51.270
+with the completed version of kind of the intermediate code.
+
+00:51.270 --> 00:54.120
+Download that zip file and extract it into your project
+
+00:54.120 --> 00:57.720
+directory, overwriting any existing files.
+
+00:57.720 --> 01:00.060
+You can then restart the Docker Compose process
+
+01:00.060 --> 01:02.310
+and you should see that any typos,
+
+01:02.310 --> 01:05.220
+or related error messages like that go away.
+
+01:05.220 --> 01:07.260
+So now that we've got everything started up,
+
+01:07.260 --> 01:08.550
+I'm gonna open up my browser,
+
+01:08.550 --> 01:10.650
+and I'll try testing out this application.
+
+01:12.000 --> 01:14.940
+I want you to recall that inside of our...
+
+01:14.940 --> 01:16.110
+Where is it?
+
+01:16.110 --> 01:18.150
+Inside of our Docker Composed file right here,
+
+01:18.150 --> 01:21.660
+our Nginx service has its port mapped
+
+01:21.660 --> 01:24.210
+to 30.50 on our local machine.
+
+01:24.210 --> 01:26.460
+So to access our running application,
+
+01:26.460 --> 01:29.373
+we're gonna navigate to local host 30.50.
+
+01:30.270 --> 01:32.160
+I'll flip on over to my browser.
+
+01:32.160 --> 01:35.610
+I'll open up local host: 30.50,
+
+01:35.610 --> 01:38.790
+and I should see a page like this up here on the screen.
+
+01:38.790 --> 01:42.540
+Now, if you open up your Chrome console by hitting
+
+01:42.540 --> 01:44.490
+right click and then inspect right here,
+
+01:44.490 --> 01:47.280
+or if you're on Windows, you can hit F 12.
+
+01:47.280 --> 01:50.160
+You might see in the console a little red error message
+
+01:50.160 --> 01:51.450
+like this right here.
+
+01:51.450 --> 01:52.290
+That's totally fine.
+
+01:52.290 --> 01:54.390
+We're gonna fix this up in just a second.
+
+01:54.390 --> 01:56.370
+Essentially, we're seeing this error message
+
+01:56.370 --> 01:58.920
+because anytime our React application boots up
+
+01:58.920 --> 02:00.120
+in development mode,
+
+02:00.120 --> 02:03.360
+it wants to keep a active connection to the development
+
+02:03.360 --> 02:07.053
+server and be notified of anytime that some file changes.
+
+02:08.040 --> 02:08.910
+Now, totally.
+
+02:08.910 --> 02:10.620
+You know, normally we wouldn't really worry about
+
+02:10.620 --> 02:13.680
+that too much, but as it stands by not setting
+
+02:13.680 --> 02:15.930
+up this web socket connection, we're actually going to
+
+02:15.930 --> 02:17.850
+very significantly impact the performance
+
+02:17.850 --> 02:21.030
+of our application, which we can see by entering in a value
+
+02:21.030 --> 02:22.680
+to this input right here.
+
+02:22.680 --> 02:25.530
+I'm gonna try entering in an index for a Fibonacci value
+
+02:25.530 --> 02:28.920
+to calculate of five, and then I'll submit it.
+
+02:28.920 --> 02:31.500
+Now you might see, if you have your network request
+
+02:31.500 --> 02:32.670
+tab open over here,
+
+02:32.670 --> 02:34.500
+you might see that the values request
+
+02:34.500 --> 02:36.180
+takes a really long time,
+
+02:36.180 --> 02:37.740
+and if it does that's totally fine.
+
+02:37.740 --> 02:40.020
+We're gonna fix it up by making this error go away
+
+02:40.020 --> 02:42.210
+in just a moment, but eventually, hopefully
+
+02:42.210 --> 02:44.010
+that request will resolve.
+
+02:44.010 --> 02:46.050
+You should then be able to refresh the page
+
+02:46.050 --> 02:48.960
+and see indexes I've seen with five appear
+
+02:48.960 --> 02:50.970
+and see that for a index of five,
+
+02:50.970 --> 02:54.120
+we got a calculated Fibonacci value of eight.
+
+02:54.120 --> 02:56.730
+And so if I go back over to my chart over here,
+
+02:56.730 --> 02:58.350
+or a index of five, yep,
+
+02:58.350 --> 03:01.825
+we would expect to see a Fibonacci value of eight.
+
+03:01.825 --> 03:04.770
+We can do the same thing with say a index of six.
+
+03:04.770 --> 03:07.170
+I'll submit that, refresh the page,
+
+03:07.170 --> 03:11.670
+and then I'll see for index six, I calculated a value of 13.
+
+03:11.670 --> 03:13.710
+Cool, so it looks like everything is more or less working
+
+03:13.710 --> 03:15.450
+the way we expect, with the exception of this
+
+03:15.450 --> 03:17.370
+little web socket error right here.
+
+03:17.370 --> 03:18.450
+So let's take a quick pause.
+
+03:18.450 --> 03:19.560
+We'll come back to the next section
+
+03:19.560 --> 03:22.010
+and we're gonna fix up this little error message.

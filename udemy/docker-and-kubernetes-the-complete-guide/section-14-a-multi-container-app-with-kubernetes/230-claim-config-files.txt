@@ -1,0 +1,205 @@
+WEBVTT
+
+00:00.900 --> 00:03.060
+-: In the last section, we spoke about the big differences
+
+00:03.060 --> 00:06.180
+between a persistent volume claim and a persistent volume.
+
+00:06.180 --> 00:09.090
+Remember, a volume claim is an advertisement.
+
+00:09.090 --> 00:12.180
+It is saying, hey, all the pods inside this cluster
+
+00:12.180 --> 00:14.730
+you can choose from a 500 gigabyte option
+
+00:14.730 --> 00:16.980
+or a one terabyte option.
+
+00:16.980 --> 00:19.020
+When we write our our pod config,
+
+00:19.020 --> 00:20.730
+we are gonna say, hey this pod
+
+00:20.730 --> 00:23.100
+needs the 500 gigabyte option.
+
+00:23.100 --> 00:24.270
+And so you can kind of imagine
+
+00:24.270 --> 00:26.700
+that our pod config is going to be handed off
+
+00:26.700 --> 00:30.330
+to Kubernetes with this kind of option tied to it.
+
+00:30.330 --> 00:32.070
+Kubernetes is gonna see that option
+
+00:32.070 --> 00:33.960
+and it's gonna say, oh, okay, I get it.
+
+00:33.960 --> 00:36.840
+I need to find an actual instance of storage
+
+00:36.840 --> 00:39.900
+inside of my cluster that meets these requirements.
+
+00:39.900 --> 00:43.410
+It has to have 500 gigabytes worth of storage.
+
+00:43.410 --> 00:46.050
+If Kubernetes does not have a instance of storage
+
+00:46.050 --> 00:47.250
+like that ready to go,
+
+00:47.250 --> 00:49.650
+then it's going to try to create one on the fly
+
+00:49.650 --> 00:52.860
+and then attach it to the pod that gets created.
+
+00:52.860 --> 00:55.200
+Now, I can give you diagrams
+
+00:55.200 --> 00:57.900
+about this stuff all day and verbal descriptions all day
+
+00:57.900 --> 00:59.250
+but to really understand the stuff
+
+00:59.250 --> 01:02.250
+you really have to put together a config file on your own.
+
+01:02.250 --> 01:03.150
+So in this section
+
+01:03.150 --> 01:06.210
+we're going to write out a persistent volume claim.
+
+01:06.210 --> 01:08.010
+And remember, this is going to essentially
+
+01:08.010 --> 01:10.890
+advertise a possible storage option
+
+01:10.890 --> 01:13.830
+that can be attached to a pod config.
+
+01:13.830 --> 01:15.570
+So inside of my code editor,
+
+01:15.570 --> 01:17.643
+I'm gonna find my K eights directory.
+
+01:18.600 --> 01:20.910
+And inside of here, I'm going to make a new file
+
+01:20.910 --> 01:25.910
+called database persistent volume claim.yaml.
+
+01:27.600 --> 01:29.340
+Now I type that out rather quickly.
+
+01:29.340 --> 01:31.230
+Remember that you can always see my file name
+
+01:31.230 --> 01:32.943
+at the top here inside this tab.
+
+01:33.780 --> 01:35.610
+All right, so inside of here we're gonna write
+
+01:35.610 --> 01:37.380
+out a pretty good amount of config.
+
+01:37.380 --> 01:39.180
+Some of it is gonna look very familiar
+
+01:39.180 --> 01:42.150
+and some of it is going to be a little bit new.
+
+01:42.150 --> 01:44.310
+So we'll do the familiar stuff first.
+
+01:44.310 --> 01:47.103
+I'll say API version is v1.
+
+01:47.940 --> 01:51.993
+Our kind will be persistent volume claim.
+
+01:54.360 --> 01:58.450
+We'll do a metadata that has a name of database
+
+02:00.000 --> 02:05.000
+persistent volume claim, and then we'll add a spec.
+
+02:05.340 --> 02:07.170
+So the spec is where some interesting things
+
+02:07.170 --> 02:08.130
+start to come into play.
+
+02:08.130 --> 02:09.360
+I think you'll agree with me
+
+02:09.360 --> 02:12.180
+that everything up here looks pretty darn familiar.
+
+02:12.180 --> 02:15.930
+So for our spec, we're going to give an access modes.
+
+02:15.930 --> 02:18.060
+Notice how there is an S on there.
+
+02:18.060 --> 02:19.470
+This is going to be an array,
+
+02:19.470 --> 02:21.870
+so I'm gonna put a dash in like so,
+
+02:21.870 --> 02:24.030
+and then I'm gonna give this a single value.
+
+02:24.030 --> 02:26.643
+I'll say read, write once.
+
+02:29.130 --> 02:31.260
+On the next line, I'm going to unindent
+
+02:31.260 --> 02:35.310
+so that I'm on the same indentation level as access modes.
+
+02:35.310 --> 02:36.903
+I'll do resources.
+
+02:37.740 --> 02:42.153
+Requests, storage is to GI like, so.
+
+02:43.200 --> 02:44.100
+Okay. So that's it.
+
+02:44.100 --> 02:45.690
+That is all the config that we need
+
+02:45.690 --> 02:48.240
+for our persistent volume claim.
+
+02:48.240 --> 02:49.530
+Let's take a quick pause right here.
+
+02:49.530 --> 02:50.670
+When we come back to the next section,
+
+02:50.670 --> 02:51.840
+we'll talk about exactly
+
+02:51.840 --> 02:54.270
+what is going on inside the spec section.
+
+02:54.270 --> 02:56.720
+So quick pause and I'll see you in just a minute.

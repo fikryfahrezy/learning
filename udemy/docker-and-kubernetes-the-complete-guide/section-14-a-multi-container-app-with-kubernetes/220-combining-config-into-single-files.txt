@@ -1,0 +1,478 @@
+WEBVTT
+
+00:00.720 --> 00:02.190
+-: When we first started working on
+
+00:02.190 --> 00:04.290
+taking our multi container application
+
+00:04.290 --> 00:06.390
+and importing it into the world of Kubernetes
+
+00:06.390 --> 00:07.590
+a couple sections ago,
+
+00:07.590 --> 00:09.090
+I had told you that we were going to create
+
+00:09.090 --> 00:11.070
+one separate configuration file
+
+00:11.070 --> 00:14.280
+for every object that you see in this diagram right here.
+
+00:14.280 --> 00:17.490
+I think in total we had something like 11 or so.
+
+00:17.490 --> 00:20.250
+So that means that we're going to have 11 separate files
+
+00:20.250 --> 00:22.560
+sitting inside of this K8s directory,
+
+00:22.560 --> 00:24.060
+and each one of those separate files
+
+00:24.060 --> 00:27.060
+is going to create a separate piece or a separate object
+
+00:27.060 --> 00:29.850
+that's going to be running inside of our overall cluster.
+
+00:29.850 --> 00:30.870
+Now, at some point in time
+
+00:30.870 --> 00:32.250
+it might seem like having to work with
+
+00:32.250 --> 00:33.990
+all of these different configuration files,
+
+00:33.990 --> 00:35.883
+might be a little bit overwhelming.
+
+00:36.990 --> 00:38.460
+Everything that we've done up to this point
+
+00:38.460 --> 00:39.450
+has very clearly said
+
+00:39.450 --> 00:42.210
+that we're going to make a separate file for each object,
+
+00:42.210 --> 00:44.370
+but if it feels like that's just too many files
+
+00:44.370 --> 00:47.100
+for you to have to kind of manage and deal with,
+
+00:47.100 --> 00:49.200
+I wanna tell you about one different way
+
+00:49.200 --> 00:50.400
+in which you can organize
+
+00:50.400 --> 00:53.010
+all these different configuration files.
+
+00:53.010 --> 00:55.890
+So rather than putting a separate file
+
+00:55.890 --> 00:58.140
+for every separate object we create,
+
+00:58.140 --> 01:01.500
+we can actually combine different sets of configuration
+
+01:01.500 --> 01:03.720
+down into a single file.
+
+01:03.720 --> 01:07.560
+So as a alternative way of organizing your config files,
+
+01:07.560 --> 01:10.800
+rather than saying, Okay, I need a file for cluster IP
+
+01:10.800 --> 01:12.240
+and a file for deployment,
+
+01:12.240 --> 01:15.000
+we actually can create one single file
+
+01:15.000 --> 01:16.860
+that contains all the configuration
+
+01:16.860 --> 01:19.500
+for both a cluster IP or a service
+
+01:19.500 --> 01:22.440
+and the deployment that it is associated with.
+
+01:22.440 --> 01:25.470
+There's no limit to the number of different pieces of config
+
+01:25.470 --> 01:27.060
+that we can stick into a single file.
+
+01:27.060 --> 01:29.160
+So you do not necessarily have to say,
+
+01:29.160 --> 01:31.500
+Oh, this service is going to be in the same file
+
+01:31.500 --> 01:32.550
+as this deployment.
+
+01:32.550 --> 01:34.200
+We could just as easily say,
+
+01:34.200 --> 01:36.600
+one single file is going to hold all the config
+
+01:36.600 --> 01:39.870
+for both these services and both these deployments.
+
+01:39.870 --> 01:41.490
+I'm gonna give you a very quick example
+
+01:41.490 --> 01:42.600
+of how you would combine
+
+01:42.600 --> 01:44.190
+these different config files together,
+
+01:44.190 --> 01:45.023
+and then I'll tell you
+
+01:45.023 --> 01:47.970
+why we are not doing that inside this course.
+
+01:47.970 --> 01:49.650
+Okay, so let's say for example,
+
+01:49.650 --> 01:51.780
+that we want to kind of co-locate
+
+01:51.780 --> 01:54.060
+all the configuration for our deployments
+
+01:54.060 --> 01:56.610
+and services that are tied to each one.
+
+01:56.610 --> 01:57.443
+So in other words,
+
+01:57.443 --> 01:59.730
+we might want to kind of consolidate
+
+01:59.730 --> 02:01.620
+the server cluster IP service
+
+02:01.620 --> 02:03.480
+and the server deployment config files
+
+02:03.480 --> 02:05.283
+down to one single file.
+
+02:06.510 --> 02:09.240
+So to do so, I could create a new file
+
+02:09.240 --> 02:10.830
+inside my K8s directory
+
+02:10.830 --> 02:13.380
+and I'll call it something like, I don't know,
+
+02:13.380 --> 02:16.200
+server config or something like that.
+
+02:16.200 --> 02:18.630
+So serverconfig.yaml.
+
+02:18.630 --> 02:19.800
+Then inside of here,
+
+02:19.800 --> 02:23.700
+I'm going to go back over to my deployment for these server.
+
+02:23.700 --> 02:26.100
+I'm gonna copy this entire thing
+
+02:26.100 --> 02:26.933
+and then I'll paste it
+
+02:26.933 --> 02:30.060
+inside of the server config file that I just created.
+
+02:30.060 --> 02:30.900
+And then likewise,
+
+02:30.900 --> 02:33.450
+I'm gonna go back over to the cluster IP service
+
+02:33.450 --> 02:36.570
+for the server that we just put together a second ago.
+
+02:36.570 --> 02:38.340
+I'll copy this entire thing
+
+02:38.340 --> 02:41.670
+and I'll pull it over to the serverconfig.yaml file.
+
+02:41.670 --> 02:44.040
+And then down at the very bottom here,
+
+02:44.040 --> 02:47.784
+I'm going to put down ///,
+
+02:47.784 --> 02:49.950
+or not slashes but dashes I suppose.
+
+02:49.950 --> 02:52.500
+So three dashes in a row like so.
+
+02:52.500 --> 02:55.710
+And then after that, I can paste in all the configuration
+
+02:55.710 --> 02:59.340
+for the other object that I'm trying to create.
+
+02:59.340 --> 03:00.480
+So essentially,
+
+03:00.480 --> 03:02.520
+anytime that you want to kind of condense down
+
+03:02.520 --> 03:03.510
+all this config
+
+03:03.510 --> 03:06.450
+and put it to multiple objects worth of configuration
+
+03:06.450 --> 03:07.860
+inside of a single file,
+
+03:07.860 --> 03:09.780
+you're just gonna paste everything inside of here
+
+03:09.780 --> 03:13.203
+and separate each one with the --- like so.
+
+03:14.790 --> 03:16.680
+Now for some of you watching this video,
+
+03:16.680 --> 03:18.210
+you might think, Oh, that's great.
+
+03:18.210 --> 03:21.030
+I can make a single file that houses everything
+
+03:21.030 --> 03:24.360
+that's related to this piece of my application right here.
+
+03:24.360 --> 03:26.220
+But others of you might be thinking,
+
+03:26.220 --> 03:27.960
+Well, how would I ever know
+
+03:27.960 --> 03:31.140
+where the configuration for this service is located?
+
+03:31.140 --> 03:33.270
+I would have to very actively understand
+
+03:33.270 --> 03:37.290
+that every service is tied to the related deployment.
+
+03:37.290 --> 03:39.840
+Now, that's really a question of preference.
+
+03:39.840 --> 03:42.780
+You don't have to co-locate all this configuration.
+
+03:42.780 --> 03:45.300
+I personally think that it makes a ton of sense
+
+03:45.300 --> 03:48.480
+to separate all the configuration out into separate files
+
+03:48.480 --> 03:50.160
+as we are doing right now,
+
+03:50.160 --> 03:51.750
+because it very clearly tells you
+
+03:51.750 --> 03:54.957
+how many different objects exist in your entire cluster,
+
+03:54.957 --> 03:56.940
+and the naming scheme that we're using right now
+
+03:56.940 --> 03:58.860
+also makes it extremely clear
+
+03:58.860 --> 04:02.520
+where the configuration for any given object can be found.
+
+04:02.520 --> 04:04.800
+For example, if you put this diagram
+
+04:04.800 --> 04:06.180
+or a diagram like this right here
+
+04:06.180 --> 04:08.310
+inside the Read Me of your project
+
+04:08.310 --> 04:10.710
+and another engineer comes and works on your project
+
+04:10.710 --> 04:13.740
+and says, Oh, I need to like change a port
+
+04:13.740 --> 04:18.120
+related to the cluster IP service for the multi client pod,
+
+04:18.120 --> 04:19.320
+they could very easily look at
+
+04:19.320 --> 04:21.330
+your list of config files right here and say,
+
+04:21.330 --> 04:24.120
+Okay, client cluster IP service.
+
+04:24.120 --> 04:26.010
+Well, of course, the configuration for that thing
+
+04:26.010 --> 04:27.510
+is going to be inside this file.
+
+04:27.510 --> 04:29.370
+And they instantly know where to look
+
+04:29.370 --> 04:32.460
+to find the configuration for any given object.
+
+04:32.460 --> 04:33.330
+If it wasn't for that,
+
+04:33.330 --> 04:36.540
+if you had combined everything into kind of single files
+
+04:36.540 --> 04:38.100
+or condense everything down,
+
+04:38.100 --> 04:39.300
+they would have to understand
+
+04:39.300 --> 04:40.950
+that this cluster IP service
+
+04:40.950 --> 04:43.260
+and the deployment for the multi client pods
+
+04:43.260 --> 04:44.610
+are in the same file.
+
+04:44.610 --> 04:47.160
+And so you would have to have some naming terminology
+
+04:47.160 --> 04:49.560
+for all of your config files that makes it really clear
+
+04:49.560 --> 04:51.390
+that like some particular file
+
+04:51.390 --> 04:54.810
+contains all the configuration for the multi client pods,
+
+04:54.810 --> 04:57.720
+its deployment and the service related to it as well.
+
+04:57.720 --> 04:58.800
+And so it's a little bit harder
+
+04:58.800 --> 05:01.890
+to come up with a naming scheme or a naming convention
+
+05:01.890 --> 05:03.210
+that makes it really clear that,
+
+05:03.210 --> 05:05.130
+hey, everything related to multi client
+
+05:05.130 --> 05:07.260
+is inside of like XYZ file.
+
+05:07.260 --> 05:09.210
+Now, that's just my take.
+
+05:09.210 --> 05:11.430
+As I said, half of you might think that
+
+05:11.430 --> 05:13.620
+combining this stuff down into a single file
+
+05:13.620 --> 05:14.460
+makes a lot of sense
+
+05:14.460 --> 05:16.080
+and the other half of you might think,
+
+05:16.080 --> 05:17.640
+No, that doesn't make any sense at all.
+
+05:17.640 --> 05:20.100
+I wanna do everything inside of separate files.
+
+05:20.100 --> 05:20.933
+So like I said,
+
+05:20.933 --> 05:22.440
+I prefer to keep everything in separate files,
+
+05:22.440 --> 05:24.240
+but for you, totally up to you.
+
+05:24.240 --> 05:25.620
+Of course, throughout the rest of this course
+
+05:25.620 --> 05:28.710
+I really recommend that you follow the same strategy as I
+
+05:28.710 --> 05:32.223
+and use a separate config file for each separate object.
+
+05:33.360 --> 05:36.600
+Okay, so that's my spiel on combining together config.
+
+05:36.600 --> 05:37.950
+Now I am going to delete
+
+05:37.950 --> 05:40.770
+the server config YAML file I just created
+
+05:40.770 --> 05:43.470
+because I had only made that as a very quick example
+
+05:43.470 --> 05:46.290
+to show you how to combine stuff together.
+
+05:46.290 --> 05:47.820
+So I'm gonna make sure that I delete that file
+
+05:47.820 --> 05:50.640
+and I'm now left with just four configuration files,
+
+05:50.640 --> 05:53.400
+the two client ones and the two server ones.
+
+05:53.400 --> 05:55.140
+All right, So let's take a quick pause right here
+
+05:55.140 --> 05:56.340
+and continue in the next section
+
+05:56.340 --> 05:58.443
+with our next piece of configuration.

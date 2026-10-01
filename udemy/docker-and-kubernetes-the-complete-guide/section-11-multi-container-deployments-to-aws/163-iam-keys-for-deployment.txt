@@ -1,0 +1,373 @@
+WEBVTT
+
+00:01.290 --> 00:02.700
+-: In the last section, we finished
+
+00:02.700 --> 00:06.000
+up just about everything on the AWS dashboard.
+
+00:06.000 --> 00:07.860
+There's one last little thing we have to do
+
+00:07.860 --> 00:09.840
+and it's tied to the deployment that we're gonna set
+
+00:09.840 --> 00:12.150
+up inside of our travis.yml file.
+
+00:12.150 --> 00:15.180
+Remember, at this point, inside of the travis.yml file
+
+00:15.180 --> 00:17.190
+we're currently building the production version of all
+
+00:17.190 --> 00:20.220
+of our images, and then we push them off to Docker Hub.
+
+00:20.220 --> 00:21.780
+Now, I have said, several times,
+
+00:21.780 --> 00:23.016
+that after we do all that stuff,
+
+00:23.016 --> 00:26.340
+we're going to then, kind of, tap on the shoulder.
+
+00:26.340 --> 00:28.590
+Here we go, gonna kind of tap on the shoulder
+
+00:28.590 --> 00:30.930
+of Elastic Beanstalk and say, "Hey, it's time
+
+00:30.930 --> 00:34.170
+for you to go and pull these new images and deploy them."
+
+00:34.170 --> 00:35.220
+So, I'm gonna be honest with you
+
+00:35.220 --> 00:36.870
+when I said, "kind of tap on the shoulder",
+
+00:36.870 --> 00:39.510
+I made it sound like it was a different deployment process
+
+00:39.510 --> 00:41.610
+than what we had done on the previous application.
+
+00:41.610 --> 00:43.740
+In reality, it's gonna be no different.
+
+00:43.740 --> 00:46.590
+We're going to still deploy the entire application
+
+00:46.590 --> 00:48.390
+over to Elastic Beanstalk.
+
+00:48.390 --> 00:50.730
+The only difference this time around is that the only file
+
+00:50.730 --> 00:53.430
+that we really have to deploy is the,
+
+00:53.430 --> 00:55.230
+or send over to Elastic Beanstalk,
+
+00:55.230 --> 00:59.700
+is the Dockerrun.aws.json file.
+
+00:59.700 --> 01:01.320
+We're gonna send the entire project
+
+01:01.320 --> 01:03.390
+over to Elastic Beanstalk, but in reality
+
+01:03.390 --> 01:06.513
+this is the only file that we really have to send.
+
+01:07.920 --> 01:10.050
+Once Elastic Beanstalk gets this file,
+
+01:10.050 --> 01:11.370
+it's going to pull these images
+
+01:11.370 --> 01:13.500
+from Docker Hub and take it away from there.
+
+01:13.500 --> 01:15.150
+But again, I've been saying like, "Oh yeah,
+
+01:15.150 --> 01:16.950
+we're gonna send a little notification."
+
+01:16.950 --> 01:18.420
+There's not really a notification.
+
+01:18.420 --> 01:19.950
+We're just gonna dump the entire project
+
+01:19.950 --> 01:22.260
+over the same way, we did previously.
+
+01:22.260 --> 01:25.680
+Now, I've got the Travis file from our previous project.
+
+01:25.680 --> 01:27.900
+Remember, this is the single container application
+
+01:27.900 --> 01:29.160
+that we just put together
+
+01:29.160 --> 01:31.680
+and here's what we did for the Deploy section.
+
+01:31.680 --> 01:34.590
+So we had to set up the provider as Elastic Beanstalk,
+
+01:34.590 --> 01:37.320
+specified the region, app, environment, blah, blah, blah,
+
+01:37.320 --> 01:38.670
+all this different stuff.
+
+01:38.670 --> 01:39.990
+And one of the real keys in here
+
+01:39.990 --> 01:42.330
+was providing the access key ID
+
+01:42.330 --> 01:45.090
+and the secret access key as well.
+
+01:45.090 --> 01:47.670
+And these were both set as environment variables
+
+01:47.670 --> 01:50.100
+on our Travis CI dashboard.
+
+01:50.100 --> 01:51.480
+So, in this section, we're gonna generate
+
+01:51.480 --> 01:54.600
+a new AWS access key and secret key
+
+01:54.600 --> 01:57.540
+on the IAM dashboard on AWS.
+
+01:57.540 --> 02:00.300
+And then we'll assign those as environment variables
+
+02:00.300 --> 02:02.010
+to our Travis build.
+
+02:02.010 --> 02:03.033
+So, let's get to it.
+
+02:05.370 --> 02:09.840
+So, to get started, I'm gonna open my AWS dashboard back up.
+
+02:09.840 --> 02:12.753
+I'll go to Services and we will again go to IAM.
+
+02:17.757 --> 02:20.580
+And then, on the left hand side, I'll find the User Section
+
+02:20.580 --> 02:22.380
+because we're going to create a new user
+
+02:22.380 --> 02:25.590
+with deploy access to Elastic Beanstalk.
+
+02:25.590 --> 02:27.840
+So I can click on that Add User button, and then
+
+02:27.840 --> 02:30.993
+I will use a username of something like, Multidocker.
+
+02:32.610 --> 02:34.230
+How about Multidockerdeployer?
+
+02:34.230 --> 02:35.103
+That makes sense.
+
+02:36.270 --> 02:37.830
+And then we'll give it an Access Type
+
+02:37.830 --> 02:39.753
+of Programmatic Access.
+
+02:41.280 --> 02:43.170
+And then Permissions.
+
+02:43.170 --> 02:46.950
+Again, we're going to attach existing policies directly.
+
+02:46.950 --> 02:50.280
+I'll do a search for Elastic, actually, we'll do just
+
+02:50.280 --> 02:53.550
+Beanstalk is probably the easier one to search for.
+
+02:53.550 --> 02:55.470
+And then, we're just gonna add everything
+
+02:55.470 --> 02:56.303
+straight down here.
+
+02:56.303 --> 02:57.180
+Just toss it all on.
+
+02:57.180 --> 02:58.290
+We could definitely go a little bit
+
+02:58.290 --> 02:59.910
+more fine-grained, but for right now,
+
+02:59.910 --> 03:02.793
+I just want something that's going to work as it stands.
+
+03:03.660 --> 03:05.433
+I'll then do Next Review,
+
+03:06.930 --> 03:08.613
+and then we'll do a Create User.
+
+03:11.700 --> 03:13.650
+Now, this is gonna show us the user,
+
+03:13.650 --> 03:16.770
+the access key ID and the secret access key.
+
+03:16.770 --> 03:18.450
+Remember, the secret access key right here
+
+03:18.450 --> 03:20.310
+is something that you do not want to share
+
+03:20.310 --> 03:22.230
+with the outside world, whatsoever.
+
+03:22.230 --> 03:24.720
+And of course, you can try to use my secret access key
+
+03:24.720 --> 03:26.370
+but by the time you watch this video
+
+03:26.370 --> 03:28.860
+I will have deleted it, because we've gotta be
+
+03:28.860 --> 03:31.650
+responsible with those secret access keys.
+
+03:31.650 --> 03:33.120
+So now, that we've got the keys right here
+
+03:33.120 --> 03:36.180
+we'll open up Travis CI again and set these up
+
+03:36.180 --> 03:38.343
+as encrypted variables on the dashboard.
+
+03:39.690 --> 03:42.090
+So, I've still got my Travis dashboard open.
+
+03:42.090 --> 03:43.530
+As a quick reminder, you can get here
+
+03:43.530 --> 03:46.623
+by going to travis-ci.org.
+
+03:48.090 --> 03:49.650
+Once over here, you're gonna make sure that you
+
+03:49.650 --> 03:52.290
+open up the Multi-docker project.
+
+03:52.290 --> 03:54.870
+So make sure that you are not looking at Docker-react.
+
+03:54.870 --> 03:55.920
+This is bad.
+
+03:55.920 --> 03:58.200
+We're gonna look at Multi-docker.
+
+03:58.200 --> 04:01.443
+We'll then go over to Options, Settings,
+
+04:03.060 --> 04:03.893
+and then we're going to add
+
+04:03.893 --> 04:05.490
+in some new environment variables.
+
+04:05.490 --> 04:07.500
+And of course, we can still see the Docker ID
+
+04:07.500 --> 04:10.350
+and password that we had previously set up.
+
+04:10.350 --> 04:15.003
+So the first variable we will set up is the AWS Access Key.
+
+04:17.340 --> 04:19.300
+And then I'll copy over the access key
+
+04:22.380 --> 04:24.030
+and paste it in as the value.
+
+04:24.030 --> 04:25.717
+Now, like I just said, a moment ago,
+
+04:25.717 --> 04:29.040
+"Please triple check the spelling on the key right here."
+
+04:29.040 --> 04:30.450
+So AWS Access Key,
+
+04:30.450 --> 04:33.660
+Make sure it's got the two C's and two S's in it.
+
+04:33.660 --> 04:35.490
+And then, I'll add that thing.
+
+04:35.490 --> 04:39.603
+And then, we'll do the same thing for AWS Secret Key.
+
+04:42.240 --> 04:44.613
+And, I'll copy the secret key over here,
+
+04:45.960 --> 04:47.880
+and paste it in as the value.
+
+04:47.880 --> 04:49.230
+And again, please triple check.
+
+04:49.230 --> 04:51.180
+Make sure you spelled secret correctly,
+
+04:51.180 --> 04:52.410
+especially the word secret.
+
+04:52.410 --> 04:55.260
+This is a very easy word, believe it or not, to misspell.
+
+04:56.225 --> 04:59.430
+And, we'll click on Add, and that's pretty much it.
+
+04:59.430 --> 05:01.830
+Okay, so we've set up our environment variables over here.
+
+05:01.830 --> 05:04.080
+So, now, the last thing we need to do is add
+
+05:04.080 --> 05:05.760
+on our little deploy script
+
+05:05.760 --> 05:08.010
+at the very bottom of the travis.yml file.
+
+05:08.010 --> 05:09.780
+So, let's take care of that in the next section.
+
+05:09.780 --> 05:12.113
+So, quick break and I'll see you in just a moment.

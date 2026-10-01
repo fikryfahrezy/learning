@@ -1,0 +1,484 @@
+WEBVTT
+
+00:01.050 --> 00:02.280
+-: In the last section, we put together
+
+00:02.280 --> 00:06.000
+a ton of configuration inside of two different files.
+
+00:06.000 --> 00:06.833
+In this section,
+
+00:06.833 --> 00:08.760
+we're gonna start to pull these two files apart
+
+00:08.760 --> 00:09.870
+line by line.
+
+00:09.870 --> 00:13.050
+We're gonna first focus on the first two lines in each file.
+
+00:13.050 --> 00:17.520
+So specifically API version V1, and kind pod.
+
+00:17.520 --> 00:19.980
+You'll notice that the other file has the very similar
+
+00:19.980 --> 00:22.080
+same two lines at the top,
+
+00:22.080 --> 00:24.780
+but in the second file, we have kind of service.
+
+00:24.780 --> 00:26.430
+So again, we're gonna focus on these two lines
+
+00:26.430 --> 00:27.360
+to get started.
+
+00:27.360 --> 00:29.400
+And just so you know, we're going to first,
+
+00:29.400 --> 00:30.390
+between the two of them,
+
+00:30.390 --> 00:31.710
+we're gonna first focus on exactly
+
+00:31.710 --> 00:33.393
+what kind is referring to.
+
+00:35.820 --> 00:38.040
+So just as we discussed a couple moments ago,
+
+00:38.040 --> 00:39.780
+we had said that with Docker compose,
+
+00:39.780 --> 00:41.760
+we had created a configuration file
+
+00:41.760 --> 00:45.060
+to describe the different containers that we want to create.
+
+00:45.060 --> 00:47.250
+And we had done something very similarly over
+
+00:47.250 --> 00:49.560
+with elastic bean stock as well.
+
+00:49.560 --> 00:50.393
+Now with Kubernetes,
+
+00:50.393 --> 00:53.460
+we do make these config files to make containers,
+
+00:53.460 --> 00:55.920
+but we had kinda honed in
+
+00:55.920 --> 00:57.900
+on that definition with this diagram over here
+
+00:57.900 --> 01:00.960
+and said that when we make a config file with Kubernetes,
+
+01:00.960 --> 01:03.840
+we're not quite making a container,
+
+01:03.840 --> 01:06.180
+we're kind of making something else slightly different.
+
+01:06.180 --> 01:08.700
+We're making something called an object.
+
+01:08.700 --> 01:11.790
+And so I first wanna focus on exactly what an object is
+
+01:11.790 --> 01:15.033
+and help you get an understanding of what an object is.
+
+01:15.930 --> 01:16.863
+So back over here.
+
+01:19.560 --> 01:22.710
+So we've written two configuration files.
+
+01:22.710 --> 01:24.240
+We're going to eventually take these
+
+01:24.240 --> 01:26.190
+two configuration files we put together
+
+01:26.190 --> 01:30.030
+and feed them into the kubectl command line tool
+
+01:30.030 --> 01:32.250
+that we installed a couple videos ago.
+
+01:32.250 --> 01:34.620
+Remember that is the kubectl command
+
+01:34.620 --> 01:37.170
+that we had ran at our terminal just a moment ago.
+
+01:37.170 --> 01:40.890
+Just a second ago, we ran cluster info like so.
+
+01:40.890 --> 01:42.150
+So eventually we're going to take
+
+01:42.150 --> 01:44.430
+these two configuration files and pass them
+
+01:44.430 --> 01:46.380
+into this command line tool.
+
+01:46.380 --> 01:50.190
+When we pass them in, kubectl is going to interpret
+
+01:50.190 --> 01:54.903
+both those files and create two objects out of each file.
+
+01:56.640 --> 01:58.110
+So the config files that we write
+
+01:58.110 --> 02:01.290
+are going to use to create objects in general.
+
+02:01.290 --> 02:03.120
+The term object is a reference
+
+02:03.120 --> 02:07.170
+to a thing that exists inside of our Kubernetes cluster.
+
+02:07.170 --> 02:08.490
+And so we don't specifically say
+
+02:08.490 --> 02:10.980
+that we are making objects quite so much.
+
+02:10.980 --> 02:14.220
+In reality, we are making specific types of objects.
+
+02:14.220 --> 02:15.360
+And in this diagram right here,
+
+02:15.360 --> 02:19.200
+I'm showing you a couple of sample object types.
+
+02:19.200 --> 02:22.320
+So an example of an object would be a state full set.
+
+02:22.320 --> 02:25.680
+Another example of an object would be a replica controller.
+
+02:25.680 --> 02:27.450
+These are all things that we can create
+
+02:27.450 --> 02:29.130
+inside of our Kubernetes cluster
+
+02:29.130 --> 02:31.200
+that have very specific purposes
+
+02:31.200 --> 02:33.990
+to make our application work the way we expect.
+
+02:33.990 --> 02:35.970
+Two other examples of object types
+
+02:35.970 --> 02:38.340
+that we're going to very frequently be using
+
+02:38.340 --> 02:41.250
+is a pod and a service.
+
+02:41.250 --> 02:42.360
+And you might have noticed
+
+02:42.360 --> 02:44.550
+that inside of our two configuration files,
+
+02:44.550 --> 02:47.040
+we have the word pod next to kind
+
+02:47.040 --> 02:50.100
+and we have the word service next to kind as well.
+
+02:50.100 --> 02:51.420
+So the first thing to understand here
+
+02:51.420 --> 02:55.050
+is that the kind entry inside of all the configuration files
+
+02:55.050 --> 02:57.840
+that you and I are going to write is meant to represent
+
+02:57.840 --> 03:01.893
+or indicate the type of object that we want to make.
+
+03:02.940 --> 03:06.300
+So in our clientpod.yaml file, we're making an object
+
+03:06.300 --> 03:08.550
+of type pod because that's what we entered in
+
+03:08.550 --> 03:09.990
+for the kind property.
+
+03:09.990 --> 03:12.510
+In the client node port file, we are making an object
+
+03:12.510 --> 03:15.210
+of type service because that's what we represented
+
+03:15.210 --> 03:17.493
+for the kind property over here as well.
+
+03:18.540 --> 03:21.360
+Now you might be curious, what exactly is an object?
+
+03:21.360 --> 03:22.740
+What are they used for?
+
+03:22.740 --> 03:23.670
+Well, like I just said,
+
+03:23.670 --> 03:25.980
+they're essentially things that are going to be created
+
+03:25.980 --> 03:27.780
+inside of our Kubernetes cluster
+
+03:27.780 --> 03:31.260
+to get our application to work the way we might expect.
+
+03:31.260 --> 03:34.080
+And so for example, every object that we're going to create
+
+03:34.080 --> 03:37.350
+or every type of object has a slightly different purpose.
+
+03:37.350 --> 03:40.230
+Some objects are used to run a container
+
+03:40.230 --> 03:41.730
+as is the case with a pod.
+
+03:41.730 --> 03:44.370
+A pod is used to run a container.
+
+03:44.370 --> 03:48.210
+Other types of objects might monitor a container.
+
+03:48.210 --> 03:51.240
+Other types of objects such as a service
+
+03:51.240 --> 03:53.940
+are going to set up some kind of networking.
+
+03:53.940 --> 03:56.700
+And so we made a object of type service
+
+03:56.700 --> 04:00.393
+to set up some networking inside of our Kubernetes cluster.
+
+04:01.890 --> 04:05.190
+So that's kind of a brief overview on exactly what API
+
+04:05.190 --> 04:09.390
+or excuse me, what kind service and kind pod mean.
+
+04:09.390 --> 04:10.710
+Now I wanna tell you a little bit more
+
+04:10.710 --> 04:13.953
+about API version V1 on both these files.
+
+04:15.810 --> 04:19.290
+Let's see over here, here we go.
+
+04:19.290 --> 04:21.150
+So when we specify the API version
+
+04:21.150 --> 04:24.210
+at the very top of the file, that essentially scopes
+
+04:24.210 --> 04:27.630
+or limits the types of objects that we can specify
+
+04:27.630 --> 04:30.720
+that we want to create within any given configuration file.
+
+04:30.720 --> 04:33.150
+So inside of both of our configuration files,
+
+04:33.150 --> 04:36.480
+we specified an API version of V1.
+
+04:36.480 --> 04:38.400
+That essentially opens up access
+
+04:38.400 --> 04:43.110
+to us to a predefined set of different object types.
+
+04:43.110 --> 04:46.470
+And so we have access or our configuration file.
+
+04:46.470 --> 04:50.280
+In both cases, because we are designating API version V1,
+
+04:50.280 --> 04:53.730
+we can create an object of type component status
+
+04:53.730 --> 04:56.610
+or config map or endpoints or event or namespace
+
+04:56.610 --> 04:59.970
+or pod or any of another of other object types
+
+04:59.970 --> 05:02.670
+that I'm not reflecting inside this diagram.
+
+05:02.670 --> 05:04.680
+If we had used a different API version
+
+05:04.680 --> 05:08.190
+such as API version colon app slash V1,
+
+05:08.190 --> 05:11.640
+we get access to a different set of object types.
+
+05:11.640 --> 05:14.160
+And so if we had put in app slash V1,
+
+05:14.160 --> 05:17.670
+we could have created an object of type controller revision
+
+05:17.670 --> 05:20.163
+or an object of type stateful set.
+
+05:21.000 --> 05:22.740
+Now in practice, the API version flag
+
+05:22.740 --> 05:24.720
+is just a little bit annoying,
+
+05:24.720 --> 05:26.010
+I'll be honest with you.
+
+05:26.010 --> 05:28.260
+What you're usually going to do with any configuration file
+
+05:28.260 --> 05:30.510
+you put together is you're first gonna decide
+
+05:30.510 --> 05:32.100
+on what kind of object
+
+05:32.100 --> 05:34.470
+or what type of object you want to create.
+
+05:34.470 --> 05:36.270
+You'll then figure out what API group
+
+05:36.270 --> 05:37.830
+that object type belongs to,
+
+05:37.830 --> 05:39.360
+and then you're just gonna go look up
+
+05:39.360 --> 05:43.470
+that API version and stick it into your configuration file.
+
+05:43.470 --> 05:46.800
+So in other words, I knew that we had wanted to create
+
+05:46.800 --> 05:48.420
+something to create a container
+
+05:48.420 --> 05:50.430
+inside of our Kubernetes application.
+
+05:50.430 --> 05:51.930
+And so based on my knowledge,
+
+05:51.930 --> 05:54.690
+I knew that we needed to create a pod.
+
+05:54.690 --> 05:57.630
+So what I did was I looked up a document that said, hey,
+
+05:57.630 --> 06:00.210
+if you wanna make a pod, you have to be using the pool
+
+06:00.210 --> 06:03.810
+of object types designated in API version V1.
+
+06:03.810 --> 06:05.070
+And so that's why I put down
+
+06:05.070 --> 06:07.470
+API version V1 inside my config file.
+
+06:07.470 --> 06:08.820
+It's because ahead of time,
+
+06:08.820 --> 06:11.520
+I knew that I had wanted to make a pod.
+
+06:11.520 --> 06:12.353
+So the reason that I say
+
+06:12.353 --> 06:14.580
+that this API version is a little bit annoying
+
+06:14.580 --> 06:16.830
+is that it's mostly a reactionary feature
+
+06:16.830 --> 06:18.690
+and you just gotta go do a little bit of reference
+
+06:18.690 --> 06:21.120
+to figure out what you should be specifying.
+
+06:21.120 --> 06:21.990
+Now throughout this course,
+
+06:21.990 --> 06:23.940
+I'm gonna be telling you in great detail
+
+06:23.940 --> 06:26.760
+about exactly what API version we're going to be specifying
+
+06:26.760 --> 06:28.920
+for every config file we put together.
+
+06:28.920 --> 06:30.990
+So you don't really need to worry about memorizing
+
+06:30.990 --> 06:33.290
+these things that much throughout this course.
+
+06:34.710 --> 06:38.250
+So at this point we've discussed what API version means.
+
+06:38.250 --> 06:40.680
+We've also discussed what kind means
+
+06:40.680 --> 06:43.590
+although we haven't really discussed what a pod is,
+
+06:43.590 --> 06:46.560
+or really discussed what a service is.
+
+06:46.560 --> 06:47.850
+So let's take a quick pause right here.
+
+06:47.850 --> 06:49.230
+We're going to come back to the next section
+
+06:49.230 --> 06:53.250
+and expand on exactly what a pod is.
+
+06:53.250 --> 06:55.323
+So I'll see you in just a minute.

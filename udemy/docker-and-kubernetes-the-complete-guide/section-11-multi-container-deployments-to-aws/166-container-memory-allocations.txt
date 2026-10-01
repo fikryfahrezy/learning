@@ -1,0 +1,307 @@
+WEBVTT
+
+00:00.870 --> 00:01.703
+-: In the last section,
+
+00:01.703 --> 00:03.540
+we pushed up all of our code to GitHub,
+
+00:03.540 --> 00:06.090
+Travis pulled it down and started to build a project.
+
+00:06.090 --> 00:07.770
+Now I've got my build right here,
+
+00:07.770 --> 00:09.870
+and it looks like it was successfully built
+
+00:09.870 --> 00:12.510
+and deployed off to Elastic Beanstalk.
+
+00:12.510 --> 00:15.513
+So if you have any error at the Travis CI step it,
+
+00:15.513 --> 00:18.600
+it very likely means that you might have made a typo
+
+00:18.600 --> 00:20.310
+somewhere along the way.
+
+00:20.310 --> 00:21.720
+As a reminder, you can always check out
+
+00:21.720 --> 00:24.270
+the GitHub repository of all of my code,
+
+00:24.270 --> 00:26.400
+which is linked in one of the very first sections
+
+00:26.400 --> 00:27.660
+in this entire course.
+
+00:27.660 --> 00:29.070
+And so that's a great place to get started
+
+00:29.070 --> 00:31.410
+if you wanna do a little bit of troubleshooting.
+
+00:31.410 --> 00:34.560
+Now, assuming that the deploy for you went successfully,
+
+00:34.560 --> 00:37.020
+So all the way down here I can see deploying application,
+
+00:37.020 --> 00:38.340
+no problems with that.
+
+00:38.340 --> 00:39.180
+We can then flip over
+
+00:39.180 --> 00:42.843
+to our Elastic Beanstalk dashboard over on AWS.
+
+00:44.040 --> 00:46.230
+So once you go over here, you might see an error
+
+00:46.230 --> 00:48.810
+or a warning, which again is totally fine,
+
+00:48.810 --> 00:50.430
+We very much expected this to happen.
+
+00:50.430 --> 00:52.620
+I just wanted you to see an example error
+
+00:52.620 --> 00:54.510
+with a deployment like this.
+
+00:54.510 --> 00:55.680
+So if I scroll down a little bit,
+
+00:55.680 --> 00:57.630
+I can see recent events,
+
+00:57.630 --> 00:59.220
+and underneath recent events,
+
+00:59.220 --> 01:01.530
+you might notice an error message right here
+
+01:01.530 --> 01:04.740
+and it says invalid setting for container client.
+
+01:04.740 --> 01:07.260
+So that is a invalid setting that was detected
+
+01:07.260 --> 01:12.000
+inside of our dockerrun.aws.json file right here.
+
+01:12.000 --> 01:13.860
+In particular, it's complaining to say
+
+01:13.860 --> 01:17.280
+that we did not specify in option called memory
+
+01:17.280 --> 01:19.110
+and we must specify this option
+
+01:19.110 --> 01:21.870
+if we're going to use the Docker run file.
+
+01:21.870 --> 01:23.370
+So what's going on here?
+
+01:23.370 --> 01:26.340
+Essentially we correctly put together our Docker run file,
+
+01:26.340 --> 01:29.400
+but we missed one required option
+
+01:29.400 --> 01:31.650
+for everyone of our container definitions,
+
+01:31.650 --> 01:34.050
+and that is a memory option.
+
+01:34.050 --> 01:36.420
+Essentially, when Elastic Beanstalk decides to create
+
+01:36.420 --> 01:37.500
+each of these containers,
+
+01:37.500 --> 01:41.250
+it's going to allocate some amount of RAM to each of them.
+
+01:41.250 --> 01:44.220
+So it wants us to tell it exactly how much RAM
+
+01:44.220 --> 01:47.190
+or how much memory should be allocated to each container.
+
+01:47.190 --> 01:50.190
+And we do so by adding in a memory option
+
+01:50.190 --> 01:53.010
+to each of these different objects inside of here.
+
+01:53.010 --> 01:56.040
+So underneath the essential flag on client,
+
+01:56.040 --> 01:59.430
+I'm gonna put a comma, and I'll specify memory,
+
+01:59.430 --> 02:01.380
+and then we're going to specify the amount of memory
+
+02:01.380 --> 02:03.030
+in megabytes.
+
+02:03.030 --> 02:04.800
+Now for this step, unfortunately,
+
+02:04.800 --> 02:06.690
+it's kind of challenging for me to give you
+
+02:06.690 --> 02:09.450
+very strong guidance on exactly how much memory
+
+02:09.450 --> 02:11.820
+should be allocated to each of these services
+
+02:11.820 --> 02:14.880
+or more precisely, how much memory you should use
+
+02:14.880 --> 02:15.903
+as a rule of thumb.
+
+02:16.770 --> 02:18.420
+The best guidance I can possibly give you
+
+02:18.420 --> 02:20.910
+is to do a little bit of research to look up these services
+
+02:20.910 --> 02:22.050
+that you're trying to host.
+
+02:22.050 --> 02:24.660
+And traditionally, there tends to be many
+
+02:24.660 --> 02:27.600
+Stack Overflow posts that give a little bit of guidance
+
+02:27.600 --> 02:30.600
+on the appropriate amount of memory to allocate.
+
+02:30.600 --> 02:32.370
+So for our application,
+
+02:32.370 --> 02:34.800
+we're just going to do a straight across the board,
+
+02:34.800 --> 02:38.430
+128 megabytes for every one of our services.
+
+02:38.430 --> 02:40.560
+Again, I'm not gonna necessarily say this is
+
+02:40.560 --> 02:42.390
+good practice or bad practice,
+
+02:42.390 --> 02:44.970
+or maybe we're putting too much memory into one service
+
+02:44.970 --> 02:46.470
+or too little into another,
+
+02:46.470 --> 02:47.790
+I really recommend that when you start
+
+02:47.790 --> 02:48.930
+working on your own projects,
+
+02:48.930 --> 02:51.230
+you do a little bit of research on this front.
+
+02:52.320 --> 02:55.050
+So I'm gonna take this memory, 128,
+
+02:55.050 --> 02:58.470
+I'm gonna copy it and then I'll go down to the server.
+
+02:58.470 --> 03:01.260
+At the end of essential, I'll put a comma,
+
+03:01.260 --> 03:03.183
+and I'll paste in memory 128.
+
+03:04.860 --> 03:07.140
+I'll go to worker, I'll find essential false,
+
+03:07.140 --> 03:10.503
+I'll put a comma in and do memory 128.
+
+03:12.240 --> 03:15.240
+And then finally I'll do the same thing down on Nginx.
+
+03:15.240 --> 03:18.000
+Here's links, I'll put a comma at the very end,
+
+03:18.000 --> 03:20.313
+and I'll do memory 128 again.
+
+03:21.390 --> 03:23.550
+Okay, so that's it, I'm gonna save this file,
+
+03:23.550 --> 03:27.420
+and then we will again flip back over to our terminal.
+
+03:27.420 --> 03:28.770
+We'll do a git status.
+
+03:28.770 --> 03:31.710
+So we made a change and we now want to deploy this change.
+
+03:31.710 --> 03:34.680
+So we'll do a git add, a commit,
+
+03:34.680 --> 03:38.670
+I'll say something like added memory allocation,
+
+03:38.670 --> 03:41.193
+and we'll do a git push origin master again.
+
+03:42.720 --> 03:44.010
+And now just like before,
+
+03:44.010 --> 03:46.590
+this is going to send all of our code to GitHub,
+
+03:46.590 --> 03:49.740
+Travis CI is gonna pull it down, build our images,
+
+03:49.740 --> 03:51.060
+push them off to Docker Hub,
+
+03:51.060 --> 03:54.420
+and then attempt to send that Docker run JSON file
+
+03:54.420 --> 03:56.490
+back over to Elastic Beanstalk.
+
+03:56.490 --> 03:58.770
+So another quick break and I'll see you in just a minute.
+
+03:58.770 --> 04:01.380
+Once again, if anything goes wrong, totally fine,
+
+04:01.380 --> 04:03.660
+this is all a part of the debugging process.
+
+04:03.660 --> 04:06.210
+So if anything goes wrong, continue in the next section,
+
+04:06.210 --> 04:08.760
+and we'll take a look at any possible error message.
+
+04:08.760 --> 04:11.033
+So quick break, and I'll see you in just a minute.

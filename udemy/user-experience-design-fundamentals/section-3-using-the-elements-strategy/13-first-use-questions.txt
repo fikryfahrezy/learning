@@ -1,0 +1,175 @@
+WEBVTT
+
+00:01.020 --> 00:07.590
+As we inch closer to getting a very solid picture of what it is we're building and why we're building
+
+00:07.590 --> 00:07.950
+it.
+
+00:07.980 --> 00:14.730
+One of the other questions that we have to ask is what are the user's basic first expectations going
+
+00:14.730 --> 00:15.150
+to be?
+
+00:15.180 --> 00:21.300
+We call these first user experience questions, which essentially means the very first time someone
+
+00:21.300 --> 00:27.090
+sees your screen, there are a series of questions that they are inevitably going to have, and they're
+
+00:27.090 --> 00:27.870
+very common.
+
+00:28.080 --> 00:31.020
+These these questions belong to all human beings.
+
+00:31.020 --> 00:37.920
+It has a lot to do with the way our minds work and sort of the basic physiological response to just
+
+00:37.920 --> 00:39.540
+about anything we encounter.
+
+00:39.540 --> 00:46.170
+So upon seeing something the first time, we typically have questions and those questions are, what
+
+00:46.170 --> 00:46.950
+is this?
+
+00:46.950 --> 00:47.220
+Right?
+
+00:47.220 --> 00:48.390
+What am I looking at?
+
+00:48.780 --> 00:50.850
+Is it what I expected to see?
+
+00:50.850 --> 00:56.460
+I clicked on a link with an expectation in mind as to what was going to result on the screen.
+
+00:56.460 --> 00:57.660
+Is this it?
+
+00:58.020 --> 00:59.310
+Does it look credible?
+
+00:59.340 --> 01:01.030
+Does it look trustworthy?
+
+01:01.180 --> 01:02.380
+Do I trust this?
+
+01:02.380 --> 01:09.010
+And it doesn't matter whether it's asking me simply for more of my time or it's asking me for money,
+
+01:09.010 --> 01:11.650
+it still has to look credible to me.
+
+01:11.650 --> 01:14.530
+It has to look reputable, whatever term you want to use there.
+
+01:15.060 --> 01:16.800
+Does it offer what I want?
+
+01:16.830 --> 01:18.900
+Do I care about any of this stuff?
+
+01:18.900 --> 01:21.480
+And that's a three second exploration.
+
+01:21.480 --> 01:23.700
+In three seconds or less.
+
+01:23.700 --> 01:27.870
+Somebody's going to make a determination as to whether you've got what they want or not.
+
+01:27.870 --> 01:30.440
+And if the answer is, Nope, this isn't it, they're gone.
+
+01:30.450 --> 01:35.220
+So answering that question in particular on the screen is tremendously important.
+
+01:35.520 --> 01:37.910
+Does it look valuable enough to stick around?
+
+01:37.920 --> 01:39.840
+I can see that there's more behind this screen.
+
+01:39.840 --> 01:41.790
+There's some navigation options up there.
+
+01:41.790 --> 01:43.620
+It looks like they do a bunch of different things.
+
+01:43.650 --> 01:47.940
+Does it matter enough to me to actually click something and look at another screen?
+
+01:48.030 --> 01:51.570
+The first screen has to answer that question as well.
+
+01:52.310 --> 01:53.990
+What actions can I take now?
+
+01:54.020 --> 01:56.090
+What can I do now that I'm here?
+
+01:56.120 --> 01:59.090
+Do I have a sense of what I can accomplish?
+
+01:59.120 --> 02:04.640
+Because again, if I don't, if any of that is unclear, I'm probably going to go do something else.
+
+02:05.000 --> 02:06.380
+How do I learn more?
+
+02:06.380 --> 02:11.420
+If you do get me interested, if you are speaking to me in some way, if you are presenting something
+
+02:11.420 --> 02:14.480
+that seems valuable to me, okay, what do I do?
+
+02:14.510 --> 02:16.100
+How do I get more information?
+
+02:16.900 --> 02:18.400
+How do I contact someone?
+
+02:18.400 --> 02:19.630
+This is huge.
+
+02:20.680 --> 02:21.700
+How many times have you been?
+
+02:21.730 --> 02:26.800
+Have you scoured a website looking for a phone number or a contact email?
+
+02:26.800 --> 02:28.660
+And it doesn't matter what you do?
+
+02:28.690 --> 02:29.050
+Okay.
+
+02:29.050 --> 02:31.710
+Product service business, not business.
+
+02:31.720 --> 02:32.800
+It really doesn't matter.
+
+02:32.800 --> 02:39.460
+We have an innate need to know how can I get to a person if I have a question here, if I have a problem
+
+02:39.460 --> 02:39.880
+here.
+
+02:39.910 --> 02:40.170
+All right.
+
+02:40.180 --> 02:46.090
+And answering that goes a long way in sort of calming people down and giving them a sense that, you
+
+02:46.090 --> 02:47.430
+know, we got you covered.
+
+02:47.440 --> 02:48.580
+Don't worry about it.

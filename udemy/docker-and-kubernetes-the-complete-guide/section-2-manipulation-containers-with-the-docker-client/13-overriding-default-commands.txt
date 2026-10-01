@@ -1,0 +1,370 @@
+WEBVTT
+
+00:00.960 --> 00:02.550
+-: In this section, we're going to continue looking
+
+00:02.550 --> 00:06.450
+at the docker run command or some slight variations of it.
+
+00:06.450 --> 00:08.940
+Now, before I show you the next kind of variations command
+
+00:08.940 --> 00:09.810
+that we're gonna look at,
+
+00:09.810 --> 00:11.790
+I wanna give you one quick reminder.
+
+00:11.790 --> 00:15.060
+Remember, any time that we execute docker run with an image,
+
+00:15.060 --> 00:17.100
+we not only get that file system snapshot,
+
+00:17.100 --> 00:19.230
+but we also get this default command
+
+00:19.230 --> 00:20.820
+that is supposed to be executed
+
+00:20.820 --> 00:22.623
+after the container is created.
+
+00:23.550 --> 00:25.950
+So, the variation on docker run that we're gonna look at
+
+00:25.950 --> 00:28.260
+is gonna give you a way to override
+
+00:28.260 --> 00:29.853
+this default startup command.
+
+00:30.780 --> 00:31.800
+Here's how we do it.
+
+00:31.800 --> 00:34.200
+We'll execute docker run, the image name,
+
+00:34.200 --> 00:35.430
+just like we did before,
+
+00:35.430 --> 00:38.370
+and then after that we'll supply a alternate command
+
+00:38.370 --> 00:41.970
+to be executed inside the container after it starts up.
+
+00:41.970 --> 00:43.320
+This is an override.
+
+00:43.320 --> 00:46.110
+So, whatever default command is included inside of the image
+
+00:46.110 --> 00:47.970
+is not going to be executed.
+
+00:47.970 --> 00:50.550
+Let's try this out right now and just see how it works.
+
+00:50.550 --> 00:52.740
+All right, so I'm going to find my terminal
+
+00:52.740 --> 00:55.380
+and I'm gonna execute docker run,
+
+00:55.380 --> 00:57.600
+and now I'm going to specify my image.
+
+00:57.600 --> 01:00.240
+We're gonna use a different image than what we used before.
+
+01:00.240 --> 01:02.280
+We're gonna use an image called busybox,
+
+01:02.280 --> 01:04.530
+and I'll tell you why in just a moment.
+
+01:04.530 --> 01:07.080
+After that, we'll list out the alternate command
+
+01:07.080 --> 01:10.200
+to execute inside the container after it is created.
+
+01:10.200 --> 01:12.480
+And so, I'm gonna say that I want to run a command,
+
+01:12.480 --> 01:14.013
+echo hi there.
+
+01:15.000 --> 01:16.740
+So, this right here is the override.
+
+01:16.740 --> 01:19.740
+This is a command that we executed inside that container.
+
+01:19.740 --> 01:21.457
+The echo command is going to print out
+
+01:21.457 --> 01:23.220
+"hi there" inside my terminal.
+
+01:23.220 --> 01:25.290
+So, if this works the way we would expect
+
+01:25.290 --> 01:27.420
+I'll see the text "hi there" appear.
+
+01:27.420 --> 01:30.540
+So, I'm gonna run that and sure enough, yep, we see that.
+
+01:30.540 --> 01:32.070
+We can change the text provided here
+
+01:32.070 --> 01:34.230
+to the echo command as much as we please.
+
+01:34.230 --> 01:39.230
+So I could say, "bye there," or I could say, "how are you?"
+
+01:40.650 --> 01:41.583
+You get the idea.
+
+01:42.830 --> 01:46.170
+Now, I wanna show you a small variation on that command,
+
+01:46.170 --> 01:47.820
+and this is going to start to make things
+
+01:47.820 --> 01:48.810
+a little bit more interesting
+
+01:48.810 --> 01:51.540
+than just kind of echoing text back over to you.
+
+01:51.540 --> 01:54.840
+I want you to run docker run, busybox,
+
+01:54.840 --> 01:57.330
+and then the override command that we're gonna use this time
+
+01:57.330 --> 01:59.190
+is going to be ls.
+
+01:59.190 --> 02:00.570
+If you've never used ls before,
+
+02:00.570 --> 02:03.000
+it's gonna print out all the files and folders
+
+02:03.000 --> 02:05.160
+inside of a given directory.
+
+02:05.160 --> 02:07.560
+So, let's try running this and see what happens.
+
+02:08.820 --> 02:11.190
+So, according to our docker container,
+
+02:11.190 --> 02:13.260
+when we print out our files and folders,
+
+02:13.260 --> 02:16.380
+we have bin at C, dev, home, proc, root,
+
+02:16.380 --> 02:18.570
+system, user and var.
+
+02:18.570 --> 02:20.640
+These are all folders right here.
+
+02:20.640 --> 02:23.580
+And, if you are on, say, a Windows machine right here,
+
+02:23.580 --> 02:25.680
+these folders might look very strange to you
+
+02:25.680 --> 02:27.660
+and very unfamiliar.
+
+02:27.660 --> 02:30.300
+So, in fact, these are folders that are being printed out
+
+02:30.300 --> 02:34.290
+that are not belonging to you on your computer.
+
+02:34.290 --> 02:38.160
+These are folders that exist solely inside that container.
+
+02:38.160 --> 02:40.230
+I wanna remind you about exactly what happens
+
+02:40.230 --> 02:42.600
+when we create a container out of an image.
+
+02:42.600 --> 02:44.850
+So, over here we've got the busybox image,
+
+02:44.850 --> 02:48.600
+it has some default file system snapshot
+
+02:48.600 --> 02:50.910
+and some presumably default command.
+
+02:50.910 --> 02:53.250
+You know, who knows what it is off top of my head
+
+02:53.250 --> 02:56.520
+but it definitely has this default file system snapshot.
+
+02:56.520 --> 02:59.190
+The busybox image has default folders
+
+02:59.190 --> 03:02.010
+of bin, dev, at C, home, proc, root, and so on.
+
+03:02.010 --> 03:04.380
+All the ones that you see listed right here.
+
+03:04.380 --> 03:07.680
+So, when we create a new container out of that image,
+
+03:07.680 --> 03:10.443
+we take this file system snapshot,
+
+03:11.670 --> 03:14.430
+we stick it in as the folder for that container,
+
+03:14.430 --> 03:17.730
+and then the command that we execute is ls.
+
+03:17.730 --> 03:19.740
+So we list out all the files and folders
+
+03:19.740 --> 03:21.060
+inside of our hard drive,
+
+03:21.060 --> 03:24.990
+which then prints out bin, dev, at C home, proc and route.
+
+03:24.990 --> 03:26.610
+So, that's pretty much it.
+
+03:26.610 --> 03:28.230
+Now, one thing you might be a little bit curious about
+
+03:28.230 --> 03:30.840
+is why we chose to use the busybox image here
+
+03:30.840 --> 03:34.350
+as opposed to the hello world one that we were using before.
+
+03:34.350 --> 03:36.357
+Well, let's go back over to our terminal really quickly
+
+03:36.357 --> 03:39.810
+and we're gonna try running hello world with the ls command.
+
+03:39.810 --> 03:42.780
+So I'll do a docker run, hello dash world,
+
+03:42.780 --> 03:44.313
+and I'll do ls right here.
+
+03:45.150 --> 03:46.050
+And you're gonna very quickly
+
+03:46.050 --> 03:48.420
+see that we get a kind of nasty error message.
+
+03:48.420 --> 03:51.645
+Well, let's try doing the echo command and see what happens.
+
+03:51.645 --> 03:55.500
+I'll do docker run, hello world, echo hi there,
+
+03:55.500 --> 03:58.230
+and we get a very similar error message here as well.
+
+03:58.230 --> 03:59.670
+So, what's going on?
+
+03:59.670 --> 04:01.560
+Well, here's the issue.
+
+04:01.560 --> 04:05.160
+When we run the alternate commands or those alternate echo
+
+04:05.160 --> 04:07.170
+and ls commands with busybox,
+
+04:07.170 --> 04:08.400
+those commands work
+
+04:08.400 --> 04:12.930
+because ls and echo are two programs that exist
+
+04:12.930 --> 04:16.620
+inside of the busybox file system image.
+
+04:16.620 --> 04:19.470
+Somewhere inside of this folder system right here
+
+04:19.470 --> 04:23.040
+is a ls command or an actual ls executable
+
+04:23.040 --> 04:25.710
+and a echo executable as well.
+
+04:25.710 --> 04:28.440
+And so we can safely execute those commands with busybox
+
+04:28.440 --> 04:29.700
+because those are programs
+
+04:29.700 --> 04:32.490
+that exist inside this file system.
+
+04:32.490 --> 04:36.060
+However, with our hello world program over here,
+
+04:36.060 --> 04:38.991
+the only thing that exists inside this file system snapshot
+
+04:38.991 --> 04:43.260
+is a single program, like one single file
+
+04:43.260 --> 04:45.360
+and all that thing does is echo out
+
+04:45.360 --> 04:47.250
+or kind of print out that singular message
+
+04:47.250 --> 04:49.380
+that we saw when we ran that container.
+
+04:49.380 --> 04:52.200
+So, these startup commands that we are executing
+
+04:52.200 --> 04:54.570
+are being based upon the file system
+
+04:54.570 --> 04:55.650
+included with the image.
+
+04:55.650 --> 04:58.200
+And if we try to execute a command inside the container
+
+04:58.200 --> 05:01.920
+that uses a program that is not contained
+
+05:01.920 --> 05:05.340
+within this file system, we're going to see that air.
+
+05:05.340 --> 05:08.700
+Okay, so a little bit more on docker run command.
+
+05:08.700 --> 05:10.020
+Let's take another quick break right now
+
+05:10.020 --> 05:11.673
+and continue in the next section.

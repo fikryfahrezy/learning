@@ -1,0 +1,169 @@
+WEBVTT
+
+00:00.890 --> 00:05.300
+Now let's talk about some basic organizing principles of information.
+
+00:05.300 --> 00:08.750
+And the place to start is by getting to know nodes.
+
+00:08.750 --> 00:14.180
+While that sounds potentially invasive, I assure you that it's not.
+
+00:14.210 --> 00:17.660
+A node is the basic unit of any information structure.
+
+00:17.690 --> 00:20.540
+A node can be as small as a single number, right.
+
+00:20.630 --> 00:26.300
+Which could be the size of a t shirt or as large as an entire library, which could be something like
+
+00:26.300 --> 00:27.290
+men's apparel.
+
+00:27.320 --> 00:33.350
+By dealing with a node instead of specific details, we can use a common language and a common set of
+
+00:33.350 --> 00:36.670
+ideas across many different kinds of problems.
+
+00:36.680 --> 00:42.950
+The organizing principles that we use determine how the nodes in any information structure are arranged.
+
+00:42.980 --> 00:47.750
+In other words, it tells us which nodes are grouped together and which are kept separate.
+
+00:47.780 --> 00:51.530
+It allows us to tell the difference between things that are related and things that aren't related.
+
+00:51.860 --> 00:57.500
+By way of example, if we're building a corporate website and we have three important categories that
+
+00:57.500 --> 01:04.500
+are very high up in the information chain, such as consumer or business investor, then our audience
+
+01:04.530 --> 01:06.540
+is the organizing principle of the site.
+
+01:06.570 --> 01:10.920
+We're organizing information based on who the audience is.
+
+01:10.950 --> 01:19.350
+In the instance of a travel website, our high level categories might be North America, Europe, Africa.
+
+01:19.380 --> 01:24.690
+Those are three buckets of information, three groups of things, three places we can go to expect to
+
+01:24.690 --> 01:26.460
+find related information.
+
+01:26.460 --> 01:30.390
+So in this case, geography is the organizing principle.
+
+01:30.390 --> 01:36.180
+So in these two cases, the organizing principles we use have everything to do with who our audience
+
+01:36.180 --> 01:41.940
+is, what their objectives are in using the site and what their information needs may be.
+
+01:42.150 --> 01:45.030
+There are a couple of rules of thumb to keep in mind here.
+
+01:45.060 --> 01:51.090
+Number one is that the organizing principles you use at the very highest levels of navigation of your
+
+01:51.090 --> 01:56.820
+site, your application should be the ones that are most closely related to user needs, what people
+
+01:56.820 --> 02:02.760
+want and business objectives, what you need to deliver the organizing principles that are used at the
+
+02:02.760 --> 02:08.670
+lower levels are usually influenced more by feature specifications and content requirements.
+
+02:08.670 --> 02:14.460
+You have to remember that every collection of information has a built in conceptual structure, and
+
+02:14.460 --> 02:16.890
+in most cases it has more than one.
+
+02:16.890 --> 02:22.410
+And what I really mean there is that there are certain assumptions and associations that human beings
+
+02:22.410 --> 02:29.580
+have, and every collection of information is either going to match those expectations and assumptions
+
+02:29.610 --> 02:30.480
+or it isn't.
+
+02:30.480 --> 02:35.730
+So the issue is creating the right structure for our objectives and creating the right structure that
+
+02:35.730 --> 02:36.960
+matches user need.
+
+02:36.960 --> 02:42.930
+For instance, if you're looking at a website that is all about computers, one possible organizing
+
+02:42.930 --> 02:46.020
+principle could be the weight of the computer.
+
+02:46.020 --> 02:51.030
+However, that probably doesn't make much sense to organize it that way because to most consumers,
+
+02:51.030 --> 02:56.160
+they're more concerned with the size of the processor, its speed, its cost.
+
+02:56.160 --> 02:59.700
+Okay, There are any number of things that are very important to that specific audience.
+
+02:59.700 --> 03:04.950
+So your organizing principle has to match the conceptual model that the person has.
+
+03:05.070 --> 03:06.510
+In a general sense.
+
+03:06.510 --> 03:10.510
+These attributes, these organizing principles that we're talking about are facets.
+
+03:10.530 --> 03:16.620
+Facets are attributes of an information set that can provide a very flexible set of organizing principles
+
+03:16.620 --> 03:18.540
+for just about any kind of content.
+
+03:18.540 --> 03:25.170
+But as we just illustrated, using the wrong facets can sometimes be worse than using none at all.
+
+03:25.170 --> 03:32.100
+What we see a lot of is sites or apps that position every conceivable facet as an organizing principle.
+
+03:32.100 --> 03:34.730
+And we say, okay, well we'll let the users pick what's important.
+
+03:34.740 --> 03:40.770
+The problem is that unless you're dealing with a really, really simple set of information, the architecture
+
+03:40.770 --> 03:44.760
+and the organization and the navigation becomes a giant mess.
+
+03:44.790 --> 03:45.210
+Okay?
+
+03:45.210 --> 03:50.100
+It's everything and anything, and it's very difficult for users to pick out what's most important to
+
+03:50.100 --> 03:55.080
+them or to identify the things that align with the reason they're there in the first place.
+
+03:55.080 --> 03:59.700
+When users have too many options to sort through, they often can't find anything.
+
+03:59.700 --> 04:05.580
+So it's our job, not the visitors, not the users, to identify the specific attributes of the information
+
+04:05.580 --> 04:10.710
+that will be the most useful, the most usable, the most valuable to the people who are using what
+
+04:10.710 --> 04:11.610
+we create.

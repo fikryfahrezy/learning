@@ -1,0 +1,352 @@
+WEBVTT
+
+00:00.981 --> 00:01.814
+-: In the last section, we put
+
+00:01.814 --> 00:03.360
+together all the source code that we're gonna need
+
+00:03.360 --> 00:06.270
+for right now for the worker project.
+
+00:06.270 --> 00:08.520
+Again, the worker is what's going to watch Redis.
+
+00:08.520 --> 00:11.430
+Anytime that we get a new index inserted into Redis
+
+00:11.430 --> 00:13.140
+the worker will automatically pull the value
+
+00:13.140 --> 00:15.780
+out and calculate the appropriate fibonacci value for it
+
+00:15.780 --> 00:19.020
+and then insert that value back into Redis.
+
+00:19.020 --> 00:21.560
+We're now gonna start putting together the code
+
+00:21.560 --> 00:22.470
+for the express server.
+
+00:22.470 --> 00:24.720
+As a quick reminder, if you don't want to go through any
+
+00:24.720 --> 00:28.170
+of this JavaScript specific setup, you can always move on
+
+00:28.170 --> 00:30.180
+to the next section and you'll find all the source
+
+00:30.180 --> 00:32.580
+code that we're writing inside that section.
+
+00:32.580 --> 00:34.530
+So all you have to do is download the file there
+
+00:34.530 --> 00:36.660
+and unzip it into your project.
+
+00:36.660 --> 00:38.820
+I'm only walking you through all the source code right now
+
+00:38.820 --> 00:39.960
+in case you're kind of curious
+
+00:39.960 --> 00:42.960
+about how to write a JavaScript application that makes use
+
+00:42.960 --> 00:44.850
+of all these different pieces.
+
+00:44.850 --> 00:47.010
+So let's get started on the express server
+
+00:47.010 --> 00:48.330
+that's going to serve as the sort
+
+00:48.330 --> 00:50.190
+of API layer that communicates
+
+00:50.190 --> 00:53.220
+with Redis and Postgres and communicates information
+
+00:53.220 --> 00:55.383
+over to a running react application.
+
+00:57.090 --> 00:58.710
+Back inside my code editor
+
+00:58.710 --> 01:01.440
+we were just working inside that worker directory.
+
+01:01.440 --> 01:03.450
+I'm now gonna make a second directory
+
+01:03.450 --> 01:05.580
+that I'm going to call server.
+
+01:05.580 --> 01:08.580
+And this thing is gonna house all the code for our server,
+
+01:08.580 --> 01:11.970
+the express server, that's gonna function as the API.
+
+01:11.970 --> 01:13.500
+Now, quick note here, please make sure
+
+01:13.500 --> 01:15.300
+that you make the server directory next
+
+01:15.300 --> 01:17.880
+to or as a sibling to the worker folder.
+
+01:17.880 --> 01:21.090
+You do not want to place the folder inside
+
+01:21.090 --> 01:23.310
+of the worker process. Don't want that.
+
+01:23.310 --> 01:27.390
+So it needs to be outside in a separate sibling folder.
+
+01:27.390 --> 01:28.860
+Now inside of here, we'll get started
+
+01:28.860 --> 01:31.173
+by making a package.json on file.
+
+01:32.190 --> 01:34.170
+We're gonna have a couple of different dependencies
+
+01:34.170 --> 01:36.240
+and a couple of different scripts as well.
+
+01:36.240 --> 01:38.430
+We'll first lift off or list off, excuse me
+
+01:38.430 --> 01:41.910
+the different dependencies that our project is gonna have.
+
+01:41.910 --> 01:45.090
+For dependencies, we're gonna get express at version
+
+01:45.090 --> 01:46.310
+4.16.3.
+
+01:48.900 --> 01:52.160
+We're going to get a Postgres client at 7.4.3.
+
+01:54.780 --> 01:59.780
+We're going to get a Redis client at 2.8.0.
+
+02:01.350 --> 02:04.563
+We'll get a Cores installation at 2.8.4.
+
+02:07.020 --> 02:09.660
+And we'll get Nodemon as well for development purposes
+
+02:09.660 --> 02:12.810
+at 1.18.3 like so.
+
+02:12.810 --> 02:15.480
+And again, we'll talk about why we are installing Nodemon
+
+02:15.480 --> 02:18.513
+as we start to put together the Docker side of this project.
+
+02:19.770 --> 02:21.600
+Now next to the dependencies, I'm gonna also
+
+02:21.600 --> 02:23.223
+define a script section.
+
+02:26.130 --> 02:28.110
+Very similar to the worker process.
+
+02:28.110 --> 02:30.240
+We're going to have a development script or a dev
+
+02:30.240 --> 02:31.893
+script that runs Nodemon.
+
+02:34.020 --> 02:35.970
+And then we will also have a start script
+
+02:35.970 --> 02:38.433
+for node index.js.
+
+02:39.900 --> 02:41.700
+All right, as usual, please double check
+
+02:41.700 --> 02:43.920
+make sure that you've got your commas after each one
+
+02:43.920 --> 02:45.330
+of these lines.
+
+02:45.330 --> 02:47.730
+And make sure you've got double quotes everywhere inside
+
+02:47.730 --> 02:48.563
+of here.
+
+02:48.563 --> 02:49.860
+Need double quotes everywhere.
+
+02:50.850 --> 02:52.590
+Once we've got the package.json file
+
+02:52.590 --> 02:55.290
+all put together, I'll delete this, or excuse me
+
+02:55.290 --> 02:58.140
+close the file, not delete it, my mistake.
+
+02:58.140 --> 02:59.880
+And then inside the server directory
+
+02:59.880 --> 03:04.560
+we're gonna make another file called keys.js.
+
+03:04.560 --> 03:08.310
+And just like before this file is going to house some
+
+03:08.310 --> 03:09.690
+of the different variables that we're going to
+
+03:09.690 --> 03:12.180
+need to connect to the running instance
+
+03:12.180 --> 03:13.800
+of Redis and the running instance
+
+03:13.800 --> 03:16.650
+of Postgres that will be associated with our application.
+
+03:18.180 --> 03:20.490
+Inside of the keys.js file
+
+03:20.490 --> 03:23.100
+I'll say module.exports
+
+03:23.100 --> 03:24.960
+and then inside of here, we're gonna have a pretty
+
+03:24.960 --> 03:27.900
+good different number of pieces of configuration.
+
+03:27.900 --> 03:30.660
+So please again, double check your typing in here
+
+03:30.660 --> 03:33.060
+because we're gonna do a lot of typing.
+
+03:33.060 --> 03:35.820
+I'll first do a Redis host that's gonna come
+
+03:35.820 --> 03:40.820
+from the environment variable process.env.Redis host.
+
+03:43.560 --> 03:44.710
+We'll get a Redis port.
+
+03:49.470 --> 03:52.500
+We will get a PG user.
+
+03:52.500 --> 03:56.130
+This is the Postgres user that we're going to log in as
+
+03:56.130 --> 03:59.373
+from process.env.pg user.
+
+04:00.270 --> 04:01.623
+We'll do a PG host.
+
+04:06.690 --> 04:08.880
+We'll do a PG database.
+
+04:08.880 --> 04:11.910
+This is going to be the name of the database inside
+
+04:11.910 --> 04:14.060
+of Postgres that we're going to connect to.
+
+04:15.810 --> 04:17.373
+PG database.
+
+04:18.570 --> 04:20.613
+We'll get a PG password.
+
+04:21.660 --> 04:24.750
+As you might guess, this is the password to the database
+
+04:24.750 --> 04:26.850
+which we're going to have to define at some point.
+
+04:26.850 --> 04:28.503
+So PG password.
+
+04:29.910 --> 04:31.653
+We'll get a PG port.
+
+04:36.300 --> 04:37.590
+Like so as well.
+
+04:37.590 --> 04:42.590
+So we should see 1, 2, 3, 4, 5, 6, 7 entries inside of here.
+
+04:43.080 --> 04:44.880
+Now I gotta ask you at this point again
+
+04:44.880 --> 04:47.160
+please make sure that all of these environment
+
+04:47.160 --> 04:48.920
+variable names are capitalized.
+
+04:48.920 --> 04:51.420
+So you should see capital PG user, capital
+
+04:51.420 --> 04:54.150
+PG host, capital PG database, and so on.
+
+04:54.150 --> 04:56.190
+And also double check all the keys on the left
+
+04:56.190 --> 04:57.510
+hand side as well.
+
+04:57.510 --> 04:58.860
+You make a typo inside this file
+
+04:58.860 --> 05:00.840
+it's gonna be a little bit of a pain to track
+
+05:00.840 --> 05:01.680
+down in the future.
+
+05:01.680 --> 05:03.360
+Please just do a quick double check inside of
+
+05:03.360 --> 05:05.130
+here and make sure you've got the correct spelling
+
+05:05.130 --> 05:07.740
+for stuff like say database on both sides and
+
+05:07.740 --> 05:10.640
+the correct spelling for password on both sides and so on.
+
+05:11.550 --> 05:13.230
+All right, so let's take a quick pause right here.
+
+05:13.230 --> 05:14.880
+We're gonna come back the next section and
+
+05:14.880 --> 05:17.400
+continue working on our server implementation.
+
+05:17.400 --> 05:18.900
+I'll see you in just a moment.

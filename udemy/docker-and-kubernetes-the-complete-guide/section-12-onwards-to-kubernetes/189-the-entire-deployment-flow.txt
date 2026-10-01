@@ -1,0 +1,997 @@
+WEBVTT
+
+00:01.080 --> 00:02.250
+-: In the last section, we went through
+
+00:02.250 --> 00:04.230
+a very long-winded demonstration
+
+00:04.230 --> 00:07.590
+of exactly what was happening inside of our local node.
+
+00:07.590 --> 00:09.420
+Now, at this point in time, our understanding
+
+00:09.420 --> 00:11.400
+of the Kubernetes architecture is kind of limited
+
+00:11.400 --> 00:12.930
+to this diagram right here,
+
+00:12.930 --> 00:14.820
+and a couple of discussions about, yeah,
+
+00:14.820 --> 00:18.870
+some networking stuff and nodes and blah, blah, blah.
+
+00:18.870 --> 00:20.700
+Very simple, straightforward stuff.
+
+00:20.700 --> 00:23.340
+So in this section, I wanna change that in a big way.
+
+00:23.340 --> 00:24.540
+We're gonna walk through the process
+
+00:24.540 --> 00:28.530
+of exactly what happened when we fed that configuration file
+
+00:28.530 --> 00:31.260
+into kubectl and get a better understanding
+
+00:31.260 --> 00:33.690
+of what is kind of happening behind the scenes.
+
+00:33.690 --> 00:35.220
+Now, before I do, I wanna give you
+
+00:35.220 --> 00:37.860
+a very quick demonstration at my command line,
+
+00:37.860 --> 00:41.160
+and I wanna show you something rather interesting, okay?
+
+00:41.160 --> 00:43.170
+So I'm gonna flip over to my command line.
+
+00:43.170 --> 00:44.220
+Now, some of these commands,
+
+00:44.220 --> 00:47.010
+you are not going to be able to issue successfully.
+
+00:47.010 --> 00:48.480
+If you run the commands I'm about to run,
+
+00:48.480 --> 00:50.340
+you will see an error message.
+
+00:50.340 --> 00:51.420
+So please don't try to run these.
+
+00:51.420 --> 00:54.090
+Just follow along visually for a second.
+
+00:54.090 --> 00:55.620
+I will show you how you can run these commands
+
+00:55.620 --> 00:56.850
+in just a moment as well.
+
+00:56.850 --> 00:58.470
+But for right now, just watch.
+
+00:58.470 --> 00:59.490
+Okay, so I'm gonna first start off
+
+00:59.490 --> 01:02.070
+by doing a kubectl get pods.
+
+01:02.070 --> 01:03.960
+That's going to list out the current status
+
+01:03.960 --> 01:05.760
+of our running pod right here.
+
+01:05.760 --> 01:08.430
+And as you can see, it currently has restarts of zero
+
+01:08.430 --> 01:10.413
+and an age of one hour.
+
+01:11.250 --> 01:13.680
+Now, I wanna do something very interesting.
+
+01:13.680 --> 01:15.840
+I'm going to execute a command.
+
+01:15.840 --> 01:18.810
+You're gonna see a docker PS right here,
+
+01:18.810 --> 01:20.190
+and you're gonna see that I'm running
+
+01:20.190 --> 01:23.070
+a tremendous number of containers right now.
+
+01:23.070 --> 01:24.450
+One of the containers I am running
+
+01:24.450 --> 01:27.210
+is the multi-client image.
+
+01:27.210 --> 01:29.070
+So this is the container that is running
+
+01:29.070 --> 01:31.530
+inside that pod right now.
+
+01:31.530 --> 01:34.260
+Now, I'm gonna take that container ID.
+
+01:34.260 --> 01:36.810
+Again, this is a container that's running inside that pod.
+
+01:36.810 --> 01:38.013
+I'm gonna take the ID,
+
+01:39.360 --> 01:41.940
+and I'll do a docker kill with that ID.
+
+01:41.940 --> 01:43.680
+So this is going to completely kill
+
+01:43.680 --> 01:46.440
+that running container inside of that pod.
+
+01:46.440 --> 01:47.273
+So that's it.
+
+01:47.273 --> 01:48.510
+It is done, it's gone.
+
+01:48.510 --> 01:50.700
+Now, I'm gonna do a docker PS again.
+
+01:50.700 --> 01:52.140
+If I scroll all the way back up,
+
+01:52.140 --> 01:53.910
+you're gonna very quickly see that it looks like,
+
+01:53.910 --> 01:55.980
+hey, wait a minute, it's still there.
+
+01:55.980 --> 01:57.780
+There is Steven Grider multi-client.
+
+01:57.780 --> 02:00.000
+That is the container running inside that pod.
+
+02:00.000 --> 02:01.530
+But you'll notice that the thing
+
+02:01.530 --> 02:04.083
+was only created two seconds ago.
+
+02:05.160 --> 02:10.160
+If I also run the command "kubectl get pods,"
+
+02:10.920 --> 02:13.200
+you'll notice that there is now one restart
+
+02:13.200 --> 02:15.360
+reflected inside of here as well.
+
+02:15.360 --> 02:17.730
+And so the thing that I wanted to demo to here very quickly
+
+02:17.730 --> 02:20.190
+that's going to kinda play into the diagram
+
+02:20.190 --> 02:21.480
+that we're gonna look at in just a second
+
+02:21.480 --> 02:24.330
+is that it appears that if we manually delete,
+
+02:24.330 --> 02:27.300
+or if one those containers inside that pod crashes,
+
+02:27.300 --> 02:29.010
+it appears that it automatically
+
+02:29.010 --> 02:31.173
+gets restarted for us for free.
+
+02:32.100 --> 02:33.510
+So with that in mind, we're not gonna look
+
+02:33.510 --> 02:35.430
+at a rather complex diagram.
+
+02:35.430 --> 02:37.800
+We're gonna walk through the process of what happened
+
+02:37.800 --> 02:40.470
+when we deployed or applied, I should say,
+
+02:40.470 --> 02:42.180
+these two configuration files.
+
+02:42.180 --> 02:44.070
+Now, just a quick disclaimer, this is going to be
+
+02:44.070 --> 02:46.500
+a rather long video as we go through this discussion.
+
+02:46.500 --> 02:48.600
+So I don't know, pause it at some point.
+
+02:48.600 --> 02:49.770
+Take a break if you feel like it.
+
+02:49.770 --> 02:50.603
+I don't know.
+
+02:51.870 --> 02:55.620
+Okay, so this diagram, super boring, not enough detail.
+
+02:55.620 --> 02:57.810
+I wanna look at this right here.
+
+02:57.810 --> 03:01.260
+All right, so this is a little bit more realistic diagram.
+
+03:01.260 --> 03:02.910
+We're gonna walk through this thing step by step
+
+03:02.910 --> 03:06.540
+and see what happens when we deploy one of those files.
+
+03:06.540 --> 03:07.860
+Now, on the right hand side,
+
+03:07.860 --> 03:11.043
+you'll notice that I'm reflecting three separate nodes.
+
+03:12.180 --> 03:14.430
+Remember, a node in the world of Kubernetes
+
+03:14.430 --> 03:17.160
+is a computer or essentially a physical computer
+
+03:17.160 --> 03:19.410
+or a virtual machine that is going to run
+
+03:19.410 --> 03:23.343
+some number of objects that we create inside of our cluster.
+
+03:24.540 --> 03:26.280
+You'll notice down here at the bottom center,
+
+03:26.280 --> 03:28.647
+I have something labeled called the "master".
+
+03:29.550 --> 03:31.140
+On the left hand side over here,
+
+03:31.140 --> 03:32.880
+we've got a deployment file.
+
+03:32.880 --> 03:35.010
+So the deployment file is essentially identical
+
+03:35.010 --> 03:37.800
+to the two files that we just put together
+
+03:37.800 --> 03:40.233
+that create a pod or a service.
+
+03:42.060 --> 03:43.980
+And then finally, up here on the top left hand side,
+
+03:43.980 --> 03:46.410
+I have the docker hub that lists a couple
+
+03:46.410 --> 03:48.300
+of the different images that we have created
+
+03:48.300 --> 03:49.530
+throughout this course.
+
+03:49.530 --> 03:52.293
+So let's walk through a series of actions now.
+
+03:53.160 --> 03:55.560
+We're gonna start off with our deployment file down here.
+
+03:55.560 --> 03:57.510
+Now, we're going to imagine that rather than creating
+
+03:57.510 --> 04:01.500
+a single instance of the multi-client image
+
+04:01.500 --> 04:03.360
+or multi-client container
+
+04:03.360 --> 04:05.700
+maybe we have a deployment file that instead
+
+04:05.700 --> 04:07.920
+says that it wants to create four copies
+
+04:07.920 --> 04:10.170
+using the multi-worker image.
+
+04:10.170 --> 04:12.360
+So we're just gonna imagine, for the sake of discussion,
+
+04:12.360 --> 04:15.240
+that we slightly change our deployment file.
+
+04:15.240 --> 04:18.000
+We're then going to imagine that we take this file
+
+04:18.000 --> 04:21.930
+and we feed it into the kubectl apply command.
+
+04:21.930 --> 04:23.340
+Remember, that is the command that we use
+
+04:23.340 --> 04:26.160
+to load up the two files
+
+04:26.160 --> 04:27.900
+that we had previously put together,
+
+04:27.900 --> 04:30.390
+the client pod and client node port.
+
+04:30.390 --> 04:32.100
+So when we run this command right here,
+
+04:32.100 --> 04:33.090
+the file is taken,
+
+04:33.090 --> 04:36.033
+and it is passed off to something called the master.
+
+04:36.870 --> 04:38.100
+Now, on the master,
+
+04:38.100 --> 04:40.260
+there is a variety of different programs,
+
+04:40.260 --> 04:42.300
+three or four in total that control
+
+04:42.300 --> 04:44.490
+your entire Kubernetes cluster.
+
+04:44.490 --> 04:46.200
+So there are four programs in total,
+
+04:46.200 --> 04:48.030
+but you and I are just going to kind of imagine
+
+04:48.030 --> 04:49.740
+for right now that there's just one program
+
+04:49.740 --> 04:52.110
+called the Kube API Server.
+
+04:52.110 --> 04:53.280
+Again, four programs.
+
+04:53.280 --> 04:57.450
+We're just gonna kinda consolidate it all down to one.
+
+04:57.450 --> 05:01.590
+The Kube API Server program is 100% responsible
+
+05:01.590 --> 05:04.860
+for monitoring the current status of all the different node
+
+05:04.860 --> 05:06.660
+inside of your cluster and making sure
+
+05:06.660 --> 05:09.160
+that they are essentially doing the correct thing.
+
+05:10.020 --> 05:12.570
+So we're going to imagine we take this deployment file
+
+05:12.570 --> 05:14.980
+and pass it into the master.
+
+05:14.980 --> 05:18.150
+Kube API Server is gonna see this new file,
+
+05:18.150 --> 05:20.100
+it's gonna read the configuration file,
+
+05:20.100 --> 05:22.653
+and it's going to interpret it in some fashion.
+
+05:24.060 --> 05:27.330
+The master then has a little kind of notepad of sorts
+
+05:27.330 --> 05:29.670
+that records all of its responsibilities
+
+05:29.670 --> 05:31.980
+or essentially, all the things that you and I
+
+05:31.980 --> 05:35.760
+have told it to do in the form of these deployment files.
+
+05:35.760 --> 05:37.860
+So when we feed in the to deployment file,
+
+05:37.860 --> 05:40.050
+Kube API server is gonna look at that file
+
+05:40.050 --> 05:41.820
+and it's gonna see, oh, all right.
+
+05:41.820 --> 05:45.810
+The developer wants us to run four copies of multi-worker.
+
+05:45.810 --> 05:47.400
+And so Kube API Server,
+
+05:47.400 --> 05:49.230
+it's going to update its little list
+
+05:49.230 --> 05:51.127
+of responsibilities and say,
+
+05:51.127 --> 05:53.340
+"Okay, I need to be running an image
+
+05:53.340 --> 05:55.473
+called multi-dash worker.
+
+05:56.400 --> 05:58.380
+I need to be running four copies of it.
+
+05:58.380 --> 06:02.160
+And right now, I am running zero copies."
+
+06:02.160 --> 06:04.920
+So Kube API Server is gonna update its little list
+
+06:04.920 --> 06:07.357
+of responsibilities right here, and it's gonna say,
+
+06:07.357 --> 06:09.990
+"Oh, boy, I need to be running four copies,
+
+06:09.990 --> 06:12.210
+and I'm currently running zero."
+
+06:12.210 --> 06:14.610
+Well, that's definitely bad news.
+
+06:14.610 --> 06:15.483
+So what's gonna happen?
+
+06:15.483 --> 06:18.570
+Kube API server is then going to reach out
+
+06:18.570 --> 06:21.720
+to the three different nodes that are running,
+
+06:21.720 --> 06:23.017
+and it's gonna say to each of these,
+
+06:23.017 --> 06:26.010
+"Hey, people, look, we got a big problem.
+
+06:26.010 --> 06:28.530
+We need to be running four copies of multi-worker,
+
+06:28.530 --> 06:30.600
+but right now, we are running zero.
+
+06:30.600 --> 06:33.780
+So you three nodes, I want you to start up
+
+06:33.780 --> 06:36.900
+some number of copies of multi-worker."
+
+06:36.900 --> 06:38.527
+It's gonna say to the first node down here,
+
+06:38.527 --> 06:41.820
+"I want you to start up two copies of multi-worker.
+
+06:41.820 --> 06:43.800
+I want you to start up one copy,
+
+06:43.800 --> 06:47.310
+and I want you to start up one copy as well."
+
+06:47.310 --> 06:49.320
+Now, inside of each of these nodes,
+
+06:49.320 --> 06:51.840
+there is a copy of docker running.
+
+06:51.840 --> 06:53.460
+That's right, a copy of docker running
+
+06:53.460 --> 06:56.160
+inside of each of these virtual machines.
+
+06:56.160 --> 06:58.050
+That is true of the virtual machine that is running
+
+06:58.050 --> 07:00.840
+on your computer right now with Minikube as well.
+
+07:00.840 --> 07:02.430
+So technically on your computer,
+
+07:02.430 --> 07:05.460
+you now have two copies of docker running,
+
+07:05.460 --> 07:08.100
+both the copy created by Docker for Windows
+
+07:08.100 --> 07:11.190
+or Docker for Mac and the copy that is running inside
+
+07:11.190 --> 07:14.073
+of that single node that has been created by Minikube.
+
+07:14.910 --> 07:17.550
+Now, when the master down here says you need to create
+
+07:17.550 --> 07:20.640
+two copies of multi-worker, if one copy, one copy,
+
+07:20.640 --> 07:23.220
+the copy of docker inside of each of these different nodes
+
+07:23.220 --> 07:24.873
+is going to spring to action.
+
+07:26.490 --> 07:29.220
+It's going to reach out to docker hub,
+
+07:29.220 --> 07:33.090
+and it's gonna find the multi-worker image right here.
+
+07:33.090 --> 07:36.000
+It's going to copy or download that image
+
+07:36.000 --> 07:38.520
+and store it on some local image cache
+
+07:38.520 --> 07:40.380
+inside each of these nodes.
+
+07:40.380 --> 07:41.640
+Now, the thing to remember here is that
+
+07:41.640 --> 07:43.980
+each of these copies of docker are 100%
+
+07:43.980 --> 07:46.080
+kind of autonomous, not connected.
+
+07:46.080 --> 07:48.810
+So they're all gonna reach out and grab that.
+
+07:48.810 --> 07:52.740
+Oops, not multi-client, but multi-worker image.
+
+07:52.740 --> 07:53.670
+And so you can kind of imagine
+
+07:53.670 --> 07:55.680
+that we get the multi-worker image inside
+
+07:55.680 --> 07:57.513
+of each of these nodes like so.
+
+07:58.500 --> 08:00.420
+Then each node is going to use that image
+
+08:00.420 --> 08:02.910
+to create a new container out of it.
+
+08:02.910 --> 08:04.680
+So we're gonna create one copy
+
+08:04.680 --> 08:07.560
+of multi-worker as a container.
+
+08:07.560 --> 08:09.420
+We're gonna make another copy down here.
+
+08:09.420 --> 08:11.490
+And then we had said that this last node
+
+08:11.490 --> 08:14.343
+would make two copies of the container like so.
+
+08:15.660 --> 08:17.370
+Now remember, technically, each of these containers
+
+08:17.370 --> 08:20.190
+are being ran inside of that pod interface
+
+08:20.190 --> 08:21.780
+or that pod object thing.
+
+08:21.780 --> 08:22.950
+But for the sake of this diagram,
+
+08:22.950 --> 08:25.980
+we're just gonna say, "Yeah, the containers basically exist,
+
+08:25.980 --> 08:29.490
+but they are inside of pods nonetheless."
+
+08:29.490 --> 08:31.200
+So now that each of these have started up
+
+08:31.200 --> 08:33.960
+a copy of multi-worker, the master is gonna reach
+
+08:33.960 --> 08:35.430
+back out to each one of these nodes,
+
+08:35.430 --> 08:37.560
+and it's gonna say, "Okay, need a status update.
+
+08:37.560 --> 08:38.850
+How are things going?"
+
+08:38.850 --> 08:39.900
+It's gonna look at the first node,
+
+08:39.900 --> 08:41.790
+it's gonna see, okay, one copy.
+
+08:41.790 --> 08:44.160
+It's gonna look at the second node, okay, one copy.
+
+08:44.160 --> 08:45.540
+It's gonna look at the third node.
+
+08:45.540 --> 08:46.860
+Great, two copies.
+
+08:46.860 --> 08:51.030
+So in total, it now has four copies of multi-worker running.
+
+08:51.030 --> 08:52.380
+And so it goes back to its little
+
+08:52.380 --> 08:54.540
+list of responsibilities of sorts over here.
+
+08:54.540 --> 08:57.270
+And it's gonna say, "I now have four copies
+
+08:57.270 --> 08:58.767
+of multi-worker running."
+
+08:59.670 --> 09:01.297
+And at that point, the master says,
+
+09:01.297 --> 09:02.520
+"All right, that's pretty much it.
+
+09:02.520 --> 09:05.697
+I'm gonna sit back and relax because I've done my job."
+
+09:06.660 --> 09:09.120
+So that's pretty much the entire flow.
+
+09:09.120 --> 09:10.350
+Now, the last thing I wanna mention
+
+09:10.350 --> 09:13.020
+is what happened when I did that
+
+09:13.020 --> 09:15.690
+Docker PS command over here?
+
+09:15.690 --> 09:19.050
+And then you'll recall I killed that running container
+
+09:19.050 --> 09:21.300
+with docker kill on this ID right here.
+
+09:21.300 --> 09:23.280
+So what exactly happened there?
+
+09:23.280 --> 09:24.427
+Well, just a second ago when I said,
+
+09:24.427 --> 09:27.180
+"Oh yeah, the master sits back and relax."
+
+09:27.180 --> 09:29.430
+Well, that's not what really happens.
+
+09:29.430 --> 09:31.860
+You see, the master is always continuously
+
+09:31.860 --> 09:34.200
+pulling each of these different nodes.
+
+09:34.200 --> 09:35.790
+It's watching every single one.
+
+09:35.790 --> 09:37.350
+And anytime that something happens
+
+09:37.350 --> 09:39.240
+inside one of these nodes,
+
+09:39.240 --> 09:41.130
+the master gets a little notification.
+
+09:41.130 --> 09:44.190
+So we can kinda imagine that when I ran docker kill
+
+09:44.190 --> 09:45.750
+and then I killed that container,
+
+09:45.750 --> 09:47.580
+we can imagine that one of these containers
+
+09:47.580 --> 09:49.773
+essentially fell away like so.
+
+09:51.210 --> 09:53.497
+So the master then got a little notification that said,
+
+09:53.497 --> 09:55.200
+"Hey, little issue here.
+
+09:55.200 --> 09:57.270
+One of our containers just up and died.
+
+09:57.270 --> 09:58.620
+Completely gone."
+
+09:58.620 --> 10:01.080
+And so the master very temporarily updated
+
+10:01.080 --> 10:03.337
+its little list of responsibilities to say,
+
+10:03.337 --> 10:05.730
+"Okay, I need four copies of multi-worker,
+
+10:05.730 --> 10:08.280
+but I now have three copies running."
+
+10:08.280 --> 10:10.440
+Whoa, that's a big problem.
+
+10:10.440 --> 10:12.270
+So the master then looks back out
+
+10:12.270 --> 10:14.700
+at its collection of nodes and it says,
+
+10:14.700 --> 10:16.387
+maybe it picks this node right here and says,
+
+10:16.387 --> 10:19.350
+"Hey, you, you need to have an additional copy
+
+10:19.350 --> 10:21.660
+of multi-worker running."
+
+10:21.660 --> 10:23.880
+And so this node right here will use that image
+
+10:23.880 --> 10:25.290
+that it's already downloaded,
+
+10:25.290 --> 10:27.440
+and it'll create a new container out of it.
+
+10:29.010 --> 10:33.480
+So multi-worker container, and then it reports back
+
+10:33.480 --> 10:35.130
+to the master and says, "Hey, we're good.
+
+10:35.130 --> 10:36.750
+I just started up another copy."
+
+10:36.750 --> 10:39.990
+And so the master says, "Great, I now have four copies
+
+10:39.990 --> 10:42.807
+running again, and I am plenty happy."
+
+10:43.890 --> 10:45.960
+All right, so that is the full flow.
+
+10:45.960 --> 10:48.630
+That is what is happening behind the scenes.
+
+10:48.630 --> 10:50.490
+Now, some of the big takeaways that I want you
+
+10:50.490 --> 10:53.520
+to understand here from all this stuff, first off,
+
+10:53.520 --> 10:56.610
+when you and I loaded up that deployment file,
+
+10:56.610 --> 10:58.560
+we did not pass that deployment file
+
+10:58.560 --> 11:01.050
+directly off to one of these worker nodes.
+
+11:01.050 --> 11:04.500
+Instead, the deployment file went to the master.
+
+11:04.500 --> 11:06.330
+So the big lesson here is that you and I
+
+11:06.330 --> 11:09.510
+as developers work with this master.
+
+11:09.510 --> 11:12.423
+You and I do not work directly with the node over here.
+
+11:13.560 --> 11:15.510
+In other words, you and I are never going to reach
+
+11:15.510 --> 11:18.240
+into a node with some series of commands
+
+11:18.240 --> 11:20.400
+and attempt to manually start up a container
+
+11:20.400 --> 11:21.660
+inside of one them.
+
+11:21.660 --> 11:24.000
+Instead, we're always going to use the kubectl
+
+11:24.000 --> 11:26.220
+command line tool, which is going to send
+
+11:26.220 --> 11:28.530
+all of our commands off to the master.
+
+11:28.530 --> 11:30.720
+It's then up to the master and the different programs
+
+11:30.720 --> 11:32.910
+that are running inside this thing to reach out
+
+11:32.910 --> 11:34.230
+to some appropriate node
+
+11:34.230 --> 11:36.300
+and create the appropriate container,
+
+11:36.300 --> 11:38.850
+or essentially, update the state, or excuse me,
+
+11:38.850 --> 11:40.290
+update the appropriate container,
+
+11:40.290 --> 11:41.790
+update the appropriate node.
+
+11:41.790 --> 11:43.860
+It's up to the master to reach out to some node
+
+11:43.860 --> 11:46.320
+and tell it to do some amount of work to fulfill
+
+11:46.320 --> 11:49.170
+the master's little list of responsibilities.
+
+11:49.170 --> 11:50.850
+The next big thing to take notice of
+
+11:50.850 --> 11:52.950
+is that the master is always watching
+
+11:52.950 --> 11:54.510
+each of these different nodes.
+
+11:54.510 --> 11:57.000
+Anytime that some container or some object
+
+11:57.000 --> 11:59.790
+for that matter runs into some issue,
+
+11:59.790 --> 12:02.040
+the master is going to automatically attempt
+
+12:02.040 --> 12:05.700
+to recreate that object inside of some given node
+
+12:05.700 --> 12:07.440
+until it's list of responsibilities
+
+12:07.440 --> 12:09.423
+is 100% balanced out.
+
+12:11.130 --> 12:13.477
+Now, that kind of idea of kind of saying,
+
+12:13.477 --> 12:16.740
+"Hey, master, here's your list of responsibilities."
+
+12:16.740 --> 12:19.230
+And then having the master constantly work to make sure
+
+12:19.230 --> 12:21.420
+that that list of responsibilities is fulfilled
+
+12:21.420 --> 12:23.610
+is one of the most important ideas
+
+12:23.610 --> 12:25.680
+in everything around Kubernetes.
+
+12:25.680 --> 12:27.960
+Yes, just as important as that other thing I said
+
+12:27.960 --> 12:29.940
+was really important, the networking stuff.
+
+12:29.940 --> 12:31.410
+Yeah, there's a lot of important stuff.
+
+12:31.410 --> 12:32.490
+You get the idea.
+
+12:32.490 --> 12:35.250
+But in reality, or all joking aside,
+
+12:35.250 --> 12:37.890
+the idea of the master constantly working to fulfill
+
+12:37.890 --> 12:40.890
+this list of responsibilities right here is very important.
+
+12:40.890 --> 12:42.420
+So we're gonna take a quick pause right here,
+
+12:42.420 --> 12:45.450
+and we're going to have a real quick discussion.
+
+12:45.450 --> 12:47.280
+Oh, I'll make it as quick as I possibly can,
+
+12:47.280 --> 12:50.040
+I promise, about how we interact with Kubernetes
+
+12:50.040 --> 12:52.440
+in general and how we approach this idea
+
+12:52.440 --> 12:54.840
+of having the master kinda had this list
+
+12:54.840 --> 12:57.210
+of responsibilities that it needs to fulfill.
+
+12:57.210 --> 12:58.470
+So quick pause right now.
+
+12:58.470 --> 12:59.400
+Come back to the next section,
+
+12:59.400 --> 13:02.250
+and we're going to expand on this idea around the master.

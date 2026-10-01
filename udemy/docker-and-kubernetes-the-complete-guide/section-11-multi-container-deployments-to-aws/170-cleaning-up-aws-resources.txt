@@ -1,0 +1,379 @@
+WEBVTT
+
+00:00.930 --> 00:02.010
+-: In this section we're gonna walk
+
+00:02.010 --> 00:03.780
+through the process of shutting down
+
+00:03.780 --> 00:06.030
+the three different resources that we created
+
+00:06.030 --> 00:09.270
+while we deployed our multi docker application.
+
+00:09.270 --> 00:10.530
+So as a quick reminder,
+
+00:10.530 --> 00:13.050
+we got a couple things to shut down here.
+
+00:13.050 --> 00:13.883
+Let's see.
+
+00:13.883 --> 00:14.716
+Here we go.
+
+00:14.716 --> 00:15.570
+Good enough diagram right here.
+
+00:15.570 --> 00:18.510
+So we need to shut down the Elastic Beanstalk environment,
+
+00:18.510 --> 00:22.200
+the RDS instance, and the EC instance as well.
+
+00:22.200 --> 00:24.030
+We do not strictly have to shut down
+
+00:24.030 --> 00:27.060
+or close off the security group that we had created.
+
+00:27.060 --> 00:28.530
+There's no billing associated
+
+00:28.530 --> 00:30.330
+with creating a security group but we'll walk
+
+00:30.330 --> 00:32.250
+through the process of deleting it anyways.
+
+00:32.250 --> 00:33.450
+Just in case you don't want to have
+
+00:33.450 --> 00:36.720
+any stray security groups running around your application.
+
+00:36.720 --> 00:38.430
+So let's get to it.
+
+00:38.430 --> 00:39.720
+First thing we're going to clean up
+
+00:39.720 --> 00:42.180
+is our Elastic Beanstalk instance.
+
+00:42.180 --> 00:46.080
+So on services tab, I'll go back to Elastic Beanstalk.
+
+00:46.080 --> 00:48.330
+I'll then find the multi-docker environment
+
+00:48.330 --> 00:49.830
+or excuse me, application.
+
+00:49.830 --> 00:50.850
+And on the right hand side,
+
+00:50.850 --> 00:54.270
+I'll click on actions and then delete application.
+
+00:54.270 --> 00:56.193
+And then click on the delete button.
+
+00:57.240 --> 00:58.500
+So that's gonna start the process
+
+00:58.500 --> 01:00.240
+of deleting the application.
+
+01:00.240 --> 01:02.070
+It's going to appear that nothing is happening
+
+01:02.070 --> 01:05.400
+for a minute or two, but you can refresh the page a couple
+
+01:05.400 --> 01:07.920
+of times and eventually you're gonna see that it says,
+
+01:07.920 --> 01:09.750
+Okay we're closing things down.
+
+01:09.750 --> 01:12.027
+And in fact, if you click into the application itself
+
+01:12.027 --> 01:14.490
+you'll probably even see the events right here
+
+01:14.490 --> 01:16.940
+that say, Okay, it's terminating the environment.
+
+01:18.150 --> 01:20.190
+All right, next up is RDS.
+
+01:20.190 --> 01:22.260
+So our Postgres database,
+
+01:22.260 --> 01:26.253
+I'll again go to services and then search for RDS.
+
+01:28.950 --> 01:31.860
+We can then go to DB instances, either right here
+
+01:31.860 --> 01:35.043
+in the middle or the instances button on the left hand side.
+
+01:36.060 --> 01:39.030
+We can then click on, oh, don't wanna click on that.
+
+01:39.030 --> 01:41.190
+We'll click on the little check mark right there.
+
+01:41.190 --> 01:44.523
+And then we can go to instance actions and delete.
+
+01:46.200 --> 01:47.280
+So we'll delete this.
+
+01:47.280 --> 01:49.590
+We do not want to create a final snapshot
+
+01:49.590 --> 01:52.110
+because there's no data for us to really save here.
+
+01:52.110 --> 01:53.730
+So I'll click on no.
+
+01:53.730 --> 01:56.310
+We'll hit I acknowledge that we're not making any backups
+
+01:56.310 --> 01:57.510
+of this thing.
+
+01:57.510 --> 01:59.210
+And then I'll enter in, delete me.
+
+02:00.360 --> 02:03.310
+And then finally, I'll click on delete at the bottom right.
+
+02:04.620 --> 02:06.180
+And then we see that as deleting.
+
+02:06.180 --> 02:10.110
+And at the very last one we'll look up elasticache.
+
+02:10.110 --> 02:10.943
+Right here.
+
+02:13.770 --> 02:16.383
+I'll go to the red esttab on the left hand side.
+
+02:17.700 --> 02:19.773
+And then again, I'll click on the little,
+
+02:20.880 --> 02:22.020
+I don't know, check box right there.
+
+02:22.020 --> 02:24.270
+All these UIs, look, it's very subtly different.
+
+02:24.270 --> 02:25.350
+It's always kind of funny.
+
+02:25.350 --> 02:27.180
+Anyways, check on the, click on the check box
+
+02:27.180 --> 02:29.100
+and then hit the delete button at the top.
+
+02:29.100 --> 02:31.233
+And yes, we want to delete this cluster.
+
+02:32.156 --> 02:33.990
+Okay, that's good.
+
+02:33.990 --> 02:36.690
+And then finally, we're gonna clean up the security group
+
+02:36.690 --> 02:38.850
+that we had created on the VPC.
+
+02:38.850 --> 02:40.443
+So I'll look at VPC.
+
+02:43.646 --> 02:45.420
+And then on the left hand side we'll scroll
+
+02:45.420 --> 02:47.283
+on down to security groups.
+
+02:49.020 --> 02:53.400
+I'll select Multi Docker, Multi Docker end,
+
+02:53.400 --> 02:56.070
+and the RDS Launch Wizard right here as well.
+
+02:56.070 --> 02:59.010
+Now with these security groups, this is the only location
+
+02:59.010 --> 03:01.410
+where you can very easily mess up other services
+
+03:01.410 --> 03:02.910
+that might be running on your account.
+
+03:02.910 --> 03:04.350
+So please triple check
+
+03:04.350 --> 03:07.620
+and make sure you're deleting multi docker, multi docker,
+
+03:07.620 --> 03:10.110
+and the RDS launch wizard.
+
+03:10.110 --> 03:13.560
+So I'm gonna make sure I select all three of those.
+
+03:13.560 --> 03:17.010
+And then I'll do security group actions at the top
+
+03:17.010 --> 03:18.990
+and I'll delete those security groups.
+
+03:18.990 --> 03:20.250
+And again, please triple check
+
+03:20.250 --> 03:23.190
+to make sure you've got the correct ones selected here.
+
+03:23.190 --> 03:25.470
+I'm gonna click on yes, delete.
+
+03:25.470 --> 03:28.920
+Now, just in case you see this right here, you might see one
+
+03:28.920 --> 03:31.800
+or two on here that say, Hey, we can't actually do that.
+
+03:31.800 --> 03:35.040
+So if you see that around the first one
+
+03:35.040 --> 03:36.720
+multi docker end right there,
+
+03:36.720 --> 03:39.420
+or multi docker at the bottom one right here,
+
+03:39.420 --> 03:41.700
+that's totally okay and means that these are tied
+
+03:41.700 --> 03:43.770
+to existing Elastic Beanstalk
+
+03:43.770 --> 03:46.020
+or other existing services you already have.
+
+03:46.020 --> 03:47.700
+So you might have to wait a couple minutes
+
+03:47.700 --> 03:49.020
+and then come back to this page
+
+03:49.020 --> 03:52.140
+and try deleting them again because we are in the process
+
+03:52.140 --> 03:54.330
+of deleting some other resources that are still
+
+03:54.330 --> 03:55.680
+using these groups.
+
+03:55.680 --> 03:57.870
+So for me, I'm just gonna hit okay and I'll come back
+
+03:57.870 --> 04:01.140
+to this later on and attempt to delete these later.
+
+04:01.140 --> 04:02.280
+Now as a quick reminder,
+
+04:02.280 --> 04:04.620
+if you don't delete these, it's totally fine.
+
+04:04.620 --> 04:06.420
+You don't get billed for this at all.
+
+04:06.420 --> 04:07.800
+No billing whatsoever.
+
+04:07.800 --> 04:08.700
+They can sit in your account
+
+04:08.700 --> 04:11.520
+for all time and nothing bad is going to happen.
+
+04:11.520 --> 04:12.353
+Now the very last thing
+
+04:12.353 --> 04:15.510
+that you might want to clean up is on the IAM dashboard.
+
+04:15.510 --> 04:18.570
+We can clean up our deploy keys that we had generated.
+
+04:18.570 --> 04:23.570
+So on IAM I'll find my user's tab on the left hand side
+
+04:24.510 --> 04:27.150
+and then I'll delete the user that I'd created.
+
+04:27.150 --> 04:30.690
+So here's Multi Docker Deployer right here
+
+04:30.690 --> 04:32.823
+and I'll go ahead and delete that user.
+
+04:36.090 --> 04:38.430
+So eventually this thing's gonna,
+
+04:38.430 --> 04:40.230
+there we go, finally.
+
+04:40.230 --> 04:42.900
+So you'll notice that it says that these things are,
+
+04:42.900 --> 04:44.640
+deleting this might affect running systems.
+
+04:44.640 --> 04:45.780
+That's totally okay for us.
+
+04:45.780 --> 04:47.040
+We definitely wanna delete this thing.
+
+04:47.040 --> 04:48.840
+So I'll check the box over there
+
+04:48.840 --> 04:51.420
+and then click on yes delete.
+
+04:51.420 --> 04:52.440
+Okay, so that's pretty much it.
+
+04:52.440 --> 04:53.970
+That is the cleanup.
+
+04:53.970 --> 04:55.590
+So I hope that you enjoyed putting together
+
+04:55.590 --> 04:57.450
+this multi container application,
+
+04:57.450 --> 05:00.360
+but there's still a lot for us to do and a lot to learn.
+
+05:00.360 --> 05:01.920
+So let's take a quick pause right here
+
+05:01.920 --> 05:04.563
+and continue and keep going in the next section.

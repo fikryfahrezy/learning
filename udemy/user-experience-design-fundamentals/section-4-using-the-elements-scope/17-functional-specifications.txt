@@ -1,0 +1,946 @@
+WEBVTT
+
+00:00.950 --> 00:09.620
+The scope plan of user experience Design is the place where the split between software tasks and information
+
+00:09.620 --> 00:12.790
+or content really starts to come into play.
+
+00:12.800 --> 00:17.300
+On the task and software side, we're concerned with functional specifications.
+
+00:17.300 --> 00:24.470
+We started by asking why we're doing what we're doing and now we're asking what exactly are we going
+
+00:24.470 --> 00:24.980
+to do?
+
+00:25.010 --> 00:26.570
+What are we going to build?
+
+00:27.100 --> 00:31.840
+First, it's important to note that requirements can apply to the product as a whole, but they can
+
+00:31.840 --> 00:34.250
+also apply to a very specific feature.
+
+00:34.270 --> 00:41.320
+In addition to this overarching set of features and functions that describe the product, we're also
+
+00:41.320 --> 00:47.340
+concerned with how specific features work and how they interrelate with others.
+
+00:47.350 --> 00:54.370
+So that means in turn that the level of detail in your specifications depends on the specific scope
+
+00:54.370 --> 00:55.150
+of the project.
+
+00:55.180 --> 01:02.440
+The more complexity we have, the more requirements we need, the more features we decide to implement,
+
+01:02.440 --> 01:09.090
+the more specification for how those features should be designed and programmed and essentially implemented.
+
+01:09.100 --> 01:14.800
+We need the best source for those functional specs and requirements are typically users.
+
+01:14.800 --> 01:20.530
+The people who are interacting on a day to day basis with either an existing product that you're redesigning
+
+01:20.530 --> 01:25.600
+or who have a very specific need that will be fulfilled by the new product.
+
+01:25.600 --> 01:31.760
+But at the same time, requirements and specifications will also come from stakeholders.
+
+01:31.790 --> 01:38.030
+They probably also understand what needs to happen in order for value to come back to the organization
+
+01:38.030 --> 01:41.450
+to get some return on their investment in the project.
+
+01:41.450 --> 01:50.060
+So both sides, both the client side specifically and the end user side determine feature specs and
+
+01:50.060 --> 01:54.320
+requirements and those requirements fall into three essential categories.
+
+01:54.440 --> 01:59.780
+There are things people say they need, then there are things that they actually need because those
+
+01:59.780 --> 02:01.130
+aren't always the same things.
+
+02:01.220 --> 02:04.790
+And then finally, there are things that they don't know they need.
+
+02:05.760 --> 02:09.690
+And we're going to talk about each one of those areas in detail.
+
+02:09.810 --> 02:15.360
+So the first set of things that we typically are going to include in our feature specification are the
+
+02:15.360 --> 02:18.000
+things that people tell us that they need.
+
+02:18.030 --> 02:23.430
+Now, no matter who you're talking to, whether these are people inside the client organization or whether
+
+02:23.430 --> 02:29.490
+you're sitting down and having a conversation with end users, a lot of ideas will be generated and
+
+02:29.490 --> 02:32.670
+quite frankly, a lot of them will be very good ideas.
+
+02:32.790 --> 02:37.620
+They're good ideas and they may very well find their way into the finished product, but most of them
+
+02:37.620 --> 02:38.310
+don't.
+
+02:38.790 --> 02:46.200
+And that's simply because while lots of them certainly may be good ideas, they may not be possible,
+
+02:46.410 --> 02:51.600
+they may not be feasible, they may not be easy to accomplish.
+
+02:51.600 --> 02:55.260
+They may take longer than the project schedule will allow.
+
+02:55.300 --> 02:55.500
+Okay.
+
+02:55.500 --> 03:00.750
+There are any number of reasons, but some of the reasons those ideas don't make it into the final feature
+
+03:00.750 --> 03:03.630
+set have a lot to do with people.
+
+03:03.660 --> 03:04.020
+Okay.
+
+03:04.020 --> 03:05.800
+And let's talk about that.
+
+03:06.010 --> 03:13.270
+Human beings make very confident but also very false predictions sometimes about their future behavior,
+
+03:13.300 --> 03:17.620
+especially when we're presented with something that's new and unfamiliar.
+
+03:17.620 --> 03:23.620
+And that's because there's a huge difference between imagining using something and actually using it.
+
+03:23.650 --> 03:25.720
+One is speculation.
+
+03:25.750 --> 03:33.250
+You're imagining you're guessing how you would use a particular thing By its very nature, that's inaccurate
+
+03:33.250 --> 03:40.360
+and it's inaccurate, especially because we don't have any prior experience with the topic at hand,
+
+03:40.360 --> 03:41.650
+the product at hand, right?
+
+03:41.650 --> 03:48.040
+If it's something we've never used before, we really can't say to a reasonable degree of specificity
+
+03:48.040 --> 03:53.830
+how we would use certain features because we probably don't even fully understand what those features
+
+03:53.830 --> 03:54.400
+are.
+
+03:54.430 --> 03:57.610
+Familiarity changes the game completely.
+
+03:57.640 --> 04:05.440
+The other thing is that human preferences are somewhat unstable, and I don't mean that in a bad way.
+
+04:05.440 --> 04:07.690
+You know, we're unstable creatures.
+
+04:07.990 --> 04:13.090
+What I mean is that they're subject to all sorts of things.
+
+04:13.090 --> 04:15.460
+Our preferences are subject to our emotions.
+
+04:15.460 --> 04:18.250
+They're subject to the kind of day that we're having.
+
+04:18.250 --> 04:22.030
+They're subject to our experiences up to that point.
+
+04:22.060 --> 04:23.830
+They're constrained.
+
+04:24.040 --> 04:28.450
+They're limited to the sort of depth of experience we've had so far.
+
+04:28.450 --> 04:35.110
+So if this is new territory for us, we don't really know whether we would value that experience or
+
+04:35.110 --> 04:35.320
+not.
+
+04:35.350 --> 04:37.390
+We really don't know until we try.
+
+04:37.630 --> 04:45.630
+So in most cases, you're asking people to either remember past use or speculate on future use.
+
+04:45.640 --> 04:54.760
+Either way, there's no solid precedent that is specific to this set of tools, of features, of circumstances,
+
+04:54.790 --> 04:56.770
+of possible outcomes.
+
+04:56.770 --> 05:03.340
+There's nothing to lean on other than a loosely educated guess on what might happen.
+
+05:03.340 --> 05:10.180
+So that's a big part of the reason why I constantly, constantly reiterate the fact that what people
+
+05:10.180 --> 05:12.790
+say they need isn't always what they really need.
+
+05:12.790 --> 05:16.690
+What they say they'll do isn't always what they will do.
+
+05:16.840 --> 05:17.230
+Okay?
+
+05:17.230 --> 05:23.470
+It's really important to keep that in mind because you have to take all these generative ideas that
+
+05:23.470 --> 05:29.020
+come up at the beginning of a process with more than a couple of tablespoons of salt.
+
+05:29.290 --> 05:32.980
+So now let's talk about the things that people actually do need.
+
+05:33.130 --> 05:38.740
+While sometimes the things that people say they need aren't necessarily good ideas and they may not
+
+05:38.740 --> 05:46.600
+make it into the final feature set, they can often be a stepping stone to the next level of feature
+
+05:46.600 --> 05:49.530
+spec, which is things that they actually do want.
+
+05:49.540 --> 05:51.670
+It's not uncommon for people.
+
+05:51.670 --> 05:56.410
+Any time you encounter something that's difficult, anytime you have trouble with something, it's almost
+
+05:56.410 --> 06:00.720
+effortless to imagine a solution that'll that'll solve your problem, right?
+
+06:00.730 --> 06:08.110
+The thing about that is that the solution may not be feasible or the solution addresses a symptom instead
+
+06:08.110 --> 06:09.820
+of the underlying problem.
+
+06:09.820 --> 06:15.250
+And by exploring those user or stakeholder suggestions, you often wind up with completely different
+
+06:15.250 --> 06:18.970
+features, functions, requirements that do solve the real problem.
+
+06:18.970 --> 06:25.420
+Okay, so just because you start out on a path that's a little wobbly doesn't mean you're going to wind
+
+06:25.420 --> 06:26.110
+up there.
+
+06:26.110 --> 06:31.900
+It's important to go through that exercise and to have those long, drawn out discussions, no matter
+
+06:31.900 --> 06:34.870
+how pointless they can sometimes seem.
+
+06:35.350 --> 06:42.280
+It's really important so that you clearly identify what the underlying issue really is and what the
+
+06:42.280 --> 06:45.730
+actual need is in that situation.
+
+06:45.760 --> 06:53.440
+What do people actually need versus what they say they might want or might use or whatever?
+
+06:53.440 --> 06:55.990
+What anecdotal evidence do we have?
+
+06:55.990 --> 06:57.940
+What research can we go perform?
+
+06:57.940 --> 07:05.140
+What kinds of user observation can we put into motion so that we can actually find out?
+
+07:05.410 --> 07:08.050
+You know what the answer to this question is?
+
+07:08.080 --> 07:15.580
+There's no way to know any of this unless you go through the process of trying to uncover it.
+
+07:16.360 --> 07:22.960
+Now, where it really starts to get interesting is when you start talking about things people don't
+
+07:22.960 --> 07:24.320
+know that they need.
+
+07:24.340 --> 07:30.850
+When you get people talking, you may often hit upon some really great, really innovative, really
+
+07:30.850 --> 07:33.790
+unique ideas that didn't occur to anyone beforehand.
+
+07:33.790 --> 07:38.980
+Until you have those conversations, there's no way for this stuff to surface.
+
+07:39.010 --> 07:45.360
+Brainstorming sessions are an invaluable part of what we do in every project.
+
+07:45.370 --> 07:52.750
+At the outset of anything, I spend an inordinate amount of time in a meeting room with a bunch of very
+
+07:52.750 --> 08:00.550
+smart people, and we do a tremendous amount of writing and discussing on a whiteboard, writing things
+
+08:00.550 --> 08:06.370
+down, crossing things out, erasing things, rewriting things, redrawing things, you know, arguing
+
+08:06.370 --> 08:08.020
+possible points, whatever it may be.
+
+08:08.020 --> 08:12.070
+But the point is, we do it in a way where it's a very open environment.
+
+08:12.070 --> 08:12.450
+Okay?
+
+08:12.460 --> 08:15.220
+The rule is that there are no wrong answers.
+
+08:15.220 --> 08:17.690
+You invite everybody to participate.
+
+08:17.690 --> 08:23.120
+You invite everybody to sort of put their best foot forward and not be afraid to suggest things that
+
+08:23.120 --> 08:24.530
+may sound ridiculous.
+
+08:24.560 --> 08:30.050
+Now's not the time to cut out possibility or limit your thinking.
+
+08:30.050 --> 08:36.170
+Now is the time to get everything on the table in as much detail as possible and then whittle it down
+
+08:36.170 --> 08:39.590
+to what's feasible and what's possible and all those real world constraints.
+
+08:39.590 --> 08:39.800
+Okay.
+
+08:39.800 --> 08:47.540
+But you never get to the really illuminating things that folks in the room will go, Oh my God.
+
+08:48.120 --> 08:49.830
+That would be incredible.
+
+08:49.830 --> 08:51.360
+Why didn't we think of that?
+
+08:51.840 --> 08:58.230
+Often times those will be things that become core differentiators.
+
+08:58.230 --> 09:04.170
+They become features that define a product, truly make it great.
+
+09:04.470 --> 09:08.970
+One of my favorite quotes is from Ted Levitt, who's a longtime marketing guy.
+
+09:08.970 --> 09:12.630
+And what he says is that people don't want quarter inch drills.
+
+09:12.630 --> 09:14.670
+They want quarter inch holes.
+
+09:15.030 --> 09:15.880
+Do you get that?
+
+09:15.900 --> 09:23.430
+What it means is that the outcome, what they're using the tool for is infinitely more important than
+
+09:23.430 --> 09:25.920
+the strict definition of the tool itself.
+
+09:25.920 --> 09:33.330
+So if you focus your conversation around what the end result is, what people expect the outcome to
+
+09:33.330 --> 09:41.310
+be, as opposed to a very narrow focus on features and functions and product attributes, you're likely
+
+09:41.310 --> 09:46.200
+to come up with better, more relevant solutions.
+
+09:46.200 --> 09:48.530
+And the reason for that is pretty simple.
+
+09:48.600 --> 09:55.630
+Okay, When problems arise, we look around and we figure out a solution that gets the job done the
+
+09:55.630 --> 09:58.310
+best we think about the problem first.
+
+09:58.330 --> 09:59.500
+That's human nature.
+
+09:59.500 --> 10:01.000
+I've got this issue.
+
+10:01.000 --> 10:01.270
+All right.
+
+10:01.270 --> 10:03.460
+I need to drill a quarter inch hole.
+
+10:03.460 --> 10:06.970
+I'm going to use whatever does that best.
+
+10:06.970 --> 10:10.990
+And that very well may be the drill that we're talking about here.
+
+10:10.990 --> 10:19.570
+But I may also take whatever is nearby that has a sharp, pointed edge and just jam it into the wall
+
+10:19.600 --> 10:22.690
+because it happens to be more convenient for me.
+
+10:22.720 --> 10:27.220
+The bottom line is what we should be talking about isn't the drill.
+
+10:27.220 --> 10:29.410
+We shouldn't be talking about the features.
+
+10:29.410 --> 10:31.090
+We shouldn't be talking about its functions.
+
+10:31.090 --> 10:38.800
+What we should be talking about is what is the problem that people are facing and how does what we're
+
+10:38.800 --> 10:42.070
+trying to design help them solve that problem?
+
+10:42.070 --> 10:43.540
+Focus on the problem.
+
+10:43.540 --> 10:46.630
+Forget the product, forget the attributes, forget the specs.
+
+10:46.630 --> 10:47.380
+For now.
+
+10:47.380 --> 10:49.270
+Focus on the problem.
+
+10:49.270 --> 10:51.580
+What problem are we trying to solve?
+
+10:52.260 --> 10:57.030
+So now I want to talk about how we create useful functional specifications.
+
+10:57.150 --> 11:02.990
+There are any number of formalized ways to go about creating functional specs.
+
+11:03.360 --> 11:06.150
+And every discipline sort of has its own version.
+
+11:06.150 --> 11:08.970
+If you talk to it, folks, you'll get one story.
+
+11:08.970 --> 11:15.180
+If you talk to designers, you'll get another story and another process and another, you know, stair
+
+11:15.180 --> 11:18.480
+step list of things that have to be done.
+
+11:18.510 --> 11:22.470
+Agile folks, you know, have their own methodology for going about that.
+
+11:22.470 --> 11:29.880
+But for my money, okay, if you're looking for a really simple, basic bottom line way to figure out
+
+11:29.880 --> 11:35.760
+what the functional specs need to be, to me, the best way to do this is to explore what are called
+
+11:35.760 --> 11:37.560
+user scenarios.
+
+11:37.650 --> 11:44.010
+A user scenario is a short, simple narrative that describes how someone might go about trying to fulfill
+
+11:44.010 --> 11:45.030
+a specific need.
+
+11:45.030 --> 11:47.460
+Sarah has to fill out her time sheet.
+
+11:47.460 --> 11:54.280
+Bob needs to compare service rates and delivery times for four different suppliers.
+
+11:54.310 --> 11:59.800
+Jill needs to be able to check her calendar, see what's coming up and be able to make an appointment
+
+11:59.830 --> 12:02.560
+while storing a phone number in the notes.
+
+12:02.830 --> 12:08.890
+Okay, Whatever it may be, you start with the person doing the work, what their specific role is,
+
+12:08.890 --> 12:12.340
+what their specific needs are, and what it is they're trying to accomplish.
+
+12:12.340 --> 12:12.580
+Okay.
+
+12:12.580 --> 12:20.500
+It's all very heavy on context, on reality, on real world situations that people would find themselves
+
+12:20.500 --> 12:23.260
+in that relate to your particular product.
+
+12:23.580 --> 12:27.630
+This sketch is a good example of a user scenario.
+
+12:27.660 --> 12:35.160
+This is a publishing workflow for a content management system, a situation where you have authors who
+
+12:35.160 --> 12:39.900
+are creating content for a website and then you have various stages of approval that have to happen
+
+12:39.900 --> 12:42.250
+before that content gets published.
+
+12:42.270 --> 12:49.320
+As we go from the left, we have an author who can either create new content or modify existing content.
+
+12:49.440 --> 12:54.330
+He submits that content for approval, which goes through three stages.
+
+12:54.480 --> 13:00.270
+Okay, First, a business approver reviews those modifications and either approves them, which means
+
+13:00.270 --> 13:06.450
+it goes further on down the chain to a legal approver or he declines them, which means it goes back
+
+13:06.450 --> 13:09.130
+to the author who has to modify the existing content.
+
+13:09.150 --> 13:15.360
+That circular process where one of two outcomes happen at each stage continues.
+
+13:15.360 --> 13:17.130
+It happens again with a legal approver.
+
+13:17.130 --> 13:19.080
+It happens again with a site admin.
+
+13:19.080 --> 13:24.400
+And if the site admin says yep, it's good to go, then it gets published.
+
+13:24.400 --> 13:24.720
+Right?
+
+13:24.730 --> 13:25.780
+It goes live.
+
+13:25.810 --> 13:27.100
+If not.
+
+13:27.840 --> 13:30.660
+He rejects it now even after the thing is live.
+
+13:30.690 --> 13:35.010
+It's quite possible that there could be modifications to that same content.
+
+13:35.280 --> 13:40.320
+So we start again at the far left and we say the author modifies existing content.
+
+13:40.560 --> 13:44.990
+What this simple diagram does, it tells us a couple of things.
+
+13:45.150 --> 13:45.380
+Okay.
+
+13:45.390 --> 13:50.130
+It tells us what that author at a very basic level, needs to be able to do, right?
+
+13:50.160 --> 13:55.770
+He needs to be able to create new content, and he needs the ability to be able to modify anything that
+
+13:55.770 --> 13:58.530
+already exists, whether it's live or not live.
+
+13:58.560 --> 14:00.360
+Those are functional specifications.
+
+14:00.360 --> 14:01.650
+Those are requirements.
+
+14:01.740 --> 14:03.660
+Those are two specific requirements.
+
+14:03.690 --> 14:10.770
+We also know that a business approver has to have the ability to review what the author has submitted
+
+14:10.770 --> 14:13.260
+and either approve it or decline it.
+
+14:13.470 --> 14:15.060
+Those are requirements.
+
+14:15.840 --> 14:17.560
+Same thing with the legal prover.
+
+14:17.580 --> 14:18.950
+Same thing with the site admin.
+
+14:19.170 --> 14:25.500
+Each one of those people needs the ability to see that information and they need to be able to act on
+
+14:25.500 --> 14:27.300
+it in any number of ways.
+
+14:27.540 --> 14:33.920
+All those things get uncovered by drawing a very simple diagram like this.
+
+14:33.930 --> 14:35.530
+It's boxes and arrows.
+
+14:35.550 --> 14:36.720
+What happens?
+
+14:36.720 --> 14:38.310
+What happens next?
+
+14:38.340 --> 14:42.570
+What can the next person in the process do with what they have?
+
+14:42.600 --> 14:50.610
+It's a very simple way of getting a baseline of what gets created, what gets acted upon, and how it
+
+14:50.610 --> 14:53.200
+sort of moves through any particular process.
+
+14:53.220 --> 14:54.740
+We're focusing on the people.
+
+14:54.750 --> 15:00.930
+We're focusing on the roles at hand, and we're focusing on how they do what they do every day in a
+
+15:00.930 --> 15:01.440
+scenario.
+
+15:01.470 --> 15:05.550
+You're also considering what that person's goals are.
+
+15:05.580 --> 15:11.820
+If you have someone who's approving all this content, some of their goals may be among the functional
+
+15:11.820 --> 15:12.510
+things that they have to do.
+
+15:12.510 --> 15:15.090
+Some of their goals may be to stay calm.
+
+15:15.090 --> 15:19.780
+Okay, amongst a certain amount of chaos or looming deadlines or anything else.
+
+15:19.810 --> 15:27.820
+That person's job may also be to keep the authors from getting cranky if they're if they're sort of
+
+15:27.820 --> 15:29.880
+outright rejecting their stuff all the time.
+
+15:29.890 --> 15:30.610
+Okay.
+
+15:30.820 --> 15:33.430
+They need an ability to keep all the details straight.
+
+15:33.580 --> 15:39.260
+They need to to be able to prioritize multiple reviews.
+
+15:39.280 --> 15:47.290
+They may need to create communications with other approvers or communications with authors, you know,
+
+15:47.290 --> 15:49.240
+to keep misunderstanding to a minimum.
+
+15:49.240 --> 15:55.690
+The point is there are all these sort of ancillary things that can happen in a scenario, in a day to
+
+15:55.690 --> 16:02.350
+day reality that don't necessarily get accounted for when we're strictly looking at form, feature and
+
+16:02.350 --> 16:03.010
+function.
+
+16:03.040 --> 16:07.120
+You got to remember the part that's about human beings, that's about use.
+
+16:07.150 --> 16:11.680
+Task completion in and of itself doesn't equal success.
+
+16:11.830 --> 16:20.880
+The only time a workflow, a process is successful is when it meets all the primary and somewhat ancillary
+
+16:20.910 --> 16:24.980
+needs of all the folks who are involved at every stage.
+
+16:24.990 --> 16:32.880
+So that's why a scenario, at least in my mind, is infinitely more valuable than a strict scientific
+
+16:32.880 --> 16:33.900
+process.
+
+16:33.930 --> 16:39.410
+It accounts for a lot more than just function and task completion.
+
+16:40.220 --> 16:47.780
+The next part of creating useful specifications involves sort of three specific rules that I tend to
+
+16:47.780 --> 16:53.720
+invoke during any sort of of specification or requirements generating process.
+
+16:53.840 --> 16:59.810
+These are guidelines that should be observed when you're in the process of of documenting your specifications,
+
+16:59.810 --> 17:01.790
+your requirements that you have.
+
+17:01.820 --> 17:04.280
+There's a right way to go about it and the wrong way to go about it.
+
+17:04.280 --> 17:06.620
+So that's that's kind of what this illustrates.
+
+17:06.920 --> 17:10.250
+First and foremost, you want to be positive.
+
+17:10.280 --> 17:14.510
+You want to make positive statements as opposed to negative statements.
+
+17:14.510 --> 17:20.060
+And that's simply because positive statements generally are much truer to a positive user experience
+
+17:20.060 --> 17:23.350
+and much more likely to result in a positive user experience.
+
+17:23.360 --> 17:24.430
+Here's an example.
+
+17:24.440 --> 17:30.590
+We don't want to say something like The system will not allow the user to purchase a fishing reel without
+
+17:30.590 --> 17:31.520
+fishing line.
+
+17:31.550 --> 17:32.900
+That's negative.
+
+17:32.930 --> 17:34.460
+You can't do that.
+
+17:34.520 --> 17:41.610
+A requirement written that way will typically result in an error message that pisses somebody off.
+
+17:41.730 --> 17:45.270
+Okay, I know that sounds funny, but it's really true.
+
+17:45.450 --> 17:50.280
+It results in the kind of thing you'll see in the shopping cart where the system throws up an error
+
+17:50.280 --> 17:56.430
+message that says you must purchase fishing line if you want to purchase this reel.
+
+17:56.460 --> 18:02.250
+Okay, well, the person who's making the purchase is thinking, well, I don't want fishing line.
+
+18:02.250 --> 18:07.320
+I have 600 yards of fishing line on a spool that I bought, you know, three months ago.
+
+18:07.350 --> 18:08.700
+I just want a reel.
+
+18:08.700 --> 18:10.920
+Why do I have to buy line?
+
+18:11.160 --> 18:11.490
+Okay.
+
+18:11.490 --> 18:12.720
+It doesn't make any sense.
+
+18:12.720 --> 18:19.920
+So a better way to phrase that requirement so that it gets implemented properly is this.
+
+18:20.070 --> 18:26.220
+The system will suggest the user visit the fishing line page if he tries to buy a fishing reel without
+
+18:26.220 --> 18:26.820
+line.
+
+18:27.030 --> 18:27.330
+Okay.
+
+18:27.330 --> 18:29.040
+That's a very different experience.
+
+18:29.040 --> 18:33.300
+Now we're saying, hey, we see that you're buying a fishing reel.
+
+18:33.300 --> 18:37.920
+Would you like some line to go with that very different experience?
+
+18:37.920 --> 18:41.550
+We went from prohibitive to proactive live.
+
+18:41.580 --> 18:45.750
+We went from scolding to suggestion.
+
+18:45.930 --> 18:47.850
+Big, big, big difference.
+
+18:47.880 --> 18:51.300
+The next guideline is be specific.
+
+18:51.300 --> 18:56.460
+Instead of a generic statement like the site will be accessible to disabled people.
+
+18:56.490 --> 19:03.750
+A much more specific way to state that would be to say the site will contain inline audio help for people
+
+19:03.750 --> 19:06.030
+with impaired vision or blindness.
+
+19:06.030 --> 19:11.550
+When we say disabled people, we could be talking about one of hundreds of things.
+
+19:11.550 --> 19:17.190
+There are mental disabilities, there are physical disabilities, and there are multiple categories
+
+19:17.190 --> 19:19.890
+within each of those broad categories.
+
+19:19.920 --> 19:22.380
+Okay, what are we talking about specifically?
+
+19:22.380 --> 19:27.390
+What feature exactly needs to be implemented?
+
+19:27.390 --> 19:35.760
+Are we concerned with specifically people who are vision impaired or do we need to adhere to every single
+
+19:35.760 --> 19:39.240
+statute of the Section 508 Rehabilitation Act?
+
+19:39.270 --> 19:47.010
+Those are two very different things and two very different sets of features, functions and related
+
+19:47.040 --> 19:48.090
+time and effort.
+
+19:48.120 --> 19:50.190
+You have to be specific.
+
+19:50.530 --> 19:51.340
+Next.
+
+19:51.340 --> 19:54.500
+It's important to not be subjective.
+
+19:54.520 --> 19:57.700
+Here's an example, and I've actually seen this as a requirement.
+
+19:57.700 --> 20:02.410
+By the way, the site will be cool and hip to hoo.
+
+20:03.340 --> 20:04.350
+Okay.
+
+20:04.360 --> 20:08.850
+Everybody's definition of what's cool or what's hip is going to be different.
+
+20:08.860 --> 20:11.280
+It's a very subjective statement.
+
+20:11.290 --> 20:19.180
+I'm 44 years old, so what's cool to me is probably not what's cool to my 13 year old daughter.
+
+20:19.210 --> 20:19.810
+Okay?
+
+20:19.810 --> 20:26.860
+She has a very different definition of what is cool versus, you know, what her dinosaur father is
+
+20:26.860 --> 20:29.980
+still clinging to in his rapidly advancing age.
+
+20:29.980 --> 20:35.980
+So it's important to to define that in a way that's more specific.
+
+20:36.100 --> 20:43.690
+For instance, the look of the site will conform to the established company brand guidelines, meaning
+
+20:43.690 --> 20:49.240
+the company already has a set way of presenting itself visually, which a lot of organizations do,
+
+20:49.240 --> 20:56.660
+and establish visual brand and established tone of voice and established way of laying things out on
+
+20:56.660 --> 21:00.170
+a page of separating headlines from content, etcetera, etcetera.
+
+21:00.200 --> 21:01.580
+Guidelines exists.
+
+21:01.580 --> 21:02.900
+You will follow them.
+
+21:02.900 --> 21:03.140
+All right.
+
+21:03.140 --> 21:05.120
+That's a very specific statement.
+
+21:05.330 --> 21:08.540
+And it's it's not open to subjectivity.
+
+21:08.750 --> 21:09.890
+It's clear.
+
+21:09.890 --> 21:15.050
+And it's something that we can absolutely easily follow and put into place.
+
+21:15.470 --> 21:17.930
+So I realize this is just the tip of the iceberg.
+
+21:17.930 --> 21:18.320
+Okay.
+
+21:18.320 --> 21:25.310
+But but by following these three rules, be positive, be specific, and do not be subjective.
+
+21:25.730 --> 21:33.440
+No matter how detailed or how simple your requirements may be, they will be infinitely more valuable
+
+21:33.440 --> 21:38.240
+to you and the project team and the client if you follow these three guidelines.

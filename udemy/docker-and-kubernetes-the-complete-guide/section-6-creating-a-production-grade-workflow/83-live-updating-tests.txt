@@ -1,0 +1,385 @@
+WEBVTT
+
+00:00.208 --> 00:01.470
+-: In the last section,
+
+00:01.470 --> 00:04.110
+we were able to override our default start command
+
+00:04.110 --> 00:05.640
+to run our tests.
+
+00:05.640 --> 00:08.610
+We've got Docker Run, we attach a standard-in
+
+00:08.610 --> 00:11.610
+and psuedoterminal to that container that gets created.
+
+00:11.610 --> 00:14.430
+We've got the ID, and then the override command.
+
+00:14.430 --> 00:16.290
+When we run that, we get the output
+
+00:16.290 --> 00:18.660
+that we usually see when we run a test suite.
+
+00:18.660 --> 00:20.460
+I can then hit enter to refresh the test,
+
+00:20.460 --> 00:23.100
+and yeah, it looks like everything is looking okay here.
+
+00:23.100 --> 00:25.380
+However, (chuckles), you're going to very quickly
+
+00:25.380 --> 00:27.840
+see that we are going to run into the exact same issue
+
+00:27.840 --> 00:29.700
+that we've been trying to solve in the last
+
+00:29.700 --> 00:31.380
+couple of sections as well.
+
+00:31.380 --> 00:33.180
+If you open up your code editor,
+
+00:33.180 --> 00:35.670
+I want you to find the SRC directory,
+
+00:35.670 --> 00:40.171
+and then inside there, look for the app.test.JS file.
+
+00:40.171 --> 00:42.600
+Inside of here, you'll see an it-statement.
+
+00:42.600 --> 00:44.730
+So this is the actual test that is currently
+
+00:44.730 --> 00:47.790
+being executed inside of our test suite.
+
+00:47.790 --> 00:50.670
+I want to try making a modification to this file.
+
+00:50.670 --> 00:52.740
+So, I'm going to highlight this it-statement
+
+00:52.740 --> 00:54.540
+right here, the entire thing.
+
+00:54.540 --> 00:57.210
+I'm going to copy it, and then I'm going to paste it
+
+00:57.210 --> 00:59.220
+down right underneath it, and finally,
+
+00:59.220 --> 01:01.290
+I will save the file.
+
+01:01.290 --> 01:03.210
+If we then go back over to our terminal,
+
+01:03.210 --> 01:05.760
+you'll notice that the test suite did not rerun,
+
+01:05.760 --> 01:08.580
+and it still thinks that there is only one test.
+
+01:08.580 --> 01:11.490
+You can try hitting enter to rerun the test suite
+
+01:11.490 --> 01:13.170
+and it sticks at one test.
+
+01:13.170 --> 01:14.460
+So, I bet you can kind of guess
+
+01:14.460 --> 01:15.630
+what's going on here.
+
+01:15.630 --> 01:17.610
+We've got a container that's been created
+
+01:17.610 --> 01:19.710
+specifically to run some tests.
+
+01:19.710 --> 01:21.210
+When we created that container,
+
+01:21.210 --> 01:23.461
+we essentially took a snapshot of all of our
+
+01:23.461 --> 01:25.410
+working files and folders,
+
+01:25.410 --> 01:27.750
+and put that inside the container.
+
+01:27.750 --> 01:29.610
+So, this very temporary container that we've made
+
+01:29.610 --> 01:32.190
+just to run our tests, does not have all that
+
+01:32.190 --> 01:35.130
+volume stuff set up. That is the issue.
+
+01:35.130 --> 01:37.080
+And so, without any of those volumes set up,
+
+01:37.080 --> 01:40.200
+we are using old and outdated files
+
+01:40.200 --> 01:41.580
+inside of our container.
+
+01:41.580 --> 01:43.620
+And any changes we make to our test suite
+
+01:43.620 --> 01:45.423
+will not be reflected inside there.
+
+01:46.380 --> 01:48.510
+So, in this section, we're gonna take a look at
+
+01:48.510 --> 01:51.300
+one or two different ways that we can possibly solve this.
+
+01:51.300 --> 01:54.900
+Now, we certainly could use a very similar approach
+
+01:54.900 --> 01:58.880
+of setting up some volumes in the same way
+
+01:58.880 --> 02:01.350
+we just did inside of our Docker Compose file
+
+02:01.350 --> 02:02.370
+a moment ago.
+
+02:02.370 --> 02:05.190
+So we can setup a second service inside of here.
+
+02:05.190 --> 02:06.900
+We can assign some volumes to it,
+
+02:06.900 --> 02:08.580
+and the entire purpose of that service
+
+02:08.580 --> 02:10.650
+would be to run our test suite.
+
+02:10.650 --> 02:12.330
+Now, that's definitely a way that we're going to go,
+
+02:12.330 --> 02:13.740
+we're definitely going to give that a shot.
+
+02:13.740 --> 02:15.771
+But, I first want to show you
+
+02:15.771 --> 02:16.920
+a slightly different approach.
+
+02:16.920 --> 02:19.620
+One in which we will not create a second service
+
+02:19.620 --> 02:21.690
+inside the Docker Compose file.
+
+02:21.690 --> 02:24.510
+So, let me show you this second approach first.
+
+02:24.510 --> 02:26.220
+All right, I'm going to stop the running test suite
+
+02:26.220 --> 02:27.690
+by hitting control + c.
+
+02:27.690 --> 02:29.190
+And then I'm going to bring up our
+
+02:29.190 --> 02:32.733
+Docker Compose instance with Docker Compose.
+
+02:34.770 --> 02:36.540
+All right, so that has created,
+
+02:36.540 --> 02:38.310
+well, in just a second here, there we go.
+
+02:38.310 --> 02:39.870
+So that creates our single container
+
+02:39.870 --> 02:41.880
+that is running our application.
+
+02:41.880 --> 02:43.710
+Now, one possible way that we can solve
+
+02:43.710 --> 02:45.540
+this issue with our test suite is,
+
+02:45.540 --> 02:47.550
+rather than making a second service inside
+
+02:47.550 --> 02:49.980
+the Docker Compose file, we could instead,
+
+02:49.980 --> 02:54.003
+attach to the existing container that is created.
+
+02:55.110 --> 02:57.720
+When we attach to it, we can then execute a command
+
+02:57.720 --> 02:59.970
+to start up our test suite inside there.
+
+02:59.970 --> 03:02.220
+And that will give us access to a container
+
+03:02.220 --> 03:05.220
+that already has all this volume mapping set up.
+
+03:05.220 --> 03:07.230
+So, let me show you how to do that.
+
+03:07.230 --> 03:09.060
+I've got my Docker Compose container
+
+03:09.060 --> 03:10.170
+running right here.
+
+03:10.170 --> 03:12.960
+I'm going to open up a second terminal window.
+
+03:12.960 --> 03:15.150
+And then inside of here, I'm going to get the ID
+
+03:15.150 --> 03:18.363
+of our running container with Docker ps.
+
+03:20.280 --> 03:22.860
+So, here is the ID of our running container.
+
+03:22.860 --> 03:26.130
+So we can attempt to execute a new command
+
+03:26.130 --> 03:30.963
+inside this container with Docker exec-it.
+
+03:31.860 --> 03:34.350
+I'll put that ID down, and then the command
+
+03:34.350 --> 03:37.890
+that we're going to execute will be npm run test.
+
+03:37.890 --> 03:39.390
+So, essentially what we're going to do here
+
+03:39.390 --> 03:42.180
+is reuse the existing container we have.
+
+03:42.180 --> 03:44.630
+We're gonna start up our test suite inside there.
+
+03:46.080 --> 03:48.630
+So I'll run that, and low and behold,
+
+03:48.630 --> 03:49.890
+our test suite appears.
+
+03:49.890 --> 03:51.630
+It looks like it now correctly recognizes
+
+03:51.630 --> 03:53.070
+that we have two tests.
+
+03:53.070 --> 03:55.530
+And if I go back over to my code editor
+
+03:55.530 --> 03:58.890
+and find that app.test.JS file again,
+
+03:58.890 --> 04:01.170
+I can delete that second it-statement.
+
+04:01.170 --> 04:02.820
+So, I'll highlight the second one right here,
+
+04:02.820 --> 04:05.580
+I'll delete it, and I'll save the file.
+
+04:05.580 --> 04:07.080
+Then, we I go back to my terminal,
+
+04:07.080 --> 04:09.180
+you'll notice that it automatically updated
+
+04:09.180 --> 04:10.980
+and it's back to thinking that we've only got
+
+04:10.980 --> 04:13.710
+one test inside there. Perfect!
+
+04:13.710 --> 04:15.930
+So this is definitely a solution that works.
+
+04:15.930 --> 04:19.050
+However, this is not necessarily the best solution.
+
+04:19.050 --> 04:21.570
+Because if you are developing this application,
+
+04:21.570 --> 04:24.510
+it's going to require you to start up Docker Compose,
+
+04:24.510 --> 04:26.580
+then get the ID of that running container,
+
+04:26.580 --> 04:28.950
+and run that Docker exec command.
+
+04:28.950 --> 04:30.600
+Which is kind of hard to remember
+
+04:30.600 --> 04:32.070
+off the top of your head.
+
+04:32.070 --> 04:33.720
+So, this is definitely a solution,
+
+04:33.720 --> 04:36.270
+but I don't think it's necessarily as good
+
+04:36.270 --> 04:37.713
+as it possibly could be.
+
+04:38.730 --> 04:40.170
+Now, let's take a quick pause right here,
+
+04:40.170 --> 04:41.790
+we're gonna come back the next section,
+
+04:41.790 --> 04:44.220
+and we're gonna try a slightly different approach
+
+04:44.220 --> 04:46.200
+where we will add a second service
+
+04:46.200 --> 04:47.730
+to our Docker Compose file.
+
+04:47.730 --> 04:49.440
+The second service will be responsible
+
+04:49.440 --> 04:51.960
+solely for running our test suites.
+
+04:51.960 --> 04:53.160
+So, quick break, and I will see you
+
+04:53.160 --> 04:54.033
+in just a minute.

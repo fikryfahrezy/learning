@@ -1,0 +1,361 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+-: In last section,
+
+00:01.643 --> 00:04.890
+we tried making use of that volume switch on Docker run,
+
+00:04.890 --> 00:05.850
+but we very quickly saw
+
+00:05.850 --> 00:07.440
+an error message appear in the terminal.
+
+00:07.440 --> 00:09.740
+So lemme tell you about exactly what occurred.
+
+00:10.920 --> 00:11.820
+So like we just said,
+
+00:11.820 --> 00:13.530
+when we make use of that volume command
+
+00:13.530 --> 00:15.210
+we're essentially setting up a mapping
+
+00:15.210 --> 00:18.180
+between a file or folder inside the Docker container
+
+00:18.180 --> 00:19.350
+and a file or folder
+
+00:19.350 --> 00:22.710
+on the local folder system on your machine.
+
+00:22.710 --> 00:24.750
+The issue here is that when we set up
+
+00:24.750 --> 00:29.550
+that binding or that volume, we said, take everything.
+
+00:29.550 --> 00:32.310
+Well, let's go look at the diagram one more time right here.
+
+00:32.310 --> 00:33.450
+We essentially said,
+
+00:33.450 --> 00:36.060
+take everything inside of our present working directory
+
+00:36.060 --> 00:40.380
+and map it up to the app folder inside of our container.
+
+00:40.380 --> 00:41.460
+The issue with that
+
+00:41.460 --> 00:44.553
+is that inside of our current directory right here,
+
+00:45.450 --> 00:47.250
+you'll notice that we do not presently have
+
+00:47.250 --> 00:49.020
+a node_modules folder.
+
+00:49.020 --> 00:51.990
+So when we try to take everything inside of here
+
+00:51.990 --> 00:54.060
+and map it into that app folder,
+
+00:54.060 --> 00:56.340
+well, we don't have a node_modules folder,
+
+00:56.340 --> 00:59.250
+which is where all of our dependencies exist.
+
+00:59.250 --> 01:01.830
+So the node_modules folder inside the container
+
+01:01.830 --> 01:03.900
+essentially got overwritten.
+
+01:03.900 --> 01:05.910
+We had a node_modules folder over there.
+
+01:05.910 --> 01:09.030
+We can kind of imagine that it was right here.
+
+01:09.030 --> 01:10.680
+But when we set up that mapping,
+
+01:10.680 --> 01:11.700
+we said, hey, you know what?
+
+01:11.700 --> 01:14.160
+Anytime you tried to reference node_modules,
+
+01:14.160 --> 01:16.800
+just go ahead and try to look at the copy of node_modules
+
+01:16.800 --> 01:18.930
+that is back inside of the front end folder.
+
+01:18.930 --> 01:20.130
+And as you very well know
+
+01:20.130 --> 01:22.710
+we just deleted that folder a moment ago.
+
+01:22.710 --> 01:24.960
+And so we get this reference that points back to
+
+01:24.960 --> 01:28.110
+essentially nothing on the local operating system.
+
+01:28.110 --> 01:30.360
+Now, there's a very easy fix to this.
+
+01:30.360 --> 01:34.410
+All we have to do is pass in an additional -v flag
+
+01:34.410 --> 01:37.440
+and as the only argument or the only folder path on there
+
+01:37.440 --> 01:40.320
+we'll say app/node_modules.
+
+01:40.320 --> 01:43.500
+Notice how in this case we did not put in a colon
+
+01:43.500 --> 01:44.400
+right there, right?
+
+01:44.400 --> 01:46.410
+No colon on the first one.
+
+01:46.410 --> 01:48.840
+When we use the colon syntax
+
+01:48.840 --> 01:50.940
+we're trying to say that we want to map up
+
+01:50.940 --> 01:52.680
+a folder inside the container
+
+01:52.680 --> 01:54.870
+to a folder outside the container.
+
+01:54.870 --> 01:56.460
+When we do not use the colon
+
+01:56.460 --> 01:58.710
+and we just list a folder inside the container,
+
+01:58.710 --> 02:01.890
+we're essentially saying we want this to be a placeholder
+
+02:01.890 --> 02:04.260
+for the folder that is inside the container.
+
+02:04.260 --> 02:07.020
+Don't try to map it up against anything.
+
+02:07.020 --> 02:08.370
+So you can imagine that
+
+02:08.370 --> 02:11.070
+by putting in -v app/node_modules right here
+
+02:11.070 --> 02:13.470
+we're saying, this folder set in stone,
+
+02:13.470 --> 02:14.850
+don't try to mess with it.
+
+02:14.850 --> 02:17.313
+Don't try to map it up against anything else.
+
+02:18.330 --> 02:20.640
+Let's try running our Docker run command again,
+
+02:20.640 --> 02:24.090
+but we're gonna add on this -v for our app node_modules
+
+02:24.090 --> 02:25.110
+and hopefully we're gonna see
+
+02:25.110 --> 02:26.883
+that everything works as expected.
+
+02:27.780 --> 02:30.030
+So I'm gonna go back over to my terminal.
+
+02:30.030 --> 02:31.230
+I'm gonna do an up arrow
+
+02:31.230 --> 02:33.480
+on my terminal to get the most recent command
+
+02:35.070 --> 02:38.940
+and I'm gonna go back before the first -v
+
+02:38.940 --> 02:43.940
+and I'll add on -v/app/node_modules like so.
+
+02:48.855 --> 02:50.105
+So now I'm gonna run this
+
+02:52.350 --> 02:53.490
+and we're gonna very quickly
+
+02:53.490 --> 02:56.640
+see that our project starts up as expected.
+
+02:56.640 --> 02:58.560
+So starting the development server,
+
+02:58.560 --> 03:02.070
+and there we go, running on port 3000.
+
+03:02.070 --> 03:04.140
+So again, the trick here was recognizing
+
+03:04.140 --> 03:06.060
+that when we use the -v flag
+
+03:06.060 --> 03:07.290
+we're essentially trying to say
+
+03:07.290 --> 03:09.870
+anytime that the container tries to access
+
+03:09.870 --> 03:11.310
+something in the app directory,
+
+03:11.310 --> 03:13.710
+it's gonna reach back out of the container
+
+03:13.710 --> 03:16.320
+to the current or the present working directory
+
+03:16.320 --> 03:17.940
+on our local machine.
+
+03:17.940 --> 03:20.880
+That was a big issue because we did not want to somehow
+
+03:20.880 --> 03:22.860
+overwrite access to the node_modules
+
+03:22.860 --> 03:25.950
+that we had already installed into our container.
+
+03:25.950 --> 03:30.060
+So we should now be able to go back over to our browser,
+
+03:30.060 --> 03:33.060
+go to local host 3000, refresh the page,
+
+03:33.060 --> 03:35.220
+and we'll see Hi There up here.
+
+03:35.220 --> 03:37.230
+Now here's where things get really interesting.
+
+03:37.230 --> 03:39.210
+If I go into my code editor again
+
+03:39.210 --> 03:42.963
+and open up the SRC directory, and find the app.js file,
+
+03:44.070 --> 03:45.660
+we can now make a change to this.
+
+03:45.660 --> 03:46.653
+So I'll say,
+
+03:47.640 --> 03:51.120
+Bye There, I'll save the file,
+
+03:51.120 --> 03:53.310
+and then if I flip back over, you'll notice
+
+03:53.310 --> 03:56.220
+that the text gets automatically reflected on the screen.
+
+03:56.220 --> 03:58.020
+If you don't see that automatic change
+
+03:58.020 --> 04:00.000
+you should be able to refresh the page manually
+
+04:00.000 --> 04:02.100
+and see the new text appear.
+
+04:02.100 --> 04:03.210
+Now, just to be clear,
+
+04:03.210 --> 04:05.850
+when the text refreshes here automatically
+
+04:05.850 --> 04:07.770
+that's a function of create-react-app.
+
+04:07.770 --> 04:09.780
+So that's just how React works.
+
+04:09.780 --> 04:12.240
+It will automatically refresh changes,
+
+04:12.240 --> 04:15.450
+but in order to get those automatic refreshes going
+
+04:15.450 --> 04:17.340
+the React server needs to see
+
+04:17.340 --> 04:19.500
+the changes to the files that we are making.
+
+04:19.500 --> 04:21.600
+And so clearly, by setting up this volume,
+
+04:21.600 --> 04:24.690
+any changes that we make to our local file system
+
+04:24.690 --> 04:27.360
+essentially get propagated into our container,
+
+04:27.360 --> 04:28.460
+the running container.
+
+04:29.310 --> 04:31.140
+The React server inside that running container
+
+04:31.140 --> 04:34.050
+sees the change and it updates the page.
+
+04:34.050 --> 04:35.340
+So that's pretty much it.
+
+04:35.340 --> 04:38.130
+We've now got a solution that's going to recognize changes
+
+04:38.130 --> 04:40.200
+that we're making to our files and folders
+
+04:40.200 --> 04:41.670
+inside of our project directory
+
+04:41.670 --> 04:44.283
+and propagate them inside the container.
+
+04:45.120 --> 04:47.220
+So this is definitely an important step forward.
+
+04:47.220 --> 04:48.510
+Let's take a quick pause right here
+
+04:48.510 --> 04:50.223
+and continue in the next section.

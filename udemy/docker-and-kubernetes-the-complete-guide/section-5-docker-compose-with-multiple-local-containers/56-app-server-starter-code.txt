@@ -1,0 +1,454 @@
+WEBVTT
+
+00:01.059 --> 00:02.280
+-: In this section, we're gonna write out
+
+00:02.280 --> 00:03.780
+all the JavaScript code required
+
+00:03.780 --> 00:06.210
+to implement this Node application.
+
+00:06.210 --> 00:08.130
+Now remember, if you're here in this course
+
+00:08.130 --> 00:09.720
+without a background in Node,
+
+00:09.720 --> 00:12.150
+or maybe you're not interested in JavaScript at all,
+
+00:12.150 --> 00:13.380
+that's totally fine.
+
+00:13.380 --> 00:14.730
+You can skip this section
+
+00:14.730 --> 00:17.280
+and go to the next section where I've put all the code
+
+00:17.280 --> 00:19.110
+that we're gonna write right now,
+
+00:19.110 --> 00:21.600
+that you can just copy paste it over very easily.
+
+00:21.600 --> 00:22.530
+So again, if you don't want
+
+00:22.530 --> 00:25.080
+to write out a bunch of JavaScript, just continue
+
+00:25.080 --> 00:26.820
+into the next section.
+
+00:26.820 --> 00:29.673
+Otherwise stick around and we'll get started right now.
+
+00:30.660 --> 00:33.090
+All right, so to get started, I'm gonna flip back over
+
+00:33.090 --> 00:34.680
+to my Terminal.
+
+00:34.680 --> 00:35.610
+You'll notice that I'm again
+
+00:35.610 --> 00:37.860
+in a workspace directory of sorts,
+
+00:37.860 --> 00:40.200
+so I'm no longer inside that web directory
+
+00:40.200 --> 00:42.420
+that we were working in earlier.
+
+00:42.420 --> 00:45.120
+Inside of here, we're gonna make a new project folder
+
+00:45.120 --> 00:48.630
+and I'm gonna call it, how about just, "Visits," like so.
+
+00:48.630 --> 00:50.460
+Because that's what this application is doing,
+
+00:50.460 --> 00:52.986
+it's counting some number of visits.
+
+00:52.986 --> 00:55.186
+I'm then going to change into that directory
+
+00:56.130 --> 00:58.630
+and then I'll open up my code editor inside there.
+
+01:01.260 --> 01:04.680
+Now we're going to create two separate files very similarly
+
+01:04.680 --> 01:07.320
+to what we did on the last application we worked on.
+
+01:07.320 --> 01:09.720
+We're gonna have a package.json file that's going
+
+01:09.720 --> 01:12.180
+to record all the dependencies of our application,
+
+01:12.180 --> 01:14.490
+and then we're gonna have an index.js file,
+
+01:14.490 --> 01:17.250
+which will serve as the actual Node server.
+
+01:17.250 --> 01:19.980
+Let's first make the package.json file.
+
+01:19.980 --> 01:22.053
+So inside of my route project directory,
+
+01:23.370 --> 01:25.803
+I'll make a new file called package.json,
+
+01:26.730 --> 01:28.800
+and then inside of here, we're gonna specify
+
+01:28.800 --> 01:33.450
+some number of dependencies and a scripts section as well.
+
+01:33.450 --> 01:35.970
+So first we'll do our dependencies.
+
+01:35.970 --> 01:37.980
+Don't forget that we are gonna use double quotes
+
+01:37.980 --> 01:39.423
+everywhere inside this file.
+
+01:41.010 --> 01:43.350
+We're going to pull in Express,
+
+01:43.350 --> 01:45.660
+and I don't really care what version of Express we use,
+
+01:45.660 --> 01:47.580
+so I'll put an asterisk.
+
+01:47.580 --> 01:50.370
+And then we're also going to get a second dependency
+
+01:50.370 --> 01:53.310
+that we did not use previously called Redis.
+
+01:53.310 --> 01:55.290
+Now this Redis dependency right here
+
+01:55.290 --> 01:58.380
+is a JavaScript client library for connecting
+
+01:58.380 --> 01:59.790
+to a Redis server.
+
+01:59.790 --> 02:01.620
+So this library right here is how we are going
+
+02:01.620 --> 02:03.930
+to somehow kind of connect over
+
+02:03.930 --> 02:07.380
+to our running Redis server, and pull information from it,
+
+02:07.380 --> 02:10.620
+and update information inside of it as well.
+
+02:10.620 --> 02:11.730
+Now for the Redis library,
+
+02:11.730 --> 02:14.400
+we are going to use a specific version.
+
+02:14.400 --> 02:16.863
+We're gonna get 2.8.0.
+
+02:19.110 --> 02:21.900
+So that's the two dependencies we're going to need.
+
+02:21.900 --> 02:23.430
+I'm gonna put a comma in,
+
+02:23.430 --> 02:28.263
+and then we're gonna add on a Scripts section as well.
+
+02:29.370 --> 02:31.470
+And very much like we had last time,
+
+02:31.470 --> 02:33.600
+we'll have a single start script,
+
+02:33.600 --> 02:34.860
+and anytime we run that
+
+02:34.860 --> 02:37.953
+it'll actually execute Node index.js.
+
+02:39.060 --> 02:42.180
+All right, so that's it for our package.json file.
+
+02:42.180 --> 02:44.133
+I'm now gonna make a second file,
+
+02:45.150 --> 02:47.250
+that's gonna be our index.js file
+
+02:47.250 --> 02:50.100
+and that's gonna hold all of our actual application code.
+
+02:51.300 --> 02:54.333
+So I'm gonna make a separate file called index.js,
+
+02:55.560 --> 02:56.460
+and at the top we're going
+
+02:56.460 --> 02:59.670
+to require in two separate libraries.
+
+02:59.670 --> 03:01.323
+We're going to get Express again,
+
+03:03.720 --> 03:07.920
+and then we're also going to import that Redis library
+
+03:07.920 --> 03:09.933
+that we just added as a dependency.
+
+03:13.290 --> 03:16.770
+We'll then make a new instance of an Express application,
+
+03:16.770 --> 03:19.410
+and at the same time we're also gonna set up a connection
+
+03:19.410 --> 03:21.600
+to our Redis server.
+
+03:21.600 --> 03:22.950
+So I'll say, "Const client."
+
+03:22.950 --> 03:24.240
+So client right here is going
+
+03:24.240 --> 03:26.890
+to represent our connection over to the Redis server,
+
+03:28.050 --> 03:31.770
+and we'll say, "Redis.createClient," like so.
+
+03:31.770 --> 03:32.910
+Now, we're going to come back
+
+03:32.910 --> 03:34.920
+and add in a little bit more information
+
+03:34.920 --> 03:37.830
+to this create client function call right here.
+
+03:37.830 --> 03:40.110
+We're going to eventually specify the host,
+
+03:40.110 --> 03:42.930
+or the URL, or the address of the Redis server
+
+03:42.930 --> 03:45.750
+that we're trying to connect to, and it's port as well.
+
+03:45.750 --> 03:46.860
+But that's going to be a part
+
+03:46.860 --> 03:48.810
+of a little bit of conversation
+
+03:48.810 --> 03:50.100
+that we'll have down the road,
+
+03:50.100 --> 03:52.500
+once we start to actually put together the Docker side
+
+03:52.500 --> 03:53.500
+of this application.
+
+03:55.320 --> 03:57.930
+After that, we'll add in a route handler
+
+03:57.930 --> 03:59.400
+for our root route.
+
+03:59.400 --> 04:00.660
+We'll say anytime that someone comes
+
+04:00.660 --> 04:02.580
+to the root route of our application,
+
+04:02.580 --> 04:05.883
+we're going to call this callback function.
+
+04:08.550 --> 04:10.530
+Now inside of here, we're going to attempt
+
+04:10.530 --> 04:12.660
+to use this client connection over
+
+04:12.660 --> 04:15.840
+to the Redis server to get the current number of times
+
+04:15.840 --> 04:17.730
+that our page has been visited.
+
+04:17.730 --> 04:21.657
+So to do so I'll say, "Client.get visits,"
+
+04:22.710 --> 04:24.030
+and then as a second argument,
+
+04:24.030 --> 04:25.560
+we'll add in a callback
+
+04:25.560 --> 04:28.680
+that gets called with a possible error object
+
+04:28.680 --> 04:31.563
+and the number of visits that are stored inside of Redis,
+
+04:33.600 --> 04:35.010
+and then we'll send a response back
+
+04:35.010 --> 04:37.170
+to whoever made this original request.
+
+04:37.170 --> 04:41.727
+We'll just say, "Number of visits is,"
+
+04:42.600 --> 04:43.830
+and then we'll add on through some
+
+04:43.830 --> 04:47.763
+simple string concatenation, visits, like so.
+
+04:50.430 --> 04:53.160
+After doing so, after sending this response back
+
+04:53.160 --> 04:55.590
+to the user, we'll make sure that we also update
+
+04:55.590 --> 04:58.560
+the number of times that this page has been visited.
+
+04:58.560 --> 04:59.393
+And so to do so,
+
+04:59.393 --> 05:01.950
+we're going to again reference our client object.
+
+05:01.950 --> 05:05.550
+I'll say, "Client.set visits,"
+
+05:05.550 --> 05:08.640
+is going to be visits plus one.
+
+05:08.640 --> 05:11.790
+Now a little bit of a gotcha here, this visits variable
+
+05:11.790 --> 05:14.340
+that we get back from Redis is actually gonna come back
+
+05:14.340 --> 05:16.920
+to us as a string, rather than the integer
+
+05:16.920 --> 05:19.050
+that we would really expect it to be.
+
+05:19.050 --> 05:22.380
+And so just to make sure that we add one to an integer
+
+05:22.380 --> 05:24.510
+and not a string, I'm going to wrap this
+
+05:24.510 --> 05:26.793
+with a parseInt function call.
+
+05:28.650 --> 05:32.430
+Then the last thing we need to do is add on a app.listen.
+
+05:32.430 --> 05:34.833
+We'll again use Port 8081,
+
+05:36.000 --> 05:39.120
+and then once the application successfully starts listening,
+
+05:39.120 --> 05:43.643
+we'll do a console log that says, "Listening on Port 8081."
+
+05:47.190 --> 05:48.930
+Now one last very quick thing that we need
+
+05:48.930 --> 05:50.310
+to do inside of here.
+
+05:50.310 --> 05:52.050
+You'll notice that we're kind of assuming
+
+05:52.050 --> 05:54.510
+that the instant our server starts up,
+
+05:54.510 --> 05:57.120
+we've already got some number of visits stored,
+
+05:57.120 --> 06:00.480
+or like there's some existing initial value for visits.
+
+06:00.480 --> 06:01.860
+That's probably not the case.
+
+06:01.860 --> 06:03.630
+So one thing that we'll do
+
+06:03.630 --> 06:06.540
+right after we start up our client right here.
+
+06:06.540 --> 06:11.540
+we'll make sure that we do a client.set visits to zero.
+
+06:11.670 --> 06:12.540
+So this right here is going
+
+06:12.540 --> 06:15.780
+to initialize our number of visits to be zero,
+
+06:15.780 --> 06:18.660
+and then every time that user comes to our root route,
+
+06:18.660 --> 06:21.600
+we'll pull that number out, and then increment it by one,
+
+06:21.600 --> 06:24.180
+and store it back on the Redis side.
+
+06:24.180 --> 06:26.190
+Okay, so that's it for this file.
+
+06:26.190 --> 06:28.530
+That's all the application code that we need to write,
+
+06:28.530 --> 06:31.350
+with the exception of a little bit of networking stuff
+
+06:31.350 --> 06:33.090
+that we're gonna put inside of here
+
+06:33.090 --> 06:35.520
+to make sure that we connect to our Redis server.
+
+06:35.520 --> 06:37.020
+So let's take a quick break right here.
+
+06:37.020 --> 06:38.310
+We'll continue in the next section,
+
+06:38.310 --> 06:41.110
+and we're going to continue working on our Docker setup.

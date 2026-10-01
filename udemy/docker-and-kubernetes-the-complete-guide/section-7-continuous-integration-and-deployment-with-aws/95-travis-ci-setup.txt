@@ -1,0 +1,328 @@
+WEBVTT
+
+00:00.810 --> 00:03.750
+-: In the last section, we set up a git repository on GitHub
+
+00:03.750 --> 00:06.780
+and our local machine, and then we wired the two together.
+
+00:06.780 --> 00:07.770
+We're now gonna start working
+
+00:07.770 --> 00:10.680
+on our Travis CI integration with GitHub.
+
+00:10.680 --> 00:12.810
+Now, we haven't spoken about Travis CI too much
+
+00:12.810 --> 00:15.480
+so lemme give you a very brief overview.
+
+00:15.480 --> 00:18.030
+The entire idea of Travis CI is to watch
+
+00:18.030 --> 00:20.550
+for any time that you and I push some changes
+
+00:20.550 --> 00:21.750
+or some amount of code
+
+00:21.750 --> 00:24.360
+to the GitHub project that we just created.
+
+00:24.360 --> 00:26.940
+Anytime that we push up some new code
+
+00:26.940 --> 00:28.500
+GitHub is essentially gonna tap
+
+00:28.500 --> 00:31.200
+on the shoulder of Travis and it's gonna say, Hey
+
+00:31.200 --> 00:34.080
+this person just updated their GitHub repository,
+
+00:34.080 --> 00:35.160
+there's some new code here
+
+00:35.160 --> 00:37.860
+or some new version of their application.
+
+00:37.860 --> 00:41.340
+Travis CI will then automatically pull down all of the code
+
+00:41.340 --> 00:44.700
+inside of our GitHub repository, and at that point
+
+00:44.700 --> 00:47.280
+it essentially gives us the ability to do some work.
+
+00:47.280 --> 00:49.680
+Now really the sky is a limit with Travis.
+
+00:49.680 --> 00:50.730
+We can do anything
+
+00:50.730 --> 00:53.400
+with your code that you can possibly imagine.
+
+00:53.400 --> 00:55.650
+We can test your code, we can deploy it.
+
+00:55.650 --> 00:58.530
+We could even delete the whole GitHub repository
+
+00:58.530 --> 01:02.250
+from Travis if for some crazy reason you wanted to.
+
+01:02.250 --> 01:04.170
+Traditionally people use Travis for
+
+01:04.170 --> 01:07.260
+either testing their code base or for deployment.
+
+01:07.260 --> 01:09.330
+And for us, we're gonna use it for both.
+
+01:09.330 --> 01:11.730
+We're gonna first use Travis to test our code
+
+01:11.730 --> 01:13.890
+and then once our code comes up green
+
+01:13.890 --> 01:15.960
+or once the tests pass successfully
+
+01:15.960 --> 01:18.750
+we'll automatically have Travis deploy our application
+
+01:18.750 --> 01:20.403
+over to AWS.
+
+01:21.330 --> 01:24.150
+So with that in mind, let's start setting up Travis CI.
+
+01:24.150 --> 01:26.250
+Fortunately, the setup is really easy
+
+01:26.250 --> 01:28.080
+and really straightforward.
+
+01:28.080 --> 01:30.960
+To get started, I'm gonna open up a new browser tab
+
+01:30.960 --> 01:35.763
+and then I will navigate to Travis-ci.org.
+
+01:38.280 --> 01:40.260
+Now once here, you'll notice I'm already signed in.
+
+01:40.260 --> 01:41.160
+I'll go ahead and sign out.
+
+01:41.160 --> 01:43.470
+You'll probably see a page like this right here.
+
+01:43.470 --> 01:44.760
+You can click on either sign in
+
+01:44.760 --> 01:46.910
+with GitHub or sign up right in the middle.
+
+01:47.820 --> 01:48.900
+So click on either
+
+01:48.900 --> 01:52.290
+and then you'll be prompted to authorize Travis CI.
+
+01:52.290 --> 01:54.600
+Now this is a page provided by github.com.
+
+01:54.600 --> 01:57.060
+Of course, GitHub is using, or excuse me
+
+01:57.060 --> 01:58.920
+Travis CI is making use of ooff here.
+
+01:58.920 --> 02:01.590
+So you are essentially granting access to all
+
+02:01.590 --> 02:05.100
+of your GitHub repositories over to Travis CI.
+
+02:05.100 --> 02:07.650
+So I'll scroll down to the bottom and authorize it.
+
+02:10.050 --> 02:12.570
+Now, once we go through that, we'll get redirected backward
+
+02:12.570 --> 02:14.460
+to the Travis CI dashboard.
+
+02:14.460 --> 02:17.430
+As a quick note, if the dashboard looks different from you
+
+02:17.430 --> 02:18.930
+that is totally fine.
+
+02:18.930 --> 02:21.480
+Very quickly, you might be seeing something that
+
+02:21.480 --> 02:23.823
+looks a little bit like this.
+
+02:25.290 --> 02:26.730
+Uh, Where's my dashboard?
+
+02:26.730 --> 02:27.563
+There we go.
+
+02:27.563 --> 02:28.920
+So if you some see something that looks like this
+
+02:28.920 --> 02:30.030
+that is totally fine.
+
+02:30.030 --> 02:32.400
+Travis CI is going through a little bit of a redesign
+
+02:32.400 --> 02:34.740
+right now, and so by the time you watch this video
+
+02:34.740 --> 02:36.840
+you might already be seeing the new design.
+
+02:36.840 --> 02:38.400
+And if you are, that's totally fine.
+
+02:38.400 --> 02:42.120
+Now I'm going to undo that little beta feature.
+
+02:42.120 --> 02:43.740
+There we go.
+
+02:43.740 --> 02:44.790
+Okay. So the first thing we have
+
+02:44.790 --> 02:46.560
+to do here is tell Travis CI
+
+02:46.560 --> 02:49.050
+that we wanted to watch the GitHub repo that you
+
+02:49.050 --> 02:50.580
+and I just put together.
+
+02:50.580 --> 02:52.590
+So up on the right hand side, I'm gonna click
+
+02:52.590 --> 02:54.510
+on the profile link.
+
+02:54.510 --> 02:56.160
+If you see a green screen
+
+02:56.160 --> 02:59.250
+or a green box right here that talks about enabling
+
+02:59.250 --> 03:01.260
+Travis CI as a GitHub app
+
+03:01.260 --> 03:03.690
+then you need to go ahead and click that green button.
+
+03:03.690 --> 03:05.370
+But again, that's kind of a new beta feature
+
+03:05.370 --> 03:06.840
+that I don't yet have access to
+
+03:06.840 --> 03:08.910
+but it's another thing that Travis CI is going to roll
+
+03:08.910 --> 03:09.750
+out at some point.
+
+03:09.750 --> 03:11.970
+So if you see little box right here that says
+
+03:11.970 --> 03:13.800
+Oh yeah, something, something GitHub app
+
+03:13.800 --> 03:16.290
+just go ahead and click on that button.
+
+03:16.290 --> 03:18.360
+Once you go through that, you'll then be presented
+
+03:18.360 --> 03:21.360
+with a big list of all the different repositories that exist
+
+03:21.360 --> 03:22.950
+inside your account.
+
+03:22.950 --> 03:25.620
+So we're going to filter this list and find the
+
+03:25.620 --> 03:29.790
+docker dash react repository that we just created.
+
+03:29.790 --> 03:32.520
+Once you find on the list, we'll then click the little
+
+03:32.520 --> 03:34.120
+I don't know, switch right there
+
+03:35.790 --> 03:36.810
+by clicking that switch
+
+03:36.810 --> 03:39.330
+we're essentially telling Travis CI that anytime
+
+03:39.330 --> 03:42.450
+we push new code up to that GitHub repository
+
+03:42.450 --> 03:44.610
+we want Travis CI to pull that code
+
+03:44.610 --> 03:47.850
+down and do some amount of work on it.
+
+03:47.850 --> 03:48.990
+So that's pretty much step one.
+
+03:48.990 --> 03:50.850
+Step one is now complete.
+
+03:50.850 --> 03:52.860
+We can now click the logo on the top left hand side
+
+03:52.860 --> 03:55.140
+and go back to our dashboard where you will now
+
+03:55.140 --> 03:57.993
+see a repository listed on the left hand side.
+
+03:58.860 --> 04:00.720
+You can click on it and you'll see something like this
+
+04:00.720 --> 04:02.970
+something that says No builds for this repository
+
+04:02.970 --> 04:05.760
+cuz we have not yet really done anything at all.
+
+04:05.760 --> 04:07.530
+Let's take a quick pause right here.
+
+04:07.530 --> 04:08.880
+We're gonna come back to the next section
+
+04:08.880 --> 04:11.760
+and we'll start talking about how we can customize Travis CI
+
+04:11.760 --> 04:14.580
+and tell it to do some amount of work for us.
+
+04:14.580 --> 04:17.030
+So quick break and I'll see you in just a minute.

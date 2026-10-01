@@ -1,0 +1,271 @@
+WEBVTT
+
+00:00.870 --> 00:02.370
+Instructor: Now that we've got production versions
+
+00:02.370 --> 00:04.410
+of all of our subprojects put together,
+
+00:04.410 --> 00:07.560
+we're now going to create a new Git repository.
+
+00:07.560 --> 00:09.840
+We're gonna create a new GitHub repository
+
+00:09.840 --> 00:12.540
+and we're gonna link it all up to Travis CI.
+
+00:12.540 --> 00:15.330
+We'll then start to write a travis.yml file
+
+00:15.330 --> 00:17.610
+and we're gonna make sure that that travis.yml file
+
+00:17.610 --> 00:20.640
+has all these steps of making sure that we test our image,
+
+00:20.640 --> 00:24.060
+we build a production version of the images, and so on.
+
+00:24.060 --> 00:24.960
+So to get started,
+
+00:24.960 --> 00:27.600
+I'm gonna first change on over to my terminal.
+
+00:27.600 --> 00:29.970
+I'm inside of my complex directory,
+
+00:29.970 --> 00:33.060
+and inside of here, we're gonna make a new Git repository
+
+00:33.060 --> 00:35.910
+that we're going to eventually push up to GitHub.
+
+00:35.910 --> 00:39.900
+So I will run Git in it, that will create the repository.
+
+00:39.900 --> 00:43.260
+I'll then add in all of my code with git add dot
+
+00:43.260 --> 00:46.140
+and then I will commit everything with git commit,
+
+00:46.140 --> 00:51.140
+initial commit, like so, and I hit enter there very quickly.
+
+00:51.510 --> 00:52.500
+That's what the command was.
+
+00:52.500 --> 00:54.723
+I apologize for doing that too early.
+
+00:56.130 --> 00:58.650
+All right, so that created our Git repository.
+
+00:58.650 --> 01:01.830
+We now need to go create a repo on github.com
+
+01:01.830 --> 01:04.650
+and link it up to Travis CI.
+
+01:04.650 --> 01:06.870
+So I'm gonna flip over to my browser
+
+01:06.870 --> 01:09.243
+and navigate to github.com.
+
+01:12.660 --> 01:14.970
+Once here, I'll find the little plus button
+
+01:14.970 --> 01:18.363
+on the top right hand side and click on New Repository.
+
+01:19.500 --> 01:22.350
+We then get prompted to enter in a repo name.
+
+01:22.350 --> 01:25.800
+So for this project, I'm going to use a repository name
+
+01:25.800 --> 01:28.620
+of multi-docker, like so,
+
+01:28.620 --> 01:32.763
+because this is a multi-container deployment using Docker.
+
+01:33.990 --> 01:36.660
+I'm gonna make sure that I mark the repo as public
+
+01:36.660 --> 01:39.260
+and then I'll click Create Repository at the bottom.
+
+01:40.800 --> 01:42.810
+Now remember, we have one last step to do.
+
+01:42.810 --> 01:47.430
+We need to wire up GitHub as a remote for our repository.
+
+01:47.430 --> 01:51.183
+So I'll click on the copy link right here to get the remote.
+
+01:52.080 --> 01:53.930
+I'll then go back over to my terminal
+
+01:54.780 --> 01:56.850
+and I'll set up a new remote by running
+
+01:56.850 --> 02:00.840
+git remote add origin
+
+02:00.840 --> 02:03.440
+and then I'll paste in that link that I just copied.
+
+02:06.060 --> 02:08.850
+We can then do a git remote-v,
+
+02:08.850 --> 02:11.610
+and that will list off our current remotes.
+
+02:11.610 --> 02:13.680
+Right now it's just origin.
+
+02:13.680 --> 02:15.630
+So we can now push our code up there by running
+
+02:15.630 --> 02:18.243
+git push origin master,
+
+02:20.010 --> 02:22.560
+and that's gonna push all of our code up to GitHub.
+
+02:24.840 --> 02:28.860
+We can now go back over to the browser, refresh the page,
+
+02:28.860 --> 02:31.710
+and there we go, all of our code appears.
+
+02:31.710 --> 02:34.380
+So now the next thing we need to do is create a link
+
+02:34.380 --> 02:36.750
+between GitHub and Travis CI.
+
+02:36.750 --> 02:38.220
+We need to make sure that we enable
+
+02:38.220 --> 02:40.830
+this repository right here and have Travis CI
+
+02:40.830 --> 02:44.073
+attempt to build the code that we placed inside of here.
+
+02:44.940 --> 02:46.620
+So inside of a new browser tab,
+
+02:46.620 --> 02:50.643
+I'm gonna navigate to travis-ci.org.
+
+02:54.060 --> 02:56.130
+We're gonna go up to the top right hand side
+
+02:56.130 --> 03:01.130
+and find profile, and because we just created that new repo
+
+03:01.380 --> 03:03.030
+like two seconds ago, I'm gonna make sure
+
+03:03.030 --> 03:05.070
+that I click on sync account right here
+
+03:05.070 --> 03:06.780
+on the left hand side.
+
+03:06.780 --> 03:08.220
+So that's gonna reach out to GitHub
+
+03:08.220 --> 03:12.060
+and get a updated list of all of our different repositories.
+
+03:12.060 --> 03:13.950
+And this step might take a second or two.
+
+03:13.950 --> 03:15.420
+I'll give it like five seconds
+
+03:15.420 --> 03:16.920
+and then I'll pause the video.
+
+03:16.920 --> 03:18.480
+Okay, I'm gonna pause the video right here
+
+03:18.480 --> 03:19.950
+and we'll continue the next section.
+
+03:19.950 --> 03:22.050
+We're gonna make sure that we enable Travis CI.
+
+03:22.050 --> 03:24.270
+Okay, never mind, it's done.
+
+03:24.270 --> 03:25.837
+All right, we're just gonna keep going.
+
+03:25.837 --> 03:27.000
+(Instructor laughs)
+
+03:27.000 --> 03:28.110
+All right, we'll refresh the page
+
+03:28.110 --> 03:30.840
+to make sure that new repo shows up on the list right here.
+
+03:30.840 --> 03:32.790
+And then we'll do a search for Docker.
+
+03:32.790 --> 03:35.130
+And we should see the multi-docker project
+
+03:35.130 --> 03:37.140
+or repo that we just created up here.
+
+03:37.140 --> 03:38.220
+And so again, all you have to do
+
+03:38.220 --> 03:39.870
+is click on the little slide right there
+
+03:39.870 --> 03:42.510
+to enable it as a built project.
+
+03:42.510 --> 03:45.330
+So now we can go back over to the Travis CI dashboard
+
+03:45.330 --> 03:47.433
+and we should see the new entry over here.
+
+03:48.330 --> 03:51.600
+Now Travis CI is going to probably attempt to pull this repo
+
+03:51.600 --> 03:52.920
+in just a minute or two
+
+03:52.920 --> 03:55.020
+and run it as a build, but of course,
+
+03:55.020 --> 03:57.630
+we don't have a travis.yml file inside of it yet.
+
+03:57.630 --> 03:59.490
+So Travis might show an error and say,
+
+03:59.490 --> 04:02.010
+hey, I don't know what to do, which is totally fine.
+
+04:02.010 --> 04:03.120
+So let's take a pause right here.
+
+04:03.120 --> 04:04.170
+We'll come back to the next section
+
+04:04.170 --> 04:07.143
+and we're gonna start working on the travis.yml file.

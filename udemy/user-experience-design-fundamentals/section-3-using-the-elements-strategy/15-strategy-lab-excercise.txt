@@ -1,0 +1,571 @@
+WEBVTT
+
+00:01.050 --> 00:06.660
+I'm going to walk you through an exercise that essentially shows you how you can go about determining
+
+00:06.660 --> 00:12.690
+value, how you can go about figuring out what strategic opportunities are there for you to take advantage
+
+00:12.690 --> 00:12.840
+of.
+
+00:12.840 --> 00:16.950
+Okay, what things are worth doing is it's very simple.
+
+00:16.950 --> 00:19.110
+You can apply it to absolutely anything that you're doing.
+
+00:19.110 --> 00:23.610
+So if you're working on a current project right now and you're struggling trying to figure out what
+
+00:23.610 --> 00:29.760
+the right decisions are, I highly advise that you use everything I'm going to show you and use your
+
+00:29.760 --> 00:33.690
+current project in place of the examples that we're using here.
+
+00:33.690 --> 00:34.170
+Okay.
+
+00:34.170 --> 00:41.760
+If not, make something up, make up a fictitious scenario and go through the exercise with your made
+
+00:41.760 --> 00:42.330
+up data.
+
+00:42.330 --> 00:42.540
+Okay?
+
+00:42.540 --> 00:44.010
+Just so you can see how it works.
+
+00:45.000 --> 00:48.960
+First, let's revisit the critical piece that we just talked about.
+
+00:48.960 --> 00:49.090
+Okay.
+
+00:49.110 --> 00:52.680
+And that's the trade off between importance and feasibility, right?
+
+00:52.680 --> 00:58.590
+You've got to remember, what are we trading off and where on this graph does each feature fall?
+
+00:58.590 --> 01:03.780
+The importance of the business of solving each problem or taking advantage of each opportunity.
+
+01:04.020 --> 01:08.820
+Counter that with the feasibility that you can actually build something that does those things with
+
+01:08.820 --> 01:11.280
+a limited time and resources that you have.
+
+01:12.570 --> 01:18.030
+Step one List multiple business opportunities for a real or made up product.
+
+01:18.030 --> 01:23.520
+Again, if you've got a current project you're working on, substitute that stuff here.
+
+01:23.520 --> 01:25.380
+If not, make up a scenario.
+
+01:25.800 --> 01:31.650
+Number two, you're going to rate each one of those opportunities on a scale of 1 to 5 in two categories.
+
+01:31.650 --> 01:33.000
+And I'm going to show you examples of this.
+
+01:33.000 --> 01:33.170
+Okay?
+
+01:33.180 --> 01:34.560
+So don't don't worry.
+
+01:35.510 --> 01:38.390
+First category, of course, is importance, Right?
+
+01:38.390 --> 01:41.930
+How crucial is it that the business solves this problem?
+
+01:42.350 --> 01:45.230
+And again, the second category is feasibility.
+
+01:45.260 --> 01:50.900
+How realistic is it that we can actually design and build this solution that we're proposing or that
+
+01:50.900 --> 01:51.980
+solves this problem?
+
+01:53.670 --> 01:54.720
+So here's our example.
+
+01:54.720 --> 01:57.300
+Let's say that our client is an online bookseller.
+
+01:57.480 --> 01:58.320
+It's a website.
+
+01:58.350 --> 02:00.290
+We graph it like this.
+
+02:00.300 --> 02:03.020
+Three columns, problem slash opportunity.
+
+02:03.030 --> 02:05.670
+What's the issue and how do we think we can solve it?
+
+02:05.700 --> 02:11.440
+What's the importance of that particular possibility and how feasible it is that we can do it?
+
+02:11.460 --> 02:17.370
+So let's say if we want to do more business, if we want to increase sales, we have some options.
+
+02:17.370 --> 02:20.470
+We can increase the number of unique visitors to the website, right?
+
+02:20.520 --> 02:22.290
+The volume of how many people are coming.
+
+02:22.440 --> 02:26.010
+We can increase the number of purchases per visit.
+
+02:26.010 --> 02:26.970
+Makes sense.
+
+02:27.270 --> 02:33.240
+If we can get someone to buy 5 or 6 things instead of 1 or 2 things, obviously that's a plus.
+
+02:33.450 --> 02:35.820
+We can increase the number of titles we carry.
+
+02:35.850 --> 02:39.900
+Maybe we don't have a wide enough selection.
+
+02:39.900 --> 02:45.030
+Maybe people aren't finding finding the books on the subjects that they care most about.
+
+02:45.270 --> 02:47.780
+We could also increase the number of authors.
+
+02:47.790 --> 02:50.070
+Again, maybe diversity is an issue.
+
+02:50.070 --> 02:52.230
+So again, these are made up.
+
+02:52.320 --> 02:57.700
+We're assuming that we've come up with these four possibilities and now we want to figure out how important
+
+02:57.700 --> 03:02.040
+is each one and how likely is it that we can address each one?
+
+03:02.050 --> 03:07.840
+So again, on a scale of 1 to 5, I assign a value to each of these.
+
+03:07.840 --> 03:11.680
+First, I start with importance increase the number of unique visitors.
+
+03:11.950 --> 03:13.510
+Uh, that's pretty important, right?
+
+03:13.510 --> 03:17.230
+Because with more volume, the odds are that you're going to get more sales.
+
+03:17.230 --> 03:23.410
+So I'm going to give that a four increase purchases per visit if we could make that happen with, with
+
+03:23.410 --> 03:27.820
+the clientele, the current volume that we have now, that would be awesome.
+
+03:27.850 --> 03:28.040
+Okay.
+
+03:28.060 --> 03:32.050
+If we can get our current customers to buy more, that's like low hanging fruit.
+
+03:32.050 --> 03:32.680
+That would be awesome.
+
+03:32.680 --> 03:33.880
+So let me give that a five.
+
+03:34.240 --> 03:35.950
+Increase the number of titles.
+
+03:36.670 --> 03:43.900
+We could do it, but there's no compelling evidence that more books in more areas would lead to more
+
+03:43.900 --> 03:44.620
+sales.
+
+03:44.650 --> 03:44.920
+All right.
+
+03:44.920 --> 03:46.000
+So we're giving that a one.
+
+03:46.000 --> 03:47.650
+It's really not that important to us.
+
+03:47.680 --> 03:52.750
+We don't think it's going to solve the problem, increase the number of authors that might work.
+
+03:52.750 --> 03:59.100
+Maybe we're over represent know by the small group of authors that we have and people want something
+
+03:59.100 --> 03:59.490
+different.
+
+03:59.490 --> 04:01.050
+So we're not sure.
+
+04:01.050 --> 04:02.430
+So we're putting that right in the middle.
+
+04:02.460 --> 04:04.170
+On a scale of 1 to 5, it's three.
+
+04:04.260 --> 04:07.470
+In terms of feasibility, can we increase unique visitors?
+
+04:07.500 --> 04:11.760
+It would take a lot of money, a lot of marketing effort, a lot of outreach.
+
+04:12.390 --> 04:16.650
+And we know that the return on this kind of stuff is like somewhere around 2%.
+
+04:16.650 --> 04:20.730
+So we would have to spend a whole lot of money and a whole lot of effort and probably get very little
+
+04:20.730 --> 04:21.090
+return.
+
+04:21.090 --> 04:23.580
+So feasibility is a two.
+
+04:24.330 --> 04:25.910
+Increase purchases per visit?
+
+04:25.920 --> 04:28.470
+Well, we've already got some decent traffic.
+
+04:28.470 --> 04:33.990
+So if we could somehow incentivize people who are already on the website, okay, we know they're spending,
+
+04:33.990 --> 04:37.890
+I don't know, 6 to 10 minutes on the site looking at stuff.
+
+04:37.920 --> 04:43.170
+If we can give them incentives, discounts, deals, two for one specials, whatever, we could probably
+
+04:43.170 --> 04:43.860
+do that.
+
+04:43.860 --> 04:44.070
+Okay.
+
+04:44.070 --> 04:46.110
+So feasibility, we're going to give that a four.
+
+04:46.830 --> 04:50.630
+Increase the number of titles again, sort of in between.
+
+04:50.640 --> 04:52.230
+Maybe, maybe we can do that.
+
+04:52.230 --> 04:55.140
+But there's also some legwork, some infrastructure costs.
+
+04:55.140 --> 04:57.210
+That means we've got to store more merchandise.
+
+04:57.600 --> 04:59.280
+There's cost, there's risk associated.
+
+04:59.280 --> 05:01.230
+So three could be important.
+
+05:01.230 --> 05:04.260
+But the three same thing with increased number of authors.
+
+05:04.260 --> 05:05.040
+Could we do it?
+
+05:05.040 --> 05:05.460
+Yeah.
+
+05:05.460 --> 05:09.450
+But is it, you know, the best use of our time?
+
+05:09.450 --> 05:14.010
+And do we have the time and the money and the personnel to make all these phone calls to reach out to
+
+05:14.010 --> 05:18.420
+new authors, to research the books that they already have to figure out whether they're even worth
+
+05:18.420 --> 05:19.860
+talking to in the first place.
+
+05:19.900 --> 05:22.560
+Sounds like a lot of work, so feasibility is a three.
+
+05:22.980 --> 05:23.220
+All right.
+
+05:23.220 --> 05:26.280
+So we've rated both columns on a scale of 1 to 5 at this point.
+
+05:26.370 --> 05:32.490
+The question right now is how important is it that you solve each problem or take advantage of each
+
+05:32.490 --> 05:33.840
+one of these opportunities?
+
+05:33.840 --> 05:37.020
+And how realistic is it that you can accomplish each one?
+
+05:37.320 --> 05:39.270
+Here's how you use these numbers.
+
+05:39.300 --> 05:40.410
+This is a formula.
+
+05:40.440 --> 05:46.770
+You take the middle score in each column, you multiply it by the number of opportunities, which equals
+
+05:46.870 --> 05:48.310
+the number of points available.
+
+05:48.310 --> 05:52.300
+Here's how that breaks out In our example, the middle score is three.
+
+05:52.420 --> 05:56.620
+The total number of opportunities we have listed here is four multiplied.
+
+05:56.620 --> 05:58.120
+Three times four you get 12.
+
+05:58.210 --> 05:59.080
+Here's what that means.
+
+05:59.080 --> 06:00.580
+Here's what these points are.
+
+06:00.610 --> 06:02.590
+Think of points like dollars.
+
+06:02.620 --> 06:02.910
+Okay.
+
+06:02.920 --> 06:05.140
+You now have points to spend.
+
+06:05.170 --> 06:08.710
+I can throw effort at any one of these things.
+
+06:08.710 --> 06:11.470
+And that effort is made up of a total of 12 points.
+
+06:11.830 --> 06:12.430
+Okay.
+
+06:12.430 --> 06:14.860
+We have 12 points available to spend.
+
+06:14.890 --> 06:16.180
+How are we going to do it?
+
+06:16.360 --> 06:23.470
+If I add up this first column importance, when I add all those, I get 13.
+
+06:23.830 --> 06:24.440
+Guess what?
+
+06:24.440 --> 06:27.070
+I'm not going to work because I only have 12 to spend, remember?
+
+06:27.650 --> 06:29.810
+Again, think of this in terms of dollar and cents.
+
+06:29.840 --> 06:31.160
+Think of it in terms of effort.
+
+06:31.160 --> 06:33.920
+That number represents what I have available.
+
+06:33.980 --> 06:37.520
+If I add up the feasibility column, I get 12.
+
+06:37.520 --> 06:38.600
+I'm right on the money.
+
+06:38.780 --> 06:46.220
+But because importance is costing me more than I have to spend, I got to rethink some things.
+
+06:46.250 --> 06:50.900
+Do I reevaluate both the importance and feasibility of each of these things?
+
+06:51.530 --> 06:54.200
+Do I rethink or eliminate some of these opportunities?
+
+06:54.230 --> 06:54.470
+Okay.
+
+06:54.470 --> 07:02.150
+If I go down this list, maybe increased number of titles because it's of low importance and it's of
+
+07:02.390 --> 07:03.680
+medium feasibility.
+
+07:03.680 --> 07:08.990
+I mean, maybe we just scrap that all together and focus on the other three things and allocate our
+
+07:08.990 --> 07:11.030
+efforts appropriately.
+
+07:11.720 --> 07:11.960
+Okay.
+
+07:11.990 --> 07:13.700
+Are you getting a sense of how this works?
+
+07:13.730 --> 07:18.440
+You're figuring out it's sort of forcing you to think about what really counts.
+
+07:18.470 --> 07:19.490
+What can we really do?
+
+07:19.520 --> 07:20.780
+What really matters?
+
+07:21.360 --> 07:27.810
+Finally, after you get both scores within the range of what you have to spend, you plot the results.
+
+07:27.990 --> 07:30.720
+So you draw a graph that looks like this.
+
+07:30.750 --> 07:34.080
+Our axes are still the same importance and feasibility.
+
+07:34.530 --> 07:38.000
+So we had the opportunity to increase unique visitors.
+
+07:38.010 --> 07:39.960
+Here's where that fell on the scale.
+
+07:39.990 --> 07:41.490
+Importance was a four.
+
+07:41.640 --> 07:43.140
+Feasibility was a two.
+
+07:43.170 --> 07:46.050
+See where it falls strongly consider accommodating.
+
+07:46.050 --> 07:51.240
+This might be worth doing, but it can't be the core focus of our efforts.
+
+07:51.330 --> 07:53.610
+Increased purchases per visit.
+
+07:53.640 --> 07:54.990
+Where did that fall?
+
+07:55.140 --> 07:57.640
+Well, importance was a five.
+
+07:57.660 --> 07:59.820
+And feasibility was a four.
+
+07:59.850 --> 08:02.720
+See, where it falls is in the include or die section.
+
+08:02.730 --> 08:04.980
+That means we have to do this.
+
+08:05.010 --> 08:06.000
+It's a good idea.
+
+08:06.030 --> 08:08.040
+Increased number of titles.
+
+08:08.280 --> 08:11.790
+It was a one in importance and it was a three in feasibility.
+
+08:11.820 --> 08:13.050
+See where it lands.
+
+08:13.080 --> 08:13.980
+Ignore completely.
+
+08:13.980 --> 08:15.600
+Forget that we're not doing it.
+
+08:15.810 --> 08:18.790
+Finally, we had an opportunity to increase the number of authors.
+
+08:18.810 --> 08:22.510
+That is a three in importance and a three in feasibility.
+
+08:22.510 --> 08:24.190
+Again lands in the middle.
+
+08:24.220 --> 08:31.810
+So if I'm consulting with this client, I tell them, number one, you have to increase the number of
+
+08:31.810 --> 08:33.670
+purchases per visit.
+
+08:33.700 --> 08:35.470
+Let's go down that path first.
+
+08:35.470 --> 08:40.210
+Let's figure out what that's going to take in terms of effort, right?
+
+08:40.240 --> 08:44.410
+What activities have to take place, what we have to change, what we have to update, what we have
+
+08:44.410 --> 08:45.400
+to redesign.
+
+08:45.730 --> 08:47.040
+And let's start there.
+
+08:47.050 --> 08:53.410
+If there is time and money left over in your budget, then let's look at what we can do to increase
+
+08:53.410 --> 08:54.430
+unique visitors.
+
+08:54.940 --> 08:55.160
+Right?
+
+08:55.180 --> 08:57.490
+Because that's a higher importance.
+
+08:57.490 --> 08:58.720
+It's a four.
+
+08:58.720 --> 09:04.390
+And then if there's anything left after that, then we'll consider increasing the number of authors.
+
+09:04.390 --> 09:06.010
+But that's our priority.
+
+09:06.010 --> 09:06.240
+Okay?
+
+09:06.250 --> 09:08.320
+Those are the things that we're going to tackle first.
+
+09:08.320 --> 09:10.000
+So that's how this exercise works.
+
+09:10.000 --> 09:13.270
+It's very simple and it works for anything that you were doing.
+
+09:13.270 --> 09:19.480
+I strongly encourage you to do this with your own projects, even if they're for yourself.
+
+09:19.510 --> 09:21.400
+Take the time to give this some thought.

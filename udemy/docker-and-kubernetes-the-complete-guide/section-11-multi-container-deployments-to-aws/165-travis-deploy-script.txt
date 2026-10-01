@@ -1,0 +1,244 @@
+WEBVTT
+
+00:01.020 --> 00:03.690
+Narrator: All right, we just about got everything set up.
+
+00:03.690 --> 00:05.130
+The very last thing we have to do
+
+00:05.130 --> 00:06.810
+is add on the deploy section
+
+00:06.810 --> 00:08.280
+to our Travis dot EML file.
+
+00:08.280 --> 00:09.900
+So let's get to it.
+
+00:09.900 --> 00:11.610
+Now the deploy section that we're gonna add on here
+
+00:11.610 --> 00:13.320
+is going to be just about identical
+
+00:13.320 --> 00:15.300
+to the one that we did on our previous project,
+
+00:15.300 --> 00:17.130
+the single container deployment.
+
+00:17.130 --> 00:19.290
+So a lot of these options are gonna be very similar
+
+00:19.290 --> 00:21.660
+and so we're gonna go through them rather quickly.
+
+00:21.660 --> 00:23.490
+So at the bottom of Travis dot EML
+
+00:23.490 --> 00:26.130
+I'll add on the deploy section.
+
+00:26.130 --> 00:30.540
+I'll add a provider of Elastic Beanstock.
+
+00:30.540 --> 00:33.240
+A quick reminder here, we do not put any dashes in here
+
+00:33.240 --> 00:35.610
+because these are not array entries.
+
+00:35.610 --> 00:39.060
+It's all one single configuration object.
+
+00:39.060 --> 00:40.923
+Next up, we'll add on the region.
+
+00:41.880 --> 00:42.713
+For the region,
+
+00:42.713 --> 00:45.420
+I'm gonna flip back over to my
+
+00:45.420 --> 00:47.040
+dashboard for Elastic Beanstock,
+
+00:47.040 --> 00:48.360
+which I still have open.
+
+00:48.360 --> 00:50.910
+And remember, you can get your region very easily
+
+00:50.910 --> 00:53.790
+by looking at the subdomain on your URL.
+
+00:53.790 --> 00:55.050
+So that subdomain right there,
+
+00:55.050 --> 00:57.420
+that's the region that we're talking about.
+
+00:57.420 --> 00:59.070
+So I'm gonna copy that
+
+00:59.070 --> 01:01.143
+and put it over as my region entry.
+
+01:02.460 --> 01:04.560
+For my app entry.
+
+01:04.560 --> 01:07.020
+My app name is Multi dash Docker.
+
+01:07.020 --> 01:09.993
+That's the first part of the kind of header up here.
+
+01:12.810 --> 01:14.910
+The env is going to be, or environment will be
+
+01:14.910 --> 01:18.390
+the multi docker dash env right here.
+
+01:18.390 --> 01:20.340
+So I'll put that in as the environment.
+
+01:21.810 --> 01:24.990
+Next up, we have to do our bucket name and the bucket path.
+
+01:24.990 --> 01:26.790
+And this is going to be where
+
+01:26.790 --> 01:28.740
+Travis zips up our entire project
+
+01:28.740 --> 01:31.800
+and where it stashes it inside of some S3 bucket.
+
+01:31.800 --> 01:34.140
+So remember we are probably going to want to go over
+
+01:34.140 --> 01:35.730
+to S3 really quickly
+
+01:35.730 --> 01:37.620
+and make sure that there's some bucket over there
+
+01:37.620 --> 01:39.060
+that we can use.
+
+01:39.060 --> 01:41.820
+So I'm going to flip back over to my dashboard.
+
+01:41.820 --> 01:44.583
+I'll go to services and then S3.
+
+01:47.820 --> 01:50.340
+And then on here, I'm gonna find my bucket
+
+01:50.340 --> 01:51.780
+for the region that I'm currently in.
+
+01:51.780 --> 01:55.683
+So for me, it's Elastic Beanstock, US West one, right here.
+
+01:56.820 --> 01:57.810
+I'll click on that
+
+01:57.810 --> 02:00.780
+and then I'm gonna get the bucket name, if I can copy it.
+
+02:00.780 --> 02:03.480
+I don't think I can copy it up at the top.
+
+02:03.480 --> 02:04.350
+I feel like I copied it.
+
+02:04.350 --> 02:05.790
+Yeah, there we go.
+
+02:05.790 --> 02:06.623
+That's better.
+
+02:06.623 --> 02:08.040
+So I'm gonna copy the bucket name
+
+02:09.060 --> 02:11.460
+and I'll put in here as the bucket name.
+
+02:11.460 --> 02:14.970
+And then we have to do a bucket half as well.
+
+02:14.970 --> 02:18.843
+And for this one, I'll again just call it Docker multi.
+
+02:21.840 --> 02:23.070
+Now, previously we had said
+
+02:23.070 --> 02:25.320
+only try to deploy this thing on Branchmaster.
+
+02:25.320 --> 02:26.910
+We're gonna do the same thing this time round.
+
+02:26.910 --> 02:29.130
+So only try to run this deployment
+
+02:29.130 --> 02:31.860
+when the branch that we are pushing
+
+02:31.860 --> 02:34.920
+or building up on Travis is the master branch.
+
+02:34.920 --> 02:37.470
+In other words, if we push up some feature branch,
+
+02:37.470 --> 02:40.230
+don't try to build and deploy this thing.
+
+02:40.230 --> 02:43.630
+And then finally, we're gonna do our access key ID
+
+02:45.442 --> 02:46.800
+as AWS
+
+02:46.800 --> 02:48.750
+access key.
+
+02:48.750 --> 02:51.940
+Again, remember there are two Cs in the word access
+
+02:52.830 --> 02:55.570
+and we'll do secret access key
+
+02:56.580 --> 02:58.650
+and we'll say this is going to be a secret...
+
+02:58.650 --> 03:00.453
+Oh, not secret, but secure.
+
+03:02.460 --> 03:04.920
+AWS secret key,
+
+03:04.920 --> 03:05.753
+like so.
+
+03:08.040 --> 03:09.180
+All right. So that's pretty much it.
+
+03:09.180 --> 03:11.370
+That's all we have to do for our Travis dot EML file.
+
+03:11.370 --> 03:13.170
+So then the last thing we have to do is actually
+
+03:13.170 --> 03:15.240
+deploy this thing and test it out.
+
+03:15.240 --> 03:16.980
+So I'm gonna make sure I save this file.
+
+03:16.980 --> 03:18.360
+We'll take a quick break right here
+
+03:18.360 --> 03:20.310
+and we'll continue in the next section.

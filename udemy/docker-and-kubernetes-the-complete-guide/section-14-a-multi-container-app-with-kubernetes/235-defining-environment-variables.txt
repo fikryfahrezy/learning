@@ -1,0 +1,449 @@
+﻿WEBVTT
+
+
+00:00.750 --> 00:01.980
+-: One of the last things we have to do
+
+
+00:01.980 --> 00:03.960
+to set up our application in Kubernetes
+
+
+00:03.960 --> 00:06.420
+is set up some different environment variables.
+
+
+00:06.420 --> 00:07.770
+So as a quick reminder,
+
+
+00:07.770 --> 00:09.810
+we've got a handful of environment variables
+
+
+00:09.810 --> 00:11.970
+that need to be assigned to both the multi-server
+
+
+00:11.970 --> 00:13.440
+and the multi-worker.
+
+
+00:13.440 --> 00:15.870
+The multi-worker needs to know how to connect to Redis
+
+
+00:15.870 --> 00:17.070
+through the environment variables
+
+
+00:17.070 --> 00:19.530
+of Redis host and Redis port.
+
+
+00:19.530 --> 00:21.480
+The multi-server needs to know the same thing,
+
+
+00:21.480 --> 00:23.280
+and the multi-server also needs to have
+
+
+00:23.280 --> 00:24.690
+a set of environment variables
+
+
+00:24.690 --> 00:27.900
+to tell it how to connect to Postgres as well.
+
+
+00:27.900 --> 00:29.700
+So in this section and the next couple,
+
+
+00:29.700 --> 00:31.650
+we're going to describe and discuss
+
+
+00:31.650 --> 00:34.950
+how we set up environment variables in Kubernetes.
+
+
+00:34.950 --> 00:35.783
+All right.
+
+
+00:35.783 --> 00:38.130
+Now in this diagram, I took the same environment variables
+
+
+00:38.130 --> 00:40.500
+and I did a little bit of color coding.
+
+
+00:40.500 --> 00:41.940
+So first off, let's talk about the meaning
+
+
+00:41.940 --> 00:44.190
+behind the yellow color inside of here.
+
+
+00:44.190 --> 00:46.710
+So this, this, this, and this, all the yellow ones
+
+
+00:46.710 --> 00:50.040
+are going to essentially be consistent constant values.
+
+
+00:50.040 --> 00:52.590
+And we don't have to do a lot of work to set these up
+
+
+00:52.590 --> 00:54.810
+inside of our different deployment definitions.
+
+
+00:54.810 --> 00:55.650
+All the yellow ones
+
+
+00:55.650 --> 00:57.900
+are gonna be pretty darn straightforward.
+
+
+00:57.900 --> 00:59.880
+Now there's two red ones on here as well.
+
+
+00:59.880 --> 01:01.560
+So that two host values.
+
+
+01:01.560 --> 01:04.200
+These are also going to be constant values
+
+
+01:04.200 --> 01:06.390
+that don't do not need to change over time
+
+
+01:06.390 --> 01:07.650
+or anything like that.
+
+
+01:07.650 --> 01:09.300
+But I want to remind you about the purpose
+
+
+01:09.300 --> 01:11.400
+of the host environment variables.
+
+
+01:11.400 --> 01:14.100
+These are essentially URLs of sorts
+
+
+01:14.100 --> 01:17.040
+that are going to tell multi-worker and multi-server
+
+
+01:17.040 --> 01:20.790
+how to connect to Redis and Postgres in the first place.
+
+
+01:20.790 --> 01:22.860
+In other words, how it can actually reach out
+
+
+01:22.860 --> 01:25.740
+to the running Postgres server or the running Redis server
+
+
+01:25.740 --> 01:27.273
+and make a connection to them.
+
+
+01:28.590 --> 01:31.020
+So with that in mind, I want to remind you
+
+
+01:31.020 --> 01:34.380
+about the kind of overall architecture of our application.
+
+
+01:34.380 --> 01:36.660
+Remember that we've got our Redis pod right here
+
+
+01:36.660 --> 01:38.220
+and Postgres pod right here.
+
+
+01:38.220 --> 01:41.340
+And we had said that the multi-worker and the multi-server
+
+
+01:41.340 --> 01:44.160
+are going to connect to both those different pods
+
+
+01:44.160 --> 01:46.860
+through the use of that ClusterIP service.
+
+
+01:46.860 --> 01:49.530
+So we need to understand how we can tell multi-worker
+
+
+01:49.530 --> 01:52.260
+to connect over to this Redis pod somehow
+
+
+01:52.260 --> 01:54.810
+through this ClusterIP service.
+
+
+01:54.810 --> 01:57.120
+And we're going to do this by providing a value
+
+
+01:57.120 --> 01:58.980
+to the Redis host environment variable
+
+
+01:58.980 --> 02:01.950
+and the PG host environment variable as well.
+
+
+02:01.950 --> 02:02.940
+So let me just tell you,
+
+
+02:02.940 --> 02:04.410
+let's get down to basics here.
+
+
+02:04.410 --> 02:06.180
+It's a real straightforward thing.
+
+
+02:06.180 --> 02:08.137
+Essentially all we have to do is say,
+
+
+02:08.137 --> 02:10.777
+"Okay, we wanna form a connection from our deployment"
+
+
+02:10.777 --> 02:14.347
+"of multi worker over to the Redis pod'"
+
+
+02:14.347 --> 02:15.187
+"that is being managed"
+
+
+02:15.187 --> 02:17.130
+"by the cluster IP service."
+
+
+02:17.130 --> 02:19.650
+So all we have to do is provide a host name
+
+
+02:19.650 --> 02:22.830
+of the name of that cluster IP service.
+
+
+02:22.830 --> 02:26.520
+If you open up your code editor and find the cluster
+
+
+02:26.520 --> 02:27.750
+client cluster...
+
+
+02:27.750 --> 02:28.583
+No, not that one.
+
+
+02:28.583 --> 02:29.520
+Where is it?
+
+
+02:29.520 --> 02:30.353
+There it is.
+
+
+02:30.353 --> 02:32.040
+Redis Cluster IP service right here.
+
+
+02:32.040 --> 02:34.110
+Remember, we had given it a name of
+
+
+02:34.110 --> 02:36.150
+Redis cluster IP service.
+
+
+02:36.150 --> 02:37.380
+That's gonna be the host name.
+
+
+02:37.380 --> 02:39.900
+So you can kind of imagine that we're going to connect
+
+
+02:39.900 --> 02:42.753
+to http://redisclusterIPservice.
+
+
+02:44.970 --> 02:47.940
+Now, there's not going to actually be the HTTP on there
+
+
+02:47.940 --> 02:49.470
+I just put it on there to make you understand
+
+
+02:49.470 --> 02:51.450
+that this is kind of like a URL.
+
+
+02:51.450 --> 02:54.030
+And to connect from one pod over to another,
+
+
+02:54.030 --> 02:57.030
+we just provide the name of that CLusterIP.
+
+
+02:57.030 --> 02:58.530
+All right, so that's not too bad.
+
+
+02:58.530 --> 03:03.030
+So in total, all the first set of environment variables,
+
+
+03:03.030 --> 03:04.320
+like all these up here,
+
+
+03:04.320 --> 03:06.540
+they're going to essentially be constant values.
+
+
+03:06.540 --> 03:07.830
+And we just have to go around
+
+
+03:07.830 --> 03:10.260
+to our different pod deployment configurations
+
+
+03:10.260 --> 03:12.727
+and add in a little bit more config to say,
+
+
+03:12.727 --> 03:14.527
+"Hey here's an environment variable"
+
+
+03:14.527 --> 03:17.460
+"of like, Redis host and here's the value for it."
+
+
+03:17.460 --> 03:18.360
+Same thing for the port
+
+
+03:18.360 --> 03:20.850
+same thing for user, everything straight down.
+
+
+03:20.850 --> 03:22.860
+Now the one value in this entire list here
+
+
+03:22.860 --> 03:24.060
+that's going to kind of stick out
+
+
+03:24.060 --> 03:24.930
+like a sore thumb
+
+
+03:24.930 --> 03:26.100
+that we're going to do a little bit
+
+
+03:26.100 --> 03:30.030
+of additional work on is going to be the PG password.
+
+
+03:30.030 --> 03:32.220
+So PG password is a password
+
+
+03:32.220 --> 03:33.870
+to our Postgres database.
+
+
+03:33.870 --> 03:34.890
+And without a doubt,
+
+
+03:34.890 --> 03:39.360
+we probably do not want to stick this as a constant value
+
+
+03:40.650 --> 03:44.700
+or just in plain text inside of our Kubernetes config files.
+
+
+03:44.700 --> 03:47.220
+And so we're gonna do a little bit more extra work
+
+
+03:47.220 --> 03:49.680
+above and beyond for the PG password
+
+
+03:49.680 --> 03:51.780
+and we're going to learn how to manage secrets
+
+
+03:51.780 --> 03:54.960
+or secret variables inside of our Kubernetes cluster.
+
+
+03:54.960 --> 03:56.640
+But we're gonna first do all the setup
+
+
+03:56.640 --> 03:57.900
+for all these other ones
+
+
+03:57.900 --> 04:00.870
+and then we'll tackle the PPG password at the very end.
+
+
+04:00.870 --> 04:02.670
+So let's take a quick break right here.
+
+
+04:02.670 --> 04:03.900
+When we come back to the next section
+
+
+04:03.900 --> 04:05.696
+we're gonna start setting up our environment variables
+
+
+04:05.696 --> 04:08.133
+for the multi worker and multi-server.

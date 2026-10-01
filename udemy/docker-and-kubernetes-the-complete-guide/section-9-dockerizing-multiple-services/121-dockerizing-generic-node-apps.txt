@@ -1,0 +1,283 @@
+WEBVTT
+
+00:01.080 --> 00:02.160
+Instructor: In this section, we're gonna start
+
+00:02.160 --> 00:04.560
+to set up development Dockerfiles for our server
+
+00:04.560 --> 00:06.150
+and worker projects.
+
+00:06.150 --> 00:07.200
+The development Dockerfiles
+
+00:07.200 --> 00:08.370
+that we're gonna use for both these
+
+00:08.370 --> 00:10.260
+are gonna be just about identical
+
+00:10.260 --> 00:12.180
+to what we just did for the client.
+
+00:12.180 --> 00:14.970
+So we're gonna go through these pretty darn quickly.
+
+00:14.970 --> 00:16.470
+Inside of my server folder,
+
+00:16.470 --> 00:20.043
+I'll make a new file called Dockerfile.dev.
+
+00:20.940 --> 00:23.820
+Inside of here, we'll specify the node alpine image
+
+00:23.820 --> 00:25.290
+again as our base.
+
+00:25.290 --> 00:29.880
+So I'll say from node:alpine.
+
+00:29.880 --> 00:33.333
+We'll set up a working directory of app.
+
+00:34.170 --> 00:38.040
+We'll copy over the package.json file.
+
+00:38.040 --> 00:39.993
+I will run npm install.
+
+00:41.880 --> 00:44.550
+We'll copy over everything else.
+
+00:44.550 --> 00:47.070
+And then finally, we'll set up our default command.
+
+00:47.070 --> 00:48.780
+Now, in the development environment,
+
+00:48.780 --> 00:49.650
+the startup command
+
+00:49.650 --> 00:51.270
+is gonna be just a little bit different
+
+00:51.270 --> 00:53.190
+for the server and the worker.
+
+00:53.190 --> 00:55.320
+If you open up the package.json file,
+
+00:55.320 --> 00:57.480
+you'll notice that we set up a dev script
+
+00:57.480 --> 01:01.290
+in both of these, of simply nodemon.
+
+01:01.290 --> 01:03.420
+Nodemon is a little command line tool
+
+01:03.420 --> 01:05.130
+that can be used to automatically reload
+
+01:05.130 --> 01:08.100
+your entire project whenever any of the source code
+
+01:08.100 --> 01:09.930
+inside of your project is changed.
+
+01:09.930 --> 01:11.490
+And so we're gonna take advantage of that
+
+01:11.490 --> 01:13.470
+as we are running our docker containers
+
+01:13.470 --> 01:16.260
+to make sure that anytime we set up a volume
+
+01:16.260 --> 01:19.890
+and our source code changes and the volume updates as well,
+
+01:19.890 --> 01:21.660
+we'll get our application to automatically
+
+01:21.660 --> 01:24.030
+restart with the nodemon tool.
+
+01:24.030 --> 01:26.250
+Explaining this with words is a little bit challenging.
+
+01:26.250 --> 01:27.083
+It's one of those things
+
+01:27.083 --> 01:29.520
+where it makes a lot more sense to see it in action.
+
+01:29.520 --> 01:31.650
+So let's just put together the Dockerfile
+
+01:31.650 --> 01:34.290
+and you'll see this in action very quickly.
+
+01:34.290 --> 01:35.520
+The last thing we have to do inside of here
+
+01:35.520 --> 01:37.323
+is specify the primary command.
+
+01:38.400 --> 01:41.103
+We'll do npm, run, dev.
+
+01:42.510 --> 01:43.920
+I'll save this file,
+
+01:43.920 --> 01:45.420
+and then I'll make another file
+
+01:45.420 --> 01:48.390
+identical to it inside of the worker directory.
+
+01:48.390 --> 01:49.440
+So in the worker folder,
+
+01:49.440 --> 01:53.760
+I'll make a new file called Dockerfile.dev,
+
+01:53.760 --> 01:55.050
+and I'm gonna copy everything
+
+01:55.050 --> 01:57.446
+from the first one into the second one.
+
+01:57.446 --> 02:01.503
+So now they both have a primary command of npm run dev.
+
+02:03.330 --> 02:05.970
+Let's now try building images out of both these projects.
+
+02:05.970 --> 02:07.473
+It should go pretty quickly.
+
+02:08.460 --> 02:11.160
+So I'm back inside of my complex folder.
+
+02:11.160 --> 02:14.130
+I'll change into server and inside of here,
+
+02:14.130 --> 02:18.810
+I'll do docker build -f Dockerfile.dev.
+
+02:18.810 --> 02:21.110
+And then don't forget the dot at the very end.
+
+02:22.410 --> 02:23.880
+That's gonna run the npm install,
+
+02:23.880 --> 02:26.280
+but for the backend API server,
+
+02:26.280 --> 02:28.350
+the npm install is gonna go much more quickly
+
+02:28.350 --> 02:30.630
+than it did for the front-end application
+
+02:30.630 --> 02:32.910
+because we have far fewer dependencies.
+
+02:32.910 --> 02:34.440
+Again, if you see any warnings there,
+
+02:34.440 --> 02:36.153
+totally okay, no issue with that.
+
+02:37.200 --> 02:38.460
+Here's our image ID.
+
+02:38.460 --> 02:42.003
+We'll test out very quickly with a docker run ID.
+
+02:43.530 --> 02:45.330
+You might notice this error right here
+
+02:45.330 --> 02:46.410
+of connection refused.
+
+02:46.410 --> 02:47.340
+That's totally fine.
+
+02:47.340 --> 02:48.270
+We're seeing this message
+
+02:48.270 --> 02:50.730
+because we are not running a Redis server
+
+02:50.730 --> 02:52.650
+or a Postgres server right now.
+
+02:52.650 --> 02:54.000
+In particular, this error message
+
+02:54.000 --> 02:56.373
+is coming from the lack of a Postgres server.
+
+02:57.270 --> 03:00.000
+I'm gonna stop that by hitting Control + C,
+
+03:00.000 --> 03:03.723
+and we'll go try building out our worker process as well.
+
+03:05.250 --> 03:06.840
+So in my worker directory,
+
+03:06.840 --> 03:11.700
+I'll do a docker build -f Dockerfile, oop,
+
+03:11.700 --> 03:14.433
+Dockerfile.dev period.
+
+03:15.330 --> 03:17.580
+It's gonna run the npm install here again.
+
+03:17.580 --> 03:19.680
+Again, this will be very quick because we have very,
+
+03:19.680 --> 03:23.310
+very few dependencies on the worker project in particular.
+
+03:23.310 --> 03:25.860
+I see a couple warnings, again, non-issue there.
+
+03:25.860 --> 03:26.693
+We eventually end up
+
+03:26.693 --> 03:30.033
+with our ID and I'll start up a test container with that.
+
+03:30.990 --> 03:32.550
+And everything's looking pretty good.
+
+03:32.550 --> 03:34.800
+No error messages whatsoever.
+
+03:34.800 --> 03:36.570
+Okay, I'm gonna stop everything
+
+03:36.570 --> 03:39.000
+by hitting Control + C and I'll change back
+
+03:39.000 --> 03:40.770
+out to the complex directory.
+
+03:40.770 --> 03:42.240
+And I think that's pretty much it
+
+03:42.240 --> 03:43.890
+for the development Dockerfiles.
+
+03:43.890 --> 03:45.270
+So let's take another quick pause
+
+03:45.270 --> 03:47.220
+and we'll continue in the next section.

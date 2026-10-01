@@ -1,0 +1,418 @@
+WEBVTT
+
+00:00.720 --> 00:01.553
+-: In the last section
+
+00:01.553 --> 00:03.420
+we ran the Docker PS command
+
+00:03.420 --> 00:04.890
+and we saw one variation of it,
+
+00:04.890 --> 00:09.240
+which was Docker PS dash, dash all.
+
+00:09.240 --> 00:11.190
+When we ran dash dash all on here,
+
+00:11.190 --> 00:12.630
+we saw that we got a print-up
+
+00:12.630 --> 00:13.650
+of all the containers
+
+00:13.650 --> 00:15.660
+we'd ever started up on our machine,
+
+00:15.660 --> 00:17.100
+which was kind of interesting
+
+00:17.100 --> 00:18.337
+'cause it kind of begs the question
+
+00:18.337 --> 00:21.870
+"When does a container like really get shut down?
+
+00:21.870 --> 00:23.400
+Why does it get shut down?"
+
+00:23.400 --> 00:25.650
+And "what happens when it gets shut down?"
+
+00:25.650 --> 00:26.820
+So starting this section,
+
+00:26.820 --> 00:29.670
+I wanna start to show you a little bit around the life cycle
+
+00:29.670 --> 00:32.220
+of a container, which is gonna give you a better idea
+
+00:32.220 --> 00:34.230
+of what's going on behind the scenes.
+
+00:34.230 --> 00:36.060
+Now, before first investigating
+
+00:36.060 --> 00:37.260
+or just jumping to the end,
+
+00:37.260 --> 00:38.880
+like figuring out what happens
+
+00:38.880 --> 00:40.410
+when a container gets shut down.
+
+00:40.410 --> 00:41.520
+I want to kind of go all the way
+
+00:41.520 --> 00:43.110
+to the start and really figure out
+
+00:43.110 --> 00:46.650
+what happens when a container is first created.
+
+00:46.650 --> 00:48.090
+Now we've learned at this point
+
+00:48.090 --> 00:50.520
+that to start up a new container from an image
+
+00:50.520 --> 00:52.680
+we use the Docker run command.
+
+00:52.680 --> 00:54.570
+But when we looked at this diagram,
+
+00:54.570 --> 00:56.010
+remember we looked at this diagram
+
+00:56.010 --> 00:57.630
+like two or three sections ago.
+
+00:57.630 --> 00:58.463
+You'll notice
+
+00:58.463 --> 01:00.900
+that I had put some very particular terminology here.
+
+01:00.900 --> 01:05.070
+I said creating and running a container.
+
+01:05.070 --> 01:07.470
+Creating a container, and actually starting it up,
+
+01:07.470 --> 01:10.143
+are actually two separate processes.
+
+01:11.550 --> 01:13.860
+So there's actually two additional commands
+
+01:13.860 --> 01:15.390
+in addition to Docker run
+
+01:15.390 --> 01:18.351
+that we can use to start up a new container.
+
+01:18.351 --> 01:19.860
+Docker run.
+
+01:19.860 --> 01:21.360
+Running that at your command line
+
+01:21.360 --> 01:25.590
+is identical to running two other commands together.
+
+01:25.590 --> 01:28.800
+First Docker create and then Docker start.
+
+01:28.800 --> 01:29.820
+As you might guess,
+
+01:29.820 --> 01:33.030
+the Docker create commands is used to create a container
+
+01:33.030 --> 01:34.320
+out of an image
+
+01:34.320 --> 01:37.410
+and then start is used to actually start an image.
+
+01:37.410 --> 01:39.157
+But at this point you might be a little bit curious of,
+
+01:39.157 --> 01:42.030
+"Hey, what's the distinction between creating a container
+
+01:42.030 --> 01:43.890
+and actually starting a container?"
+
+01:43.890 --> 01:45.210
+Let's look at a diagram that's gonna help you
+
+01:45.210 --> 01:47.670
+understand the differences between the two.
+
+01:47.670 --> 01:50.400
+So we've looked at a diagram like this several times before.
+
+01:50.400 --> 01:52.050
+Remember on our image over here
+
+01:52.050 --> 01:54.840
+we've got that kind of file-system snapshot of sorts
+
+01:54.840 --> 01:56.763
+and we've also got a startup command.
+
+01:57.930 --> 02:00.540
+The process of creating a container
+
+02:00.540 --> 02:03.120
+is where we kind of take the file system in here
+
+02:03.120 --> 02:07.080
+and kind of prep it for use in this new container.
+
+02:07.080 --> 02:08.490
+When we create the container,
+
+02:08.490 --> 02:10.710
+we're just talking about kind of prepping
+
+02:10.710 --> 02:13.740
+or setting-up this file-system snapshot to be used
+
+02:13.740 --> 02:15.540
+to create the container.
+
+02:15.540 --> 02:17.490
+To actually start the container,
+
+02:17.490 --> 02:20.460
+that's when we actually execute this startup command
+
+02:20.460 --> 02:23.370
+that might start up the process of like "Hello world".
+
+02:23.370 --> 02:25.740
+Or in the case of that BusyBox one that we used
+
+02:25.740 --> 02:27.450
+the echo "high there"
+
+02:27.450 --> 02:29.580
+or whatever process is supposed to be executed
+
+02:29.580 --> 02:31.020
+inside the container.
+
+02:31.020 --> 02:32.670
+So again, creating a container
+
+02:32.670 --> 02:34.620
+is about the file system.
+
+02:34.620 --> 02:38.700
+Starting it is about actually executing the startup command.
+
+02:38.700 --> 02:39.540
+So with that mind,
+
+02:39.540 --> 02:42.120
+let's try flipping over to our command line really quickly
+
+02:42.120 --> 02:44.010
+and we're gonna start to investigate the differences
+
+02:44.010 --> 02:46.833
+between creating a container and starting a container.
+
+02:48.270 --> 02:50.010
+Over at my command line
+
+02:50.010 --> 02:53.730
+I'm gonna first try running the Docker create
+
+02:53.730 --> 02:56.850
+and start commands with the "hello world" image.
+
+02:56.850 --> 03:01.850
+So I will first do Docker create "Hello" dash "world".
+
+03:02.880 --> 03:03.930
+When I run that command
+
+03:03.930 --> 03:06.660
+I get this long string of characters printed out.
+
+03:06.660 --> 03:10.860
+This is the ID of the container that was just created.
+
+03:10.860 --> 03:13.980
+I can now actually execute the "hello world" command
+
+03:13.980 --> 03:18.420
+inside of this container by running Docker start.
+
+03:18.420 --> 03:20.727
+And then I'm gonna add on a little argument here.
+
+03:20.727 --> 03:22.350
+I'm gonna say dash a,
+
+03:22.350 --> 03:24.420
+we'll talk about what that is in just a second,
+
+03:24.420 --> 03:26.730
+and then I'm gonna paste the ID
+
+03:26.730 --> 03:28.170
+that was just emitted right here.
+
+03:28.170 --> 03:31.500
+So I'm gonna paste in that really long series of characters
+
+03:31.500 --> 03:33.120
+and then when I run this command
+
+03:33.120 --> 03:36.360
+we'll see that familiar welcome message up here.
+
+03:36.360 --> 03:37.380
+So what happened here?
+
+03:37.380 --> 03:38.910
+Well again, first off,
+
+03:38.910 --> 03:40.200
+we kind of prepped the container
+
+03:40.200 --> 03:42.450
+by getting that file system ready.
+
+03:42.450 --> 03:44.640
+Then after that we actually executed
+
+03:44.640 --> 03:48.270
+the primary startup command in there with Docker start.
+
+03:48.270 --> 03:50.160
+Now, what was with the dash A right there?
+
+03:50.160 --> 03:51.900
+Well, to show you what's going on with that
+
+03:51.900 --> 03:54.000
+let's try running Docker start again
+
+03:54.000 --> 03:55.563
+but without the dash A.
+
+03:57.210 --> 03:58.890
+So I'm gonna run Docker start
+
+03:58.890 --> 04:01.380
+and then I'm going to again paste in.
+
+04:01.380 --> 04:02.220
+Oops, I lost the thing.
+
+04:02.220 --> 04:05.013
+I gotta do the create again very quickly.
+
+04:07.230 --> 04:09.840
+So there's my ID and I'll do Docker start
+
+04:09.840 --> 04:11.643
+but without the dash A this time.
+
+04:12.540 --> 04:14.100
+So when I run Docker start,
+
+04:14.100 --> 04:16.650
+you'll notice that I just see the ID.
+
+04:16.650 --> 04:18.090
+The dash A command
+
+04:18.090 --> 04:19.560
+is what's going to make Docker
+
+04:19.560 --> 04:22.290
+actually watch for output from the container
+
+04:22.290 --> 04:24.360
+and print it out to your terminal.
+
+04:24.360 --> 04:26.670
+So the dash a specifically means "hey
+
+04:26.670 --> 04:28.721
+kind of attached to the container", so to speak
+
+04:28.721 --> 04:31.410
+and "watch for output coming from it and print
+
+04:31.410 --> 04:33.720
+it out at my terminal".
+
+04:33.720 --> 04:36.300
+So when I put on Docker start dash a, that means
+
+04:36.300 --> 04:39.060
+give "me any output that is coming from that thing".
+
+04:39.060 --> 04:41.250
+And when I run that, boom, there it is.
+
+04:41.250 --> 04:43.230
+So you'll notice that's a very small difference
+
+04:43.230 --> 04:45.810
+between Docker run and Docker start.
+
+04:45.810 --> 04:46.643
+By default,
+
+04:46.643 --> 04:48.960
+Docker run is going to show you all the logs
+
+04:48.960 --> 04:51.300
+or all the information coming outta the container.
+
+04:51.300 --> 04:53.490
+By default, Docker start is the opposite.
+
+04:53.490 --> 04:55.050
+Docker start is not gonna show you
+
+04:55.050 --> 04:56.950
+information coming outta the terminal.
+
+04:58.440 --> 04:59.273
+All right.
+
+04:59.273 --> 05:01.500
+So that's the differences between Docker run
+
+05:01.500 --> 05:04.170
+and Docker start and Docker create.
+
+05:04.170 --> 05:05.490
+Let's take a quick pause right here.
+
+05:05.490 --> 05:06.720
+We're gonna come back to the next section
+
+05:06.720 --> 05:08.340
+and we'll talk a little bit more about
+
+05:08.340 --> 05:09.810
+exactly what it meant
+
+05:09.810 --> 05:13.890
+when we saw with the Docker PS All that exited status.
+
+05:13.890 --> 05:16.340
+So quick break and I'll see you in just a minute.

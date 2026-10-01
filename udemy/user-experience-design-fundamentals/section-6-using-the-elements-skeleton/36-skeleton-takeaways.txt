@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00.910 --> 00:07.060
+So now that we've reached the end of our work on the skeleton plane, there are some takeaways and things
+
+00:07.060 --> 00:09.040
+to remember that I'd like to leave you with.
+
+00:09.190 --> 00:14.650
+Remember, first and foremost, that the skeleton plane is created through interface design, which
+
+00:14.650 --> 00:20.650
+provides users with the ability to do things and navigation design, which provides users with the ability
+
+00:20.650 --> 00:22.150
+to go places.
+
+00:22.360 --> 00:29.240
+Good interface design uses progressive disclosure to maximize signal and minimize noise.
+
+00:29.260 --> 00:33.760
+It delivers the things we care about most and minimizes everything else.
+
+00:34.180 --> 00:41.200
+A product with a poorly designed interface will not be used no matter how technically superior the code
+
+00:41.200 --> 00:43.810
+is or how deep its functionality may be.
+
+00:43.810 --> 00:50.830
+If it's difficult or confusing or frustrating, people will bail out and do something else.
+
+00:51.370 --> 00:57.540
+Also, keep in mind that good navigation design reveals the depth of content in a site or an app.
+
+00:57.550 --> 01:04.640
+It provides a sense of place and it allows users to predict the outcome of an interaction which is essential
+
+01:04.670 --> 01:07.430
+to usability and good user experience.
+
+01:07.610 --> 01:12.500
+Good information design is the glue that holds things together.
+
+01:12.500 --> 01:15.980
+It supports the goals of both the user and the creator.
+
+01:15.980 --> 01:20.780
+And when information design fails, everything else falls apart along with it.
+
+01:20.780 --> 01:27.680
+You can't have good navigation or good interface design or good interaction design without good information
+
+01:27.680 --> 01:28.400
+design.
+
+01:28.580 --> 01:34.850
+And finally, the only time you should deviate from a well established convention is when there's a
+
+01:34.850 --> 01:38.240
+clear, obvious benefit to doing so.

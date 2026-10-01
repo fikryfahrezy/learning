@@ -1,0 +1,97 @@
+WEBVTT
+
+00:00.570 --> 00:06.420
+As a follow up to our discussion about the skeleton plane, I want you to consider labeling and navigation
+
+00:06.420 --> 00:08.340
+and how the two are related.
+
+00:08.370 --> 00:14.220
+First, I want you to find a website of a large, complex organization like a news site or a university
+
+00:14.220 --> 00:21.480
+website, something that has a lot of pages and a lot of categories and subcategories and pages within
+
+00:21.480 --> 00:22.140
+that site.
+
+00:22.140 --> 00:29.160
+I want you to find an example of particularly good or particularly bad labeling within the main menu
+
+00:29.160 --> 00:29.780
+system.
+
+00:29.790 --> 00:33.840
+For example, this can be the sub navigation within a specific category.
+
+00:33.840 --> 00:39.600
+If you're on an education website and you go to academics, which typically lists all the different
+
+00:39.600 --> 00:43.050
+class categories and subcategories, that's a good example.
+
+00:43.260 --> 00:46.800
+Once you have your example, I want you to consider the following.
+
+00:46.800 --> 00:50.070
+First are the words chosen for the labels meaningful?
+
+00:50.100 --> 00:51.480
+Do they mean anything when you read them?
+
+00:51.480 --> 00:53.520
+Do you understand what those terms are?
+
+00:53.550 --> 00:55.260
+Do they point you in a certain direction?
+
+00:55.260 --> 00:56.490
+Do you understand them?
+
+00:56.490 --> 00:59.130
+Are the labels distinct from one another?
+
+00:59.230 --> 01:00.580
+Can you tell one from the other?
+
+01:00.580 --> 01:02.740
+Is there a clear difference between them?
+
+01:02.740 --> 01:04.870
+Is it easy to confuse one with the other?
+
+01:04.900 --> 01:06.820
+Could they both possibly mean the same thing?
+
+01:06.850 --> 01:09.700
+Could three, four, 5 or 6 possibly mean the same thing?
+
+01:09.700 --> 01:11.260
+That's what I mean by distinct.
+
+01:11.470 --> 01:16.840
+Can you predict and remember which labels are under which top level category?
+
+01:16.840 --> 01:20.620
+And maybe more importantly, are you forced to remember or is it obvious?
+
+01:20.830 --> 01:26.350
+Can you tell where you are in the hierarchy when you are several levels down after you've drilled down
+
+01:26.350 --> 01:28.270
+one, two, three, 4 or 5 times?
+
+01:28.270 --> 01:31.720
+Do you still know where you are in the grand scheme of things?
+
+01:31.840 --> 01:35.470
+Do the navigation labels also serve as page titles?
+
+01:35.470 --> 01:37.390
+And if they don't, should they?
+
+01:37.570 --> 01:43.450
+So as you dig into that, I think you'll see that there's an important correlation between effective
+
+01:43.450 --> 01:45.880
+labeling and effective navigation.

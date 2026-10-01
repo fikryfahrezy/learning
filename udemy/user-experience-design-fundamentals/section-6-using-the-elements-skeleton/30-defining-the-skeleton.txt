@@ -1,0 +1,478 @@
+WEBVTT
+
+00:00.880 --> 00:04.180
+There are three important things that we're doing on the skeleton plane.
+
+00:04.210 --> 00:07.750
+First, we're giving users the ability to see the structure.
+
+00:07.780 --> 00:10.540
+Second, we're giving them a way to move through it.
+
+00:10.540 --> 00:14.170
+And third, we're giving them a way to act on what they see.
+
+00:14.200 --> 00:18.250
+Put another way, this is the place where we're starting to give the function.
+
+00:18.250 --> 00:20.380
+We've developed some form.
+
+00:20.590 --> 00:26.890
+The skeleton plane focuses on more concrete issues of presentation, what the person sees, which specifically
+
+00:26.890 --> 00:28.450
+means answering some questions.
+
+00:28.450 --> 00:30.370
+What form will the product take?
+
+00:30.370 --> 00:32.110
+How will users move around?
+
+00:32.110 --> 00:33.490
+How will they do things?
+
+00:33.490 --> 00:37.550
+How will content be presented and how will it be manipulated?
+
+00:37.570 --> 00:42.640
+The skeleton plan is created through interface design first and foremost, which as we said, provides
+
+00:42.640 --> 00:44.970
+users with the ability to do things.
+
+00:44.980 --> 00:50.590
+If I can act on what I see, if I can touch it, click it, tap it, move it, act on it.
+
+00:50.590 --> 00:52.330
+Okay, that's part of the interface.
+
+00:52.330 --> 00:53.560
+That's my bridge.
+
+00:53.560 --> 00:58.690
+It's my pathway into making the system do something for me.
+
+00:58.690 --> 01:05.720
+But we're also dealing with navigation design, which essentially allows us to go places specifically
+
+01:05.720 --> 01:12.470
+in larger sets of information, large websites or enterprise systems or even applications.
+
+01:12.470 --> 01:14.420
+Okay, Apps that live on your mobile phone.
+
+01:14.450 --> 01:19.430
+Navigation design is what allows you to go from this screen to that screen to the next screen.
+
+01:19.430 --> 01:26.180
+And in some cases, it also is what allows you to move through steps or sequences or flows within a
+
+01:26.180 --> 01:27.020
+single screen.
+
+01:27.550 --> 01:34.540
+One of the core things we're trying to do at this point is make decisions that enable positive experiences,
+
+01:34.810 --> 01:40.570
+that ensure that the person on the receiving end that's interacting with the system has a useful, valuable
+
+01:40.570 --> 01:46.420
+experience, that it meets their need, that it serves their expectations, that it helps them achieve
+
+01:46.420 --> 01:47.450
+their goals.
+
+01:47.470 --> 01:53.560
+The work that we're doing at this point has to enable several important principles that essentially
+
+01:53.560 --> 01:56.050
+define positive user experience.
+
+01:56.470 --> 02:01.840
+First and foremost, we have to rapidly establish the product's value in the user's mind.
+
+02:01.840 --> 02:06.730
+In other words, they have to see and experience something or multiple things.
+
+02:06.880 --> 02:12.790
+In some cases, very quickly, in order to feel like the time and effort they're going to invest is
+
+02:12.790 --> 02:14.290
+going to help them do something right.
+
+02:14.290 --> 02:15.870
+It's going to be worthwhile.
+
+02:15.880 --> 02:19.570
+The outcome is going to be what they're hoping to accomplish.
+
+02:19.570 --> 02:21.370
+So that's establishing value.
+
+02:21.520 --> 02:28.070
+Next, we have to lead that person toward continuing the experience, which essentially furthers the
+
+02:28.070 --> 02:29.390
+relationship as well.
+
+02:29.390 --> 02:31.460
+In some ways, it's a lot like a first date.
+
+02:31.490 --> 02:37.070
+The quality of the experience and subsequent experiences determine whether you're going to stick around
+
+02:37.070 --> 02:37.730
+or not.
+
+02:39.030 --> 02:45.920
+Okay, But that's partly what our job is when we're dealing with the interface to convince the person
+
+02:45.920 --> 02:50.660
+to stick around and explore and learn and use things.
+
+02:50.690 --> 02:56.720
+We're also looking for ways to introduce specific content at the most relevant, most appropriate points
+
+02:56.720 --> 02:57.850
+in the experience.
+
+02:57.860 --> 03:02.310
+We're trying to figure out, okay, when does the person want this information?
+
+03:02.330 --> 03:04.130
+Are they ready for it yet?
+
+03:04.220 --> 03:07.160
+Is it the appropriate place in the workflow?
+
+03:07.190 --> 03:12.590
+What do they need to see here and what do they need to be able to do with what they see?
+
+03:12.590 --> 03:19.070
+Every single click or every tap or every swipe or whatever it is, should add immediate value.
+
+03:19.100 --> 03:24.680
+There should be an immediate sense that what I just did provided me with something useful, something
+
+03:24.680 --> 03:25.160
+valuable.
+
+03:25.190 --> 03:25.480
+Okay.
+
+03:25.490 --> 03:28.070
+The action I just took was worthwhile.
+
+03:28.070 --> 03:31.010
+It furthered me along my given path.
+
+03:31.010 --> 03:34.640
+It got me one step closer to achieving my goal.
+
+03:34.640 --> 03:41.450
+So all these little discrete actions that we take from screen to screen also should add positively to
+
+03:41.450 --> 03:42.680
+the overall experience.
+
+03:42.680 --> 03:43.520
+Over time.
+
+03:43.520 --> 03:48.510
+All these smaller actions that I take should lead up to some grander result.
+
+03:48.530 --> 03:52.400
+I should constantly feel like I am on the right path.
+
+03:52.400 --> 03:54.860
+I'm on the way to achieving my goals.
+
+03:54.860 --> 03:58.760
+I'm on the way to bigger and better things forward.
+
+03:58.760 --> 04:00.620
+Progress in football terms, right?
+
+04:00.620 --> 04:05.350
+I'm moving forward even when I'm doing something that's relatively menial.
+
+04:05.360 --> 04:11.060
+The point of all this is that every single thing that the person does on the screen, okay, everything
+
+04:11.060 --> 04:16.550
+that they see, everything that they touch, everything that they interact with, should all work together
+
+04:16.550 --> 04:22.250
+to provide a sense that what's happening is positive, it's useful, and it's valuable.
+
+04:22.660 --> 04:28.510
+The skeleton plane is also the place where we start to see the relationship between features and overall
+
+04:28.510 --> 04:29.380
+usability.
+
+04:29.380 --> 04:31.710
+And in truth, that relationship is pretty simple.
+
+04:31.720 --> 04:38.080
+Essentially, the more features that anything has, the less likely that its usability is good.
+
+04:38.080 --> 04:42.730
+That means that any given point in time, the number of features or functions that are available to
+
+04:42.730 --> 04:47.470
+us on the screen has has a direct effect on how useful that product is.
+
+04:47.500 --> 04:54.370
+There's a system that I recently was asked to evaluate a learning management system that has over 700
+
+04:54.370 --> 04:55.240
+features.
+
+04:55.270 --> 04:59.530
+The company feels that offering all these features gives them a competitive advantage.
+
+04:59.530 --> 05:05.410
+And from a sales and marketing standpoint, I get it because lots of people like to see that sort of
+
+05:05.410 --> 05:10.780
+checkbox functionality where they see the three systems compared and they can say, Well, look at all
+
+05:10.780 --> 05:13.060
+the stuff that ours does that these others don't.
+
+05:13.090 --> 05:14.620
+More is better, right?
+
+05:14.710 --> 05:23.330
+The thing is, there's miles and miles and miles of research that says otherwise excessive features
+
+05:23.330 --> 05:25.430
+simply make these things more complex.
+
+05:25.460 --> 05:28.610
+It increases the users and administrators learning curve.
+
+05:28.610 --> 05:34.670
+It means there are additional taps, additional clicks, additional steps required to accomplish even
+
+05:34.670 --> 05:36.080
+the most basic tasks.
+
+05:36.080 --> 05:41.180
+That means there's more effort required on the administrative side, on the business side as well,
+
+05:41.210 --> 05:43.520
+to configure these things, to maintain them.
+
+05:43.520 --> 05:46.730
+All those features also tend to increase cost.
+
+05:46.730 --> 05:51.850
+So there isn't really any core benefit on the user side in terms of hard dollars and cents either.
+
+05:51.860 --> 05:57.200
+And finally, what happens is that when you have that many features, you can be pretty sure that something's
+
+05:57.200 --> 06:00.860
+not going to work correctly the minute there's a new browser update.
+
+06:00.860 --> 06:01.730
+Okay.
+
+06:01.730 --> 06:07.430
+In any of the, you know, the three major browsers, if you're dealing with Internet Explorer or Firefox
+
+06:07.430 --> 06:13.580
+or Chrome, one upgrade is all it's going to take to derail a significant percentage of all those things.
+
+06:13.580 --> 06:18.920
+So more complexity is almost never a good match for usability.
+
+06:19.010 --> 06:25.370
+In order to design anything successfully, you have to have a strong understanding of conventions,
+
+06:25.370 --> 06:30.860
+and that's largely because habit and reflex account for much of our daily interactions.
+
+06:30.860 --> 06:35.930
+The ingrained habits that we have, the automatic unconscious reflexes, the way that we react to things,
+
+06:35.930 --> 06:40.190
+make up a large, large portion of our everyday actions.
+
+06:40.190 --> 06:45.380
+Without those two things, without habit, without reflex, we pretty much wouldn't be able to do anything
+
+06:46.220 --> 06:51.800
+from the way that you get out of bed all groggy and somehow manage to make coffee in the morning, even
+
+06:51.800 --> 06:56.930
+though you're not even really conscious of doing it to the common things that you do every time you
+
+06:56.930 --> 07:02.510
+pick up your phone or your tablet or open your laptop screen, those things happen reflexively.
+
+07:02.510 --> 07:04.460
+They happen unconsciously.
+
+07:04.460 --> 07:10.640
+So our ability to do anything depends on the accumulation of all these reflexes, most of which are
+
+07:10.640 --> 07:12.590
+pretty small conventions.
+
+07:12.590 --> 07:19.100
+Things that we automatically instantly recognize as familiar are what allow us to use those reflexes.
+
+07:19.130 --> 07:23.870
+And that's because they match our expectations of what something is supposed to do.
+
+07:23.870 --> 07:28.790
+You know what it's supposed to be like When we see something that's familiar, when we get a signal
+
+07:28.790 --> 07:30.560
+that's familiar, a visual signal.
+
+07:30.560 --> 07:33.530
+In this case, we know what to do with it.
+
+07:33.530 --> 07:34.610
+We've been there before.
+
+07:34.610 --> 07:35.870
+We get it, we understand it.
+
+07:35.870 --> 07:36.680
+We interpret it.
+
+07:36.680 --> 07:38.000
+There's no thought required.
+
+07:38.000 --> 07:44.570
+The body and the mind just reacts, you know, as one, if I show you this set of symbols, I'd say
+
+07:44.570 --> 07:49.460
+there's a pretty good chance that the majority of you know exactly what most of these do.
+
+07:49.490 --> 07:50.030
+Why?
+
+07:50.060 --> 07:55.370
+Because you've seen them on your phone, on your tablet, on your laptop, on the Internet.
+
+07:55.520 --> 07:56.080
+ET cetera.
+
+07:56.090 --> 07:56.420
+ET cetera.
+
+07:56.450 --> 08:02.600
+These are conventional symbols that have been used over and over and over across different kinds of
+
+08:02.600 --> 08:06.710
+applications, different kinds of systems, different kinds of software.
+
+08:06.710 --> 08:13.970
+But they always, always, always mean the same thing, do the same thing, act the same way.
+
+08:14.640 --> 08:20.040
+The only time you deviate from a well established convention is when there's a clear, obvious benefit
+
+08:20.040 --> 08:21.030
+to doing so.
+
+08:21.030 --> 08:28.110
+And most times, even when you do deviate, it's pretty minor because the core relationship that the
+
+08:28.110 --> 08:34.290
+person has to a certain convention, a certain paradigm, a certain way of doing things is really strong
+
+08:34.290 --> 08:35.670
+and well established.
+
+08:35.910 --> 08:36.950
+I'll give you an example.
+
+08:36.960 --> 08:39.980
+On the iPhone, the dial pad looks like this.
+
+08:39.990 --> 08:43.500
+This number configuration that you see is pretty much universal.
+
+08:43.500 --> 08:51.000
+And if you go all the way back to the first touch tone phones that had buttons instead of a rotary dial,
+
+08:51.000 --> 08:53.970
+this is essentially the arrangement of the Keys.
+
+08:54.000 --> 08:59.250
+Three rows of numbers zero in the center, star sign on the left pound sign on the right.
+
+08:59.250 --> 09:00.450
+That's universal.
+
+09:00.450 --> 09:07.290
+It's been the same way since 1962 when touchtone phones first came out.
+
+09:07.290 --> 09:09.090
+That's a strong convention.
+
+09:09.090 --> 09:12.780
+We absolutely automatically know how to use this.
+
+09:12.780 --> 09:18.370
+Now, when the Android system came out, you'll notice that it looks visually a little different.
+
+09:18.400 --> 09:19.840
+We're using a different font.
+
+09:19.870 --> 09:21.610
+Things are colored differently.
+
+09:21.610 --> 09:25.450
+We don't have the rigid containers that the iPhone has.
+
+09:25.480 --> 09:26.470
+But guess what?
+
+09:26.470 --> 09:31.690
+The convention, the format, the layout of the interface is exactly the same.
+
+09:31.690 --> 09:36.010
+Three rows of numbers zero at the bottom center, star pound.
+
+09:36.040 --> 09:40.630
+That's because while the Android obviously needed to differentiate itself in some way, right.
+
+09:40.660 --> 09:45.520
+To self-identify as this is something different, this is something unique.
+
+09:45.520 --> 09:49.360
+They did not attempt to do away with the convention.
+
+09:49.360 --> 09:49.900
+Why?
+
+09:49.930 --> 09:56.440
+Because we know that because doing so would be extremely disruptive to effectively using the phone.
+
+09:56.440 --> 09:57.700
+It would break our habit.
+
+09:57.700 --> 09:59.740
+It would interfere with our reflex.
+
+09:59.740 --> 10:04.030
+And therefore, we'd probably be pretty frustrated at our first attempt to use the phone.
+
+10:04.030 --> 10:07.660
+And if we're frustrated at our first attempt, we probably won't try again.
+
+10:07.660 --> 10:13.000
+We're going to gravitate towards something that automatically matches our comfort, our connection to
+
+10:13.000 --> 10:14.260
+the things that we already know.

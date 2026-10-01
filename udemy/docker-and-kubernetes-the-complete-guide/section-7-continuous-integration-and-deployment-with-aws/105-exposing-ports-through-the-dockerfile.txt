@@ -1,0 +1,316 @@
+WEBVTT
+
+00:00.840 --> 00:02.880
+-: In the last section, we pushed off our project
+
+00:02.880 --> 00:05.880
+to Travis CI, or more precisely GitHub.
+
+00:05.880 --> 00:08.970
+Travis CI picked up the project and started building it.
+
+00:08.970 --> 00:10.530
+So my project finished building,
+
+00:10.530 --> 00:12.030
+all the tests ran successfully,
+
+00:12.030 --> 00:14.250
+and you can see down here it says preparing deploy,
+
+00:14.250 --> 00:17.310
+and then deploying application, and then eventually done.
+
+00:17.310 --> 00:20.040
+If you now very quickly go over to your Docker dashboard
+
+00:20.040 --> 00:21.480
+and refresh the page,
+
+00:21.480 --> 00:23.040
+really important, make sure you do the refresh
+
+00:23.040 --> 00:24.570
+because it won't always kick in
+
+00:24.570 --> 00:26.340
+the updates here automatically.
+
+00:26.340 --> 00:27.667
+You might see these spinners that say,
+
+00:27.667 --> 00:29.970
+"Oh hey, we're doing a deploy for you."
+
+00:29.970 --> 00:31.200
+So the reason that I'm showing you
+
+00:31.200 --> 00:32.700
+this kind of spinner right here
+
+00:32.700 --> 00:35.040
+before the deploy actually finishes up,
+
+00:35.040 --> 00:36.540
+is that when this finishes
+
+00:36.540 --> 00:39.510
+there's actually gonna be a little bit of an issue.
+
+00:39.510 --> 00:42.300
+We're gonna see that after deploy completes successfully
+
+00:42.300 --> 00:44.520
+if we try navigating to our URL,
+
+00:44.520 --> 00:46.650
+the page is just not going to load up.
+
+00:46.650 --> 00:48.700
+So let me tell you about what's going on.
+
+00:50.580 --> 00:54.090
+If you recall, every time that we've ran a web server
+
+00:54.090 --> 00:55.290
+inside of a Docker container,
+
+00:55.290 --> 00:58.260
+we've had to do something like docker run -p,
+
+00:58.260 --> 01:00.780
+and then we did that port mapping
+
+01:00.780 --> 01:02.190
+and then specified the container
+
+01:02.190 --> 01:03.900
+or whatever it might have been.
+
+01:03.900 --> 01:05.580
+So the port mapping right there is done
+
+01:05.580 --> 01:09.390
+because by default no port inside of the container
+
+01:09.390 --> 01:11.220
+gets exposed to the outside world,
+
+01:11.220 --> 01:14.490
+we have to very directly set up that port mapping ourselves.
+
+01:14.490 --> 01:15.930
+Now you might notice that everything
+
+01:15.930 --> 01:17.970
+that we just did with Elastic Beanstalk,
+
+01:17.970 --> 01:21.510
+at no point in time did any of this port mapping occur.
+
+01:21.510 --> 01:23.310
+So it's a step that we just kind of
+
+01:23.310 --> 01:25.323
+completely neglected to take care of.
+
+01:26.250 --> 01:28.200
+The reason that we didn't take care of it right away
+
+01:28.200 --> 01:30.510
+is that if you went through all the documentation
+
+01:30.510 --> 01:32.790
+on Elastic Beanstalk around Docker,
+
+01:32.790 --> 01:34.620
+well they're gonna be, they're not gonna quite
+
+01:34.620 --> 01:36.480
+throw this little tip out there at you.
+
+01:36.480 --> 01:37.507
+You know, they're not gonna really say,
+
+01:37.507 --> 01:39.570
+"Oh yeah, you need to expose the port",
+
+01:39.570 --> 01:41.970
+because when we expose the port on Elastic Beanstalk
+
+01:41.970 --> 01:44.070
+the process is just a little bit different
+
+01:44.070 --> 01:46.980
+than the command line that we've been doing so far.
+
+01:46.980 --> 01:49.350
+So to expose a port with Elastic Beanstalk,
+
+01:49.350 --> 01:50.253
+here's what we do.
+
+01:51.840 --> 01:53.520
+We're gonna find our dockerfile
+
+01:53.520 --> 01:55.740
+that is used for production deployments,
+
+01:55.740 --> 01:59.130
+and then inside of here, right after the "FROM nginx",
+
+01:59.130 --> 02:02.763
+we're going to say EXPOSE 80, like so.
+
+02:04.080 --> 02:05.940
+The EXPOSE instruction is something
+
+02:05.940 --> 02:07.950
+that we have not used before.
+
+02:07.950 --> 02:09.510
+In a development environment,
+
+02:09.510 --> 02:11.520
+and actually in most environments,
+
+02:11.520 --> 02:14.310
+the EXPOSE instruction is really supposed to be
+
+02:14.310 --> 02:17.190
+communication to you and I as developers.
+
+02:17.190 --> 02:18.690
+This is really something for you and I
+
+02:18.690 --> 02:21.697
+to read inside of a dockerfile and understand,
+
+02:21.697 --> 02:23.797
+"Oh, this container probably needs
+
+02:23.797 --> 02:26.400
+"to get a port mapped to Port 80."
+
+02:26.400 --> 02:28.260
+So by default on our machines,
+
+02:28.260 --> 02:30.090
+like your laptop and my laptop,
+
+02:30.090 --> 02:31.770
+just putting in this instruction
+
+02:31.770 --> 02:35.370
+does absolutely nothing for us automatically.
+
+02:35.370 --> 02:39.210
+Now, AWS Elastic Beanstalk is just a little bit different.
+
+02:39.210 --> 02:42.570
+Elastic Beanstalk, when it starts up your Docker container,
+
+02:42.570 --> 02:44.310
+it's gonna look at this dockerfile
+
+02:44.310 --> 02:47.463
+and it's gonna look for the EXPOSE instruction,
+
+02:48.390 --> 02:50.610
+and then whatever port you list in there
+
+02:50.610 --> 02:52.320
+is what Elastic Beanstalk
+
+02:52.320 --> 02:55.710
+is going to map directly, automatically.
+
+02:55.710 --> 02:57.060
+So again, for you and me,
+
+02:57.060 --> 02:59.640
+just putting EXPOSE in here does automatically nothing.
+
+02:59.640 --> 03:02.400
+Elastic Beanstalk is different in that regard,
+
+03:02.400 --> 03:04.620
+it's going to look at this EXPOSE instruction
+
+03:04.620 --> 03:06.090
+and use that as the port
+
+03:06.090 --> 03:09.000
+that gets mapped for incoming traffic.
+
+03:09.000 --> 03:10.680
+So I'm gonna save this,
+
+03:10.680 --> 03:13.140
+and again I wanted you to see this ahead of time
+
+03:13.140 --> 03:14.910
+because I didn't want you to like,
+
+03:14.910 --> 03:16.260
+and as a matter of fact you'll see right here
+
+03:16.260 --> 03:17.994
+it says degraded.
+
+03:17.994 --> 03:19.027
+Chances are it'll say something like,
+
+03:19.027 --> 03:21.307
+"Sorry, but I wasn't able to actually start up
+
+03:21.307 --> 03:22.170
+"or anything like that."
+
+03:22.170 --> 03:23.570
+Probably somewhere in there.
+
+03:24.420 --> 03:25.920
+Well, somewhere in there, it'll be there
+
+03:25.920 --> 03:26.940
+but you get the idea.
+
+03:26.940 --> 03:28.170
+It definitely is not working
+
+03:28.170 --> 03:29.790
+quite the way we expect right now.
+
+03:29.790 --> 03:32.190
+So we're going to make that change,
+
+03:32.190 --> 03:33.570
+I got the EXPOSE 80 there.
+
+03:33.570 --> 03:34.800
+I'm gonna save the file.
+
+03:34.800 --> 03:36.510
+We're gonna do another git commit,
+
+03:36.510 --> 03:40.590
+another push up to master and let everything deploy again.
+
+03:40.590 --> 03:43.770
+So back in my terminal, I'll do a git add,
+
+03:43.770 --> 03:47.730
+I'll do a git commit, I'll say added EXPOSE 80,
+
+03:47.730 --> 03:50.280
+and I'll do a git push origin master,
+
+03:50.280 --> 03:51.270
+and we're gonna let this thing
+
+03:51.270 --> 03:53.280
+redeploy itself all over again.
+
+03:53.280 --> 03:56.130
+So another quick break and I'll see you in just a minute.

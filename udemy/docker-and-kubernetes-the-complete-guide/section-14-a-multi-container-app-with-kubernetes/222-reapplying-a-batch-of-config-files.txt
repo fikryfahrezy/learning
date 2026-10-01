@@ -1,0 +1,370 @@
+WEBVTT
+
+00:01.080 --> 00:02.130
+-: In the last couple of videos
+
+00:02.130 --> 00:05.190
+we put together a set of three different config files.
+
+00:05.190 --> 00:07.860
+So one for the worker and two for our server.
+
+00:07.860 --> 00:09.690
+We're now gonna flip back over to our command line
+
+00:09.690 --> 00:13.440
+and use kubectl apply to take those three new config files
+
+00:13.440 --> 00:15.360
+and apply them to our cluster.
+
+00:15.360 --> 00:16.230
+We're just going to make sure
+
+00:16.230 --> 00:18.120
+that there's no distinct error messages
+
+00:18.120 --> 00:21.120
+or that we didn't make any big typos or anything like that.
+
+00:21.120 --> 00:23.850
+Now when we launch these different deployments,
+
+00:23.850 --> 00:25.920
+it's entirely possible they're just going
+
+00:25.920 --> 00:28.770
+to crash and burn because we have not yet set up
+
+00:28.770 --> 00:31.110
+any environment variables to tell the worker
+
+00:31.110 --> 00:34.170
+or the server how to connect to Redis or Postgres,
+
+00:34.170 --> 00:36.300
+because we haven't even set those things up yet.
+
+00:36.300 --> 00:38.250
+So if the deployments or the pods
+
+00:38.250 --> 00:40.440
+that they are running just crash and burn horribly,
+
+00:40.440 --> 00:41.490
+that's totally fine.
+
+00:41.490 --> 00:43.020
+What we're doing right now is just checking
+
+00:43.020 --> 00:45.840
+to see if we have any typos or anything like that.
+
+00:45.840 --> 00:47.740
+So I'm gonna flip over to my terminal.
+
+00:48.810 --> 00:51.180
+I'm gonna make sure that I'm inside of my complex directory,
+
+00:51.180 --> 00:52.890
+and then I'm going to apply
+
+00:52.890 --> 00:55.740
+the entire k eights directory again.
+
+00:55.740 --> 00:58.560
+So remember, we do not need to pass in one file at a time.
+
+00:58.560 --> 01:00.423
+We can pass in a whole directory.
+
+01:01.500 --> 01:02.880
+When we apply that directory,
+
+01:02.880 --> 01:05.823
+we're also going to be reapplying the two client files
+
+01:05.823 --> 01:07.740
+that we had already applied previously,
+
+01:07.740 --> 01:08.940
+but that's totally okay,
+
+01:08.940 --> 01:12.120
+'cause remember when Kubernetes gets a config file,
+
+01:12.120 --> 01:14.130
+it's gonna look at the name of the object
+
+01:14.130 --> 01:16.080
+we're trying to create and its type.
+
+01:16.080 --> 01:19.020
+And if a object inside of our cluster already exists
+
+01:19.020 --> 01:20.520
+with the same name and the type,
+
+01:20.520 --> 01:22.860
+an additional object will not be created.
+
+01:22.860 --> 01:24.540
+Kubernetes is just going to try
+
+01:24.540 --> 01:26.490
+to update that existing object
+
+01:26.490 --> 01:29.250
+if there's any difference inside of the config file.
+
+01:29.250 --> 01:30.928
+So what I mean to say by all this is that
+
+01:30.928 --> 01:33.510
+whenever we make a change to our config file,
+
+01:33.510 --> 01:35.640
+or any time that we create a new one
+
+01:35.640 --> 01:36.960
+or whatever it might be,
+
+01:36.960 --> 01:39.900
+we can pretty safely just take the entire K eights directory
+
+01:39.900 --> 01:42.810
+and apply everything in there and generally be okay.
+
+01:42.810 --> 01:45.450
+Now there definitely are some side effects to that later on
+
+01:45.450 --> 01:48.019
+when we start adding in a couple more advanced objects
+
+01:48.019 --> 01:50.040
+that we're gonna do much later in the course.
+
+01:50.040 --> 01:51.840
+But at least for right now, when we're only working
+
+01:51.840 --> 01:54.840
+with deployments and services, kind of free form,
+
+01:54.840 --> 01:55.860
+you can just throw everything
+
+01:55.860 --> 01:58.440
+inside of your config directory into kubectl,
+
+01:58.440 --> 02:00.090
+and you're going to be okay.
+
+02:00.090 --> 02:01.170
+All right, so enough talking.
+
+02:01.170 --> 02:05.223
+We're gonna do kubectl apply F K eights, like so.
+
+02:06.930 --> 02:09.690
+Now you'll notice that Kubernetes very correctly noticed
+
+02:09.690 --> 02:13.350
+that there are already two objects inside the cluster
+
+02:13.350 --> 02:15.540
+with the deploy type and name
+
+02:15.540 --> 02:18.109
+of both these services right here, where both those objects
+
+02:18.109 --> 02:20.340
+and the config associated with both them
+
+02:20.340 --> 02:23.220
+has not been changed by any stretch of the imagination.
+
+02:23.220 --> 02:24.870
+So those are totally unchanged.
+
+02:24.870 --> 02:29.100
+However, the three other objects here are being created.
+
+02:29.100 --> 02:32.070
+Let's now do a kubectl get pods,
+
+02:32.070 --> 02:34.230
+and so we will see a list of all the different pods
+
+02:34.230 --> 02:36.120
+that have been created.
+
+02:36.120 --> 02:37.350
+It looks like we have the server
+
+02:37.350 --> 02:39.360
+and the worker running here successfully.
+
+02:39.360 --> 02:40.440
+So even though I kind of thought
+
+02:40.440 --> 02:41.640
+that they were gonna crash and burn,
+
+02:41.640 --> 02:43.680
+it looks like they're doing okay.
+
+02:43.680 --> 02:46.260
+We can do a get deployments,
+
+02:46.260 --> 02:49.650
+and see that we now have a total of three deployments.
+
+02:49.650 --> 02:53.730
+And then finally, we can do a get services, and see
+
+02:53.730 --> 02:58.140
+that we have both the original client cluster IP service
+
+02:58.140 --> 03:01.110
+and the new server cluster IP service.
+
+03:01.110 --> 03:02.310
+Now as a quick reminder,
+
+03:02.310 --> 03:05.640
+we could very quickly use the kubectl logs command
+
+03:05.640 --> 03:07.747
+to try to pull some logging information
+
+03:07.747 --> 03:11.130
+out of these new pods, and kind of get a better sense
+
+03:11.130 --> 03:13.230
+of whether or not they are working correctly.
+
+03:13.230 --> 03:16.320
+We could also choose to reconfigure our docker client
+
+03:16.320 --> 03:18.090
+to directly access the containers
+
+03:18.090 --> 03:20.250
+that are running the multi-server
+
+03:20.250 --> 03:22.830
+and the multi-worker images and pull logs that way.
+
+03:22.830 --> 03:24.090
+Solely up to you.
+
+03:24.090 --> 03:25.830
+But just because it's a little bit easier,
+
+03:25.830 --> 03:29.343
+I'm going to pull logs using the kubectl CLI.
+
+03:30.480 --> 03:33.960
+So I'll first print out my list of pods again,
+
+03:33.960 --> 03:35.370
+and then I'll just take the name
+
+03:35.370 --> 03:37.876
+of one of these random deploy, or excuse me,
+
+03:37.876 --> 03:39.510
+yeah, one of the random pods right here.
+
+03:39.510 --> 03:40.380
+I saw the word deployment
+
+03:40.380 --> 03:42.450
+and confused myself for a second, but we're good.
+
+03:42.450 --> 03:43.530
+So I'm gonna take the name right there.
+
+03:43.530 --> 03:44.520
+I'm gonna copy it.
+
+03:44.520 --> 03:49.520
+And then I'll do a kubectl logs, and then the name like so.
+
+03:49.770 --> 03:54.180
+All right, so we can see that in fact, no JS was executed,
+
+03:54.180 --> 03:56.190
+and that is our default MPM start command.
+
+03:56.190 --> 03:57.570
+That's what we expect to see.
+
+03:57.570 --> 03:58.860
+But then very shortly after that,
+
+03:58.860 --> 04:01.860
+we saw a refuse to connect right here.
+
+04:01.860 --> 04:03.930
+Now the refuse to connect is coming directly
+
+04:03.930 --> 04:05.940
+from us trying to connect to Redis,
+
+04:05.940 --> 04:07.890
+but no copy of Redis is available.
+
+04:07.890 --> 04:11.820
+You'll notice that it did default to using port 5432.
+
+04:11.820 --> 04:14.280
+It only defaulted to that because the Redis library
+
+04:14.280 --> 04:17.040
+that we are using inside of that image defaults
+
+04:17.040 --> 04:19.140
+to use port 5432.
+
+04:19.140 --> 04:21.510
+So even though we didn't specify a port yet
+
+04:21.510 --> 04:25.680
+for this server to connect to, it just defaulted to 5432.
+
+04:25.680 --> 04:27.150
+And of course, when we eventually add in
+
+04:27.150 --> 04:29.280
+an environment variable to specify the port,
+
+04:29.280 --> 04:30.480
+even though it has a default,
+
+04:30.480 --> 04:33.060
+we're still going to make sure that we very directly
+
+04:33.060 --> 04:36.660
+and distinctly say it's supposed to be port 5432.
+
+04:36.660 --> 04:38.190
+All right, so it looks like everything is running
+
+04:38.190 --> 04:39.960
+as well as can be expected.
+
+04:39.960 --> 04:42.030
+So we're gonna take another quick break right here.
+
+04:42.030 --> 04:43.260
+When we come back to the next section,
+
+04:43.260 --> 04:46.560
+we'll put together another set of config files for Redis,
+
+04:46.560 --> 04:49.380
+and then we'll eventually move on to Postgres as well.
+
+04:49.380 --> 04:51.803
+So quick pause, and I'll see you in just a minute.

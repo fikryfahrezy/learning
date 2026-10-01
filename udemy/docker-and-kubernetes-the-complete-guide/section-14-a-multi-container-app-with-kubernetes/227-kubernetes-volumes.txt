@@ -1,0 +1,406 @@
+WEBVTT
+
+00:00.780 --> 00:01.613
+-: In the last section,
+
+00:01.613 --> 00:03.480
+we spoke about how we might use volumes
+
+00:03.480 --> 00:06.690
+as a way of persisting data outside of a container
+
+00:06.690 --> 00:08.520
+when that data is something that we care about
+
+00:08.520 --> 00:11.640
+and we want to have the persisted across restarts
+
+00:11.640 --> 00:14.130
+or termination of a given container,
+
+00:14.130 --> 00:16.440
+specifically or most especially ones
+
+00:16.440 --> 00:18.900
+that are running a database of some sort.
+
+00:18.900 --> 00:19.740
+Now, in this section,
+
+00:19.740 --> 00:21.930
+we're gonna start talking about volumes
+
+00:21.930 --> 00:23.850
+in the world of Kubernetes.
+
+00:23.850 --> 00:25.290
+The first thing I wanna clarify
+
+00:25.290 --> 00:27.630
+is a little piece of terminology,
+
+00:27.630 --> 00:29.686
+and it's actually the word "volume" itself.
+
+00:29.686 --> 00:31.050
+I wanna tell you a little bit
+
+00:31.050 --> 00:33.630
+about what the word "volume" means
+
+00:33.630 --> 00:34.983
+in the world of Kubernetes.
+
+00:35.850 --> 00:37.800
+All right, so first things first
+
+00:37.800 --> 00:40.050
+is a little discussion about terminology.
+
+00:40.050 --> 00:42.510
+And the last section, I was using the word "volume"
+
+00:42.510 --> 00:44.880
+over and over and over again.
+
+00:44.880 --> 00:47.100
+When I was using the word volume in the last section,
+
+00:47.100 --> 00:49.380
+it was kind of as a generic term
+
+00:49.380 --> 00:51.960
+in container terminology world,
+
+00:51.960 --> 00:53.670
+and it was a reference to some type
+
+00:53.670 --> 00:55.500
+of data storage mechanism
+
+00:55.500 --> 00:57.570
+that allows a container to store data
+
+00:57.570 --> 01:00.556
+outside of its own little file system.
+
+01:00.556 --> 01:03.360
+However, in the world of Kubernetes
+
+01:03.360 --> 01:05.880
+the term "volume" is a reference
+
+01:05.880 --> 01:09.480
+to a very particular type of object,
+
+01:09.480 --> 01:11.820
+an object in the same sense,
+
+01:11.820 --> 01:15.030
+that a deployment is an object, or a service is an object.
+
+01:15.030 --> 01:16.380
+So, in the world of Kubernetes,
+
+01:16.380 --> 01:18.600
+we can write a configuration file
+
+01:18.600 --> 01:20.973
+that will create something called a volume.
+
+01:22.380 --> 01:25.110
+In Kubernetes that object is a something
+
+01:25.110 --> 01:28.230
+that allows a container to store some persistent data
+
+01:28.230 --> 01:30.840
+at the pod level.
+
+01:30.840 --> 01:33.300
+In addition to the use of volumes,
+
+01:33.300 --> 01:35.670
+we also have access to two other types
+
+01:35.670 --> 01:37.710
+of data storage mechanisms,
+
+01:37.710 --> 01:40.260
+both something called a PersistentVolumeClaim
+
+01:40.260 --> 01:42.207
+and a PersistentVolume.
+
+01:42.207 --> 01:45.845
+So, in this section, I want to expand upon what a volume is
+
+01:45.845 --> 01:48.030
+in the world of Kubernetes, just a little bit,
+
+01:48.030 --> 01:49.110
+so that you understand that
+
+01:49.110 --> 01:51.360
+when we use the word volume with Kubernetes,
+
+01:51.360 --> 01:53.970
+it's a reference to a very particular thing
+
+01:53.970 --> 01:55.170
+and it's very different
+
+01:55.170 --> 01:57.513
+than referring to something called a PersistentVolume
+
+01:57.513 --> 01:59.670
+or a PersistentVolumeClaim.
+
+01:59.670 --> 02:01.740
+Now, we're not gonna make use of volumes
+
+02:01.740 --> 02:03.750
+for everything that we're doing.
+
+02:03.750 --> 02:04.980
+We're not gonna use volumes at all.
+
+02:04.980 --> 02:06.270
+I just want you to understand
+
+02:06.270 --> 02:08.190
+that this is a completely separate thing.
+
+02:08.190 --> 02:10.380
+And so, when you start to look at documentation
+
+02:10.380 --> 02:12.367
+and you see documentation that says,
+
+02:12.367 --> 02:13.860
+"Oh, yeah, create a volume."
+
+02:13.860 --> 02:15.390
+You have to create a distinction
+
+02:15.390 --> 02:18.360
+between what a volume is and the PersistentVolume is.
+
+02:18.360 --> 02:20.130
+Otherwise, when you're reading that documentation
+
+02:20.130 --> 02:22.320
+you're gonna get really, really confused.
+
+02:22.320 --> 02:24.480
+Okay, so with that in mind, this section,
+
+02:24.480 --> 02:25.350
+we're gonna look at a diagram
+
+02:25.350 --> 02:29.040
+that explains exactly what a volume object type is
+
+02:29.040 --> 02:30.750
+in Kubernetes.
+
+02:30.750 --> 02:31.583
+All right.
+
+02:32.670 --> 02:35.880
+So, I want to again consider our Postgres deployment.
+
+02:35.880 --> 02:37.410
+Let's imagine we have a deployment
+
+02:37.410 --> 02:39.090
+that manages a single pod,
+
+02:39.090 --> 02:42.360
+and that pod has a single Postgres container.
+
+02:42.360 --> 02:45.390
+When we create a volume in Kubernetes,
+
+02:45.390 --> 02:49.110
+we are creating a little kind of data storage pocket
+
+02:49.110 --> 02:53.940
+that exists or is tied directly to a very specific pod.
+
+02:53.940 --> 02:55.080
+So, you'll notice in this diagram,
+
+02:55.080 --> 02:56.910
+I'm reflecting this volume right here
+
+02:56.910 --> 02:58.650
+that's going to store some amount of data
+
+02:58.650 --> 03:01.320
+as being kind of like inside the pod.
+
+03:01.320 --> 03:03.270
+It's essentially kinda like belongs to
+
+03:03.270 --> 03:06.093
+or is associated to the pod in some fashion.
+
+03:07.020 --> 03:09.120
+Now, this volume can be accessed
+
+03:09.120 --> 03:11.820
+by any container inside of the pod.
+
+03:11.820 --> 03:14.550
+So, for example, if we had a Postgres container running,
+
+03:14.550 --> 03:18.090
+it could store all of its data inside of this volume
+
+03:18.090 --> 03:20.040
+that belongs to the pod itself.
+
+03:20.040 --> 03:21.960
+Now, the benefit to using this volume here
+
+03:21.960 --> 03:25.230
+is that if this container, like this one specifically,
+
+03:25.230 --> 03:27.330
+ever dies or crashes
+
+03:27.330 --> 03:30.480
+and gets restarted as a completely new container,
+
+03:30.480 --> 03:32.730
+like so, and let's imagine that we get
+
+03:32.730 --> 03:35.880
+a second Postgres container and the old one gets killed,
+
+03:35.880 --> 03:38.010
+so I'm going to mark it as red right there.
+
+03:38.010 --> 03:40.590
+Then this new Postgres container has access
+
+03:40.590 --> 03:42.990
+to all of that data in that volume.
+
+03:42.990 --> 03:44.190
+And so, that might sound, like,
+
+03:44.190 --> 03:46.470
+exactly what we were just talking about in the last section.
+
+03:46.470 --> 03:47.467
+You know, we're essentially saying,
+
+03:47.467 --> 03:49.380
+"Oh, yeah, new container gets created."
+
+03:49.380 --> 03:52.020
+Well, the new container gets access to that same volume
+
+03:52.020 --> 03:53.880
+and it has access to all the data
+
+03:53.880 --> 03:56.760
+that the previous container had access to as well.
+
+03:56.760 --> 03:58.680
+However, here's the downside,
+
+03:58.680 --> 04:01.080
+the volume is tied to the pod.
+
+04:01.080 --> 04:03.870
+And so, if the pod itself ever dies,
+
+04:03.870 --> 04:07.200
+the volume dies and goes away as well.
+
+04:07.200 --> 04:10.350
+So, a volume in Kubernetes will survive
+
+04:10.350 --> 04:13.020
+container restarts inside of a pod.
+
+04:13.020 --> 04:16.320
+But if the pod itself, for whatever reason,
+
+04:16.320 --> 04:19.410
+ever gets recreated or terminated, deleted,
+
+04:19.410 --> 04:20.880
+whatever happens,
+
+04:20.880 --> 04:23.940
+then the pod and the volume inside of it,
+
+04:23.940 --> 04:25.443
+poof, totally gone.
+
+04:26.520 --> 04:28.710
+And then of course, the deployment would kick in,
+
+04:28.710 --> 04:32.673
+and recreate that pod with a volume inside of it.
+
+04:33.510 --> 04:35.880
+So, as you might guess, in the world of Kubernetes,
+
+04:35.880 --> 04:40.080
+a volume is really not appropriate for storing data
+
+04:40.080 --> 04:41.580
+for a database.
+
+04:41.580 --> 04:42.690
+It definitely works in the sense
+
+04:42.690 --> 04:43.950
+that the container can restart
+
+04:43.950 --> 04:46.560
+but were still are weak or were still kind of vulnerable
+
+04:46.560 --> 04:50.820
+to anything going wrong at the pod level itself.
+
+04:50.820 --> 04:53.490
+All right, so that's why we're not going to use volumes.
+
+04:53.490 --> 04:55.800
+And just in so, you know, in real life
+
+04:55.800 --> 04:57.300
+as I say, volume, I'm doing, like, you know,
+
+04:57.300 --> 04:59.310
+double quotes around myself to say, you know,
+
+04:59.310 --> 05:01.410
+specifically a Kubernetes volume.
+
+05:01.410 --> 05:04.263
+That's why we're not using a Kubernetes volume.
+
+05:05.100 --> 05:06.390
+All right, so now that we've clarified
+
+05:06.390 --> 05:07.860
+that little piece of terminology.
+
+05:07.860 --> 05:09.180
+We're gonna come back to the next section
+
+05:09.180 --> 05:12.150
+and we'll talk more about exactly a PersistentVolume is
+
+05:12.150 --> 05:14.130
+and a PersistentVolumeClaim.
+
+05:14.130 --> 05:16.680
+So, quick pause, and I'll see you in just a minute.

@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00.660 --> 00:01.493
+Narrator: In the last section,
+
+00:01.493 --> 00:04.050
+we solved a little issue with duplicate dependencies.
+
+00:04.050 --> 00:06.660
+I now want to try taking this image ID right here
+
+00:06.660 --> 00:08.130
+and creating a container out of it
+
+00:08.130 --> 00:09.990
+and then just making sure that we can access
+
+00:09.990 --> 00:11.430
+our development server.
+
+00:11.430 --> 00:15.390
+So I'm gonna copy that ID and I'll execute Docker Run
+
+00:15.390 --> 00:16.940
+and then I'll paste that ID in.
+
+00:17.850 --> 00:20.640
+Now when I run that, we're gonna very quickly
+
+00:20.640 --> 00:22.320
+see our development server start up
+
+00:22.320 --> 00:23.820
+and then we get a message right here that says,
+
+00:23.820 --> 00:25.500
+we can access our development server
+
+00:25.500 --> 00:28.260
+by visiting localhost:3000
+
+00:28.260 --> 00:30.610
+So let's try that out in our browser right now.
+
+00:31.560 --> 00:34.650
+We'll make a new tab and go to localhost:3000.
+
+00:34.650 --> 00:37.350
+And when I do, I see, "This site can't be reached."
+
+00:37.350 --> 00:38.970
+So remember this is a little gotcha
+
+00:38.970 --> 00:41.220
+that we saw much earlier in the course.
+
+00:41.220 --> 00:43.170
+Anytime that we want to expose a port
+
+00:43.170 --> 00:45.900
+from our Docker image or the Docker container
+
+00:45.900 --> 00:46.980
+to our machine,
+
+00:46.980 --> 00:50.940
+we have to add on that -P flag
+
+00:50.940 --> 00:53.430
+to map out the ports that we want to expose
+
+00:53.430 --> 00:57.240
+so I'm going to take port 3000 on my local machine
+
+00:57.240 --> 01:01.110
+and map it up to port 3000 inside the container.
+
+01:01.110 --> 01:02.797
+I'll then still paste the container ID,
+
+01:02.797 --> 01:05.310
+excuse me the image ID right after.
+
+01:05.310 --> 01:06.990
+Let's try running that again.
+
+01:06.990 --> 01:09.810
+We're gonna see the development server start up
+
+01:09.810 --> 01:13.230
+and again we see starting up on localhost 3000.
+
+01:13.230 --> 01:14.760
+And now if I flip back over,
+
+01:14.760 --> 01:17.100
+chances are you'll see the page automatically refresh.
+
+01:17.100 --> 01:19.050
+If it doesn't, you can manually refresh
+
+01:19.050 --> 01:21.750
+and you should see the welcome message appear right here.
+
+01:21.750 --> 01:24.060
+Okay, so that's definitely a good start.
+
+01:24.060 --> 01:26.220
+I now wanna try making a little bit of a change
+
+01:26.220 --> 01:28.320
+to the source code of the react project
+
+01:28.320 --> 01:29.613
+and just see what occurs.
+
+01:30.450 --> 01:33.180
+In my terminal, excuse me, my code editor,
+
+01:33.180 --> 01:35.700
+I'm going to open up the SRC directory
+
+01:35.700 --> 01:38.940
+and then I'll find the app.js file.
+
+01:38.940 --> 01:41.310
+Inside of here, you can scroll down a little bit
+
+01:41.310 --> 01:43.860
+and see the text that shows up on the lower half
+
+01:43.860 --> 01:45.630
+of the screen inside the browser.
+
+01:45.630 --> 01:49.470
+So it says, "To get started, edit source app.js."
+
+01:49.470 --> 01:53.070
+That is the text that shows up right here in the browser.
+
+01:53.070 --> 01:54.420
+So let's try replacing that text
+
+01:54.420 --> 01:55.870
+and just seeing what happens.
+
+01:56.820 --> 01:58.500
+So I'm gonna highlight that entire line,
+
+01:58.500 --> 01:59.880
+I'll delete it and I'm gonna replace it
+
+01:59.880 --> 02:03.360
+with something like, hi there, like so.
+
+02:03.360 --> 02:04.470
+So I'm gonna save that
+
+02:04.470 --> 02:05.970
+and then if I go back over to my browser
+
+02:05.970 --> 02:09.060
+and refresh the page, well, of course there's no change.
+
+02:09.060 --> 02:11.160
+Remember, this is what we saw before.
+
+02:11.160 --> 02:13.410
+When we start up our image
+
+02:13.410 --> 02:15.420
+or when we initially create the image,
+
+02:15.420 --> 02:17.010
+we're essentially taking a snapshot
+
+02:17.010 --> 02:19.860
+of all of the source code inside of our project directory
+
+02:19.860 --> 02:22.620
+and we're building our image with that snapshot.
+
+02:22.620 --> 02:25.500
+So if we want to somehow get changes to be reflected
+
+02:25.500 --> 02:27.870
+inside of our container after we make them,
+
+02:27.870 --> 02:30.090
+we need to either rebuild the image
+
+02:30.090 --> 02:32.520
+or figure out some clever solution.
+
+02:32.520 --> 02:34.890
+Well of course, we probably do not want to rebuild the image
+
+02:34.890 --> 02:36.990
+every time we make a change to our source code.
+
+02:36.990 --> 02:38.610
+So let's take a quick pause right here.
+
+02:38.610 --> 02:39.780
+We're gonna come back the next section
+
+02:39.780 --> 02:42.060
+and figure out a clever solution
+
+02:42.060 --> 02:43.710
+to make sure that any changes that we make
+
+02:43.710 --> 02:46.440
+to our source code get automatically propagated
+
+02:46.440 --> 02:47.880
+into the container as well.
+
+02:47.880 --> 02:50.303
+So quick break and I'll see you in just a minute.

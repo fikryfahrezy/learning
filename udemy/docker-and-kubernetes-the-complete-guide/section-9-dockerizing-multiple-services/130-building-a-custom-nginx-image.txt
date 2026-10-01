@@ -1,0 +1,388 @@
+WEBVTT
+
+00:01.020 --> 00:04.020
+-: In the last section, we put together our default.com file,
+
+00:04.020 --> 00:05.730
+and now we're going to put together a docker
+
+00:05.730 --> 00:09.390
+file that will create a new custom Nginx image
+
+00:09.390 --> 00:12.210
+and attempt to apply this configuration file to it.
+
+00:12.210 --> 00:14.040
+Now, if that sounds hard, let me assure you,
+
+00:14.040 --> 00:17.700
+it's gonna be way easier than you ever might guess.
+
+00:17.700 --> 00:19.710
+Let's first begin by pulling up Docker hub.
+
+00:19.710 --> 00:20.940
+And I wanna very quickly look
+
+00:20.940 --> 00:22.740
+up the Nginx image,
+
+00:22.740 --> 00:25.470
+that we can download automatically from Docker hub.
+
+00:25.470 --> 00:28.320
+So, I'll go to hub.docker.com.
+
+00:28.320 --> 00:30.270
+I'll go to the explore tab up top,
+
+00:30.270 --> 00:32.070
+and then, as the very first results,
+
+00:32.070 --> 00:34.470
+or hopefully it'll be one of the first ones for you,
+
+00:34.470 --> 00:37.980
+sometimes it kind of argues with Alpine for top spot,
+
+00:37.980 --> 00:39.243
+I'll look at Nginx.
+
+00:40.740 --> 00:42.810
+So, we'll look at the full description here.
+
+00:42.810 --> 00:46.440
+As usual, you'll notice there's a bunch of links for help,
+
+00:46.440 --> 00:48.633
+and you can look down here,
+
+00:50.340 --> 00:52.770
+and eventually you're gonna see somewhere inside of here,
+
+00:52.770 --> 00:53.610
+uh right here.
+
+00:53.610 --> 00:56.310
+Here is a great example right here.
+
+00:56.310 --> 00:59.490
+So, in order to do any customization of Nginx,
+
+00:59.490 --> 01:01.980
+essentially all we have to do is build a docker file
+
+01:01.980 --> 01:02.813
+that says,
+
+01:02.813 --> 01:05.490
+we wanna make a image from Nginx,
+
+01:05.490 --> 01:08.010
+and then we're gonna take our configuration file
+
+01:08.010 --> 01:10.770
+and copy it into the temporary container,
+
+01:10.770 --> 01:12.630
+or essentially the image.
+
+01:12.630 --> 01:15.960
+All the configuration for Nginx is done by these files
+
+01:15.960 --> 01:18.270
+or these configuration files that simply exist
+
+01:18.270 --> 01:19.410
+on the hard drive.
+
+01:19.410 --> 01:20.850
+So, as long as we, or excuse me, not the hard drive,
+
+01:20.850 --> 01:22.860
+but you understand the file system.
+
+01:22.860 --> 01:25.440
+So, as long as we copy that configuration file
+
+01:25.440 --> 01:29.010
+into our image, it'll be automatically applied to Nginx.
+
+01:29.010 --> 01:32.190
+once a container starts up out of our custom image.
+
+01:32.190 --> 01:33.990
+Essentially, what you see right here,
+
+01:33.990 --> 01:37.053
+is all we really have to do inside of our docker file.
+
+01:37.980 --> 01:38.813
+Remember that,
+
+01:38.813 --> 01:40.950
+if we do not replace the default command
+
+01:40.950 --> 01:43.530
+of a image inside of the docker file
+
+01:43.530 --> 01:46.200
+then the default command of the parent image,
+
+01:46.200 --> 01:48.210
+which is from Nginx right here.
+
+01:48.210 --> 01:50.103
+will automatically take precedence.
+
+01:51.180 --> 01:53.280
+Okay, so let's get to it.
+
+01:53.280 --> 01:55.800
+I'm going to flip back over to my code editor
+
+01:55.800 --> 01:57.690
+inside the Nginx folder.
+
+01:57.690 --> 02:02.610
+I'll make a new file called Dockerfile.dev, and then inside
+
+02:02.610 --> 02:06.443
+of here I'll set up the base image with from Nginx.
+
+02:07.830 --> 02:11.370
+And then we're going to copy the default.conf file
+
+02:11.370 --> 02:14.340
+into the file system of this image.
+
+02:14.340 --> 02:18.540
+So I'll say copy default.conf, and technically we should do
+
+02:18.540 --> 02:20.313
+on a relative path like so.
+
+02:22.141 --> 02:23.880
+And then the folder that we're going to copy it
+
+02:23.880 --> 02:26.860
+over to is, /etc
+
+02:28.140 --> 02:31.320
+Nginx conf.d.
+
+02:31.320 --> 02:33.300
+Now, in every other case we've ever made use
+
+02:33.300 --> 02:35.910
+of this copy command, we've been copying files
+
+02:35.910 --> 02:37.440
+into a directory.
+
+02:37.440 --> 02:42.000
+We can actually specify the exact file name to copy our file
+
+02:42.000 --> 02:44.940
+into. And if that file already exists inside the image
+
+02:44.940 --> 02:46.650
+then it will be overwritten.
+
+02:46.650 --> 02:50.160
+So there is a default.conf file that is included with
+
+02:50.160 --> 02:51.690
+Nginx by default.
+
+02:51.690 --> 02:55.500
+So by putting on default.conf right here, we're saying very
+
+02:55.500 --> 02:58.470
+clearly yes, take my file and overwrite the
+
+02:58.470 --> 03:01.590
+Existing one, just overwrite what is ever is there.
+
+03:01.590 --> 03:04.213
+And that's exactly what we want to do in this case.
+
+03:04.213 --> 03:06.810
+We want to overwrite that default file.
+
+03:06.810 --> 03:08.983
+All right, so that's pretty much it.
+
+03:08.983 --> 03:10.140
+I'm gonna save this,
+
+03:10.140 --> 03:12.600
+And now the last thing we have to do is add this
+
+03:12.600 --> 03:16.830
+Nginx as a service word docker compose file.
+
+03:16.830 --> 03:19.560
+So I'm gonna open up Docker compose file
+
+03:19.560 --> 03:22.560
+and we'll add in a new Nginx service to this thing.
+
+03:22.560 --> 03:23.490
+Now I'm just gonna add it
+
+03:23.490 --> 03:25.290
+towards the top here just cause I'm lazy.
+
+03:25.290 --> 03:27.390
+It doesn't really matter where you add it.
+
+03:29.100 --> 03:31.713
+Okay, so the new service will be called Nginx.
+
+03:33.204 --> 03:35.310
+We could just as easily have called this like our router
+
+03:35.310 --> 03:38.670
+or our proxy or whatever you want to call it.
+
+03:38.670 --> 03:41.010
+In this case, I'll just call it Nginx just
+
+03:41.010 --> 03:43.215
+because I don't really have a better name
+
+03:43.215 --> 03:44.580
+off top of my head.
+
+03:44.580 --> 03:46.020
+Now this is definitely a service
+
+03:46.020 --> 03:48.570
+so we want to make sure is always running ahead
+
+03:48.570 --> 03:51.150
+a hundred percent of the time no matter what.
+
+03:51.150 --> 03:53.610
+And so I am gonna use that restart policy that we spoke
+
+03:53.610 --> 03:55.380
+about a while ago on here.
+
+03:55.380 --> 03:57.090
+So I'm gonna re say restart.
+
+03:57.090 --> 03:59.580
+Always like so, because no matter what
+
+03:59.580 --> 04:02.910
+I always want to make sure Nginx is ready to go
+
+04:02.910 --> 04:07.440
+if the API crashes or if my say worker crashes.
+
+04:07.440 --> 04:09.120
+If the worker crashes in particular
+
+04:09.120 --> 04:11.250
+I'm definitely okay with this thing just crashing
+
+04:11.250 --> 04:13.830
+out and burning and staying off.
+
+04:13.830 --> 04:16.200
+Cause remember the worker is doing the processing
+
+04:16.200 --> 04:19.440
+for our actual fibonacci value
+
+04:19.440 --> 04:21.900
+and that is kind of a expensive computation.
+
+04:21.900 --> 04:23.940
+And so if the worker is misbehaving in some way
+
+04:23.940 --> 04:26.190
+I kind of am okay with it just crashing
+
+04:26.190 --> 04:28.530
+and staying off because I wouldn't want it to
+
+04:28.530 --> 04:31.890
+be accidentally consuming a ton of CPU cycles.
+
+04:31.890 --> 04:33.690
+But in the case of Nginx
+
+04:33.690 --> 04:37.260
+this thing is routing traffic to our entire application.
+
+04:37.260 --> 04:40.083
+And so no matter what, I gotta have Nginx running.
+
+04:41.220 --> 04:44.010
+So then inside of here we'll also specify a build cause
+
+04:44.010 --> 04:45.810
+we have a custom version of Nginx that
+
+04:45.810 --> 04:47.490
+we're putting together.
+
+04:47.490 --> 04:51.780
+So I'll specify its Docker file as docker file.dev
+
+04:51.780 --> 04:55.683
+and I'll set up its context as the Nginx directory.
+
+04:57.030 --> 04:59.100
+And then finally, unlike a lot of the other
+
+04:59.100 --> 05:00.690
+things we put together inside of here
+
+05:00.690 --> 05:03.120
+this will have a port mapping.
+
+05:03.120 --> 05:07.740
+So I'm gonna say ports and I want to map, how about port?
+
+05:07.740 --> 05:11.940
+I don't know, 30 50 on my local machine should be mapped
+
+05:11.940 --> 05:14.430
+up to port 80 inside the container.
+
+05:14.430 --> 05:15.840
+So remember you and I
+
+05:15.840 --> 05:17.850
+once we start up Docker compose, we're going to
+
+05:17.850 --> 05:20.940
+be accessing this port right here on local host.
+
+05:20.940 --> 05:23.239
+And so if you want something else here
+
+05:23.239 --> 05:25.590
+you could do, you know, 4,000, 3,000, whatever it might be.
+
+05:25.590 --> 05:26.490
+Totally up to you.
+
+05:28.470 --> 05:30.690
+All right, so I think that's just about it.
+
+05:30.690 --> 05:32.010
+Let's take another pause right here.
+
+05:32.010 --> 05:33.480
+Make sure you save this file
+
+05:33.480 --> 05:36.496
+and then we'll test everything out in the next section.
+
+05:36.496 --> 05:37.883
+So I'll see you in just a minute.

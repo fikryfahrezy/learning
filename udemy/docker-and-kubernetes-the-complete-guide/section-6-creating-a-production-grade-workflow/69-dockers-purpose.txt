@@ -1,0 +1,151 @@
+WEBVTT
+
+00:00.810 --> 00:02.160
+-: In the last section, we started talking
+
+00:02.160 --> 00:03.270
+about the development workflow
+
+00:03.270 --> 00:04.830
+that we're going to be putting together
+
+00:04.830 --> 00:07.740
+to develop, test and deploy our application.
+
+00:07.740 --> 00:09.480
+We're not gonna talk about the role
+
+00:09.480 --> 00:11.580
+that Docker has in all this stuff.
+
+00:11.580 --> 00:14.400
+So first off, something you might have noticed
+
+00:14.400 --> 00:15.840
+as we were going through the flow
+
+00:15.840 --> 00:17.467
+in the last two sections, even though I said,
+
+00:17.467 --> 00:19.620
+"Oh yeah, we're not gonna talk about Docker just yet,"
+
+00:19.620 --> 00:20.670
+you might notice that
+
+00:20.670 --> 00:22.901
+even with all those steps that we just went through,
+
+00:22.901 --> 00:27.600
+well, we didn't really talk about Docker one bit.
+
+00:27.600 --> 00:30.480
+Nowhere inside this series of steps,
+
+00:30.480 --> 00:32.850
+nowhere inside of talking about GitHub
+
+00:32.850 --> 00:36.540
+and using branches and Travis CI and AWS
+
+00:36.540 --> 00:40.830
+do we ever make one mention of needing to use Docker.
+
+00:40.830 --> 00:43.200
+And that's kinda the key thing to be aware of here.
+
+00:43.200 --> 00:45.240
+Docker is not a requirement
+
+00:45.240 --> 00:47.280
+for using this development workflow.
+
+00:47.280 --> 00:49.230
+I personally used exactly this workflow
+
+00:49.230 --> 00:50.880
+that we're talking about at several startups
+
+00:50.880 --> 00:53.730
+that I've worked at without using Docker one bit.
+
+00:53.730 --> 00:55.503
+Docker was not involved.
+
+00:56.340 --> 00:57.780
+So to execute this workflow,
+
+00:57.780 --> 01:01.110
+we absolutely do not have to make use of Docker.
+
+01:01.110 --> 01:03.785
+Docker is just a tool that's going to make executing
+
+01:03.785 --> 01:07.710
+some of these tasks a lot, lot easier.
+
+01:07.710 --> 01:10.200
+That's the sole purpose of Docker, that we're going to,
+
+01:10.200 --> 01:11.730
+that's the only reason we're going to be using it
+
+01:11.730 --> 01:12.563
+for this flow.
+
+01:12.563 --> 01:13.770
+It makes our lives easier.
+
+01:13.770 --> 01:15.374
+It's not necessarily a requirement
+
+01:15.374 --> 01:17.874
+for any of the stuff that we're going to be doing.
+
+01:18.750 --> 01:20.100
+So with that in mind, it might seem
+
+01:20.100 --> 01:21.930
+like at some points in time
+
+01:21.930 --> 01:24.360
+we are not paying quite so much attention to Docker.
+
+01:24.360 --> 01:26.070
+It's gonna seem like at some points in time,
+
+01:26.070 --> 01:27.060
+when we're going through this flow,
+
+01:27.060 --> 01:30.180
+we are paying a lot more attention to GitHub or AWS
+
+01:30.180 --> 01:32.850
+or Travis CI, and that's all totally okay.
+
+01:32.850 --> 01:34.645
+I want you to see how to use these services
+
+01:34.645 --> 01:36.270
+along with Docker.
+
+01:36.270 --> 01:38.640
+But again, Docker is not really the focus here.
+
+01:38.640 --> 01:40.381
+It's about understanding how we use Docker
+
+01:40.381 --> 01:42.510
+with these services.
+
+01:42.510 --> 01:44.430
+So with that mind, one more quick break.
+
+01:44.430 --> 01:45.780
+We're gonna come back to the next section
+
+01:45.780 --> 01:48.000
+and we're gonna start working on this development workflow.
+
+01:48.000 --> 01:50.423
+So quick break and I'll see you in just a moment.

@@ -1,0 +1,253 @@
+WEBVTT
+
+00:01.410 --> 00:03.030
+-: In the last section, we had a quick discussion
+
+00:03.030 --> 00:03.990
+about load balancers,
+
+00:03.990 --> 00:06.540
+and we discussed why they're not quite appropriate
+
+00:06.540 --> 00:07.980
+for our application.
+
+00:07.980 --> 00:08.813
+In this section,
+
+00:08.813 --> 00:10.920
+we're gonna move forward and talk about ingresses,
+
+00:10.920 --> 00:12.720
+this is a type of service that is going to
+
+00:12.720 --> 00:15.930
+eventually get some amount of traffic into our application
+
+00:15.930 --> 00:19.050
+and allow our outside users to access all the different pods
+
+00:19.050 --> 00:21.330
+that are running containers that they need to get at
+
+00:21.330 --> 00:23.013
+to actually access our app.
+
+00:24.090 --> 00:26.010
+All right, so quick diagram here.
+
+00:26.010 --> 00:28.740
+So as you might guess, yep, traffic's gonna come in,
+
+00:28.740 --> 00:30.540
+it's gonna hit this thing called an ingress,
+
+00:30.540 --> 00:32.640
+and then it's going to be sent off or routed off,
+
+00:32.640 --> 00:37.020
+to either our client set of pods or the server set of pods.
+
+00:37.020 --> 00:38.280
+Now, in the world of Kubernetes,
+
+00:38.280 --> 00:42.570
+there are several different implementations of an ingress.
+
+00:42.570 --> 00:45.570
+We are going to be using a very specific implementation
+
+00:45.570 --> 00:48.480
+called an Nginx ingress.
+
+00:48.480 --> 00:50.490
+Now, before we talk about exactly
+
+00:50.490 --> 00:53.430
+what this Nginx ingress is, how it works,
+
+00:53.430 --> 00:54.480
+all that kind of stuff
+
+00:54.480 --> 00:56.880
+I wanna have a very important discussion with you,
+
+00:56.880 --> 00:58.770
+really critical that you pay attention to this,
+
+00:58.770 --> 01:00.270
+because if you don't,
+
+01:00.270 --> 01:02.269
+it's gonna make things really really confusing
+
+01:02.269 --> 01:04.953
+when you go and start to look up documentation.
+
+01:06.270 --> 01:07.800
+So here's the very important note,
+
+01:07.800 --> 01:10.500
+the very important thing you gotta understand,
+
+01:10.500 --> 01:12.900
+so you and I are going to be using a project
+
+01:12.900 --> 01:16.863
+called ingress-nginx, that's the name of the project.
+
+01:17.880 --> 01:20.400
+This is a community-led project, and by community-led,
+
+01:20.400 --> 01:21.600
+I mean that it is a part of
+
+01:21.600 --> 01:24.300
+the official Kubernetes organization.
+
+01:24.300 --> 01:26.520
+So it's led by people from Kubernetes
+
+01:26.520 --> 01:29.220
+full endorsement of the Kubernetes project,
+
+01:29.220 --> 01:32.580
+a lot of backing, a lot of strength behind this project.
+
+01:32.580 --> 01:35.400
+I put the link to the GitHub repository for it right here.
+
+01:35.400 --> 01:38.220
+So you can try to visit that repository
+
+01:38.220 --> 01:41.220
+and you're gonna see, okay, here's the page, documentation,
+
+01:41.220 --> 01:44.910
+you see some stuff called like Nginx Ingress Controller.
+
+01:44.910 --> 01:48.900
+Now, in addition to this ingress called ingress-nginx,
+
+01:48.900 --> 01:52.110
+there is a completely separate project,
+
+01:52.110 --> 01:55.800
+totally separate, that does almost the exact same thing,
+
+01:55.800 --> 01:58.380
+with almost an identical name.
+
+01:58.380 --> 02:00.060
+So a separate project out there
+
+02:00.060 --> 02:02.520
+is called Kubernetes Ingress.
+
+02:02.520 --> 02:06.510
+And this is also an Nginx-based ingress.
+
+02:06.510 --> 02:09.570
+It is a project led by the company, Nginx.
+
+02:09.570 --> 02:12.690
+It does like the same exact thing, almost identical name,
+
+02:12.690 --> 02:16.590
+but it's a 100% separate, totally separate.
+
+02:16.590 --> 02:19.800
+So right here, this is the GitHub repository for it.
+
+02:19.800 --> 02:21.630
+I'm gonna go there as well.
+
+02:21.630 --> 02:22.920
+And if you scroll down to the readme,
+
+02:22.920 --> 02:24.922
+you're gonna see that this repository also
+
+02:24.922 --> 02:28.350
+has a title of Nginx Ingress Controller.
+
+02:28.350 --> 02:29.790
+Well, here's the project that we're using,
+
+02:29.790 --> 02:32.430
+and it's also called very helpfully,
+
+02:32.430 --> 02:34.140
+Nginx Ingress Controller.
+
+02:34.140 --> 02:37.500
+So yeah, like these things are nearly identical in looking,
+
+02:37.500 --> 02:40.530
+but again, they are very much separate projects,
+
+02:40.530 --> 02:42.330
+and they work differently.
+
+02:42.330 --> 02:44.850
+So whenever you are looking up documentation
+
+02:44.850 --> 02:47.460
+you gotta be like 100% certain
+
+02:47.460 --> 02:48.810
+that you're looking at documentation
+
+02:48.810 --> 02:51.690
+for the ingress-nginx project.
+
+02:51.690 --> 02:53.550
+So in general, I recommend that you go to
+
+02:53.550 --> 02:56.820
+this GitHub repository, probably even bookmark it right now,
+
+02:56.820 --> 02:59.370
+and anytime that you need to look up documentation,
+
+02:59.370 --> 03:00.660
+come to this repo,
+
+03:00.660 --> 03:03.780
+make sure you're looking at Kubernetes Ingress Nginx,
+
+03:03.780 --> 03:06.780
+and then try to access documentation from this page
+
+03:06.780 --> 03:09.540
+because otherwise you might accidentally fall into looking
+
+03:09.540 --> 03:11.790
+at documentation for the other project,
+
+03:11.790 --> 03:14.700
+the Kubernetes Ingress Project.
+
+03:14.700 --> 03:17.850
+All right, so I know this is really confusing, but again,
+
+03:17.850 --> 03:19.440
+I wanted to make a really big deal about this,
+
+03:19.440 --> 03:21.210
+and make sure that it's 100% clear,
+
+03:21.210 --> 03:23.520
+that yes, these are two separate projects.
+
+03:23.520 --> 03:26.190
+We are not using this one, we are using this one.
+
+03:26.190 --> 03:28.560
+So with that in mind, let's take a quick pause right here.
+
+03:28.560 --> 03:29.880
+We're gonna come back to the next section,
+
+03:29.880 --> 03:32.223
+with one or two other brief notes.

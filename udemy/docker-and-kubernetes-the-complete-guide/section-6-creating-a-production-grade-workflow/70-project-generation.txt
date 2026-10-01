@@ -1,0 +1,280 @@
+WEBVTT
+
+00:00.990 --> 00:02.070
+-: In the last couple of sections,
+
+00:02.070 --> 00:04.050
+we started talking about the development workflow
+
+00:04.050 --> 00:05.460
+that we're going to implement.
+
+00:05.460 --> 00:07.710
+Remember, we don't have to use Docker for this stuff,
+
+00:07.710 --> 00:10.350
+it's just that Docker makes life easier.
+
+00:10.350 --> 00:11.183
+In this section,
+
+00:11.183 --> 00:13.050
+we're gonna start installing a dependency or two
+
+00:13.050 --> 00:14.220
+to generate the project
+
+00:14.220 --> 00:15.840
+that we're going to eventually wrap up
+
+00:15.840 --> 00:17.400
+inside of a Docker container
+
+00:17.400 --> 00:19.830
+and then serve to the outside world.
+
+00:19.830 --> 00:21.930
+Now, the application we're going to make
+
+00:21.930 --> 00:25.920
+is gonna have essentially no custom code from you and I.
+
+00:25.920 --> 00:27.810
+We're going to generate a project
+
+00:27.810 --> 00:29.490
+using a little project generator,
+
+00:29.490 --> 00:32.580
+and we're gonna wrap that up inside of our Docker container.
+
+00:32.580 --> 00:34.890
+So I'm very much aware that if you're in this course,
+
+00:34.890 --> 00:37.907
+you might not have a background in say JavaScript.
+
+00:37.907 --> 00:41.070
+And if you do, you might not have a background in Ruby.
+
+00:41.070 --> 00:42.240
+And if you have a background in Ruby,
+
+00:42.240 --> 00:44.190
+you might not have a background in Java.
+
+00:44.190 --> 00:45.023
+And so it's kind of tough
+
+00:45.023 --> 00:46.620
+for me to pick just one language
+
+00:46.620 --> 00:49.230
+or one particular framework, or whatever it might be,
+
+00:49.230 --> 00:51.270
+that everyone a hundred percent of the time
+
+00:51.270 --> 00:53.220
+is going to be familiar with for this workflow.
+
+00:53.220 --> 00:55.140
+So we're not gonna pay too much attention
+
+00:55.140 --> 00:58.710
+to the actual code that is running inside the container.
+
+00:58.710 --> 01:00.150
+We're gonna be much more concerned
+
+01:00.150 --> 01:02.880
+with what the container is being used by.
+
+01:02.880 --> 01:03.960
+That's our focus here,
+
+01:03.960 --> 01:05.760
+as opposed to really focusing on,
+
+01:05.760 --> 01:08.130
+Oh, hey, running Ruby on Rails inside of it,
+
+01:08.130 --> 01:12.030
+or node JS or Java Spring, or whatever it might be.
+
+01:12.030 --> 01:13.200
+So with that in mind,
+
+01:13.200 --> 01:14.400
+the application we're gonna make
+
+01:14.400 --> 01:17.970
+is gonna be a very simple, extremely straightforward,
+
+01:17.970 --> 01:19.980
+React application.
+
+01:19.980 --> 01:21.420
+So it's a React front end.
+
+01:21.420 --> 01:23.700
+We're gonna wrap it up inside of a Docker container,
+
+01:23.700 --> 01:26.493
+and learn how to test it and deploy it automatically.
+
+01:27.690 --> 01:28.523
+Now again,
+
+01:28.523 --> 01:30.420
+we're not going to have to write any code for this thing.
+
+01:30.420 --> 01:33.600
+We're going to use a tiny little project generator.
+
+01:33.600 --> 01:34.710
+Now the first thing we're going to do
+
+01:34.710 --> 01:38.310
+is make sure that you have Node.js installed locally.
+
+01:38.310 --> 01:39.420
+So at this point in time,
+
+01:39.420 --> 01:41.820
+I'd love if you opened up your terminal
+
+01:41.820 --> 01:45.060
+and ran "node-v" at your command line.
+
+01:45.060 --> 01:47.850
+If you see a version like this print out,
+
+01:47.850 --> 01:48.960
+great, you're good to go,
+
+01:48.960 --> 01:50.220
+you can pause the video right now
+
+01:50.220 --> 01:52.200
+and skip over to the next section.
+
+01:52.200 --> 01:53.610
+If you run "node-v",
+
+01:53.610 --> 01:55.890
+and you see something that says command not recognized
+
+01:55.890 --> 01:57.180
+or command not found,
+
+01:57.180 --> 01:59.430
+then you're going to have to install node.js
+
+01:59.430 --> 02:01.740
+to get through the next couple of sections.
+
+02:01.740 --> 02:05.357
+To install node.js, you can open up a new browser tab
+
+02:05.357 --> 02:08.613
+and do a Google search for Node download.
+
+02:09.630 --> 02:11.070
+And then the URL that you're looking for
+
+02:11.070 --> 02:15.660
+is something like nodejs.org/ "a particular language",
+
+02:15.660 --> 02:17.703
+For me, it's english /download.
+
+02:18.960 --> 02:23.960
+Now once here, you can get either the stable version, LTS,
+
+02:23.970 --> 02:25.500
+or you can get the current version.
+
+02:25.500 --> 02:27.210
+Either one is gonna work just fine.
+
+02:27.210 --> 02:29.760
+Personally, at present I'm using LTS.
+
+02:29.760 --> 02:31.170
+So you can select either version,
+
+02:31.170 --> 02:33.060
+and then grab either the Windows installer
+
+02:33.060 --> 02:34.980
+or the macOS installer.
+
+02:34.980 --> 02:37.290
+And then of course, if you're using a Linux distribution,
+
+02:37.290 --> 02:40.350
+you could grab the binaries, down here, manually.
+
+02:40.350 --> 02:42.390
+Now if you're on Windows or macOS,
+
+02:42.390 --> 02:44.040
+just go ahead and download the installer,
+
+02:44.040 --> 02:46.410
+run it, and click next a couple of times.
+
+02:46.410 --> 02:47.730
+And that's pretty much it.
+
+02:47.730 --> 02:49.440
+I'm not gonna show you the installation process,
+
+02:49.440 --> 02:52.110
+because honestly it's really, really straightforward.
+
+02:52.110 --> 02:54.780
+Just download that installer and run the thing.
+
+02:54.780 --> 02:56.100
+After you go through the installer,
+
+02:56.100 --> 02:58.200
+you should then be able to open up your terminal.
+
+02:58.200 --> 03:00.630
+Now it's really important, if you use the installer,
+
+03:00.630 --> 03:03.600
+you need to first quit your terminal entirely.
+
+03:03.600 --> 03:05.040
+So make sure you completely quit it
+
+03:05.040 --> 03:06.693
+and then start it back up.
+
+03:07.530 --> 03:09.030
+Once you restart your terminal,
+
+03:09.030 --> 03:11.430
+you should then be able to run "node-v"
+
+03:11.430 --> 03:14.100
+and you should see that version appear.
+
+03:14.100 --> 03:15.990
+All right, so once you got Node installed,
+
+03:15.990 --> 03:18.360
+take a quick pause, I'll meet you up in the next section,
+
+03:18.360 --> 03:21.030
+and we're gonna generate this tiny little React project,
+
+03:21.030 --> 03:23.520
+and then wrap it up inside of a Docker container.
+
+03:23.520 --> 03:25.943
+So quick break and I'll see you in just a minute.

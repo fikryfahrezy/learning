@@ -1,0 +1,715 @@
+WEBVTT
+
+00:00.900 --> 00:03.240
+So why should we care about user experience?
+
+00:03.240 --> 00:07.650
+Well, there's any number of reasons why we should care about user experience design.
+
+00:07.650 --> 00:12.630
+But I want to talk about some of the most critical reasons and maybe to some degree, some of the most
+
+00:12.660 --> 00:13.800
+obvious reasons.
+
+00:13.830 --> 00:19.530
+Number one, the main reason we care about user experience design is because our creations are used
+
+00:19.530 --> 00:20.400
+by people.
+
+00:20.940 --> 00:26.400
+Unless you're creating art, you know for yourself and you're going to hang it on your wall and just
+
+00:26.400 --> 00:31.080
+sort of admire it from time to time, just about anything that you're going to do in the realm of design,
+
+00:31.080 --> 00:36.120
+in the realm of software development or web development is meant to be used by a person.
+
+00:36.120 --> 00:38.840
+And all of us have experiences.
+
+00:38.850 --> 00:43.170
+Some of those experiences are good, some of them are not so good.
+
+00:43.170 --> 00:47.640
+And the fact of the matter is, the bad ones stick with you.
+
+00:47.730 --> 00:48.200
+Okay?
+
+00:48.210 --> 00:53.100
+I often say that the bad ones last forever because that's what it feels like.
+
+00:53.100 --> 00:54.000
+It's painful.
+
+00:54.000 --> 00:56.250
+It's something you don't want to ever do again.
+
+00:56.250 --> 00:59.940
+So you avoid repeating those things at all costs.
+
+00:59.940 --> 01:04.660
+That's the main reason, you know, you don't want anyone to have a bad experience with something you
+
+01:04.660 --> 01:05.590
+put out there.
+
+01:05.800 --> 01:13.450
+The second important reason that we care about user experience design is because when we do have bad
+
+01:13.450 --> 01:19.960
+experiences, especially in the age of Twitter and Facebook and social networking as a whole, the very
+
+01:19.960 --> 01:25.420
+first thing we do is we get online and we tell everybody just how bad it was, right?
+
+01:25.900 --> 01:30.280
+And so they avoid those things as well because they say, Oh, well, you know, Joe said this.
+
+01:30.280 --> 01:35.590
+This is the worst service he's ever had at a restaurant in 15 years.
+
+01:35.590 --> 01:37.810
+I am definitely not going to this place.
+
+01:37.810 --> 01:42.670
+And you don't want anything that you make to be that bad experience, okay?
+
+01:42.670 --> 01:47.860
+You don't want to be the person that everyone is complaining about online.
+
+01:47.860 --> 01:49.300
+Really, really important.
+
+01:50.410 --> 01:58.690
+I'm sure a lot of you have had an experience with a bad salesman or salesperson, let's say.
+
+01:58.710 --> 01:58.890
+Right.
+
+01:58.900 --> 02:04.690
+Will be gender neutral for me because I'm a little bit older.
+
+02:05.470 --> 02:08.560
+The stereotype for me is the used car salesman.
+
+02:08.650 --> 02:16.510
+Okay, I've bought several used cars in my life and it's been a painful experience all three times because
+
+02:16.510 --> 02:21.700
+you essentially meet this guy and what he does is, number one, he blocks your progress because you're
+
+02:21.700 --> 02:24.340
+not getting straight answers.
+
+02:24.340 --> 02:29.740
+You know, he's a little bit offensive in that he may be eyeing up your your significant other, your
+
+02:29.740 --> 02:35.890
+wife, your girlfriend, your boyfriend and making, you know, comments that sort of border on the
+
+02:35.890 --> 02:36.730
+offensive.
+
+02:36.760 --> 02:39.010
+And he shows you things you're not interested in.
+
+02:39.010 --> 02:44.410
+I can't count the number of times that I've gone to not even just a used car dealership, but a car
+
+02:44.410 --> 02:48.160
+dealership, period, and said, here's what I'm looking for.
+
+02:48.250 --> 02:51.110
+This type of car, this make, this model.
+
+02:51.110 --> 02:53.570
+I'm looking for this kind of gas mileage.
+
+02:54.050 --> 02:54.470
+ET cetera.
+
+02:54.470 --> 02:54.950
+ET cetera.
+
+02:54.950 --> 03:01.820
+And you have to go through this exercise where they have to they feel compelled to show you two, three,
+
+03:01.820 --> 03:05.450
+six, seven, ten things that you didn't ask for.
+
+03:05.480 --> 03:09.290
+And you have to repeatedly say, no, that's not what I want.
+
+03:09.410 --> 03:15.500
+So essentially in this experience, you've you're dealing with someone who sort of refuses to give you
+
+03:15.530 --> 03:17.660
+clear, honest answers.
+
+03:17.660 --> 03:23.510
+You're not getting what you want out of the experience, and therefore you walk away saying, I'm never
+
+03:23.510 --> 03:24.680
+going to do this again.
+
+03:24.680 --> 03:26.990
+So nobody wants this guy.
+
+03:27.320 --> 03:33.950
+Nobody wants to experience the equivalent of what I just described online.
+
+03:33.950 --> 03:35.000
+So what am I saying?
+
+03:35.000 --> 03:37.100
+I'm saying don't be that guy.
+
+03:37.190 --> 03:40.850
+What we do want is we want something that's better.
+
+03:40.850 --> 03:42.410
+We want it to be more fulfilling.
+
+03:42.410 --> 03:45.860
+We want it to be more valuable is the right word.
+
+03:45.860 --> 03:49.190
+We want it to be valuable because we're pressed for time.
+
+03:49.190 --> 03:56.450
+We only have so much energy and in some cases money to devote to certain things, right?
+
+03:56.450 --> 04:02.540
+So in a manner of speaking, we have to get our money's worth in just about everything that we do.
+
+04:03.310 --> 04:05.050
+We want our needs to be met.
+
+04:05.080 --> 04:06.610
+You know what it is that you need?
+
+04:06.610 --> 04:08.200
+You know what you're looking for.
+
+04:08.230 --> 04:11.260
+You know what's going to solve your specific problem.
+
+04:11.260 --> 04:17.800
+So when you interact with something online in particular, you want those needs to be met or you want
+
+04:17.800 --> 04:23.590
+to at least get a sense that what's contained within could possibly meet your needs.
+
+04:23.620 --> 04:23.970
+Okay.
+
+04:23.980 --> 04:24.970
+That's communication.
+
+04:24.970 --> 04:26.770
+That's sending the right message.
+
+04:26.890 --> 04:28.840
+And we want our questions to be answered.
+
+04:28.840 --> 04:34.420
+Every person who comes to any website or any app or anything that they open, especially for the first
+
+04:34.420 --> 04:38.560
+time, we come into experiences with questions.
+
+04:38.560 --> 04:39.970
+What is this?
+
+04:40.120 --> 04:41.740
+Is it what I want?
+
+04:41.770 --> 04:43.360
+Is it what I'm after?
+
+04:43.390 --> 04:47.080
+Does it look like it's valuable enough to spend more time here?
+
+04:47.350 --> 04:50.200
+What happens if I get stuck?
+
+04:50.230 --> 04:51.820
+What happens if I have a problem?
+
+04:51.820 --> 04:52.990
+What do I do then?
+
+04:53.410 --> 04:55.720
+If I just want to skip all this and talk to somebody?
+
+04:55.720 --> 04:56.820
+How do I do that?
+
+04:56.830 --> 05:01.870
+These are built in questions that we all have when we come to an online experience.
+
+05:01.870 --> 05:04.270
+So we want those questions to be answered.
+
+05:04.280 --> 05:07.970
+And most of all, we want to be treated with respect.
+
+05:08.210 --> 05:14.870
+That means that what we get in return for spending our time browsing through your website and clicking
+
+05:14.870 --> 05:22.820
+on your links or scrolling through the pages of your of your app or filling in the information on your
+
+05:22.820 --> 05:23.690
+system.
+
+05:23.960 --> 05:28.750
+We want you as a provider to respect that time.
+
+05:28.760 --> 05:30.380
+How do you respect that time?
+
+05:30.380 --> 05:32.630
+By giving us what we came here for.
+
+05:33.080 --> 05:33.470
+Okay.
+
+05:33.470 --> 05:37.070
+Or by at least addressing the things that we came here for.
+
+05:37.070 --> 05:40.820
+Even if you don't have answers, you still provide some value.
+
+05:40.820 --> 05:44.540
+Even if that value is, Well, we don't do that here.
+
+05:44.540 --> 05:47.270
+But here's something you might want to consider.
+
+05:47.270 --> 05:47.600
+Okay?
+
+05:47.600 --> 05:53.990
+It's just like asking a question to a human being who says, You know what, I don't really know much
+
+05:53.990 --> 06:00.230
+about that, but I can tell you 3 or 4 things that might help you or put you on the right path to getting
+
+06:00.230 --> 06:01.310
+more information.
+
+06:01.550 --> 06:01.820
+Okay.
+
+06:01.820 --> 06:02.960
+That's respect.
+
+06:03.810 --> 06:04.980
+All of this.
+
+06:05.850 --> 06:07.800
+Sounds a little bit familiar, doesn't it?
+
+06:08.190 --> 06:13.290
+Especially if you're Generation X or from an older generation.
+
+06:13.290 --> 06:19.260
+This all sounds a whole lot like the so called old rules of customer service.
+
+06:19.310 --> 06:19.740
+Okay.
+
+06:19.740 --> 06:24.960
+I remember back in 2000 when the.com boom was in full swing.
+
+06:25.500 --> 06:31.770
+What you had in the media in particular were a lot of magazines and a lot of news shows and a lot of
+
+06:31.770 --> 06:34.850
+media coverage, essentially saying the old ways are dead.
+
+06:34.860 --> 06:35.160
+Okay.
+
+06:35.190 --> 06:37.300
+The Internet economy is here to stay.
+
+06:37.320 --> 06:41.670
+The new digital economy is here to stay, whatever they were calling it that week.
+
+06:41.890 --> 06:42.120
+Okay.
+
+06:42.120 --> 06:47.850
+But what I heard a lot of is that, you know, the old rules of doing business are out the window.
+
+06:47.850 --> 06:49.200
+And you know what?
+
+06:49.200 --> 06:53.040
+That really wasn't true then, and it certainly isn't true now.
+
+06:53.070 --> 06:58.380
+We still as human beings, we have high expectations for customer service, don't we?
+
+06:58.560 --> 07:00.640
+We want to be guided.
+
+07:00.660 --> 07:05.890
+We want to be led, you know, to some degree to to find what we seek.
+
+07:05.890 --> 07:13.180
+And we want to have the sense that someone cares enough to give us some value in return for our time
+
+07:13.180 --> 07:13.870
+and our money.
+
+07:13.900 --> 07:19.870
+Wal Mart, a couple of years back made a huge deal out of the fact that they had, you know, now 16
+
+07:19.870 --> 07:23.230
+registers, 16 cash registers in every store.
+
+07:23.260 --> 07:29.230
+Well, I'm here to tell you, if you go into Walmart today, there are two cashiers working at those
+
+07:29.230 --> 07:31.560
+16 registers.
+
+07:31.570 --> 07:34.420
+So, you know, who cares?
+
+07:35.290 --> 07:36.920
+Talking the talk isn't enough.
+
+07:36.940 --> 07:38.020
+You have to walk the walk.
+
+07:38.020 --> 07:40.030
+And that has everything to do with customer service.
+
+07:40.030 --> 07:45.670
+And good customer service has everything to do with good user experience design.
+
+07:46.800 --> 07:52.770
+Now, the expectations that I'm talking about are almost always first formed visually.
+
+07:52.770 --> 07:53.070
+Why?
+
+07:53.100 --> 07:56.850
+Because it's your first interaction with anything on a screen.
+
+07:56.850 --> 08:00.240
+You see it and you think to yourself, Huh, okay, that looks interesting.
+
+08:00.240 --> 08:02.700
+Or that looks like it might be what I'm after.
+
+08:02.700 --> 08:05.400
+Or that's the strangest thing I've ever seen.
+
+08:06.480 --> 08:10.410
+One way or another, we form a visual opinion when we see something.
+
+08:10.410 --> 08:15.960
+This image you see on the screen is a really innovative product from a company called Nest.
+
+08:16.170 --> 08:19.770
+And what it is, is a digital thermostat.
+
+08:19.800 --> 08:26.220
+Now, what's important about this is that when you first look at it, you get a certain impression.
+
+08:26.220 --> 08:27.930
+And what does it make you think?
+
+08:28.470 --> 08:29.700
+It looks simple.
+
+08:29.700 --> 08:31.440
+It looks modern.
+
+08:31.440 --> 08:36.330
+It looks sort of technologically advanced.
+
+08:36.570 --> 08:37.180
+Okay.
+
+08:37.200 --> 08:41.970
+And it looks pleasing to some degree simply because there isn't a lot of visual information there.
+
+08:42.000 --> 08:46.910
+You get the sense that this is advanced and it's easy to use.
+
+08:46.920 --> 08:53.340
+And in fact, the device is very easy to use because what it does, as opposed to most digital thermostats,
+
+08:53.370 --> 08:59.850
+which you have to set or, you know, at 2:00 on Tuesday, I want the temperature to be this at 5:00
+
+08:59.850 --> 09:03.270
+on Tuesday, I want the temperature to be ten degrees lower.
+
+09:03.270 --> 09:07.140
+And then on Friday, Saturday and Sunday, I want to do X, Y, Z.
+
+09:07.590 --> 09:08.580
+None of that.
+
+09:08.580 --> 09:14.790
+What this device does is you simply set the temperature you want at different points of the day or different
+
+09:14.790 --> 09:18.330
+days of the week, whatever you want, whatever you're most comfortable with.
+
+09:18.660 --> 09:24.000
+The device remembers your habits without you having to tell it anything.
+
+09:24.000 --> 09:27.630
+All you have to do, essentially, is what you would normally do.
+
+09:27.810 --> 09:37.510
+That is a massively positive user experience, very little effort, very huge return on that effort.
+
+09:37.510 --> 09:40.210
+Right value for your effort.
+
+09:40.240 --> 09:42.730
+The device does all the work.
+
+09:42.820 --> 09:48.430
+So when we see an object, we make a series of instant assumptions about it in seconds.
+
+09:48.430 --> 09:53.230
+What it does, how well it does, and what it's going to cost us, not just in terms of money, but
+
+09:53.230 --> 10:01.540
+how hard is this thing going to be to use and we take action or not based on those initial impressions,
+
+10:01.540 --> 10:04.060
+on those initial first assumptions.
+
+10:04.140 --> 10:04.360
+Right.
+
+10:04.360 --> 10:08.470
+So action is tied into visual expectation.
+
+10:09.290 --> 10:14.060
+Another thing that's really important to note is that cross-channel expectations are higher.
+
+10:14.060 --> 10:15.800
+And here's what I mean by cross-channel.
+
+10:15.800 --> 10:23.720
+It means that particularly with a website or any kind of system, quite frankly, we're using it in
+
+10:23.720 --> 10:24.470
+multiple places.
+
+10:24.470 --> 10:30.980
+You know, some people still have desktop machines, desktop computers, lots of us have laptops, but
+
+10:30.980 --> 10:32.540
+we also have mobile phones.
+
+10:32.540 --> 10:34.990
+We also have tablets, right?
+
+10:35.000 --> 10:37.010
+We've got all these different devices.
+
+10:37.010 --> 10:43.150
+Think of each one of those devices as a channel, which essentially just means a method for delivery.
+
+10:43.160 --> 10:50.540
+We have very high expectations that whatever we use that it's going to behave the same way across all
+
+10:50.540 --> 10:52.100
+those devices, right?
+
+10:52.100 --> 10:59.090
+If I'm using my bank website, I expect it to work just as well on my phone as it does on my laptop,
+
+10:59.090 --> 11:00.760
+as it does on my tablet.
+
+11:00.770 --> 11:08.240
+There was a recent Harris Interactive study that showed that the majority of people want better experience
+
+11:08.240 --> 11:12.660
+design and they could care less about the brand itself.
+
+11:12.660 --> 11:12.950
+All right.
+
+11:12.960 --> 11:13.890
+Here's what that means.
+
+11:13.890 --> 11:20.040
+If I've been, you know, an Apple user all my life, which I have, and I have a natural tendency to
+
+11:20.040 --> 11:23.310
+buy Apple products because I just assumed that they're going to meet my needs.
+
+11:23.310 --> 11:27.600
+The minute Apple disappoints me, I'm going to start looking elsewhere.
+
+11:28.280 --> 11:33.560
+And I'm going to tell you why that's true, because I have done just that very recently, because Apple
+
+11:33.560 --> 11:41.300
+has had more than a few missteps with recent native software on their tablets and on the phone in particular,
+
+11:41.450 --> 11:45.830
+but on on their latest iteration of the MacBook Pro laptop as well.
+
+11:45.890 --> 11:51.590
+So when the Google Nexus seven tablet came out and it was only $199.
+
+11:51.650 --> 11:52.670
+I bought one.
+
+11:53.290 --> 11:54.820
+Now, do I use it all the time?
+
+11:54.820 --> 11:55.120
+No.
+
+11:55.120 --> 11:56.860
+I still have a tendency toward Apple.
+
+11:57.100 --> 12:02.860
+But the point is, they made some mistakes and those mistakes were enough to plant a seed of doubt in
+
+12:02.860 --> 12:03.280
+my mind.
+
+12:03.280 --> 12:05.880
+So I care more about getting things done.
+
+12:05.890 --> 12:12.250
+I care more about getting things done efficiently, effectively, painlessly than I do about whether
+
+12:12.250 --> 12:14.080
+I buy the new Apple product or not.
+
+12:14.380 --> 12:18.730
+I care less about the Apple brand, more about does it help me?
+
+12:18.940 --> 12:23.860
+So that's what this study said, that people will bail on you in an instant if they think that you're
+
+12:23.860 --> 12:25.000
+a pain in the --.
+
+12:25.480 --> 12:27.580
+That's the plainest way I can say it.
+
+12:28.360 --> 12:31.270
+So that leads into my device, my way.
+
+12:31.300 --> 12:36.370
+The methods and devices that we use to access things change depending on context, right?
+
+12:36.370 --> 12:37.210
+Depending on what we're doing.
+
+12:37.210 --> 12:42.700
+If we're standing in line at the grocery store and we need to look something up or the price of something
+
+12:42.700 --> 12:45.430
+or to see if a competitor had a coupon, what do we do?
+
+12:45.430 --> 12:45.660
+Right?
+
+12:45.670 --> 12:50.440
+We pick up our phone and we get online and we look, you know, if we want to see, okay, how did people
+
+12:50.440 --> 12:56.710
+review this product that I'm thinking about buying your context is your in line at the store.
+
+12:56.710 --> 12:57.850
+So you're using a mobile device.
+
+12:57.850 --> 13:02.710
+If you're sitting at home and you have the luxury of a laptop with a bigger screen or a tablet with
+
+13:02.710 --> 13:04.720
+a bigger screen, you're probably using that.
+
+13:04.720 --> 13:04.950
+Okay?
+
+13:04.960 --> 13:07.620
+Because there's no reason to to use a tiny little screen.
+
+13:07.630 --> 13:14.440
+The point is, as I just said, we have expectations across all those channels and good user experience
+
+13:14.440 --> 13:19.630
+design makes sure that that experience is consistent across all those pieces.
+
+13:20.550 --> 13:28.080
+Another reason that user experience design on top of just functional development is important is because
+
+13:28.110 --> 13:31.500
+task completion is not the same as success.
+
+13:31.530 --> 13:38.070
+Just because a person is able to get the desired result with your app, your site, whatever, just
+
+13:38.070 --> 13:43.870
+because they can get from point A to point B doesn't mean that they were successful in doing so.
+
+13:43.890 --> 13:48.480
+If it isn't easy getting there, they won't be back a second time.
+
+13:48.480 --> 13:50.640
+They may have done something because they had to.
+
+13:50.640 --> 13:57.780
+But if your model is dependent on repeat business or repeat use, you have to make sure that that path
+
+13:57.780 --> 14:02.520
+from A to B is painless and elegant and simple.
+
+14:03.220 --> 14:05.770
+Another really good reason we care about user experience.
+
+14:05.770 --> 14:08.620
+Design is simply because it makes things enjoyable.
+
+14:08.650 --> 14:11.140
+Check out the car on the screen right now.
+
+14:11.150 --> 14:17.500
+Right now, we could go out and buy the sensible economy car that gets 58 miles to the gallon, but
+
+14:17.500 --> 14:20.860
+it's probably small and a little square and not very sexy.
+
+14:20.860 --> 14:24.580
+And it just isn't that fun to drive, let's face it.
+
+14:24.580 --> 14:24.820
+Right.
+
+14:24.820 --> 14:29.170
+So isn't the super hotshot convertible a lot more fun?
+
+14:29.320 --> 14:37.150
+That's the difference between great user experience design and just plain usability functionality.
+
+14:37.880 --> 14:45.950
+Uxd has the power to elevate things to a level where the emotional need of somebody is satisfied along
+
+14:45.950 --> 14:49.310
+with the sort of functional tactical need.

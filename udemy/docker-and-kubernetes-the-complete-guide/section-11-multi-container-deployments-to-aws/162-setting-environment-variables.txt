@@ -1,0 +1,550 @@
+WEBVTT
+
+00:00.780 --> 00:02.820
+-: In the last section, we wired up a security group
+
+00:02.820 --> 00:05.640
+to all three of our different important resources.
+
+00:05.640 --> 00:07.980
+The Elastic BeanStalk Instance, RDS and EC.
+
+00:07.980 --> 00:10.260
+Now, the very last piece of configuration
+
+00:10.260 --> 00:11.820
+we have to do now is make sure
+
+00:11.820 --> 00:13.710
+that our different containers inside
+
+00:13.710 --> 00:15.390
+of the Elastic BeanStalk Instance
+
+00:15.390 --> 00:18.537
+know how to reach out to RDS and EC.
+
+00:18.537 --> 00:19.710
+And so to do so,
+
+00:19.710 --> 00:22.350
+we have to set a couple of environment variables
+
+00:22.350 --> 00:23.670
+just as we did previously
+
+00:23.670 --> 00:25.950
+inside of our Docker composed file.
+
+00:25.950 --> 00:27.960
+So remember inside of Docker Compose,
+
+00:27.960 --> 00:30.420
+on our API or the Express server
+
+00:30.420 --> 00:33.570
+we set up this list of different environment variables
+
+00:33.570 --> 00:36.990
+and we did the same thing for our worker process as well.
+
+00:36.990 --> 00:37.980
+Here it is right here.
+
+00:37.980 --> 00:40.770
+We set up the Redis host and the Redis port.
+
+00:40.770 --> 00:43.593
+So in order for both our Express API,
+
+00:44.610 --> 00:46.080
+and the Redis server
+
+00:46.080 --> 00:48.240
+versus me the worker to work correctly
+
+00:48.240 --> 00:51.750
+we have to provide these different environment variables.
+
+00:51.750 --> 00:53.040
+So that's what we're going to do
+
+00:53.040 --> 00:56.433
+by using the console over on Elastic BeanStalk.
+
+00:57.840 --> 00:59.190
+So I'm gonna make sure that I'm still looking
+
+00:59.190 --> 01:02.070
+at my Elastic BeanStalk Instance.
+
+01:02.070 --> 01:04.660
+I'm gonna find configuration on the left hand side
+
+01:06.180 --> 01:09.270
+and then I'll select modify on the software card.
+
+01:09.270 --> 01:11.070
+I went there really quickly, sorry about that.
+
+01:11.070 --> 01:13.270
+On the software card, I'll select modify
+
+01:14.310 --> 01:16.080
+and then down at the very bottom,
+
+01:16.080 --> 01:19.170
+I'll see the different environment properties I can set up.
+
+01:19.170 --> 01:20.430
+Now, I'll be honest with you,
+
+01:20.430 --> 01:21.600
+these environment properties
+
+01:21.600 --> 01:24.000
+do not get their values hidden over here.
+
+01:24.000 --> 01:26.850
+And so once you enter these properties in
+
+01:26.850 --> 01:28.890
+potentially other people could come to this page
+
+01:28.890 --> 01:30.750
+and see your database password.
+
+01:30.750 --> 01:33.330
+I've looked at the Elastic BeanStalk documentation
+
+01:33.330 --> 01:35.130
+and supposedly this is nonetheless
+
+01:35.130 --> 01:36.930
+where we're supposed to put these passwords.
+
+01:36.930 --> 01:38.700
+I don't know if there's a better place out there.
+
+01:38.700 --> 01:41.880
+If there is, I encourage you to add a note on this lecture
+
+01:41.880 --> 01:44.610
+and say, "Hey, here would be a better way of doing this".
+
+01:44.610 --> 01:47.700
+This is one of my kind of weak points in this regard.
+
+01:47.700 --> 01:48.533
+So let's get to it.
+
+01:48.533 --> 01:49.800
+We're gonna add on a collection
+
+01:49.800 --> 01:52.110
+of different environment variables here.
+
+01:52.110 --> 01:53.970
+We're gonna go just straight down this list
+
+01:53.970 --> 01:55.560
+with all the different variables.
+
+01:55.560 --> 01:57.910
+So the first one will add in is the Redis host.
+
+01:59.010 --> 02:00.690
+So the name will be Redis host.
+
+02:00.690 --> 02:03.090
+And then the value is not going to be simply
+
+02:03.090 --> 02:04.980
+just like you know, Redis or anything like that.
+
+02:04.980 --> 02:07.920
+It's going to be the actual endpoint or URL
+
+02:07.920 --> 02:11.910
+of our running Elastic Cash Instance.
+
+02:11.910 --> 02:14.250
+So to get that, we need to actually flip on over
+
+02:14.250 --> 02:17.760
+to the Elastic Cash Dashboard one more time.
+
+02:17.760 --> 02:20.520
+So I'm gonna scroll up, I'll go to services,
+
+02:20.520 --> 02:24.303
+and then I'm going to open up Elastic Cash in a new tab.
+
+02:27.810 --> 02:30.240
+And then I'll close the services drop down and go back down
+
+02:30.240 --> 02:32.400
+to Environment Properties.
+
+02:32.400 --> 02:34.260
+Now in the second tab that I just opened up,
+
+02:34.260 --> 02:37.590
+I can look at Redis, I can click on the little arrow
+
+02:37.590 --> 02:39.180
+right here to expand it.
+
+02:39.180 --> 02:42.630
+And you're gonna see primary endpoint listed right here.
+
+02:42.630 --> 02:45.090
+So we're gonna copy that primary endpoint.
+
+02:45.090 --> 02:46.530
+Now note on the primary endpoint,
+
+02:46.530 --> 02:50.400
+there's the colon 6, 3, 7, 9 to designate the port.
+
+02:50.400 --> 02:52.800
+We don't want to copy that, so I'm gonna make sure
+
+02:52.800 --> 02:56.400
+that I copy everything to the left of that colon.
+
+02:56.400 --> 02:58.230
+So I'm gonna copy that.
+
+02:58.230 --> 03:00.810
+I'll go back over to my Environment properties,
+
+03:00.810 --> 03:02.190
+and for Redis host,
+
+03:02.190 --> 03:04.893
+I'm gonna paste in the value of that endpoint.
+
+03:07.020 --> 03:09.240
+Now take note on the very right hand side over here
+
+03:09.240 --> 03:10.620
+I do not have a colon.
+
+03:10.620 --> 03:12.480
+I do not have the 6, 3, 7, 9.
+
+03:12.480 --> 03:15.030
+So please make sure that you trim that off as well.
+
+03:16.140 --> 03:18.120
+So next up we'll do our Redis port.
+
+03:18.120 --> 03:20.883
+So I'll again copy the name of the variable over,
+
+03:22.290 --> 03:23.340
+and as you might guess,
+
+03:23.340 --> 03:26.340
+we're using the default port of 6, 3, 7, 9.
+
+03:26.340 --> 03:29.193
+So I'll set a value of 6, 3, 7, 9 like so.
+
+03:30.780 --> 03:31.980
+All right, that's it for Redis.
+
+03:31.980 --> 03:34.410
+So now we're going to move on to PG user,
+
+03:34.410 --> 03:36.810
+all the other Postgres variables as well.
+
+03:36.810 --> 03:39.540
+So for PG user, I'll copy that over.
+
+03:39.540 --> 03:41.580
+And this is where I hope you still have that document
+
+03:41.580 --> 03:44.550
+where we saved some of the different user names and whatnot.
+
+03:44.550 --> 03:46.980
+So this is the different variables that we entered
+
+03:46.980 --> 03:51.390
+when we created our RDS Instance or the Postgres Instance.
+
+03:51.390 --> 03:54.720
+So my username that I used was simply Postgres.
+
+03:54.720 --> 03:59.043
+So I will copy Postgres over for the PG user entry.
+
+04:00.660 --> 04:04.380
+Next step, we need our PG.
+
+04:04.380 --> 04:05.970
+Let's skip on down to the password
+
+04:05.970 --> 04:07.890
+because those should really be right in a row.
+
+04:07.890 --> 04:12.890
+So my PG password was Postgres password
+
+04:14.550 --> 04:17.640
+and that's what I wrote down in my document over here.
+
+04:17.640 --> 04:20.283
+Next step, we need our PG host.
+
+04:22.710 --> 04:24.000
+So I'll put in PG Host.
+
+04:24.000 --> 04:27.210
+We again need to open up the RDS dashboard just like we did
+
+04:27.210 --> 04:28.620
+with Elastic Cash
+
+04:28.620 --> 04:32.010
+and get the endpoint for our Postgres Instance.
+
+04:32.010 --> 04:34.500
+So I'll flip back over to that second tab.
+
+04:34.500 --> 04:37.230
+I'll again go up to services.
+
+04:37.230 --> 04:39.213
+I'll go back to the RDS dashboard.
+
+04:42.720 --> 04:44.673
+I'll click on the Instances section.
+
+04:46.320 --> 04:48.220
+I'll open up the database Instance
+
+04:49.680 --> 04:51.180
+and then finally down towards the bottom
+
+04:51.180 --> 04:54.210
+and that details section, oh, not details
+
+04:54.210 --> 04:58.173
+but Connect right here, I'll find the endpoint listed.
+
+04:59.100 --> 05:01.150
+So I'm gonna copy that entire endpoint
+
+05:03.060 --> 05:04.440
+and then I'll paste it back over
+
+05:04.440 --> 05:07.473
+on my environment properties for the PG host, like so.
+
+05:10.500 --> 05:12.870
+Okay, so we've got PG, User, password, and Host.
+
+05:12.870 --> 05:14.880
+I think we just got a couple more here.
+
+05:14.880 --> 05:17.250
+So we got PG database.
+
+05:17.250 --> 05:20.430
+So that's our next key PG database for that.
+
+05:20.430 --> 05:22.980
+My database name was Fib Values,
+
+05:22.980 --> 05:24.630
+that's what I called my database.
+
+05:25.650 --> 05:28.260
+And then finally we got our PG port.
+
+05:28.260 --> 05:30.360
+That's the very last one, PG Port.
+
+05:30.360 --> 05:32.070
+And as you can see over on the dashboard,
+
+05:32.070 --> 05:35.163
+we did not change the default port of 5, 4, 3, 2.
+
+05:37.350 --> 05:41.220
+Okay, now quick pause right here.
+
+05:41.220 --> 05:44.430
+I gotta tell ya, in all the courses I've ever done
+
+05:44.430 --> 05:48.390
+the most common air that I ever see in my life
+
+05:48.390 --> 05:50.820
+this is repeated over and over and over again.
+
+05:50.820 --> 05:53.400
+The most common air by far is people entering
+
+05:53.400 --> 05:54.990
+in these environment properties
+
+05:54.990 --> 05:59.160
+with incorrect spellings for the names or incorrect values.
+
+05:59.160 --> 06:01.350
+So at this point, I gotta ask you please
+
+06:01.350 --> 06:03.870
+I beg you triple check the names
+
+06:03.870 --> 06:07.290
+of all the environment properties listed over here.
+
+06:07.290 --> 06:08.280
+And I'm gonna tell you right now
+
+06:08.280 --> 06:10.950
+if your application worked successfully
+
+06:10.950 --> 06:12.390
+in our development environment
+
+06:12.390 --> 06:14.160
+when we were using Docker Compose
+
+06:14.160 --> 06:16.020
+but does not work properly,
+
+06:16.020 --> 06:18.120
+when you push it up to Elastic BeanStalk
+
+06:18.120 --> 06:19.800
+or you push it up to production
+
+06:19.800 --> 06:21.210
+one of the first things that I will tell you
+
+06:21.210 --> 06:24.570
+to troubleshoot is to come look at these variable names
+
+06:24.570 --> 06:26.340
+and all the different values and triple check
+
+06:26.340 --> 06:27.870
+to make sure that they are correct.
+
+06:27.870 --> 06:28.710
+So I ask you again,
+
+06:28.710 --> 06:31.530
+please triple check the names, triple check your values,
+
+06:31.530 --> 06:34.470
+make sure you've got the correct things in here.
+
+06:34.470 --> 06:36.810
+Now, once you've got everything entered in successfully,
+
+06:36.810 --> 06:40.023
+will hit the apply button on the bottom right hand side.
+
+06:41.760 --> 06:43.260
+Okay, so that's gonna make a couple changes
+
+06:43.260 --> 06:45.123
+and apply them to our environment.
+
+06:46.050 --> 06:46.980
+Okay, so that's pretty much it.
+
+06:46.980 --> 06:48.990
+That's all we gotta do for setup.
+
+06:48.990 --> 06:50.760
+Now, one little piece of trivia here
+
+06:50.760 --> 06:52.620
+something you might be curious about.
+
+06:52.620 --> 06:54.990
+Back when we put together the Docker composed file,
+
+06:54.990 --> 06:58.020
+we had to manually specify all these environment variables
+
+06:58.020 --> 07:01.380
+and specifically pass them into this specific service.
+
+07:01.380 --> 07:04.590
+And we did the same thing for Redis on the worker
+
+07:04.590 --> 07:06.420
+down here as well.
+
+07:06.420 --> 07:07.920
+Now on Elastic BeanStalk,
+
+07:07.920 --> 07:10.110
+when you set up those environment variables
+
+07:10.110 --> 07:11.490
+they automatically get added
+
+07:11.490 --> 07:12.870
+to all of the different containers
+
+07:12.870 --> 07:16.770
+that you listed inside that Docker run AWS.JSON file.
+
+07:16.770 --> 07:19.950
+So every single one of these containers has automatic access
+
+07:19.950 --> 07:21.840
+to that set of environment variables.
+
+07:21.840 --> 07:24.540
+So we do not have to do any additional environment variable
+
+07:24.540 --> 07:28.200
+mapping, that makes life a little bit easier.
+
+07:28.200 --> 07:29.160
+Okay, So that's pretty much it.
+
+07:29.160 --> 07:31.260
+That's all we had to do for the AWS setup.
+
+07:31.260 --> 07:32.970
+So now the very last thing we have to do
+
+07:32.970 --> 07:36.810
+is couple more changes to the Travis.yml file
+
+07:36.810 --> 07:39.090
+to make sure that after we successfully build
+
+07:39.090 --> 07:42.990
+all these images and push them off to Docker hub,
+
+07:42.990 --> 07:44.820
+we are gonna do that little tap on the shoulder
+
+07:44.820 --> 07:48.270
+of Elastic Beanstalk and tell it to repo all the images
+
+07:48.270 --> 07:49.860
+and attempt to deploy them.
+
+07:49.860 --> 07:51.600
+So let's do another quick break.
+
+07:51.600 --> 07:53.490
+Come back to the next section and start to wrap up
+
+07:53.490 --> 07:54.933
+the Travis.yml file.

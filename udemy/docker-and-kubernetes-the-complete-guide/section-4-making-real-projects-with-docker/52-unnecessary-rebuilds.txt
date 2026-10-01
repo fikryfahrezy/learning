@@ -1,0 +1,367 @@
+WEBVTT
+
+00:00.810 --> 00:02.400
+-: There's one last little interesting thing
+
+00:02.400 --> 00:05.430
+that I want to show you about our current build process
+
+00:05.430 --> 00:07.860
+and the container that we're running out of it.
+
+00:07.860 --> 00:09.810
+I'm gonna start up my container very quickly
+
+00:09.810 --> 00:11.340
+with docker run.
+
+00:11.340 --> 00:14.670
+We'll do the port mapping again with 80, 80, 80, 80.
+
+00:14.670 --> 00:17.943
+And I'll do Stephen Grider slash simple web.
+
+00:18.780 --> 00:20.700
+Okay, so running on port 80, 80.
+
+00:20.700 --> 00:21.660
+Now I'm going to again
+
+00:21.660 --> 00:23.460
+visit the application inside the browser.
+
+00:23.460 --> 00:24.780
+I'll refresh the page.
+
+00:24.780 --> 00:27.420
+Yep, everything's working as we expect.
+
+00:27.420 --> 00:30.180
+Now let's try making a change to the source code
+
+00:30.180 --> 00:32.640
+of our index dot js file.
+
+00:32.640 --> 00:36.030
+I'm going to open up the index dot js file right here.
+
+00:36.030 --> 00:38.370
+This is the route handler right here,
+
+00:38.370 --> 00:41.580
+that is executed anytime someone visits the root route
+
+00:41.580 --> 00:42.960
+on our running server.
+
+00:42.960 --> 00:43.920
+And so as you can see,
+
+00:43.920 --> 00:47.130
+we are sending back a string of simply 'Hi there'.
+
+00:47.130 --> 00:49.260
+Let's try making a change to the string
+
+00:49.260 --> 00:52.140
+and then refreshing the page and seeing what happens.
+
+00:52.140 --> 00:55.590
+So I'm gonna change from 'Hi there' to 'Bye there'.
+
+00:55.590 --> 00:57.123
+I know I'm not very original.
+
+00:58.110 --> 00:59.580
+I'm gonna save this file.
+
+00:59.580 --> 01:00.900
+Definitely saved.
+
+01:00.900 --> 01:02.940
+I'm gonna file save. A hundred percent save.
+
+01:02.940 --> 01:04.110
+No two ways about it.
+
+01:04.110 --> 01:06.690
+And then I'm gonna go back over to the browser
+
+01:06.690 --> 01:08.550
+and I'll refresh the page.
+
+01:08.550 --> 01:10.170
+And when I do, so you'll notice
+
+01:10.170 --> 01:13.800
+that we still see 'Hi there' appear on the screen.
+
+01:13.800 --> 01:15.690
+So what's going on?
+
+01:15.690 --> 01:16.523
+Well, remember,
+
+01:16.523 --> 01:17.940
+anytime that we create our image
+
+01:17.940 --> 01:19.080
+or create the container,
+
+01:19.080 --> 01:22.260
+we're taking a snapshot of the file system.
+
+01:22.260 --> 01:25.140
+So we took a snapshot of index dot js
+
+01:25.140 --> 01:27.150
+after it got copied over
+
+01:27.150 --> 01:28.830
+and we are running our application
+
+01:28.830 --> 01:32.430
+based on that old version of index dot js.
+
+01:32.430 --> 01:34.530
+When we modify the index dot js file
+
+01:34.530 --> 01:36.750
+inside of our current working directory right here,
+
+01:36.750 --> 01:39.780
+that change is not going to be automatically reflected
+
+01:39.780 --> 01:41.670
+inside the container.
+
+01:41.670 --> 01:44.190
+If we want it to update the file inside the container,
+
+01:44.190 --> 01:45.023
+we're going to have to do
+
+01:45.023 --> 01:48.060
+some additional fancy configuration.
+
+01:48.060 --> 01:50.370
+We're not gonna go through that configuration just yet.
+
+01:50.370 --> 01:51.930
+That's gonna be something that we're going to address
+
+01:51.930 --> 01:53.580
+on the next application.
+
+01:53.580 --> 01:54.990
+But just so you're aware,
+
+01:54.990 --> 01:56.430
+yeah, changes we make here
+
+01:56.430 --> 01:58.623
+not reflected inside the container.
+
+01:59.700 --> 02:01.230
+So what would we have to do
+
+02:01.230 --> 02:02.610
+to get our container
+
+02:02.610 --> 02:04.140
+to get this new file
+
+02:04.140 --> 02:06.360
+or to get this new change, right here?
+
+02:06.360 --> 02:09.960
+Well, we would have to completely rebuild the container.
+
+02:09.960 --> 02:12.600
+We would have to rerun the docker build command
+
+02:12.600 --> 02:14.640
+and attempt to build it again,
+
+02:14.640 --> 02:17.580
+which is going to copy over the newly changed files,
+
+02:17.580 --> 02:18.900
+then run NPM install
+
+02:18.900 --> 02:20.640
+and then start our server up.
+
+02:20.640 --> 02:21.990
+Let's go through that process right now,
+
+02:21.990 --> 02:23.250
+cause there's one more little thing
+
+02:23.250 --> 02:25.953
+that I wanna show you along those lines.
+
+02:27.180 --> 02:29.760
+Okay, so I'm gonna stop my running server
+
+02:29.760 --> 02:32.070
+and then we'll do a docker build.
+
+02:32.070 --> 02:33.130
+We're gonna tag it
+
+02:35.700 --> 02:37.230
+and then I'll make sure that I do the dot
+
+02:37.230 --> 02:39.690
+to specify the build context.
+
+02:39.690 --> 02:41.340
+So I'm gonna run that...
+
+02:41.340 --> 02:43.500
+And, oh, this is kind of interesting.
+
+02:43.500 --> 02:45.210
+I want you to notice something here.
+
+02:45.210 --> 02:47.490
+During step three, we are copying over
+
+02:47.490 --> 02:49.800
+all of our project files and folders.
+
+02:49.800 --> 02:51.690
+Every last one of them.
+
+02:51.690 --> 02:54.750
+We just made a change to the index do js file.
+
+02:54.750 --> 02:56.340
+And Docker has detected
+
+02:56.340 --> 02:57.870
+that we changed one of the files
+
+02:57.870 --> 03:00.660
+that was copied over during that step
+
+03:00.660 --> 03:02.670
+Because we made a change to this step,
+
+03:02.670 --> 03:04.440
+this step right here. Step number three
+
+03:04.440 --> 03:05.880
+and every step after it,
+
+03:05.880 --> 03:08.205
+has to be executed again.
+
+03:08.205 --> 03:10.470
+In other words, when we rebuild our container,
+
+03:10.470 --> 03:13.080
+we have to reinstall all of our dependencies,
+
+03:13.080 --> 03:14.760
+even though we very clearly
+
+03:14.760 --> 03:16.680
+did not make a single change
+
+03:16.680 --> 03:18.240
+to any other dependencies
+
+03:18.240 --> 03:19.500
+inside of our project.
+
+03:19.500 --> 03:21.540
+And so I'm gonna argue that
+
+03:21.540 --> 03:23.280
+that's probably not ideal.
+
+03:23.280 --> 03:25.020
+If we don't make a change to a dependency
+
+03:25.020 --> 03:26.100
+inside of the project,
+
+03:26.100 --> 03:29.010
+we probably don't want to rerun MPM install.
+
+03:29.010 --> 03:32.550
+All we did was change one of the source good files
+
+03:32.550 --> 03:33.383
+of our project.
+
+03:33.383 --> 03:36.063
+And again, that has nothing to do with our dependencies.
+
+03:36.900 --> 03:38.280
+So I think that would be really neat
+
+03:38.280 --> 03:39.630
+if we could figure out a way
+
+03:39.630 --> 03:40.530
+to make sure that
+
+03:40.530 --> 03:42.780
+just by changing one of our source code files,
+
+03:42.780 --> 03:45.510
+we do not have to rerun NPM install
+
+03:45.510 --> 03:47.640
+and install all of our dependencies again,
+
+03:47.640 --> 03:50.010
+because even though this is only taking a handful of seconds
+
+03:50.010 --> 03:50.843
+right now...
+
+03:50.843 --> 03:53.310
+Well it's only because we have one single dependency.
+
+03:53.310 --> 03:55.260
+If you're working on a real application
+
+03:55.260 --> 03:56.370
+or real project,
+
+03:56.370 --> 03:57.690
+it might take several minutes
+
+03:57.690 --> 04:00.210
+to rerun the NPM install command.
+
+04:00.210 --> 04:01.170
+And I would not want you
+
+04:01.170 --> 04:03.750
+to have to reinstall all those dependencies
+
+04:03.750 --> 04:04.830
+every time that you make a change
+
+04:04.830 --> 04:06.750
+to the source code of your project.
+
+04:06.750 --> 04:08.010
+So let's come back to the next section
+
+04:08.010 --> 04:09.300
+and we're gonna figure out a better way
+
+04:09.300 --> 04:12.690
+to handle copying over our project files and folders
+
+04:12.690 --> 04:13.950
+into the container.
+
+04:13.950 --> 04:16.373
+So quick break and I'll see you in just a minute.

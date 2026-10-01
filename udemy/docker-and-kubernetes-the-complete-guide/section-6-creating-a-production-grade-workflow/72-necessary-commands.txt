@@ -1,0 +1,391 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+-: In the last section,
+
+00:01.763 --> 00:04.410
+we generated a brand new React project.
+
+00:04.410 --> 00:06.480
+In this section we're gonna learn how to work around
+
+00:06.480 --> 00:07.740
+with this project just a little bit,
+
+00:07.740 --> 00:10.860
+in case you're new to the NodeJS or ReactJS world.
+
+00:10.860 --> 00:13.470
+Again, we're not really quite so much focused on the code
+
+00:13.470 --> 00:15.180
+that is running inside the container.
+
+00:15.180 --> 00:16.770
+We're really much more interested in
+
+00:16.770 --> 00:18.570
+how this container is going to interact
+
+00:18.570 --> 00:19.980
+with the outside world.
+
+00:19.980 --> 00:22.050
+So with that in mind, I'm gonna first change
+
+00:22.050 --> 00:23.820
+into the directory that was created
+
+00:23.820 --> 00:26.100
+when we just generated our project.
+
+00:26.100 --> 00:28.300
+So remember we called our project Front End.
+
+00:29.250 --> 00:31.050
+So I'm gonna change into that thing.
+
+00:31.050 --> 00:33.150
+And then inside of here we're going to run a couple
+
+00:33.150 --> 00:34.620
+of different commands to understand
+
+00:34.620 --> 00:37.110
+how we're going to interact with the project.
+
+00:37.110 --> 00:39.630
+The three commands that we're going to need to be aware of
+
+00:39.630 --> 00:41.550
+and these are commands that we're gonna run several times
+
+00:41.550 --> 00:44.730
+as we develop this entire workflow,
+
+00:44.730 --> 00:49.050
+are npm run start, run test and run build.
+
+00:49.050 --> 00:52.470
+Npm run start is a development only command.
+
+00:52.470 --> 00:53.970
+It starts up a development server
+
+00:53.970 --> 00:56.310
+which is used to host our application
+
+00:56.310 --> 00:58.830
+and make it available inside of our web browser.
+
+00:58.830 --> 01:01.230
+Now it's very important to note that this development server
+
+01:01.230 --> 01:04.890
+that is created is very much a development server.
+
+01:04.890 --> 01:07.650
+It is not appropriate for use in production.
+
+01:07.650 --> 01:09.570
+And so when it gets to figuring out how we're going
+
+01:09.570 --> 01:10.770
+to take the Docker container
+
+01:10.770 --> 01:12.300
+and deploy it to the outside world,
+
+01:12.300 --> 01:13.680
+well, we're definitely gonna have to do a little bit
+
+01:13.680 --> 01:15.873
+of follow up on that side of things.
+
+01:16.800 --> 01:19.110
+The next command to be aware of is npm run test
+
+01:19.110 --> 01:20.640
+which is used to run any tests
+
+01:20.640 --> 01:23.310
+that are associated with the project.
+
+01:23.310 --> 01:25.140
+When we generate our React project,
+
+01:25.140 --> 01:28.320
+it automatically gets one or two tests created for us.
+
+01:28.320 --> 01:29.970
+We're not gonna add any additional tests
+
+01:29.970 --> 01:32.700
+because of course this is not a course about testing
+
+01:32.700 --> 01:35.220
+or ReactJS or anything like that.
+
+01:35.220 --> 01:36.990
+Instead, we're just going to run those tests
+
+01:36.990 --> 01:40.230
+and say, "Okay, we know how to run tests."
+
+01:40.230 --> 01:42.720
+Really much more concerned about tests here in the context
+
+01:42.720 --> 01:45.600
+of making sure that we only deploy our application
+
+01:45.600 --> 01:47.853
+if all the tests are successfully passing.
+
+01:48.990 --> 01:50.340
+The last command that we need to be aware of
+
+01:50.340 --> 01:53.520
+for right now is npm run build.
+
+01:53.520 --> 01:56.160
+This command is used to take all the JavaScript files
+
+01:56.160 --> 01:57.360
+that are tied to the project
+
+01:57.360 --> 01:59.520
+and essentially can catenate them all down
+
+01:59.520 --> 02:01.410
+into one single file
+
+02:01.410 --> 02:04.950
+that can then be served in a production environment.
+
+02:04.950 --> 02:07.110
+Let's very quickly run each of these commands,
+
+02:07.110 --> 02:09.450
+just to make sure that we're familiar with how they work,
+
+02:09.450 --> 02:10.530
+because understanding them
+
+02:10.530 --> 02:13.530
+is gonna be just a little bit important later on.
+
+02:13.530 --> 02:15.330
+Now when I say, just a quick aside here,
+
+02:15.330 --> 02:17.370
+in case again you're not from the React world
+
+02:17.370 --> 02:18.720
+or JavaScript world.
+
+02:18.720 --> 02:20.520
+When I say understand these commands,
+
+02:20.520 --> 02:22.920
+I don't mean to say you have to understand like
+
+02:22.920 --> 02:25.740
+how JavaScript works or how ReactJS works.
+
+02:25.740 --> 02:28.200
+I just mean to say understand that if we want
+
+02:28.200 --> 02:30.900
+to run our application in a development environment,
+
+02:30.900 --> 02:32.370
+we have to run this command.
+
+02:32.370 --> 02:37.140
+Again, knowledge of React here, really not required one bit.
+
+02:37.140 --> 02:39.690
+All right, so, first off, we'll try running our test.
+
+02:39.690 --> 02:43.323
+To run the test, we'll execute npm run test, like so.
+
+02:44.610 --> 02:46.200
+That's gonna start up a test runner.
+
+02:46.200 --> 02:48.270
+We're gonna see our one test pass
+
+02:48.270 --> 02:50.970
+and it looks like, yep it's good to go for right now.
+
+02:50.970 --> 02:55.170
+We can then press Q and that will exit the test runner.
+
+02:55.170 --> 02:56.943
+We'll then try npm run build.
+
+02:57.840 --> 02:59.790
+So I'll enter npm run build, again,
+
+02:59.790 --> 03:01.440
+inside of my front end directory.
+
+03:02.370 --> 03:03.210
+When I execute that,
+
+03:03.210 --> 03:05.640
+it'll say creating a optimized production build.
+
+03:05.640 --> 03:08.190
+Again, this is going to take all of our different files
+
+03:08.190 --> 03:10.560
+and essentially just kind of compact them all down
+
+03:10.560 --> 03:11.823
+into a single file.
+
+03:12.990 --> 03:15.360
+We can then list out all of our files and folders.
+
+03:15.360 --> 03:17.700
+You'll notice that there is now a build directory.
+
+03:17.700 --> 03:19.860
+This folder was not there before.
+
+03:19.860 --> 03:21.690
+If I look inside the build directory,
+
+03:21.690 --> 03:24.330
+I'll see that I have a index.html file
+
+03:24.330 --> 03:26.430
+and a static directory.
+
+03:26.430 --> 03:28.090
+Inside of the static directory
+
+03:30.570 --> 03:32.880
+is, well, it's kind of nested in there,
+
+03:32.880 --> 03:35.430
+but somewhere inside of there is a JavaScript file.
+
+03:35.430 --> 03:37.740
+This represents the actual JavaScript
+
+03:37.740 --> 03:39.510
+that is our application.
+
+03:39.510 --> 03:41.280
+And so at some point in time, we're going to want
+
+03:41.280 --> 03:45.120
+to serve up this index.html file and JavaScript file
+
+03:45.120 --> 03:49.290
+from some AWS instance or some AWS service.
+
+03:49.290 --> 03:51.420
+Now last command is npm run start.
+
+03:51.420 --> 03:53.850
+Again, that's gonna start up a development server.
+
+03:53.850 --> 03:56.673
+So I'll execute npm run start like so.
+
+03:57.510 --> 03:59.640
+That's going to automatically open a tab inside
+
+03:59.640 --> 04:02.250
+of your browser, at local host 3000,
+
+04:02.250 --> 04:05.490
+and you'll see the default React application appear.
+
+04:05.490 --> 04:06.930
+All right, so that is, again,
+
+04:06.930 --> 04:09.000
+all you really need to know about the application.
+
+04:09.000 --> 04:10.740
+For right now, we've got a command
+
+04:10.740 --> 04:12.600
+to start up the thing in development.
+
+04:12.600 --> 04:13.920
+We got a command for tests
+
+04:13.920 --> 04:16.290
+and we got a command to get the thing ready
+
+04:16.290 --> 04:18.690
+to be ran in a production environment.
+
+04:18.690 --> 04:21.270
+I'm sure you can kind of imagine how there are analogs
+
+04:21.270 --> 04:23.760
+or very close analogies to each of these commands
+
+04:23.760 --> 04:25.860
+with other languages as well.
+
+04:25.860 --> 04:27.780
+So if you're making use of Ruby on Rails,
+
+04:27.780 --> 04:31.980
+well, npm run start is very similar to like Rails s, right?
+
+04:31.980 --> 04:33.930
+And if you're making use of say, Go,
+
+04:33.930 --> 04:36.090
+there's a handful of builders out there
+
+04:36.090 --> 04:37.590
+to run your application and development
+
+04:37.590 --> 04:39.750
+but to actually build your application
+
+04:39.750 --> 04:42.930
+where you would normally run something like go build,
+
+04:42.930 --> 04:45.540
+well, here we're going to instead run npm run build.
+
+04:45.540 --> 04:46.590
+So the whole point here is
+
+04:46.590 --> 04:48.690
+that we have some very specific set of commands
+
+04:48.690 --> 04:51.030
+that get us ready for development,
+
+04:51.030 --> 04:54.540
+get us ready for tests and get us ready for production.
+
+04:54.540 --> 04:56.530
+All right, So let's take another quick pause right here
+
+04:56.530 --> 04:58.050
+and we're gonna start thinking about how we're going
+
+04:58.050 --> 05:01.800
+to wrap up our application inside of a docker container
+
+05:01.800 --> 05:05.040
+that is appropriate for development,
+
+05:05.040 --> 05:07.230
+specifically development purposes.
+
+05:07.230 --> 05:09.680
+So quick break and I'll see you in just a minute.

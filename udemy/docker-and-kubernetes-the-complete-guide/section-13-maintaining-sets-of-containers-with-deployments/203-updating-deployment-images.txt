@@ -1,0 +1,358 @@
+WEBVTT
+
+00:01.133 --> 00:02.130
+Instructor: In the last couple of sections,
+
+00:02.130 --> 00:03.810
+we've looked at a couple of different ways
+
+00:03.810 --> 00:05.430
+of updating a deployment.
+
+00:05.430 --> 00:08.550
+So we understand that we can change the number of replicas
+
+00:08.550 --> 00:10.590
+and we can change, say the container ports
+
+00:10.590 --> 00:12.510
+or even the image that is used
+
+00:12.510 --> 00:15.840
+by this deployment whenever it is creating a pod.
+
+00:15.840 --> 00:17.700
+But one thing that we haven't quite looked at
+
+00:17.700 --> 00:19.399
+is how we can update a deployment
+
+00:19.399 --> 00:22.883
+when a new version of an image becomes available.
+
+00:22.883 --> 00:24.691
+So I want you to imagine for a second
+
+00:24.691 --> 00:26.130
+that maybe you and I
+
+00:26.130 --> 00:28.380
+go off to our multi worker project
+
+00:28.380 --> 00:31.170
+and maybe we make an update to that image
+
+00:31.170 --> 00:34.170
+and then we push the image up to Docker hub.
+
+00:34.170 --> 00:35.007
+How would we somehow
+
+00:35.007 --> 00:39.030
+get our deployment to pull down that latest version
+
+00:39.030 --> 00:41.010
+and recreate all of our pods
+
+00:41.010 --> 00:42.900
+using that latest version?
+
+00:42.900 --> 00:46.020
+I wanna look into that a little bit inside this section.
+
+00:46.020 --> 00:47.280
+Now let's take a look at a diagram
+
+00:47.280 --> 00:48.330
+that's going to explain
+
+00:48.330 --> 00:50.880
+the series of changes we're going to make to our project
+
+00:50.880 --> 00:53.580
+to kind of simulate updating an image
+
+00:53.580 --> 00:55.980
+and kind of simulate how we would update a deployment
+
+00:55.980 --> 00:58.203
+to accommodate for that updated image.
+
+00:59.460 --> 01:02.610
+Okay, so first off, we're going to update our deployment
+
+01:02.610 --> 01:04.020
+and we're gonna change it to use the
+
+01:04.020 --> 01:06.030
+multi-client image again.
+
+01:06.030 --> 01:07.710
+The only reason that we're going to change it to use
+
+01:07.710 --> 01:08.580
+multi client
+
+01:08.580 --> 01:11.370
+is that it gives us something to look at inside the browser.
+
+01:11.370 --> 01:13.680
+And so it makes it really easy to verify that
+
+01:13.680 --> 01:16.890
+our pods are running the correct version of an image.
+
+01:16.890 --> 01:18.413
+After that, we're then going to go
+
+01:18.413 --> 01:20.400
+back over to the source code for our
+
+01:20.400 --> 01:22.050
+multi client project.
+
+01:22.050 --> 01:24.000
+We're gonna make a change to that project.
+
+01:24.000 --> 01:25.560
+We're gonna rebuild the image
+
+01:25.560 --> 01:27.900
+and then push the image up to Docker hub.
+
+01:27.900 --> 01:28.920
+So that's gonna simulate
+
+01:28.920 --> 01:30.630
+a very real deployment
+
+01:30.630 --> 01:33.330
+or a very real change to an application.
+
+01:33.330 --> 01:35.130
+All the time when you're using Kubernetes
+
+01:35.130 --> 01:36.540
+and all this container stuff
+
+01:36.540 --> 01:38.460
+you're going to want to change an image
+
+01:38.460 --> 01:40.050
+and you're going to want to make sure that the
+
+01:40.050 --> 01:41.550
+latest version of that image
+
+01:41.550 --> 01:44.343
+eventually gets deployed onto your Kubernetes cluster.
+
+01:45.300 --> 01:48.210
+After we push that changed image up to Docker hub
+
+01:48.210 --> 01:50.670
+we're then going to somehow get our deployment
+
+01:50.670 --> 01:52.500
+to recreate all of its pods
+
+01:52.500 --> 01:54.060
+with that latest version of
+
+01:54.060 --> 01:56.520
+multi client that you and I create.
+
+01:56.520 --> 01:57.570
+So let's get to it.
+
+01:57.570 --> 01:59.520
+Step number one is going to be to
+
+01:59.520 --> 02:00.780
+change our deployment to use
+
+02:00.780 --> 02:02.970
+multi client again.
+
+02:02.970 --> 02:04.470
+So inside of my code editor
+
+02:04.470 --> 02:07.173
+I'm gonna find the client_deployment.emo file.
+
+02:08.280 --> 02:10.200
+We're gonna make a couple changes in here.
+
+02:10.200 --> 02:11.250
+The first thing I'm going to do
+
+02:11.250 --> 02:13.320
+is reduce the number of replicas
+
+02:13.320 --> 02:14.910
+down to one.
+
+02:14.910 --> 02:15.743
+So we're just gonna run
+
+02:15.743 --> 02:18.270
+one replica all by itself.
+
+02:18.270 --> 02:19.740
+That's just gonna make it a little bit easier
+
+02:19.740 --> 02:22.110
+for testing purposes, so that we can
+
+02:22.110 --> 02:23.610
+get a better idea of when that
+
+02:23.610 --> 02:25.980
+single pod is being updated or recreated
+
+02:25.980 --> 02:27.363
+or whatever it might be.
+
+02:28.230 --> 02:30.660
+Next up, we're going to change our image right here.
+
+02:30.660 --> 02:32.130
+So instead of multi worker,
+
+02:32.130 --> 02:34.170
+we're going to get multi client.
+
+02:34.170 --> 02:35.700
+And then one other thing that I want to do
+
+02:35.700 --> 02:37.320
+on the image right here,
+
+02:37.320 --> 02:38.730
+besides putting on multi client
+
+02:38.730 --> 02:41.070
+is I wanna make sure that we also update the port
+
+02:41.070 --> 02:43.980
+that is exposed or forwarded on that image.
+
+02:43.980 --> 02:46.320
+So a container port rather than nine nine nine,
+
+02:46.320 --> 02:48.330
+we're going to change that back to
+
+02:48.330 --> 02:50.610
+3000 like so, because you remember
+
+02:50.610 --> 02:52.161
+that is the port, that is exposed or
+
+02:52.161 --> 02:54.600
+that engine X inside the multi-client image
+
+02:54.600 --> 02:56.520
+is going to listen on.
+
+02:56.520 --> 02:57.840
+Okay, so that looks good.
+
+02:57.840 --> 02:58.673
+Let's now
+
+02:58.673 --> 02:59.700
+take these changes.
+
+02:59.700 --> 03:01.020
+I'm gonna save this file
+
+03:01.020 --> 03:02.250
+and then I'm going to apply
+
+03:02.250 --> 03:03.480
+this new configuration
+
+03:03.480 --> 03:05.490
+to our Kubernetes cluster.
+
+03:05.490 --> 03:08.590
+So back at my terminal, I'll do a cube CTL apply
+
+03:09.771 --> 03:11.583
+client_deployment.emo.
+
+03:13.890 --> 03:15.120
+So I'm gonna make that change.
+
+03:15.120 --> 03:15.990
+And then we will want to
+
+03:15.990 --> 03:18.120
+very quickly test this out inside the browser
+
+03:18.120 --> 03:19.710
+and make sure that we can access
+
+03:19.710 --> 03:21.450
+that newly created container
+
+03:21.450 --> 03:23.340
+that's inside of that new pod.
+
+03:23.340 --> 03:24.630
+So remember, anytime they want to
+
+03:24.630 --> 03:26.550
+access our app inside the browser,
+
+03:26.550 --> 03:28.650
+we need to get our mini cube IP
+
+03:28.650 --> 03:31.050
+with the mini cube IP command.
+
+03:31.050 --> 03:32.560
+I'll copy the IP address
+
+03:33.420 --> 03:34.980
+then we'll go back over to our browser.
+
+03:34.980 --> 03:36.900
+I'll paste in that IP and remember
+
+03:36.900 --> 03:38.370
+we set up that service,
+
+03:38.370 --> 03:40.440
+to listen on port 3 1 5 1 5.
+
+03:40.440 --> 03:41.730
+So I'll do colon
+
+03:41.730 --> 03:43.740
+3 1 5 1 5
+
+03:43.740 --> 03:45.660
+And then I see our application appear.
+
+03:45.660 --> 03:47.310
+Okay, so that's easy enough.
+
+03:47.310 --> 03:48.330
+Let's take a pause right now.
+
+03:48.330 --> 03:49.530
+When we come back to the next section
+
+03:49.530 --> 03:50.640
+we're gonna make an update
+
+03:50.640 --> 03:52.050
+to the multi client image
+
+03:52.050 --> 03:54.360
+and then we're going to push it up to Docker hub.
+
+03:54.360 --> 03:56.810
+So quick pause and I'll see you in just a minute.

@@ -1,0 +1,226 @@
+WEBVTT
+
+00:00.930 --> 00:02.730
+-: We've now put together an implementation
+
+00:02.730 --> 00:05.790
+for npm run start and npm run test.
+
+00:05.790 --> 00:07.530
+It's now time to think about how we're gonna treat
+
+00:07.530 --> 00:09.690
+our Docker container in a production environment
+
+00:09.690 --> 00:12.660
+where we're supposed to eventually be running npm run build.
+
+00:12.660 --> 00:14.550
+I want you to remember that npm run build
+
+00:14.550 --> 00:17.490
+is going to build a production version of the application.
+
+00:17.490 --> 00:19.860
+Essentially it takes all the JavaScript files,
+
+00:19.860 --> 00:22.380
+processes them all together, puts them all together
+
+00:22.380 --> 00:24.420
+into a single file and then spits it out
+
+00:24.420 --> 00:26.550
+to a folder on your hard drive.
+
+00:26.550 --> 00:28.470
+And this is actually a pretty important distinction
+
+00:28.470 --> 00:30.060
+because it really changes the mechanics
+
+00:30.060 --> 00:32.880
+behind how our application is served up
+
+00:32.880 --> 00:35.340
+in a development and production environment.
+
+00:35.340 --> 00:38.433
+Let me show you a diagram or two to help you understand why.
+
+00:39.510 --> 00:42.000
+Okay, so this is a diagram of how our application runs
+
+00:42.000 --> 00:43.740
+in a development environment.
+
+00:43.740 --> 00:47.610
+Inside of our web container, we have a development server.
+
+00:47.610 --> 00:50.460
+Whenever our browser makes a request to port 3000
+
+00:50.460 --> 00:52.770
+on local host, it's really making request
+
+00:52.770 --> 00:54.450
+to that dev server.
+
+00:54.450 --> 00:57.840
+The development server then takes a index HTML file,
+
+00:57.840 --> 01:01.440
+a main.js file or some otherwise JavaScript file
+
+01:01.440 --> 01:03.750
+and sends it back over to the browser.
+
+01:03.750 --> 01:06.780
+So the development server is 100% required
+
+01:06.780 --> 01:08.430
+in the development environment.
+
+01:08.430 --> 01:11.280
+It's what facilitates processing all that JavaScript
+
+01:11.280 --> 01:14.040
+and then eventually serving it up to the browser.
+
+01:14.040 --> 01:16.770
+Now again, when we move over to the production environment,
+
+01:16.770 --> 01:18.690
+this dev server falls away.
+
+01:18.690 --> 01:20.760
+It just does not exist.
+
+01:20.760 --> 01:23.430
+We instead run npm run build one time
+
+01:23.430 --> 01:26.550
+and that gives us essentially that index.html file
+
+01:26.550 --> 01:30.090
+and the main .js file that we need to somehow communicate
+
+01:30.090 --> 01:31.563
+down to our user's browser.
+
+01:32.640 --> 01:35.100
+As a quick aside, this development server falls away
+
+01:35.100 --> 01:37.560
+because it's really not appropriate to be running
+
+01:37.560 --> 01:38.970
+in a production environment.
+
+01:38.970 --> 01:42.210
+It has a ton of processing power inside of it
+
+01:42.210 --> 01:44.580
+dedicated to processing these JavaScript files
+
+01:44.580 --> 01:45.570
+that we're putting together,
+
+01:45.570 --> 01:47.250
+and that's something that we do not need to do
+
+01:47.250 --> 01:48.870
+when we are running in production,
+
+01:48.870 --> 01:51.030
+because we're no longer making any changes
+
+01:51.030 --> 01:53.730
+to the JavaScript code of our project.
+
+01:53.730 --> 01:57.150
+So, what we need for our production environment
+
+01:57.150 --> 02:00.270
+is some type of server here whose sole purpose
+
+02:00.270 --> 02:02.790
+is going to be to respond to browser requests
+
+02:02.790 --> 02:06.570
+with that index HTML file and some random JavaScript file
+
+02:06.570 --> 02:09.360
+that contains all the React application code.
+
+02:09.360 --> 02:12.090
+So we need to essentially put something together here
+
+02:12.090 --> 02:13.950
+that's just gonna take incoming requests
+
+02:13.950 --> 02:17.610
+and respond to them with those different files.
+
+02:17.610 --> 02:19.830
+To solve this, we're going to be making use
+
+02:19.830 --> 02:22.290
+of a server called NGINX.
+
+02:22.290 --> 02:26.040
+NGINX is an extremely popular web server.
+
+02:26.040 --> 02:28.050
+It doesn't have a lot of logic tied to it.
+
+02:28.050 --> 02:30.420
+It's really just about taking incoming traffic
+
+02:30.420 --> 02:33.180
+and somehow routing it or somehow responding to it
+
+02:33.180 --> 02:34.680
+with some static files,
+
+02:34.680 --> 02:37.800
+which is exactly what you and I are going to use it for.
+
+02:37.800 --> 02:41.010
+So we are going to create a separate Docker file
+
+02:41.010 --> 02:43.140
+that is gonna create a production version
+
+02:43.140 --> 02:45.300
+of our web container.
+
+02:45.300 --> 02:47.340
+This production version of the web container
+
+02:47.340 --> 02:49.920
+is gonna start up an NGINX instance
+
+02:49.920 --> 02:52.080
+and we're gonna use that NGINX server
+
+02:52.080 --> 02:54.030
+to produce, or, excuse me, to serve up
+
+02:54.030 --> 02:57.330
+our index HTML and that main .js file.
+
+02:57.330 --> 02:58.980
+So let's take a quick pause right here.
+
+02:58.980 --> 03:00.360
+We're gonna come back the next section
+
+03:00.360 --> 03:01.620
+and we're gonna start putting together
+
+03:01.620 --> 03:04.980
+the Docker file that is gonna make the production version
+
+03:04.980 --> 03:06.423
+of our web container.

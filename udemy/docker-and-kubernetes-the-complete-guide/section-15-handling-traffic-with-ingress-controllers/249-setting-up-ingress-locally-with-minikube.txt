@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00.600 --> 00:01.433
+Instructor: In this section,
+
+00:01.433 --> 00:02.850
+we're gonna start setting up Ingress-NGINX
+
+00:02.850 --> 00:04.230
+on our local project.
+
+00:04.230 --> 00:06.420
+We're actually gonna follow the setup directions
+
+00:06.420 --> 00:09.450
+that are tied directly to the GitHub repository.
+
+00:09.450 --> 00:11.370
+So to get started, I'm gonna first navigate
+
+00:11.370 --> 00:12.600
+to this address right here,
+
+00:12.600 --> 00:16.600
+so github.com/kubernetes/ingress-nginx
+
+00:18.450 --> 00:19.380
+and then once here,
+
+00:19.380 --> 00:21.420
+I'm gonna find the link to the documentation
+
+00:21.420 --> 00:22.440
+at the very top.
+
+00:22.440 --> 00:23.673
+So this link right here.
+
+00:25.260 --> 00:26.370
+Then once on the homepage,
+
+00:26.370 --> 00:29.490
+I'll find the deployment tab at the very top.
+
+00:29.490 --> 00:32.070
+Back up here, I'm gonna click on minikube.
+
+00:32.070 --> 00:33.990
+And then it tells us that for standard usage,
+
+00:33.990 --> 00:35.190
+which is what we are doing,
+
+00:35.190 --> 00:37.170
+all we have to do is run this command right here,
+
+00:37.170 --> 00:40.560
+which says, minikube addons enable ingress.
+
+00:40.560 --> 00:44.310
+So I'm gonna copy that command, go back over to my terminal
+
+00:44.310 --> 00:47.493
+and I'm gonna make sure I copy it this time.
+
+00:49.080 --> 00:50.070
+There we go.
+
+00:50.070 --> 00:50.903
+And then we should see
+
+00:50.903 --> 00:53.190
+that ingress was successfully enabled.
+
+00:53.190 --> 00:56.010
+And the very last thing I want to show you,
+
+00:56.010 --> 00:59.100
+you'll recall that I just told you that on Google Cloud,
+
+00:59.100 --> 01:02.580
+a load balancer service is actually going to be created
+
+01:02.580 --> 01:03.990
+and that load balancer service
+
+01:03.990 --> 01:05.310
+is going to simultaneously create
+
+01:05.310 --> 01:07.650
+the external load balancer for us as well.
+
+01:07.650 --> 01:08.970
+So as a little sneak peek,
+
+01:08.970 --> 01:09.870
+if you want to,
+
+01:09.870 --> 01:12.990
+you could scroll on down to the configuration
+
+01:12.990 --> 01:15.420
+for GCE right here.
+
+01:15.420 --> 01:17.310
+And then again you can copy the link
+
+01:17.310 --> 01:20.340
+to the config file for GCE,
+
+01:20.340 --> 01:23.220
+and then if you open that up in a new tab again
+
+01:23.220 --> 01:24.600
+this is what is going to be created
+
+01:24.600 --> 01:26.700
+specifically on Google Cloud.
+
+01:26.700 --> 01:29.760
+And so as you'll notice, it is in fact a service
+
+01:29.760 --> 01:32.070
+that has type load balancer.
+
+01:32.070 --> 01:33.660
+And so specifically on Google Cloud,
+
+01:33.660 --> 01:35.520
+a load balancer is created
+
+01:35.520 --> 01:37.740
+to route traffic into your application
+
+01:37.740 --> 01:40.620
+through the use of a load balancer service.
+
+01:40.620 --> 01:42.000
+I thought that was just a little bit interesting
+
+01:42.000 --> 01:43.770
+because you know, even though we're saying,
+
+01:43.770 --> 01:45.720
+oh yeah, load balancers are a little bit dated
+
+01:45.720 --> 01:47.670
+as a service in the world of Kubernetes,
+
+01:47.670 --> 01:49.230
+even this newer feature
+
+01:49.230 --> 01:51.840
+of ingress is still you seeing a load balancer
+
+01:51.840 --> 01:52.673
+behind the scenes.
+
+01:52.673 --> 01:55.170
+So again, I just thought it was a little bit interesting.
+
+01:55.170 --> 01:56.310
+All right, so that's all we had to do
+
+01:56.310 --> 01:58.080
+to set up the ingress locally.
+
+01:58.080 --> 01:59.610
+So let's take a quick pause right here.
+
+01:59.610 --> 02:00.810
+When we come back to the next section,
+
+02:00.810 --> 02:03.780
+we're gonna start to configure our ingress resource.
+
+02:03.780 --> 02:06.230
+So quick pause and I'll see you in just a minute.

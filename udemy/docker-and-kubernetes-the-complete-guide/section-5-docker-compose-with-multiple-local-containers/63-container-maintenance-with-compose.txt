@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00.660 --> 00:02.040
+-: One thing that we have not discussed
+
+00:02.040 --> 00:03.120
+in the docker world just yet
+
+00:03.120 --> 00:05.880
+is how to deal with containers that crash
+
+00:05.880 --> 00:07.320
+for some given reason.
+
+00:07.320 --> 00:09.150
+So it's entirely possible that you and I
+
+00:09.150 --> 00:10.500
+might be running a server
+
+00:10.500 --> 00:12.210
+of some sort inside of a container
+
+00:12.210 --> 00:14.760
+and maybe that server experiences some error
+
+00:14.760 --> 00:17.250
+that cause it to hang or crash.
+
+00:17.250 --> 00:18.750
+In this section, we're gonna start taking a look
+
+00:18.750 --> 00:19.710
+at a couple of different ways
+
+00:19.710 --> 00:21.570
+that we can mitigate that behavior
+
+00:21.570 --> 00:24.540
+and figure out how to essentially restart a container
+
+00:24.540 --> 00:28.200
+when the software inside of it has an error of some sort.
+
+00:28.200 --> 00:30.630
+To get started, we're gonna first add in a little bit
+
+00:30.630 --> 00:33.360
+of code to our index.js file to make sure
+
+00:33.360 --> 00:36.720
+that our server crashes entirely anytime
+
+00:36.720 --> 00:39.060
+someone visits our root route.
+
+00:39.060 --> 00:39.893
+So we're gonna add in
+
+00:39.893 --> 00:42.630
+kind of a arbitrary forced crash this thing
+
+00:42.630 --> 00:44.070
+and then figure out how to deal with it
+
+00:44.070 --> 00:46.110
+using docker compose.
+
+00:46.110 --> 00:49.260
+So to get started inside of my index.js file,
+
+00:49.260 --> 00:53.070
+I'm gonna add in a third require statement here at the top.
+
+00:53.070 --> 00:57.070
+It's gonna say const process is require process
+
+00:57.986 --> 01:00.690
+and then to make sure that my server crashes
+
+01:00.690 --> 01:03.720
+anytime someone tries to access the root route,
+
+01:03.720 --> 01:06.240
+I'll find the root route handler right here.
+
+01:06.240 --> 01:08.830
+I'll add a new line inside the function body
+
+01:09.810 --> 01:14.430
+and I'll say process.exit zero, like so.
+
+01:14.430 --> 01:15.990
+Now talk about why we are passing
+
+01:15.990 --> 01:18.000
+in the zero right there in just a moment.
+
+01:18.000 --> 01:19.590
+But first, let's test this out
+
+01:19.590 --> 01:21.570
+and make sure that we can actually get our server
+
+01:21.570 --> 01:25.470
+to crash any time that we try to visit this root route.
+
+01:25.470 --> 01:27.660
+So I'm gonna flip on over
+
+01:27.660 --> 01:31.770
+to my terminal and I'll run docker compose up.
+
+01:31.770 --> 01:33.930
+And since we just made a little change
+
+01:33.930 --> 01:36.660
+to the code inside one of our images
+
+01:36.660 --> 01:39.540
+I'm gonna add on the dash dash build flag
+
+01:39.540 --> 01:42.290
+to make sure that we attempt to rebuild that container.
+
+01:43.710 --> 01:46.020
+So I'll run that, we're going to rebuild that container
+
+01:46.020 --> 01:47.370
+and then everything starts up
+
+01:47.370 --> 01:49.260
+and I see my running radar server
+
+01:49.260 --> 01:51.540
+and I'm also listening on Port 8081,
+
+01:51.540 --> 01:52.373
+but you and I know
+
+01:52.373 --> 01:55.860
+that we actually changed the listening port to 4001
+
+01:55.860 --> 01:59.430
+inside of our docker composed file right here.
+
+01:59.430 --> 02:02.080
+All right, so I'm going to now open up my web browser
+
+02:03.930 --> 02:07.623
+and I'm going to navigate to local host colon 4001.
+
+02:08.640 --> 02:09.570
+Once I navigate over there,
+
+02:09.570 --> 02:12.540
+I'm gonna see an air message like this appear on the screen.
+
+02:12.540 --> 02:14.850
+And if I flip back over to my terminal,
+
+02:14.850 --> 02:16.320
+you'll notice that it says right here
+
+02:16.320 --> 02:18.660
+we exited with code zero.
+
+02:18.660 --> 02:21.510
+And so at this point, essentially our running container
+
+02:21.510 --> 02:24.240
+and the software inside of it has crashed.
+
+02:24.240 --> 02:26.850
+I now want you to try opening up a second tab
+
+02:26.850 --> 02:29.070
+and running docker PS.
+
+02:29.070 --> 02:30.090
+When we do so you'll notice
+
+02:30.090 --> 02:32.850
+that we are now down to just one running container,
+
+02:32.850 --> 02:34.800
+just the redis container
+
+02:34.800 --> 02:38.880
+and our node server is no longer running whatsoever.
+
+02:38.880 --> 02:41.670
+So clearly that thing has crashed
+
+02:41.670 --> 02:43.830
+and we might want to automatically restart it
+
+02:43.830 --> 02:45.330
+at some point in time.
+
+02:45.330 --> 02:47.040
+So let's take a quick pause right here
+
+02:47.040 --> 02:49.590
+and take a look at what our different options are
+
+02:49.590 --> 02:50.640
+in the next section.
+
+02:50.640 --> 02:53.090
+So quick break and I'll see you in just a minute.

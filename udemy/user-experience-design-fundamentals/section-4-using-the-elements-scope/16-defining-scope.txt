@@ -1,0 +1,2449 @@
+﻿WEBVTT
+
+
+00:00.920 --> 00:02.750
+So why do we define project scope?
+
+
+00:02.750 --> 00:08.810
+Well, the first reason is to avoid perpetual beta, to get the thing up and running, to get into design
+
+
+00:08.810 --> 00:14.150
+and development, to get the train on the tracks and get everybody moving.
+
+
+00:14.180 --> 00:19.850
+When you define scope, you're essentially forcing everybody to see and address any potential conflicts.
+
+
+00:19.850 --> 00:22.370
+What could possibly go wrong here?
+
+
+00:22.400 --> 00:25.640
+What are the inherent risks in what we're doing?
+
+
+00:25.640 --> 00:25.930
+Okay.
+
+
+00:25.940 --> 00:29.660
+What could derail all these wonderful plans that we've made?
+
+
+00:29.660 --> 00:36.260
+What stands in our way of potentially implementing all these awesome features and functions?
+
+
+00:36.260 --> 00:42.500
+Okay, Asking those kinds of questions and sort of really thinking hard about what could derail the
+
+
+00:42.500 --> 00:50.120
+process goes a long way in making sure that the time that you do invest in designing and building the
+
+
+00:50.120 --> 00:51.440
+thing is well spent.
+
+
+00:51.470 --> 00:53.420
+It means that you're productive.
+
+
+00:53.420 --> 00:59.720
+It means that you're efficient, it means that you're probably a little less stressed and the client
+
+
+00:59.720 --> 01:02.450
+is a lot less stressed too, because they see progress.
+
+
+01:02.460 --> 01:08.310
+So any steps you take towards defining scope are going to serve you well later on.
+
+
+01:08.340 --> 01:14.400
+The reason you document that scope is because it gives the entire team on your side and the client side
+
+
+01:14.430 --> 01:18.680
+a reference point for the work that's going to be done throughout the project life cycle.
+
+
+01:18.690 --> 01:24.720
+It also gives you a common way to talk about those things in a way that everybody is going to understand,
+
+
+01:24.720 --> 01:25.020
+right?
+
+
+01:25.020 --> 01:28.860
+Because you're all calling it the same thing.
+
+
+01:29.130 --> 01:33.510
+Let's say you have multiple registration processes, okay?
+
+
+01:34.050 --> 01:42.480
+There's a registration for end customers, but maybe there's also a registration for suppliers, manufacturers.
+
+
+01:42.480 --> 01:45.780
+There's another registration for advertisers.
+
+
+01:45.810 --> 01:46.040
+Okay.
+
+
+01:46.050 --> 01:49.800
+So all these folks can use different parts of what you're building.
+
+
+01:49.800 --> 01:55.560
+Well, if we're having a conversation and all we say is, oh, well, that happens during the registration
+
+
+01:55.560 --> 01:56.280
+process.
+
+
+01:56.280 --> 01:59.390
+Well, which registration process are we talking about?
+
+
+01:59.400 --> 02:05.040
+Is it the client registration process or the manufacturer registration process?
+
+
+02:05.040 --> 02:12.000
+The advertiser registration process by simply being specific, by documenting that name and saying from
+
+
+02:12.000 --> 02:15.780
+now on we are going to call this the client registration process.
+
+
+02:15.990 --> 02:18.000
+Now everybody knows what we're talking about.
+
+
+02:18.000 --> 02:20.880
+So we don't use generic terms like registration.
+
+
+02:20.880 --> 02:24.330
+We say client registration and everyone goes, Yep, got it.
+
+
+02:24.510 --> 02:27.720
+It's a simple example, but it's really, really important.
+
+
+02:27.960 --> 02:37.050
+The rise of design and development processes such as Lean or Agile or any of these methodologies sort
+
+
+02:37.050 --> 02:39.060
+of discourage documenting requirements.
+
+
+02:39.060 --> 02:39.300
+Okay.
+
+
+02:39.300 --> 02:45.180
+But the result of that, in my experience, is often a product with a slew of features that are in various
+
+
+02:45.180 --> 02:46.650
+stages of completeness.
+
+
+02:46.650 --> 02:52.080
+And that is essentially because although we're all iterating, we're constantly putting stuff out and
+
+
+02:52.080 --> 02:53.850
+reviewing it and checking it and improving it.
+
+
+02:53.850 --> 02:55.860
+That's a great process in and of itself.
+
+
+02:56.040 --> 03:04.350
+But unless everybody understands what it is they're building, what those parts and pieces are called,
+
+
+03:04.350 --> 03:11.130
+unless there's some common reference point that exists for everybody to refer back to as they're iterating,
+
+
+03:11.250 --> 03:12.600
+it'll be a mess.
+
+
+03:12.600 --> 03:20.070
+If there is no documented anything, your project will quickly turn into a giant snowball rolling downhill.
+
+
+03:20.370 --> 03:24.360
+I bet my eyeballs on that and I refuse to believe otherwise.
+
+
+03:24.390 --> 03:30.690
+It doesn't mean you have to write a novel, but you do have to write down all the essential features
+
+
+03:30.690 --> 03:32.790
+and components and functions.
+
+
+03:32.790 --> 03:33.090
+Okay.
+
+
+03:33.090 --> 03:37.740
+I don't believe in long requirements, specifications, documents, because nobody reads them.
+
+
+03:37.740 --> 03:39.030
+And that's the truth.
+
+
+03:39.060 --> 03:46.100
+Agile practitioners are very, very correct when they say a 200 page requirements document is outdated
+
+
+03:46.110 --> 03:47.880
+the minute it's complete.
+
+
+03:47.880 --> 03:49.470
+I totally agree with that.
+
+
+03:49.470 --> 03:55.890
+So what I'm getting at is documentation doesn't have to be epic, but a common understanding of features,
+
+
+03:55.890 --> 03:59.100
+schedules and milestones puts the end squarely in sight.
+
+
+03:59.100 --> 04:00.900
+It puts everybody on the same page.
+
+
+04:00.900 --> 04:06.540
+It gives everybody a common reference point, and we all understand what we're after.
+
+
+04:06.540 --> 04:10.980
+You have to at least do that no matter what your process is.
+
+
+04:11.620 --> 04:15.670
+The next reason you want to define scope is so that you know what you're building.
+
+
+04:15.670 --> 04:17.630
+And I think that's sort of self obvious, right?
+
+
+04:17.650 --> 04:22.180
+We obviously want to know what the hell it is we're creating unless you have a penchant for inviting
+
+
+04:22.180 --> 04:22.990
+disaster.
+
+
+04:23.260 --> 04:24.220
+Okay.
+
+
+04:24.400 --> 04:27.400
+If you have a clear description of what you're setting out to build.
+
+
+04:27.400 --> 04:32.830
+All right, then everybody involved in the project knows what the goals are and is also able to recognize
+
+
+04:32.830 --> 04:36.530
+when those goals are reached with no documented requirements.
+
+
+04:36.550 --> 04:39.350
+You're playing the schoolyard game of telephone.
+
+
+04:39.370 --> 04:40.390
+Everybody remember this?
+
+
+04:40.420 --> 04:47.200
+Have you guys ever done that where one person whispers something to the next person, then they whisper
+
+
+04:47.200 --> 04:50.680
+it to another person, then they whisper it to another person and they whisper it to another person.
+
+
+04:50.680 --> 04:56.310
+And by the time it tracks through, you know, 30 people, the meaning is completely changed.
+
+
+04:56.320 --> 05:00.220
+What started out as peas becomes fleas.
+
+
+05:01.300 --> 05:01.630
+All right.
+
+
+05:01.630 --> 05:09.010
+That has everything to do with the way our brains work with human psychology, with human physiology.
+
+
+05:09.010 --> 05:16.250
+And no matter how hard you try, you will not change the essential way that human beings are wired.
+
+
+05:16.250 --> 05:19.010
+So you've got to know what you're getting into.
+
+
+05:19.040 --> 05:21.650
+You've got to know why you're getting into it.
+
+
+05:21.650 --> 05:28.440
+And everybody again, has to have the same understanding of what that thing is.
+
+
+05:28.460 --> 05:33.370
+So instead of each person on the team getting a different impression of what the product is, you know,
+
+
+05:33.380 --> 05:38.450
+by word of mouth or discussion and everyone's sort of idea and description of it ending up slightly
+
+
+05:38.450 --> 05:39.110
+different.
+
+
+05:39.140 --> 05:45.920
+You've got some document, even if it's only a page long, that everyone can sort of quickly refer to
+
+
+05:45.920 --> 05:48.440
+and go, Oh yeah, okay, Right, right.
+
+
+05:48.440 --> 05:48.800
+Okay.
+
+
+05:48.800 --> 05:50.060
+It's that, I get it.
+
+
+05:50.240 --> 05:55.790
+The other thing that occurs frequently in the absence of requirements is that people will assume that
+
+
+05:55.790 --> 06:01.790
+someone else is managing some critical part of the project, when in fact no one is responsible for
+
+
+06:01.820 --> 06:05.090
+that part because everybody thinks someone else has got it.
+
+
+06:05.270 --> 06:07.700
+Oh, well, I thought you were going to do that.
+
+
+06:07.850 --> 06:09.740
+No, man, I thought you were going to do that.
+
+
+06:09.740 --> 06:12.780
+This happens more often than you think.
+
+
+06:12.800 --> 06:14.390
+It really, really does.
+
+
+06:14.950 --> 06:20.290
+So if you have a defined set of requirements that allows you to assign responsibility for the work a
+
+
+06:20.290 --> 06:21.450
+lot more efficiently, right?
+
+
+06:21.460 --> 06:23.190
+It keeps everybody on the same page.
+
+
+06:23.200 --> 06:29.290
+Having some sense of the entire scope mapped out allows you to see how all these individual features,
+
+
+06:29.290 --> 06:32.560
+functions, requirements, whatever they are, are related.
+
+
+06:32.560 --> 06:38.440
+You're going to see connections, you're going to see code dependent issues that might not otherwise
+
+
+06:38.470 --> 06:40.750
+be obvious unless you can see the big picture.
+
+
+06:40.750 --> 06:42.630
+It's a forest for the trees kind of thing.
+
+
+06:42.640 --> 06:51.550
+So for example, you know, the the admin side of the app or the help documentation or things like that,
+
+
+06:51.550 --> 06:55.780
+you know, may have seemed like very separate content features when you first started talking about
+
+
+06:55.780 --> 06:56.350
+the project.
+
+
+06:56.350 --> 07:03.400
+But if they actually get defined as requirements, you may find that there's a lot of overlap and that
+
+
+07:03.400 --> 07:11.380
+maybe the same team should be responsible for both the admin side features and the end user facing features
+
+
+07:11.380 --> 07:15.530
+because they're interrelated and it's possible that users may be bouncing back and forth between the
+
+
+07:15.530 --> 07:15.800
+two.
+
+
+07:15.800 --> 07:23.030
+But again, unless you have all that somewhere and can refer to it or can at least glance at it and
+
+
+07:23.030 --> 07:28.040
+go, well, geez, I didn't realize all these things were so closely related.
+
+
+07:28.070 --> 07:29.600
+There's no way to know that.
+
+
+07:29.600 --> 07:36.500
+Part of defining scope is to make absolutely sure you know what you're building, who's building it
+
+
+07:36.500 --> 07:39.830
+and who's responsible for all those parts.
+
+
+07:39.860 --> 07:44.150
+The next reason to define scope is so that you know what you're not building.
+
+
+07:44.150 --> 07:46.730
+During the initial stages of a project.
+
+
+07:46.730 --> 07:52.940
+Especially, everybody has ideas about features your team, the client's team, outside stakeholders.
+
+
+07:52.940 --> 07:57.650
+You may be talking to two end users, customers of your client, etcetera, etcetera.
+
+
+07:57.680 --> 08:00.260
+The point is, everybody is going to suggest stuff.
+
+
+08:00.260 --> 08:06.560
+All these ideas are going to come out of the ether, so to speak, and a lot of them are going to be
+
+
+08:06.560 --> 08:07.570
+very good ideas.
+
+
+08:07.580 --> 08:15.020
+They're going to be very good, very interesting, very useful, very valid suggestions.
+
+
+08:15.020 --> 08:21.140
+But while new features often sound like good ideas, they may not support the strategic objectives of
+
+
+08:21.140 --> 08:22.010
+the project.
+
+
+08:22.010 --> 08:22.280
+Okay?
+
+
+08:22.310 --> 08:26.570
+They may not be core to what it is we're trying to accomplish.
+
+
+08:26.570 --> 08:32.060
+They may not be directly in line with the value that gets provided to the end user.
+
+
+08:32.060 --> 08:34.760
+So ideas are going to constantly emerge.
+
+
+08:34.760 --> 08:37.820
+That's part of what we're doing in the early phases, right?
+
+
+08:37.820 --> 08:43.610
+When all this discussion is taking place, when we're working at the whiteboard, thinking through ideas,
+
+
+08:43.850 --> 08:45.260
+that continues.
+
+
+08:45.290 --> 08:45.620
+Okay?
+
+
+08:45.650 --> 08:50.510
+Ideas for new features almost always continue to emerge after the project is underway.
+
+
+08:50.510 --> 08:56.240
+And that's simply because as we move along in the process, there's more information coming to light
+
+
+08:56.240 --> 09:02.750
+as we think through these features and these functions and these possibilities, new options come to
+
+
+09:02.750 --> 09:03.320
+light.
+
+
+09:03.620 --> 09:10.340
+As we're doing research, we may come upon some third party plug in or widget that does something that
+
+
+09:10.340 --> 09:12.260
+we previously didn't think was possible.
+
+
+09:12.260 --> 09:14.870
+And we go, Wow, okay, we can do this now.
+
+
+09:14.870 --> 09:16.670
+I didn't think we could do this, but now we can do it.
+
+
+09:16.670 --> 09:22.400
+And you tell the project team and the project team goes to the client and says, Look, here's a whole
+
+
+09:22.400 --> 09:23.150
+new thing.
+
+
+09:23.150 --> 09:24.380
+We had no idea.
+
+
+09:24.410 --> 09:30.470
+The earlier that happens in the process, the better off you are because that new feature, if everybody
+
+
+09:30.470 --> 09:35.450
+agrees that it's critical, if everybody agrees that it aligns with the product's reason for being in
+
+
+09:35.450 --> 09:38.090
+the first place, it should get documented.
+
+
+09:38.090 --> 09:44.180
+Okay, So it's now part of the scope and it documenting it also forces you to think about, well, how
+
+
+09:44.180 --> 09:48.020
+does that new requirement affect other factors that we talked about?
+
+
+09:48.290 --> 09:53.330
+Clearly identified requirements give you a framework for determining whether those additional ideas
+
+
+09:53.330 --> 09:55.550
+fit into what you've already committed to build.
+
+
+09:55.550 --> 09:55.730
+Okay.
+
+
+09:55.730 --> 09:58.100
+How does it affect the time we have to complete it?
+
+
+09:58.100 --> 10:00.440
+How does it affect our available resources?
+
+
+10:00.440 --> 10:02.540
+Do we have the right people who know how to do this?
+
+
+10:02.570 --> 10:03.770
+How does it affect budget?
+
+
+10:03.800 --> 10:05.840
+Does this thing going to cost us any more money?
+
+
+10:05.870 --> 10:10.910
+Does it mean another three weeks of development time, which is going to obviously increase the project
+
+
+10:10.910 --> 10:11.540
+cost?
+
+
+10:11.570 --> 10:17.810
+It's a ripple effect If you at least make a note that these things have happened and again, it doesn't
+
+
+10:17.810 --> 10:20.630
+have to be three pages of explanation.
+
+
+10:20.630 --> 10:22.430
+It just has to be a note.
+
+
+10:22.460 --> 10:23.960
+We uncovered this.
+
+
+10:23.990 --> 10:25.130
+Here's what it does.
+
+
+10:25.130 --> 10:31.940
+Here's why we think it's important and here's how it affects time, cost, scope, overall, just get
+
+
+10:31.940 --> 10:32.690
+it down.
+
+
+10:32.690 --> 10:41.030
+So figuring out what you're not doing is equally as valuable as figuring out what you are doing, at
+
+
+10:41.030 --> 10:42.590
+least not right now anyway.
+
+
+10:42.590 --> 10:46.640
+So although although we're talking about, all right, we're going to do these things and we're not
+
+
+10:46.640 --> 10:52.670
+going to do these things, it's also important to identify what's doable right now versus what has to
+
+
+10:52.670 --> 10:53.030
+wait.
+
+
+10:53.030 --> 10:58.880
+So it may be that that, hey, we can incorporate that feature, but we can't do it right this minute.
+
+
+10:58.910 --> 11:00.530
+It's got to wait till next month.
+
+
+11:00.680 --> 11:03.920
+So here's a simple way that works out.
+
+
+11:03.920 --> 11:08.030
+If you just have a running list that you're paying attention to.
+
+
+11:08.060 --> 11:12.140
+Someone wrote it on a whiteboard with a big do not erase sign.
+
+
+11:12.200 --> 11:13.910
+Again, it doesn't have to be a piece of paper.
+
+
+11:13.920 --> 11:17.660
+But you say this month, here's the features 1.0 list.
+
+
+11:17.670 --> 11:20.610
+Okay, we got one, two, three, four, five, six features.
+
+
+11:20.610 --> 11:22.110
+Well, you know what?
+
+
+11:22.140 --> 11:25.710
+We're not going to be able to do features 4 or 5 and six this month.
+
+
+11:25.710 --> 11:26.910
+We just we don't have enough time.
+
+
+11:26.910 --> 11:28.200
+We don't have enough bodies.
+
+
+11:28.200 --> 11:36.390
+So, fine, we'll relegate that to the next iteration, which happens next month and we'll knock it
+
+
+11:36.390 --> 11:37.200
+out then.
+
+
+11:37.290 --> 11:42.990
+So it's a simple matter of managing what you're doing and when you're doing it.
+
+
+11:42.990 --> 11:48.720
+But if you don't have the list in the first place, you can't really make those decisions.
+
+
+11:48.720 --> 11:49.020
+Right?
+
+
+11:49.020 --> 11:50.130
+You're guessing.
+
+
+11:50.130 --> 11:51.060
+You're guessing.
+
+
+11:51.060 --> 11:55.800
+You're saying, okay, I think I know what has to get done this month, but you're kidding yourself.
+
+
+11:55.830 --> 12:00.900
+You don't you can't just keep all that stuff in your head and miraculously charge through and have a
+
+
+12:00.900 --> 12:03.810
+solid sense of what's going to fit in and what's not.
+
+
+12:03.840 --> 12:08.430
+No matter how great you are, the human brain isn't capable of those kinds of things.
+
+
+12:08.430 --> 12:08.670
+Okay?
+
+
+12:08.700 --> 12:09.300
+It just isn't.
+
+
+12:09.300 --> 12:13.380
+There's there's 80,000 miles of research to bear this out.
+
+
+12:13.380 --> 12:18.180
+So this is not, you know, Joe's opinion of how things work.
+
+
+12:18.180 --> 12:19.140
+It's a fact.
+
+
+12:19.140 --> 12:26.520
+So, again, whether you write it down on a piece of paper, whether it's a snippet of information that's
+
+
+12:26.520 --> 12:31.350
+living on a project management site, it's traded emails back and forth.
+
+
+12:31.380 --> 12:35.160
+It's writing something on a whiteboard and leaving it up there for everybody to see it.
+
+
+12:35.160 --> 12:40.410
+I don't care what it is, but you got to write it down so you know what you're doing when you're doing
+
+
+12:40.410 --> 12:44.010
+it, what you're not doing and what you're not doing right now.
+
+
+12:44.650 --> 12:47.530
+Here are some symptoms of an ill defined scope.
+
+
+12:47.530 --> 12:51.790
+Here's when you know something has not been defined properly.
+
+
+12:51.790 --> 12:52.020
+Okay?
+
+
+12:52.030 --> 12:57.670
+And I'm willing to bet that almost all of you have experienced at least one of these things, if not
+
+
+12:57.670 --> 12:58.390
+multiple.
+
+
+12:58.690 --> 13:05.940
+When scope is too big, the very first thing is that the delivery expectations are completely unrealistic.
+
+
+13:05.950 --> 13:06.220
+Okay?
+
+
+13:06.220 --> 13:12.580
+You've got people, project managers walking around going, okay, we got to have features one through
+
+
+13:12.580 --> 13:20.560
+12 done by Friday and it's Tuesday and you're thinking to yourself, there is no way on God's green
+
+
+13:20.560 --> 13:22.060
+earth that's happening.
+
+
+13:22.060 --> 13:27.040
+And you're getting a little frustrated because you think to yourself, Well, if I was able to bend
+
+
+13:27.070 --> 13:30.010
+the laws of time and space, maybe that would be possible.
+
+
+13:30.010 --> 13:31.390
+But it just isn't.
+
+
+13:31.390 --> 13:31.660
+Okay.
+
+
+13:31.660 --> 13:38.470
+So when unrealistic delivery expectations are being set and people are agreeing to them, you know you're
+
+
+13:38.470 --> 13:39.100
+in trouble.
+
+
+13:39.130 --> 13:43.750
+The next thing is, when deadlines slip, you miss a deadline, you miss a delivery date, you miss
+
+
+13:43.750 --> 13:45.140
+an internal review date.
+
+
+13:45.140 --> 13:50.570
+I don't care how insignificant that date or deadline may seem.
+
+
+13:50.570 --> 13:54.170
+The minute something slips, pay attention.
+
+
+13:54.170 --> 13:55.640
+You are in trouble.
+
+
+13:55.670 --> 14:02.180
+Maybe not in a big way, but when things start to slip, that's the beginning of bigger things.
+
+
+14:02.180 --> 14:03.620
+Trust me on this.
+
+
+14:04.170 --> 14:10.650
+Another symptom is when you're constantly being asked, Well, can't we also have A, B, C, D, e,
+
+
+14:10.650 --> 14:17.490
+f, g, either by your own folks, your own project management team, or your own development team or
+
+
+14:17.490 --> 14:25.470
+design team or the client or the client's clients people or stakeholders or whoever, Right.
+
+
+14:25.500 --> 14:28.830
+When people are constantly asking, Well, can we also have this?
+
+
+14:28.830 --> 14:29.790
+Can't we also have this?
+
+
+14:29.790 --> 14:31.200
+Can't we also have this?
+
+
+14:31.590 --> 14:34.950
+Especially if you're already knee deep into design or development.
+
+
+14:35.190 --> 14:37.860
+Mark my words, you are in trouble.
+
+
+14:37.860 --> 14:38.550
+Okay?
+
+
+14:38.580 --> 14:44.970
+Your scope has not been properly defined because if it was and everybody understood it, they wouldn't
+
+
+14:44.970 --> 14:46.440
+be asking those questions.
+
+
+14:46.470 --> 14:52.920
+When people say can't we also have it means they have no clue what the scope of the project is.
+
+
+14:53.500 --> 15:02.320
+When the designers and the developers are nervous and stressed and aggravated and frustrated, scope
+
+
+15:02.320 --> 15:04.600
+is not defined properly.
+
+
+15:04.630 --> 15:11.890
+Nothing and I mean nothing stresses out a design team or a development team project team of any stripe
+
+
+15:11.890 --> 15:19.300
+more than having no idea where the finish line is or how the hell they're possibly going to accomplish
+
+
+15:19.300 --> 15:19.990
+any of this.
+
+
+15:20.020 --> 15:22.990
+It does not bode well and it will not end well.
+
+
+15:23.080 --> 15:29.410
+So that's what happens when when your scope is just too big, too wide, too deep and just ill defined
+
+
+15:29.410 --> 15:30.110
+in some way.
+
+
+15:30.130 --> 15:37.120
+Now, when the scope is too small, what typically happens is the first thing is that there's a very
+
+
+15:37.120 --> 15:39.670
+unclear path to the full vision.
+
+
+15:39.700 --> 15:41.200
+There's a lot of questions.
+
+
+15:41.200 --> 15:44.380
+There's a lot more questions than answers.
+
+
+15:44.380 --> 15:45.220
+Not so much.
+
+
+15:45.220 --> 15:50.530
+Can't we also have But people are walking around going, well, what about this?
+
+
+15:50.530 --> 15:51.400
+How are we going to do this?
+
+
+15:51.400 --> 15:52.420
+Well, what about this other thing?
+
+
+15:52.420 --> 15:56.840
+How are we going to and who's going to and how are we and how is that going to work?
+
+
+15:56.840 --> 15:58.850
+And do we have the the software?
+
+
+15:58.880 --> 16:03.950
+Does that how is the database going to capture that information and who's going to be responsible for
+
+
+16:03.980 --> 16:05.480
+that, etcetera, etcetera.
+
+
+16:05.480 --> 16:13.250
+So just no one knows how we're going to get from point A to point B to point C to point D, That means
+
+
+16:13.250 --> 16:14.480
+the scope is way too small.
+
+
+16:14.480 --> 16:16.310
+There are too many things that you haven't uncovered.
+
+
+16:16.310 --> 16:21.260
+There are too many things that you haven't thought about, just too many questions that have gone unasked.
+
+
+16:21.290 --> 16:27.380
+The other symptom of scope being too small is when each release okay, each iteration, if you're if
+
+
+16:27.380 --> 16:32.600
+you're working in an agile or lean way, is that there isn't much progress from release to release.
+
+
+16:32.600 --> 16:32.810
+Okay?
+
+
+16:32.810 --> 16:36.530
+They're unremarkable, they're unimpressive and they're sort of watered down, right?
+
+
+16:36.530 --> 16:39.830
+There's nothing sort of included.
+
+
+16:40.250 --> 16:40.850
+Okay.
+
+
+16:40.850 --> 16:46.820
+We're we're seeing stuff on the screen, but it doesn't really do anything.
+
+
+16:46.820 --> 16:54.680
+And it's been eight weeks and we still don't seem to be any further along than we were.
+
+
+16:54.680 --> 16:57.440
+We're not seeing anything that makes sense to us.
+
+
+16:57.440 --> 17:01.160
+We're not seeing features and functions that seem to be of value.
+
+
+17:01.310 --> 17:05.180
+It's a clue that there's a lot that's not being considered.
+
+
+17:05.210 --> 17:12.140
+It's a clue that someone didn't ask the right questions or didn't ask enough questions up front.
+
+
+17:12.170 --> 17:18.290
+We haven't considered all the things that this thing needs to do because it's eight weeks in and I'm
+
+
+17:18.290 --> 17:21.230
+not seeing anything that's even remotely impressive.
+
+
+17:21.230 --> 17:25.760
+I'm not seeing anything that makes me go, Oh yeah, customers will love this or this would be really
+
+
+17:25.760 --> 17:28.730
+useful or, you know, it's just not happening.
+
+
+17:28.730 --> 17:35.240
+So those two things in particular are hallmarks of an ill defined scope in terms of scope being too
+
+
+17:35.240 --> 17:35.930
+small.
+
+
+17:36.520 --> 17:41.590
+One of the biggest reasons to define scope is to avoid what's called scope creep.
+
+
+17:41.620 --> 17:49.450
+Scope creep happens when additional features, additional suggestions and ideas for features not only
+
+
+17:49.450 --> 17:55.800
+keep coming up, but sort of make their way into the promised final product.
+
+
+17:55.810 --> 17:57.160
+Somebody says, Oh yeah, we can do that.
+
+
+17:57.160 --> 17:57.940
+Yeah, we can do that.
+
+
+17:57.940 --> 17:58.840
+Yeah, we can do that.
+
+
+17:58.840 --> 17:59.130
+Okay.
+
+
+17:59.140 --> 18:04.690
+And whether it's someone actually on the design or development team or whether it's a project manager
+
+
+18:04.690 --> 18:08.050
+who is far removed from reality, that's what happens.
+
+
+18:08.050 --> 18:11.110
+A friend of mine likes to call it death by a thousand cuts.
+
+
+18:11.110 --> 18:17.260
+And what that means is that each little addition, each little feature doesn't seem like much in and
+
+
+18:17.290 --> 18:17.980
+of itself.
+
+
+18:17.980 --> 18:25.480
+But when you put them all together, the pain snowballs really fast, that snowball that rolls forward
+
+
+18:25.480 --> 18:29.230
+just a little inch and then another inch and then another inch and then another inch.
+
+
+18:29.230 --> 18:33.220
+But it's picking up a little extra snow each time it turns around and it's coming down the hill and
+
+
+18:33.220 --> 18:35.260
+it's starting to get bigger and it's harder to stop.
+
+
+18:35.260 --> 18:37.570
+The bigger it gets, you know?
+
+
+18:37.570 --> 18:41.740
+So again, each each additional thing may not seem like that much work.
+
+
+18:41.740 --> 18:42.040
+Okay?
+
+
+18:42.040 --> 18:44.890
+You may hear the request and go, Yeah, you know what?
+
+
+18:44.890 --> 18:46.810
+That probably take me a day to do that.
+
+
+18:46.810 --> 18:47.950
+That's no big deal.
+
+
+18:47.980 --> 18:52.450
+When you put all these things together, that snowball is rolling.
+
+
+18:52.450 --> 18:53.890
+Way out of control.
+
+
+18:53.890 --> 18:54.190
+Okay?
+
+
+18:54.190 --> 19:00.400
+You're blowing past deadline barricades and budget estimates, and you're on your way to a crash.
+
+
+19:00.400 --> 19:05.680
+So you got to resist the urge to say yes to everything.
+
+
+19:05.680 --> 19:06.640
+List it somewhere.
+
+
+19:06.640 --> 19:07.390
+That's fine.
+
+
+19:07.390 --> 19:13.600
+But do not make the promise that it's going to wind up in this release or even a future release.
+
+
+19:13.600 --> 19:18.480
+Table it and say, we got to look into that and let's see how it affects everything else.
+
+
+19:18.490 --> 19:21.550
+Scope, creep, murders, projects.
+
+
+19:21.580 --> 19:22.900
+It kills projects.
+
+
+19:22.900 --> 19:29.020
+It frustrates people on both sides of the equation because the customer is wondering why you can't get
+
+
+19:29.020 --> 19:31.180
+this work done that you agreed to.
+
+
+19:31.180 --> 19:37.430
+And you and your folks are frustrated because you're going, Oh my God, how are we going to do all
+
+
+19:37.430 --> 19:37.640
+this?
+
+
+19:37.640 --> 19:39.110
+And why did we agree to it?
+
+
+19:39.110 --> 19:42.650
+And you know, all that hindsight is really, really, really painful.
+
+
+19:42.650 --> 19:46.490
+So you got to avoid this snowball situation.
+
+
+19:46.490 --> 19:54.890
+And the way to avoid the snowball situation is to just say no, or at least not right now.
+
+
+19:55.470 --> 20:00.480
+Now, aside from the nuts and bolts sort of things that we've been talking about in terms of defining
+
+
+20:00.480 --> 20:06.780
+scope, there's also a strategic aspect that has to be considered, and the majority of that strategic
+
+
+20:06.780 --> 20:09.600
+aspect has to do with what we call trade offs.
+
+
+20:09.630 --> 20:16.740
+Trade offs are an essential part of scoping a product, and that's exactly what it sounds like.
+
+
+20:16.770 --> 20:20.880
+You weigh two options and say, well, can we have this?
+
+
+20:20.880 --> 20:25.380
+But if we have that, then that probably means we need to give up something else because we can't do
+
+
+20:25.380 --> 20:26.070
+both.
+
+
+20:26.220 --> 20:36.000
+Identifying where those areas are and sort of which items either on the keep or toss list are critical
+
+
+20:36.030 --> 20:41.910
+to the strategic objectives of the product are critical to the value that you're trying to provide,
+
+
+20:41.910 --> 20:46.740
+are critical to the business receiving some sort of return on their investment.
+
+
+20:47.250 --> 20:47.550
+Okay.
+
+
+20:47.580 --> 20:50.460
+Identifying those trade offs are very, very important.
+
+
+20:50.910 --> 20:58.570
+Michael Porter, who is very highly regarded in terms of business strategy overall, wrote an excellent
+
+
+20:58.570 --> 21:03.700
+piece for the Harvard Business Review where he said trade offs are essential to strategy.
+
+
+21:03.700 --> 21:08.710
+They create the need for choice and they purposefully limit what a company offers.
+
+
+21:08.710 --> 21:12.500
+And purposefully limits are the two important words there.
+
+
+21:12.520 --> 21:14.320
+These aren't deficiencies.
+
+
+21:14.320 --> 21:16.000
+They're not things that are lacking.
+
+
+21:16.000 --> 21:17.470
+They're not things that are missing.
+
+
+21:17.470 --> 21:21.940
+These are purposeful decisions to limit a feature set.
+
+
+21:21.970 --> 21:23.020
+They're constraints.
+
+
+21:23.020 --> 21:28.070
+In other words, constraints are very different from limitations.
+
+
+21:28.090 --> 21:31.150
+Let's talk for a minute about what the difference between the two is.
+
+
+21:31.180 --> 21:33.460
+Both constraints and limitations are boundaries.
+
+
+21:33.490 --> 21:36.520
+They both define what you can do and what you can't do.
+
+
+21:36.520 --> 21:42.520
+But depending on how you think about it, one condemns you to do less and the other enables you to do
+
+
+21:42.520 --> 21:43.090
+more.
+
+
+21:43.120 --> 21:46.840
+Here's what I mean when you say I can't, it means you've made a decision.
+
+
+21:46.870 --> 21:48.250
+A decision not to act.
+
+
+21:48.530 --> 21:50.500
+A decision not to do anything else.
+
+
+21:50.500 --> 21:51.490
+There's nothing to be done.
+
+
+21:51.490 --> 21:52.540
+I can't do it.
+
+
+21:52.570 --> 21:55.600
+This is where limitation comes in, all right?
+
+
+21:55.600 --> 21:57.550
+It tells you what you cannot do.
+
+
+21:57.580 --> 22:01.390
+You're looking at the other side of the boundary and all the other things over there that you can't
+
+
+22:01.390 --> 22:03.580
+do, that you can't have, that you can't be.
+
+
+22:03.730 --> 22:04.300
+All right.
+
+
+22:04.300 --> 22:05.900
+That's a limitation.
+
+
+22:05.920 --> 22:11.500
+When you think in terms of limitations, your focus is gone because you're wasting a lot of time and
+
+
+22:11.500 --> 22:13.540
+energy thinking about all the stuff that you can't do.
+
+
+22:13.570 --> 22:17.140
+Thinking about what you can't do, obviously, is sort of a waste of time.
+
+
+22:17.320 --> 22:24.220
+The difference with a constraint is that you're still aware of where the boundary is, but now you're
+
+
+22:24.220 --> 22:27.510
+focusing on an objective that's inside that boundary.
+
+
+22:27.520 --> 22:30.790
+So the boundary hasn't limited you, it's helped you focus.
+
+
+22:30.790 --> 22:38.230
+It's eliminated a whole bunch of things choices, decisions, options that you could possibly make.
+
+
+22:38.260 --> 22:44.200
+And it's giving you sort of a strict focus on what you can do that's very, very different.
+
+
+22:44.200 --> 22:46.120
+It's positive instead of negative.
+
+
+22:46.270 --> 22:50.560
+Some people think that that Twitter makes them a better writer because they think harder about what
+
+
+22:50.560 --> 22:53.570
+they have to say using fewer shorter words.
+
+
+22:53.590 --> 22:54.880
+That's a constraint.
+
+
+22:54.910 --> 22:57.130
+That character limit is a constraint.
+
+
+22:57.130 --> 22:58.750
+It narrows focus.
+
+
+22:58.780 --> 23:04.290
+When we use when we even look for constraints to help us focus, okay.
+
+
+23:04.420 --> 23:06.580
+All sorts of good things come from that.
+
+
+23:06.580 --> 23:07.930
+Creativity comes from that.
+
+
+23:07.930 --> 23:09.790
+Innovation comes from that.
+
+
+23:09.820 --> 23:14.650
+The phrase that I loathe thinking outside the box comes from that.
+
+
+23:14.650 --> 23:16.720
+Please don't call it that, but you can certainly do it.
+
+
+23:16.720 --> 23:20.050
+And constraints are what enable you to do that.
+
+
+23:20.050 --> 23:25.810
+Choosing to constrain yourself to do less, to work with less means that A you're probably going to
+
+
+23:25.810 --> 23:32.590
+be a little more creative and B you have a much more solid understanding of what can be accomplished.
+
+
+23:32.590 --> 23:35.110
+So constraints are your best friend.
+
+
+23:36.190 --> 23:43.480
+Ikea is a perfect example of an organization who's made some very purposeful trade offs and set some
+
+
+23:43.480 --> 23:48.220
+very purposeful constraints on what they do in a very positive way.
+
+
+23:48.220 --> 23:54.370
+And what it's done is it helped them focus on the parts that are most valuable to both the business
+
+
+23:54.370 --> 23:55.570
+and to their customers.
+
+
+23:55.570 --> 23:59.260
+So here's IKEA's trade offs, and I think you'll see why they work.
+
+
+23:59.680 --> 24:02.350
+Ikea has limited customer service.
+
+
+24:02.350 --> 24:05.230
+When you go into the store, there aren't a lot of people there.
+
+
+24:05.230 --> 24:08.920
+There isn't a lot of help, you know, to sort of guide you through.
+
+
+24:08.920 --> 24:11.890
+It's a very DIY kind of thing, right?
+
+
+24:11.890 --> 24:16.210
+You go through the store, you write down what you want and then you go pick it out yourself.
+
+
+24:16.720 --> 24:24.280
+At the same time, the trade off is they've give it up customer service for more intuitive shopping
+
+
+24:24.280 --> 24:25.630
+and lower prices.
+
+
+24:25.660 --> 24:31.180
+Not having that many people in the store lowers their overhead, which means they can charge less for
+
+
+24:31.180 --> 24:31.960
+their products.
+
+
+24:31.990 --> 24:37.750
+It also means that because they're expecting people to pick out their own stuff, they've purposely
+
+
+24:37.750 --> 24:41.020
+made the process very simple, very intuitive, very easy to use.
+
+
+24:41.020 --> 24:45.550
+Everything has a code attached to it, and all you do is write down the number and then you find the
+
+
+24:45.550 --> 24:47.650
+number in the aisles.
+
+
+24:48.370 --> 24:55.090
+Ikea has what's known as flat pack or knock down furniture, which people sort of assume is not.
+
+
+24:55.120 --> 24:56.110
+Well, it's not as sturdy.
+
+
+24:56.110 --> 25:01.290
+It's not as strong as, you know, the stuff you buy in typical furniture stores.
+
+
+25:01.300 --> 25:05.110
+And yeah, there's extra effort involved in putting it together.
+
+
+25:05.110 --> 25:13.990
+And I don't know if I want to do that, but the trade off is they've given up preassembled stuff, right?
+
+
+25:13.990 --> 25:21.010
+And they've given up assembling everything themselves so that they can provide in-house products.
+
+
+25:21.010 --> 25:22.270
+Everything is located in house.
+
+
+25:22.270 --> 25:24.580
+It doesn't have to be sourced from anywhere.
+
+
+25:24.580 --> 25:26.680
+And it's a very modern style.
+
+
+25:26.680 --> 25:28.330
+It's very modern design.
+
+
+25:28.330 --> 25:32.350
+So the constraint has enabled the product to be what it is.
+
+
+25:32.380 --> 25:35.830
+It may be flat pack and knock down, but it looks beautiful.
+
+
+25:35.830 --> 25:36.880
+It's very cool.
+
+
+25:36.880 --> 25:38.470
+It's very well designed.
+
+
+25:38.650 --> 25:41.500
+IKEA's are located in suburban locations.
+
+
+25:41.500 --> 25:47.470
+They're not downtown, they're not in all the hip cities and sort of right in the heart of things.
+
+
+25:47.470 --> 25:52.970
+But what that's allowed them to do is provide a huge on site inventory.
+
+
+25:52.970 --> 25:55.640
+Again, everything is at your fingertips as a customer.
+
+
+25:55.640 --> 25:56.800
+It's all there.
+
+
+25:56.810 --> 25:58.370
+You don't have to go anywhere else.
+
+
+25:58.370 --> 26:02.570
+There's there's almost never going to be a situation where you're going to walk in an Ikea and they're
+
+
+26:02.570 --> 26:06.890
+going to say, Oh, well, you know, we don't have that, but we'll probably get it in soon, blah,
+
+
+26:06.890 --> 26:07.280
+blah, blah.
+
+
+26:07.280 --> 26:11.290
+No, that's because the store itself is the warehouse, okay?
+
+
+26:11.300 --> 26:12.350
+There is no other warehouse.
+
+
+26:12.350 --> 26:13.010
+That's it.
+
+
+26:13.040 --> 26:16.310
+These are all very purposeful trade offs.
+
+
+26:16.310 --> 26:19.940
+These are all things that are strategic.
+
+
+26:19.940 --> 26:23.840
+About IKEA's approach to delivering value to customers.
+
+
+26:23.840 --> 26:27.320
+They've given up things in order to gain other things.
+
+
+26:27.650 --> 26:29.900
+Okay, Scoping a project is no different.
+
+
+26:29.930 --> 26:36.050
+You have to figure out what you're gaining and what you have to give up in order to realize those gains.
+
+
+26:36.260 --> 26:41.030
+Defining project scope also means defining product evolution.
+
+
+26:41.240 --> 26:44.630
+How is the product going to change, evolve, grow over time?
+
+
+26:44.630 --> 26:46.130
+How is it going to remain relevant?
+
+
+26:46.130 --> 26:46.430
+Right.
+
+
+26:46.430 --> 26:51.770
+And one of the best ways to do that is by a process typically known as the long.
+
+
+26:51.770 --> 26:52.730
+Wow.
+
+
+26:52.790 --> 26:53.360
+Okay.
+
+
+26:53.360 --> 26:55.190
+I'm going to explain what that is.
+
+
+26:55.670 --> 27:01.250
+Essentially what it means is that you provide new experiences and recurring delight.
+
+
+27:01.250 --> 27:02.810
+Recurring surprise.
+
+
+27:02.810 --> 27:03.650
+Recurring.
+
+
+27:03.650 --> 27:04.040
+Wow.
+
+
+27:04.070 --> 27:05.540
+I didn't know it could do that.
+
+
+27:05.540 --> 27:10.190
+Over time, as people use the product, it's not just a set it and forget it kind of thing.
+
+
+27:10.190 --> 27:13.190
+It's constant evolution, constant improvement, constant features.
+
+
+27:13.190 --> 27:18.500
+Now in the world of web software and websites and everything else, we already understand that, but
+
+
+27:18.500 --> 27:24.650
+it transcends just, you know, digital products into everything that we do.
+
+
+27:24.650 --> 27:31.070
+And you'd also probably be surprised at how many times the evolution of a product isn't really considered
+
+
+27:31.100 --> 27:31.790
+up front.
+
+
+27:31.790 --> 27:36.140
+And that's typically because everybody has their heads down just trying to do the work.
+
+
+27:36.140 --> 27:42.380
+So here's an example of how to deliver progressive continuous value, okay?
+
+
+27:42.380 --> 27:47.660
+The goal is to is to systematically serve and impress customers again and again and again.
+
+
+27:47.900 --> 27:51.770
+I'll start with the example of a pedometer which measures distance.
+
+
+27:51.770 --> 27:52.040
+Okay?
+
+
+27:52.040 --> 27:55.760
+If you're a runner or you're a walker, you know, you exercise in some way.
+
+
+27:55.760 --> 28:02.480
+And what it does is it measures how much distance crossed and in some way what the benefit of that is.
+
+
+28:02.480 --> 28:07.670
+So it's meant to record your accomplishment and show you that you're making progress.
+
+
+28:07.670 --> 28:09.830
+This is a very functional little unit.
+
+
+28:09.830 --> 28:10.640
+It's small.
+
+
+28:10.640 --> 28:11.630
+It fits in your hand.
+
+
+28:11.630 --> 28:18.020
+It has a clip that can clip onto your belt so that while you're walking or running, it's not you know,
+
+
+28:18.020 --> 28:19.220
+you don't have to hold it.
+
+
+28:19.220 --> 28:22.370
+And it has some basic features.
+
+
+28:22.370 --> 28:26.750
+You can set a time, you can time yourself, you can record distance.
+
+
+28:26.870 --> 28:31.430
+Basically the feature set is the feature set is the feature set is the feature set.
+
+
+28:31.430 --> 28:31.670
+Okay.
+
+
+28:31.670 --> 28:36.290
+When you buy this product, you use it the same way and you'll continue to use it the same way for as
+
+
+28:36.290 --> 28:37.220
+long as you own it.
+
+
+28:37.610 --> 28:44.300
+By comparison, Nike teamed up with Apple years back and created this little gadget.
+
+
+28:44.300 --> 28:50.990
+Okay, which works with your iPod to also monitor your progress and your improvement.
+
+
+28:50.990 --> 28:57.890
+But what they did with this product is they sort of unfolded a series of new experiences over time.
+
+
+28:57.890 --> 29:02.240
+So you bought the unit, but the ways in which you use it kept changing.
+
+
+29:02.240 --> 29:05.360
+They kept adding new features and new functions.
+
+
+29:05.360 --> 29:09.830
+Now, the device didn't change because you used it in conjunction with an iPod.
+
+
+29:09.830 --> 29:16.430
+So as you updated the software on the iPod and it incorporated new features like, okay, you can have
+
+
+29:16.430 --> 29:23.870
+your your power track for days when you really feel like going for it or you had social features where
+
+
+29:23.870 --> 29:29.090
+you could compare your progress to other people and maybe even communicate with other people and set
+
+
+29:29.120 --> 29:33.830
+groups and do all this sort of innovative collaborative type stuff.
+
+
+29:33.830 --> 29:34.100
+All right.
+
+
+29:34.100 --> 29:38.870
+The point is they kept rolling out new features every three months or so.
+
+
+29:39.110 --> 29:43.550
+So the way in which you use the device kept changing.
+
+
+29:43.580 --> 29:47.840
+Its core purpose was still the same, but you kept being able to.
+
+
+29:47.900 --> 29:49.770
+Have new experiences with it.
+
+
+29:49.790 --> 29:52.570
+It sort of became fresh all over again.
+
+
+29:52.580 --> 29:54.320
+It became new all over again.
+
+
+29:54.320 --> 29:56.570
+It became innovative all over again.
+
+
+29:56.570 --> 30:01.700
+Like, you know, you kept having the wow, isn't this cool experience over and over again.
+
+
+30:02.220 --> 30:07.590
+The latest iteration from the same company from Nike is called the FuelBand, where you put this thing
+
+
+30:07.590 --> 30:08.190
+on your wrist.
+
+
+30:08.190 --> 30:14.550
+And the whole purpose behind this is to inspire you to get active by recording all your activity and
+
+
+30:14.550 --> 30:18.780
+converting it into what Nike calls a new fitness currency.
+
+
+30:18.810 --> 30:25.320
+It tracks your day to day activity, and it measures it through this thing that it calls fuel.
+
+
+30:25.350 --> 30:29.520
+The more active you are, the more fuel you get rewarded with every day.
+
+
+30:29.520 --> 30:35.010
+And the amount of fuel that you have gets indicated on the band as you're doing something.
+
+
+30:35.010 --> 30:38.910
+So you decide at the beginning of the day what level of fuel you want to reach that day.
+
+
+30:39.240 --> 30:45.210
+The Fuel band shows you how close you are to achieving that goal via a series of LEDs that go from red
+
+
+30:45.210 --> 30:47.490
+to green as they go towards green.
+
+
+30:47.490 --> 30:48.990
+It means you're getting closer to your target.
+
+
+30:48.990 --> 30:54.140
+So it uses sort of the same principles as a as a pedometer.
+
+
+30:54.150 --> 31:00.030
+It's called Accelerometry is the technical term to record data about your exercise, which it relays
+
+
+31:00.030 --> 31:04.170
+to you as time steps Nike fuel or calories.
+
+
+31:04.180 --> 31:08.560
+So, you know, as a fitness tracking device goes, it's cool looking.
+
+
+31:08.560 --> 31:11.540
+It's got all the simplicity of one of those charity wristbands.
+
+
+31:11.560 --> 31:14.410
+It's just slightly heavier than that.
+
+
+31:14.530 --> 31:16.600
+And you sort of almost forget you're wearing it.
+
+
+31:16.600 --> 31:22.210
+But the long wow part of it is the fact that it's integrated with the Apple iPhone or the iPod Touch.
+
+
+31:22.210 --> 31:22.530
+Okay?
+
+
+31:22.540 --> 31:23.680
+There are three different screens.
+
+
+31:23.680 --> 31:25.030
+You get key stats for the day.
+
+
+31:25.030 --> 31:26.440
+You get your fuel total.
+
+
+31:26.440 --> 31:31.420
+You have at a glance access to your performance against your target calories, steps, distance.
+
+
+31:31.420 --> 31:36.130
+You've got graphical representations of your activity for any period of time, right day, week, month,
+
+
+31:36.130 --> 31:36.730
+year.
+
+
+31:36.760 --> 31:41.470
+So, you know, when you're most active, there are awards that you get, you know, along the way.
+
+
+31:41.470 --> 31:42.490
+And they keep changing this.
+
+
+31:42.490 --> 31:45.190
+They keep releasing, you know, sort of new features, new functions.
+
+
+31:45.190 --> 31:52.150
+So again, the point is it's a long wow over an extended period of time, you keep having new experiences.
+
+
+31:52.150 --> 31:59.170
+You're continuously impressed over and over again with the device as opposed to plain old pedometer
+
+
+31:59.170 --> 32:00.850
+that just kind of does its thing.
+
+
+32:00.880 --> 32:06.820
+It's functional, sure, But, you know, the Nike FuelBand is like the race car versus the economy.
+
+
+32:06.820 --> 32:07.330
+Car.
+
+
+32:07.330 --> 32:07.710
+Right.
+
+
+32:07.720 --> 32:09.820
+The economy car will get you where you need to go.
+
+
+32:09.820 --> 32:13.270
+But is it really any fun to drive?
+
+
+32:13.300 --> 32:13.960
+Okay.
+
+
+32:13.960 --> 32:15.250
+So it's that kind of thing.
+
+
+32:15.250 --> 32:17.230
+That's that's what a long wow is.
+
+
+32:17.670 --> 32:24.480
+From the perspective of trying to establish scope and trying to plan this into your overall process
+
+
+32:24.480 --> 32:27.810
+and your overall goals and your overall project scope.
+
+
+32:28.110 --> 32:32.100
+There are four basic steps to creating a long wow.
+
+
+32:32.130 --> 32:39.210
+A way to find and manage a system to repeatedly impress customers, which hopefully leads to a much
+
+
+32:39.210 --> 32:42.490
+more loyal, more long term relationship.
+
+
+32:42.510 --> 32:43.710
+Here's how it works.
+
+
+32:44.290 --> 32:48.460
+The first thing you have to do is identify what your touch points for delivery are.
+
+
+32:48.490 --> 32:55.320
+Your platforms recognize the places where you can combine experiences to deliver.
+
+
+32:55.330 --> 32:55.810
+Wow.
+
+
+32:55.840 --> 32:56.180
+Okay.
+
+
+32:56.200 --> 33:01.150
+You select a small set of touch points across channels that, you know, number one, can be coordinated
+
+
+33:01.150 --> 33:07.840
+together to meet some need and can also sort of be remixed in a way to deliver new solutions to customers.
+
+
+33:07.840 --> 33:11.140
+As you come up with them, I'll go back to Nike again.
+
+
+33:11.170 --> 33:18.400
+The Nike iPod sports kit combines three touch points the pedometer, the iPod and a website.
+
+
+33:18.430 --> 33:23.050
+Nike chose three touch points to deliver on not just one.
+
+
+33:23.050 --> 33:25.030
+It's not just a pedometer sitting in your hand.
+
+
+33:25.030 --> 33:25.930
+It's the pedometer.
+
+
+33:25.930 --> 33:28.630
+It's your iPhone, it's your desktop experience.
+
+
+33:28.630 --> 33:31.570
+Okay, so it transcends the actual event.
+
+
+33:31.750 --> 33:35.050
+So step one is how are we going to engage people?
+
+
+33:35.050 --> 33:36.640
+What are the points of contact?
+
+
+33:36.640 --> 33:38.410
+What are the points of interaction?
+
+
+33:38.680 --> 33:43.540
+Number two, you have to tackle a wide area of unmet customer needs.
+
+
+33:43.540 --> 33:48.050
+You've got to find where the customer experiences is lacking.
+
+
+33:48.050 --> 33:49.940
+Okay, what things have been overlooked?
+
+
+33:49.970 --> 33:55.120
+Where's the most potential to deliver something new that hasn't happened yet?
+
+
+33:55.130 --> 34:00.710
+This is typically something that you're passionate about and it's also something that you should have
+
+
+34:00.710 --> 34:05.210
+some competitive advantage in either understanding or delivering on.
+
+
+34:05.210 --> 34:11.120
+It should be something that you feel like you can return to repeatedly to keep adding new insight,
+
+
+34:11.120 --> 34:14.840
+to keep adding new feature, to keep adding new experiences.
+
+
+34:14.840 --> 34:15.170
+Right.
+
+
+34:15.170 --> 34:23.180
+It's an opportunity to identify some new space or it's it's an opportunity to reinvent an old space
+
+
+34:23.180 --> 34:24.740
+that everyone else is neglecting.
+
+
+34:24.740 --> 34:27.230
+So need is the second part of this.
+
+
+34:27.690 --> 34:33.510
+The third step is you have to create a repeatable delivery process and it has to evolve.
+
+
+34:33.540 --> 34:40.380
+You have to figure out what your approach is to delivering regular, consistent wow moments.
+
+
+34:40.380 --> 34:46.050
+So you start with the strengths you already have, which might be in things like, you know, cost versus
+
+
+34:46.050 --> 34:46.670
+benefit.
+
+
+34:46.680 --> 34:53.670
+It could be in product quality, it could be in an understanding of your audience and you blend those
+
+
+34:53.670 --> 35:00.900
+things with research, prototyping, product design, interactive design that focus on those experiences.
+
+
+35:01.020 --> 35:07.950
+What's important here is that you have to focus on the impact of the experience as opposed to just the
+
+
+35:07.950 --> 35:12.600
+usability of the interface or just, you know, the design of the thing.
+
+
+35:12.600 --> 35:15.210
+It's got to be all about the experience.
+
+
+35:15.210 --> 35:21.270
+Creating an evolving, repeatable process means you have to know and have to be able to demonstrate
+
+
+35:21.270 --> 35:27.300
+how the experience brings something new, something compelling to the life of the consumer and where
+
+
+35:27.400 --> 35:29.050
+the wow happens.
+
+
+35:29.470 --> 35:35.140
+And the fourth and final step is to plan and stage your wow experiences.
+
+
+35:35.350 --> 35:38.560
+You're not going to be able to develop all your ideas at once.
+
+
+35:38.560 --> 35:38.820
+Okay?
+
+
+35:38.830 --> 35:42.010
+There's a lot of risk inherent in that, and it's just difficult.
+
+
+35:42.010 --> 35:42.400
+Okay.
+
+
+35:42.400 --> 35:44.920
+No one can sort of accurately predict the future.
+
+
+35:44.920 --> 35:50.080
+And part of the way that you iterate, part of the way that you deliver a long wow is by sort of watching
+
+
+35:50.560 --> 35:56.890
+the reaction to things, watching how people use what you've given them, and by paying attention to
+
+
+35:56.890 --> 36:03.400
+sort of the seemingly unmet needs that are emerging because people will definitely tell you what they
+
+
+36:03.400 --> 36:04.540
+like and what they don't like.
+
+
+36:04.540 --> 36:09.430
+And while you have to take all that with a grain of salt, that's where new information, new understanding,
+
+
+36:09.430 --> 36:11.260
+new insight comes to light.
+
+
+36:11.290 --> 36:11.530
+Okay.
+
+
+36:11.530 --> 36:15.700
+So what you want to do is organize a pipeline of possible wow.
+
+
+36:15.730 --> 36:20.380
+Moments that could be introduced through your touch points over the long haul.
+
+
+36:20.380 --> 36:20.670
+Okay.
+
+
+36:20.680 --> 36:25.600
+As you continue to learn more about your customers, as you continue to learn how they perceive those
+
+
+36:25.630 --> 36:28.060
+wow moments, your pipeline will change.
+
+
+36:28.060 --> 36:32.260
+Those ideas will change, they'll evolve and they'll develop further.
+
+
+36:32.260 --> 36:38.500
+But outlining where and when those additional experiences will emerge in the future allows you to coordinate
+
+
+36:38.500 --> 36:39.490
+those things.
+
+
+36:39.730 --> 36:46.600
+Introducing the right thing at the right time has a huge impact in customer delight.
+
+
+36:46.630 --> 36:52.630
+You know, Weight Watchers, for example, has a platform of meetings, plans, books, web based tools,
+
+
+36:52.630 --> 36:55.180
+all of which support weight loss.
+
+
+36:55.180 --> 37:00.100
+But at some point they figured out that, okay, people probably aren't eating at the meetings or in
+
+
+37:00.100 --> 37:02.590
+front of the computer where they can access our website.
+
+
+37:02.590 --> 37:08.170
+So they said, Hey, we'll come up with a mobile application that helps plan and track your diet wherever
+
+
+37:08.170 --> 37:08.650
+you go.
+
+
+37:08.650 --> 37:12.130
+And then it synchronizes with your diet plan and the web app.
+
+
+37:12.160 --> 37:17.020
+That's an example of an organization learning more about its customers and how they use what they're
+
+
+37:17.020 --> 37:19.780
+given and how they perceive certain things.
+
+
+37:19.780 --> 37:20.740
+Over time.
+
+
+37:20.740 --> 37:24.850
+They knew that they had to keep innovating, but they didn't necessarily know how.
+
+
+37:24.850 --> 37:30.070
+Well, part of that insight comes from watching what happens once you do release something.

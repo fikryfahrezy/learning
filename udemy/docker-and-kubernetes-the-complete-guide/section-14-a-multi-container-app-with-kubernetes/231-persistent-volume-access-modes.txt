@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00.780 --> 00:01.613
+Instructor: In the last section,
+
+00:01.613 --> 00:04.350
+we put together our first persistent volume claim.
+
+00:04.350 --> 00:06.720
+Now, before we talk about what the spec stuff
+
+00:06.720 --> 00:09.840
+inside of here is, I wanna give you a very quick reminder.
+
+00:09.840 --> 00:12.090
+Remember that a volume claim
+
+00:12.090 --> 00:14.790
+is not an actual instance of storage.
+
+00:14.790 --> 00:17.760
+A volume claim is something that we are going to attach
+
+00:17.760 --> 00:19.230
+to a pod config.
+
+00:19.230 --> 00:20.910
+So back in our example over here,
+
+00:20.910 --> 00:23.250
+we would take this volume claim that says,
+
+00:23.250 --> 00:26.190
+hey, I can get you a 500 gigabyte hard drive
+
+00:26.190 --> 00:29.400
+and we attach it to our pod config.
+
+00:29.400 --> 00:30.540
+Then at some point in time,
+
+00:30.540 --> 00:34.500
+we take that pod config and we hand it off to Kubernetes.
+
+00:34.500 --> 00:37.290
+Kubernetes is going to see that storage option,
+
+00:37.290 --> 00:39.120
+it's gonna see that volume claim,
+
+00:39.120 --> 00:40.440
+and it's going to try to find
+
+00:40.440 --> 00:43.050
+either a statically provision, persistent volume
+
+00:43.050 --> 00:45.990
+or a dynamically provision, persistent volume
+
+00:45.990 --> 00:48.840
+to meet the requirements of that claim.
+
+00:48.840 --> 00:50.490
+So all to config that you and I have now
+
+00:50.490 --> 00:53.130
+added in underneath the spec section is saying,
+
+00:53.130 --> 00:55.680
+that if we attach this claim to a pod,
+
+00:55.680 --> 00:58.950
+Kubernetes must find an instance of storage,
+
+00:58.950 --> 01:00.690
+like a slice of your hard drive
+
+01:00.690 --> 01:03.540
+that meets these requirements.
+
+01:03.540 --> 01:04.530
+So with that in mind,
+
+01:04.530 --> 01:06.993
+let's talk about what an access mode is.
+
+01:08.040 --> 01:09.600
+All right, so access modes.
+
+01:09.600 --> 01:12.240
+We get three different types of access modes.
+
+01:12.240 --> 01:15.030
+The one that we used is ReadWriteOnce.
+
+01:15.030 --> 01:17.790
+ReadWriteOnce means that we want to get some
+
+01:17.790 --> 01:20.430
+instance of storage like a slice of your hard drive
+
+01:20.430 --> 01:23.580
+that can be used by a single node at a time.
+
+01:23.580 --> 01:26.850
+And to be precise, that single node can use it
+
+01:26.850 --> 01:30.570
+and both read and write information to that volume.
+
+01:30.570 --> 01:34.560
+We also get access to an access mode of ReadOnlyMany,
+
+01:34.560 --> 01:37.560
+which means that multiple nodes at the same time
+
+01:37.560 --> 01:40.830
+can read information from this persistent volume.
+
+01:40.830 --> 01:42.270
+And then finally, ReadWriteMany
+
+01:42.270 --> 01:44.970
+means that we can both read and write information
+
+01:44.970 --> 01:49.080
+to this persistent volume by many nodes at the same time.
+
+01:49.080 --> 01:51.870
+Now, again, I want to really, really highlight the fact
+
+01:51.870 --> 01:54.390
+that the access mode that we put in right here says,
+
+01:54.390 --> 01:56.760
+if you attach me to a pod config
+
+01:56.760 --> 01:58.710
+and then hand me off to Kubernetes,
+
+01:58.710 --> 02:01.650
+Kubernetes is going to have to find an instance
+
+02:01.650 --> 02:04.533
+of storage that supports this access mode.
+
+02:06.540 --> 02:08.670
+All right, so let's now move on to resources down here.
+
+02:08.670 --> 02:11.610
+Now, I bet you can really guess what's going on here.
+
+02:11.610 --> 02:14.070
+So with storage, we're essentially saying
+
+02:14.070 --> 02:17.640
+that Kubernetes is going to have to find a storage option,
+
+02:17.640 --> 02:20.820
+either one that has been provisioned ahead of time
+
+02:20.820 --> 02:23.040
+or one that is going to be created on the fly
+
+02:23.040 --> 02:25.260
+that has at least two gigabytes of space.
+
+02:25.260 --> 02:26.460
+Or to be exact,
+
+02:26.460 --> 02:29.343
+it has to have exactly two gigabytes of space.
+
+02:30.840 --> 02:33.090
+We could very easily change this number around,
+
+02:33.090 --> 02:36.660
+we can say, 1000 gigabytes or four, six,
+
+02:36.660 --> 02:37.800
+whatever you want it to be.
+
+02:37.800 --> 02:41.070
+But for us, two is way more than what is needed
+
+02:41.070 --> 02:44.640
+to put together our very simple Postgres database.
+
+02:44.640 --> 02:47.760
+In fact, we're gonna use like fractions of a kilobyte.
+
+02:47.760 --> 02:50.850
+So two gigabytes is way overkill for our application
+
+02:50.850 --> 02:52.500
+but I just wanna give you an example
+
+02:52.500 --> 02:55.230
+with a gigabyte option here.
+
+02:55.230 --> 02:57.540
+Okay, so these two options right here,
+
+02:57.540 --> 02:58.740
+pretty straightforward in nature.
+
+02:58.740 --> 03:00.810
+Again, they are saying, hey, Kubernetes,
+
+03:00.810 --> 03:03.540
+you have to find a storage instance
+
+03:03.540 --> 03:04.890
+that has this access mode
+
+03:04.890 --> 03:08.400
+and it has to have exactly two gigabytes worth of storage.
+
+03:08.400 --> 03:11.310
+Now, there's a couple of other options
+
+03:11.310 --> 03:13.530
+so we can add into this file that we did not
+
+03:13.530 --> 03:16.020
+because we're going to rely upon the defaults
+
+03:16.020 --> 03:18.600
+but these other storage options that we did not list out
+
+03:18.600 --> 03:20.370
+are pretty important to understand.
+
+03:20.370 --> 03:21.570
+So let's take a quick break.
+
+03:21.570 --> 03:22.950
+When we come back to the next section,
+
+03:22.950 --> 03:24.603
+we'll talk about some other possible options
+
+03:24.603 --> 03:28.320
+that we could put into this spec if you had need to do so.
+
+03:28.320 --> 03:30.770
+So quick pause and I'll see you in just a minute.

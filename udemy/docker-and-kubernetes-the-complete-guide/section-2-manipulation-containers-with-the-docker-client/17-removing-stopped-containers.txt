@@ -1,0 +1,36 @@
+WEBVTT
+
+00:00.660 --> 00:02.760
+-: In the last section I had mentioned that I'd cleared out
+
+00:02.760 --> 00:04.830
+all the stopped containers on my machine,
+
+00:04.830 --> 00:07.110
+and so I thought you might be curious on how I did that.
+
+00:07.110 --> 00:09.930
+If I run docker ps --all right now,
+
+00:09.930 --> 00:13.080
+I can see that I currently have two stopped containers.
+
+00:13.080 --> 00:14.850
+So these containers right now are essentially
+
+00:14.850 --> 00:17.610
+just taking up disk space on my computer,
+
+00:17.610 --> 00:18.960
+and so it might be to my advantage
+
+00:18.960 --> 00:20.820
+to try to entirely delete them
+
+00:20.820 --> 00:23.580
+and not just leave them in this stopped state.
+
+00:23.580 --> 00:25.290
+To delete all these containers,
+
+00:25.290 --> 00:29.043

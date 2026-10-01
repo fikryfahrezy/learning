@@ -1,0 +1,718 @@
+WEBVTT
+
+00:00.960 --> 00:01.793
+-: In the last section
+
+00:01.793 --> 00:04.440
+we just about finished up our Docker Compose file,
+
+00:04.440 --> 00:06.930
+but you might notice that we made absolutely no mention
+
+00:06.930 --> 00:09.120
+of any ports inside this file.
+
+00:09.120 --> 00:13.020
+So as it stands, nothing is exposed to the outside world,
+
+00:13.020 --> 00:14.670
+and our browser cannot connect
+
+00:14.670 --> 00:15.930
+to any of the different servers
+
+00:15.930 --> 00:17.480
+that are listed inside of here.
+
+00:18.540 --> 00:19.590
+I also want to remind you
+
+00:19.590 --> 00:21.810
+that on this development diagram we were looking at
+
+00:21.810 --> 00:23.850
+of the overall architecture of our app,
+
+00:23.850 --> 00:25.830
+we had showed this Nginx server out
+
+00:25.830 --> 00:27.870
+in the very front of everything.
+
+00:27.870 --> 00:29.430
+Now, we had made use of Nginx
+
+00:29.430 --> 00:32.070
+on the last Docker Compose project we put together
+
+00:32.070 --> 00:35.550
+that we deployed eventually off to Elastic Beanstalk.
+
+00:35.550 --> 00:37.260
+But the purpose of that Nginx server
+
+00:37.260 --> 00:39.510
+on that previous project was to host
+
+00:39.510 --> 00:42.150
+all of the different React source code files
+
+00:42.150 --> 00:44.880
+or production files, really that we had put together.
+
+00:44.880 --> 00:46.710
+So that was a production environment
+
+00:46.710 --> 00:48.330
+that was making use of Nginx.
+
+00:48.330 --> 00:50.940
+This time around, we're saying our development environment
+
+00:50.940 --> 00:52.860
+is going to have Nginx.
+
+00:52.860 --> 00:54.603
+So let's talk about why it's here.
+
+00:56.070 --> 00:57.390
+Okay, in this diagram,
+
+00:57.390 --> 00:59.700
+we've got the browser on the left hand side
+
+00:59.700 --> 01:01.080
+and two of the different servers
+
+01:01.080 --> 01:03.633
+that exist inside of our development environment.
+
+01:04.620 --> 01:05.610
+Next to the browser
+
+01:05.610 --> 01:07.770
+is a list of some of the different requests
+
+01:07.770 --> 01:10.740
+that the browser is going to make to our environment.
+
+01:10.740 --> 01:12.540
+So the browser at some point in time
+
+01:12.540 --> 01:15.390
+is gonna ask for an index HTML file.
+
+01:15.390 --> 01:19.380
+It needs an HTML file to show on the screen of the browser.
+
+01:19.380 --> 01:21.150
+And when it loads up that HTML file,
+
+01:21.150 --> 01:23.970
+it's probably gonna need a JavaScript file as well,
+
+01:23.970 --> 01:26.370
+like some file that has all the JavaScript code
+
+01:26.370 --> 01:28.890
+for the React side of our application.
+
+01:28.890 --> 01:29.940
+Now, in addition to that,
+
+01:29.940 --> 01:31.830
+we know that the browser
+
+01:31.830 --> 01:34.320
+is also going to make some API requests
+
+01:34.320 --> 01:35.520
+to the Express server
+
+01:35.520 --> 01:38.190
+to get a list of all of the different values
+
+01:38.190 --> 01:39.690
+that have ever been submitted,
+
+01:39.690 --> 01:41.580
+and a list of all the different current values
+
+01:41.580 --> 01:44.880
+that have been calculated by the worker process as well.
+
+01:44.880 --> 01:46.350
+So we know that chances are,
+
+01:46.350 --> 01:49.050
+the index HTML and the JS requests
+
+01:49.050 --> 01:51.240
+need to go over to this React server,
+
+01:51.240 --> 01:52.890
+but these API requests
+
+01:52.890 --> 01:55.110
+need to go over to the Express server.
+
+01:55.110 --> 01:56.940
+So we really want to have something
+
+01:56.940 --> 02:00.540
+that kind of enforces routing that looks like this,
+
+02:00.540 --> 02:02.820
+but as it stands right now,
+
+02:02.820 --> 02:05.550
+we don't really have any infrastructure whatsoever
+
+02:05.550 --> 02:07.440
+to kind of take these requests
+
+02:07.440 --> 02:09.210
+and send them to the Express server,
+
+02:09.210 --> 02:10.560
+or take these requests
+
+02:10.560 --> 02:13.260
+and send them over to the React side of things.
+
+02:13.260 --> 02:14.550
+So as you might guess,
+
+02:14.550 --> 02:17.460
+that is the entire purpose of the Nginx server
+
+02:17.460 --> 02:19.140
+that we're going to add in.
+
+02:19.140 --> 02:20.940
+The Nginx server is gonna look at
+
+02:20.940 --> 02:22.230
+all these different requests
+
+02:22.230 --> 02:25.950
+and decide on which backend service of ours
+
+02:25.950 --> 02:27.120
+that we want to rend,
+
+02:27.120 --> 02:30.060
+excuse me, that we want to route the request to.
+
+02:30.060 --> 02:31.530
+Now, before I show you the diagram
+
+02:31.530 --> 02:33.090
+to explain how that is done,
+
+02:33.090 --> 02:34.920
+I wanna remind you something
+
+02:34.920 --> 02:37.950
+that we had written into the source code of both our client
+
+02:37.950 --> 02:40.050
+and server projects.
+
+02:40.050 --> 02:41.580
+So if you didn't watch the videos
+
+02:41.580 --> 02:43.410
+on us putting together all the source code,
+
+02:43.410 --> 02:44.400
+you might have not seen this,
+
+02:44.400 --> 02:45.780
+so you probably didn't seen it,
+
+02:45.780 --> 02:47.580
+but let me just very quickly show you something
+
+02:47.580 --> 02:50.010
+on the client and server sides.
+
+02:50.010 --> 02:53.373
+In my server directory, I'll find the index.js file.
+
+02:54.270 --> 02:55.140
+Inside of here,
+
+02:55.140 --> 02:57.150
+you'll notice that all of our route handlers
+
+02:57.150 --> 03:02.150
+are like /values/all, or /values/current, or /values.
+
+03:03.480 --> 03:08.480
+However, in the client srcbib.js file,
+
+03:09.300 --> 03:10.650
+you can scroll down a little bit
+
+03:10.650 --> 03:13.170
+and you'll see that we are making network requests
+
+03:13.170 --> 03:18.170
+to routes of /API, /API, /values current and /values all.
+
+03:19.710 --> 03:21.270
+So the client thinks that
+
+03:21.270 --> 03:24.330
+it needs to make requests to /API,
+
+03:24.330 --> 03:26.670
+but it's very clear that the server
+
+03:26.670 --> 03:31.350
+is not set up to receive that /API route one bit.
+
+03:31.350 --> 03:34.890
+No configuration over here to handle that route.
+
+03:34.890 --> 03:36.000
+All right, so with that in mind,
+
+03:36.000 --> 03:38.610
+let's now take a look at what the Nginx server
+
+03:38.610 --> 03:39.963
+is going to do for us.
+
+03:41.310 --> 03:43.890
+So we're gonna add in an additional container
+
+03:43.890 --> 03:45.240
+to our application
+
+03:45.240 --> 03:48.870
+by adding in a service to the Docker Compose file.
+
+03:48.870 --> 03:52.560
+That additional service is gonna start up an Nginx server,
+
+03:52.560 --> 03:56.580
+and that Nginx server is going to have essentially one job.
+
+03:56.580 --> 03:59.640
+Anytime a request comes into Nginx,
+
+03:59.640 --> 04:02.130
+it's gonna look at the incoming request.
+
+04:02.130 --> 04:06.210
+And more specifically, it's gonna look at the request path.
+
+04:06.210 --> 04:07.980
+The incoming request is gonna say,
+
+04:07.980 --> 04:11.130
+Okay, does it have /API?
+
+04:11.130 --> 04:13.680
+If /API is in the route
+
+04:13.680 --> 04:15.540
+that this request is trying to access,
+
+04:15.540 --> 04:17.850
+then I'm going to redirect this request
+
+04:17.850 --> 04:19.980
+over to the Express server.
+
+04:19.980 --> 04:22.110
+Otherwise, if it is not looking for something
+
+04:22.110 --> 04:23.880
+that says /API,
+
+04:23.880 --> 04:25.200
+I'm gonna direct that request
+
+04:25.200 --> 04:27.870
+over to the React server instead.
+
+04:27.870 --> 04:29.100
+And Neil, I'm now thinking maybe
+
+04:29.100 --> 04:30.990
+a clearer way to organize this diagram
+
+04:30.990 --> 04:35.013
+would be to swap those two pieces like so.
+
+04:36.330 --> 04:38.520
+Okay, so think about what that's gonna do.
+
+04:38.520 --> 04:40.740
+Now, anytime the browser makes a request
+
+04:40.740 --> 04:43.500
+that is intended for the API,
+
+04:43.500 --> 04:46.650
+here's the inside the srcfit.js file,
+
+04:46.650 --> 04:49.260
+it is going to make a request from the browser
+
+04:49.260 --> 04:51.660
+to our backend server.
+
+04:51.660 --> 04:54.630
+The entire Docker Compose cluster, everything inside there.
+
+04:54.630 --> 04:55.770
+And these requests right here
+
+04:55.770 --> 04:58.227
+are intended for the Express API.
+
+04:58.227 --> 05:02.010
+And so they are adding on /API to the very front.
+
+05:02.010 --> 05:03.900
+So now whenever these requests
+
+05:03.900 --> 05:07.080
+that have /API on them in reality
+
+05:07.080 --> 05:08.733
+come into the Nginx server,
+
+05:09.570 --> 05:10.560
+Nginx is gonna say,
+
+05:10.560 --> 05:12.720
+Oh, I see that you're looking for the API.
+
+05:12.720 --> 05:14.190
+So it's gonna take those requests
+
+05:14.190 --> 05:17.550
+and send them on automatically to the Express server.
+
+05:17.550 --> 05:21.330
+But in the case of looking for any resources like index html
+
+05:21.330 --> 05:23.460
+or main.js right here, it's gonna say,
+
+05:23.460 --> 05:26.970
+Oh, I see you are not looking for an API resource.
+
+05:26.970 --> 05:30.060
+So rather than trying to send you off to the Express API,
+
+05:30.060 --> 05:31.170
+I'm gonna send your request
+
+05:31.170 --> 05:34.020
+over to the React server instead.
+
+05:34.020 --> 05:36.750
+So that's how routing is gonna work in our application,
+
+05:36.750 --> 05:38.160
+and that's how we're gonna make sure
+
+05:38.160 --> 05:41.730
+that we can just expose this one service right here,
+
+05:41.730 --> 05:42.840
+make requests to it,
+
+05:42.840 --> 05:44.910
+and poof, all of our requests are gonna end up
+
+05:44.910 --> 05:46.110
+in the correct location.
+
+05:47.370 --> 05:49.080
+Now, the last thing you might be a little bit curious about
+
+05:49.080 --> 05:51.960
+is why did we not just assign a port
+
+05:51.960 --> 05:54.510
+to both the React server and the Express server
+
+05:54.510 --> 05:58.200
+and just try to access a port on local host
+
+05:58.200 --> 05:59.970
+for like Express server.
+
+05:59.970 --> 06:01.890
+Well, let's think about that for a second.
+
+06:01.890 --> 06:03.810
+So essentially we're saying, why didn't we say,
+
+06:03.810 --> 06:05.820
+Oh yeah, just make the Express server available
+
+06:05.820 --> 06:08.760
+on like Port 3000
+
+06:08.760 --> 06:12.480
+and the React server available on port, I don't know
+
+06:12.480 --> 06:14.400
+4,000 or whatever it might be.
+
+06:14.400 --> 06:16.590
+And then whenever our browser makes a request,
+
+06:16.590 --> 06:18.900
+it can just specify the appropriate port.
+
+06:18.900 --> 06:20.160
+The reason that we didn't do this
+
+06:20.160 --> 06:22.650
+is that think about how our application runs
+
+06:22.650 --> 06:24.150
+in a production environment.
+
+06:24.150 --> 06:25.350
+In a production environment,
+
+06:25.350 --> 06:26.820
+we probably don't wanna have to worry
+
+06:26.820 --> 06:29.160
+about juggling these different ports.
+
+06:29.160 --> 06:32.460
+It'd be a lot nicer if all of our front end React code
+
+06:32.460 --> 06:35.670
+could just make requests to some common back end,
+
+06:35.670 --> 06:37.650
+and not have to worry about specifying,
+
+06:37.650 --> 06:39.990
+Oh, this is a request to my Express server,
+
+06:39.990 --> 06:43.590
+so I need to make sure that I'm specifying port 3000.
+
+06:43.590 --> 06:45.840
+In other words, it would not be very convenient
+
+06:45.840 --> 06:48.030
+every time that we want to make a request over here
+
+06:48.030 --> 06:50.250
+to have to append on something like,
+
+06:50.250 --> 06:54.960
+yeah, make a request to this route :3000 or :5000
+
+06:54.960 --> 06:56.490
+or whatever it's supposed to be.
+
+06:56.490 --> 06:57.900
+It's a lot easier to just say,
+
+06:57.900 --> 07:00.780
+Oh yeah, this is a request intended for this service.
+
+07:00.780 --> 07:03.390
+I'm gonna put on /API.
+
+07:03.390 --> 07:04.223
+Now you might be thinking,
+
+07:04.223 --> 07:06.120
+Steven, well, what's the difference between
+
+07:06.120 --> 07:08.070
+adding on something to the front of the route
+
+07:08.070 --> 07:10.620
+and something to the end of the route?
+
+07:10.620 --> 07:13.170
+The difference here is that when we are specifying a port,
+
+07:13.170 --> 07:15.990
+the port can very easily change.
+
+07:15.990 --> 07:18.450
+Depending on the environment that we are deploying to,
+
+07:18.450 --> 07:22.080
+one day our API might be hosted on port 5000
+
+07:22.080 --> 07:24.540
+inside of all these Docker Compose containers,
+
+07:24.540 --> 07:27.960
+and the next day it might be on port 50,001,
+
+07:27.960 --> 07:29.130
+you just don't know.
+
+07:29.130 --> 07:31.770
+These ports are sometimes very finicky
+
+07:31.770 --> 07:33.510
+and sometimes for various reasons,
+
+07:33.510 --> 07:35.940
+they need to change all the darn time.
+
+07:35.940 --> 07:37.770
+And so it's a lot easier to just specify
+
+07:37.770 --> 07:41.970
+this very constant token right here of /API and just say,
+
+07:41.970 --> 07:45.180
+Okay, like here /API, this is the destination,
+
+07:45.180 --> 07:48.723
+and we can then rely upon Nginx to do the routing for us.
+
+07:50.010 --> 07:55.010
+All right, so that's why we are adding on that /API
+
+07:55.050 --> 07:56.790
+to the front of all these routes.
+
+07:56.790 --> 07:58.740
+We're using that to specify
+
+07:58.740 --> 08:00.510
+where the request should be routed off to
+
+08:00.510 --> 08:02.490
+inside of all these different services
+
+08:02.490 --> 08:05.460
+that we are creating inside of our Docker Compose file.
+
+08:05.460 --> 08:07.530
+Now the very last thing I wanna mention here is,
+
+08:07.530 --> 08:11.130
+adding on the /API doesn't really solve the issue
+
+08:11.130 --> 08:14.400
+of how our Express route handlers.
+
+08:14.400 --> 08:15.870
+So if you look at the server directory
+
+08:15.870 --> 08:18.030
+and find index.js inside there,
+
+08:18.030 --> 08:20.370
+you'll see that all of our request handlers here
+
+08:20.370 --> 08:24.360
+are not specifying a /API on the very front of it.
+
+08:24.360 --> 08:25.193
+And the reason for that
+
+08:25.193 --> 08:28.680
+is that after Nginx does this little routing step,
+
+08:28.680 --> 08:33.360
+it's then going to chop off the /API part of the route.
+
+08:33.360 --> 08:37.860
+So if something like API values all comes into Nginx,
+
+08:37.860 --> 08:39.030
+when it comes out of it,
+
+08:39.030 --> 08:44.030
+it's going to be simply /values /all like so.
+
+08:44.910 --> 08:45.743
+That's kind of nice
+
+08:45.743 --> 08:47.970
+because it means that we can specify these routes
+
+08:47.970 --> 08:50.340
+with configuration that only really changes
+
+08:50.340 --> 08:51.750
+at the Nginx layer,
+
+08:51.750 --> 08:53.880
+and we don't have to like customize
+
+08:53.880 --> 08:56.730
+the routes defined in the Express server based upon
+
+08:56.730 --> 09:00.303
+whether it's supposed to be watching for /API or not.
+
+09:01.260 --> 09:03.870
+Now that is an optional setting, just so you're aware.
+
+09:03.870 --> 09:06.060
+If we wanted to, we could absolutely say,
+
+09:06.060 --> 09:09.450
+Oh yeah, do not try to chop off the /API,
+
+09:09.450 --> 09:11.760
+and we could just change all the routes on the Express side
+
+09:11.760 --> 09:13.920
+to watch for /API as well.
+
+09:13.920 --> 09:15.510
+But my personal opinion is
+
+09:15.510 --> 09:17.430
+it's easier to just chop that off.
+
+09:17.430 --> 09:20.220
+And then the Express server doesn't have to always specify
+
+09:20.220 --> 09:22.579
+Oh yeah, watch for the route /API
+
+09:22.579 --> 09:24.900
+/whatever I actually care about.
+
+09:24.900 --> 09:26.490
+All right, so that's probably more
+
+09:26.490 --> 09:28.800
+than you ever want to know about routing.
+
+09:28.800 --> 09:30.810
+So let's take a quick pause right here.
+
+09:30.810 --> 09:32.190
+We're gonna come back the next section
+
+09:32.190 --> 09:34.860
+and start putting this Nginx server together,
+
+09:34.860 --> 09:36.750
+and make sure that it has some routing
+
+09:36.750 --> 09:38.520
+based upon the path name.
+
+09:38.520 --> 09:40.970
+So quick break and I'll see you in just a minute.

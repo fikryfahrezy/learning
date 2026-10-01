@@ -1,0 +1,85 @@
+WEBVTT
+
+00:00.960 --> 00:02.610
+-: There's one last little thing that we need to do
+
+00:02.610 --> 00:04.560
+to prepare the client project
+
+00:04.560 --> 00:06.750
+before we attempt to deploy it off.
+
+00:06.750 --> 00:09.360
+Inside the /client/src directory,
+
+00:09.360 --> 00:12.750
+you'll find the App.test.js file.
+
+00:12.750 --> 00:15.690
+This is a very simple little test that tries to assert
+
+00:15.690 --> 00:17.880
+that we can render out the app component
+
+00:17.880 --> 00:20.400
+without anything crashing during the process.
+
+00:20.400 --> 00:22.830
+Now, unfortunately, if we ran this test suite right now
+
+00:22.830 --> 00:25.590
+we probably would see a crash,
+
+00:25.590 --> 00:26.880
+and the reason that we would see the crash
+
+00:26.880 --> 00:28.770
+is that the app component now attempts
+
+00:28.770 --> 00:30.840
+to render out the fib component,
+
+00:30.840 --> 00:33.960
+and the fib component is going to try to make a request
+
+00:33.960 --> 00:35.730
+to our backend express server,
+
+00:35.730 --> 00:38.250
+that is not quite running at this point in time.
+
+00:38.250 --> 00:40.620
+So just to make sure that our test runs successfully,
+
+00:40.620 --> 00:44.280
+I'm going to delete the three lines of tests in there
+
+00:44.280 --> 00:46.030
+and then I'll simply save the file.
+
+00:47.160 --> 00:49.680
+If we were running a real test suite right here
+
+00:49.680 --> 00:52.770
+rather than making a request off to the real Express API
+
+00:52.770 --> 00:55.530
+what we'd probably do is set up a little faker module
+
+00:55.530 --> 00:58.020
+to kind of mock out that request,
+
+00:58.020 --> 01:00.573
+and return some dummy JSON very quickly.
+
+01:01.710 --> 01:03.960
+So now that we've made this change we've got a test suite
+
+01:03.960 --> 01:07.440
+that we know is going to pass 100% of the time.
+
+01:07.440 --> 01:08.670
+Let's take a quick pause right here,
+
+01:08.670 --> 01:10.620
+and we'll continue in the next section.

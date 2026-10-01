@@ -1,0 +1,256 @@
+WEBVTT
+
+00:00.990 --> 00:06.090
+So once we know what the business goals are for the product, now we want to know what do people want
+
+00:06.120 --> 00:08.170
+from it and what are the users needs?
+
+00:08.190 --> 00:09.510
+What are they after?
+
+00:09.510 --> 00:13.530
+What's the value that gets provided to them in this equation?
+
+00:13.530 --> 00:13.870
+Right?
+
+00:13.890 --> 00:20.130
+Because as I am very fond of saying, user experience and user experience design, what you're doing
+
+00:20.130 --> 00:21.630
+is you're creating a value loop.
+
+00:21.660 --> 00:27.270
+If value goes out to the people that use the product, it's highly likely that value will come back
+
+00:27.270 --> 00:33.390
+to you as the creator or the organization, the company that that is sponsoring, the product, that's
+
+00:33.390 --> 00:37.020
+investing in the product value out value back in.
+
+00:37.020 --> 00:40.470
+So users are kind of split into two segments.
+
+00:40.500 --> 00:40.870
+Okay.
+
+00:40.890 --> 00:44.210
+And the first of those is business to business.
+
+00:44.220 --> 00:45.240
+What does that mean?
+
+00:45.240 --> 00:50.730
+Well, it means that you are essentially selling whatever it is that you're building or the services
+
+00:50.730 --> 00:51.780
+that it provides.
+
+00:51.990 --> 00:57.110
+You're selling it to people, of course, but you're selling it to people who work in other businesses.
+
+00:57.120 --> 01:06.910
+If you are creating a time and attendance system, for example, your users are really people within
+
+01:06.910 --> 01:10.840
+other businesses, within other companies who are going to use that system.
+
+01:10.840 --> 01:15.820
+So that's kind of what we're talking about, situations where businesses are selling to other businesses.
+
+01:15.820 --> 01:17.740
+So when you're talking about the users.
+
+01:18.650 --> 01:25.160
+There are there's sort of a different tack you need to take in talking to them about their role and
+
+01:25.160 --> 01:26.090
+what their needs are.
+
+01:26.120 --> 01:30.770
+And the way you start is by saying, okay, tell me about your background and your role here at this
+
+01:30.770 --> 01:31.440
+company.
+
+01:31.460 --> 01:37.430
+Again, you're talking to them in the context of their employment at a particular organization.
+
+01:37.580 --> 01:39.770
+So what makes a good workday for you?
+
+01:39.770 --> 01:41.480
+And this isn't just about software, okay?
+
+01:41.480 --> 01:46.750
+This is in general, at the end of the day, what makes you feel like you had a good day?
+
+01:46.760 --> 01:48.500
+What makes you feel like you were productive?
+
+01:48.500 --> 01:51.440
+What makes you feel like you got things accomplished?
+
+01:51.470 --> 01:54.110
+What constitutes good in your world?
+
+01:54.230 --> 01:59.360
+Next, you want to talk about the specific functions or specific processes that this product you're
+
+01:59.360 --> 02:00.860
+designing will address.
+
+02:00.890 --> 02:06.810
+You want to say, okay, how does this function or this process work here at your company currently?
+
+02:06.830 --> 02:12.170
+So again, if it's time and attendance, that question might be how do you usually go about filling
+
+02:12.170 --> 02:13.790
+out your time sheet here?
+
+02:13.820 --> 02:15.670
+Walk me through that process.
+
+02:15.680 --> 02:17.570
+That's essentially what you're asking them.
+
+02:17.720 --> 02:23.280
+And by the same token, what are the different groups and roles involved in that process?
+
+02:23.580 --> 02:25.140
+How do they all work together?
+
+02:25.170 --> 02:28.530
+Okay, I'm filling out my time sheet, so there's me.
+
+02:28.530 --> 02:30.590
+I have to do it, obviously, and submit it.
+
+02:30.600 --> 02:33.300
+My boss, my immediate boss has to look at it.
+
+02:33.300 --> 02:39.780
+If he approves it, it goes to the HR lady who looks at it and has to approve it.
+
+02:39.780 --> 02:47.130
+And from there it goes to finance where the accountants have to look at it because they have to bill
+
+02:47.130 --> 02:48.060
+my time.
+
+02:48.360 --> 02:48.690
+All right.
+
+02:48.690 --> 02:53.430
+So what you're looking for there is how many people are sort of involved in the process.
+
+02:53.430 --> 02:56.190
+There's information that's being gathered.
+
+02:56.190 --> 02:58.680
+You're filling in something and you're sharing that information.
+
+02:58.680 --> 03:01.590
+How many people need to use that information?
+
+03:02.100 --> 03:09.060
+That's an important question because you want to find out how you can best serve up that stuff to every
+
+03:09.060 --> 03:10.290
+involved party.
+
+03:10.320 --> 03:13.560
+How does this compare to previous companies you've worked at?
+
+03:13.560 --> 03:13.800
+Okay.
+
+03:13.830 --> 03:18.450
+Most people have worked at more than one organization, and they may have had some experiences that
+
+03:18.450 --> 03:20.660
+were better or worse.
+
+03:20.660 --> 03:25.580
+And that's valuable because if there are things that they've done before that worked better than their
+
+03:25.580 --> 03:30.800
+current process, you want to know what those are because maybe you can build them in or design them
+
+03:30.800 --> 03:32.480
+in to your product, to your site.
+
+03:33.100 --> 03:37.960
+What are the biggest problems in inefficiencies in this process or function today?
+
+03:37.990 --> 03:41.890
+What are the things that sort of grind productivity to a halt?
+
+03:42.190 --> 03:45.400
+What stops everybody in their tracks routinely?
+
+03:45.400 --> 03:45.640
+Right.
+
+03:45.670 --> 03:49.810
+What problems do you have in doing this?
+
+03:49.960 --> 03:54.010
+For instance, they may tell you, well, you know, people hate doing their time sheets, so they typically
+
+03:54.010 --> 04:00.100
+do them, do them late, which means bosses are upset, which means HR is upset, which means accounting
+
+04:00.100 --> 04:02.110
+can't get the invoices out on time.
+
+04:02.110 --> 04:09.520
+You want to find out what kinds of things specifically are causing those backlogs or causing those errors,
+
+04:09.520 --> 04:11.220
+redundancies, whatever they are.
+
+04:11.230 --> 04:15.310
+And you'll get a different answer from multiple people, which is why you want to ask, you know, a
+
+04:15.310 --> 04:17.170
+really good cross-section of folks.
+
+04:17.200 --> 04:21.400
+If you've talked to 20 people and asked them the same question, you're going to get a pretty good feel
+
+04:21.400 --> 04:23.920
+for for what really matters and what doesn't, right?
+
+04:23.920 --> 04:30.550
+If only one person out of 20 says, well, you know, I don't like the green color that it uses, you
+
+04:30.550 --> 04:34.880
+know, that that's probably not very important to worry about in the redesign.
+
+04:35.390 --> 04:39.920
+And finally, you ask them, can you tell me about the other systems that work with this one?
+
+04:39.920 --> 04:42.980
+Because again, nothing works in a vacuum.
+
+04:42.980 --> 04:44.420
+Nobody works in a vacuum.
+
+04:44.420 --> 04:45.740
+No thing works in a vacuum.
+
+04:45.740 --> 04:51.140
+So there are probably other systems, other processes that are tied into the time sheet system.
+
+04:51.140 --> 04:52.850
+So you want to know what those are.
+
+04:52.880 --> 04:58.970
+You want to know how the decisions that you might make in design could potentially impact those other
+
+04:58.970 --> 04:59.420
+areas.

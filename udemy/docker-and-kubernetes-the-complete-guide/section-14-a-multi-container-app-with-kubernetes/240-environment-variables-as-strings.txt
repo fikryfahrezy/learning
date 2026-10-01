@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00.840 --> 00:01.673
+-: In the last section
+
+00:01.673 --> 00:04.260
+we tried to apply our updated configuration files,
+
+00:04.260 --> 00:06.030
+but we very quickly got an error message
+
+00:06.030 --> 00:10.050
+that said something like cannot convert N64 into string.
+
+00:10.050 --> 00:11.340
+So this is an error message
+
+00:11.340 --> 00:13.380
+that I personally just wanted you to see,
+
+00:13.380 --> 00:15.210
+because I can almost guarantee you'll see this
+
+00:15.210 --> 00:17.880
+when you start putting together your own application.
+
+00:17.880 --> 00:19.860
+We're seeing this message right here,
+
+00:19.860 --> 00:22.440
+because inside of our server deployment file
+
+00:22.440 --> 00:24.240
+and our worker as well,
+
+00:24.240 --> 00:27.540
+we provided some environment variables as integers.
+
+00:27.540 --> 00:30.540
+So right here, our redis port has a integer value
+
+00:30.540 --> 00:33.300
+or essentially a number as 6379
+
+00:33.300 --> 00:36.810
+and the PG port is 5432, also a number.
+
+00:36.810 --> 00:38.850
+Whenever we provide a environment variable
+
+00:38.850 --> 00:41.220
+we have to provide it as a string.
+
+00:41.220 --> 00:43.380
+So for the value of 6379
+
+00:43.380 --> 00:46.800
+all we have to do is wrap this with a quote like so,
+
+00:46.800 --> 00:49.110
+and the same thing on the PG port as well.
+
+00:49.110 --> 00:51.120
+That's all we have to do.
+
+00:51.120 --> 00:53.250
+Then inside of our worker deployment
+
+00:53.250 --> 00:55.740
+we'll find the redis port of 6379.
+
+00:55.740 --> 00:57.630
+Again, we cannot have an environment variable
+
+00:57.630 --> 00:59.460
+in here as a number.
+
+00:59.460 --> 01:01.170
+We have to provide it as a string
+
+01:01.170 --> 01:03.630
+and so, the simple work around is to just wrap this thing
+
+01:03.630 --> 01:05.080
+with a set of quotes like so.
+
+01:06.900 --> 01:08.370
+All right, now that we've made those changes
+
+01:08.370 --> 01:10.860
+I'm gonna save both those files
+
+01:10.860 --> 01:12.510
+and then we'll flip back over to our terminal
+
+01:12.510 --> 01:15.330
+and try to apply these config files again.
+
+01:15.330 --> 01:19.080
+So I'll do a kubectl apply /fk8s.
+
+01:19.080 --> 01:21.360
+Now I'm gonna tell you if we get any errors this time
+
+01:21.360 --> 01:22.530
+I was not planning on it.
+
+01:22.530 --> 01:23.779
+So if we see an error message,
+
+01:23.779 --> 01:26.130
+we're gonna have to go back and figure out what's going on
+
+01:26.130 --> 01:27.720
+and try to fix it.
+
+01:27.720 --> 01:29.490
+All right, so I'm gonna run that and it looks like
+
+01:29.490 --> 01:31.380
+everything worked out just fine.
+
+01:31.380 --> 01:32.880
+You'll notice that the server deployment
+
+01:32.880 --> 01:34.230
+has been configured.
+
+01:34.230 --> 01:35.700
+It looks like our worker deployment
+
+01:35.700 --> 01:37.380
+has also been configured.
+
+01:37.380 --> 01:40.800
+Now I'm looking for Postgres in here.
+
+01:40.800 --> 01:42.300
+Where's our Postgres deployment?
+
+01:42.300 --> 01:45.300
+It looks like the Postgres deployment is unchanged
+
+01:45.300 --> 01:46.980
+which is not quite expected.
+
+01:46.980 --> 01:48.600
+However, you know what probably happened
+
+01:48.600 --> 01:50.400
+is it probably applied the config
+
+01:50.400 --> 01:53.190
+during our last apply in the last section.
+
+01:53.190 --> 01:54.420
+So I think it's totally fine to see
+
+01:54.420 --> 01:56.760
+that the Postgres deployment is unchanged there.
+
+01:56.760 --> 01:58.890
+Unfortunately, I've already cleared my console log
+
+01:58.890 --> 01:59.820
+so I can't scroll up
+
+01:59.820 --> 02:03.990
+and verify that Postgres did get configured successfully.
+
+02:03.990 --> 02:06.180
+Nonetheless, we'll be able to test this out soon enough
+
+02:06.180 --> 02:07.170
+inside of our browser
+
+02:07.170 --> 02:09.540
+and be able to verify that everything worked correctly.
+
+02:09.540 --> 02:11.100
+So let's take a quick pause right here
+
+02:11.100 --> 02:12.750
+and we'll continue in the next section.
+
+02:12.750 --> 02:15.330
+There's just one last little piece of configuration
+
+02:15.330 --> 02:17.580
+that we have to do to set up our application.

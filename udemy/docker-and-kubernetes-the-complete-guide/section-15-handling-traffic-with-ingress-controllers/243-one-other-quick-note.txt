@@ -1,0 +1,130 @@
+WEBVTT
+
+00:00.870 --> 00:02.040
+-: In the last section, we spoke about
+
+00:02.040 --> 00:04.500
+how there are two Ingress projects out there
+
+00:04.500 --> 00:06.180
+that have very very similar names
+
+00:06.180 --> 00:07.380
+and are very similar nature,
+
+00:07.380 --> 00:09.539
+but again they are completely separate things.
+
+00:09.539 --> 00:11.670
+In this section, I wanna do a very quick follow up
+
+00:11.670 --> 00:14.280
+on Ingress NGINX, which is what we are using.
+
+00:14.280 --> 00:16.080
+So very important note here;
+
+00:16.080 --> 00:18.630
+I want you to understand one other very important thing.
+
+00:18.630 --> 00:21.817
+The setup of this Ingress is going to be slightly different
+
+00:21.817 --> 00:24.180
+,or in some cases very different,
+
+00:24.180 --> 00:27.060
+depending upon the environment that you are using it in.
+
+00:27.060 --> 00:30.390
+So if you are deploying this Ingress NGINX thing
+
+00:30.390 --> 00:33.660
+in your local environment, or Google Cloud, or AWS,
+
+00:33.660 --> 00:35.910
+or Azure, it's gonna be very different
+
+00:35.910 --> 00:38.070
+in each of these different environments.
+
+00:38.070 --> 00:40.740
+In this course, you and I are gonna set up Ingress NGINX
+
+00:40.740 --> 00:41.910
+on our local machine,
+
+00:41.910 --> 00:44.970
+and we're also gonna be setting it up on Google Cloud.
+
+00:44.970 --> 00:46.560
+So that's kinda like a big reveal here.
+
+00:46.560 --> 00:48.750
+Yes, we're going to deploy our Kubernetes cluster
+
+00:48.750 --> 00:51.210
+to Google Cloud and not AWS,
+
+00:51.210 --> 00:54.360
+even though we used AWS previously in this course.
+
+00:54.360 --> 00:55.890
+So that might be a little bit of a surprise.
+
+00:55.890 --> 00:57.300
+You might be a little bit disappointed
+
+00:57.300 --> 00:59.040
+to hear that we're not using AWS,
+
+00:59.040 --> 01:02.940
+but there are some extra-ordinarily good reasons
+
+01:02.940 --> 01:05.190
+that we are using Google Cloud over AWS.
+
+01:05.190 --> 01:08.430
+And I'll tell you in great detail what those reasons are
+
+01:08.430 --> 01:10.530
+when we start moving over to production.
+
+01:10.530 --> 01:12.330
+So this is the other note that I wanna throw out there
+
+01:12.330 --> 01:14.340
+just to make sure you are 100% aware
+
+01:14.340 --> 01:18.360
+that this Ingress stuff, as you probably are able to tell,
+
+01:18.360 --> 01:19.710
+it's a little bit finicky right now
+
+01:19.710 --> 01:20.910
+in the world of Kubernetes.
+
+01:20.910 --> 01:22.740
+You know, you got these identical projects,
+
+01:22.740 --> 01:25.290
+the setup is very different depending upon the environment.
+
+01:25.290 --> 01:26.700
+So, you know, hopefully,
+
+01:26.700 --> 01:27.930
+we're gonna get through this stuff together
+
+01:27.930 --> 01:30.510
+without too much pain but we'll see what happens.
+
+01:30.510 --> 01:32.130
+So with the second note in mind,
+
+01:32.130 --> 01:33.240
+let's continue the next section
+
+01:33.240 --> 01:36.753
+and we're going to get started on our NGINX Ingress setup.

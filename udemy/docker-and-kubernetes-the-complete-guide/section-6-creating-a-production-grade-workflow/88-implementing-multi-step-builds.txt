@@ -1,0 +1,505 @@
+WEBVTT
+
+00:00.630 --> 00:02.280
+-: In last section, we spoke about how we're gonna
+
+00:02.280 --> 00:04.350
+solve some issues with the production version
+
+00:04.350 --> 00:08.190
+of our container by using a multi-step build process.
+
+00:08.190 --> 00:09.660
+By using a multi-step process
+
+00:09.660 --> 00:11.730
+we can use different base images.
+
+00:11.730 --> 00:13.920
+We can have some amount of configuration
+
+00:13.920 --> 00:16.410
+or code that gets executed to build
+
+00:16.410 --> 00:18.060
+up our application and then copy
+
+00:18.060 --> 00:22.680
+over the result to that, to our actual real phase.
+
+00:22.680 --> 00:24.780
+So let's start putting together our docker file
+
+00:24.780 --> 00:26.343
+to put this into action.
+
+00:27.390 --> 00:29.580
+We're gonna begin by opening up my code editor
+
+00:29.580 --> 00:31.830
+and then inside of my root project directory
+
+00:31.830 --> 00:35.217
+I'm gonna make a new file called "Docker file".
+
+00:36.840 --> 00:38.040
+So inside of here we're gonna have
+
+00:38.040 --> 00:40.530
+two distinctly different sections.
+
+00:40.530 --> 00:41.880
+We're gonna first write out the section
+
+00:41.880 --> 00:43.470
+that's going to install all
+
+00:43.470 --> 00:47.193
+of our dependencies and run the NPM run build command.
+
+00:48.360 --> 00:49.800
+Now, the configuration that we're going to use
+
+00:49.800 --> 00:53.100
+for the first block or kind of this build phase is a lot
+
+00:53.100 --> 00:55.560
+of configuration that we've already looked at several times.
+
+00:55.560 --> 00:57.450
+So we'll go through it rather quickly.
+
+00:57.450 --> 01:00.250
+We'll first say from node Alpine
+
+01:01.710 --> 01:04.934
+and then I'm going to tag this face with a name.
+
+01:04.934 --> 01:07.065
+I can tag this by saying as
+
+01:07.065 --> 01:10.920
+and then providing the name of this phase or this stage.
+
+01:10.920 --> 01:12.810
+So I'll call this thing "builder".
+
+01:12.810 --> 01:16.413
+Oops, not that I'll call it builder like so.
+
+01:17.400 --> 01:20.250
+By putting on "as builder", that means that from this
+
+01:20.250 --> 01:22.680
+from command and everything underneath it
+
+01:22.680 --> 01:25.740
+is all going to be referred to as the builder phase
+
+01:25.740 --> 01:27.030
+and the sole purpose of this phase
+
+01:27.030 --> 01:30.634
+is to install dependencies and build our application.
+
+01:30.634 --> 01:32.730
+Then after that, we're gonna see all
+
+01:32.730 --> 01:35.070
+of the usual configuration that we've been making use of
+
+01:35.070 --> 01:36.600
+so far throughout this course.
+
+01:36.600 --> 01:39.812
+So I'll specify my work directory of app.
+
+01:39.812 --> 01:44.812
+I'll copy over my package.json file to that app directory.
+
+01:45.720 --> 01:47.823
+I'll run NPM install.
+
+01:48.750 --> 01:51.570
+I'll copy over all of my source code.
+
+01:51.570 --> 01:54.120
+So notice now that we are doing this build phase
+
+01:54.120 --> 01:55.770
+and we kind of don't have any concern
+
+01:55.770 --> 01:58.260
+over changing our source code, we don't have to make use
+
+01:58.260 --> 02:00.240
+of that entire volume system anymore.
+
+02:00.240 --> 02:02.640
+That volume system that we were put implementing
+
+02:02.640 --> 02:04.860
+with Docker Compose was only required
+
+02:04.860 --> 02:06.720
+because we wanted to develop our application
+
+02:06.720 --> 02:08.430
+and have our changes immediately show
+
+02:08.430 --> 02:09.930
+up inside the container.
+
+02:09.930 --> 02:12.060
+When we're running our code in a production environment
+
+02:12.060 --> 02:13.320
+that's not a concern anymore
+
+02:13.320 --> 02:15.510
+because we're not changing our code at all.
+
+02:15.510 --> 02:17.130
+So we can just do a straight copy
+
+02:17.130 --> 02:19.953
+of all of our source code directly into the container.
+
+02:21.630 --> 02:23.820
+After we copy all of our source code over
+
+02:23.820 --> 02:28.533
+we'll then execute with the run command NPM run build.
+
+02:29.430 --> 02:30.840
+All right and that is it.
+
+02:30.840 --> 02:33.450
+That's all we have to do for our builder step.
+
+02:33.450 --> 02:35.700
+So again this is going to install dependencies,
+
+02:35.700 --> 02:38.280
+run NPM run build and the output of it is going
+
+02:38.280 --> 02:40.320
+to be that build folder.
+
+02:40.320 --> 02:41.790
+Now, one thing I wanna point out here is
+
+02:41.790 --> 02:43.650
+that the build folder will be created
+
+02:43.650 --> 02:45.480
+in the work in directory.
+
+02:45.480 --> 02:47.370
+So the folder that you and I really care about
+
+02:47.370 --> 02:48.210
+like the folder with all
+
+02:48.210 --> 02:50.040
+of our production assets that we wanna serve
+
+02:50.040 --> 02:51.750
+up to the outside world, the path
+
+02:51.750 --> 02:55.770
+to that inside the container will be slash app slash built.
+
+02:55.770 --> 02:59.640
+That's gonna have all the stuff we care about.
+
+02:59.640 --> 03:01.110
+So that's gonna be the folder that we're going to
+
+03:01.110 --> 03:05.103
+eventually want to somehow copy over during our run phase.
+
+03:06.480 --> 03:08.760
+Okay, so now that we've got our build phase put together
+
+03:08.760 --> 03:10.560
+we're gonna write out the configuration
+
+03:10.560 --> 03:13.260
+for the actual run phase.
+
+03:13.260 --> 03:15.240
+So this is going to be the phase that says we're
+
+03:15.240 --> 03:18.510
+going to use the engine X image where we're gonna copy
+
+03:18.510 --> 03:20.160
+over the result of the NPM run build
+
+03:20.160 --> 03:23.220
+and then somehow start up Engine X.
+
+03:23.220 --> 03:25.830
+So to specify the start of a second phase
+
+03:25.830 --> 03:27.610
+all we have to do is say from
+
+03:27.610 --> 03:30.090
+and then the name of our base image,
+
+03:30.090 --> 03:32.103
+which is Engine X like so.
+
+03:33.210 --> 03:34.710
+You'll notice that we did not have to
+
+03:34.710 --> 03:38.370
+put any terminology or any syntax in here to specify or say
+
+03:38.370 --> 03:41.520
+that the initial phase that we have right here was stopping
+
+03:41.520 --> 03:43.740
+by just putting in a second from statement
+
+03:43.740 --> 03:46.890
+that essentially says, "Okay previous block all complete
+
+03:46.890 --> 03:48.390
+don't worry about it".
+
+03:48.390 --> 03:50.910
+Any single block or any single phase here can only
+
+03:50.910 --> 03:52.500
+have a single from statement.
+
+03:52.500 --> 03:54.630
+So you can kind of imagine that the from statements we put
+
+03:54.630 --> 03:57.843
+in here are kind of terminating each successive block.
+
+03:59.099 --> 04:01.680
+So then inside of here we're going to write
+
+04:01.680 --> 04:05.130
+out the command to copy over that build folder
+
+04:05.130 --> 04:08.280
+into this new kinda like Engine X container
+
+04:08.280 --> 04:10.110
+thing that we're putting together.
+
+04:10.110 --> 04:12.120
+So I'm gonna say copy, and I'm gonna say
+
+04:12.120 --> 04:17.120
+that we want to copy something from a different phase.
+
+04:17.160 --> 04:22.160
+So I'll put in dash dash from equals builder like so.
+
+04:22.260 --> 04:25.080
+So this is saying I want to copy over something
+
+04:25.080 --> 04:28.320
+from that other phase that we just were working on.
+
+04:28.320 --> 04:29.700
+In this case, we wanna copy something
+
+04:29.700 --> 04:32.070
+over from the builder phase.
+
+04:32.070 --> 04:35.010
+We'll then specify the folder that we want to copy.
+
+04:35.010 --> 04:37.320
+So I'm gonna say app slash build because again
+
+04:37.320 --> 04:39.600
+that's the folder that you and I really care about
+
+04:39.600 --> 04:41.818
+and then we'll specify where we want to
+
+04:41.818 --> 04:44.640
+copy the thing too inside of this kind
+
+04:44.640 --> 04:47.140
+of Engine X container that we're putting together.
+
+04:48.060 --> 04:50.280
+So the folder that we want to copy this stuff to
+
+04:50.280 --> 04:51.360
+and this is kind of a little bit
+
+04:51.360 --> 04:53.870
+of configuration around Engine X specifically.
+
+04:53.870 --> 04:55.830
+If you go back over here
+
+04:55.830 --> 05:00.210
+to the Engine X documentation on Docker hub
+
+05:00.210 --> 05:02.550
+and you look at that section that says hosting
+
+05:02.550 --> 05:04.020
+some simple content
+
+05:04.020 --> 05:05.730
+it's kind of hard to see inside of here
+
+05:05.730 --> 05:06.660
+but you'll essentially see, oh
+
+05:06.660 --> 05:08.910
+here's the perfect example of it right here.
+
+05:08.910 --> 05:12.630
+So if we want to serve up some static HDL content
+
+05:12.630 --> 05:14.190
+we just stuff it into this folder
+
+05:14.190 --> 05:17.160
+of user share engine X hdml.
+
+05:17.160 --> 05:19.530
+So anything inside there is going to be automatically served
+
+05:19.530 --> 05:21.393
+up by Engine X when it starts up.
+
+05:23.940 --> 05:26.670
+Okay, so we're gonna say user notice how there's
+
+05:26.670 --> 05:31.670
+no e in there, it's just USR share engine X html like so
+
+05:33.510 --> 05:35.160
+and I'm gonna collapse my sidebar just so
+
+05:35.160 --> 05:36.360
+you can see all of that.
+
+05:37.860 --> 05:41.700
+Okay and believe it or not, that's pretty much it as far
+
+05:41.700 --> 05:43.590
+as actually, you know I'd said over here,
+
+05:43.590 --> 05:44.970
+Oh yeah start Engine X.
+
+05:44.970 --> 05:47.756
+Well, it turns out that the default command
+
+05:47.756 --> 05:49.350
+of the Engine X container or the Engine X image
+
+05:49.350 --> 05:51.240
+is gonna start up engine X for us.
+
+05:51.240 --> 05:53.190
+So we don't have to actually specifically
+
+05:53.190 --> 05:55.530
+run anything to start up Engine X.
+
+05:55.530 --> 05:57.000
+When we start up the Engine X container,
+
+05:57.000 --> 05:57.930
+it's just gonna take care
+
+05:57.930 --> 05:59.883
+of the command for us automatically.
+
+06:00.840 --> 06:03.443
+So that's pretty much it that is our docker file
+
+06:03.443 --> 06:06.540
+for the developers mean the production environment.
+
+06:06.540 --> 06:08.760
+Again, the really important thing to understand here
+
+06:08.760 --> 06:11.310
+is that we've got this multi-step process where
+
+06:11.310 --> 06:13.532
+we're creating one temporary container right here
+
+06:13.532 --> 06:15.640
+or one set of layers right here.
+
+06:15.640 --> 06:19.529
+We execute some number of commands inside that set of layers
+
+06:19.529 --> 06:22.290
+and then outta that set of layers, we're just copying
+
+06:22.290 --> 06:26.130
+over just the bare minimum, just the stuff we care about.
+
+06:26.130 --> 06:27.990
+So when we do this copy step right here
+
+06:27.990 --> 06:30.840
+we're essentially dumping everything else that was created
+
+06:30.840 --> 06:34.590
+while this set of configuration was executed.
+
+06:34.590 --> 06:35.910
+So we're not pulling over anything
+
+06:35.910 --> 06:37.380
+from the node alpine image,
+
+06:37.380 --> 06:38.730
+we're not pulling over any
+
+06:38.730 --> 06:40.500
+of the results of the NPM install,
+
+06:40.500 --> 06:42.470
+we're not copying over any of our source code.
+
+06:42.470 --> 06:44.550
+All we are getting is the result of
+
+06:44.550 --> 06:46.350
+that app/build directory.
+
+06:46.350 --> 06:50.120
+That's it so our end image is gonna be relatively small.
+
+06:50.120 --> 06:52.830
+It's gonna be essentially however large the
+
+06:52.830 --> 06:55.980
+engine X base image is and that's pretty much it.
+
+06:55.980 --> 06:57.210
+All right, so that's it.
+
+06:57.210 --> 06:58.680
+Now let's take a quick pause right here.
+
+06:58.680 --> 07:00.120
+I'm gonna make sure I save this file
+
+07:00.120 --> 07:02.490
+and then we're going to test this out in the next section.
+
+07:02.490 --> 07:04.940
+So quick break and I'll see you in just a minute.

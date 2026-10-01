@@ -1,0 +1,328 @@
+WEBVTT
+
+00:00.600 --> 00:01.433
+-: In the last section,
+
+00:01.433 --> 00:03.180
+we put together our first configuration file
+
+00:03.180 --> 00:04.920
+to create a deployment.
+
+00:04.920 --> 00:06.030
+In this section, we're going to
+
+00:06.030 --> 00:07.710
+walk through the configuration file
+
+00:07.710 --> 00:09.390
+and talk about a couple of interesting things
+
+00:09.390 --> 00:10.860
+that's inside of here.
+
+00:10.860 --> 00:12.660
+Now again, the first two lines that you see
+
+00:12.660 --> 00:14.340
+specify the API version
+
+00:14.340 --> 00:16.650
+and the object type that we want to create.
+
+00:16.650 --> 00:20.070
+So in this case, we're making an object of type deployment.
+
+00:20.070 --> 00:23.040
+After that, we see a very familiar metadata section
+
+00:23.040 --> 00:25.320
+that names the object that's going to be created
+
+00:25.320 --> 00:27.120
+by this configuration file.
+
+00:27.120 --> 00:30.030
+So in our our deployment deployment will have a name
+
+00:30.030 --> 00:31.893
+of client dash deployment.
+
+00:33.120 --> 00:34.740
+Now down in the spec section,
+
+00:34.740 --> 00:38.250
+I wanna skip on down to the template property right here.
+
+00:38.250 --> 00:39.420
+So inside the template,
+
+00:39.420 --> 00:41.160
+we're listing out the configuration
+
+00:41.160 --> 00:43.980
+that is going to be used for every single pod
+
+00:43.980 --> 00:47.130
+that is created by this deployment.
+
+00:47.130 --> 00:49.230
+The entire template section right here
+
+00:49.230 --> 00:50.490
+probably looks a little bit familiar
+
+00:50.490 --> 00:52.350
+to some of the configuration that we put together
+
+00:52.350 --> 00:55.440
+inside of our client pod dot yaml file.
+
+00:55.440 --> 00:58.290
+So back inside of client pod, we had a label.
+
+00:58.290 --> 01:01.320
+We had a list of containers assigned as well.
+
+01:01.320 --> 01:02.970
+And so you can essentially imagine
+
+01:02.970 --> 01:04.560
+that this template section right here
+
+01:04.560 --> 01:07.830
+is defining the exact configuration that should be used
+
+01:07.830 --> 01:09.720
+for every pod that is created
+
+01:09.720 --> 01:12.390
+and maintained by this deployment.
+
+01:12.390 --> 01:14.160
+Every pod that gets created by this deployment
+
+01:14.160 --> 01:16.470
+will have a label of component web
+
+01:16.470 --> 01:19.440
+and it will have a container with a name of client
+
+01:19.440 --> 01:23.880
+and using the image multi client with a port 3000
+
+01:23.880 --> 01:25.353
+mapped up to that container.
+
+01:26.910 --> 01:28.530
+Now, besides the template right here,
+
+01:28.530 --> 01:30.360
+the other properties that are kind of interesting
+
+01:30.360 --> 01:33.210
+is replicas and selector.
+
+01:33.210 --> 01:34.980
+So first off, replicas.
+
+01:34.980 --> 01:36.720
+As you might guess, this is specifying
+
+01:36.720 --> 01:38.640
+the number of different pods
+
+01:38.640 --> 01:40.440
+that this deployment is supposed to make.
+
+01:40.440 --> 01:42.690
+And remember, every one of those pods that it creates
+
+01:42.690 --> 01:45.750
+are going to be absolutely identical in nature.
+
+01:45.750 --> 01:47.527
+So at this point, we are saying,
+
+01:47.527 --> 01:50.370
+"Hey, deployment, create exactly one pod
+
+01:50.370 --> 01:52.800
+using this template down here."
+
+01:52.800 --> 01:54.810
+If we wanted to, we could very easily change this up
+
+01:54.810 --> 01:56.400
+to something like five.
+
+01:56.400 --> 01:59.550
+That means that we would want to create five separate pods
+
+01:59.550 --> 02:02.493
+each of which run this exactly identical template.
+
+02:03.360 --> 02:06.603
+We're going to leave replicas as one for right now, however.
+
+02:07.470 --> 02:08.940
+Now the other thing that's kind of interesting
+
+02:08.940 --> 02:11.190
+inside of here is the selector.
+
+02:11.190 --> 02:14.250
+The selector looks very similar to a selector property
+
+02:14.250 --> 02:17.010
+that we previously put into our node port file.
+
+02:17.010 --> 02:19.833
+So back over here we had a selector property as well.
+
+02:20.940 --> 02:23.100
+Let's talk about what the selector is.
+
+02:23.100 --> 02:24.960
+Essentially, it's doing something very similar
+
+02:24.960 --> 02:25.890
+to what the selector
+
+02:25.890 --> 02:28.983
+inside of the service configuration file was doing.
+
+02:30.570 --> 02:32.850
+You see, when a deployment creates a pod,
+
+02:32.850 --> 02:37.350
+it doesn't directly create the pod itself and maintain it.
+
+02:37.350 --> 02:39.090
+Instead, the deployment reaches out
+
+02:39.090 --> 02:41.917
+to the Kubernetes API on the master and it says,
+
+02:41.917 --> 02:44.730
+"Hey master, I need you to create a pod for me
+
+02:44.730 --> 02:47.160
+and here's the configuration for it."
+
+02:47.160 --> 02:50.070
+The master then goes ahead and creates the pod.
+
+02:50.070 --> 02:53.160
+Now it's the master or some program inside the master
+
+02:53.160 --> 02:55.140
+that is creating the pod for us.
+
+02:55.140 --> 02:57.600
+And so the deployment after the pod is created
+
+02:57.600 --> 03:01.080
+needs to somehow get a handle on the pod that is created
+
+03:01.080 --> 03:03.810
+and that's the purpose of that selector field.
+
+03:03.810 --> 03:06.360
+The deployment says, "Okay, I'm gonna ask master
+
+03:06.360 --> 03:09.090
+or some program in master to create this pod for me."
+
+03:09.090 --> 03:12.180
+After it gets created, I need to somehow get a handle on it.
+
+03:12.180 --> 03:14.670
+And so to get a handle on that newly created pod
+
+03:14.670 --> 03:18.780
+I'm gonna look for objects with a label of component web.
+
+03:18.780 --> 03:19.613
+And so of course
+
+03:19.613 --> 03:22.260
+every pod that we are creating using this deployment
+
+03:22.260 --> 03:26.310
+is going to have a label of component web
+
+03:26.310 --> 03:29.700
+because that's what we specified inside of our template.
+
+03:29.700 --> 03:32.370
+And so matched labels and selector right here.
+
+03:32.370 --> 03:35.280
+This section right here is essentially giving us a handle on
+
+03:35.280 --> 03:37.410
+this label down here.
+
+03:37.410 --> 03:39.480
+I know it seems a little bit repetitive
+
+03:39.480 --> 03:41.880
+to have to kind of like designate this stuff twice
+
+03:41.880 --> 03:44.550
+inside the same file, but it's entirely possible
+
+03:44.550 --> 03:47.220
+that we might have multiple labels assigned
+
+03:47.220 --> 03:48.390
+to our deployment
+
+03:48.390 --> 03:50.910
+or multiple labels assigned to the pod that is created
+
+03:50.910 --> 03:52.050
+by our deployment.
+
+03:52.050 --> 03:54.840
+And maybe we only want our deployment to look for
+
+03:54.840 --> 03:57.363
+one or two very specific labels out of those.
+
+03:58.290 --> 03:59.370
+So that's why you're seeing it
+
+03:59.370 --> 04:02.070
+kind of replicated here twice.
+
+04:02.070 --> 04:03.120
+Okay, so that's pretty much it
+
+04:03.120 --> 04:05.670
+for our deployment configuration file.
+
+04:05.670 --> 04:07.020
+So let's take a quick pause right here.
+
+04:07.020 --> 04:08.280
+We'll come back to the next section
+
+04:08.280 --> 04:10.980
+and we're going to apply this deployment file
+
+04:10.980 --> 04:13.830
+to our Kubernetes cluster by using Kubectl.
+
+04:13.830 --> 04:15.420
+And then we'll very quickly be able to
+
+04:15.420 --> 04:17.460
+look at a couple of interesting things
+
+04:17.460 --> 04:20.640
+around the deployment and the pod that is greeted with it.
+
+04:20.640 --> 04:22.973
+So quick break and I'll see you in just a minute.

@@ -1,0 +1,1051 @@
+WEBVTT
+
+00:00.825 --> 00:02.580
+-: In the last section we had a very long discussion
+
+00:02.580 --> 00:04.620
+about what Kubernetes is doing behind the scenes
+
+00:04.620 --> 00:07.920
+to deploy our application with some given deployment file,
+
+00:07.920 --> 00:09.090
+And there's a couple of takeaways
+
+00:09.090 --> 00:10.920
+I want to highlight very quickly.
+
+00:10.920 --> 00:12.810
+So, here's a couple of important notes
+
+00:12.810 --> 00:14.310
+that I just want to kinda double down on
+
+00:14.310 --> 00:16.230
+and make sure are really clear.
+
+00:16.230 --> 00:18.060
+So, first off, Kubernetes overall
+
+00:18.060 --> 00:21.210
+is a system to deploy containerized apps.
+
+00:21.210 --> 00:24.180
+We've been talking about services and pods
+
+00:24.180 --> 00:25.680
+and objects, and all this stuff,
+
+00:25.680 --> 00:27.930
+but at its core it's all about deploying
+
+00:27.930 --> 00:29.700
+containerized applications.
+
+00:29.700 --> 00:30.780
+Some of these different objects
+
+00:30.780 --> 00:32.010
+that we're going to make use of
+
+00:32.010 --> 00:35.610
+have a goal of supporting these containerized applications,
+
+00:35.610 --> 00:36.630
+But at the end of the day
+
+00:36.630 --> 00:39.300
+it's all about running containers.
+
+00:39.300 --> 00:42.330
+Next up, a node is a individual machine,
+
+00:42.330 --> 00:44.880
+like a physical computer or a virtual machine
+
+00:44.880 --> 00:48.420
+that is going to run some number of containers or objects.
+
+00:48.420 --> 00:50.040
+on your computer, with mini cube,
+
+00:50.040 --> 00:52.980
+you are currently running exactly one VM
+
+00:52.980 --> 00:55.290
+that is behaving as the node.
+
+00:55.290 --> 00:58.860
+We also have a master, this is a machine or virtual machine
+
+00:58.860 --> 01:01.440
+that has that set of programs that are going to be managing
+
+01:01.440 --> 01:03.390
+everything that goes on inside the nodes
+
+01:03.390 --> 01:05.433
+associated with your Kubernetes cluster.
+
+01:06.300 --> 01:07.290
+Now, the next item on here
+
+01:07.290 --> 01:08.940
+is something we didn't quite cover,
+
+01:08.940 --> 01:10.410
+Remember, Kubernetes...
+
+01:10.410 --> 01:12.660
+no, excuse me, we did, we spoke about Docker Hub.
+
+01:12.660 --> 01:15.420
+So, Kubernetes specifically did not build our image
+
+01:15.420 --> 01:18.000
+it got the image that we wanted to to deploy
+
+01:18.000 --> 01:19.143
+from Docker Hub.
+
+01:20.010 --> 01:22.350
+Next big thing is that the master decided
+
+01:22.350 --> 01:24.330
+where to run each container.
+
+01:24.330 --> 01:27.427
+You and I did not add in any input saying,
+
+01:27.427 --> 01:29.970
+"Hey, specifically, I want you to run
+
+01:29.970 --> 01:34.290
+this multi-worker container over here or over here."
+
+01:34.290 --> 01:35.970
+Now, we absolutely can control
+
+01:35.970 --> 01:37.440
+where container gets deployed,
+
+01:37.440 --> 01:39.150
+we can add in some configuration
+
+01:39.150 --> 01:40.807
+to our deployment files to say,
+
+01:40.807 --> 01:43.260
+"Oh, yeah, I want this pod that gets created
+
+01:43.260 --> 01:46.110
+to be created on this node or this node."
+
+01:46.110 --> 01:47.670
+We had the ability to do that
+
+01:47.670 --> 01:50.310
+but by default the master is going to decide
+
+01:50.310 --> 01:53.373
+where to deploy all of our different objects for us.
+
+01:54.330 --> 01:55.710
+Now, the last two items on here,
+
+01:55.710 --> 01:57.720
+and this is the real focus of what I wanna cover
+
+01:57.720 --> 02:02.310
+inside this section, is the important stuff.
+
+02:02.310 --> 02:06.930
+So, to deploy something we updated the desired state
+
+02:06.930 --> 02:09.783
+of the master with a config file.
+
+02:11.100 --> 02:14.730
+We passed in this deployment file over here
+
+02:14.730 --> 02:16.860
+and the master updated its little list
+
+02:16.860 --> 02:18.607
+of responsibilities to say,
+
+02:18.607 --> 02:20.370
+"Oh, okay, yeah, I understand,
+
+02:20.370 --> 02:22.050
+I'm supposed to be running four copies
+
+02:22.050 --> 02:24.177
+of the multi-worker image."
+
+02:25.080 --> 02:26.820
+So, the way in which we interacted
+
+02:26.820 --> 02:28.740
+with our entire Kubernetes cluster
+
+02:28.740 --> 02:31.080
+was to update its desired state.
+
+02:31.080 --> 02:34.110
+We said, "This is what we want you to be doing."
+
+02:34.110 --> 02:36.367
+We did not specifically say something like,
+
+02:36.367 --> 02:39.390
+"Hey, please create this copy of multi-worker,
+
+02:39.390 --> 02:41.040
+and this copy, and this copy, and this copy."
+
+02:41.040 --> 02:43.507
+Instead, we just very generically say things like,
+
+02:43.507 --> 02:45.330
+"I want to run four copies."
+
+02:45.330 --> 02:48.120
+And then we hand that directive off to the master
+
+02:48.120 --> 02:50.853
+and the master is in charge of making that happen.
+
+02:52.410 --> 02:53.790
+Now, the other big important thing here
+
+02:53.790 --> 02:55.650
+is to understand that the master is going to work
+
+02:55.650 --> 02:58.350
+constantly to meet your desired state,
+
+02:58.350 --> 02:59.520
+and that was the entire purpose
+
+02:59.520 --> 03:01.620
+of me killing one of those containers
+
+03:01.620 --> 03:03.060
+and showing you that Kubernetes
+
+03:03.060 --> 03:05.220
+automatically restarted it for us.
+
+03:05.220 --> 03:07.260
+So, the master is going to just constantly
+
+03:07.260 --> 03:09.420
+churn away at its list of responsibilities
+
+03:09.420 --> 03:11.850
+and make sure that our desired state right here,
+
+03:11.850 --> 03:14.190
+like the fact that we need to have four copies,
+
+03:14.190 --> 03:15.903
+is always going to be met.
+
+03:16.740 --> 03:18.180
+Now, again, this entire topic
+
+03:18.180 --> 03:20.400
+or this entire idea of having the master
+
+03:20.400 --> 03:22.290
+kind of work to meet our desired state,
+
+03:22.290 --> 03:24.270
+and the entire idea of us
+
+03:24.270 --> 03:26.370
+passing some desired state to the master
+
+03:26.370 --> 03:27.930
+in the form of a configuration file
+
+03:27.930 --> 03:30.570
+is really key to understanding Kubernetes
+
+03:30.570 --> 03:34.110
+and how you and I work with it as a developer.
+
+03:34.110 --> 03:35.640
+So, we're gonna look at a couple more diagrams
+
+03:35.640 --> 03:37.560
+that are going to expand upon this idea
+
+03:37.560 --> 03:40.680
+of us kind of telling Kubernetes what we want
+
+03:40.680 --> 03:43.117
+as opposed to us very specifically saying like,
+
+03:43.117 --> 03:46.437
+"Hey, please create this pod," or something like that.
+
+03:46.437 --> 03:48.780
+Now, this overall topic is kind of a discussion
+
+03:48.780 --> 03:52.170
+between two ways of approaching deployment.
+
+03:52.170 --> 03:54.870
+We could approach deployment with a imperative style
+
+03:54.870 --> 03:57.120
+or a declarative style.
+
+03:57.120 --> 03:58.380
+With an imperative style
+
+03:58.380 --> 04:00.720
+you and I would issue series of commands
+
+04:00.720 --> 04:02.227
+that say specifically like,
+
+04:02.227 --> 04:04.920
+"Create this container and create this container,
+
+04:04.920 --> 04:07.380
+and then delete that one and then upgrade that one,
+
+04:07.380 --> 04:10.200
+and restart that one," or whatever might need to happen.
+
+04:10.200 --> 04:12.510
+In the case of a declarative deployment
+
+04:12.510 --> 04:14.707
+we say to our master something like,
+
+04:14.707 --> 04:17.460
+"You know, it'd be great if you just made
+
+04:17.460 --> 04:18.840
+four containers happen
+
+04:18.840 --> 04:21.390
+and made four containers happen all the time.
+
+04:21.390 --> 04:22.320
+And you know what, master,
+
+04:22.320 --> 04:25.320
+you just go ahead you figure out how to deal with that."
+
+04:25.320 --> 04:28.470
+So, with the imperative we give very discreet actions,
+
+04:28.470 --> 04:30.360
+or excuse me, very discreet commands,
+
+04:30.360 --> 04:33.420
+with the declarative we kind of set guidance or a directive,
+
+04:33.420 --> 04:37.710
+we say, "Just make this happen for me, would you please?"
+
+04:37.710 --> 04:40.470
+Now, just kind of giving you a quick overview right there
+
+04:40.470 --> 04:41.550
+is not really enough
+
+04:41.550 --> 04:43.170
+so I just wanna show you a couple diagrams
+
+04:43.170 --> 04:45.750
+to really drill home the point of the differences
+
+04:45.750 --> 04:48.333
+between a imperative deployment and declarative.
+
+04:49.320 --> 04:52.260
+Okay, so here's an example of a imperative deployment.
+
+04:52.260 --> 04:53.640
+I want you to imagine for a second
+
+04:53.640 --> 04:54.870
+that we did not have access
+
+04:54.870 --> 04:58.380
+to any of these configuration files or anything like that,
+
+04:58.380 --> 05:01.140
+and I want you to imagine that we just had access
+
+05:01.140 --> 05:05.013
+to some imaginary Kubernetes command line.
+
+05:06.330 --> 05:07.650
+So, I want you to imagine
+
+05:07.650 --> 05:11.490
+that you and I have or need to have three containers,
+
+05:11.490 --> 05:13.890
+for whatever reason, we decide that our application
+
+05:13.890 --> 05:17.190
+has to have three containers right now.
+
+05:17.190 --> 05:19.260
+And let's imagine that we don't really have any
+
+05:19.260 --> 05:20.970
+Kubernetes commands or anything like that
+
+05:20.970 --> 05:22.680
+to get the current status
+
+05:22.680 --> 05:24.480
+of how many containers we are running.
+
+05:24.480 --> 05:26.160
+So, what would you have to do
+
+05:26.160 --> 05:28.410
+to make sure that you have three containers?
+
+05:28.410 --> 05:30.870
+Well, chances are you would have to open up some dashboard
+
+05:30.870 --> 05:33.510
+on Google Cloud or AWS,
+
+05:33.510 --> 05:35.280
+and you would have to look at the overall state
+
+05:35.280 --> 05:36.660
+of your application.
+
+05:36.660 --> 05:38.490
+So, maybe when you open up your dashboard
+
+05:38.490 --> 05:41.580
+you see that you have four containers running,
+
+05:41.580 --> 05:44.490
+so what would you have to do to get three containers?
+
+05:44.490 --> 05:47.940
+You would have to very distinctly look at your current state
+
+05:47.940 --> 05:49.500
+and then figure out some way
+
+05:49.500 --> 05:53.100
+to migrate from your current state of four containers
+
+05:53.100 --> 05:55.350
+down to one container.
+
+05:55.350 --> 05:58.530
+And so you would have to say, "I'll..."
+
+05:58.530 --> 05:59.940
+There we go, fix that up really quickly.
+
+05:59.940 --> 06:01.747
+You would have to issue some command to say,
+
+06:01.747 --> 06:04.830
+"Okay, I need to remove one container
+
+06:04.830 --> 06:06.930
+to get from having four down to three."
+
+06:06.930 --> 06:09.090
+And so you might issue this imaginary command
+
+06:09.090 --> 06:09.967
+that says something like,
+
+06:09.967 --> 06:12.720
+"Kubernetes, remove one container."
+
+06:12.720 --> 06:13.800
+Now, the important thing
+
+06:13.800 --> 06:15.960
+that I want to really drill home here,
+
+06:15.960 --> 06:18.300
+this is the really important thing to understand,
+
+06:18.300 --> 06:20.737
+is that even though it kinda seems trivial to say,
+
+06:20.737 --> 06:24.450
+"Okay, I need three containers and I currently have four,
+
+06:24.450 --> 06:26.010
+all I need to do is remove one."
+
+06:26.010 --> 06:29.730
+That still required a lot of computation out of you.
+
+06:29.730 --> 06:32.790
+You had to understand your desired state,
+
+06:32.790 --> 06:35.280
+so your desired state was to have three containers,
+
+06:35.280 --> 06:39.480
+you had to do some research to determine your current state
+
+06:39.480 --> 06:41.610
+like how many containers you currently have,
+
+06:41.610 --> 06:46.110
+and then you had to come up with some migration path,
+
+06:46.110 --> 06:47.940
+some series of action that would take you
+
+06:47.940 --> 06:50.490
+from your desire, or excuse me, from your current state
+
+06:50.490 --> 06:52.110
+to your desired state.
+
+06:52.110 --> 06:53.070
+And so you would have to come up
+
+06:53.070 --> 06:54.757
+with this migration plan that says,
+
+06:54.757 --> 06:57.000
+"Okay, I'm going to remove one container,
+
+06:57.000 --> 06:59.460
+and that will take me from my current state
+
+06:59.460 --> 07:02.760
+to my desired state of three containers."
+
+07:02.760 --> 07:05.167
+Now, I'm sure that sounds like a trivial example like,
+
+07:05.167 --> 07:06.453
+"Steven, really?
+
+07:07.500 --> 07:09.930
+Figuring out to remove one container is hard?"
+
+07:09.930 --> 07:12.660
+Well, let's look at a more complex example,
+
+07:12.660 --> 07:13.893
+slightly more complex.
+
+07:15.780 --> 07:18.210
+So, in this example of an imperative deployment
+
+07:18.210 --> 07:19.350
+let's imagine for a second
+
+07:19.350 --> 07:22.440
+that you have a ton of different containers running
+
+07:22.440 --> 07:25.200
+and they're all running some very specific version
+
+07:25.200 --> 07:28.137
+of the multi-worker image, like maybe version one.
+
+07:28.137 --> 07:30.067
+And so you come along and you decide,
+
+07:30.067 --> 07:33.120
+"All right, I need to update every running container
+
+07:33.120 --> 07:36.870
+to use image version 1.23 instead."
+
+07:36.870 --> 07:41.010
+Now, in this case, things would be a lot more challenging.
+
+07:41.010 --> 07:42.990
+You would have to open up your dashboard,
+
+07:42.990 --> 07:45.330
+you would have to find all of the different containers
+
+07:45.330 --> 07:47.940
+that were running the multi-worker image.
+
+07:47.940 --> 07:51.000
+So, for example, maybe this container and this container
+
+07:51.000 --> 07:52.140
+and this container right here,
+
+07:52.140 --> 07:54.780
+maybe these were running a completely different image
+
+07:54.780 --> 07:56.850
+and you want to update this one, this one,
+
+07:56.850 --> 07:58.563
+this one, this one and this one.
+
+08:00.210 --> 08:01.920
+So, maybe you would want to update the versions
+
+08:01.920 --> 08:03.600
+used by the green one,
+
+08:03.600 --> 08:06.090
+so now determining a migration strategy
+
+08:06.090 --> 08:08.340
+is a little bit more complicated.
+
+08:08.340 --> 08:11.760
+You have a desired state of running version 1.23
+
+08:11.760 --> 08:13.380
+inside of every container,
+
+08:13.380 --> 08:16.140
+you have a current state where these
+
+08:16.140 --> 08:17.670
+container, container, container, container
+
+08:17.670 --> 08:19.860
+are running maybe version one, or whatever it might be.
+
+08:19.860 --> 08:21.990
+And so you would have to figure out some way
+
+08:21.990 --> 08:25.297
+of isolating just these green containers and saying,
+
+08:25.297 --> 08:29.370
+"Okay, I want to pick out like container one, two, three,
+
+08:29.370 --> 08:33.300
+seven, 20, right here, and I want to update just those."
+
+08:33.300 --> 08:34.290
+And so you would have to figure out
+
+08:34.290 --> 08:36.390
+some series of update actions
+
+08:36.390 --> 08:40.140
+to just update that very specific set of containers.
+
+08:40.140 --> 08:42.300
+And, again, I'm gonna argue that that might be
+
+08:42.300 --> 08:44.103
+really challenging for you to do.
+
+08:45.240 --> 08:47.460
+So how would we approach a problem like this
+
+08:47.460 --> 08:49.650
+with a declarative deployment
+
+08:49.650 --> 08:52.290
+rather than an imperative deployment.
+
+08:52.290 --> 08:54.660
+Another diagram, so this is how we would do things
+
+08:54.660 --> 08:56.040
+with a declarative deployment.
+
+08:56.040 --> 08:56.873
+You would say,
+
+08:56.873 --> 08:58.860
+"Okay, I need to update all of my containers
+
+08:58.860 --> 09:02.250
+running multi-worker to version 1.23."
+
+09:02.250 --> 09:04.680
+So, here's what you would do with Kubernetes
+
+09:04.680 --> 09:06.840
+in an ideal world.
+
+09:06.840 --> 09:09.240
+You would open up your config file,
+
+09:09.240 --> 09:11.340
+so like this config file right here,
+
+09:11.340 --> 09:14.160
+the same one that we just put together a little bit ago.
+
+09:14.160 --> 09:17.010
+You would find the image designation right here
+
+09:17.010 --> 09:19.357
+and you would update the tag on this thing to say,
+
+09:19.357 --> 09:23.550
+"I specifically want to use version 1.23."
+
+09:23.550 --> 09:25.180
+You would then save that file
+
+09:26.160 --> 09:26.993
+and then you would say,
+
+09:26.993 --> 09:30.570
+"Send that config file off to Kubernetes."
+
+09:30.570 --> 09:32.760
+Master would then inspect that file,
+
+09:32.760 --> 09:34.380
+it would update its own little list
+
+09:34.380 --> 09:36.247
+of responsibilities right here and say,
+
+09:36.247 --> 09:37.530
+"Oh, okay, I understand
+
+09:37.530 --> 09:39.717
+I need to be running version 1.2.3,"
+
+09:42.480 --> 09:44.070
+or whatever it might be.
+
+09:44.070 --> 09:46.860
+And then the master is going to automatically find
+
+09:46.860 --> 09:50.250
+all the nodes that are not running version 1.23,
+
+09:50.250 --> 09:51.720
+it's gonna take those all down,
+
+09:51.720 --> 09:52.890
+excuse me, not nodes but pods,
+
+09:52.890 --> 09:54.150
+it's gonna take all the pods
+
+09:54.150 --> 09:56.850
+that are not running version 1.23 down
+
+09:56.850 --> 09:58.500
+and it's gonna create new pods
+
+09:58.500 --> 10:00.780
+that are running the correct version.
+
+10:00.780 --> 10:02.160
+And now my question to you is,
+
+10:02.160 --> 10:04.290
+which of these two deployment processes
+
+10:04.290 --> 10:05.520
+would you want to go through?
+
+10:05.520 --> 10:07.164
+Where's my diagram?
+
+10:07.164 --> 10:09.870
+Over here.
+
+10:09.870 --> 10:11.340
+I bet you would probably want to use
+
+10:11.340 --> 10:12.840
+this declarative process,
+
+10:12.840 --> 10:15.240
+I bet anything you would not want to be responsible
+
+10:15.240 --> 10:17.250
+for looking at the current state of your cluster,
+
+10:17.250 --> 10:19.320
+finding all the outdated containers
+
+10:19.320 --> 10:21.660
+and writing a command to update each of them.
+
+10:21.660 --> 10:23.700
+Instead it would be far easier
+
+10:23.700 --> 10:25.920
+to just update a single config file,
+
+10:25.920 --> 10:28.147
+send that config file to Kubernetes and say,
+
+10:28.147 --> 10:29.684
+"Here you go, take care of it.
+
+10:29.684 --> 10:33.120
+I don't care, it's up to you figure it out."
+
+10:33.120 --> 10:35.670
+And Kubernetes, the master is going to constantly work
+
+10:35.670 --> 10:39.390
+to make sure that its configuration is met,
+
+10:39.390 --> 10:42.480
+and make sure that whatever the real state of the nodes are
+
+10:42.480 --> 10:43.893
+is what it needs to be.
+
+10:44.850 --> 10:47.400
+Okay, so this has been a pretty long discussion
+
+10:47.400 --> 10:49.220
+and I think that you probably get the idea now
+
+10:49.220 --> 10:51.510
+of the differences between a imperative deployment
+
+10:51.510 --> 10:52.830
+and a declarative deployment.
+
+10:52.830 --> 10:54.603
+So, why am I telling you all this?
+
+10:55.530 --> 10:56.550
+This has been like 10 minutes,
+
+10:56.550 --> 10:57.720
+I'm really drilling in here,
+
+10:57.720 --> 10:59.850
+this has been a very in-depth talk.
+
+10:59.850 --> 11:01.680
+So, the reason I'm telling you all this
+
+11:01.680 --> 11:06.570
+is that when you start looking at Kubernetes documentation,
+
+11:06.570 --> 11:11.190
+blog posts, stack overflow posts, whatever else,
+
+11:11.190 --> 11:15.180
+you are going to see some resources out there
+
+11:15.180 --> 11:17.850
+recommend that you take a imperative approach.
+
+11:17.850 --> 11:20.227
+You're going to see some resources that say,
+
+11:20.227 --> 11:22.770
+"Oh, yeah, write in a command into kubectl
+
+11:22.770 --> 11:25.050
+that specifically adds a pod
+
+11:25.050 --> 11:26.700
+or specifically removes a pod,
+
+11:26.700 --> 11:29.850
+or specifically updates a pod," whatever it might be.
+
+11:29.850 --> 11:32.760
+But I'm gonna tell you that Kubernetes has the ability
+
+11:32.760 --> 11:35.310
+to do things both ways.
+
+11:35.310 --> 11:38.190
+So, Kubernetes has a set of commands through kubectl
+
+11:38.190 --> 11:40.020
+to take this imperative approach,
+
+11:40.020 --> 11:42.690
+that is the set of commands that some blog posts out there
+
+11:42.690 --> 11:44.017
+are going to advocate and they're gonna say,
+
+11:44.017 --> 11:46.470
+"Oh, yeah, run something like pod, update,"
+
+11:46.470 --> 11:47.760
+whatever it might be.
+
+11:47.760 --> 11:50.010
+But Kubernetes, or kubectl,
+
+11:50.010 --> 11:51.660
+also has a set of commands
+
+11:51.660 --> 11:55.440
+to do things through a declarative approach as well.
+
+11:55.440 --> 11:56.490
+Throughout this course
+
+11:56.490 --> 11:59.100
+you and I are going to constantly strive
+
+11:59.100 --> 12:01.410
+to only use the set of commands
+
+12:01.410 --> 12:03.840
+that take a declarative approach
+
+12:03.840 --> 12:06.690
+to building out a Kubernetes cluster.
+
+12:06.690 --> 12:07.650
+That's the whole point,
+
+12:07.650 --> 12:08.850
+that's what I'm trying to convey here
+
+12:08.850 --> 12:10.170
+in this entire lecture.
+
+12:10.170 --> 12:11.190
+I want you to understand
+
+12:11.190 --> 12:12.900
+that when you start reading these blog posts,
+
+12:12.900 --> 12:14.130
+some of them are going to tell you
+
+12:14.130 --> 12:15.930
+to do things in imperative way,
+
+12:15.930 --> 12:18.810
+but for any real production deployment,
+
+12:18.810 --> 12:20.580
+everything, every engineer out there,
+
+12:20.580 --> 12:21.450
+everyone in the community
+
+12:21.450 --> 12:24.180
+is always going to advocate taking the declarative approach,
+
+12:24.180 --> 12:26.730
+that's the entire point of Kubernetes.
+
+12:26.730 --> 12:28.380
+And so it's gonna be kind of up to you,
+
+12:28.380 --> 12:30.967
+when you are reading a blog post, to understand that,
+
+12:30.967 --> 12:32.730
+"Okay, maybe not all these blog posts
+
+12:32.730 --> 12:35.670
+are saying things that are 100% accurate."
+
+12:35.670 --> 12:38.430
+And hopefully eventually you'll start to develop a sense
+
+12:38.430 --> 12:39.817
+of when a blog post says like,
+
+12:39.817 --> 12:41.460
+"Oh, yeah, just go run this command
+
+12:41.460 --> 12:43.830
+to update this pod in place."
+
+12:43.830 --> 12:46.410
+That's probably something you don't wanna do.
+
+12:46.410 --> 12:49.231
+In general, you and I are going to always going to,
+
+12:49.231 --> 12:50.340
+excuse me, you and I are going to always
+
+12:50.340 --> 12:53.100
+try to do the same thing over and over and over again,
+
+12:53.100 --> 12:55.320
+of updating a configuration file
+
+12:55.320 --> 12:58.530
+and then sending that config file off to Kubernetes master,
+
+12:58.530 --> 13:00.120
+again and again and again.
+
+13:00.120 --> 13:01.770
+And so throughout this entire course,
+
+13:01.770 --> 13:03.150
+everything that you and I are going to do
+
+13:03.150 --> 13:04.380
+from here to the very end,
+
+13:04.380 --> 13:07.620
+is going to be all about updating these configuration files
+
+13:07.620 --> 13:09.720
+with some new desired state,
+
+13:09.720 --> 13:12.540
+and then eventually sending that off to Kubernetes master
+
+13:12.540 --> 13:14.310
+and we're just gonna repeat that process
+
+13:14.310 --> 13:16.050
+over and over and over.
+
+13:16.050 --> 13:18.090
+And that's exactly how you are going to do things
+
+13:18.090 --> 13:19.290
+on your own application,
+
+13:19.290 --> 13:20.580
+and that's how you're gonna do things
+
+13:20.580 --> 13:24.480
+especially in a production environment as well.
+
+13:24.480 --> 13:26.970
+All right, so that's enough soap boxing for me for a while
+
+13:26.970 --> 13:28.950
+so let's take a quick pause right now,
+
+13:28.950 --> 13:31.530
+now that we've gotten all that out out of the way.
+
+13:31.530 --> 13:32.490
+Take quick pause right now
+
+13:32.490 --> 13:34.350
+and we're going to continue in the next section.
+
+13:34.350 --> 13:36.803
+So, quick break, and I'll see you in just a minute.

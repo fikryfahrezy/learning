@@ -1,0 +1,424 @@
+WEBVTT
+
+00:00.850 --> 00:05.680
+It's important to recognize that these planes are interdependent, which essentially means that each
+
+00:05.680 --> 00:08.800
+plane is dependent on the other planes below it.
+
+00:08.800 --> 00:13.330
+So the surface depends on the skeleton, which depends on the structure, which depends on the scope,
+
+00:13.330 --> 00:14.860
+which depends on the strategy.
+
+00:14.860 --> 00:21.130
+When choices made at any given point, don't line up with the plane above or below.
+
+00:21.130 --> 00:22.510
+That's when bad things happen.
+
+00:22.510 --> 00:23.110
+Okay?
+
+00:23.260 --> 00:30.340
+Deadlines get missed, projects schedules fall off, track costs go up because the team, the project
+
+00:30.370 --> 00:35.740
+team, the development team, the design team, they're trying to force things together that don't really
+
+00:35.740 --> 00:36.820
+naturally fit.
+
+00:36.820 --> 00:42.790
+And even if they do manage to get it together, there's a really good chance that when the thing launches
+
+00:42.790 --> 00:45.730
+the site or the app or whatever, people won't like it.
+
+00:45.730 --> 00:51.850
+So that means that the decisions that are made on the strategy plane in particular have a ripple effect
+
+00:51.850 --> 00:53.530
+all the way up the chain.
+
+00:53.950 --> 01:00.220
+If you screw up on a strategy plane, you're going to be paying for it for the life of the project.
+
+01:00.370 --> 01:07.070
+The choices available to us on each plane are constrained by the decisions we make about issues on the
+
+01:07.070 --> 01:07.700
+plane below it.
+
+01:07.700 --> 01:09.140
+And I want to give you an example of that.
+
+01:09.140 --> 01:13.790
+If you're specifically dealing with, let's say, the structure and the skeleton planes.
+
+01:13.820 --> 01:14.340
+Okay.
+
+01:14.390 --> 01:17.150
+On the structure plane, I have a number of decisions to make.
+
+01:17.150 --> 01:17.420
+Okay.
+
+01:17.420 --> 01:24.230
+There are five possible things that I can do, five actions I can take five ways.
+
+01:24.620 --> 01:25.970
+I could represent something.
+
+01:25.970 --> 01:33.260
+Let's say when I make a choice that affects the number of choices that I have on the skeleton plane.
+
+01:33.410 --> 01:39.200
+So whereas before I made a choice, I may have had five options, Now I only have three.
+
+01:39.470 --> 01:39.740
+Okay.
+
+01:39.740 --> 01:46.490
+That's just a simple way of saying that every decision you make enables some options and it disables
+
+01:46.490 --> 01:47.300
+other options.
+
+01:47.300 --> 01:51.590
+So you have to be aware throughout this process of what the tradeoffs you're making are.
+
+01:52.140 --> 01:58.440
+Another important thing about these elements that we're talking about is that they have to be very flexible.
+
+01:58.440 --> 02:01.680
+I showed you a minute ago how there's sort of a ripple effect, right?
+
+02:01.680 --> 02:04.590
+One choice is made on one plane, affect choices on the other plane.
+
+02:04.590 --> 02:10.710
+At the same time, though, it's really important to remember that you're not going to be able to make
+
+02:10.710 --> 02:14.580
+decisions at every level and sort of set them in stone.
+
+02:14.580 --> 02:19.830
+You're always going to be looking back and saying, okay, does what I thought I decided still make
+
+02:19.830 --> 02:20.300
+sense?
+
+02:20.310 --> 02:25.080
+Does the conclusion we came to still make sense in light of what we just discovered?
+
+02:25.080 --> 02:29.220
+So if you make a decision on an upper plane, let's say you might get all the way to the surface level
+
+02:29.220 --> 02:35.850
+and you may have a visual design opportunity that causes you to question a piece of functionality.
+
+02:35.850 --> 02:37.740
+Is there a better way we can do this?
+
+02:37.740 --> 02:42.900
+So maybe you go back to the structure plane and you say, All right, does this still make sense?
+
+02:42.900 --> 02:45.870
+I thought it made sense at the time, but now we've got some new information.
+
+02:45.870 --> 02:47.640
+So the point is you have to be flexible.
+
+02:47.640 --> 02:55.390
+If you consider each decision to be fixed, to be set in stone, and to have to figure all that out
+
+02:55.390 --> 03:01.840
+before you move on to the next piece, you're almost certainly going to wind up with a situation where
+
+03:01.840 --> 03:06.220
+the end result is you're going to build something nobody wants, nobody likes.
+
+03:06.220 --> 03:11.710
+So the success of the project is essentially going to be in jeopardy if we force the work on each plane
+
+03:11.710 --> 03:17.500
+to be finished, to be set in stone before we start thinking about anything else, you're almost guaranteed
+
+03:17.530 --> 03:20.470
+to wind up with something that's a very frustrating user experience.
+
+03:21.180 --> 03:28.350
+So instead of doing things in a vacuum, a much better approach is to have work on each plane, finish
+
+03:28.350 --> 03:30.470
+while work on the next plane is in progress, right?
+
+03:30.480 --> 03:35.820
+So we can sort of see what affects what what decisions that we're making now affect things that we're
+
+03:35.850 --> 03:38.540
+thinking about doing later and vice versa.
+
+03:38.550 --> 03:41.820
+So we're not waiting for the outcome.
+
+03:41.820 --> 03:48.150
+And in addition, users wind up being much happier because we've built the thing properly.
+
+03:48.150 --> 03:51.420
+We haven't built a roof, for example, before.
+
+03:51.420 --> 03:57.840
+We know what the foundation looks like and that essentially ensures that from the users perspective,
+
+03:57.840 --> 04:01.590
+things sort of progress from simple to complex, as they should.
+
+04:01.590 --> 04:01.950
+All right.
+
+04:01.950 --> 04:06.060
+Because we've carefully thought about all the tradeoffs in our decisions.
+
+04:07.130 --> 04:08.930
+On top of everything else.
+
+04:08.930 --> 04:13.550
+There are additional factors that we kind of need to talk about and consider.
+
+04:13.550 --> 04:21.500
+And the first part of that is things aren't always as clear cut as the wonderfully precise way that
+
+04:21.500 --> 04:22.730
+I've just outlined them.
+
+04:23.390 --> 04:30.050
+And what I mean by that is it can be difficult to tell what element is responsible for a user experience
+
+04:30.050 --> 04:30.380
+problem.
+
+04:30.590 --> 04:35.330
+If the user experience is suffering in some way, if people aren't happy or if business goals aren't
+
+04:35.330 --> 04:36.110
+being met.
+
+04:36.140 --> 04:39.900
+It can be difficult to identify what the root cause is.
+
+04:39.990 --> 04:40.480
+Okay.
+
+04:40.490 --> 04:42.380
+Is the visual design inappropriate?
+
+04:42.410 --> 04:45.470
+Is there a problem with the underlying navigation?
+
+04:45.500 --> 04:49.940
+Is a browser not interpreting our code correctly?
+
+04:50.210 --> 04:54.350
+Sometimes it's more than one thing and sometimes it's multiple things combined.
+
+04:54.350 --> 05:05.120
+And it takes a great deal of patience and relentlessness in sort of figuring out why things aren't doing
+
+05:05.120 --> 05:08.780
+what we expect them to do and why people aren't doing what we expect them to do.
+
+05:08.790 --> 05:16.320
+So I just want to make it clear that it's not always easy to just pinpoint something as as the root
+
+05:16.320 --> 05:17.190
+cause of the problem.
+
+05:17.190 --> 05:20.550
+Sometimes it's a combination of multiple factors.
+
+05:21.170 --> 05:27.420
+The other additional point that's very much worth making is that content is very much still king.
+
+05:27.440 --> 05:32.630
+Content is the reason that users come to a site or open your app in the first place, right?
+
+05:32.660 --> 05:35.390
+Nobody reads a magazine so they can look at the ads.
+
+05:36.560 --> 05:36.750
+Okay.
+
+05:36.830 --> 05:42.740
+So by the same token, you know, nobody comes to a site or open an app just to experience the joy of
+
+05:42.740 --> 05:48.080
+well-organized information architecture or, you know, wonderful navigation.
+
+05:48.350 --> 05:53.640
+They're coming because they're hoping that what they want will be available.
+
+05:53.660 --> 05:59.900
+They're coming because they hope that they'll find the appropriate variety of things that thereafter
+
+05:59.900 --> 06:04.100
+they're hoping that the content that they find will be relevant to the reason they came here in the
+
+06:04.100 --> 06:04.940
+first place.
+
+06:04.940 --> 06:12.050
+And it means that to meet that expectation, we have to have ways to catalog, to track and to present
+
+06:12.050 --> 06:15.410
+that content when, where and how people want it.
+
+06:15.500 --> 06:18.590
+Because again, they have they have needs, they have expectations.
+
+06:18.590 --> 06:24.840
+And from their side of the equation, it's very much a sort of a self centered kind of deal.
+
+06:24.840 --> 06:25.260
+Right?
+
+06:25.290 --> 06:26.730
+What are you doing for me?
+
+06:26.730 --> 06:32.400
+And are you doing it in a way that makes sense to me, or are you doing it in a way that makes me happy,
+
+06:32.400 --> 06:37.250
+that makes me feel like my time is being respected?
+
+06:37.260 --> 06:42.390
+Is it done in a way that makes me feel like I'm gaining something from the experience?
+
+06:43.380 --> 06:50.340
+The other thing about user experience design as a whole is that it's at the intersection of two traditionally
+
+06:50.340 --> 06:54.900
+different camps, although I think those lines are sort of starting to blur, which of course is why
+
+06:54.900 --> 06:56.220
+I'm here talking about this.
+
+06:56.880 --> 07:02.580
+On one hand you have design, okay, traditional design, visual design, graphic design, interface
+
+07:02.580 --> 07:04.140
+design, things like that.
+
+07:04.140 --> 07:11.790
+On the other side, you have development technology, front end programming, mid-tier business logic,
+
+07:11.790 --> 07:13.860
+back end database work.
+
+07:13.890 --> 07:14.310
+ET cetera.
+
+07:14.310 --> 07:14.760
+ET cetera.
+
+07:14.760 --> 07:21.570
+But the bottom line is that what has always, always, always existed in the intersection of these two
+
+07:21.570 --> 07:28.050
+things is user experience, even if we didn't call it that, because the sum total of all the efforts
+
+07:28.050 --> 07:34.980
+on either side determined whether something was positive or negative for both the creator and the user.
+
+07:35.250 --> 07:41.730
+So appropriate technology has always been a big part of user experience design, and that means that
+
+07:41.730 --> 07:48.310
+the right platform is critical in experience delivery, which is why, again in the strategy part of
+
+07:48.310 --> 07:53.050
+what you're doing, you have to consider things that are traditionally thought of as being tacked on
+
+07:53.050 --> 07:54.190
+at the end of the process.
+
+07:54.190 --> 08:01.000
+You know, designers typically in particular, will be very concerned with behavior and look and feel
+
+08:01.000 --> 08:07.450
+and all those things, and they sort of won't stop to think, okay, what will the technology stack
+
+08:07.450 --> 08:11.650
+support that or what technology could we use for this?
+
+08:11.650 --> 08:14.980
+To me it's a lot like learning to play guitar.
+
+08:15.010 --> 08:15.250
+Okay?
+
+08:15.250 --> 08:21.610
+If you learn how to play guitar and you learn where the notes are and you learn chord structures and
+
+08:21.610 --> 08:24.820
+patterns and all those things, you have more in your repertoire, right?
+
+08:24.820 --> 08:26.380
+You have more in your arsenal.
+
+08:26.380 --> 08:30.570
+You can do more things because you have a solid idea of what's possible.
+
+08:30.580 --> 08:37.780
+So technology in and of itself enables user experience design to extend itself across all these multiple
+
+08:37.810 --> 08:42.850
+operating systems, all these browsers devices, form factors and buy form factor.
+
+08:42.850 --> 08:49.150
+I essentially mean screen size because we've got this this deluge of devices that all have different
+
+08:49.150 --> 08:54.250
+screen sizes and sort of different inherent user experiences that we have to contend with.
+
+08:54.340 --> 08:54.530
+All right.
+
+08:54.550 --> 08:56.200
+But technology is a huge part of that.
+
+08:56.200 --> 09:00.700
+So you have to start thinking about it at the strategy level.
+
+09:00.730 --> 09:03.430
+Technology cannot be seen as an add on.
+
+09:03.430 --> 09:04.720
+It's not a nice to have.
+
+09:04.720 --> 09:08.050
+It needs to be inherent in how we design things.
+
+09:08.080 --> 09:09.970
+Can't hammer that enough.
+
+09:10.000 --> 09:12.670
+You've got to start thinking about it from day one.
+
+09:12.700 --> 09:20.110
+Touch screen interaction, for example, has pretty much changed the way that we deal with digital information.
+
+09:20.140 --> 09:25.300
+The idea that you could use your finger to click on something or to swipe and move through information
+
+09:25.300 --> 09:29.050
+or pinch to Zoom or all those other things, that's very different.
+
+09:29.050 --> 09:34.840
+And you have to design something in a way that it can be used in those ways, right?
+
+09:34.840 --> 09:36.820
+So you have to think beyond point and click.

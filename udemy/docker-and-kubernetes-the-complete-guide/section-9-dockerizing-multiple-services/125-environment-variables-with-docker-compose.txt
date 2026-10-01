@@ -1,0 +1,718 @@
+WEBVTT
+
+00:00.990 --> 00:03.390
+-: In the last section, we set up some configuration inside
+
+00:03.390 --> 00:06.120
+of our Docker Compose file for Postgres, Redis
+
+00:06.120 --> 00:08.040
+and our server.
+
+00:08.040 --> 00:09.360
+We have one last thing to do,
+
+00:09.360 --> 00:10.680
+we need to make sure that we provide
+
+00:10.680 --> 00:14.880
+some environment variables off to the server service.
+
+00:14.880 --> 00:16.770
+So inside of our Docker Compose file,
+
+00:16.770 --> 00:17.940
+here's the server right here.
+
+00:17.940 --> 00:19.500
+We're gonna add on another section
+
+00:19.500 --> 00:21.930
+of configuration to specify some number
+
+00:21.930 --> 00:24.060
+of configuration variables.
+
+00:24.060 --> 00:26.070
+The configuration that we're going to pass in here,
+
+00:26.070 --> 00:29.070
+is gonna customize the way in which our server behaves
+
+00:29.070 --> 00:31.740
+when it is started up as a container.
+
+00:31.740 --> 00:33.900
+Just in case you didn't go through all the configuration
+
+00:33.900 --> 00:35.520
+with me a couple videos ago,
+
+00:35.520 --> 00:37.020
+if you look in the server directory
+
+00:37.020 --> 00:39.679
+and find the keys.js file, you'll find a bunch
+
+00:39.679 --> 00:43.620
+of references to something called processs.env.
+
+00:43.620 --> 00:45.840
+These are all environment variables.
+
+00:45.840 --> 00:48.900
+And so essentially, when the server starts up
+
+00:48.900 --> 00:50.550
+it's gonna look at its environment
+
+00:50.550 --> 00:52.500
+and it's gonna try to pull some information
+
+00:52.500 --> 00:54.060
+from the environment
+
+00:54.060 --> 00:55.860
+and it's then gonna use that information
+
+00:55.860 --> 00:57.646
+to customize the way in which it behaves.
+
+00:57.646 --> 01:01.980
+In our case, the server relies upon these environment
+
+01:01.980 --> 01:04.590
+variables for deciding how it's gonna connect
+
+01:04.590 --> 01:07.350
+to its instance of Redis, and how it's gonna connect
+
+01:07.350 --> 01:09.333
+to the Postgres server as well.
+
+01:10.920 --> 01:12.930
+Now, we've not yet gone through the process of setting
+
+01:12.930 --> 01:15.360
+up any environment variables through Docker Compose,
+
+01:15.360 --> 01:17.400
+so let's look at a diagram really quickly just
+
+01:17.400 --> 01:19.353
+to get a better idea of how to do this.
+
+01:21.600 --> 01:24.270
+Okay, so here's how we specify environment variables
+
+01:24.270 --> 01:25.830
+in a Docker Compose file.
+
+01:25.830 --> 01:28.470
+And I'm showing you some very fine grained details
+
+01:28.470 --> 01:30.870
+about the different syntax that we're gonna use.
+
+01:32.370 --> 01:35.100
+So on the left hand side, you'll see the syntax
+
+01:35.100 --> 01:38.250
+that you and I are going to use most frequently.
+
+01:38.250 --> 01:40.590
+We specify the name of the variable,
+
+01:40.590 --> 01:44.640
+then an equal right here, and then the value that we want
+
+01:44.640 --> 01:45.960
+to set it to.
+
+01:45.960 --> 01:47.430
+This is gonna set up a variable
+
+01:47.430 --> 01:51.360
+inside the container at runtime of the container.
+
+01:51.360 --> 01:54.150
+So what I mean by runtime right here, is you'll recall
+
+01:54.150 --> 01:56.880
+that when we build an image, it's a two step process,
+
+01:56.880 --> 01:58.650
+or I should say when we build and run an image
+
+01:58.650 --> 02:00.420
+it's really a two step process.
+
+02:00.420 --> 02:02.850
+The first step is when we build the image,
+
+02:02.850 --> 02:04.680
+that's the kind of preparation part.
+
+02:04.680 --> 02:06.870
+That's where we create a new image.
+
+02:06.870 --> 02:08.700
+And then at some point in the future when we actually
+
+02:08.700 --> 02:11.130
+run the container, that's the second part,
+
+02:11.130 --> 02:12.510
+that's when we actually take the image
+
+02:12.510 --> 02:15.510
+and create an instance of the container out of it.
+
+02:15.510 --> 02:17.430
+When we set up an environment variable inside
+
+02:17.430 --> 02:20.280
+of a Docker Compose file, we are setting up an environment
+
+02:20.280 --> 02:22.710
+variable that is applied at run time.
+
+02:22.710 --> 02:26.280
+So only when the container is started up.
+
+02:26.280 --> 02:28.440
+So when you specify an environment variable inside
+
+02:28.440 --> 02:31.007
+of a Docker Compose file, that information is not
+
+02:31.007 --> 02:33.420
+being encoded inside the image.
+
+02:33.420 --> 02:36.270
+The image doesn't get created and have some memory
+
+02:36.270 --> 02:37.830
+of this environment variable,
+
+02:37.830 --> 02:40.650
+it's only when a container is created, a environment
+
+02:40.650 --> 02:43.053
+variable is set up inside of the container.
+
+02:43.980 --> 02:46.080
+You'll see another syntax over here for setting
+
+02:46.080 --> 02:48.580
+up an environment variable on the right hand side.
+
+02:49.830 --> 02:52.820
+You can specify just the variable name by itself without
+
+02:52.820 --> 02:55.740
+any equal sign or any value for it.
+
+02:55.740 --> 02:58.770
+If you specify just the variable name, then the value for
+
+02:58.770 --> 03:01.980
+this variable is going to be taken from your computer.
+
+03:01.980 --> 03:04.080
+So if you have some environment variables set up
+
+03:04.080 --> 03:07.590
+on your machine, like let's say some secret API key
+
+03:07.590 --> 03:08.970
+or something like that,
+
+03:08.970 --> 03:12.390
+that might be when you want to use this variable name syntax
+
+03:12.390 --> 03:15.570
+by just itself without specifying any value,
+
+03:15.570 --> 03:17.130
+because then you don't have to specify
+
+03:17.130 --> 03:20.353
+or hard code in any specific value for the API key,
+
+03:20.353 --> 03:22.410
+excuse me, for the environment variable,
+
+03:22.410 --> 03:24.960
+it'll be taken from your machine at runtime
+
+03:24.960 --> 03:27.188
+and it's not gonna be saved along with the source code
+
+03:27.188 --> 03:29.850
+of your project or the Docker Compose file
+
+03:29.850 --> 03:31.770
+or anything like that.
+
+03:31.770 --> 03:34.327
+So in our case, we want to always use the same set
+
+03:34.327 --> 03:36.510
+of variable names and values inside of our
+
+03:36.510 --> 03:37.590
+Docker Compose file,
+
+03:37.590 --> 03:40.830
+and we are not adding any environment variables directly
+
+03:40.830 --> 03:42.150
+to our machine.
+
+03:42.150 --> 03:43.500
+That's why we're gonna use this syntax
+
+03:43.500 --> 03:44.790
+on the left hand side.
+
+03:44.790 --> 03:46.290
+So let's try it out right now.
+
+03:48.120 --> 03:50.910
+I'm gonna find my server configuration section
+
+03:50.910 --> 03:52.770
+and then on the same tab level
+
+03:52.770 --> 03:57.770
+as build and volumes, I'll specify environment like so.
+
+03:58.080 --> 04:01.320
+Now really quickly, in case English is a second language
+
+04:01.320 --> 04:03.240
+for you, or even if it's your first,
+
+04:03.240 --> 04:05.040
+environment is a tricky word.
+
+04:05.040 --> 04:07.110
+So I gotta ask you, please pay very close
+
+04:07.110 --> 04:09.240
+attention to the spelling on this word right here.
+
+04:09.240 --> 04:12.030
+It has an N right in the middle right there.
+
+04:12.030 --> 04:15.363
+So environment, M-E-N-T.
+
+04:16.680 --> 04:19.830
+So inside of here, we're going to add an array
+
+04:19.830 --> 04:21.360
+of environment variables.
+
+04:21.360 --> 04:23.550
+And remember we specify an array with a single
+
+04:23.550 --> 04:24.930
+dash like so.
+
+04:24.930 --> 04:29.160
+Every record in this array will get its own individual dash.
+
+04:29.160 --> 04:30.720
+The first environment variable that we're gonna
+
+04:30.720 --> 04:33.750
+specify, is the Redis host, which is kind of like
+
+04:33.750 --> 04:38.490
+the URL that our server should reach out to to access Redis.
+
+04:38.490 --> 04:41.883
+So for this, I'll specify the key Redis_host,
+
+04:43.014 --> 04:47.340
+then the equals, and then the value on the right hand side.
+
+04:47.340 --> 04:48.543
+Now in our case, I'm gonna...
+
+04:48.543 --> 04:50.970
+This is kind of a gimme for the value of Redis host
+
+04:50.970 --> 04:51.840
+right here.
+
+04:51.840 --> 04:54.360
+Remember that anytime that we access a service
+
+04:54.360 --> 04:57.060
+that has been defined inside of a Docker Compose file,
+
+04:57.060 --> 04:59.730
+we just specify the name of the service.
+
+04:59.730 --> 05:02.010
+We don't have to do any additional like, "Oh yeah,
+
+05:02.010 --> 05:05.400
+go over to this particular IP or anything like that
+
+05:05.400 --> 05:06.720
+that is hosting the service."
+
+05:06.720 --> 05:09.480
+We just put the name of the service in.
+
+05:09.480 --> 05:12.000
+So in our case, the name of the Redis host
+
+05:12.000 --> 05:13.577
+is going to be simply Redis,
+
+05:13.577 --> 05:17.145
+'cause that's the name of the service that was created
+
+05:17.145 --> 05:21.390
+for hosting our Redis service.
+
+05:21.390 --> 05:24.723
+We'll say Redis host is simply Redis like so.
+
+05:26.730 --> 05:29.310
+The next environment variable that we need to specify,
+
+05:29.310 --> 05:30.930
+is the Redis port.
+
+05:30.930 --> 05:32.910
+Now this one is a little bit more challenging.
+
+05:32.910 --> 05:35.640
+For this, you might look at the documentation
+
+05:35.640 --> 05:37.140
+for Redis on Docker Hub.
+
+05:37.140 --> 05:39.330
+Let's do that right now very quickly.
+
+05:39.330 --> 05:41.280
+If you go back over to Docker Hub
+
+05:41.280 --> 05:44.430
+and go to the explorer tab, you can scroll on down to
+
+05:44.430 --> 05:45.960
+Redis right here.
+
+05:45.960 --> 05:47.370
+And then in the full description,
+
+05:47.370 --> 05:49.300
+you can scroll down a little bit
+
+05:50.850 --> 05:53.130
+and you'll notice that to start a Redis image,
+
+05:53.130 --> 05:56.970
+you want to connect to the default port of 6379.
+
+05:56.970 --> 06:00.000
+Now this can be configured on the Redis image, but for us
+
+06:00.000 --> 06:02.220
+there's no reason in configuring it,
+
+06:02.220 --> 06:04.683
+we're just gonna leave it as 6379.
+
+06:07.260 --> 06:09.540
+So back inside of my Docker Compose file,
+
+06:09.540 --> 06:11.940
+I'm gonna specify another environment variable
+
+06:11.940 --> 06:16.230
+of Redis_port equals 6379.
+
+06:18.780 --> 06:23.100
+So in both these cases right here, we used the first syntax
+
+06:23.100 --> 06:24.900
+of defining an environment variable.
+
+06:24.900 --> 06:27.270
+We put the variable name in, an equal sign,
+
+06:27.270 --> 06:29.550
+and then the value that we want to set it to.
+
+06:29.550 --> 06:31.140
+And we used this syntax over here
+
+06:31.140 --> 06:33.690
+because we did not want to attempt to pull the value
+
+06:33.690 --> 06:36.960
+from my shell or my computer essentially,
+
+06:36.960 --> 06:39.150
+'cause I do not have any environment variables to find
+
+06:39.150 --> 06:41.973
+on my computer of Redis host or Redis port.
+
+06:43.230 --> 06:46.350
+Okay, so that's our two first environment variables.
+
+06:46.350 --> 06:48.210
+Now we've got a handful of others that we're gonna
+
+06:48.210 --> 06:49.830
+go through rather quickly.
+
+06:49.830 --> 06:53.340
+So the other ones we have to define are PG user, host,
+
+06:53.340 --> 06:55.233
+database, password and port.
+
+06:56.070 --> 06:58.590
+Now as a quick tip here, if you are making use
+
+06:58.590 --> 07:02.100
+of Adam or VS code, I think this hotkey works
+
+07:02.100 --> 07:04.590
+with other editors as well, but this is...
+
+07:04.590 --> 07:06.150
+Those are the only two editors where I know
+
+07:06.150 --> 07:07.650
+for sure this hotkey works.
+
+07:07.650 --> 07:09.900
+In order to get these key names
+
+07:09.900 --> 07:12.480
+over to the Docker Compose file very quickly,
+
+07:12.480 --> 07:15.940
+you can highlight env. right there
+
+07:17.160 --> 07:19.560
+and then press command D several times
+
+07:19.560 --> 07:22.860
+and that will do a multi select on that text selection.
+
+07:22.860 --> 07:24.360
+You can then press right
+
+07:24.360 --> 07:28.890
+on your arrow key and then option shift right arrow
+
+07:28.890 --> 07:31.890
+and that will select just the keyword like so.
+
+07:31.890 --> 07:34.053
+You can then do a command C,
+
+07:35.340 --> 07:38.220
+go back over to the Docker Compose file
+
+07:38.220 --> 07:41.223
+and then do a command V to paste all that stuff in.
+
+07:42.210 --> 07:43.830
+And so that's just saving us from having to do
+
+07:43.830 --> 07:45.063
+a little bit of typing.
+
+07:46.500 --> 07:49.350
+So now I'll add in all of my little dashes here.
+
+07:49.350 --> 07:53.550
+And actually, technically you can use these same command D
+
+07:53.550 --> 07:56.000
+multi slack talk key here as well if you want to.
+
+07:57.060 --> 07:58.860
+And then we'll add in equal signs
+
+07:58.860 --> 08:00.933
+on the right hand side of each of these.
+
+08:05.460 --> 08:06.990
+All right, so for each of these we're gonna do
+
+08:06.990 --> 08:11.160
+a little bit more research on the Postgres documentation
+
+08:11.160 --> 08:12.990
+back on Docker Hub.
+
+08:12.990 --> 08:15.483
+So I'm gonna go back over to Docker Hub,
+
+08:16.380 --> 08:18.390
+I'll find the explore tab.
+
+08:18.390 --> 08:21.210
+And again, I'll search for Postgres on this list.
+
+08:21.210 --> 08:22.800
+Here it is right here.
+
+08:22.800 --> 08:24.540
+And like I said, just a moment ago, if you scroll
+
+08:24.540 --> 08:28.290
+down a pretty good amount, you'll see some documentation
+
+08:28.290 --> 08:30.963
+on the default values for each of those variables.
+
+08:32.160 --> 08:34.620
+So for Postgres password, somewhere in here
+
+08:34.620 --> 08:36.090
+it will tell you the default password.
+
+08:36.090 --> 08:37.650
+Actually, I'm not sure that actually tells you
+
+08:37.650 --> 08:39.063
+what the default is.
+
+08:40.140 --> 08:42.360
+It might be a little bit higher up here.
+
+08:42.360 --> 08:44.820
+Oh, come on, I don't wanna look forever.
+
+08:44.820 --> 08:46.110
+Where is it?
+
+08:46.110 --> 08:48.150
+Okay, it doesn't actually tell us the default password
+
+08:48.150 --> 08:49.050
+but I'll just tell you right now
+
+08:49.050 --> 08:53.133
+the default password for Postgres is Postgres password.
+
+08:54.720 --> 08:57.963
+We're gonna connect to a default database of Postgres.
+
+08:58.890 --> 09:02.280
+The default user that we'll connect to is Postgres,
+
+09:02.280 --> 09:04.440
+the host which is very similar to the Redis host that
+
+09:04.440 --> 09:07.050
+we defined up here, is also Postgres because that's
+
+09:07.050 --> 09:09.990
+the name of our Postgres service that we defined right here.
+
+09:09.990 --> 09:11.700
+And then finally the port, and that's something
+
+09:11.700 --> 09:14.100
+you can reference the documentation for back over here,
+
+09:14.100 --> 09:16.890
+you'll notice expose 5432.
+
+09:16.890 --> 09:19.230
+That's the default port for Postgres.
+
+09:19.230 --> 09:22.323
+And so we'll do 5432 for that one as well.
+
+09:23.490 --> 09:24.570
+Okay, so that's it.
+
+09:24.570 --> 09:26.460
+So hopefully you're starting to learn here that
+
+09:26.460 --> 09:28.980
+getting some information from these very common images
+
+09:28.980 --> 09:30.886
+that you'll probably use, such as Postgres,
+
+09:30.886 --> 09:34.530
+or MySQL or Redis, you have to look at the documentation
+
+09:34.530 --> 09:36.810
+for the repository to get some information about
+
+09:36.810 --> 09:40.050
+the default values here to make use of with that image.
+
+09:40.050 --> 09:42.360
+So, let's save this Docker Compose file
+
+09:42.360 --> 09:45.030
+and we're gonna very quickly test this out at our terminal.
+
+09:45.030 --> 09:46.440
+I know this is a really long section
+
+09:46.440 --> 09:48.510
+but we're almost done with this.
+
+09:48.510 --> 09:50.130
+So, I'll go back over to my tunnel,
+
+09:50.130 --> 09:53.640
+I'm gonna stop everything with Control+C,
+
+09:53.640 --> 09:56.133
+and I'll do a Docker Compose up.
+
+09:57.780 --> 10:01.050
+Now that's going to rebuild the server image from scratch,
+
+10:01.050 --> 10:02.340
+The (indistinct) you recall
+
+10:02.340 --> 10:04.080
+for the server does not take very long
+
+10:04.080 --> 10:06.280
+so we'll just wait a couple of seconds here.
+
+10:07.620 --> 10:08.453
+There it goes.
+
+10:08.453 --> 10:10.020
+And then it's gonna start to create all those
+
+10:10.020 --> 10:13.530
+different services and eventually we see listening up here.
+
+10:13.530 --> 10:14.970
+Perfect.
+
+10:14.970 --> 10:16.230
+So that's looking pretty good.
+
+10:16.230 --> 10:17.640
+Let's take a quick pause right here
+
+10:17.640 --> 10:19.590
+and we'll continue in the next section.

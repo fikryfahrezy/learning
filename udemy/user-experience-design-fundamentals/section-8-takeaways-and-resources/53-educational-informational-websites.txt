@@ -1,0 +1,466 @@
+WEBVTT
+
+00:00.910 --> 00:07.420
+In the age of information and ridiculously easy access to just about anything across a million different
+
+00:07.420 --> 00:09.010
+kinds of devices.
+
+00:09.010 --> 00:11.200
+Information is pretty much at our fingertips.
+
+00:11.470 --> 00:17.710
+So when it comes to information on great user experience design, whether you're looking for advice
+
+00:17.710 --> 00:25.300
+articles, how to's, step by step instruction, video tutorials, you name it, it's pretty much all
+
+00:25.300 --> 00:26.350
+out there to be found.
+
+00:26.710 --> 00:32.980
+There's no shortage of websites and places to go, blogs, you name it.
+
+00:32.980 --> 00:37.420
+That can pretty much in and of themselves give you a really decent education.
+
+00:37.420 --> 00:44.740
+And like most people, I have a list of at least a dozen sites that I visit on a on a regular basis
+
+00:44.740 --> 00:51.670
+that to me are always helpful because these are people in this field and related fields who are just
+
+00:51.670 --> 00:56.740
+sort of constantly uncovering new insights, new ideas, new things that at least make you take a step
+
+00:56.740 --> 00:59.380
+back and go, huh, You know, I never thought of that.
+
+00:59.380 --> 01:05.870
+And you're always learning, okay, this is a very deceptive profession in that the deeper you get into
+
+01:05.870 --> 01:07.370
+it, the more there is to know.
+
+01:07.370 --> 01:11.120
+And I think part of the reason for that is because we're talking about human beings here.
+
+01:11.120 --> 01:14.840
+And human beings are essentially pretty complex creatures.
+
+01:14.840 --> 01:20.090
+So there's always something to learn, you know, And with the advances that happen in technology,
+
+01:20.090 --> 01:25.210
+there's also new ways to apply all that insight that we've learned, right?
+
+01:25.220 --> 01:30.800
+There's new tools, there's new techniques, there's new plug ins, there's new platforms, you name
+
+01:30.800 --> 01:30.920
+it.
+
+01:30.920 --> 01:33.380
+So this is constant evolution.
+
+01:33.380 --> 01:34.190
+That's the gig.
+
+01:34.190 --> 01:37.880
+And in order to not get left behind, you got to stay on top of it.
+
+01:37.880 --> 01:40.520
+If nothing else, you want to widen your palette, right?
+
+01:40.520 --> 01:46.910
+You want to be able to draw on your arsenal of tools and techniques as the challenges that you are presented
+
+01:46.910 --> 01:48.530
+with become more complex.
+
+01:48.530 --> 01:55.280
+So having a solid list of of information and educational websites I think is an invaluable part of your
+
+01:55.280 --> 01:55.850
+tool kit.
+
+01:55.850 --> 02:01.940
+I could spend the next six hours talking about this, but instead I'm going to give you the top sites
+
+02:01.940 --> 02:03.980
+that I go to daily.
+
+02:03.980 --> 02:08.900
+There are certainly others, but these four, no doubt I hit them every single day.
+
+02:08.900 --> 02:12.890
+There's more there than I will probably ever be able to read.
+
+02:12.890 --> 02:17.090
+So all highly recommended and let's get on with it.
+
+02:18.070 --> 02:24.820
+UX Booth is a publication that's by and for the user experience community, while its readership is
+
+02:24.820 --> 02:30.130
+essentially made up of beginning to intermediate user experience and interaction designers, anyone
+
+02:30.130 --> 02:34.780
+who's interested in making the web a better place to be is absolutely welcome.
+
+02:34.780 --> 02:42.130
+So if you're a creator or builder of digital products of any stripe, I think it's a good place to check
+
+02:42.130 --> 02:42.490
+out.
+
+02:42.490 --> 02:48.580
+And like I said, I've been doing this for a very long time and I still look at it every single day
+
+02:48.580 --> 02:52.900
+because I think the quality of what's being posted there is very good.
+
+02:52.900 --> 02:56.260
+And I really like a lot of these these regular contributors.
+
+02:56.350 --> 03:02.560
+I'm always at least getting a different perspective on something that, you know, makes me rethink
+
+03:02.560 --> 03:03.490
+my position a little bit.
+
+03:03.490 --> 03:04.760
+And that's always a good thing.
+
+03:04.790 --> 03:08.560
+UX Booth is essentially a collective of authors and contributors, okay?
+
+03:08.590 --> 03:13.360
+These are practicing professionals for the most part, and it's because it was founded by the members
+
+03:13.360 --> 03:14.260
+of the panel.
+
+03:14.260 --> 03:19.730
+It's grown into a pretty big community that writes from a variety of perspectives.
+
+03:19.730 --> 03:19.960
+Okay.
+
+03:19.970 --> 03:25.700
+And that's the other thing that I really like about this site in particular is that it's range of topics
+
+03:25.730 --> 03:29.750
+is really diverse and it's sizable.
+
+03:29.750 --> 03:29.950
+Okay?
+
+03:29.960 --> 03:35.090
+You've got a lot of people pulling content from a lot of different places, a lot of different references,
+
+03:35.120 --> 03:39.410
+a lot of recommendations, and they're coming from very different angles.
+
+03:39.830 --> 03:46.790
+So I think you get a really good mix of more traditional thinking and some non traditional thinking.
+
+03:47.210 --> 03:52.010
+And I think it makes for a very enlightening, engaging experience.
+
+03:52.010 --> 03:56.900
+It never gets boring when you talk about the quality and integrity of content.
+
+03:56.930 --> 03:59.480
+A list apart is very hard to beat.
+
+03:59.510 --> 04:05.780
+It's loaded with very insightful articles that explore design, development and meaning of web content,
+
+04:05.780 --> 04:09.830
+and they have a particular focus on web standards and best practices.
+
+04:09.830 --> 04:14.600
+These articles are written by designers, developers, architects, producers, project managers and
+
+04:14.600 --> 04:15.830
+other sort of specialists.
+
+04:15.830 --> 04:19.520
+But these are all experts in their respective fields.
+
+04:19.520 --> 04:24.800
+These are folks who have been doing it for a while, have had lots of experiences and are more than
+
+04:24.800 --> 04:28.670
+willing to share those experiences, which is particularly important.
+
+04:28.670 --> 04:35.930
+As the saying goes, there is no substitute for experience, and many of the folks who write here have
+
+04:35.930 --> 04:40.640
+a great deal of experience and we're all very fortunate that they're willing to share that.
+
+04:40.670 --> 04:49.400
+The article topics range from everything from code to content to culture to design to mobile to processes,
+
+04:49.400 --> 04:52.820
+to user science, philosophical concerns.
+
+04:52.820 --> 05:02.480
+You name it, you'll find it here, much like UX booth, the range of topics is very diverse, very
+
+05:02.480 --> 05:05.810
+enlightening, very challenging and very deep.
+
+05:05.840 --> 05:13.190
+You'll be able to spend many, many hours on this site and still never run out of new things to explore
+
+05:13.190 --> 05:16.370
+and learn and experience.
+
+05:16.370 --> 05:20.210
+So again, another highly recommended choice, a list apart.
+
+05:20.910 --> 05:27.540
+UX magazine is actually fairly new, but it's very, very quickly become what it was created to be,
+
+05:27.540 --> 05:33.810
+which is a central one stop resource for everything related to user experience.
+
+05:34.440 --> 05:40.320
+Its primary goal is to provide a steady stream of current, informative and credible information about
+
+05:40.320 --> 05:44.700
+UX and related fields, and it does exactly that.
+
+05:44.700 --> 05:51.960
+As I said, it's it's relatively new, but the speed at which they've accumulated articles and quality
+
+05:51.960 --> 05:55.230
+articles as well is particularly impressive.
+
+05:55.260 --> 05:57.830
+Again, this is one of those that I go back to daily.
+
+05:57.840 --> 06:04.110
+Its content is driven and created by a very impressive roster of experienced professionals who work
+
+06:04.110 --> 06:08.090
+in just about every area of user experience that you could think of.
+
+06:08.100 --> 06:12.240
+And again, they cover the field from diverse angles and perspectives.
+
+06:12.360 --> 06:15.240
+I think you're starting to sense a theme here.
+
+06:15.390 --> 06:23.860
+My criteria, I think, for for reference and resource is always I never want just one position, one
+
+06:23.860 --> 06:28.660
+point of view, one frame of mind, whatever you want to call it, even my own.
+
+06:28.660 --> 06:35.590
+I certainly have my own opinions, as I'm sure you're aware, but I think it's infinitely more valuable
+
+06:35.620 --> 06:42.490
+to get a diverse collection of thoughts and opinions and perspectives and ideas, and then you sort
+
+06:42.490 --> 06:46.600
+of make up your own mind, right, based on those things and then based on your experience applying
+
+06:46.600 --> 06:47.380
+those things.
+
+06:47.380 --> 06:53.490
+But that diversity is truly important when you're talking about any type of research or reference.
+
+06:53.500 --> 07:00.430
+It also does a very good job of allowing and fostering communication between people for whom effective
+
+07:00.430 --> 07:05.140
+collaboration is most critical in terms of producing a good user experience outcome, meaning, you
+
+07:05.140 --> 07:10.120
+know, designers and engineers, clients and vendors, designers and business strategists, etcetera,
+
+07:10.120 --> 07:10.900
+etcetera, etcetera.
+
+07:10.900 --> 07:18.400
+So it becomes a very valuable sounding board for some of those people who are outside the UX discipline
+
+07:18.400 --> 07:21.640
+but are still paying very close attention to all this stuff.
+
+07:21.640 --> 07:26.050
+So again, UX magazine definitely, definitely worth a visit.
+
+07:26.380 --> 07:33.480
+Smashing Magazine is one of the most popular online resources for all things UX and UI design.
+
+07:33.490 --> 07:40.300
+It's a treasure trove of quality articles on usability, information, architecture, interaction design
+
+07:40.300 --> 07:44.880
+and just about any user experience related topic that you could think of.
+
+07:44.890 --> 07:53.750
+And in particular, they publish these best of lists that show excellent visual examples of really well-designed
+
+07:53.800 --> 07:54.280
+sites.
+
+07:54.330 --> 08:00.520
+Okay, so aside from all this theory and all these ideas and these research topics, they also literally
+
+08:00.520 --> 08:02.260
+show you design.
+
+08:02.260 --> 08:03.490
+Here's what it looks like.
+
+08:03.490 --> 08:06.670
+Here's some visual examples of the stuff that we're talking about.
+
+08:06.670 --> 08:10.560
+Here are ten websites with excellent checkout processes.
+
+08:10.570 --> 08:15.850
+Here are ten apps that use extremely innovative navigation, whatever it may be.
+
+08:15.850 --> 08:21.820
+But they do a really good job of giving you examples of things that work that you can learn from.
+
+08:21.820 --> 08:28.330
+So in addition to that, you'll also find really great design advice for both digital and physical products.
+
+08:28.330 --> 08:28.620
+Okay?
+
+08:28.630 --> 08:32.470
+Not just websites or mobile apps or software.
+
+08:32.530 --> 08:37.080
+They also talk about physical things, you know, physical signage, wayfinding.
+
+08:37.090 --> 08:40.600
+So it's again, very diverse and very broad.
+
+08:40.600 --> 08:45.690
+Throughout all these articles, you have experts and professionals who are sharing every valuable idea,
+
+08:45.700 --> 08:52.030
+practical tip, usable guideline, best practice they've ever put in place, along with case studies
+
+08:52.030 --> 08:57.340
+that are relating their own experiences in their own companies or with their own clients.
+
+08:57.340 --> 09:03.670
+And again, hearing it honestly and in a straightforward manner from the horse's mouth, so to speak,
+
+09:03.700 --> 09:05.020
+is invaluable.
+
+09:05.050 --> 09:11.920
+Smashing Magazine is a is an excellent resource for all things related to this discipline, and it should
+
+09:11.920 --> 09:14.500
+definitely be one of your bookmarks.
+
+09:14.500 --> 09:17.920
+And of course, I would be remiss if I didn't tell you about my website.
+
+09:17.950 --> 09:19.620
+Give good ux.com.
+
+09:19.630 --> 09:27.130
+You will find articles, videos, tutorials and practical applicable advice across multiple areas of
+
+09:27.160 --> 09:28.360
+UX and UX practice.
+
+09:28.360 --> 09:28.530
+Okay.
+
+09:28.600 --> 09:35.950
+From career advice and guidance to UI design to UX to customer experience issues.
+
+09:36.070 --> 09:41.680
+Everything that I've learned over the last three decades of working with Fortune 501 hundred companies
+
+09:41.680 --> 09:43.720
+to help them improve their products is there.
+
+09:43.720 --> 09:48.720
+It is my goal to make this stuff available to you so that you can make use of it.
+
+09:48.730 --> 09:55.610
+You will also find free ebooks, UX templates and some information about my online training courses.
+
+09:55.630 --> 10:01.960
+In addition, you'll find details on my UX training and consulting services for both individuals and
+
+10:01.960 --> 10:03.040
+organizations.
+
+10:03.040 --> 10:08.800
+And I should also mention that it's the place you will find my book Think first, which is essentially
+
+10:08.800 --> 10:12.880
+my roadmap to creating solid user experience strategy.
+
+10:12.880 --> 10:18.160
+The book is based on the premise that in my mind, good user experience starts between your ears.
+
+10:18.160 --> 10:20.440
+The thing that makes the work you do the most.
+
+10:20.550 --> 10:23.520
+Valuable is how you think about the decisions you make.
+
+10:23.550 --> 10:29.550
+There are any number of resources that offer lots of tactical advice on how to do things, but they
+
+10:29.550 --> 10:36.060
+almost all gloss over the thinking part, the making sure that you understand what people want from
+
+10:36.060 --> 10:42.510
+you, making sure that you are solving the right problems instead of just throwing time and effort and
+
+10:42.510 --> 10:44.670
+activity at everything that comes down the pike.
+
+10:44.700 --> 10:49.050
+Any time you create something that's going to be used by people, you have to have a solid understanding
+
+10:49.050 --> 10:54.660
+of what its value is and you have to have a solid understanding of what features functions and therefore
+
+10:54.660 --> 11:00.450
+your related tasks and activities that contribute to that value from determining what features and functions
+
+11:00.450 --> 11:07.350
+to use to creating better, more meaningful requirements to interviewing users and stakeholders and
+
+11:07.350 --> 11:08.890
+conducting user research.
+
+11:08.910 --> 11:15.450
+The book is essentially, as I said, a step by step guide toward producing something that is useful,
+
+11:15.450 --> 11:17.530
+usable and valuable.
+
+11:17.550 --> 11:22.570
+I hope you will check out the website if you like what you see there, I invite you to drop me a line
+
+11:22.570 --> 11:25.660
+at Joe at GitHub.com.
+
+11:25.690 --> 11:31.330
+I certainly hope you have enjoyed this course and that you have found it helpful and I hope you always
+
+11:31.330 --> 11:33.300
+remember to give good UX.

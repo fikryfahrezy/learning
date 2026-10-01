@@ -1,0 +1,79 @@
+WEBVTT
+
+00:01.000 --> 00:06.610
+I'd like you to consider structure a little bit further by doing a quick exercise based on information
+
+00:06.610 --> 00:07.350
+architecture.
+
+00:07.360 --> 00:13.300
+For this, I want you to assume that you have the same edition of a newspaper, both an online version
+
+00:13.300 --> 00:16.390
+and a printed hard copy that you're holding in your hands.
+
+00:16.400 --> 00:21.640
+How would you go about looking for updated news about the trial of a famous athlete from a different
+
+00:21.640 --> 00:22.960
+country than your own?
+
+00:22.960 --> 00:27.220
+In each of those versions, same story, but one's an electronic version.
+
+00:27.220 --> 00:29.560
+One's a printed version that you hold in your hands.
+
+00:29.560 --> 00:35.380
+I want you to think about how you would do this in each case, and I want you to write down a narrative
+
+00:35.380 --> 00:36.820
+of that process.
+
+00:36.820 --> 00:41.950
+What you do first, what you do, second, what you do third, and what you're thinking as you do those
+
+00:41.950 --> 00:48.340
+things and as you create your narrative, I want you to consider the following which process allows
+
+00:48.340 --> 00:51.520
+you to find the information more easily online or offline?
+
+00:51.520 --> 00:56.690
+And why did that same process allow you to find the information more quickly?
+
+00:56.710 --> 00:58.560
+It was one faster than the other.
+
+00:58.570 --> 01:03.620
+Were you able to locate what you were looking for more quickly on the online version as opposed to the
+
+01:03.620 --> 01:05.180
+printed version, or vice versa?
+
+01:05.480 --> 01:11.870
+How could each information architecture be modified to provide additional speed, additional efficiency
+
+01:11.870 --> 01:13.250
+or ease of use?
+
+01:13.430 --> 01:19.130
+And finally, what significant differences do you see in the information architecture of each version
+
+01:19.130 --> 01:19.880
+of the newspaper?
+
+01:19.910 --> 01:20.150
+Okay.
+
+01:20.150 --> 01:25.850
+What differences are there in the way that information is organized, structured, prioritized in the
+
+01:25.880 --> 01:31.130
+online version versus the printed copy that you hold in your hands as you do this?
+
+01:31.130 --> 01:37.430
+I think you're going to find that the context of use in each case is significantly different across
+
+01:37.430 --> 01:38.660
+multiple areas.

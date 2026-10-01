@@ -1,0 +1,301 @@
+WEBVTT
+
+00:00.900 --> 00:03.390
+Instructor: Rather than moving onto our next config file,
+
+00:03.390 --> 00:05.010
+I think that it would be kind of nice
+
+00:05.010 --> 00:07.440
+to take these two config files we just put together
+
+00:07.440 --> 00:10.080
+and load them up into Kubernetes just to make sure
+
+00:10.080 --> 00:12.720
+that everything that we've done so far is on the level
+
+00:12.720 --> 00:14.010
+and that we don't have any typos
+
+00:14.010 --> 00:15.660
+or anything like that in there.
+
+00:15.660 --> 00:18.030
+Now I do want to remind you that when we load up
+
+00:18.030 --> 00:21.510
+both these config files through the kubectl apply command,
+
+00:21.510 --> 00:23.670
+we're not going to be able to very easily
+
+00:23.670 --> 00:26.370
+test out the multi-client deployment
+
+00:26.370 --> 00:27.990
+or the client deployment right here,
+
+00:27.990 --> 00:30.720
+just because the service that is governing access to it
+
+00:30.720 --> 00:32.940
+is not allowing outside traffic.
+
+00:32.940 --> 00:34.440
+So we will not be able to test this out
+
+00:34.440 --> 00:36.180
+inside of our browser just yet,
+
+00:36.180 --> 00:38.460
+but we can at least start up the deployment
+
+00:38.460 --> 00:41.077
+and look at it in kubectl and say,
+
+00:41.077 --> 00:43.500
+"Okay, our pods are actually running."
+
+00:43.500 --> 00:44.333
+So let's get to it.
+
+00:44.333 --> 00:47.040
+We're going to load up both these config files right here.
+
+00:47.040 --> 00:48.990
+Now, the first thing I want to do is to make sure
+
+00:48.990 --> 00:51.030
+that we delete our old deployment
+
+00:51.030 --> 00:52.740
+the previous deployment that we had put together
+
+00:52.740 --> 00:55.440
+as we were first learning a lot of this stuff.
+
+00:55.440 --> 00:57.540
+So to delete the old deployment,
+
+00:57.540 --> 01:00.030
+I'm going to list it out with kubectl,
+
+01:00.030 --> 01:05.030
+get deployments, and then I will delete it with kubectl,
+
+01:05.430 --> 01:07.500
+delete client deployment
+
+01:07.500 --> 01:11.103
+or see me delete deployment, client deployment.
+
+01:11.970 --> 01:14.160
+There we go, again we list out
+
+01:14.160 --> 01:17.190
+delete the type of object we want to delete
+
+01:17.190 --> 01:19.890
+and then the name of the thing that we want to delete.
+
+01:20.850 --> 01:23.670
+So I'll run that and now I can do a kubectl
+
+01:23.670 --> 01:27.510
+get deployments and no resources are found.
+
+01:27.510 --> 01:30.900
+Now don't forget, we had also created a service as well.
+
+01:30.900 --> 01:33.030
+It was a note port that was providing access
+
+01:33.030 --> 01:36.480
+to the set of pods that were created by that deployment.
+
+01:36.480 --> 01:39.300
+So to get a list of all the services we have created
+
+01:39.300 --> 01:42.210
+I'll do kubectl get services.
+
+01:42.210 --> 01:43.590
+Now we can very easily see that
+
+01:43.590 --> 01:46.500
+yes there is in fact the client node pod there.
+
+01:46.500 --> 01:49.320
+So we can delete this thing in a very similar fashion.
+
+01:49.320 --> 01:54.320
+I'll do kubectl delete service client node pod, like so.
+
+01:57.370 --> 01:58.950
+Oops! Typo there.
+
+01:58.950 --> 01:59.783
+There we go.
+
+01:59.783 --> 02:02.163
+So now if I do another get services,
+
+02:05.220 --> 02:07.830
+I'm only gonna see the original Kubernetes service.
+
+02:07.830 --> 02:09.360
+And again, we're not touching that.
+
+02:09.360 --> 02:10.980
+That's something internal to Kubernetes
+
+02:10.980 --> 02:13.680
+and we don't need to mess around with it at all.
+
+02:13.680 --> 02:15.030
+All right, so now we're ready to apply
+
+02:15.030 --> 02:16.860
+those two config files.
+
+02:16.860 --> 02:19.200
+Now, we could use the same technique that we had previously
+
+02:19.200 --> 02:22.230
+used for loading up config files where we did something
+
+02:22.230 --> 02:25.980
+like kubectl ,apply dash f,
+
+02:25.980 --> 02:29.040
+and then remember we're currently inside the complex folder,
+
+02:29.040 --> 02:31.680
+but all of our config files are inside of K8s.
+
+02:31.680 --> 02:34.110
+So we could do something like K8s
+
+02:34.110 --> 02:36.330
+and then what was the first one called?
+
+02:36.330 --> 02:37.233
+Client deployment.
+
+02:39.990 --> 02:41.610
+But there's actually a little shortcut
+
+02:41.610 --> 02:44.280
+that we can use anytime that we want to apply a group
+
+02:44.280 --> 02:46.020
+of configuration files.
+
+02:46.020 --> 02:49.140
+So rather than spelling out the entire path right here
+
+02:49.140 --> 02:52.350
+I'm going to instead confirm that the K8s directory
+
+02:52.350 --> 02:53.183
+is right there.
+
+02:53.183 --> 02:55.920
+And then I can apply every file inside there
+
+02:55.920 --> 02:57.660
+with apply dash f.
+
+02:57.660 --> 03:00.660
+And I'm just gonna provide the K8s directory
+
+03:00.660 --> 03:03.660
+when I do this kubectl is going to look into that folder.
+
+03:03.660 --> 03:05.910
+It's gonna find every config file in there
+
+03:05.910 --> 03:09.210
+and it's going to apply all of them at the same time.
+
+03:09.210 --> 03:10.620
+So if I run that
+
+03:10.620 --> 03:13.770
+I'm going to see that we have both IP service created
+
+03:13.770 --> 03:15.960
+and in the case of the deployment file,
+
+03:15.960 --> 03:17.760
+it looks like I probably made a little typo
+
+03:17.760 --> 03:19.140
+at some point in time.
+
+03:19.140 --> 03:20.940
+Let's check that out really quickly.
+
+03:22.260 --> 03:26.433
+See inside there I said metadata label,
+
+03:27.480 --> 03:31.080
+Oops! it should be labels, plural like so.
+
+03:31.080 --> 03:33.450
+So I'm just gonna make that very quick change.
+
+03:33.450 --> 03:35.850
+And then if I try applying that thing again
+
+03:35.850 --> 03:37.080
+I get both them created.
+
+03:37.080 --> 03:38.550
+Well, at least the first one was unchanged
+
+03:38.550 --> 03:40.680
+but the second one was created.
+
+03:40.680 --> 03:44.280
+So now we can do a kubectl, get deployments
+
+03:44.280 --> 03:47.280
+and we'll see that we have three pods created
+
+03:47.280 --> 03:49.110
+tied to our client deployment.
+
+03:49.110 --> 03:51.120
+And of course, if we do a get pods
+
+03:51.120 --> 03:53.700
+we'll see all three of those different pods running.
+
+03:53.700 --> 03:57.750
+Finally, we can do a kubectl, get services
+
+03:57.750 --> 04:00.390
+and we'll see that we have the cluster IP service created
+
+04:00.390 --> 04:02.280
+for our client as well.
+
+04:02.280 --> 04:05.280
+Cool, so we're going to make use of this kubectl
+
+04:05.280 --> 04:08.430
+apply on a entire directory quite a bit
+
+04:08.430 --> 04:11.430
+since you and I have like 11 different configuration files
+
+04:11.430 --> 04:14.610
+at least to manage throughout this application.
+
+04:14.610 --> 04:16.020
+All right, so let's take a quick pause right here
+
+04:16.020 --> 04:17.970
+and we'll continue in the next section.

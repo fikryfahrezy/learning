@@ -1,0 +1,487 @@
+WEBVTT
+
+00:00.840 --> 00:01.673
+Instructor: In this section
+
+00:01.673 --> 00:02.970
+we're gonna start making some changes
+
+00:02.970 --> 00:05.250
+to our deployment configuration file
+
+00:05.250 --> 00:08.220
+and just verify that all the pods that are associated
+
+00:08.220 --> 00:11.040
+with this deployment successfully get updated.
+
+00:11.040 --> 00:13.530
+So in particular, I really want to try updating
+
+00:13.530 --> 00:15.420
+the container port value down here
+
+00:15.420 --> 00:18.330
+from 3000 to some other value,
+
+00:18.330 --> 00:19.620
+because you'll recall that
+
+00:19.620 --> 00:21.840
+when we tried changing that container port
+
+00:21.840 --> 00:22.947
+inside of our client.pod,
+
+00:22.947 --> 00:26.130
+or excuse me client-pod.yahml file
+
+00:26.130 --> 00:28.080
+we very quickly got an error message saying,
+
+00:28.080 --> 00:30.540
+hey, you can't update that value.
+
+00:30.540 --> 00:33.240
+Okay, so back inside of the client deployment.
+
+00:33.240 --> 00:35.670
+So we're in the deployment file right now.
+
+00:35.670 --> 00:37.410
+I'm gonna find the container port
+
+00:37.410 --> 00:41.160
+and I'll update the port to 99999 like so.
+
+00:41.160 --> 00:41.993
+Now, just so you know,
+
+00:41.993 --> 00:43.830
+when we change this port assignment
+
+00:43.830 --> 00:45.390
+you will no longer be able to visit
+
+00:45.390 --> 00:47.880
+our application inside of the browser.
+
+00:47.880 --> 00:49.770
+So in case you apply this update
+
+00:49.770 --> 00:51.570
+and then try to test it out inside the browser,
+
+00:51.570 --> 00:54.420
+it's not going to work because the container doesn't care
+
+00:54.420 --> 00:58.503
+about port 999, it wants you to expose traffic on port 3000.
+
+00:59.760 --> 01:02.130
+Okay, so now that we changed our configuration file,
+
+01:02.130 --> 01:04.530
+I'm gonna make sure that I save the file
+
+01:04.530 --> 01:06.390
+and then I'm going to go back over to my terminal
+
+01:06.390 --> 01:08.580
+and we're gonna do the same thing we always do
+
+01:08.580 --> 01:11.220
+anytime we want to update an object.
+
+01:11.220 --> 01:16.087
+We'll do a kubectlapply-F clientdeployment.yaml.
+
+01:19.320 --> 01:21.720
+So I'll run that, and then it tells us very directly
+
+01:21.720 --> 01:26.720
+that an existing object type with this name was configured.
+
+01:26.970 --> 01:29.880
+It says configured as opposed to something being created.
+
+01:29.880 --> 01:31.650
+So we definitely just made a change
+
+01:31.650 --> 01:33.420
+to an existing deployment as opposed
+
+01:33.420 --> 01:36.000
+to creating a new one entirely.
+
+01:36.000 --> 01:40.590
+We can now do a kubectl get deployments
+
+01:40.590 --> 01:42.060
+to print out all of our deployments.
+
+01:42.060 --> 01:43.530
+Yep, it's still there.
+
+01:43.530 --> 01:45.750
+I can do a kubectl get pods,
+
+01:45.750 --> 01:47.040
+and now with this you're gonna see something
+
+01:47.040 --> 01:48.870
+a little bit more interesting.
+
+01:48.870 --> 01:52.920
+Notice how the age of this pod right here is 26 seconds.
+
+01:52.920 --> 01:56.790
+So clearly when we apply this configuration file right here
+
+01:56.790 --> 02:00.900
+Kubernetes noticed that we made a change to the template
+
+02:00.900 --> 02:04.320
+for the pods that are being controlled by this deployment.
+
+02:04.320 --> 02:06.450
+It saw that we changed the container port,
+
+02:06.450 --> 02:09.870
+and so rather than trying to update the existing pod
+
+02:09.870 --> 02:11.130
+that already existed
+
+02:11.130 --> 02:14.430
+it deleted that pod and completely recreated it
+
+02:14.430 --> 02:16.893
+with the new container port value right here.
+
+02:20.370 --> 02:21.900
+Now one thing that would be really nice to do
+
+02:21.900 --> 02:24.060
+is make sure that this new pod right here
+
+02:24.060 --> 02:26.460
+is in fact running with that new port.
+
+02:26.460 --> 02:29.760
+So I'll do a kubectl describe pods.
+
+02:29.760 --> 02:31.590
+We'll get the long form description
+
+02:31.590 --> 02:33.420
+about this pod right here and we'll probably
+
+02:33.420 --> 02:36.720
+be able to verify that port 999 is assigned to it.
+
+02:36.720 --> 02:39.030
+Now remember when you do describe pods,
+
+02:39.030 --> 02:40.710
+the name of whatever you wanna look up
+
+02:40.710 --> 02:42.000
+is completely optional.
+
+02:42.000 --> 02:44.010
+In this case, we only have one pod,
+
+02:44.010 --> 02:46.320
+so I'll just print out the information about all pods
+
+02:46.320 --> 02:47.820
+because hey, there's only one.
+
+02:48.900 --> 02:49.830
+Okay, so when I run that,
+
+02:49.830 --> 02:51.390
+I'll scroll up a little bit
+
+02:51.390 --> 02:52.990
+and then I should be able to see
+
+02:53.850 --> 02:55.050
+our list of containers.
+
+02:55.050 --> 02:56.670
+Here's the client container
+
+02:56.670 --> 03:00.630
+and it has port 999 mapped on it.
+
+03:00.630 --> 03:02.100
+So without a doubt this pod is running
+
+03:02.100 --> 03:04.800
+with the most up-to-date configuration.
+
+03:04.800 --> 03:06.990
+Okay, so that's pretty cool.
+
+03:06.990 --> 03:08.550
+Now I wanna do one other change
+
+03:08.550 --> 03:09.990
+or one or two other changes here.
+
+03:09.990 --> 03:13.710
+Let's first try scaling up our replica setting right here.
+
+03:13.710 --> 03:17.250
+So when we scale up from one to something like say five,
+
+03:17.250 --> 03:18.900
+we're now going to have our deployment
+
+03:18.900 --> 03:21.210
+attempt to create five different pods
+
+03:21.210 --> 03:24.033
+all with this identical template right here.
+
+03:25.080 --> 03:27.780
+So I'm going to make sure I update replicas to five,
+
+03:27.780 --> 03:30.180
+I'll save the file and then as usual
+
+03:30.180 --> 03:35.180
+we'll do a kubectl apply client deployment.yaml.
+
+03:38.190 --> 03:42.210
+Now if you type in very quickly kubectl get deployments
+
+03:42.210 --> 03:44.790
+we might okay a little bit too slow
+
+03:44.790 --> 03:46.470
+in that case, you'll notice that
+
+03:46.470 --> 03:48.150
+everything says five right here.
+
+03:48.150 --> 03:49.890
+If we were a little bit faster
+
+03:49.890 --> 03:52.620
+we might be able to see that there are less than five
+
+03:52.620 --> 03:54.240
+of these different pods available.
+
+03:54.240 --> 03:55.800
+We'll make another change in a second
+
+03:55.800 --> 03:57.210
+that we'll hopefully be able to
+
+03:57.210 --> 03:59.280
+if we type in this get deployments fast enough
+
+03:59.280 --> 04:01.920
+we might be able to see the update in action
+
+04:01.920 --> 04:02.790
+and we'll see something like,
+
+04:02.790 --> 04:04.560
+hey, only five or maybe one
+
+04:04.560 --> 04:07.230
+or even zero pods are currently available.
+
+04:07.230 --> 04:09.840
+So if we now do a kubectl get pods
+
+04:09.840 --> 04:12.240
+you'll notice we have five separate pods
+
+04:12.240 --> 04:15.090
+each of which are running a unique copy
+
+04:15.090 --> 04:18.060
+of that very specific client,
+
+04:18.060 --> 04:19.530
+let's see, multi client that's the idea
+
+04:19.530 --> 04:20.363
+or that's the name of it.
+
+04:20.363 --> 04:21.480
+Multi client image.
+
+04:21.480 --> 04:23.250
+So we now have five containers running
+
+04:23.250 --> 04:25.563
+each in their own very separate little pod.
+
+04:26.760 --> 04:28.980
+Let's try making one more configuration change.
+
+04:28.980 --> 04:31.830
+So how about instead of running the image multi client
+
+04:31.830 --> 04:35.190
+let's try running the image multi worker instead.
+
+04:35.190 --> 04:37.050
+So I'm gonna change the name of the image
+
+04:37.050 --> 04:38.520
+that we're running inside this pod.
+
+04:38.520 --> 04:40.380
+I'm gonna make sure I save the file.
+
+04:40.380 --> 04:41.820
+And now this time after we do the
+
+04:41.820 --> 04:46.050
+kubectl apply-F client deployment
+
+04:46.050 --> 04:48.750
+I'm gonna, very quickly right after I run this command
+
+04:48.750 --> 04:52.380
+I'm gonna very quickly do a kubectl get deployments
+
+04:52.380 --> 04:54.960
+and hopefully you'll see some different numbers
+
+04:54.960 --> 04:56.100
+of containers, excuse me,
+
+04:56.100 --> 04:57.930
+different numbers of pods inside there
+
+04:57.930 --> 04:59.760
+as the deployment is creating
+
+04:59.760 --> 05:02.940
+and destroying some of the pods inside of our cluster.
+
+05:02.940 --> 05:04.530
+Okay, so I'm gonna hit Enter here,
+
+05:04.530 --> 05:07.803
+and then very quickly I'll do a kubectl get deployments.
+
+05:08.760 --> 05:09.910
+Now that's interesting.
+
+05:10.830 --> 05:12.870
+So notice I typed in fast enough
+
+05:12.870 --> 05:13.920
+that I was able to see
+
+05:13.920 --> 05:16.350
+some different numbers in action here.
+
+05:16.350 --> 05:18.540
+So the client deployment wants to have
+
+05:18.540 --> 05:21.900
+five different pods with the very specific
+
+05:21.900 --> 05:24.270
+configuration listed right here.
+
+05:24.270 --> 05:26.820
+But at present there are seven pods.
+
+05:26.820 --> 05:30.510
+That means that maybe five of the old version exist.
+
+05:30.510 --> 05:31.343
+Or actually, you know what,
+
+05:31.343 --> 05:33.420
+we can use these other numbers here to figure it out.
+
+05:33.420 --> 05:35.280
+So there are seven pods total
+
+05:35.280 --> 05:38.010
+and four of them are up-to-date and available.
+
+05:38.010 --> 05:41.190
+That means that we have four up-to-date and available pods
+
+05:41.190 --> 05:43.560
+running the newest configuration that says
+
+05:43.560 --> 05:46.740
+that we should be running the multi worker image.
+
+05:46.740 --> 05:49.410
+That means that there are three other pods
+
+05:49.410 --> 05:50.970
+because seven minus four is three,
+
+05:50.970 --> 05:53.640
+means that there are three pods still sitting around
+
+05:53.640 --> 05:55.440
+using the old configuration,
+
+05:55.440 --> 05:58.350
+and those need to be deleted and cleaned up.
+
+05:58.350 --> 06:00.930
+If we now do kubectl get deployments again
+
+06:00.930 --> 06:03.120
+we're probably gonna see five across the board
+
+06:03.120 --> 06:04.860
+because now all the old versions
+
+06:04.860 --> 06:06.300
+of those pods have been deleted
+
+06:06.300 --> 06:09.420
+and replaced with the latest up-to-date version
+
+06:09.420 --> 06:12.510
+of the pod spec, which says that we need to have
+
+06:12.510 --> 06:15.900
+the multi worker image running inside there.
+
+06:15.900 --> 06:16.950
+Okay, so that's pretty interesting
+
+06:16.950 --> 06:18.720
+to see these deployments in action.
+
+06:18.720 --> 06:19.860
+So let's take another quick pause.
+
+06:19.860 --> 06:21.150
+We're gonna come back to the next section
+
+06:21.150 --> 06:23.820
+and I wanna point out one or two kind of interesting things
+
+06:23.820 --> 06:25.500
+about this entire deployment system
+
+06:25.500 --> 06:27.840
+that might trip you up when you start making use of it
+
+06:27.840 --> 06:29.430
+in a production environment.
+
+06:29.430 --> 06:31.853
+So quick pause and I'll see you in just a minute.

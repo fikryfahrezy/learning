@@ -1,0 +1,304 @@
+WEBVTT
+
+00:00.810 --> 00:02.040
+-: In the last section, we set up
+
+00:02.040 --> 00:05.190
+our ElastiCache Redis instance.
+
+00:05.190 --> 00:06.960
+You should eventually see this thing flip over
+
+00:06.960 --> 00:09.150
+with a status of green available.
+
+00:09.150 --> 00:10.590
+If you don't see it ever flip over,
+
+00:10.590 --> 00:13.230
+you can click the refresh button on the top right-hand side.
+
+00:13.230 --> 00:15.210
+It should take some handful of minutes,
+
+00:15.210 --> 00:17.850
+somewhere up to, I don't know, four or five minutes or so.
+
+00:17.850 --> 00:19.770
+Now, just in case you skipped through the last section,
+
+00:19.770 --> 00:21.780
+one thing I want you to triple check right now...
+
+00:21.780 --> 00:23.370
+Make sure that you have a node type
+
+00:23.370 --> 00:26.640
+of something like cache.t2.micro.
+
+00:26.640 --> 00:28.740
+If you see something like m2.medium
+
+00:28.740 --> 00:31.410
+or m2.large or m4 or something
+
+00:31.410 --> 00:34.080
+like that, you might end up paying a decent amount
+
+00:34.080 --> 00:36.780
+of money for this Redis instance so please make sure
+
+00:36.780 --> 00:38.940
+that you did correctly update the node type.
+
+00:38.940 --> 00:41.910
+And you can see the value of it right there.
+
+00:41.910 --> 00:44.940
+So now that we've created both our Redis instance
+
+00:44.940 --> 00:47.430
+and our Postgres instance, we're going to now create
+
+00:47.430 --> 00:49.980
+a security group that is going to allow all three
+
+00:49.980 --> 00:52.680
+of these different services to talk to each other.
+
+00:52.680 --> 00:53.970
+So to create the security group,
+
+00:53.970 --> 00:57.240
+we're going to go back over to the VPC dashboard.
+
+00:57.240 --> 01:00.570
+To get there, I'll go to Services on the top left-hand side.
+
+01:00.570 --> 01:04.833
+I'll search for VPC and click on the VPC option.
+
+01:06.900 --> 01:08.970
+Then on the left-hand side, we're gonna scroll
+
+01:08.970 --> 01:11.970
+down just a little bit, find the Security section
+
+01:11.970 --> 01:13.803
+and go to Security Groups.
+
+01:14.820 --> 01:16.650
+Now, in this list you're gonna see that we now have
+
+01:16.650 --> 01:19.320
+a new security group listed that we did not have before.
+
+01:19.320 --> 01:21.840
+It is the RDS Launch Wizard.
+
+01:21.840 --> 01:24.180
+This is a security group that was automatically created
+
+01:24.180 --> 01:27.030
+when we were making the Postgres instance.
+
+01:27.030 --> 01:28.230
+We don't have to do anything with this.
+
+01:28.230 --> 01:30.540
+We're going to actually create a new security group
+
+01:30.540 --> 01:33.930
+to allow communication between our three services.
+
+01:33.930 --> 01:36.000
+So to create a new security group, I'll click
+
+01:36.000 --> 01:38.370
+on Create Security Group at the top.
+
+01:38.370 --> 01:41.220
+And then we get prompted for a little bit of information.
+
+01:42.420 --> 01:45.693
+For the name, I'll do Multi Dash Docker.
+
+01:46.980 --> 01:48.570
+And for the description, I'll say something
+
+01:48.570 --> 01:53.570
+like Traffic or Services in Multi...
+
+01:53.670 --> 01:55.833
+Oops, Multi Dash Docker App.
+
+01:56.700 --> 01:57.780
+And then I'll make sure that I have
+
+01:57.780 --> 02:01.200
+my default VPC selected on this dropdown.
+
+02:01.200 --> 02:03.660
+If you only have the default VPC created
+
+02:03.660 --> 02:05.790
+in your account like I do, you're gonna see only
+
+02:05.790 --> 02:07.200
+the one option right here.
+
+02:07.200 --> 02:10.050
+If you have created other VPCs for any reason,
+
+02:10.050 --> 02:12.720
+you'll want to make sure that you select the default VPC
+
+02:12.720 --> 02:14.280
+unless you know what you're doing and you're trying
+
+02:14.280 --> 02:17.013
+to create all this stuff in a separate VPC.
+
+02:18.060 --> 02:20.820
+So then finally I'll click on Yes, Create.
+
+02:20.820 --> 02:22.410
+Now we're gonna wait just a minute or two
+
+02:22.410 --> 02:23.940
+for this thing to be created,
+
+02:23.940 --> 02:26.040
+and then we'll see it up here on the list right here.
+
+02:26.040 --> 02:29.790
+And so it's the one with the name tag of Multi Dash Docker.
+
+02:29.790 --> 02:31.320
+So we just created this security group.
+
+02:31.320 --> 02:33.510
+Now we need to create a rule inside of it
+
+02:33.510 --> 02:36.210
+that's going to specifically allow traffic
+
+02:36.210 --> 02:40.500
+between any service that is assigned to that security group.
+
+02:40.500 --> 02:42.870
+So to create that rule, I'm gonna select
+
+02:42.870 --> 02:44.903
+on the security group.
+
+02:46.670 --> 02:48.810
+And then I'll go to the Inbound Rules tab
+
+02:48.810 --> 02:52.230
+and I'll go to Edit to add a new inbound rule.
+
+02:52.230 --> 02:55.170
+Now we're going to leave the type as custom TCP.
+
+02:55.170 --> 02:57.480
+We'll leave the protocol as TCP, we'll leave
+
+02:57.480 --> 03:00.390
+the port range as zero to just open up all ports.
+
+03:00.390 --> 03:01.223
+Actually, you know what?
+
+03:01.223 --> 03:03.030
+Let's restrict this just a little bit.
+
+03:03.030 --> 03:04.800
+There's no reason to open up everything.
+
+03:04.800 --> 03:08.190
+We'll allow just the ports between the default Redis port
+
+03:08.190 --> 03:09.840
+and the default Postgres port.
+
+03:09.840 --> 03:14.520
+So this will be everything from 5432 to 6379.
+
+03:14.520 --> 03:16.510
+So I'll do 5432
+
+03:17.610 --> 03:21.270
+to 6379.
+
+03:21.270 --> 03:24.120
+And notice how I'm separating the two with a little dash.
+
+03:24.960 --> 03:27.390
+Then for the source, this is the important part,
+
+03:27.390 --> 03:31.240
+we're going to allow traffic from any other instance
+
+03:32.160 --> 03:34.170
+that is in the same security group.
+
+03:34.170 --> 03:35.580
+So I'll click on Source right here
+
+03:35.580 --> 03:39.810
+and then I will select the SG Multi Dash Docker.
+
+03:39.810 --> 03:41.760
+That is the security group that we just created,
+
+03:41.760 --> 03:44.040
+that's the one that we're editing right now.
+
+03:44.040 --> 03:46.740
+So I'll select that and that's going to allow traffic
+
+03:46.740 --> 03:48.510
+between all the different services
+
+03:48.510 --> 03:50.580
+that are assigned to this thing.
+
+03:50.580 --> 03:51.960
+All right, so that's pretty much it.
+
+03:51.960 --> 03:53.850
+I'll click on Save right here.
+
+03:53.850 --> 03:55.260
+Save is successful.
+
+03:55.260 --> 03:58.350
+And now that's pretty much it for the security rule.
+
+03:58.350 --> 04:00.450
+Now, all we've done at this point was create
+
+04:00.450 --> 04:01.620
+the security group.
+
+04:01.620 --> 04:04.950
+We now have to go back through our three different services
+
+04:04.950 --> 04:07.320
+and assign the security group to each one.
+
+04:07.320 --> 04:09.690
+So we have to go look up Elastic Beanstalk instance,
+
+04:09.690 --> 04:11.730
+we have to apply the security group.
+
+04:11.730 --> 04:14.700
+We have to do the same thing for RDS and EC as well.
+
+04:14.700 --> 04:16.080
+So let's take a quick pause right here
+
+04:16.080 --> 04:17.730
+and continue in the next section.

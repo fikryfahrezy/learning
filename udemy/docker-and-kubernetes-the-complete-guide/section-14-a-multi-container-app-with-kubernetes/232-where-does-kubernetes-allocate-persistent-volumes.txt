@@ -1,0 +1,553 @@
+WEBVTT
+
+00:01.320 --> 00:02.153
+Instructor: In the last section,
+
+00:02.153 --> 00:03.480
+we spoke about some of the different config
+
+00:03.480 --> 00:05.700
+that we put into our persistent volume claim.
+
+00:05.700 --> 00:07.170
+Now at the end of last section
+
+00:07.170 --> 00:09.840
+I had mentioned that there are some other possible options
+
+00:09.840 --> 00:11.280
+so we could put inside of here.
+
+00:11.280 --> 00:13.050
+We did not put these options in because
+
+00:13.050 --> 00:16.650
+we are going to rely upon the defaults for each of these
+
+00:16.650 --> 00:18.270
+but there's one option in particular
+
+00:18.270 --> 00:20.880
+that I want to mention because it might be very important
+
+00:20.880 --> 00:24.120
+for you to use at some point in time in the future.
+
+00:24.120 --> 00:24.953
+Okay?
+
+00:24.953 --> 00:27.840
+So I want you to imagine kind of what happens
+
+00:27.840 --> 00:30.840
+behind the scenes when we hand that persistent volume claim
+
+00:30.840 --> 00:32.550
+off to Kubernetes.
+
+00:32.550 --> 00:34.800
+And so if we look back at the diagram over here
+
+00:34.800 --> 00:37.900
+remember at some point in time we hand that pod config off
+
+00:38.829 --> 00:41.970
+and Kubernetes sees, oh, they want that 500 gigabyte option.
+
+00:41.970 --> 00:44.280
+So Kubernetes has to like go and find
+
+00:44.280 --> 00:47.400
+either that pre configured pre-created ahead of time,
+
+00:47.400 --> 00:49.920
+persistent volume, or make one on the fly.
+
+00:49.920 --> 00:52.410
+So think about what's going on behind the scenes there.
+
+00:52.410 --> 00:54.120
+We're essentially saying to Kubernetes,
+
+00:54.120 --> 00:56.550
+Hey I need one gigabyte worth of storage.
+
+00:56.550 --> 00:59.130
+Can you get me something that meets these requirements?
+
+00:59.130 --> 01:01.830
+That's what the persistent volume claim is really doing.
+
+01:01.830 --> 01:03.210
+So Kubernetes gets that
+
+01:03.210 --> 01:05.760
+and then we're going to imagine what exactly happens
+
+01:05.760 --> 01:08.760
+on your computer when you run this stuff.
+
+01:08.760 --> 01:10.620
+We can kind of imagine that Kubernetes probably
+
+01:10.620 --> 01:12.540
+says something like, All right, well
+
+01:12.540 --> 01:15.660
+I'm on this developer's personal laptop
+
+01:15.660 --> 01:17.940
+or maybe I'm on their personal desktop.
+
+01:17.940 --> 01:20.070
+Not a lot of storage options available here.
+
+01:20.070 --> 01:22.830
+Like pretty much all I've got to put any information
+
+01:22.830 --> 01:24.660
+in is your hard drive.
+
+01:24.660 --> 01:26.190
+So on your computer
+
+01:26.190 --> 01:28.620
+why default Kubernetes is gonna say, You know what?
+
+01:28.620 --> 01:30.750
+I'm gonna make a slice of your hard drive.
+
+01:30.750 --> 01:32.913
+That is one gigabyte large.
+
+01:33.810 --> 01:35.670
+And so we can imagine on your hard drive
+
+01:35.670 --> 01:37.980
+we get this one gigabyte little piece
+
+01:37.980 --> 01:41.490
+of your hard drive that is going to be a persistent volume
+
+01:41.490 --> 01:43.140
+and that persistent volume gets handed
+
+01:43.140 --> 01:45.570
+back over to your pod.
+
+01:45.570 --> 01:46.860
+So on your computer,
+
+01:46.860 --> 01:49.500
+when you ask Kubernetes for some amount of storage,
+
+01:49.500 --> 01:51.270
+there's really just one place
+
+01:51.270 --> 01:53.550
+for Kubernetes to allocate that storage.
+
+01:53.550 --> 01:54.720
+It's just your hard drive
+
+01:54.720 --> 01:57.810
+and there's really not a lot of other options.
+
+01:57.810 --> 01:59.100
+Now, you can actually see
+
+01:59.100 --> 02:01.830
+in the Kubernetes config where it decides to
+
+02:01.830 --> 02:04.020
+make this the default where it decides to say
+
+02:04.020 --> 02:06.000
+I'm just gonna put it on your hard drive.
+
+02:06.000 --> 02:08.350
+To do so, you can flip on over to your terminal
+
+02:09.210 --> 02:14.210
+and run Cube ctl get storage class.
+
+02:14.910 --> 02:16.470
+So when you run get storage class
+
+02:16.470 --> 02:19.500
+you're gonna see all the different options on your computer
+
+02:19.500 --> 02:23.700
+that Kubernetes has for creating a persistent volume.
+
+02:23.700 --> 02:26.700
+Right now, we have a single option called standard.
+
+02:26.700 --> 02:28.440
+It is the default option.
+
+02:28.440 --> 02:31.110
+So if we do not specify a storage class
+
+02:31.110 --> 02:32.790
+with our persistent volume claim
+
+02:32.790 --> 02:36.150
+the standard option will be used by default
+
+02:36.150 --> 02:38.100
+and the provisioner or essentially
+
+02:38.100 --> 02:42.180
+how Kubernetes is going to decide how to provision
+
+02:42.180 --> 02:44.520
+or create this persistent volume is
+
+02:44.520 --> 02:47.940
+by using the mini cube host path option.
+
+02:47.940 --> 02:50.940
+And I want you to also do a cube CTL describe
+
+02:50.940 --> 02:52.680
+storage class as well,
+
+02:52.680 --> 02:54.390
+and you'll see some more information
+
+02:54.390 --> 02:56.250
+about that option right there.
+
+02:56.250 --> 02:59.220
+So when you do so, it tells you in very broad terms,
+
+02:59.220 --> 03:02.970
+Yes, we have a provisioner that is mini cube, host path.
+
+03:02.970 --> 03:06.480
+Mini cube host path means exactly what we saw over here.
+
+03:06.480 --> 03:07.980
+Mini cube host path means that when
+
+03:07.980 --> 03:11.220
+we ask Kubernetes to create this persistent volume
+
+03:11.220 --> 03:14.370
+it's going to look on the host machine to mini cube
+
+03:14.370 --> 03:15.840
+and it's gonna make a little slice
+
+03:15.840 --> 03:18.780
+of space on your personal hard drive.
+
+03:18.780 --> 03:20.430
+All right, so at this point, this probably seems,
+
+03:20.430 --> 03:22.260
+you know at least somewhat palatable, like, yeah
+
+03:22.260 --> 03:23.580
+Kubernetes need some space.
+
+03:23.580 --> 03:25.260
+It's gonna try to claim some space
+
+03:25.260 --> 03:28.230
+off of your computer or your personal hard drive.
+
+03:28.230 --> 03:31.320
+But things start to get way more complicated when
+
+03:31.320 --> 03:33.510
+we start to move our Kubernetes cluster
+
+03:33.510 --> 03:37.533
+from your computer into a cloud environment.
+
+03:38.460 --> 03:40.800
+So at some point in time, you and I are going to
+
+03:40.800 --> 03:43.350
+move our application over to a cloud provider.
+
+03:43.350 --> 03:45.450
+And when we are working with a cloud provider
+
+03:45.450 --> 03:48.690
+we get a tremendous number of different options
+
+03:48.690 --> 03:50.370
+of where some hard drive space
+
+03:50.370 --> 03:53.940
+or essentially file system space can be sourced from.
+
+03:53.940 --> 03:57.510
+So in a cloud or production environment, if we say, Hey
+
+03:57.510 --> 03:59.850
+I need one gigabyte of storage to Kubernetes
+
+03:59.850 --> 04:01.710
+Kubernetes is gonna then say,
+
+04:01.710 --> 04:03.390
+Great, which one do you want?
+
+04:03.390 --> 04:06.480
+I got like a billion options available.
+
+04:06.480 --> 04:08.310
+And so just about every cloud provider
+
+04:08.310 --> 04:09.660
+that you're going to work with is going to
+
+04:09.660 --> 04:14.040
+have some different solution for storing information.
+
+04:14.040 --> 04:15.900
+And you need to tell Kubernetes
+
+04:15.900 --> 04:17.490
+unless you wanna use the default option
+
+04:17.490 --> 04:20.460
+which of these different options you want to use.
+
+04:20.460 --> 04:23.130
+So if you are hosting an application on Google Cloud
+
+04:23.130 --> 04:26.100
+the Google Cloud service called Persistent Disc is
+
+04:26.100 --> 04:28.890
+going to be used to store information
+
+04:28.890 --> 04:30.570
+with your persistent volume.
+
+04:30.570 --> 04:31.950
+If you're on Microsoft Azure
+
+04:31.950 --> 04:34.080
+you can either use Azure file or Azure disc.
+
+04:34.080 --> 04:37.680
+If you're on AWS, you will use AWS Block Store.
+
+04:37.680 --> 04:39.810
+Now, there's many other options that are available
+
+04:39.810 --> 04:41.250
+in a cloud environment.
+
+04:41.250 --> 04:42.083
+You can see some
+
+04:42.083 --> 04:44.583
+of the other options at this address right here.
+
+04:46.020 --> 04:48.090
+I actually already opened up that page.
+
+04:48.090 --> 04:51.660
+So on that page you'll see storage classes.
+
+04:51.660 --> 04:54.780
+And if you scroll down to Provisioner,
+
+04:54.780 --> 04:57.120
+the provisioner is essentially what determines
+
+04:57.120 --> 05:00.330
+how this space you're asking for gets created.
+
+05:00.330 --> 05:01.950
+And so these are all the different options
+
+05:01.950 --> 05:03.300
+that you have available.
+
+05:03.300 --> 05:06.030
+You can look that list and decide on which one you want
+
+05:06.030 --> 05:08.580
+but I can tell you that by default, most of the time
+
+05:08.580 --> 05:10.710
+you're probably going to want whatever the default is
+
+05:10.710 --> 05:13.290
+for your particular cloud provider, which on, say
+
+05:13.290 --> 05:15.300
+Google Cloud, it's gonna be persistent disc
+
+05:15.300 --> 05:18.030
+on AWS it's going to be block Store.
+
+05:18.030 --> 05:19.890
+Now, when you create your Kubernetes cluster
+
+05:19.890 --> 05:23.280
+on a cloud provider like Google Cloud or AWS,
+
+05:23.280 --> 05:25.290
+one of these services is going to be set up
+
+05:25.290 --> 05:27.000
+by default for you.
+
+05:27.000 --> 05:30.030
+So in other words, right now inside
+
+05:30.030 --> 05:32.340
+of our local environment, we are setting
+
+05:32.340 --> 05:35.160
+up this persistent volume claim without designating
+
+05:35.160 --> 05:37.950
+a storage class name.
+
+05:37.950 --> 05:39.450
+And we did not designate that option
+
+05:39.450 --> 05:41.490
+because we are relying upon the default.
+
+05:41.490 --> 05:44.130
+And like I just said, the default for us is to
+
+05:44.130 --> 05:47.340
+create a little slice on our hard drive to use
+
+05:47.340 --> 05:49.200
+for this persistent volume.
+
+05:49.200 --> 05:51.630
+But when you push your application up to Kubernetes
+
+05:51.630 --> 05:53.730
+on Google Cloud or AWS,
+
+05:53.730 --> 05:57.870
+the standard option is not going to be mini cube host path.
+
+05:57.870 --> 06:01.380
+Instead, the standard option, or the default option for use
+
+06:01.380 --> 06:04.890
+on AWS or Google Cloud will be automatically configured
+
+06:04.890 --> 06:08.070
+for you to be either Google Cloud Persistent Disc
+
+06:08.070 --> 06:10.530
+or AWS Block store.
+
+06:10.530 --> 06:12.330
+So long story short here
+
+06:12.330 --> 06:16.290
+what I'm trying to tell you is that when you ask Kubernetes
+
+06:16.290 --> 06:19.320
+for some amount of storage on your local machine
+
+06:19.320 --> 06:21.930
+it's just gonna take a slice of your hard drive.
+
+06:21.930 --> 06:23.430
+When you are in a cloud environment
+
+06:23.430 --> 06:26.400
+it's going to choose one of these default options for you
+
+06:26.400 --> 06:30.030
+unless you very specifically tell it to use something else.
+
+06:30.030 --> 06:32.130
+For most applications, you know,
+
+06:32.130 --> 06:34.710
+I don't really want to make a broad claim here
+
+06:34.710 --> 06:35.610
+but I'm gonna tell you that
+
+06:35.610 --> 06:37.680
+if you've got a normal application that just
+
+06:37.680 --> 06:41.610
+has a traditional database like Postgres or MySQL
+
+06:41.610 --> 06:44.490
+you're probably going to be okay using the default options
+
+06:44.490 --> 06:46.320
+which are probably going to usually be
+
+06:46.320 --> 06:49.290
+Google Cloud persistent Disc or AWS Block Store.
+
+06:49.290 --> 06:51.630
+But I just want you to know that this option is available
+
+06:51.630 --> 06:54.510
+and you can customize where Kubernetes is going to
+
+06:54.510 --> 06:57.600
+look to create this little file system to allocate
+
+06:57.600 --> 06:58.980
+to your pod.
+
+06:58.980 --> 07:01.410
+All right, So enough on all this
+
+07:01.410 --> 07:04.413
+I think we've spoken about persistent volume claims enough.
+
+07:05.400 --> 07:07.740
+So we've now created our persistent volume claim
+
+07:07.740 --> 07:11.340
+which is essentially advertising an option that can be used
+
+07:11.340 --> 07:14.310
+for storage by all the different pods in our application.
+
+07:14.310 --> 07:16.560
+So last thing we have to do in the next section
+
+07:16.560 --> 07:19.380
+we're going to open up our Postgres deployment
+
+07:19.380 --> 07:23.130
+and we're going to update the pod config in here and tell it
+
+07:23.130 --> 07:26.910
+that when this pod is created, it's going to need to look
+
+07:26.910 --> 07:29.130
+at all the different storage options that are available
+
+07:29.130 --> 07:31.920
+and advertised by this persistent volume claim
+
+07:31.920 --> 07:33.300
+and make sure that it says,
+
+07:33.300 --> 07:36.420
+Oh yeah I want this very specific volume claim
+
+07:36.420 --> 07:39.120
+that's going to give me a two gigabyte storage option.
+
+07:39.120 --> 07:41.570
+So quick pause and I'll see you in just a minute.

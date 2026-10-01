@@ -1,0 +1,346 @@
+WEBVTT
+
+00:00.720 --> 00:01.553
+-: In the last section,
+
+00:01.553 --> 00:03.990
+we found that we were able to connect to Redis CLI
+
+00:03.990 --> 00:06.270
+inside of our running Docker container,
+
+00:06.270 --> 00:08.220
+and notice how mine is still running over here
+
+00:08.220 --> 00:12.180
+on the second window by adding on the -IT flag.
+
+00:12.180 --> 00:13.170
+So when I did that,
+
+00:13.170 --> 00:14.940
+we saw, yep, we got this prompt here,
+
+00:14.940 --> 00:16.380
+we could enter stuff in.
+
+00:16.380 --> 00:19.830
+I could then press control C to exit back out.
+
+00:19.830 --> 00:22.031
+However, if I tried running this command
+
+00:22.031 --> 00:24.483
+without the IT flag,
+
+00:26.160 --> 00:27.510
+it appeared that I just got kicked
+
+00:27.510 --> 00:29.610
+directly back over to my terminal.
+
+00:29.610 --> 00:31.860
+So in this section, I wanna give you a better idea
+
+00:31.860 --> 00:35.670
+of what this -IT flag right here is really doing for us.
+
+00:35.670 --> 00:37.020
+The first thing you need to understand
+
+00:37.020 --> 00:39.090
+is a little bit more about how processes run
+
+00:39.090 --> 00:41.190
+inside of a Linux environment.
+
+00:41.190 --> 00:42.240
+As a quick reminder,
+
+00:42.240 --> 00:44.490
+when you are running Docker on your machine,
+
+00:44.490 --> 00:46.110
+every single container that you are running
+
+00:46.110 --> 00:50.730
+is running inside of a virtual machine running Linux.
+
+00:50.730 --> 00:53.070
+So these processes are really being executed
+
+00:53.070 --> 00:57.030
+inside of a Linux world, even if you're on Mac or Windows.
+
+00:57.030 --> 00:59.220
+All right, so with that in mind,
+
+00:59.220 --> 01:02.460
+in this diagram we've got three different running processes
+
+01:02.460 --> 01:04.680
+all inside, in theory, of a running container,
+
+01:04.680 --> 01:07.500
+or really inside of a Linux environment.
+
+01:07.500 --> 01:09.810
+Every process that we create in a Linux environment
+
+01:09.810 --> 01:12.960
+has three communication channels attached to it
+
+01:12.960 --> 01:17.310
+that we refer to as stdin, stdout, and stderr.
+
+01:17.310 --> 01:19.500
+These channels are used to communicate information
+
+01:19.500 --> 01:23.460
+either into the process or out of the process.
+
+01:23.460 --> 01:24.960
+Stdin, as you might guess,
+
+01:24.960 --> 01:28.260
+is used to communicate information into the process.
+
+01:28.260 --> 01:31.710
+So when you are at your terminal and you type stuff in,
+
+01:31.710 --> 01:34.020
+the stuff you type is being directed
+
+01:34.020 --> 01:37.530
+into a running stdin channel attached to,
+
+01:37.530 --> 01:38.913
+say, the Redis CLI.
+
+01:39.900 --> 01:43.290
+The stdout channel that is attached to any given process
+
+01:43.290 --> 01:44.760
+is going to convey information
+
+01:44.760 --> 01:46.530
+that is coming from the process.
+
+01:46.530 --> 01:49.290
+So stdout might be redirected
+
+01:49.290 --> 01:50.640
+over to your running terminal,
+
+01:50.640 --> 01:52.350
+and that's gonna end up as being stuff
+
+01:52.350 --> 01:54.150
+that is gonna show up on the screen.
+
+01:55.110 --> 01:56.760
+Stderr is very similar,
+
+01:56.760 --> 01:59.370
+but it conveys information out of the process
+
+01:59.370 --> 02:01.620
+that is kind of like an error in nature.
+
+02:01.620 --> 02:04.470
+So if Redis CLI has some error inside of it,
+
+02:04.470 --> 02:06.390
+that's gonna be communicated to the outside world
+
+02:06.390 --> 02:08.250
+over the stderr channel,
+
+02:08.250 --> 02:10.050
+and very similar to stdout,
+
+02:10.050 --> 02:11.370
+that's going to be redirected
+
+02:11.370 --> 02:13.470
+to show up on the screen of your terminal.
+
+02:15.060 --> 02:17.460
+So how's that relate to the IT flag
+
+02:17.460 --> 02:20.670
+when we do the Docker exec -IT?
+
+02:20.670 --> 02:21.870
+Well, the IT right here
+
+02:21.870 --> 02:24.840
+is actually two separate little flags.
+
+02:24.840 --> 02:29.220
+In reality, it's a -i and a -t, like so.
+
+02:29.220 --> 02:31.620
+But by convention, we usually just kind of shorten it down
+
+02:31.620 --> 02:33.690
+to be simply IT,
+
+02:33.690 --> 02:37.380
+which is 100% equivalent to the two separate flags.
+
+02:37.380 --> 02:41.220
+The -i on here means when we execute this new command
+
+02:41.220 --> 02:42.480
+inside the container,
+
+02:42.480 --> 02:45.360
+we want to attach our terminal
+
+02:45.360 --> 02:49.170
+to the stdin channel of that new running process.
+
+02:49.170 --> 02:51.390
+So by adding on the -i flag,
+
+02:51.390 --> 02:52.560
+we are saying make sure
+
+02:52.560 --> 02:54.450
+that any stuff that I type
+
+02:54.450 --> 02:57.297
+gets directed to stdin of Redis CLI.
+
+02:58.440 --> 03:02.130
+The -t flag is what kind of makes all this text
+
+03:02.130 --> 03:03.480
+show up a little bit pretty.
+
+03:03.480 --> 03:05.790
+Now in reality, it's doing a little bit more than that,
+
+03:05.790 --> 03:06.900
+but at the end of the day,
+
+03:06.900 --> 03:09.060
+the real effect that the -t flag
+
+03:09.060 --> 03:10.800
+is to make sure that all the texts
+
+03:10.800 --> 03:13.320
+that you are entering in and that is coming out
+
+03:13.320 --> 03:16.020
+shows up in a nicely formatted manner on your screen.
+
+03:16.020 --> 03:17.520
+And again, it's doing a little bit more
+
+03:17.520 --> 03:18.360
+behind the scenes than that,
+
+03:18.360 --> 03:20.880
+but at the end of the day, that's kind of its effect.
+
+03:20.880 --> 03:22.530
+Let's try attaching
+
+03:22.530 --> 03:25.200
+or doing our Docker exec on the running container
+
+03:25.200 --> 03:28.050
+one more time and leaving off the -t flag
+
+03:28.050 --> 03:30.300
+and just seeing what happens.
+
+03:30.300 --> 03:34.140
+So I'll do a Docker PS to get my container's ID again,
+
+03:34.140 --> 03:36.240
+then I'll do a Docker exec,
+
+03:36.240 --> 03:39.000
+and then we'll do only -i this time,
+
+03:39.000 --> 03:42.750
+I'll put the ID in, and then I'll do Redis CLI.
+
+03:42.750 --> 03:43.620
+And so now this time,
+
+03:43.620 --> 03:46.080
+you'll notice how I have my cursor over here.
+
+03:46.080 --> 03:48.390
+It appears that this thing is waiting for input,
+
+03:48.390 --> 03:50.070
+but I do not see that kind of
+
+03:50.070 --> 03:52.920
+nicely formatted indentation I saw before.
+
+03:52.920 --> 03:56.010
+And if I put in like set my value five,
+
+03:56.010 --> 03:58.890
+before I had a little bit of auto complete functionality,
+
+03:58.890 --> 04:02.160
+but this time that auto complete is definitely not there.
+
+04:02.160 --> 04:03.750
+I can still run that command though,
+
+04:03.750 --> 04:05.220
+and I still see, okay,
+
+04:05.220 --> 04:07.890
+and I can still do get my value,
+
+04:07.890 --> 04:09.120
+and I still see the value come out.
+
+04:09.120 --> 04:12.360
+But again, all this stuff is not nicely formatted,
+
+04:12.360 --> 04:14.400
+and so that's kind of the purpose,
+
+04:14.400 --> 04:16.200
+more or less, kind of simplifying things here
+
+04:16.200 --> 04:18.333
+just a little bit, of that -t flag.
+
+04:20.070 --> 04:21.090
+Okay, so that's pretty much it.
+
+04:21.090 --> 04:22.550
+That's the purpose of IT.
+
+04:22.550 --> 04:25.560
+It allows us to have stuff that we type into our terminal
+
+04:25.560 --> 04:27.480
+directed into that running process
+
+04:27.480 --> 04:29.400
+and allows us to get information out
+
+04:29.400 --> 04:31.170
+back over to our terminal.
+
+04:31.170 --> 04:32.003
+So with that in mind,
+
+04:32.003 --> 04:33.210
+let's take a quick break right here
+
+04:33.210 --> 04:34.893
+and continue in the next section.

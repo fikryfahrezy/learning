@@ -1,0 +1,355 @@
+WEBVTT
+
+00:00.870 --> 00:01.703
+-: In the last section,
+
+00:01.703 --> 00:03.090
+we made use of Docker volumes
+
+00:03.090 --> 00:04.920
+to automatically get changes that we make
+
+00:04.920 --> 00:06.330
+to our source code
+
+00:06.330 --> 00:08.400
+reflected inside the container.
+
+00:08.400 --> 00:09.990
+Now, the only downside to this approach
+
+00:09.990 --> 00:12.990
+is the ridiculously long docker run command
+
+00:12.990 --> 00:15.030
+that we have to execute at our terminal.
+
+00:15.030 --> 00:16.740
+If we stop our running container,
+
+00:16.740 --> 00:18.180
+you can press up arrow again
+
+00:18.180 --> 00:19.410
+depending on your terminal
+
+00:19.410 --> 00:21.090
+to get that command back up.
+
+00:21.090 --> 00:23.460
+And so you can see that there's a lot of options on here.
+
+00:23.460 --> 00:25.050
+We have to specify the port.
+
+00:25.050 --> 00:27.090
+We have to specify two volumes
+
+00:27.090 --> 00:30.300
+and then we have to specify the image id.
+
+00:30.300 --> 00:33.120
+So clearly this is kind of a pain right now
+
+00:33.120 --> 00:35.580
+to run this command long form.
+
+00:35.580 --> 00:36.690
+Well, quick reminder,
+
+00:36.690 --> 00:39.030
+what did we learn about just a moment ago?
+
+00:39.030 --> 00:39.863
+Just a moment ago,
+
+00:39.863 --> 00:41.940
+we spoke about Docker Compose
+
+00:41.940 --> 00:44.040
+and the whole purpose of Docker Compose
+
+00:44.040 --> 00:47.190
+is to make executing Docker run easier.
+
+00:47.190 --> 00:48.810
+And so even though this time around,
+
+00:48.810 --> 00:51.030
+we have a single container image
+
+00:51.030 --> 00:52.860
+or a single docker image,
+
+00:52.860 --> 00:54.960
+we can still make use of Docker Compose
+
+00:54.960 --> 00:57.810
+to dramatically simplify the command we have to run
+
+00:57.810 --> 01:01.380
+to start up our Docker container for development purposes.
+
+01:01.380 --> 01:04.950
+So let's create a Docker Compose file
+
+01:04.950 --> 01:06.180
+and inside that file
+
+01:06.180 --> 01:08.670
+we're going to encode the port setting
+
+01:08.670 --> 01:10.680
+and the two volumes that we need
+
+01:10.680 --> 01:12.513
+to create inside the container.
+
+01:13.560 --> 01:15.810
+I'm gonna flip on over to my code editor
+
+01:15.810 --> 01:18.450
+and inside of my route project directory,
+
+01:18.450 --> 01:23.450
+I'm gonna make a new file called docker-compose.yml.
+
+01:25.590 --> 01:27.660
+Now, the composed file that we're gonna create
+
+01:27.660 --> 01:28.770
+is gonna look rather similar
+
+01:28.770 --> 01:30.540
+to the one we just put together.
+
+01:30.540 --> 01:31.950
+We'll first begin by specifying
+
+01:31.950 --> 01:33.420
+a version of three,
+
+01:33.420 --> 01:35.100
+inside of quotes.
+
+01:35.100 --> 01:37.290
+We'll then set up a list of all the different services
+
+01:37.290 --> 01:39.960
+or containers that are going to be created
+
+01:39.960 --> 01:41.793
+when we run Docker Compose up.
+
+01:42.660 --> 01:44.100
+Now, previously, you'll recall
+
+01:44.100 --> 01:47.310
+we named our initial service something like Node app.
+
+01:47.310 --> 01:49.470
+We could call this one React app.
+
+01:49.470 --> 01:52.380
+We can call it Web. Anything you want.
+
+01:52.380 --> 01:53.490
+I'm gonna go with Web here.
+
+01:53.490 --> 01:55.673
+Just because it makes a little bit of sense.
+
+01:57.300 --> 01:59.670
+Next, we need to specify the image
+
+01:59.670 --> 02:01.890
+or some of the Docker file that we're going to use
+
+02:01.890 --> 02:05.400
+to create this initial container.
+
+02:05.400 --> 02:09.030
+Before we were able to just specify Build Dot.
+
+02:09.030 --> 02:10.590
+However, when we use Build Dot,
+
+02:10.590 --> 02:12.660
+that assumed that we had a Docker file
+
+02:12.660 --> 02:15.060
+inside of the current working directory.
+
+02:15.060 --> 02:17.460
+Let's try just sticking with Build Dot for right now
+
+02:17.460 --> 02:19.350
+and seeing if that's gonna work out.
+
+02:19.350 --> 02:21.690
+Even though our file name is a little bit different.
+
+02:21.690 --> 02:23.850
+Let's just see what happens.
+
+02:23.850 --> 02:26.880
+The next thing we're going to specify is ports.
+
+02:26.880 --> 02:29.430
+So remember we can specify a list of ports here.
+
+02:29.430 --> 02:30.810
+So just indicate a list.
+
+02:30.810 --> 02:32.583
+We put down a single dash.
+
+02:33.840 --> 02:35.730
+I'll then put down my quotes
+
+02:35.730 --> 02:38.430
+and I'll say that I want to map up port 3000
+
+02:38.430 --> 02:41.970
+outside of the container to 3000 inside the container.
+
+02:41.970 --> 02:44.520
+And then finally, and this is the real good part.
+
+02:44.520 --> 02:45.780
+This is the part where we can do
+
+02:45.780 --> 02:49.140
+a shorthand for specifying our different volumes.
+
+02:49.140 --> 02:52.200
+We'll say volumes a dash.
+
+02:52.200 --> 02:57.150
+And we'll say that we wanna do app node modules.
+
+02:57.150 --> 02:58.170
+Remember this one right here
+
+02:58.170 --> 02:59.490
+is essentially going to say,
+
+02:59.490 --> 03:03.240
+do not try to map a folder up against app node modules
+
+03:03.240 --> 03:04.353
+inside the container.
+
+03:05.430 --> 03:06.870
+And then as the second entry,
+
+03:06.870 --> 03:08.280
+we'll do a dot,
+
+03:08.280 --> 03:10.580
+which indicates the current working directory.
+
+03:11.520 --> 03:12.780
+A colon.
+
+03:12.780 --> 03:14.490
+And then we'll say that we want to map
+
+03:14.490 --> 03:16.800
+that folder outside of the container
+
+03:16.800 --> 03:19.860
+into the app folder inside here.
+
+03:19.860 --> 03:20.790
+The dot.
+
+03:20.790 --> 03:22.950
+So the current folder outside the container
+
+03:22.950 --> 03:25.590
+to the app folder inside the container.
+
+03:25.590 --> 03:27.120
+There we go.
+
+03:27.120 --> 03:28.560
+And that's pretty much it.
+
+03:28.560 --> 03:29.820
+So now anytime that we want
+
+03:29.820 --> 03:31.980
+to start up our development instance
+
+03:31.980 --> 03:33.270
+or development container,
+
+03:33.270 --> 03:34.103
+we don't have to do
+
+03:34.103 --> 03:36.390
+that really long docker run command,
+
+03:36.390 --> 03:37.560
+like this one right here.
+
+03:37.560 --> 03:41.580
+Instead, all we do is Docker Compose up.
+
+03:41.580 --> 03:42.660
+Let's try running it right now
+
+03:42.660 --> 03:44.700
+and just seeing what happens.
+
+03:44.700 --> 03:46.710
+So again, inside of my front end folder,
+
+03:46.710 --> 03:48.663
+I'll do Docker Compose up.
+
+03:50.640 --> 03:52.380
+Now as you might have expected,
+
+03:52.380 --> 03:53.670
+we're getting an air message right here
+
+03:53.670 --> 03:56.460
+that says, "Cannot find a docker file."
+
+03:56.460 --> 03:57.690
+Because
+
+03:57.690 --> 04:00.240
+when we put together our initial service
+
+04:00.240 --> 04:01.440
+or the initial container right here,
+
+04:01.440 --> 04:03.990
+we said, Oh yeah, build using the current directory.
+
+04:03.990 --> 04:05.190
+But inside the current directory,
+
+04:05.190 --> 04:06.600
+we don't have a Docker file.
+
+04:06.600 --> 04:09.810
+We have a docker file.dev file.
+
+04:09.810 --> 04:10.670
+Let's take a quick break.
+
+04:10.670 --> 04:12.270
+In the next section, we're gonna figure out
+
+04:12.270 --> 04:15.930
+how we can force Docker Compose to build our image
+
+04:15.930 --> 04:19.620
+for this web service right here using that dev.dev file.
+
+04:19.620 --> 04:22.070
+So quick break and I'll see you in just a minute.

@@ -1,0 +1,577 @@
+WEBVTT
+
+00:00.720 --> 00:01.860
+-: In the last couple of sections,
+
+00:01.860 --> 00:03.960
+we went through the setup process on Kubernetes
+
+00:03.960 --> 00:06.030
+on Mac OS and Windows.
+
+00:06.030 --> 00:08.640
+To make sure that everything is working as we expect now,
+
+00:08.640 --> 00:12.420
+I'm gonna open up my terminal and run Minikube status.
+
+00:12.420 --> 00:14.700
+When I do so, I should see Minikube running,
+
+00:14.700 --> 00:18.120
+cluster running, and kubectl correctly configure.
+
+00:18.120 --> 00:22.110
+I'm also going to run the Command kubectl cluster-info,
+
+00:22.110 --> 00:24.180
+like so, and I should see a message
+
+00:24.180 --> 00:26.040
+like this right here appear.
+
+00:26.040 --> 00:28.500
+If you see any warning or any error message,
+
+00:28.500 --> 00:31.710
+it means that something went wrong during the setup process
+
+00:31.710 --> 00:33.541
+and you will want to flip over to the QA section
+
+00:33.541 --> 00:35.940
+on this video and go through a little bit
+
+00:35.940 --> 00:39.180
+of troubleshooting steps to get everything fixed up.
+
+00:39.180 --> 00:41.550
+Okay, so now that everything is up and running,
+
+00:41.550 --> 00:45.060
+we're gonna set ourselves a little short term goal.
+
+00:45.060 --> 00:47.640
+So we're gonna say that as a short term goal,
+
+00:47.640 --> 00:50.430
+we want to take the multi-client image
+
+00:50.430 --> 00:52.770
+that we had put together over the last couple of sections,
+
+00:52.770 --> 00:55.440
+and get it up and running on our Kubernetes cluster
+
+00:55.440 --> 00:57.930
+that is now locally created on your machine
+
+00:57.930 --> 01:00.543
+by Minikube running as a container.
+
+01:01.440 --> 01:02.700
+So that's the goal.
+
+01:02.700 --> 01:04.230
+Now, to just say this as a goal
+
+01:04.230 --> 01:08.483
+without giving any kind of directions or path to get to it,
+
+01:08.483 --> 01:09.355
+is kind of hard.
+
+01:09.355 --> 01:10.470
+So I'm gonna show you a sequence of diagrams
+
+01:10.470 --> 01:12.240
+that are going to give you a good idea
+
+01:12.240 --> 01:14.970
+of how to transfer some of your existing knowledge
+
+01:14.970 --> 01:16.800
+in the area of Docker Compose
+
+01:16.800 --> 01:19.173
+over to all this Kubernetes stuff.
+
+01:20.190 --> 01:22.320
+All right, so here we go.
+
+01:22.320 --> 01:24.480
+We've put together several Docker Compose files
+
+01:24.480 --> 01:25.650
+throughout this course,
+
+01:25.650 --> 01:29.790
+and when we were working on the multi container project,
+
+01:29.790 --> 01:31.380
+we ended up with a Docker file
+
+01:31.380 --> 01:34.590
+that had a couple of different services inside of it.
+
+01:34.590 --> 01:37.140
+And there's a couple of observations I want to make
+
+01:37.140 --> 01:39.480
+about the Docker Compose files that we've created
+
+01:39.480 --> 01:41.310
+throughout this course.
+
+01:41.310 --> 01:43.290
+The first observation I want to make
+
+01:43.290 --> 01:45.390
+is that in these Docker Compose files,
+
+01:45.390 --> 01:47.310
+every entry, or in other words,
+
+01:47.310 --> 01:49.920
+each of these different services that we created
+
+01:49.920 --> 01:53.460
+can optionally use Docker Compose to build the image.
+
+01:53.460 --> 01:55.920
+And we did that with Nginx, with worker,
+
+01:55.920 --> 01:57.000
+and the client member.
+
+01:57.000 --> 01:59.160
+Remember, we specified the build section
+
+01:59.160 --> 02:01.980
+that provided the path to a context
+
+02:01.980 --> 02:03.783
+and a Docker file as well.
+
+02:05.550 --> 02:07.290
+The next observation I have
+
+02:07.290 --> 02:10.117
+is that each of the entries inside of here
+
+02:10.117 --> 02:12.163
+represents specifically a container,
+
+02:12.163 --> 02:14.280
+a container we wanted to create.
+
+02:14.280 --> 02:17.100
+We were only creating containers through Docker Compose.
+
+02:17.100 --> 02:20.824
+We did not create any other type of software or program
+
+02:20.824 --> 02:22.860
+or anything like that.
+
+02:22.860 --> 02:25.710
+It was specifically containers that were being created
+
+02:25.710 --> 02:27.183
+inside of our Docker Compose file.
+
+02:27.183 --> 02:30.240
+Now, that might sound like a weird thing to observe,
+
+02:30.240 --> 02:33.060
+but let's just hold on for that for right now.
+
+02:33.060 --> 02:34.815
+The last observation I have is that every entry
+
+02:34.815 --> 02:37.290
+inside the Docker Compose file
+
+02:37.290 --> 02:40.650
+also optionally defined some networking requirements.
+
+02:40.650 --> 02:43.170
+In other words, it set up all that port mapping, right.
+
+02:43.170 --> 02:45.930
+It set up an outside port on our local machine
+
+02:45.930 --> 02:48.600
+to a port inside one of our containers,
+
+02:48.600 --> 02:51.930
+as was the case for say the Nginx image.
+
+02:51.930 --> 02:54.330
+Okay, so we got these three observations right here.
+
+02:54.330 --> 02:56.040
+Now I want to take these observations
+
+02:56.040 --> 03:00.630
+and kind of map their equivalence into the Kubernetes world.
+
+03:00.630 --> 03:02.580
+And so this is going to allow you to translate
+
+03:02.580 --> 03:04.920
+some of your existing Docker Compose knowledge
+
+03:04.920 --> 03:06.933
+into the Kubernetes world.
+
+03:08.400 --> 03:09.780
+Okay, here we go.
+
+03:09.780 --> 03:11.670
+So first off, each entry
+
+03:11.670 --> 03:14.370
+that we put inside of that Docker Compose file
+
+03:14.370 --> 03:16.950
+optionally allowed us to build an image.
+
+03:16.950 --> 03:18.780
+So in the Kubernetes world,
+
+03:18.780 --> 03:21.000
+we don't get any benefit like that.
+
+03:21.000 --> 03:23.670
+With Kubernetes, we are expected to come
+
+03:23.670 --> 03:25.980
+with all of our images already built.
+
+03:25.980 --> 03:28.560
+So Kubernetes has no build pipeline.
+
+03:28.560 --> 03:30.390
+There is no build process.
+
+03:30.390 --> 03:32.070
+If you're gonna make use of Kubernetes,
+
+03:32.070 --> 03:35.250
+the expectation is that during some outside step,
+
+03:35.250 --> 03:37.470
+you're going to build all of your different images
+
+03:37.470 --> 03:39.840
+and have them ready to go, ready for deployment
+
+03:39.840 --> 03:41.793
+onto your Kubernetes cluster.
+
+03:43.530 --> 03:44.790
+Now, the next big observation
+
+03:44.790 --> 03:47.850
+was that each entry inside of our Docker Compose file
+
+03:47.850 --> 03:51.450
+represented a container that we wanted to create.
+
+03:51.450 --> 03:54.180
+With Kubernetes, things are just a little bit different.
+
+03:54.180 --> 03:57.900
+With Kubernetes, we do not have a single config file.
+
+03:57.900 --> 03:59.130
+Instead, we're going to end up
+
+03:59.130 --> 04:01.860
+with multiple configuration files.
+
+04:01.860 --> 04:03.510
+Each of these different configuration files
+
+04:03.510 --> 04:04.620
+that we're going to put together
+
+04:04.620 --> 04:07.950
+are going to attempt to create a different object.
+
+04:07.950 --> 04:11.520
+An object is not necessarily going to be a container.
+
+04:11.520 --> 04:13.050
+Now, you might be wondering well,
+
+04:13.050 --> 04:14.850
+what would we ever create
+
+04:14.850 --> 04:17.550
+when we're talking about these container things
+
+04:17.550 --> 04:18.870
+than a container?
+
+04:18.870 --> 04:20.130
+Well, we'll take a look at what it means
+
+04:20.130 --> 04:22.290
+to create an object in just a second.
+
+04:22.290 --> 04:23.640
+But for right now, just understand
+
+04:23.640 --> 04:26.190
+that we use multiple configuration files
+
+04:26.190 --> 04:29.250
+to create different objects that are going to be in use
+
+04:29.250 --> 04:32.070
+inside of our Kubernetes application.
+
+04:32.070 --> 04:33.570
+And the final thing I wanna mention,
+
+04:33.570 --> 04:35.550
+so we had said that each entry
+
+04:35.550 --> 04:37.020
+inside of the Docker Compose file
+
+04:37.020 --> 04:39.690
+defined the different networking requirements.
+
+04:39.690 --> 04:40.950
+So in the Kubernetes world,
+
+04:40.950 --> 04:43.290
+we have to manually set up a vast majority
+
+04:43.290 --> 04:45.120
+of all of our networking.
+
+04:45.120 --> 04:46.890
+So remember in Docker Compose
+
+04:46.890 --> 04:49.560
+if we created all of these different containers
+
+04:49.560 --> 04:51.630
+inside of a single Docker Compose file,
+
+04:51.630 --> 04:54.780
+we could very easily connect to other containers.
+
+04:54.780 --> 04:57.090
+In addition, if we wanted to do any port mapping,
+
+04:57.090 --> 04:59.064
+it was as easy as adding in a little entry
+
+04:59.064 --> 05:01.383
+to the Docker Compose file.
+
+05:02.370 --> 05:03.780
+So in the Kubernetes world,
+
+05:03.780 --> 05:06.118
+the process of kind of joining together two containers
+
+05:06.118 --> 05:09.540
+with networking or exposing a port on a container
+
+05:09.540 --> 05:11.910
+to the outside world is a much more,
+
+05:11.910 --> 05:14.340
+far more involved process.
+
+05:14.340 --> 05:16.020
+And a vast majority of the work that we do
+
+05:16.020 --> 05:17.340
+throughout the rest of this course
+
+05:17.340 --> 05:20.160
+is going to be all focused a hundred percent
+
+05:20.160 --> 05:22.500
+on some of these networking topics.
+
+05:22.500 --> 05:25.440
+That's gonna be one of the biggest things that we discuss.
+
+05:25.440 --> 05:28.710
+Okay, so with all these kind of mappings over in mind,
+
+05:28.710 --> 05:30.139
+I now wanna think about how we're going
+
+05:30.139 --> 05:32.730
+to essentially treat each of these items
+
+05:32.730 --> 05:34.530
+as we think about our current goal
+
+05:34.530 --> 05:38.460
+of getting the multi-client image working on Kubernetes.
+
+05:38.460 --> 05:41.880
+All right, so I put a final column into this diagram
+
+05:41.880 --> 05:43.080
+and these are going to be the steps
+
+05:43.080 --> 05:44.280
+that you and I are going to go through
+
+05:44.280 --> 05:46.890
+to make sure that we are able to get our simple container
+
+05:46.890 --> 05:47.793
+up and running.
+
+05:48.990 --> 05:51.600
+So when we think about Kubernetes expecting all images
+
+05:51.600 --> 05:53.400
+to already be built,
+
+05:53.400 --> 05:56.163
+that means that you and I are going to have to make sure
+
+05:56.163 --> 06:00.060
+that our image, specifically the multi-client image
+
+06:00.060 --> 06:02.790
+is already built and pushed up to Docker hub.
+
+06:02.790 --> 06:04.620
+So we're just gonna confirm that that is the case.
+
+06:04.620 --> 06:06.438
+And you'll recall that
+
+06:06.438 --> 06:07.920
+through the last application that we worked on
+
+06:07.920 --> 06:09.960
+we spent a tremendous amount of time making sure
+
+06:09.960 --> 06:13.410
+that our images were being pushed up to Docker hub.
+
+06:13.410 --> 06:14.940
+So our images should already be there.
+
+06:14.940 --> 06:17.580
+We're just gonna make sure that that is the case.
+
+06:17.580 --> 06:19.050
+Next up with Kubernetes
+
+06:19.050 --> 06:22.830
+we make one config file per object we want to create.
+
+06:22.830 --> 06:24.270
+So that means that we're definitely going to make
+
+06:24.270 --> 06:27.960
+one config file to create our container.
+
+06:27.960 --> 06:29.610
+Now, we're gonna go into great detail
+
+06:29.610 --> 06:32.344
+on this right here, because technically we're not going
+
+06:32.344 --> 06:33.960
+to be making our container per se.
+
+06:33.960 --> 06:36.930
+We're going to making something else slightly different.
+
+06:36.930 --> 06:39.230
+But again, we'll go into that in great detail.
+
+06:40.140 --> 06:41.250
+Now finally, with Kubernetes
+
+06:41.250 --> 06:44.040
+we have to set up all that networking manually.
+
+06:44.040 --> 06:45.030
+So you and I are going
+
+06:45.030 --> 06:47.670
+to make an additional configuration file
+
+06:47.670 --> 06:49.110
+to set up some networking
+
+06:49.110 --> 06:53.040
+between our container and essentially the outside world,
+
+06:53.040 --> 06:56.160
+or in other words, remember with our multi-line image
+
+06:56.160 --> 06:58.170
+we were starting up an Nginx server
+
+06:58.170 --> 07:00.630
+and serving up some production React files.
+
+07:00.630 --> 07:03.090
+And so if we want to be able to access that container
+
+07:03.090 --> 07:04.650
+from within our web browser,
+
+07:04.650 --> 07:05.940
+we're going to have to do a little bit
+
+07:05.940 --> 07:08.610
+of networking setup with Kubernetes.
+
+07:08.610 --> 07:09.480
+So in total,
+
+07:09.480 --> 07:12.600
+we need to make sure our image is on Docker hub.
+
+07:12.600 --> 07:15.450
+We need to make one config file to create our container
+
+07:15.450 --> 07:17.940
+or something that's going to essentially represent
+
+07:17.940 --> 07:19.470
+or contain the container.
+
+07:19.470 --> 07:21.720
+Again, we'll talk about that in great detail.
+
+07:21.720 --> 07:24.120
+And then we'll make a second config file
+
+07:24.120 --> 07:26.340
+to set up some networking and make sure
+
+07:26.340 --> 07:28.320
+that our container created during this step
+
+07:28.320 --> 07:31.170
+is accessible from our web browser.
+
+07:31.170 --> 07:33.360
+So quick pause, we're gonna come back to the next section
+
+07:33.360 --> 07:35.190
+and we'll get started on step number one.
+
+07:35.190 --> 07:36.840
+So I'll see you in just a minute.

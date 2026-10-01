@@ -1,0 +1,271 @@
+WEBVTT
+
+00:00.870 --> 00:01.703
+-: In the last section
+
+00:01.703 --> 00:05.370
+we put together our multi-client deployment config file.
+
+00:05.370 --> 00:07.740
+Now, we had already written out all the configuration
+
+00:07.740 --> 00:08.573
+for this before,
+
+00:08.573 --> 00:11.460
+and it's essentially a clone of what we already had.
+
+00:11.460 --> 00:13.710
+But again, I just wanted you to get used to some
+
+00:13.710 --> 00:16.350
+of the pieces of terminology inside of here
+
+00:16.350 --> 00:17.970
+because you're going to be writing quite a bit
+
+00:17.970 --> 00:20.700
+of these configuration files over time.
+
+00:20.700 --> 00:21.533
+All right, so now
+
+00:21.533 --> 00:23.100
+that we've got the deployment put together,
+
+00:23.100 --> 00:26.670
+we're going to start working on the cluster IP service.
+
+00:26.670 --> 00:28.590
+You will recall that the previous deployment
+
+00:28.590 --> 00:31.350
+we had worked on used a node port service.
+
+00:31.350 --> 00:32.610
+So the first thing we're going to do
+
+00:32.610 --> 00:35.883
+is figure out exactly what a cluster IP is.
+
+00:37.050 --> 00:38.400
+All right, so first off,
+
+00:38.400 --> 00:40.680
+I want you to recall that in the world of Kubernetes,
+
+00:40.680 --> 00:42.720
+we use a service anytime that we want
+
+00:42.720 --> 00:45.360
+to set up some networking for an object,
+
+00:45.360 --> 00:48.300
+such as a single pod or a group of pods
+
+00:48.300 --> 00:50.370
+that are managed by a deployment.
+
+00:50.370 --> 00:52.170
+Now, we made use of a node port,
+
+00:52.170 --> 00:54.750
+which is going to expose a single pod
+
+00:54.750 --> 00:58.230
+or a cluster of pods to the outside world.
+
+00:58.230 --> 01:01.890
+And that's why you were, and I were able to type in a IP,
+
+01:01.890 --> 01:05.460
+or specifically the IP for our mini cube virtual machine,
+
+01:05.460 --> 01:08.730
+and then a port in the 30,000 range.
+
+01:08.730 --> 01:11.670
+It was completely the node port that allowed us
+
+01:11.670 --> 01:14.970
+to access our running pod inside of our browser.
+
+01:14.970 --> 01:18.330
+Now, the cluster IP is a little bit more restrictive form
+
+01:18.330 --> 01:19.560
+of networking.
+
+01:19.560 --> 01:22.680
+The cluster IP is going to allow any other object
+
+01:22.680 --> 01:26.220
+inside of our cluster to access the object
+
+01:26.220 --> 01:28.530
+that the cluster IP is pointing at,
+
+01:28.530 --> 01:30.330
+but nobody from the outside world.
+
+01:30.330 --> 01:32.130
+So in other words, people like you and me,
+
+01:32.130 --> 01:35.490
+or anyone inside their web browser can access the object
+
+01:35.490 --> 01:38.523
+that this service is married up to or pointing to.
+
+01:39.660 --> 01:41.280
+So what does that mean practically?
+
+01:41.280 --> 01:43.680
+Well, it means that when we assign a cluster IP
+
+01:43.680 --> 01:46.500
+to any of these deployments that you see here,
+
+01:46.500 --> 01:49.290
+anything else running inside of our cluster
+
+01:49.290 --> 01:53.340
+can access whatever object the cluster IP is pointing at.
+
+01:53.340 --> 01:55.560
+So in other words, this cluster IP right here
+
+01:55.560 --> 01:58.290
+is going to provide access for everything else
+
+01:58.290 --> 02:01.350
+inside of here to the Redis deployment.
+
+02:01.350 --> 02:03.960
+It's what's going to allow the multi worker pod
+
+02:03.960 --> 02:06.000
+to eventually connect to the copy of Redis
+
+02:06.000 --> 02:07.410
+that is running gear.
+
+02:07.410 --> 02:09.630
+If we did not have this cluster IP service,
+
+02:09.630 --> 02:12.690
+then the Redis pod would be completely unreachable,
+
+02:12.690 --> 02:15.000
+and nothing inside of our cluster would be allowed
+
+02:15.000 --> 02:17.040
+to access that running pod.
+
+02:17.040 --> 02:19.560
+So that's what the cluster IP is all about.
+
+02:19.560 --> 02:22.830
+It provides access to an object, most commonly,
+
+02:22.830 --> 02:27.150
+a set of pods, to everything else inside of our cluster.
+
+02:27.150 --> 02:28.890
+Now, the one thing I want to be really clear about
+
+02:28.890 --> 02:32.100
+is that a cluster IP is not like a node port,
+
+02:32.100 --> 02:34.380
+in that it does not allow traffic to come in
+
+02:34.380 --> 02:35.940
+from the outside world.
+
+02:35.940 --> 02:37.710
+So this right here, this would not be allowed.
+
+02:37.710 --> 02:38.940
+This does not work.
+
+02:38.940 --> 02:42.180
+We cannot use a cluster IP to get access to a deployment
+
+02:42.180 --> 02:44.013
+from outside of our cluster.
+
+02:45.000 --> 02:47.010
+All right, so that's what a cluster IP is for.
+
+02:47.010 --> 02:49.500
+In general, we're going to use cluster IPs anytime
+
+02:49.500 --> 02:52.110
+that we have a service that is, or something, not a service,
+
+02:52.110 --> 02:54.810
+but an object that is only supposed to be accessed
+
+02:54.810 --> 02:57.303
+from people already inside of our cluster.
+
+02:58.560 --> 03:00.060
+Now, the one thing that you will notice
+
+03:00.060 --> 03:02.340
+is that of course we want the multi-client
+
+03:02.340 --> 03:05.610
+and the multi-server to be accessible from our users,
+
+03:05.610 --> 03:06.870
+but the way that is going to happen
+
+03:06.870 --> 03:08.670
+is through the Ingress service.
+
+03:08.670 --> 03:10.980
+Traffic is going to come into this Ingress,
+
+03:10.980 --> 03:12.570
+and then once traffic has come in,
+
+03:12.570 --> 03:15.570
+it is then effectively inside of our cluster.
+
+03:15.570 --> 03:17.119
+And so from that point on,
+
+03:17.119 --> 03:20.250
+our cluster IPs will be accessible only
+
+03:20.250 --> 03:22.500
+through the Ingress service.
+
+03:22.500 --> 03:24.240
+We'll talk more about the Ingress service later on
+
+03:24.240 --> 03:27.450
+because obviously that's a totally different piece
+
+03:27.450 --> 03:29.850
+of networking that we have to put together.
+
+03:29.850 --> 03:32.700
+Okay, so that's pretty much it on cluster IP.
+
+03:32.700 --> 03:34.170
+Let's take a quick pause right now.
+
+03:34.170 --> 03:35.003
+When we come back,
+
+03:35.003 --> 03:35.836
+in the next section,
+
+03:35.836 --> 03:39.060
+we'll put together our config file to create a cluster IP
+
+03:39.060 --> 03:41.043
+for our multi-client deployment.

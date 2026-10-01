@@ -1,0 +1,184 @@
+WEBVTT
+
+00:00.990 --> 00:01.823
+-: In the last section
+
+00:01.823 --> 00:04.200
+we put together our multi-step Dockerfile.
+
+00:04.200 --> 00:06.660
+We're now ready to test it out at our terminal.
+
+00:06.660 --> 00:08.520
+So I'm gonna flip on over to my terminal.
+
+00:08.520 --> 00:09.450
+I'm gonna make sure that I'm still
+
+00:09.450 --> 00:11.220
+inside my Frontend Directory,
+
+00:11.220 --> 00:13.320
+and then we're going to build that image
+
+00:13.320 --> 00:16.410
+by running Docker build dot.
+
+00:16.410 --> 00:19.350
+Notice how we don't have to use the -f flag on here,
+
+00:19.350 --> 00:22.260
+like we were doing throughout this section so far,
+
+00:22.260 --> 00:25.500
+we were only using the -f flag to force Docker to
+
+00:25.500 --> 00:27.120
+make use of a Dockerfile,
+
+00:27.120 --> 00:30.960
+with a file name that was not following the convention.
+
+00:30.960 --> 00:33.390
+So now that we have a file name that follows the convention
+
+00:33.390 --> 00:37.560
+of simply Dockerfile, we can do simply Docker build dot.
+
+00:37.560 --> 00:39.060
+All right, so I'm gonna run that,
+
+00:39.060 --> 00:41.010
+and then very quickly this whole thing
+
+00:41.010 --> 00:42.260
+is gonna be put together.
+
+00:43.500 --> 00:46.260
+So we're going through the npm run build process right now.
+
+00:46.260 --> 00:48.330
+That's gonna take just a second or so.
+
+00:48.330 --> 00:49.170
+And then you'll notice
+
+00:49.170 --> 00:51.750
+that we get this second step going on.
+
+00:51.750 --> 00:53.640
+So from NGINX there,
+
+00:53.640 --> 00:55.710
+we pull down that image for NGINX,
+
+00:55.710 --> 00:59.070
+and then we copy over everything from the builder process.
+
+00:59.070 --> 01:00.990
+And then the end result is the ID
+
+01:00.990 --> 01:03.450
+for the image that we just put together.
+
+01:03.450 --> 01:04.920
+So let's now try starting this thing up,
+
+01:04.920 --> 01:06.570
+and see how we're doing.
+
+01:06.570 --> 01:10.620
+I'm gonna copy the ID, and I'll execute docker run.
+
+01:10.620 --> 01:13.350
+And don't forget, we do have to open up our ports here,
+
+01:13.350 --> 01:15.030
+because NGINX is a web server,
+
+01:15.030 --> 01:18.573
+it wants to serve up traffic, so I'll say -p.
+
+01:19.590 --> 01:22.740
+We're gonna route traffic on this thing to 8080,
+
+01:22.740 --> 01:24.900
+and the source port inside the container
+
+01:24.900 --> 01:28.293
+is gonna be the default port that NGINX uses, which is 80.
+
+01:29.550 --> 01:32.100
+So we're gonna map up 8080 on our machine,
+
+01:32.100 --> 01:33.933
+to 80 inside the container.
+
+01:35.280 --> 01:37.170
+And then we'll paste the ID
+
+01:37.170 --> 01:38.973
+of the image that was just created.
+
+01:39.840 --> 01:41.610
+So I'll run that and we're not gonna actually
+
+01:41.610 --> 01:43.560
+see any output here, which is totally fine.
+
+01:43.560 --> 01:45.960
+By default, NGINX doesn't really have a whole lot to say,
+
+01:45.960 --> 01:48.600
+until you start making some request to it.
+
+01:48.600 --> 01:50.571
+But I should be able to open up my browser,
+
+01:50.571 --> 01:53.403
+navigate to localhost:8080,
+
+01:54.270 --> 01:56.700
+and see the 'Welcome to React' application
+
+01:56.700 --> 01:58.320
+up here on the screen.
+
+01:58.320 --> 02:00.030
+Perfect. So that's pretty much it.
+
+02:00.030 --> 02:02.580
+We've now got a Dockerfile that can be used
+
+02:02.580 --> 02:04.233
+to build our application,
+
+02:05.940 --> 02:08.730
+and then serve the application from an NGINX server,
+
+02:08.730 --> 02:12.780
+which is a hundred, 110% production appropriate.
+
+02:12.780 --> 02:15.570
+NGINX is really made for production workloads.
+
+02:15.570 --> 02:17.370
+So this is a pretty solid setup.
+
+02:17.370 --> 02:18.750
+Let's take a quick break right here.
+
+02:18.750 --> 02:19.950
+We'll continue the in next section,
+
+02:19.950 --> 02:21.540
+and start thinking about how we're gonna take
+
+02:21.540 --> 02:22.800
+all the work that we've done,
+
+02:22.800 --> 02:24.960
+and start deploying it to the outside world.
+
+02:24.960 --> 02:27.460
+So quick break, and I'll see you in just a minute.

@@ -1,0 +1,487 @@
+WEBVTT
+
+00:00.990 --> 00:01.823
+-: In the last section,
+
+00:01.823 --> 00:03.330
+we spoke about the new deployment practice
+
+00:03.330 --> 00:06.120
+that we're going to use for this multi-container deployment.
+
+00:06.120 --> 00:08.400
+Again, the big change this time around
+
+00:08.400 --> 00:11.010
+is that we're going to use Travis CI to build our images
+
+00:11.010 --> 00:13.050
+and then push them to Docker Hub.
+
+00:13.050 --> 00:14.550
+So now Elastic Beanstalk will not
+
+00:14.550 --> 00:17.160
+have to do any build process for us.
+
+00:17.160 --> 00:19.350
+And the first thing we need to do as part of this process
+
+00:19.350 --> 00:21.660
+is to make sure that we have production versions
+
+00:21.660 --> 00:23.910
+of all of our different Dockerfiles.
+
+00:23.910 --> 00:24.750
+As a reminder,
+
+00:24.750 --> 00:25.860
+all of our different services
+
+00:25.860 --> 00:29.820
+currently have Dockerfile.dev files.
+
+00:29.820 --> 00:32.130
+These are Dockerfiles specifically made
+
+00:32.130 --> 00:35.520
+to get our projects set up in a development environment,
+
+00:35.520 --> 00:36.750
+and in some cases,
+
+00:36.750 --> 00:38.430
+we need to customize them to get them
+
+00:38.430 --> 00:42.300
+a little bit more ready for a production-style deployment.
+
+00:42.300 --> 00:46.530
+So we're gonna first begin with our worker process.
+
+00:46.530 --> 00:48.030
+Inside of my worker directory,
+
+00:48.030 --> 00:50.940
+I'll make a new Dockerfile file.
+
+00:50.940 --> 00:53.040
+Boy, that's a tongue twister.
+
+00:53.040 --> 00:55.890
+Inside of here, we're gonna put in a series of instructions
+
+00:55.890 --> 00:57.510
+to get a production version
+
+00:57.510 --> 01:00.690
+of this worker application put together.
+
+01:00.690 --> 01:02.820
+Now, here's kind of the interesting thing.
+
+01:02.820 --> 01:07.110
+I want you to open up the Dockerfile.dev version right now.
+
+01:07.110 --> 01:07.943
+Inside of here,
+
+01:07.943 --> 01:09.690
+you'll see this very familiar configuration
+
+01:09.690 --> 01:11.820
+that we've used many times around.
+
+01:11.820 --> 01:13.110
+So I'll be honest with you
+
+01:13.110 --> 01:15.180
+we don't actually have to make a darn change
+
+01:15.180 --> 01:18.540
+in here for the production version of this Dockerfile.
+
+01:18.540 --> 01:20.100
+All the production version has to do
+
+01:20.100 --> 01:22.950
+is get our NPM modules installed
+
+01:22.950 --> 01:25.920
+and then run some setup or startup command.
+
+01:25.920 --> 01:27.270
+And that's essentially exactly what
+
+01:27.270 --> 01:29.550
+our existing Dockerfile does.
+
+01:29.550 --> 01:30.900
+So rather than trying to write
+
+01:30.900 --> 01:33.270
+an entire new Dockerfile from scratch,
+
+01:33.270 --> 01:35.720
+I'm gonna take everything inside of the dev file,
+
+01:36.600 --> 01:37.980
+I'm gonna copy it,
+
+01:37.980 --> 01:39.030
+and then I'll paste it over
+
+01:39.030 --> 01:42.003
+into the new production Dockerfile right here.
+
+01:43.470 --> 01:46.200
+So we're going to still do all the same steps.
+
+01:46.200 --> 01:48.390
+We're gonna use Node Alpine as a base image,
+
+01:48.390 --> 01:49.890
+set up a working directory,
+
+01:49.890 --> 01:51.930
+copy over the package.json file,
+
+01:51.930 --> 01:53.550
+install some dependencies,
+
+01:53.550 --> 01:56.190
+copy over all of our other files
+
+01:56.190 --> 01:57.510
+inside of our project directory,
+
+01:57.510 --> 01:59.880
+and then run some startup command.
+
+01:59.880 --> 02:01.470
+So the only thing that's going to be different
+
+02:01.470 --> 02:04.320
+inside of our production Dockerfile
+
+02:04.320 --> 02:06.810
+is in fact the startup command.
+
+02:06.810 --> 02:09.210
+Rather than starting up with npm run dev,
+
+02:09.210 --> 02:12.960
+we're going to make a npm run start command instead.
+
+02:12.960 --> 02:14.820
+So traditionally, npm run dev is used,
+
+02:14.820 --> 02:17.280
+as you might guess, for the development environment.
+
+02:17.280 --> 02:19.260
+Usually when we move to a production environment,
+
+02:19.260 --> 02:21.840
+we change this to start because you might have
+
+02:21.840 --> 02:23.373
+a slightly different command.
+
+02:24.660 --> 02:25.860
+Now, as a reminder,
+
+02:25.860 --> 02:27.570
+these npm run scripts
+
+02:27.570 --> 02:28.980
+that we're putting together right here,
+
+02:28.980 --> 02:31.650
+they are not just created for us by magic.
+
+02:31.650 --> 02:33.660
+These are actual scripts that you and I define
+
+02:33.660 --> 02:36.240
+inside of our package.json file.
+
+02:36.240 --> 02:38.280
+So I'm gonna open up the package.json file
+
+02:38.280 --> 02:41.400
+and just verify that we do in fact have a start script,
+
+02:41.400 --> 02:42.570
+and in fact we do,
+
+02:42.570 --> 02:44.100
+and this definitely is appropriate,
+
+02:44.100 --> 02:45.840
+or good enough, really,
+
+02:45.840 --> 02:47.010
+for starting up our application
+
+02:47.010 --> 02:49.110
+in a production environment.
+
+02:49.110 --> 02:51.570
+So I think that's pretty much it for our Dockerfile
+
+02:51.570 --> 02:52.770
+for the worker.
+
+02:52.770 --> 02:55.350
+We just used everything the same as the development version.
+
+02:55.350 --> 02:57.420
+We just did a little bit of a customization
+
+02:57.420 --> 03:00.420
+for the npm run start command.
+
+03:00.420 --> 03:01.920
+Let's now go through the same process
+
+03:01.920 --> 03:04.890
+for the server service, as well.
+
+03:04.890 --> 03:06.180
+Inside my server directory,
+
+03:06.180 --> 03:08.673
+I'll make a new file called Dockerfile.
+
+03:10.560 --> 03:14.040
+And again, I'm gonna open up my Dockerfile.dev,
+
+03:14.040 --> 03:16.680
+I'll copy everything inside of here,
+
+03:16.680 --> 03:19.920
+and then I'll paste it inside of the new Dockerfile.
+
+03:19.920 --> 03:22.890
+Again, we don't really have to do any customization here.
+
+03:22.890 --> 03:24.810
+Sometimes in some projects,
+
+03:24.810 --> 03:25.643
+like, for example,
+
+03:25.643 --> 03:28.350
+as we saw with the Create React App example,
+
+03:28.350 --> 03:30.150
+sometimes we do want a difference
+
+03:30.150 --> 03:33.360
+between our production Dockerfile
+
+03:33.360 --> 03:34.380
+and the development one,
+
+03:34.380 --> 03:36.150
+but sometimes it's just not necessary.
+
+03:36.150 --> 03:38.880
+There's really nothing different that we need to do.
+
+03:38.880 --> 03:40.320
+Nonetheless, I do still recommend
+
+03:40.320 --> 03:41.880
+that you have different Dockerfiles
+
+03:41.880 --> 03:44.670
+because you might want to make a small change or two.
+
+03:44.670 --> 03:45.570
+And I guess in this case,
+
+03:45.570 --> 03:47.970
+we are changing the default startup command,
+
+03:47.970 --> 03:49.570
+so it is a little bit different.
+
+03:50.640 --> 03:51.690
+All right, so again,
+
+03:51.690 --> 03:55.290
+I'm going to find my initial command right here.
+
+03:55.290 --> 03:57.210
+Rather than running npm run dev,
+
+03:57.210 --> 04:00.390
+which is usually used for development purposes,
+
+04:00.390 --> 04:02.253
+I'll do npm run start instead.
+
+04:03.810 --> 04:06.330
+Now, if I open up my package.json file,
+
+04:06.330 --> 04:09.540
+I can just verify that I do in fact have a start script.
+
+04:09.540 --> 04:10.383
+Yep, I do.
+
+04:11.430 --> 04:13.260
+And so I'll save the production Dockerfile.
+
+04:13.260 --> 04:15.260
+And again, I think we're all good to go.
+
+04:16.350 --> 04:18.630
+Now we'll do just one more inside this section.
+
+04:18.630 --> 04:20.280
+We'll do the Nginx, as well.
+
+04:20.280 --> 04:21.960
+Again, it's the same story.
+
+04:21.960 --> 04:24.030
+We're not making any changes
+
+04:24.030 --> 04:26.070
+with the production Dockerfile.
+
+04:26.070 --> 04:27.420
+So I'll make the Dockerfile,
+
+04:27.420 --> 04:29.310
+I'll open up the development version,
+
+04:29.310 --> 04:31.710
+and we're going to use the exact same thing
+
+04:31.710 --> 04:33.330
+this time around.
+
+04:33.330 --> 04:36.040
+So we're gonna copy over the default.conf file
+
+04:37.230 --> 04:38.910
+'cause it has all of our routing rules,
+
+04:38.910 --> 04:40.770
+and that's going to be overriding
+
+04:40.770 --> 04:44.400
+the default default.conf file that exists
+
+04:44.400 --> 04:46.020
+inside the Nginx image.
+
+04:46.020 --> 04:47.970
+Again, no changes.
+
+04:47.970 --> 04:48.803
+Now, in this case,
+
+04:48.803 --> 04:50.850
+I will say this is probably the one location
+
+04:50.850 --> 04:52.590
+where we might want to make a little change
+
+04:52.590 --> 04:53.700
+to the Dockerfile.
+
+04:53.700 --> 04:56.100
+I'm not going to because it's not strictly necessary.
+
+04:56.100 --> 04:59.070
+I'm just gonna throw this out as a possible example.
+
+04:59.070 --> 05:01.170
+You recall that just one or two sections ago
+
+05:01.170 --> 05:03.300
+inside of the default.conf file,
+
+05:03.300 --> 05:06.420
+we added on one of those routing rules right here.
+
+05:06.420 --> 05:08.790
+This was to allow web sockets to connect
+
+05:08.790 --> 05:11.190
+to that specific endpoint
+
+05:11.190 --> 05:14.490
+on our React JS development server.
+
+05:14.490 --> 05:17.430
+And so this right here was really a development-specific
+
+05:17.430 --> 05:19.320
+piece of configuration.
+
+05:19.320 --> 05:21.030
+And so if we were really doing
+
+05:21.030 --> 05:23.010
+a super, super production version,
+
+05:23.010 --> 05:24.720
+you know, again, for this course,
+
+05:24.720 --> 05:26.190
+I'm trying to make things
+
+05:26.190 --> 05:27.900
+as production realistic as possible,
+
+05:27.900 --> 05:30.060
+but this is one of the locations where it's just
+
+05:30.060 --> 05:31.830
+really not a big deal at all.
+
+05:31.830 --> 05:34.500
+If we really wanted to have a separate production version,
+
+05:34.500 --> 05:37.350
+I might make a separate default.conf file
+
+05:37.350 --> 05:40.860
+that would not have this web socket block inside of it.
+
+05:40.860 --> 05:43.360
+So if you wanted to, you could absolutely do that.
+
+05:44.730 --> 05:45.660
+But for right now,
+
+05:45.660 --> 05:46.890
+having a production Dockerfile
+
+05:46.890 --> 05:50.970
+that just uses the same default.conf is good enough.
+
+05:50.970 --> 05:52.410
+It is definitely good enough.
+
+05:52.410 --> 05:55.770
+There's not a huge reason to make any changes.
+
+05:55.770 --> 05:59.220
+All right, so those are our production Dockerfiles
+
+05:59.220 --> 06:02.070
+for the worker server and Nginx services.
+
+06:02.070 --> 06:02.970
+Let's take a quick pause
+
+06:02.970 --> 06:05.513
+and then we'll tackle the client in the next section.

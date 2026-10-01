@@ -1,0 +1,193 @@
+WEBVTT
+
+00:00.930 --> 00:01.763
+-: In the last section,
+
+00:01.763 --> 00:04.920
+we started up a new copy of the Reddis container image.
+
+00:04.920 --> 00:08.190
+Inside there we have a running copy of the Reddis server
+
+00:08.190 --> 00:10.170
+and we now need to figure out how we can somehow
+
+00:10.170 --> 00:14.730
+start up the Reddis CLI also inside of that container.
+
+00:14.730 --> 00:16.230
+To do so we're going to be making use
+
+00:16.230 --> 00:18.270
+of another Docker command.
+
+00:18.270 --> 00:21.690
+So the Docker command we're going to use is Docker exec.
+
+00:21.690 --> 00:23.580
+Exec is short for execute,
+
+00:23.580 --> 00:26.550
+and we use it to execute an additional command
+
+00:26.550 --> 00:28.290
+inside of a container.
+
+00:28.290 --> 00:29.123
+We're going to write,
+
+00:29.123 --> 00:33.093
+Docker exec, we'll then put down it, dash it.
+
+00:33.990 --> 00:35.790
+This little argument right here allows us
+
+00:35.790 --> 00:39.270
+to type input directly into the container.
+
+00:39.270 --> 00:41.250
+We then provide the container ID and then
+
+00:41.250 --> 00:44.850
+the command that we want to execute inside of the container.
+
+00:44.850 --> 00:47.750
+So let's try doing this right now and seeing what happens.
+
+00:49.080 --> 00:51.060
+I'm gonna first go back over to my turn,
+
+00:51.060 --> 00:54.000
+I'm gonna verify that my Reddis container is still running.
+
+00:54.000 --> 00:56.190
+I can either look at it inside the running window,
+
+00:56.190 --> 00:58.860
+alternatively, I could run Docker PS and see,
+
+00:58.860 --> 01:01.653
+yep I still have that Reddis image still going.
+
+01:03.180 --> 01:06.720
+So then to start up a second program inside the container
+
+01:06.720 --> 01:08.490
+I'll run Docker exec.
+
+01:08.490 --> 01:09.690
+Oops, forgot one thing here,
+
+01:09.690 --> 01:11.280
+we gotta get the container's id.
+
+01:11.280 --> 01:14.610
+We'll do Docker ps and there's the ID right there.
+
+01:14.610 --> 01:19.610
+So I'll do Docker exec, dash it, I'll paste in the id
+
+01:20.490 --> 01:22.320
+and then the command that I want to execute
+
+01:22.320 --> 01:25.983
+inside there is Reddis dash CLI.
+
+01:27.060 --> 01:29.130
+And when I do so, you'll see that I now get that
+
+01:29.130 --> 01:31.470
+a little bit more familiar looking Command Frontier
+
+01:31.470 --> 01:36.150
+and I can write out something like set my value five
+
+01:36.150 --> 01:39.540
+and get my value, and it retrieves five.
+
+01:39.540 --> 01:42.150
+So by using the exec command, we were able to
+
+01:42.150 --> 01:46.050
+start up a second running program inside of our container.
+
+01:46.050 --> 01:49.530
+And the dash IT flag right here allowed us to enter
+
+01:49.530 --> 01:51.150
+in text on our keyboard
+
+01:51.150 --> 01:54.120
+and have it be sent into that running container.
+
+01:54.120 --> 01:55.380
+As a very quick exercise
+
+01:55.380 --> 01:57.240
+let's try removing the IT flag there
+
+01:57.240 --> 01:58.713
+and seeing what happens.
+
+01:59.610 --> 02:03.120
+I'm gonna exit this by hitting control C on my keyboard
+
+02:03.120 --> 02:05.460
+and then I'll do Docker exec again.
+
+02:05.460 --> 02:09.210
+But this time I'm going to leave off the IT flags.
+
+02:09.210 --> 02:13.233
+So I'll do Docker exec, the id, and then Reddis CLI.
+
+02:14.160 --> 02:15.420
+And you'll notice that this time around
+
+02:15.420 --> 02:18.510
+I just got kicked directly back to my terminal.
+
+02:18.510 --> 02:22.320
+I got kicked directly back because Reddis CLI was started up
+
+02:22.320 --> 02:26.100
+but we did not get the ability to enter in any text.
+
+02:26.100 --> 02:27.660
+So when Reddis CLI was started up
+
+02:27.660 --> 02:28.687
+but it very quickly realized,
+
+02:28.687 --> 02:30.480
+"Hey I don't have any possibility
+
+02:30.480 --> 02:32.010
+of getting any text input."
+
+02:32.010 --> 02:34.770
+It decided to just entirely close down
+
+02:34.770 --> 02:36.420
+and kick us back to our terminal.
+
+02:37.500 --> 02:40.980
+Now this idea behind kind of adding on this IT flag
+
+02:40.980 --> 02:42.780
+and adding in text here is actually something
+
+02:42.780 --> 02:45.180
+that's rather important in the world of Docker.
+
+02:45.180 --> 02:46.590
+So let's take a quick pause right here
+
+02:46.590 --> 02:48.270
+and we're going to come back in the next section
+
+02:48.270 --> 02:51.330
+and kind of expand upon what IT right here means.
+
+02:51.330 --> 02:52.980
+So I'll see you in just a minute.

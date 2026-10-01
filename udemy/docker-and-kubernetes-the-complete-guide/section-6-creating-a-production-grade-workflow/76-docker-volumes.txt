@@ -1,0 +1,520 @@
+WEBVTT
+
+00:00.810 --> 00:01.643
+-: In the last section,
+
+00:01.643 --> 00:03.270
+we started to run into a problem
+
+00:03.270 --> 00:05.550
+that we've seen once before inside this course.
+
+00:05.550 --> 00:07.170
+We made a change to the source code
+
+00:07.170 --> 00:08.610
+of one of our files,
+
+00:08.610 --> 00:10.830
+but that change was not immediately reflected
+
+00:10.830 --> 00:12.750
+inside the running container.
+
+00:12.750 --> 00:14.130
+In this section, we're gonna figure out
+
+00:14.130 --> 00:16.350
+how we can somehow get this change
+
+00:16.350 --> 00:18.390
+to somewhat cleverly show up
+
+00:18.390 --> 00:20.610
+inside that running Docker container
+
+00:20.610 --> 00:23.280
+without us having to stop it, rebuild the image,
+
+00:23.280 --> 00:24.810
+and then restart the container.
+
+00:24.810 --> 00:26.490
+So let's get to it.
+
+00:26.490 --> 00:28.830
+I wanna first begin by giving you a quick reminder
+
+00:28.830 --> 00:31.500
+of how our Docker file is currently working.
+
+00:31.500 --> 00:35.250
+We first begin by copying over the package.json file.
+
+00:35.250 --> 00:38.670
+We then run npm install, and then most importantly
+
+00:38.670 --> 00:40.650
+we run that copy command,
+
+00:40.650 --> 00:42.870
+which takes the public directory,
+
+00:42.870 --> 00:44.280
+the SRC directory,
+
+00:44.280 --> 00:45.990
+and everything else inside of here,
+
+00:45.990 --> 00:50.223
+and copies them over into our working directory of /app.
+
+00:51.150 --> 00:52.923
+So just remember that for a second.
+
+00:53.970 --> 00:55.380
+All right.
+
+00:55.380 --> 00:56.760
+So I wanna show you that same flow
+
+00:56.760 --> 00:58.530
+kind of in a diagram format.
+
+00:58.530 --> 00:59.670
+So like we just said,
+
+00:59.670 --> 01:02.220
+we get our package.json copied over,
+
+01:02.220 --> 01:05.160
+now reflected in this diagram, we install the dependencies,
+
+01:05.160 --> 01:06.960
+and then at some point in time,
+
+01:06.960 --> 01:10.380
+we make a copy of SRC and Public,
+
+01:10.380 --> 01:13.383
+and we move those copies into that container.
+
+01:14.250 --> 01:16.620
+Remember that that is a temporary container
+
+01:16.620 --> 01:19.173
+that is created during the image building process.
+
+01:20.130 --> 01:21.720
+When we make these copies over here,
+
+01:21.720 --> 01:23.670
+we are essentially taking a snapshot
+
+01:23.670 --> 01:26.700
+of the contents of SRC and public.
+
+01:26.700 --> 01:28.830
+It's a snapshot that is locked in time
+
+01:28.830 --> 01:30.990
+and by default is not going to be updated
+
+01:30.990 --> 01:33.240
+anytime we make a change to this code.
+
+01:33.240 --> 01:36.000
+So in order to get these changes that we're making
+
+01:36.000 --> 01:38.610
+to files inside of SRC and public,
+
+01:38.610 --> 01:40.680
+we need to kind of abandon this approach
+
+01:40.680 --> 01:42.720
+of doing this straight copy.
+
+01:42.720 --> 01:44.760
+So rather than doing the straight copy,
+
+01:44.760 --> 01:48.060
+we're going to adjust the Docker run command
+
+01:48.060 --> 01:51.423
+that we use to start up our running container.
+
+01:52.290 --> 01:54.810
+By adjusting this command, we're going to be making use
+
+01:54.810 --> 01:57.960
+of a feature included with Docker called volumes.
+
+01:57.960 --> 02:00.840
+So we're going to make use of a Docker volume.
+
+02:00.840 --> 02:04.780
+With a Docker volume we essentially set up a placeholder
+
+02:05.635 --> 02:07.260
+of sorts inside of our Docker container,
+
+02:07.260 --> 02:09.300
+and so we're no longer going to copy over
+
+02:09.300 --> 02:12.930
+the entire SRC directory or the entire public directory.
+
+02:12.930 --> 02:15.000
+Instead, you can kind of imagine
+
+02:15.000 --> 02:16.980
+that we're going to put a sort of,
+
+02:16.980 --> 02:18.120
+that's not how to spell it.
+
+02:18.120 --> 02:21.273
+We're gonna put in a kind of reference here instead.
+
+02:22.110 --> 02:24.420
+The volume is essentially gonna set up a reference
+
+02:24.420 --> 02:28.320
+that's going to point back to our local machine
+
+02:28.320 --> 02:30.660
+and give us access to the files and folders
+
+02:30.660 --> 02:34.080
+inside of these folders on the local machine.
+
+02:34.080 --> 02:36.900
+So a Docker volume can kind of be thought of
+
+02:36.900 --> 02:39.090
+in a very similar fashion to the port mappings
+
+02:39.090 --> 02:40.710
+that we were setting up before.
+
+02:40.710 --> 02:42.360
+The port mapping that we were using
+
+02:42.360 --> 02:45.450
+mapped a container, or excuse me a port inside the container
+
+02:45.450 --> 02:47.790
+to a port outside the container.
+
+02:47.790 --> 02:48.900
+With a Docker volume,
+
+02:48.900 --> 02:50.430
+we're essentially setting up a mapping
+
+02:50.430 --> 02:52.590
+from a folder inside the container
+
+02:52.590 --> 02:55.170
+to a folder outside the container.
+
+02:55.170 --> 02:56.100
+Now you might be wondering,
+
+02:56.100 --> 02:59.430
+why did we not just make use of volumes before
+
+02:59.430 --> 03:00.720
+if this kind of solves the issue
+
+03:00.720 --> 03:03.600
+of hooking up files and folders inside the container
+
+03:03.600 --> 03:05.760
+to files and folders outside of it?
+
+03:05.760 --> 03:08.310
+Well, the issue is that setting up a Docker volume
+
+03:08.310 --> 03:11.100
+is sometimes a little bit of a pain in the rear,
+
+03:11.100 --> 03:13.320
+just because of the syntax we have to use
+
+03:13.320 --> 03:15.153
+when we run Docker run.
+
+03:16.440 --> 03:18.600
+So let's take a look at these syntax we're gonna use
+
+03:18.600 --> 03:19.680
+to set up these volumes
+
+03:19.680 --> 03:22.110
+when we execute the Docker run command
+
+03:22.110 --> 03:23.013
+at our terminal.
+
+03:24.150 --> 03:25.380
+All right, so this is it.
+
+03:25.380 --> 03:28.080
+And as you can see, we're gonna add on a fair bit here.
+
+03:28.080 --> 03:32.460
+Now we first start off with docker run -p 3000,
+
+03:32.460 --> 03:35.523
+but we're gonna add on these two additional switches.
+
+03:37.710 --> 03:40.986
+Now, I'm going to ignore this first switch right here
+
+03:40.986 --> 03:43.560
+for just a moment and just focus on the second one.
+
+03:43.560 --> 03:46.050
+So on the second little switch we say -v,
+
+03:46.050 --> 03:47.940
+which is used to set up a volume,
+
+03:47.940 --> 03:51.180
+and then we say $ present working directory.
+
+03:51.180 --> 03:55.080
+This dollar sign with pwd, or present working directory
+
+03:55.080 --> 03:56.910
+inside of that set of parentheses
+
+03:56.910 --> 03:58.743
+is a little bit of a shortcut.
+
+03:59.850 --> 04:01.830
+If you flip back over to your terminal right now
+
+04:01.830 --> 04:04.620
+and stop the running process,
+
+04:04.620 --> 04:06.330
+if you are on Windows,
+
+04:06.330 --> 04:07.934
+I want you to know right now,
+
+04:07.934 --> 04:10.104
+if you're on Windows and you're running Command Prompt
+
+04:10.104 --> 04:11.340
+or PowerShell this command is not going to work,
+
+04:11.340 --> 04:13.800
+but it will work if you're running Git Bash.
+
+04:13.800 --> 04:16.410
+So back at your terminal, you can run pwd
+
+04:16.410 --> 04:18.660
+and you'll see that it's gonna print out the path
+
+04:18.660 --> 04:22.200
+to your present working directory on your machine.
+
+04:22.200 --> 04:24.270
+So by putting in pwd right here,
+
+04:24.270 --> 04:27.090
+we're essentially saying get the present working directory
+
+04:27.090 --> 04:28.650
+or the path to it,
+
+04:28.650 --> 04:31.470
+and take this folder, like this front end folder
+
+04:31.470 --> 04:33.000
+and everything inside of it,
+
+04:33.000 --> 04:35.100
+and map it up to the app folder
+
+04:35.100 --> 04:37.470
+running inside of our container.
+
+04:37.470 --> 04:38.790
+This pwd thing right here
+
+04:38.790 --> 04:40.440
+is something that you're gonna use every time
+
+04:40.440 --> 04:43.050
+if you want to use docker Run to start up the container.
+
+04:43.050 --> 04:43.920
+And so writing out this
+
+04:43.920 --> 04:45.960
+kind of long-winded switch right here,
+
+04:45.960 --> 04:48.210
+yeah, like I said it's just a little bit annoying.
+
+04:48.210 --> 04:50.820
+So in general, well that's exactly why
+
+04:50.820 --> 04:52.983
+we have not used volumes up to this point.
+
+04:54.180 --> 04:56.760
+Now again, there's this other switch on here.
+
+04:56.760 --> 04:59.040
+You'll notice that the first switch right here
+
+04:59.040 --> 05:02.640
+does not have a colon like the second one does.
+
+05:02.640 --> 05:05.430
+I wanna first run the docker run command
+
+05:05.430 --> 05:06.660
+without the first switch.
+
+05:06.660 --> 05:08.760
+So we're gonna run it only with the second one
+
+05:08.760 --> 05:10.440
+and our image id on the end,
+
+05:10.440 --> 05:12.150
+and we're just gonna see what happens,
+
+05:12.150 --> 05:15.240
+'cause you're gonna notice some pretty interesting behavior.
+
+05:15.240 --> 05:17.850
+All right, so let's try running this.
+
+05:17.850 --> 05:19.840
+Now, I'm gonna first rebuild my image
+
+05:21.000 --> 05:24.963
+with docker build -f dockerfile.dev.
+
+05:27.060 --> 05:28.830
+I'm gonna copy my id
+
+05:28.830 --> 05:32.770
+and then I'll execute docker run -p:3000, colon 3000.
+
+05:37.650 --> 05:42.243
+We'll do -v with a dollar sign, a parenthesis, pwd.
+
+05:44.220 --> 05:48.060
+We'll then put the colon in a /app,
+
+05:48.060 --> 05:51.090
+and then finally I'll paste the image id.
+
+05:51.090 --> 05:53.310
+Now again, if you are on PowerShell
+
+05:53.310 --> 05:55.440
+or if you're on Windows Command prompt,
+
+05:55.440 --> 05:56.640
+this command is not going to work
+
+05:56.640 --> 05:59.370
+because are making use of pwd right there.
+
+05:59.370 --> 06:01.705
+Now, if you did not install Git Bash earlier
+
+06:01.705 --> 06:02.850
+inside this course
+
+06:02.850 --> 06:04.467
+and if you're not using Git Bash right now,
+
+06:04.467 --> 06:07.140
+you can either use Git Bash or in just a moment
+
+06:07.140 --> 06:08.430
+I'm gonna show you a workaround
+
+06:08.430 --> 06:09.810
+where we do not have to use this kind
+
+06:09.810 --> 06:11.760
+of long form syntax right here.
+
+06:11.760 --> 06:13.260
+So you can just hold on for a second
+
+06:13.260 --> 06:15.780
+if you're using Command Prompt or PowerShell.
+
+06:15.780 --> 06:17.340
+All right, so I'm gonna start that up
+
+06:17.340 --> 06:20.280
+and you're gonna very quickly see an error message.
+
+06:20.280 --> 06:22.800
+If you read this error message somewhat closely,
+
+06:22.800 --> 06:23.633
+you'll notice that it appears
+
+06:23.633 --> 06:24.780
+that the project did attempt to start up,
+
+06:24.780 --> 06:26.580
+specifically the React project,
+
+06:26.580 --> 06:28.140
+but we got this message here that said
+
+06:28.140 --> 06:30.150
+React Scripts not found.
+
+06:30.150 --> 06:32.324
+So this is clearly, well, maybe not clearly.
+
+06:32.324 --> 06:34.590
+I take that back, not clearly,
+
+06:34.590 --> 06:36.150
+but let me just kind of cut to the chase here
+
+06:36.150 --> 06:37.860
+and tell you we're seeing this error message
+
+06:37.860 --> 06:39.930
+because we obviously kind of skipped off
+
+06:39.930 --> 06:42.060
+this additional little argument right here.
+
+06:42.060 --> 06:44.730
+But I wanted to show you why this argument was necessary.
+
+06:44.730 --> 06:45.750
+Let's take a quick pause.
+
+06:45.750 --> 06:47.100
+When we come back to the next section,
+
+06:47.100 --> 06:49.500
+I'll tell you about exactly what's happening right now
+
+06:49.500 --> 06:51.524
+and why we are seeing that error message pop up
+
+06:51.524 --> 06:52.773
+in our terminal.

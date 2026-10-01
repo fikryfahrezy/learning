@@ -1,0 +1,313 @@
+WEBVTT
+
+00:00.840 --> 00:03.060
+-: Much earlier in this course, like in the first one
+
+00:03.060 --> 00:05.610
+or two sections, you saw me start up a new copy
+
+00:05.610 --> 00:08.820
+of Redis on my computer by using docker.
+
+00:08.820 --> 00:11.820
+As a reminder, Redis is an in-memory data store
+
+00:11.820 --> 00:14.700
+that's very commonly used with web applications.
+
+00:14.700 --> 00:17.100
+You saw me start up a Redis instance using docker
+
+00:17.100 --> 00:20.100
+and it seemed to be really easy and very straightforward.
+
+00:20.100 --> 00:23.130
+But I wanna show you kind of an oddity around using Redis
+
+00:23.130 --> 00:24.900
+with docker very quickly.
+
+00:24.900 --> 00:26.820
+I took the liberty of installing Redis
+
+00:26.820 --> 00:28.710
+on my local machine directly
+
+00:28.710 --> 00:31.140
+without docker being involved whatsoever.
+
+00:31.140 --> 00:33.120
+'Cause I wanna show you the normal way
+
+00:33.120 --> 00:35.670
+in which we might interact with Redis.
+
+00:35.670 --> 00:37.200
+I'm gonna first start up an instance
+
+00:37.200 --> 00:39.450
+of the Redis server by running Redis server.
+
+00:39.450 --> 00:41.760
+Now again, I am able to run this command
+
+00:41.760 --> 00:44.160
+because I installed Redis on my local machine
+
+00:44.160 --> 00:45.780
+without docker involved.
+
+00:45.780 --> 00:48.120
+Chances are you do not have Redis installed
+
+00:48.120 --> 00:50.520
+on your computer, so don't try to run this command
+
+00:50.520 --> 00:53.280
+because it's probably going to result in an error.
+
+00:53.280 --> 00:54.720
+Now when I run that command, you're gonna see
+
+00:54.720 --> 00:57.450
+that, yep, I get an instance of the Reddit server running.
+
+00:57.450 --> 00:59.670
+It's in memory, it's ready to store data
+
+00:59.670 --> 01:01.593
+or do whatever I need it to do.
+
+01:02.640 --> 01:05.520
+The one of the very common ways in which we can kind of poke
+
+01:05.520 --> 01:07.470
+into this thing or into this server
+
+01:07.470 --> 01:08.610
+and inspect the data
+
+01:08.610 --> 01:11.910
+that is inside of it, is by using a second program,
+
+01:11.910 --> 01:13.950
+called the Redis CLI.
+
+01:13.950 --> 01:16.770
+So on my computer, I've already got Redis server running.
+
+01:16.770 --> 01:20.130
+I'm gonna now start up a second program called Redis CLI.
+
+01:20.130 --> 01:21.360
+And again, the entire purpose
+
+01:21.360 --> 01:22.950
+of this thing is to kind of reach
+
+01:22.950 --> 01:25.250
+into that server and poke around inside of it.
+
+01:26.220 --> 01:28.950
+So, I'm gonna open up a second terminal window
+
+01:28.950 --> 01:31.980
+and I'll run Redis CLI
+
+01:31.980 --> 01:33.690
+and that gives me a little prompt right here
+
+01:33.690 --> 01:35.910
+that allows me to issue commands directly
+
+01:35.910 --> 01:37.350
+to the running Redis server.
+
+01:37.350 --> 01:41.070
+And so I can do something like store my number
+
+01:41.070 --> 01:46.070
+or excuse me, not store, but set my number, is five
+
+01:46.410 --> 01:48.790
+and then I can then retrieve that value
+
+01:50.070 --> 01:51.390
+and it prints out five.
+
+01:51.390 --> 01:53.280
+So this right here is the normal interaction
+
+01:53.280 --> 01:56.130
+that you would see with Redis, with Redis CLI.
+
+01:56.130 --> 01:58.530
+Clearly it's really nice to be able to run the Redis CLI
+
+01:58.530 --> 02:00.570
+and interact directly with information
+
+02:00.570 --> 02:02.700
+inside that running Redis server.
+
+02:02.700 --> 02:03.796
+All right,
+
+02:03.796 --> 02:05.220
+so now you're probably wondering where am I going with this?
+
+02:05.220 --> 02:08.220
+Well, let's try starting up Redis using docker
+
+02:08.220 --> 02:10.020
+and then you're gonna very quickly see some
+
+02:10.020 --> 02:12.870
+interesting behavior around Redis CLI.
+
+02:12.870 --> 02:14.400
+So let's give it a shot.
+
+02:14.400 --> 02:16.510
+I'm gonna stop my running stuff
+
+02:18.240 --> 02:20.640
+and then I'm going to start up an instance of Redis
+
+02:20.640 --> 02:24.243
+on my machine using Docker Run Redis.
+
+02:25.350 --> 02:27.570
+Now it's gonna start up just about instantly for me.
+
+02:27.570 --> 02:29.490
+For you it might take a second or two as it has
+
+02:29.490 --> 02:30.570
+to download the image
+
+02:30.570 --> 02:32.940
+but overall it should be pretty darn quick.
+
+02:32.940 --> 02:35.760
+When you start up Redis, you might see a couple of warnings.
+
+02:35.760 --> 02:37.890
+Those are totally fine, you can ignore them.
+
+02:37.890 --> 02:39.270
+Just make sure that the very last line
+
+02:39.270 --> 02:40.103
+that you see is something
+
+02:40.103 --> 02:42.690
+that says, ready to accept connections.
+
+02:42.690 --> 02:45.090
+So as long as you see that, you're good to go.
+
+02:45.090 --> 02:46.140
+All right, so this right here,
+
+02:46.140 --> 02:48.750
+what we are running right here is the Redis server.
+
+02:48.750 --> 02:51.600
+So I now want to start up a copy of the Redis CLI
+
+02:51.600 --> 02:53.340
+and try to work with the information
+
+02:53.340 --> 02:56.640
+that is being handled inside of the server.
+
+02:56.640 --> 02:58.500
+As you saw just a moment ago, I was able
+
+02:58.500 --> 03:02.580
+to open up a second console window and run Redis CLI.
+
+03:02.580 --> 03:05.340
+So, well maybe for docker being involved here,
+
+03:05.340 --> 03:08.220
+maybe we just have to run like Red CLI here.
+
+03:08.220 --> 03:10.170
+Oh no, that clearly doesn't do anything.
+
+03:10.170 --> 03:12.210
+Maybe we need to start up a second terminal window
+
+03:12.210 --> 03:15.000
+and try running Redis CLI there, let's try that.
+
+03:15.000 --> 03:18.870
+We'll open up a second window and then run Redis CLI.
+
+03:18.870 --> 03:20.520
+Now chances are you're gonna see a message
+
+03:20.520 --> 03:21.353
+that says something
+
+03:21.353 --> 03:23.610
+like, Command not recognized or Command not Found.
+
+03:23.610 --> 03:26.430
+I see something that says, could not connect to Redis.
+
+03:26.430 --> 03:29.180
+So what's going on here? Well, let's look at a diagram.
+
+03:30.420 --> 03:33.660
+So just a second ago, we started up a new container
+
+03:33.660 --> 03:36.000
+that is running Redis server.
+
+03:36.000 --> 03:39.360
+Now, Redis is running only inside this container.
+
+03:39.360 --> 03:43.860
+So if I tried to run Redis CLI outside the container,
+
+03:43.860 --> 03:46.080
+outside the container I have no access
+
+03:46.080 --> 03:48.120
+to anything that's going on inside there.
+
+03:48.120 --> 03:50.370
+And so, there is no Redis CLI command
+
+03:50.370 --> 03:52.590
+to run outside the container.
+
+03:52.590 --> 03:54.780
+If we want to start up the CLI, we need
+
+03:54.780 --> 03:58.170
+to somehow get into this container
+
+03:58.170 --> 04:02.280
+and execute a second command inside of it, like this.
+
+04:02.280 --> 04:06.060
+We need to start up a second program inside the container.
+
+04:06.060 --> 04:08.100
+So to figure out how to do so let's take a quick break.
+
+04:08.100 --> 04:09.210
+We'll come back to the next section
+
+04:09.210 --> 04:12.150
+and figure out how we can execute a second command
+
+04:12.150 --> 04:14.340
+inside of a running container.
+
+04:14.340 --> 04:15.990
+So I'll see you in just a minute.

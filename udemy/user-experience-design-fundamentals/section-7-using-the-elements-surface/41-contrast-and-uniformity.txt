@@ -1,0 +1,286 @@
+WEBVTT
+
+00:00.930 --> 00:08.760
+Next, I'd like to touch upon contrast and uniformity and contrast enables us to focus on one element
+
+00:08.760 --> 00:09.990
+versus another.
+
+00:09.990 --> 00:16.320
+And we also said that lack of contrast causes the eye to bounce around without settling on anything
+
+00:16.320 --> 00:17.150
+in particular.
+
+00:17.160 --> 00:22.950
+Lack of contrast gives the impression that everything is of equal importance and therefore nothing stands
+
+00:22.950 --> 00:23.490
+out.
+
+00:23.520 --> 00:26.230
+Contrast performs three essential functions.
+
+00:26.250 --> 00:31.140
+First, it draws the user's attention to the essential components of the interface.
+
+00:31.140 --> 00:35.980
+The most important things, the most important options, the most important activities.
+
+00:36.000 --> 00:42.360
+It also helps the user understand the relationships between the navigational elements and the content.
+
+00:42.390 --> 00:48.000
+Not only how I get from point A to point B, but what I can expect to find at point B.
+
+00:48.240 --> 00:56.070
+Contrast also communicates hierarchy and importance within and across multiple sets of information.
+
+00:56.280 --> 01:02.410
+It helps us establish what's of primary importance to us, what's going to be most useful to us and
+
+01:02.410 --> 01:04.540
+what stuff may be relevant.
+
+01:04.540 --> 01:09.040
+But it's not absolutely necessary for us to look at or deal with.
+
+01:09.040 --> 01:14.350
+So contrast in that way goes a long way in establishing information priority.
+
+01:15.050 --> 01:21.890
+One of the most important things Contraste does is it creates visual differences and we pay attention
+
+01:21.890 --> 01:23.150
+to those differences.
+
+01:23.180 --> 01:28.300
+Contrast can make things that we really need to see stand out.
+
+01:28.310 --> 01:30.160
+It brings things to our attention.
+
+01:30.170 --> 01:31.460
+Here's an example.
+
+01:31.460 --> 01:38.030
+When you get an error message on the screen and it looks like this, there's no way you can ignore it.
+
+01:38.030 --> 01:45.050
+Contrast in this case, the red and white in comparison to everything else makes this error message
+
+01:45.050 --> 01:52.040
+disruptive, makes it interruptive, makes it stand out, and it absolutely demands our focus until
+
+01:52.040 --> 01:53.090
+we deal with it.
+
+01:53.090 --> 01:56.510
+And that's ideally what a good error message should do.
+
+01:56.510 --> 02:01.370
+It should get your attention and say, Hey, something happened and I need you to deal with it right
+
+02:01.370 --> 02:01.820
+now.
+
+02:01.820 --> 02:05.420
+So that's a really great use of contrast.
+
+02:05.510 --> 02:13.190
+Here's another example where an online retail site is using visual contrast to call attention to the
+
+02:13.190 --> 02:15.810
+things that they want to promote most.
+
+02:15.810 --> 02:19.720
+In this case, it's an advertisement for spring and summer apparel.
+
+02:19.740 --> 02:25.620
+Notice that this very large image area contrasts sharply against the background.
+
+02:25.620 --> 02:27.180
+Now, it's not hard black.
+
+02:27.180 --> 02:29.640
+It's not this total black and white contrast.
+
+02:29.640 --> 02:34.140
+But in comparison to the white background, this box really stands out.
+
+02:34.140 --> 02:37.740
+And because of its size as well, it gets our attention first.
+
+02:37.740 --> 02:43.080
+So if we happen to be female, we're focusing on the thing that is potentially most important to us.
+
+02:43.080 --> 02:50.430
+And also we're focusing on the thing that the creator, the retailer, wants us to focus on.
+
+02:50.460 --> 02:55.700
+So that's another way Contrast is used very purposefully to draw attention to things.
+
+02:55.710 --> 03:02.280
+Here's another example, a confirmation dialog that's confirming a potentially destructive action.
+
+03:02.280 --> 03:07.500
+Okay, you're about to delete something and the system is saying, Hey, that's dangerous.
+
+03:07.530 --> 03:09.780
+If you do this, you'll never get it back.
+
+03:09.780 --> 03:11.430
+Are you sure you want to do this?
+
+03:11.460 --> 03:18.780
+That's an instance where contrast again is important because we want the user's sole attention to be
+
+03:18.780 --> 03:20.280
+on this box.
+
+03:20.280 --> 03:24.150
+Notice how everything behind it is sort of grayed out.
+
+03:24.150 --> 03:28.350
+That's known as a modal dialog box, which some of you are probably familiar with.
+
+03:28.380 --> 03:35.550
+But the reason it works so well and the reason it's become so widely adopted is because it focuses our
+
+03:35.550 --> 03:39.630
+attention on the issue or item of interest at hand.
+
+03:39.900 --> 03:47.940
+In addition to contrast, we also make use of uniformity whose job it is to enable contrast and enable
+
+03:47.940 --> 03:52.410
+change while keeping certain elements from overwhelming people.
+
+03:52.440 --> 03:52.710
+Okay.
+
+03:52.710 --> 03:57.570
+When that change happens, when content changes, when you go to a new screen, when you're stepping
+
+03:57.570 --> 04:03.660
+through a sequence of events, you want certain things to stay the same so that there's an element of
+
+04:03.660 --> 04:05.640
+sort of stability, security, right?
+
+04:05.670 --> 04:11.790
+The person feels comfortable executing the change because certain elements of their surroundings are
+
+04:11.790 --> 04:12.630
+staying the same.
+
+04:12.660 --> 04:16.560
+Think of it like following a path in the woods, and there are markers.
+
+04:16.560 --> 04:18.900
+Every so often those markers are consistent.
+
+04:18.930 --> 04:24.030
+They're displayed in a consistent interval, and they give you some reassurance that you're on the right
+
+04:24.030 --> 04:24.540
+path.
+
+04:24.570 --> 04:26.370
+Uniformity works the same way.
+
+04:26.400 --> 04:31.020
+As an example, take a look at this layout from the Capgemini website.
+
+04:31.020 --> 04:35.490
+There's an underlying grid structure to its layout that looks like this.
+
+04:35.520 --> 04:39.660
+All right, so we've got one, two, three, four, five, six main sections.
+
+04:39.660 --> 04:46.770
+And of those sections, there are certain elements that change this large photo and text on the left,
+
+04:46.800 --> 04:52.260
+these three areas of content on the right and this sort of focus piece on the bottom.
+
+04:52.260 --> 04:54.090
+That's stuff that changes.
+
+04:54.090 --> 04:58.410
+However, as that happens, the layout stays the same.
+
+04:58.410 --> 05:02.700
+The essential grid system that's used throughout does not change.
+
+05:02.700 --> 05:04.890
+The navigation is always in the same place.
+
+05:04.890 --> 05:10.110
+The featured content area in the middle left is always in the same place.
+
+05:10.110 --> 05:15.120
+The three elements on the far right that change are always in the same place.
+
+05:15.120 --> 05:16.710
+The feature element in the bottom.
+
+05:16.710 --> 05:18.510
+It's always occupying that same space.
+
+05:18.510 --> 05:23.070
+Okay, so there's a degree of familiarity that happens that keeps us comfortable.
+
+05:23.070 --> 05:30.210
+Even though the content is changing, uniformity across design elements also allows us to apply them
+
+05:30.210 --> 05:35.250
+consistently and recombine them into new designs as the site or the app grows.
+
+05:35.280 --> 05:40.950
+As we add screens, as we add features, as we add functions, we have a precedent.
+
+05:40.980 --> 05:47.790
+We have a set of design patterns that are already established to allow the user to have some familiarity,
+
+05:47.790 --> 05:50.550
+even though they're doing something different that they've never done before.
+
+05:50.580 --> 05:56.160
+The overall layout, the organization, the mechanics of how things work remain the same.
+
+05:56.160 --> 06:01.620
+And again, I go back to a set of design patterns for the Android operating system.
+
+06:01.620 --> 06:08.190
+All the controls that you see here are used consistently throughout every element of the OS.
+
+06:08.190 --> 06:14.400
+So if the next iteration comes out in a month and they've added some new features and new functionality.
+
+06:14.430 --> 06:20.220
+To the system, they will be executed visually in the same way they will use these same icons, these
+
+06:20.220 --> 06:21.240
+same controls.
+
+06:21.240 --> 06:23.520
+The sliders will look the same way.
+
+06:23.520 --> 06:25.200
+The keyboard will look the same.
+
+06:25.200 --> 06:27.420
+The way fields highlight will look the same.
+
+06:27.420 --> 06:27.650
+Okay.
+
+06:27.660 --> 06:33.600
+All those things are kept consistent and kept uniform so that as users we're able to build on our prior
+
+06:33.600 --> 06:39.390
+experience with the app, with the system to easily use whatever new features and functions come our
+
+06:39.390 --> 06:39.900
+way.

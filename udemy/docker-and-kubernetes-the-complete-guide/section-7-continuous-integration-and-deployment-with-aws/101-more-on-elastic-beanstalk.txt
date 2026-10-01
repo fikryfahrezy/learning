@@ -1,0 +1,187 @@
+WEBVTT
+
+00:00.780 --> 00:01.613
+-: In the last section,
+
+00:01.613 --> 00:04.443
+we set up a new Elastic Beanstalk instance.
+
+00:05.580 --> 00:07.500
+As soon as the initial setup is complete,
+
+00:07.500 --> 00:09.600
+you're gonna see something like this on the screen.
+
+00:09.600 --> 00:10.470
+Now, before we move on,
+
+00:10.470 --> 00:12.600
+I wanna very quickly tell you a little bit more about,
+
+00:12.600 --> 00:13.500
+Elastic Beanstalk
+
+00:13.500 --> 00:15.950
+and give you a better idea of why we're using it.
+
+00:16.830 --> 00:17.663
+All right.
+
+00:17.663 --> 00:20.070
+So here's what's happening right now with Elastic Beanstalk.
+
+00:20.070 --> 00:22.200
+One of our users, in reality, you and me
+
+00:22.200 --> 00:24.720
+as we're testing the application, is gonna open
+
+00:24.720 --> 00:26.790
+up their web browser and attempt to navigate
+
+00:26.790 --> 00:29.430
+to our application running on AWS.
+
+00:29.430 --> 00:31.950
+When they attempt to navigate to our website,
+
+00:31.950 --> 00:34.530
+their request will be handled by a load balancer
+
+00:34.530 --> 00:36.150
+that has already been created
+
+00:36.150 --> 00:39.000
+as a part of the Elastic Beanstalk application
+
+00:39.000 --> 00:41.190
+that we just created in the last section.
+
+00:41.190 --> 00:44.550
+So this load balancer has already been created for us.
+
+00:44.550 --> 00:47.310
+When a request comes into it, the load balancer will route
+
+00:47.310 --> 00:50.790
+that request to a virtual machine that is running docker.
+
+00:50.790 --> 00:52.920
+And on that virtual machine,
+
+00:52.920 --> 00:54.600
+our docker container will be running
+
+00:54.600 --> 00:56.643
+with our application inside of it.
+
+00:57.690 --> 00:59.490
+The benefit to Elastic Beanstalk is
+
+00:59.490 --> 01:02.070
+that it monitors the amount of traffic that's coming in
+
+01:02.070 --> 01:03.780
+to our virtual machine right here.
+
+01:03.780 --> 01:06.750
+And as soon as that traffic reaches a certain threshold,
+
+01:06.750 --> 01:09.240
+Elastic Beanstalk is going to automatically add
+
+01:09.240 --> 01:12.213
+in additional virtual machines to handle that traffic.
+
+01:13.110 --> 01:15.300
+So, as soon as they request comes in, it's gonna go
+
+01:15.300 --> 01:16.530
+to the load balancer.
+
+01:16.530 --> 01:19.590
+The load balancer is gonna find the node here,
+
+01:19.590 --> 01:21.840
+with the least amount of traffic and it will route
+
+01:21.840 --> 01:25.440
+that request to that particular virtual machine.
+
+01:25.440 --> 01:27.090
+Our application, running inside
+
+01:27.090 --> 01:28.860
+of the docker container, will then respond
+
+01:28.860 --> 01:31.650
+to that request and the user will eventually get the file
+
+01:31.650 --> 01:33.690
+that they were looking for.
+
+01:33.690 --> 01:34.680
+So that's pretty much it.
+
+01:34.680 --> 01:36.360
+The benefit to Elastic Beanstalk is
+
+01:36.360 --> 01:40.143
+that it's going to automatically scale everything up for us.
+
+01:40.980 --> 01:42.720
+All right, so now that we've got a better idea
+
+01:42.720 --> 01:45.030
+of how Elastic Beanstalk is doing things
+
+01:45.030 --> 01:48.000
+for us, I wanna flip back over to the EBS dashboard.
+
+01:48.000 --> 01:49.260
+Here it is right here.
+
+01:49.260 --> 01:52.260
+So as you can see on the very top line, we have a URL.
+
+01:52.260 --> 01:54.030
+This is the address of our application
+
+01:54.030 --> 01:55.500
+as it stands right now.
+
+01:55.500 --> 01:57.780
+You can open up this link in a new tab
+
+01:57.780 --> 02:00.480
+and you'll see a welcome message like this right here.
+
+02:00.480 --> 02:03.840
+So this is the default application that is launched anytime
+
+02:03.840 --> 02:06.030
+that you make a new Elastic Beanstalk instance,
+
+02:06.030 --> 02:07.260
+running docker.
+
+02:07.260 --> 02:08.760
+So of course, we're going to eventually want
+
+02:08.760 --> 02:11.343
+to replace all this stuff with our application.
+
+02:13.620 --> 02:15.110
+All right. So let's take another quick break.
+
+02:15.110 --> 02:17.370
+In the next section, we're going to make use
+
+02:17.370 --> 02:19.080
+of this new EBS instance
+
+02:19.080 --> 02:23.430
+and wire it up to our Travis CI deployment process.
+
+02:23.430 --> 02:25.880
+So quick break and I'll see you in just a minute.

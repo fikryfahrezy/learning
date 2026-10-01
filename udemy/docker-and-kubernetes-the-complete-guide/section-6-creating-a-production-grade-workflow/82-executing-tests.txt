@@ -1,0 +1,268 @@
+WEBVTT
+
+00:00.780 --> 00:03.360
+-: We've now got some solid infrastructure in place
+
+00:03.360 --> 00:06.270
+to run our container in a development environment.
+
+00:06.270 --> 00:08.760
+So we've set up both the Docker file.dev file.
+
+00:08.760 --> 00:10.620
+We've also set up a Docker composed file
+
+00:10.620 --> 00:13.440
+that makes executing the Docker container and starting it up
+
+00:13.440 --> 00:15.000
+just a little bit easier.
+
+00:15.000 --> 00:16.740
+We're now gonna start to shift our focus
+
+00:16.740 --> 00:20.130
+over to running the tests inside of our container.
+
+00:20.130 --> 00:22.200
+We're gonna first focus on just running our tests
+
+00:22.200 --> 00:24.030
+in our development environment, and then
+
+00:24.030 --> 00:26.460
+we're gonna very quickly kind of take that knowledge
+
+00:26.460 --> 00:30.120
+and apply it to running our tests over on Travis CI,
+
+00:30.120 --> 00:32.730
+which remember is a continuous integration service
+
+00:32.730 --> 00:36.123
+specifically made to run tests for your project.
+
+00:37.110 --> 00:37.943
+All right.
+
+00:37.943 --> 00:40.470
+Now the good news here is that executing NPM run test
+
+00:40.470 --> 00:43.590
+inside of our container is gonna be awfully straightforward.
+
+00:43.590 --> 00:46.080
+All we really have to do is build our container
+
+00:46.080 --> 00:47.970
+using the Docker file.dev file
+
+00:47.970 --> 00:49.410
+that we've already put together.
+
+00:49.410 --> 00:50.970
+Let's do that right now.
+
+00:50.970 --> 00:53.700
+So we'll do Docker build
+
+00:53.700 --> 00:55.080
+dash F
+
+00:55.080 --> 00:57.633
+Docker file.dev.
+
+00:58.680 --> 01:00.483
+I'll then put my dot on there.
+
+01:01.530 --> 01:02.400
+Let me pull that back up
+
+01:02.400 --> 01:04.200
+just cause I hit enter really quickly.
+
+01:04.200 --> 01:06.480
+Don't forget the dot on the end.
+
+01:06.480 --> 01:09.600
+So that gives me my image ID right there.
+
+01:09.600 --> 01:12.510
+And now remember to run a specific command
+
+01:12.510 --> 01:15.180
+inside of that container when it starts up or to just
+
+01:15.180 --> 01:18.390
+overright, or override - excuse me - the existing command.
+
+01:18.390 --> 01:20.400
+All we have to do is append the command that we
+
+01:20.400 --> 01:24.030
+actually want to run on the end of the docker run command.
+
+01:24.030 --> 01:26.380
+So I can execute Docker run
+
+01:27.810 --> 01:31.080
+the container ID, which I just lost.
+
+01:31.080 --> 01:32.130
+Let me copy it again.
+
+01:33.630 --> 01:36.933
+And then I'll add on NPM run test like so.
+
+01:39.448 --> 01:42.030
+So now when the container first starts up
+
+01:42.030 --> 01:44.910
+it's going to execute NPM run test
+
+01:44.910 --> 01:46.890
+which starts up the test suites.
+
+01:46.890 --> 01:48.600
+We then get presented with a little
+
+01:48.600 --> 01:49.830
+interactive menu right here
+
+01:49.830 --> 01:52.080
+that allows us to run specific tests,
+
+01:52.080 --> 01:55.740
+to quit or to rerun the test suite.
+
+01:55.740 --> 01:58.230
+Now I want you to try hitting enter right now.
+
+01:58.230 --> 02:01.380
+If you do so you'll notice that the tests appear to not run.
+
+02:01.380 --> 02:03.120
+I want you to remember back to the...
+
+02:03.120 --> 02:05.880
+when we spoke about the Docker run command
+
+02:05.880 --> 02:07.503
+related to the docker CLI.
+
+02:08.400 --> 02:10.050
+When we run Docker run by default
+
+02:10.050 --> 02:13.530
+we get a connection to standard out inside the container.
+
+02:13.530 --> 02:15.300
+But for us to actually trigger
+
+02:15.300 --> 02:17.850
+or get any input into the container itself
+
+02:17.850 --> 02:21.450
+we have to hook up to standard in as well, and we can do so
+
+02:21.450 --> 02:25.710
+by adding on the dash IT options to docker run.
+
+02:25.710 --> 02:27.360
+So let's try doing that right now.
+
+02:27.360 --> 02:30.180
+I'm gonna stop the container with control C
+
+02:30.180 --> 02:33.273
+and then we'll do docker run dash IT.
+
+02:34.650 --> 02:36.090
+I'll paste in.
+
+02:36.090 --> 02:38.640
+Darn it! I lost the ID again.
+
+02:38.640 --> 02:40.893
+Let me build this thing one more time.
+
+02:41.790 --> 02:43.770
+Do docker... See, this is why
+
+02:43.770 --> 02:45.840
+you're supposed to use tags by the way.
+
+02:45.840 --> 02:47.190
+You can tell that I'm being very naughty
+
+02:47.190 --> 02:49.020
+and not making use of tags.
+
+02:49.020 --> 02:51.390
+All right, so I'll do docker run dash IT,
+
+02:51.390 --> 02:52.590
+there's the ID
+
+02:52.590 --> 02:54.690
+and then we'll execute NPM run test
+
+02:54.690 --> 02:56.140
+when the container starts up.
+
+02:58.830 --> 03:00.150
+-: All right, so that's better.
+
+03:00.150 --> 03:02.670
+You'll notice that when we add on the IT flags
+
+03:02.670 --> 03:05.280
+we get a much more full screen experience here.
+
+03:05.280 --> 03:06.660
+And now when I press enter
+
+03:06.660 --> 03:08.880
+it's going to rerun all the tests.
+
+03:08.880 --> 03:11.790
+I can hit W to go back to the menu and I could
+
+03:11.790 --> 03:13.650
+I don't know, I could hit quit if I wanted to quit,
+
+03:13.650 --> 03:16.680
+I could run a specific test by using P.
+
+03:16.680 --> 03:17.790
+Let's try that out.
+
+03:17.790 --> 03:19.950
+So I could do like app
+
+03:19.950 --> 03:22.350
+that matches the app.test.js file.
+
+03:22.350 --> 03:24.690
+I could hit enter and it runs just that file.
+
+03:24.690 --> 03:27.720
+So clearly we get full interactivity here.
+
+03:27.720 --> 03:28.980
+All right, so that's looking pretty good.
+
+03:28.980 --> 03:31.260
+So we can now exit out of test mode
+
+03:31.260 --> 03:33.123
+by hitting control C as usual.
+
+03:33.990 --> 03:35.430
+All right, not too bad.
+
+03:35.430 --> 03:36.840
+Let's take another quick break right here
+
+03:36.840 --> 03:38.490
+and continue in the next section.

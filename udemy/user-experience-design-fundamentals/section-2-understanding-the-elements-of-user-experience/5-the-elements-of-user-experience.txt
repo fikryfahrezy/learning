@@ -1,0 +1,424 @@
+WEBVTT
+
+00:00.780 --> 00:09.030
+So now we turn our attention to the elements of user experience, which comes from an excellent book
+
+00:09.030 --> 00:16.320
+written by Jesse James Garrett, who is the founder of Adaptive Path, a user experience firm out in
+
+00:16.320 --> 00:17.310
+San Francisco.
+
+00:17.340 --> 00:23.530
+He wrote a book called The Elements of User Experience, which is sort of widely regarded as, you know,
+
+00:23.610 --> 00:26.760
+the big picture book on the subject.
+
+00:26.760 --> 00:28.000
+And it really is excellent.
+
+00:28.030 --> 00:34.380
+It goes a long way in sort of deconstructing user experience as a practice.
+
+00:34.530 --> 00:37.230
+So we are going to start there.
+
+00:37.750 --> 00:40.870
+There are five planes of user experience.
+
+00:40.870 --> 00:46.900
+And essentially what that means is that there are sort of five parts of making sure that no aspect of
+
+00:46.900 --> 00:53.260
+someone's experience with a website, with a system, with an app happens without some sort of, you
+
+00:53.260 --> 00:54.880
+know, explicit intent.
+
+00:54.910 --> 01:00.760
+That means you've taken into account every possibility of all the different actions or different paths
+
+01:00.790 --> 01:02.020
+the user could take.
+
+01:02.080 --> 01:07.330
+You're you're concerned with what their expectations are at sort of every step.
+
+01:07.660 --> 01:11.110
+Sounds like a big task, and it most certainly is.
+
+01:11.110 --> 01:17.260
+But if you sort of look at all the individual parts of the whole, it becomes a lot easier to tackle.
+
+01:17.390 --> 01:17.490
+Okay.
+
+01:17.500 --> 01:18.700
+So we're going to start there.
+
+01:18.730 --> 01:21.520
+The first plane is called the strategy plane.
+
+01:21.570 --> 01:21.820
+Right.
+
+01:21.820 --> 01:26.530
+And that means what it sounds like the site, the system or the app's reason for existing in the first
+
+01:26.530 --> 01:34.240
+place know why you created it and why people, you know, are willing to use it or why they need it.
+
+01:34.270 --> 01:40.670
+The second plane is scope and that is essentially the features and the functions that are contained
+
+01:40.910 --> 01:42.920
+within the product itself.
+
+01:43.070 --> 01:50.690
+Next up is structure, which essentially is the number of places you can go organized in context of
+
+01:50.690 --> 01:51.260
+use.
+
+01:51.290 --> 01:51.890
+Okay.
+
+01:51.890 --> 01:55.190
+Of what is the person there to achieve?
+
+01:55.190 --> 01:56.450
+What are they trying to do?
+
+01:56.480 --> 02:04.190
+What are the possible paths they could take and how many options do we need to provide If we go another
+
+02:04.190 --> 02:05.000
+level up?
+
+02:05.000 --> 02:07.490
+We now have the skeleton plane.
+
+02:07.490 --> 02:13.280
+On the skeleton plane, you have sort of an optimized organization and arrangement of all the elements
+
+02:13.280 --> 02:15.560
+that that make up what happens on the screen.
+
+02:15.560 --> 02:21.680
+You have navigation elements, you have content, you have control elements, you have buttons, you
+
+02:21.680 --> 02:23.960
+can click, you have menu options.
+
+02:23.960 --> 02:30.710
+The skeleton plane is all about figuring out how all those things work together, not only inside one
+
+02:30.710 --> 02:34.730
+screen, but across an entire system or an entire site or an entire app.
+
+02:35.410 --> 02:40.000
+Finally we get to the surface, which is essentially the part that the user sees.
+
+02:40.030 --> 02:46.000
+Now we have visible pages, visible websites, visible application screens.
+
+02:46.000 --> 02:50.290
+We have images, we have text, we can see the things that we can click on.
+
+02:50.830 --> 02:53.290
+We have interaction and animation.
+
+02:53.300 --> 02:53.660
+Okay?
+
+02:53.680 --> 02:55.360
+It's all the point of contact.
+
+02:55.360 --> 03:02.940
+The surface area is really all about the visual contact that the person has with the product.
+
+03:02.950 --> 03:08.800
+So the five planes sort of build upon each other from a strategic point where we start thinking about
+
+03:08.800 --> 03:10.510
+what are we doing, why are we doing it?
+
+03:10.540 --> 03:16.300
+Who are we doing it for all the way up to the surface plane, which is now we've got something that
+
+03:16.300 --> 03:18.970
+the user can actually see and interact with.
+
+03:19.270 --> 03:25.420
+These five planes are split down the middle into two very distinct categories.
+
+03:25.450 --> 03:25.680
+Okay?
+
+03:25.690 --> 03:31.390
+And that has to do with the nature of the web and the nature of of software technology as a whole.
+
+03:31.420 --> 03:37.210
+On one hand, you have software, you have technology, and you have an interface, right?
+
+03:37.250 --> 03:42.080
+A piece that you interact with a piece that's largely contained with tasks.
+
+03:42.080 --> 03:50.180
+How does the user accomplish task A, task B, task C, how do they get the things that they need on
+
+03:50.180 --> 03:51.200
+the other side?
+
+03:51.200 --> 03:53.630
+The other side of the split is information.
+
+03:53.630 --> 03:56.660
+Okay, what content do we offer?
+
+03:56.660 --> 04:02.540
+What what information is being served up and what does it mean to the people that use it?
+
+04:02.540 --> 04:04.520
+On one side there's a technology space.
+
+04:04.520 --> 04:10.340
+On the other hand, there's an information space and there are components that exist in each one of
+
+04:10.340 --> 04:13.430
+those spaces, and that's what we're going to talk about.
+
+04:13.430 --> 04:18.740
+Okay, we're going to make sense of this whole ball of confusion that I seem to be creating.
+
+04:19.310 --> 04:19.520
+Okay?
+
+04:19.520 --> 04:25.670
+Now, as we said, the way this works is that each plane sort of builds on the next plane.
+
+04:25.670 --> 04:31.940
+So at a very abstract level, we have strategy and in a very concrete level we have the surface, the
+
+04:31.940 --> 04:35.360
+part that the user interacts with on the strategy plane.
+
+04:35.360 --> 04:43.010
+We have two distinct things that span both tasks and information, and that is, number one, we have
+
+04:43.010 --> 04:43.670
+user needs.
+
+04:43.670 --> 04:45.770
+What are the things that people expect?
+
+04:45.800 --> 04:47.000
+What do they want?
+
+04:47.030 --> 04:49.400
+What do they need to be able to do?
+
+04:49.400 --> 04:49.660
+Okay.
+
+04:49.670 --> 04:55.280
+When they use our product, you know what it is that the audience wants from us and how that sort of
+
+04:55.280 --> 05:00.300
+fits in with their other goals and the other things that they may be doing on the other side of the
+
+05:00.320 --> 05:00.980
+of the fence.
+
+05:00.980 --> 05:02.900
+We have business objectives, okay?
+
+05:02.900 --> 05:07.940
+And business objectives are largely concerned with success metrics at some point.
+
+05:07.940 --> 05:11.510
+Again, back to the reason for being of the site or the app.
+
+05:11.510 --> 05:16.280
+We're either trying to make money, save money or gain something.
+
+05:16.280 --> 05:20.510
+You know, there's there's some strategic objective that has to be met.
+
+05:20.510 --> 05:27.890
+So the strategy plane is all about the sweet spots between what users want from us and what we need
+
+05:27.890 --> 05:34.730
+to accomplish in order to to survive, to prosper on the next plane, which is scope.
+
+05:34.730 --> 05:40.550
+We're essentially talking about two very discrete things on the task and software side.
+
+05:40.550 --> 05:47.360
+We are talking about functional specifications, okay, which is essentially just something that describes
+
+05:47.360 --> 05:50.570
+the features and functions of the product, right?
+
+05:50.570 --> 05:51.860
+What does it offer?
+
+05:52.130 --> 05:54.140
+What is it able to do?
+
+05:54.140 --> 06:01.370
+On the other hand, in the information space, we have content requirements, which essentially means
+
+06:01.370 --> 06:09.650
+what content is required, what information, what data, what needs to get served up that people can
+
+06:09.650 --> 06:11.810
+manipulate, interact with.
+
+06:11.930 --> 06:16.910
+From there, we move on to the structure plane, which is also composed of two parts.
+
+06:16.940 --> 06:21.410
+On the software side, we're concerned with interaction design.
+
+06:21.410 --> 06:24.950
+Okay, how does the system behave when somebody does something?
+
+06:24.950 --> 06:27.470
+When I click on a link, what do I get?
+
+06:27.500 --> 06:29.480
+Am I taken to another page?
+
+06:29.720 --> 06:32.990
+Do I get a series of interactive choices?
+
+06:32.990 --> 06:34.790
+Do I get streaming video?
+
+06:34.820 --> 06:40.040
+It's sort of the nuts and bolts of how I interact with what I have in front of me.
+
+06:40.800 --> 06:44.580
+Information architecture is essentially all about just that.
+
+06:44.580 --> 06:46.350
+It's the arrangement of content elements.
+
+06:46.350 --> 06:53.160
+It's the arrangement of information within that space, not just on every screen, but throughout the
+
+06:53.160 --> 06:55.560
+entire site or the entire application.
+
+06:55.560 --> 06:58.950
+How much of it is there and how is it organized?
+
+06:58.950 --> 07:02.520
+How deep is it if we move on to the skeleton plane?
+
+07:02.520 --> 07:09.450
+We have two components there as well Interface design, which is the arrangement of all the elements
+
+07:09.450 --> 07:11.500
+that exist on the interface, right?
+
+07:11.520 --> 07:15.570
+The buttons, the menus, the tools, the controls.
+
+07:15.600 --> 07:19.560
+Okay, whatever you want to call them, the things that enable us to interact with the functionality
+
+07:19.560 --> 07:21.690
+of the system, that's interface design.
+
+07:22.330 --> 07:30.250
+We also have navigation design, which is a critical, critical element, particularly in terms of good
+
+07:30.250 --> 07:35.860
+user experience design, because navigation determines how the user moves through the information and
+
+07:35.860 --> 07:38.350
+how easily and how intuitively how.
+
+07:38.350 --> 07:43.840
+Obviously, if I'm anywhere in the site, I don't want to get lost, right?
+
+07:43.840 --> 07:45.070
+I want to know where I am.
+
+07:45.070 --> 07:46.810
+I want to know where I can go.
+
+07:46.810 --> 07:49.020
+And in a lot of cases I want to know where I've been.
+
+07:49.030 --> 07:51.250
+That's what navigation design does.
+
+07:51.810 --> 07:54.900
+So finally we get all the way up to the surface plane.
+
+07:54.900 --> 08:02.520
+And regardless of whether we're dealing with concerns of pure software or pure task completion or whether
+
+08:02.520 --> 08:08.550
+we're dealing with information, presentation, visual design addresses, both of those things, both
+
+08:08.550 --> 08:10.860
+planes, both aspects.
+
+08:10.890 --> 08:13.440
+It's essentially the look of the finished product.
+
+08:13.800 --> 08:14.640
+What does it look like?
+
+08:14.640 --> 08:15.870
+What fonts are we using?
+
+08:15.870 --> 08:18.810
+What what colors are we using?
+
+08:18.810 --> 08:23.280
+How does all that reinforce and support the information structure?
+
+08:23.280 --> 08:29.850
+How does all that reinforce and support our means of of navigation, of direction, of feedback?
+
+08:29.880 --> 08:30.300
+ET cetera.
+
+08:30.300 --> 08:30.630
+ET cetera.
+
+08:30.630 --> 08:31.140
+ET cetera.
+
+08:31.140 --> 08:35.460
+So those are sort of all the key components within each plane.
+
+08:35.460 --> 08:39.500
+And again, as we said, I want to reiterate this because I think it's important.
+
+08:39.510 --> 08:47.520
+This is what makes a product of any kind a website, a system, an application.
+
+08:47.610 --> 08:48.030
+Right.
+
+08:48.060 --> 08:54.070
+No matter what it is you're dealing with all these planes because you start at a very abstract level
+
+08:54.070 --> 08:57.640
+about what you're doing and why you're doing it and who you're doing it for.
+
+08:57.790 --> 09:03.160
+You go through these processes to the point where you have something concrete that people can actually
+
+09:03.160 --> 09:05.440
+see and touch and interact with.
+
+09:05.560 --> 09:07.480
+Okay, let's move on.

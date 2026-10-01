@@ -1,0 +1,184 @@
+WEBVTT
+
+00:00.870 --> 00:03.300
+-: The running theme that we have seen with Docker Compose
+
+00:03.300 --> 00:04.890
+is that it makes it a lot easier
+
+00:04.890 --> 00:07.800
+to work with multiple containers at the same time.
+
+00:07.800 --> 00:08.633
+In this section,
+
+00:08.633 --> 00:10.650
+we're gonna take a look at two different commands
+
+00:10.650 --> 00:12.930
+that we had previously used with Docker CLI,
+
+00:12.930 --> 00:14.430
+and get a sense of how to run them
+
+00:14.430 --> 00:16.530
+with Docker Compose instead.
+
+00:16.530 --> 00:18.360
+So the two commands we're gonna look at,
+
+00:18.360 --> 00:20.280
+well just the first one for right now,
+
+00:20.280 --> 00:22.320
+we'll move on to the second one in just a moment.
+
+00:22.320 --> 00:25.410
+I want you to recall that in the past we executed a,
+
+00:25.410 --> 00:29.760
+or created a container by running docker run -d,
+
+00:29.760 --> 00:32.910
+and then the name of an image, like say Redis.
+
+00:32.910 --> 00:34.530
+This started up a new container,
+
+00:34.530 --> 00:37.470
+but it executed it in the background so we could continue
+
+00:37.470 --> 00:41.190
+running commands in this terminal window if we wanted to.
+
+00:41.190 --> 00:42.840
+We could then get a printout
+
+00:42.840 --> 00:46.500
+of all of our running containers with docker ps,
+
+00:46.500 --> 00:48.600
+so there's the container I just created.
+
+00:48.600 --> 00:52.200
+And I could then stop that container by copying the ID
+
+00:52.200 --> 00:56.013
+and executing docker stop and pasting the ID.
+
+00:57.090 --> 00:58.260
+Now you can kind of imagine
+
+00:58.260 --> 01:00.120
+that when we start using Docker Compose
+
+01:00.120 --> 01:02.250
+and we're working with multiple images
+
+01:02.250 --> 01:04.710
+or multiple containers at the same time,
+
+01:04.710 --> 01:07.920
+it would really be a pain to have to run docker stop
+
+01:07.920 --> 01:11.400
+with each different ID for each container we started.
+
+01:11.400 --> 01:12.630
+So with Docker Compose,
+
+01:12.630 --> 01:14.880
+we can automatically start up multiple containers
+
+01:14.880 --> 01:16.440
+in the background at the same time,
+
+01:16.440 --> 01:18.540
+and then close them all at the same time
+
+01:18.540 --> 01:20.760
+with one single command.
+
+01:20.760 --> 01:22.740
+So here's how we do it.
+
+01:22.740 --> 01:25.260
+To start up a group of containers in the background
+
+01:25.260 --> 01:28.980
+using that -d flag before, like we did with Docker CLI,
+
+01:28.980 --> 01:33.450
+we can run docker compose up and then -d on the very end.
+
+01:33.450 --> 01:35.760
+We can then stop all of our running containers
+
+01:35.760 --> 01:37.800
+with docker compose down.
+
+01:37.800 --> 01:40.530
+An easy way to remember down right here is that hey,
+
+01:40.530 --> 01:43.833
+docker compose up, the opposite of going up is going down.
+
+01:44.730 --> 01:45.903
+So let's try this out.
+
+01:46.980 --> 01:48.870
+Still inside of my visits directory,
+
+01:48.870 --> 01:52.500
+I'll run Docker compose up -d.
+
+01:52.500 --> 01:53.460
+That's gonna start up
+
+01:53.460 --> 01:55.500
+both of my containers in the background
+
+01:55.500 --> 01:57.800
+so I can continue running other commands here.
+
+01:58.710 --> 02:00.870
+I can do a docker ps,
+
+02:00.870 --> 02:03.420
+that'll show our two running containers.
+
+02:03.420 --> 02:05.550
+And then to stop both of them at the same time
+
+02:05.550 --> 02:09.603
+we can do a docker compose down like so.
+
+02:11.070 --> 02:12.960
+And when I run that, it's gonna stop
+
+02:12.960 --> 02:16.260
+and then remove the two containers we had created.
+
+02:16.260 --> 02:20.370
+So if I do another docker ps, nope, nothing's here anymore.
+
+02:20.370 --> 02:21.780
+All right, so that's pretty much it.
+
+02:21.780 --> 02:24.570
+Again, there's a lot of commands from the Docker CLI world
+
+02:24.570 --> 02:26.700
+that have kind of a one-to-one translation
+
+02:26.700 --> 02:28.710
+over to Docker Compose.
+
+02:28.710 --> 02:30.240
+So let's take a quick pause right here,
+
+02:30.240 --> 02:32.370
+and we'll continue looking at a couple of other commands
+
+02:32.370 --> 02:33.370
+in the next section.

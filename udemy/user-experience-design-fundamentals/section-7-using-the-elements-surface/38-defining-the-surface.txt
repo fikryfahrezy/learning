@@ -1,0 +1,967 @@
+WEBVTT
+
+00:00.920 --> 00:03.410
+So let's define what the surface plane is like.
+
+00:03.410 --> 00:09.950
+All the other planes, it has a software task side and it also has an information side.
+
+00:09.980 --> 00:14.960
+Except in this case, visual design spans both of those areas.
+
+00:14.990 --> 00:23.450
+On the software and task side, visual design is what determines whether something is obvious, is intuitive,
+
+00:23.450 --> 00:25.610
+and quite frankly, whether it's used.
+
+00:25.610 --> 00:30.470
+When you look at a screen and you see components and you see controls and you see content.
+
+00:30.500 --> 00:37.250
+The visual appearance of those things gives you a clue as to what you can possibly do with those things,
+
+00:37.250 --> 00:42.230
+how you can manipulate them, how you can interact with them on the information side of the fence.
+
+00:42.230 --> 00:48.020
+What visual design does is essentially it makes things easier to understand, right?
+
+00:48.050 --> 00:52.400
+It increases your cognitive ability to absorb what you see on the screen.
+
+00:52.430 --> 00:59.030
+It minimizes the effort required to read and comprehend what you see.
+
+00:59.030 --> 01:05.820
+So in essence, what we're essentially doing on the surface plane is creating what's called visible
+
+01:05.820 --> 01:06.740
+language.
+
+01:06.750 --> 01:14.130
+Visible language refers to all the graphical techniques that we use to indicate context and convey information.
+
+01:14.130 --> 01:21.330
+And those techniques include layout, formats, proportions, grids, organization, all the underlying
+
+01:21.360 --> 01:25.290
+structure that determines what elements live where.
+
+01:25.320 --> 01:26.160
+On the screen.
+
+01:26.160 --> 01:30.060
+We have typography, which is font selection and styling.
+
+01:30.060 --> 01:33.240
+What fonts do we use and how are we going to style them?
+
+01:33.240 --> 01:34.800
+Are they bold, Are they italic?
+
+01:34.800 --> 01:36.210
+Are they large?
+
+01:36.210 --> 01:37.080
+Are they small?
+
+01:37.080 --> 01:37.470
+ET cetera.
+
+01:37.470 --> 01:38.190
+ET cetera.
+
+01:38.280 --> 01:42.960
+We have color which is all about influencing perception and emotion.
+
+01:42.990 --> 01:49.890
+The surface plane is also where we start thinking about imagery signs, icons, symbols, things that
+
+01:49.890 --> 01:52.440
+communicate or signal use.
+
+01:52.470 --> 01:58.110
+Imagery also, of course, includes things like photography or illustrations, anything that's going
+
+01:58.110 --> 02:05.100
+to reinforce and support the context of use and enhance the understanding of the topic or subject at
+
+02:05.100 --> 02:05.600
+hand.
+
+02:05.610 --> 02:08.820
+The surface plane is also where we utilize sequencing.
+
+02:08.820 --> 02:12.000
+Okay, This is an overall approach to visual storytelling.
+
+02:12.000 --> 02:16.980
+In a lot of cases, what's happening not only on a single screen but from screen to screen to screen
+
+02:16.980 --> 02:19.200
+is there's a story that's unfolding.
+
+02:19.200 --> 02:22.620
+There's a narrative that's happening much like a movie.
+
+02:22.620 --> 02:22.950
+Okay?
+
+02:23.010 --> 02:27.510
+Almost anything that's interactive has very film like quantities to it.
+
+02:27.510 --> 02:34.350
+So the idea of proper pacing, proper sequencing applies just as much here as it does to a moving picture.
+
+02:34.530 --> 02:38.280
+Finally, we're addressing issues of visual identity.
+
+02:38.280 --> 02:42.810
+How does the organization or the product line express itself in this visible language?
+
+02:42.810 --> 02:45.750
+Okay, what is the brand say to us?
+
+02:45.780 --> 02:49.650
+Is it conservative and refined?
+
+02:49.680 --> 02:52.590
+Is it cutting edge and forward thinking?
+
+02:52.590 --> 02:55.170
+Is it wild and innovative?
+
+02:55.170 --> 03:00.690
+All the visual decisions, the graphic decisions that we make communicate those kinds of things.
+
+03:00.690 --> 03:06.060
+So we want to be very judicious about what we use and why we're using it.
+
+03:06.090 --> 03:12.030
+We want the fonts and colors and imagery that we use to be appropriate.
+
+03:12.390 --> 03:15.990
+Let's start with some principles of good user interface design.
+
+03:16.020 --> 03:21.990
+There are three fundamental principles that are at the core of creating a visual interface design that's
+
+03:21.990 --> 03:22.800
+effective.
+
+03:22.800 --> 03:25.350
+First, we have to organize.
+
+03:25.350 --> 03:31.530
+We're providing the user with a clear, consistent conceptual structure of how this thing works.
+
+03:31.560 --> 03:37.560
+Second, we have to economize, which means we want to do the most that we can with the least amount
+
+03:37.560 --> 03:41.220
+of cues, do more with less, keep things simple.
+
+03:41.250 --> 03:44.910
+Third, and maybe most importantly, we have to communicate.
+
+03:44.940 --> 03:51.000
+We have to match the presentation that people see on the screen to the expectations and capabilities
+
+03:51.000 --> 03:51.990
+of the user.
+
+03:51.990 --> 03:54.150
+Both of those things are extremely important.
+
+03:54.150 --> 03:59.670
+When someone comes to an application or someone comes to a website, they already know what they want
+
+03:59.700 --> 04:00.150
+from it.
+
+04:00.150 --> 04:04.890
+They come in with a preconceived idea of what's going to happen, how it's going to unfold and what
+
+04:04.890 --> 04:06.690
+the value is they're going to get out of it.
+
+04:06.690 --> 04:13.260
+The visual design has to communicate that to some degree, or at least has to reveal the fact that those
+
+04:13.260 --> 04:14.190
+things exist.
+
+04:14.190 --> 04:18.290
+The capabilities of the user are also equally important.
+
+04:18.300 --> 04:23.400
+Design should do everything it can to enhance understanding.
+
+04:23.430 --> 04:31.320
+To make things obvious, you create cues, visual cues that allow people to get in, start doing stuff,
+
+04:31.320 --> 04:37.380
+and sort of automatically start understanding how the system works, how I move around, how I do things,
+
+04:37.380 --> 04:39.150
+how I interact with information.
+
+04:39.180 --> 04:45.510
+Those three principles are at the core of good UI design, and we're going to expand on each one.
+
+04:46.140 --> 04:52.770
+The first thing good user interface design does is organize, and that means creating a clear visual
+
+04:52.770 --> 04:53.670
+hierarchy.
+
+04:53.700 --> 05:01.140
+Doing that enables consistency clearly signifies relationships between elements on the screen and improves
+
+05:01.140 --> 05:02.100
+navigation.
+
+05:02.130 --> 05:07.830
+Visual hierarchy allows us to determine what's most important among all the stuff that we're seeing,
+
+05:07.830 --> 05:08.350
+right?
+
+05:08.370 --> 05:10.890
+This thing is what I want to do first.
+
+05:10.890 --> 05:13.380
+This thing is probably what I want to do next.
+
+05:13.380 --> 05:19.560
+After I'm done, there's an order of importance that has to get established that should ideally match
+
+05:19.560 --> 05:24.790
+the same order of importance that the user has when they come into the situation.
+
+05:24.810 --> 05:28.170
+Here's a quick example of how visual hierarchy works.
+
+05:28.200 --> 05:33.000
+If you look at a screen that's organized like this where we have lots of different elements, lots of
+
+05:33.000 --> 05:36.630
+different sizes, things that sort of overlap and intersect.
+
+05:36.660 --> 05:42.330
+While it might be artistically interesting, it's a recipe for disaster for someone who's trying to
+
+05:42.330 --> 05:46.930
+accomplish a task on a phone or a tablet or a laptop.
+
+05:46.960 --> 05:52.420
+A much better approach is something that's a little more ordered and a little more structured that looks
+
+05:52.420 --> 05:53.230
+like this.
+
+05:53.260 --> 05:59.020
+When we look at a screen where all the elements have a strong visual relationship to one another, it's
+
+05:59.020 --> 06:03.850
+very easy to at a glance get a sense of how much of it there is.
+
+06:03.880 --> 06:09.940
+Get a sense of which elements are related to each other and get a relatively quick understanding of
+
+06:09.940 --> 06:11.350
+each type of content.
+
+06:11.380 --> 06:17.440
+The brain's essential job is to comprehend things, understand things, and try to make connections
+
+06:17.440 --> 06:18.040
+between things.
+
+06:18.040 --> 06:24.340
+So when we see multiple items on a screen, we're automatically trying to figure out how they belong
+
+06:24.370 --> 06:28.870
+together, how they relate to each other, how they interact to some degree.
+
+06:28.900 --> 06:34.990
+The more effort you spend in sort of organizing the elements in a way that's clear, that's ordered,
+
+06:34.990 --> 06:36.100
+that's logical.
+
+06:36.100 --> 06:40.150
+The more useful and usable your interface is going to be.
+
+06:40.740 --> 06:45.180
+The next principle of good user interface design is to economize.
+
+06:45.210 --> 06:50.010
+That means only including the elements that are critical to communication.
+
+06:50.040 --> 06:53.190
+The things that are immediately relevant to the task at hand.
+
+06:53.220 --> 06:55.320
+These are things that I need right now.
+
+06:55.320 --> 06:59.550
+There are things that I need in order to accomplish what I just started.
+
+06:59.700 --> 07:05.430
+The most important elements and actions on the screen should be easily perceived, and anything that's
+
+07:05.430 --> 07:07.860
+non-critical should be de-emphasized.
+
+07:07.860 --> 07:10.120
+And I'll show you a basic example of that.
+
+07:10.140 --> 07:16.950
+Let's assume we have a simple form that sits on a page that's in line on the screen where a user is
+
+07:16.950 --> 07:24.330
+asked to choose a specific item from a list of options and then execute the action, click okay or cancel
+
+07:24.330 --> 07:25.740
+and go back and do something else.
+
+07:25.740 --> 07:31.950
+So let's take a look at the number of elements that the user essentially has to look at absorb in order
+
+07:31.950 --> 07:33.080
+to carry out that task.
+
+07:33.090 --> 07:37.470
+First there's a title, then we have a series of radio buttons and labels.
+
+07:37.470 --> 07:43.570
+But here's the thing It's easy to assume that the radio button and its label are essentially one item,
+
+07:43.570 --> 07:45.520
+but the brain doesn't work that way.
+
+07:45.520 --> 07:46.810
+Here's actually what happens.
+
+07:46.810 --> 07:52.360
+The brain has to perceive each one of these things separately, and making that task even harder is
+
+07:52.360 --> 07:57.640
+the fact that items five and six sort of live in their own little world down at the bottom centered
+
+07:57.640 --> 08:00.970
+instead of aligned with either of the other columns.
+
+08:00.970 --> 08:06.550
+Plus we have two buttons crowded down into the bottom right corner, which essentially are the same
+
+08:06.550 --> 08:09.190
+size and carry the same visual weight.
+
+08:09.190 --> 08:12.640
+So they're essentially of equal importance to us at first glance.
+
+08:12.640 --> 08:17.020
+So how many items do we have to contend with on this very simple little form?
+
+08:17.020 --> 08:17.830
+Let's see.
+
+08:17.860 --> 08:37.360
+One, two, three, four, five, six, seven, eight, nine, ten, 11, 12, 13, 14, 15.
+
+08:37.390 --> 08:40.690
+Now, you may think to yourself, he's out of his mind.
+
+08:40.720 --> 08:43.210
+People don't consider all those things individually.
+
+08:43.240 --> 08:45.910
+Not consciously, but cognitively.
+
+08:45.910 --> 08:47.320
+Absolutely.
+
+08:47.320 --> 08:54.640
+This is, again, basic physiology of the way we comprehend information dictates that we in fact have
+
+08:54.640 --> 08:59.620
+to process 15 elements in order to make a choice in and of itself.
+
+08:59.620 --> 09:01.060
+That's not a huge deal.
+
+09:01.060 --> 09:06.970
+It maybe means an extra couple of minutes staring at the form, but if you're working in a large, complex
+
+09:06.970 --> 09:10.570
+application, those instances add up.
+
+09:10.570 --> 09:13.030
+So a couple of minutes per form.
+
+09:13.030 --> 09:19.930
+If you have 40 forms to complete turns into a pretty significant chunk of time that you have to invest
+
+09:19.930 --> 09:21.220
+to complete this action.
+
+09:21.340 --> 09:24.850
+Fortunately for us, there's a better way to design this.
+
+09:24.880 --> 09:26.500
+Take a look at this example.
+
+09:26.500 --> 09:29.230
+You notice some things automatically right off the bat.
+
+09:29.260 --> 09:35.950
+Number one, the title is segregated from everything else in a gray bar that clearly separates it from
+
+09:35.950 --> 09:38.740
+the functional elements that are happening below.
+
+09:38.740 --> 09:39.970
+It's not a choice.
+
+09:39.970 --> 09:41.170
+It's a descriptor.
+
+09:41.170 --> 09:45.070
+It's very clearly visually segregated and separated.
+
+09:45.070 --> 09:51.370
+Number two, our radio buttons and labels are now simply six boxes, two columns of three.
+
+09:51.400 --> 09:55.900
+When I click one it, the entire button highlights in gray.
+
+09:55.930 --> 10:01.000
+Contrast that to the radio button to the left, where the only indication that something is selected
+
+10:01.000 --> 10:02.830
+is a very tiny circle.
+
+10:02.860 --> 10:10.330
+This approach that we're taking on the right hand side here is a much larger visual indicator that something
+
+10:10.330 --> 10:11.470
+has been selected.
+
+10:11.470 --> 10:11.880
+Okay?
+
+10:11.890 --> 10:14.740
+It's much easier for us to get that.
+
+10:14.740 --> 10:15.040
+Okay.
+
+10:15.040 --> 10:16.360
+Yeah, that's the one I picked.
+
+10:16.390 --> 10:21.820
+Next, you'll notice that the primary action that we expect the user to take, which is to click the
+
+10:21.820 --> 10:26.590
+okay button to submit the form is made more distinct, more obvious.
+
+10:26.620 --> 10:29.980
+It's larger, it's darker, and it's a button.
+
+10:29.980 --> 10:34.210
+The cancel option, on the other hand, is simply a text link.
+
+10:34.210 --> 10:34.780
+Why?
+
+10:34.780 --> 10:36.070
+It's a secondary action.
+
+10:36.070 --> 10:40.750
+We're de-emphasizing things that are non-critical or secondary.
+
+10:40.780 --> 10:41.140
+Okay.
+
+10:41.140 --> 10:44.170
+Cancel is certainly an option, but it's not your primary option.
+
+10:44.170 --> 10:46.480
+It's not the core thing that you're there to do.
+
+10:46.480 --> 10:46.960
+All right.
+
+10:47.200 --> 10:50.170
+You didn't come to the page to cancel the form.
+
+10:50.170 --> 10:55.390
+You came to the page to fill out the form and click the big dark okay button.
+
+10:55.390 --> 10:58.870
+Now, remember, we had 15 elements on the other form.
+
+10:58.870 --> 11:00.370
+How many do you think we have here?
+
+11:00.370 --> 11:01.450
+Well, let's take a look.
+
+11:01.450 --> 11:11.380
+We have one, two, three, four, five, six, seven, eight, nine.
+
+11:11.380 --> 11:14.020
+So we went from 15 to 9.
+
+11:14.050 --> 11:17.290
+Again, it may seem like an inconsequential thing.
+
+11:17.290 --> 11:19.090
+I assure you it is.
+
+11:19.090 --> 11:26.050
+Not every single element counts and every single element adds to the cognitive load that the person
+
+11:26.050 --> 11:31.420
+has to deal with when they're trying to do something, minimize it, economize it.
+
+11:31.450 --> 11:39.280
+So this is just a quick example of how some very subtle, very simple visual design changes can economize
+
+11:39.280 --> 11:40.000
+things.
+
+11:40.640 --> 11:45.440
+Quite possibly the most important thing that visual design does is communicate.
+
+11:45.440 --> 11:49.430
+And that communication happens on a number of levels.
+
+11:49.460 --> 11:51.290
+To some degree, it's a balancing act, right?
+
+11:51.290 --> 11:57.770
+There's lots of elements on the screen, and each one of those elements plays a role in either enhancing
+
+11:57.770 --> 12:01.190
+understanding or creating confusion.
+
+12:01.520 --> 12:06.560
+So it's important that you do the former instead of the latter.
+
+12:06.560 --> 12:09.680
+And as I said, that's that's a balancing act.
+
+12:09.680 --> 12:09.950
+Okay?
+
+12:09.950 --> 12:18.020
+Visual design has to balance legibility, readability, typography, symbolism, multiple views, color,
+
+12:18.020 --> 12:24.140
+texture, all those things are part of successful visual communication.
+
+12:24.140 --> 12:30.200
+The balance of all those things is what dictates whether someone reacts to what they see on the screen,
+
+12:30.200 --> 12:33.500
+whether they understand it and can act upon it.
+
+12:33.500 --> 12:38.720
+The simplest way to give you an example of this is with font use, okay?
+
+12:38.720 --> 12:45.420
+Because to a large degree, what we do on the screen is we read, we scan, we interpret and we act
+
+12:45.420 --> 12:46.290
+based on that.
+
+12:46.290 --> 12:51.930
+So font use in particular is one of the most important decisions you'll ever make in an interface.
+
+12:51.930 --> 12:54.960
+And the thing is, it doesn't have to be complex, okay?
+
+12:54.960 --> 13:00.240
+You don't have to agonize over what fonts you're going to use and what style they are and what they
+
+13:00.240 --> 13:00.960
+look like.
+
+13:00.990 --> 13:04.560
+It's more a matter of making sure that they're easy to read.
+
+13:04.560 --> 13:10.200
+And before I get into the details of that, I want to sort of give you a basic premise that has everything
+
+13:10.230 --> 13:16.020
+to do with why we do or don't properly understand what we see.
+
+13:16.050 --> 13:16.340
+Okay.
+
+13:16.350 --> 13:18.030
+And that's pattern recognition.
+
+13:18.030 --> 13:19.260
+Take a look at these letters.
+
+13:19.260 --> 13:21.870
+It's pretty obvious what that letter is.
+
+13:21.870 --> 13:22.080
+Okay.
+
+13:22.080 --> 13:23.490
+You don't need me to tell you that.
+
+13:23.490 --> 13:30.330
+That's a letter A, you automatically recognize it, even though each iteration of it that you're looking
+
+13:30.330 --> 13:31.920
+at is very different.
+
+13:31.920 --> 13:34.110
+Visually, it's a different visual style.
+
+13:34.110 --> 13:39.630
+The reason, you know automatically what that letter is, is because of pattern recognition.
+
+13:39.630 --> 13:46.020
+You've been exposed to it so many times, you've been exposed to that pattern of elements, two upward
+
+13:46.020 --> 13:48.690
+lines bisected by a horizontal line.
+
+13:48.720 --> 13:50.040
+You know what that letter is?
+
+13:50.040 --> 13:54.060
+So even if it varies stylistically, you recognize it.
+
+13:54.060 --> 13:55.410
+The brain automatically goes.
+
+13:55.440 --> 13:56.400
+Seen that before?
+
+13:56.400 --> 13:58.620
+Know what it is Not even a question.
+
+13:58.620 --> 13:58.890
+Okay.
+
+13:58.890 --> 14:00.930
+That happens in milliseconds.
+
+14:00.960 --> 14:07.560
+When you're designing anything, it's very important to be aware of the role that pattern recognition
+
+14:07.560 --> 14:13.620
+plays in what you do, because when you get too decorative, when you sort of go crazy with a lot of
+
+14:13.620 --> 14:21.840
+elements and colors and decoration and you trying to be unique, sometimes that can interfere with pattern
+
+14:21.840 --> 14:22.650
+recognition.
+
+14:22.650 --> 14:29.340
+And, you know, in fine art, that's sort of not only acceptable, it's desirable, but in terms of
+
+14:29.340 --> 14:35.940
+interface design, where our end goal is to communicate with people, that approach is not a good one.
+
+14:36.490 --> 14:37.990
+Take a look at this first example.
+
+14:37.990 --> 14:41.830
+This is basic aerial default text.
+
+14:41.830 --> 14:46.650
+And as the as the quote says, okay, there are many fonts that are easy to read.
+
+14:46.660 --> 14:52.510
+Any one of them are fine to use, but you want to avoid a font that is so decorative that it starts
+
+14:52.510 --> 14:55.060
+to interfere with pattern recognition.
+
+14:55.060 --> 14:57.610
+So in this instance, this is really straightforward.
+
+14:57.610 --> 15:02.310
+We can automatically very easily recognize those characters and it's very easy to read.
+
+15:02.320 --> 15:06.250
+Now let's pick a font that's slightly more decorative.
+
+15:06.280 --> 15:07.480
+Take a look at the difference.
+
+15:07.480 --> 15:13.690
+While we obviously still recognize the characters and we can still read this, it's slightly slower.
+
+15:13.690 --> 15:20.830
+It takes us just a tiny fraction of a bit longer to read because the font is a little more decorative
+
+15:20.830 --> 15:25.450
+and it's beginning to interfere with pattern recognition in a way.
+
+15:25.450 --> 15:27.790
+Now let's go to an extreme example.
+
+15:27.790 --> 15:30.250
+Here's a font that's extraordinarily decorative.
+
+15:30.280 --> 15:32.200
+How long does it take you to read this?
+
+15:32.230 --> 15:35.020
+In this case, the pattern is very abstracted.
+
+15:35.020 --> 15:38.410
+It's less recognizable and therefore it's less readable.
+
+15:38.410 --> 15:42.460
+We have to expend more effort in order to interpret what we see.
+
+15:42.490 --> 15:44.230
+You'd be surprised or maybe you wouldn't.
+
+15:44.230 --> 15:51.460
+But a lot of websites, a lot of software applications, a lot of systems that I see people sort of
+
+15:51.460 --> 15:55.510
+get excited about the fact that they can play with all these fonts that they have on their on their
+
+15:55.510 --> 16:00.580
+machines and you know, you want to do something different because you know what the hell, your job
+
+16:00.580 --> 16:03.670
+can be a little boring from time to time, and I get that.
+
+16:03.670 --> 16:09.670
+But you have to be aware of the fact that when you make those choices, you are essentially making it
+
+16:09.670 --> 16:18.490
+more difficult for what's on the screen to be easily and quickly perceived and understood when pattern
+
+16:18.490 --> 16:20.890
+recognition becomes abstracted.
+
+16:20.890 --> 16:24.280
+We have to work a lot harder to deal with what we see.
+
+16:24.280 --> 16:32.560
+So always, always, always err on the side of simple, legible, readable, clear and recognizable.
+
+16:32.650 --> 16:39.860
+One of the most important things that I can possibly get across to you is this visual design is not
+
+16:39.860 --> 16:41.000
+decoration.
+
+16:41.030 --> 16:45.820
+The very, very, very different decoration is purely visual.
+
+16:45.830 --> 16:48.630
+We look at something, we react to it, Wow, that's really cool.
+
+16:48.650 --> 16:52.070
+Or wow, that's really innovative or unique or interesting.
+
+16:52.190 --> 16:54.530
+You know, I would have never thought of doing that that way.
+
+16:54.530 --> 16:57.410
+Okay, that's decoration has visual impact.
+
+16:57.410 --> 17:00.950
+It's purely aesthetic in nature.
+
+17:00.950 --> 17:03.920
+But decoration does not communicate.
+
+17:03.920 --> 17:06.020
+It doesn't help anybody do anything.
+
+17:06.020 --> 17:07.520
+It doesn't explain.
+
+17:07.520 --> 17:08.990
+It doesn't clarify.
+
+17:08.990 --> 17:13.460
+It doesn't illuminate, it doesn't help us understand its job.
+
+17:13.460 --> 17:17.150
+It really, in a nutshell, is to sort of sit there and look pretty okay.
+
+17:17.150 --> 17:18.440
+And there's nothing wrong with that.
+
+17:18.440 --> 17:22.820
+But decoration doesn't have any place in visual design.
+
+17:22.820 --> 17:23.960
+I can't stress this enough.
+
+17:23.960 --> 17:25.850
+There are two different things.
+
+17:25.850 --> 17:27.920
+So design is not decoration.
+
+17:27.920 --> 17:33.110
+And that means that visual design should never be based on personal preference.
+
+17:33.110 --> 17:39.380
+I've designed hundreds of things in my career that I personally did not care for.
+
+17:39.410 --> 17:41.690
+Okay, Visually, it's not my sense of aesthetic.
+
+17:41.690 --> 17:48.560
+It's not something that's necessarily pleasing to my eye or my personal taste doesn't matter because
+
+17:48.560 --> 17:51.680
+it was appropriate and relevant to the audience.
+
+17:51.680 --> 17:56.180
+It did a good job of expressing the company's brand message, right?
+
+17:56.180 --> 18:03.260
+It was in line with what the organization wanted to express, and it was the kind of look and feel that
+
+18:03.260 --> 18:06.680
+the audience would appreciate because I'm designing for them.
+
+18:06.680 --> 18:08.030
+I'm not designing for me.
+
+18:08.030 --> 18:12.530
+By the same token, visual design should never be based on what looks cool.
+
+18:12.530 --> 18:17.660
+If you make a design decision and you do something visually on the screen and someone says, Well,
+
+18:17.660 --> 18:19.100
+why did you make that that color?
+
+18:19.100 --> 18:20.570
+Or why did you choose that font?
+
+18:20.570 --> 18:22.310
+Or why did you use this image?
+
+18:22.310 --> 18:25.490
+Or why did you use this big red bar across the screen?
+
+18:25.520 --> 18:29.840
+Your answer should never ever be because it looks cool.
+
+18:29.840 --> 18:30.860
+Doesn't it look cool?
+
+18:30.890 --> 18:31.640
+Wrong.
+
+18:31.640 --> 18:32.030
+Wrong.
+
+18:32.060 --> 18:33.230
+Absolutely wrong.
+
+18:33.260 --> 18:34.430
+Totally wrong.
+
+18:36.050 --> 18:37.040
+Okay, cool.
+
+18:37.040 --> 18:39.470
+Does not mean it communicates well.
+
+18:39.500 --> 18:39.800
+Cool.
+
+18:39.800 --> 18:43.370
+Does not mean anyone's going to be able to understand what you've done.
+
+18:43.370 --> 18:47.590
+Cool does not help anybody accomplish a task.
+
+18:47.600 --> 18:49.850
+It's just cool for the sake of being cool.
+
+18:49.850 --> 18:51.230
+And that's decoration.
+
+18:51.230 --> 18:52.550
+That's not design.
+
+18:52.550 --> 18:53.960
+So what am I trying to say?
+
+18:53.960 --> 18:57.170
+I'm saying forget about how things look.
+
+18:57.200 --> 19:01.190
+Ask yourself how your visual design choices work.
+
+19:01.190 --> 19:03.830
+And that means asking yourself these questions.
+
+19:03.860 --> 19:07.280
+Does the visual design support established objectives?
+
+19:07.310 --> 19:12.410
+Is what we're putting on the screen in line with what we said we were trying to accomplish Strategically,
+
+19:12.440 --> 19:15.740
+does the visual design clarify the options available?
+
+19:15.740 --> 19:19.880
+Does it help you understand what's available to you?
+
+19:19.910 --> 19:23.960
+Does visual design provide context and guidance?
+
+19:23.960 --> 19:24.170
+Okay.
+
+19:24.230 --> 19:28.310
+Does it help you understand how things are related to other things?
+
+19:28.310 --> 19:34.130
+Does it give you a clue as to what actions you can take or what you're supposed to do next?
+
+19:34.160 --> 19:36.020
+Does visual design establish?
+
+19:36.070 --> 19:39.080
+Clear information and action priority.
+
+19:39.100 --> 19:40.460
+What should I do first?
+
+19:40.480 --> 19:41.560
+What should I do next?
+
+19:41.590 --> 19:43.060
+What happens after that?
+
+19:43.060 --> 19:43.540
+Right.
+
+19:43.570 --> 19:49.720
+We want to be able to predict the outcomes of our actions and the design of all the elements on the
+
+19:49.720 --> 19:52.240
+screen should enable us to do that.
+
+19:52.240 --> 19:57.190
+So make sure that your visual design is communicating instead of decorating.

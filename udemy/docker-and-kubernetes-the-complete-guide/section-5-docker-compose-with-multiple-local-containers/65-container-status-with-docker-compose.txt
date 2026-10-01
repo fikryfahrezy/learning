@@ -1,0 +1,169 @@
+WEBVTT
+
+00:01.230 --> 00:03.780
+-: In this section, there's just one last very quick command
+
+00:03.780 --> 00:06.360
+around Docker Compose that I want you to be aware of.
+
+00:06.360 --> 00:08.820
+At this point, we've seen several times that we can start
+
+00:08.820 --> 00:13.230
+up a running container with the Docker CLI directly
+
+00:13.230 --> 00:16.200
+and then we can in a second window run Docker PS
+
+00:16.200 --> 00:17.760
+and get the status of all the running
+
+00:17.760 --> 00:19.260
+containers that we have.
+
+00:19.260 --> 00:21.210
+Now, a very similar command exists
+
+00:21.210 --> 00:23.850
+for Docker Compose as well.
+
+00:23.850 --> 00:26.040
+So if I stop that running container and then bring
+
+00:26.040 --> 00:29.080
+up my two different containers using Docker Compose
+
+00:30.330 --> 00:31.770
+I can then print out the status
+
+00:31.770 --> 00:36.090
+of both of those containers by using Docker compose PS.
+
+00:36.090 --> 00:39.150
+So again, same thing as the Docker CLI
+
+00:39.150 --> 00:41.400
+just for Docker Compose.
+
+00:41.400 --> 00:43.200
+So I've got my two running containers here.
+
+00:43.200 --> 00:44.850
+I'll open up a second window
+
+00:44.850 --> 00:47.817
+and then I'll do Docker dash compose PS
+
+00:47.817 --> 00:49.860
+and that's gonna print out the status
+
+00:49.860 --> 00:54.420
+of the two containers inside of my Docker compose file.
+
+00:54.420 --> 00:55.560
+Now when I say that right there
+
+00:55.560 --> 00:58.350
+the two running containers inside of my Docker compose file
+
+00:58.350 --> 01:00.420
+this is something I wanna make sure is really clear.
+
+01:00.420 --> 01:03.240
+When I ran Docker compose PS right here, I ran it
+
+01:03.240 --> 01:08.240
+from the same directory as my Docker compose.yaml file.
+
+01:08.610 --> 01:12.360
+When you run Docker PS, it's going to specifically look
+
+01:12.360 --> 01:16.440
+for a Docker composed file inside of your current directory
+
+01:16.440 --> 01:18.960
+and if it finds one, it'll read that file
+
+01:18.960 --> 01:22.140
+and then it will try to find all of the running containers
+
+01:22.140 --> 01:25.435
+on your local machine that belong essentially
+
+01:25.435 --> 01:27.990
+to this Docker composed file.
+
+01:27.990 --> 01:30.630
+If you try running the Docker composed PS command
+
+01:30.630 --> 01:32.310
+from any other directory
+
+01:32.310 --> 01:34.170
+you're gonna get an ear message that says
+
+01:34.170 --> 01:36.240
+Hey I know you wanna get the status of containers
+
+01:36.240 --> 01:38.490
+but which containers?
+
+01:38.490 --> 01:39.660
+Docker, composes knock
+
+01:39.660 --> 01:41.190
+and you just kind of magically figure
+
+01:41.190 --> 01:43.050
+out which containers you're talking about.
+
+01:43.050 --> 01:45.090
+It needs that Docker composed yaml file
+
+01:45.090 --> 01:47.700
+as kind of a reference to understand which
+
+01:47.700 --> 01:51.750
+specific containers it's proposed to get the status of.
+
+01:51.750 --> 01:53.220
+So as a very quick example,
+
+01:53.220 --> 01:55.320
+I encourage you to go up one directory.
+
+01:55.320 --> 01:56.490
+So now inside this folder
+
+01:56.490 --> 01:58.920
+I do not have a Docker composed file
+
+01:58.920 --> 02:02.220
+and so inside of here, if I run Docker composed PS.
+
+02:02.220 --> 02:05.130
+I'm gonna get an air message that says, Hey sorry
+
+02:05.130 --> 02:07.830
+I have no idea what containers you're talking about.
+
+02:07.830 --> 02:08.970
+So just remember with a lot
+
+02:08.970 --> 02:11.550
+of these Docker composed commands, you need to run it
+
+02:11.550 --> 02:14.370
+the commands from the appropriate directory.
+
+02:14.370 --> 02:16.020
+All right, so that is pretty much it
+
+02:16.020 --> 02:17.430
+on Docker compose right now.
+
+02:17.430 --> 02:18.720
+So let's take another quick break
+
+02:18.720 --> 02:20.670
+and we'll continue in the next section.
